@@ -51,8 +51,8 @@ public interface VarPin extends Pin {
             paint.setColor(mColor);
             paint.setAlpha(modulateAlpha(paint.getAlpha(), mAlpha));
             if (paint.getAlpha() != 0) {
-                canvas.drawCircle(cx, cy, mRadius, paint);
-                paint.setStyle(Paint.STROKE);
+                canvas.drawCircle(cx, cy, mRadius * 1.6f, paint);
+                paint.setStyle(Paint.FILL_AND_STROKE);
                 paint.setStrokeWidth(mRadius * 0.5f);
                 canvas.drawCircle(cx, cy, mRadius * 1.6f, paint);
             }

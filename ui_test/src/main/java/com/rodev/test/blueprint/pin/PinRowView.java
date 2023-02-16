@@ -18,7 +18,7 @@ public class PinRowView extends LinearLayout {
         setOrientation(LinearLayout.HORIZONTAL);
         var textView = new TextView();
         textView.setText(text);
-        setMinimumWidth(dp(150));
+        setMinimumWidth(dp(100));
         setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
         if (direction == Direction.LEFT) {
             setGravity(Gravity.CENTER | Gravity.START);

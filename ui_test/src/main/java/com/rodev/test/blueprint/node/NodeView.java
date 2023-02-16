@@ -4,6 +4,7 @@ import com.rodev.test.Colors;
 import com.rodev.test.blueprint.ChildRoot;
 import com.rodev.test.blueprint.pin.PinRowView;
 import com.rodev.test.blueprint.pin.Position;
+import icyllis.modernui.view.Gravity;
 import icyllis.modernui.view.MotionEvent;
 import icyllis.modernui.view.View;
 import icyllis.modernui.view.ViewGroup;
@@ -17,8 +18,8 @@ import java.util.List;
 
 public class NodeView extends LinearLayout implements BPNode {
 
-    private final LinearLayout inputRowsContainer = createRowContainer();
-    private final LinearLayout outputRowsContainer = createRowContainer();
+    private final LinearLayout inputRowsContainer = createRowContainer(Gravity.START);
+    private final LinearLayout outputRowsContainer = createRowContainer(Gravity.END);
 
     private Boolean selected = false;
 
@@ -49,11 +50,12 @@ public class NodeView extends LinearLayout implements BPNode {
         addView(allRowsContainer);
     }
 
-    private static LinearLayout createRowContainer() {
+    private static LinearLayout createRowContainer(int gravity) {
         var linearLayout = new LinearLayout();
         linearLayout.setOrientation(VERTICAL);
         linearLayout.setMinimumWidth(dp(20));
         linearLayout.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+        linearLayout.setGravity(gravity);
 
         return linearLayout;
     }
