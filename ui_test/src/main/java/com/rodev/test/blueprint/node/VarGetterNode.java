@@ -27,11 +27,7 @@ public class VarGetterNode extends FrameLayout implements BPNode {
     private boolean selected;
 
     public VarGetterNode(Pin pin, String variableName) {
-        var rowView = new PinRowView(
-                new PinView(pin),
-                variableName,
-                PinRowView.Direction.RIGHT
-        );
+        var rowView = pin.createRowView().setText(variableName);
         setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
         addView(rowView);
         setBackground(new SelectableDrawable(3, dp(20)));

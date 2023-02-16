@@ -12,6 +12,7 @@ import org.jetbrains.annotations.NotNull;
 public class PinRowView extends LinearLayout {
 
     private final PinView pinView;
+    private final TextView textView;
 
     public PinRowView(PinView pin, String text, Direction direction) {
         setOrientation(LinearLayout.HORIZONTAL);
@@ -19,7 +20,7 @@ public class PinRowView extends LinearLayout {
         textView.setText(text);
         setMinimumWidth(dp(150));
         setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-        if(direction == Direction.LEFT) {
+        if (direction == Direction.LEFT) {
             setGravity(Gravity.CENTER | Gravity.START);
             addView(pin);
             addView(textView);
@@ -28,8 +29,13 @@ public class PinRowView extends LinearLayout {
             addView(textView);
             addView(pin);
         }
-
+        this.textView = textView;
         pinView = pin;
+    }
+
+    public PinRowView setText(String text) {
+        textView.setText(text);
+        return this;
     }
 
     public PinView getPinView() {

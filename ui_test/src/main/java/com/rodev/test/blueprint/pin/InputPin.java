@@ -30,6 +30,11 @@ public abstract class InputPin extends AbstractPin {
     }
 
     @Override
+    public PinRowView createRowView() {
+        return PinRowView.leftDirectedRow(new PinView(this), "");
+    }
+
+    @Override
     public void disconnect(Pin pin) {
         disconnectAll();
     }

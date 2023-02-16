@@ -11,12 +11,14 @@ import java.util.function.Supplier;
 public class NodeBuilder {
 
     private final String functionName;
+    private final int nodeColor;
     private boolean isSimple = false;
     private final List<Supplier<PinRowView>> outputPinSuppliers = new LinkedList<>();
     private final List<Supplier<PinRowView>> inputPinSuppliers = new LinkedList<>();
 
-    private NodeBuilder(String functionName) {
+    private NodeBuilder(int nodeColor, String functionName) {
         this.functionName = functionName;
+        this.nodeColor = nodeColor;
     }
 
     public NodeBuilder addPin(Pin pin, String name) {
@@ -31,12 +33,12 @@ public class NodeBuilder {
     }
 
     public NodeBuilder addOutputPin(Pin pin, String name) {
-        outputPinSuppliers.add(() -> PinRowView.rightDirectedRow(new PinView(pin), name));
+        outputPinSuppliers.add(() -> pin.createRowView().setText(name));
         return this;
     }
 
     public NodeBuilder addInputPin(Pin pin, String name) {
-        inputPinSuppliers.add(() -> PinRowView.leftDirectedRow(new PinView(pin), name));
+        inputPinSuppliers.add(() -> pin.createRowView().setText(name));
         return this;
     }
 
@@ -46,7 +48,7 @@ public class NodeBuilder {
     }
 
     public NodeView build() {
-        var nodeView = new NodeView(functionName);
+        var nodeView = new NodeView(nodeColor, functionName);
 
         inputPinSuppliers.forEach(s -> {
             nodeView.addInput(s.get());
@@ -58,8 +60,8 @@ public class NodeBuilder {
         return nodeView;
     }
 
-    public static NodeBuilder builder(String functionName) {
-        return new NodeBuilder(functionName);
+    public static NodeBuilder builder(int nodeColor, String functionName) {
+        return new NodeBuilder(nodeColor, functionName);
     }
 
 }

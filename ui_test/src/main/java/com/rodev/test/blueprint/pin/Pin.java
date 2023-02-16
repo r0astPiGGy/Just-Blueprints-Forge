@@ -3,8 +3,13 @@ package com.rodev.test.blueprint.pin;
 import icyllis.modernui.graphics.drawable.Drawable;
 
 import java.util.Collection;
+import java.util.UUID;
 
 public interface Pin {
+
+    UUID getId();
+
+    PinRowView createRowView();
 
     Drawable createDrawable();
 

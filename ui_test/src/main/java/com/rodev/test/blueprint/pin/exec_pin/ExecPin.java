@@ -13,6 +13,7 @@ import icyllis.modernui.graphics.drawable.StateListDrawable;
 import icyllis.modernui.material.MaterialDrawable;
 import icyllis.modernui.math.Rect;
 import icyllis.modernui.util.StateSet;
+import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nonnull;
 
@@ -39,32 +40,17 @@ public interface ExecPin extends Pin {
         return new InExecPin(Colors.WHITE);
     }
 
-    class CheckedDrawable extends MaterialDrawable {
+    abstract class ExecDrawable extends MaterialDrawable {
 
-        CheckedDrawable() {}
+        protected final int heightOffset = 3;
+        protected final int widthOffset = 3;
 
-        @Override
-        public void draw(@Nonnull Canvas canvas) {
-            final Rect r = getBounds();
-
-            Paint paint = Paint.get();
-
-            paint.setColor(mColor);
-            paint.setAlpha(modulateAlpha(paint.getAlpha(), mAlpha));
-
-            final var cX = r.centerX() + 5;
-            final var cY = r.centerY();
-
-            if (paint.getAlpha() != 0) {
-                canvas.drawRect(r.left, r.top, r.left + cX, r.bottom, paint);
-                canvas.drawTriangle(r.left + cX, r.top, r.right, r.top + cY, r.left + cX, r.bottom, paint);
-            }
-        }
+        ExecDrawable() {}
 
         @Override
         public int getIntrinsicWidth() {
             // 24dp
-            return dp(30);
+            return dp(24);
         }
 
         @Override
@@ -72,15 +58,10 @@ public interface ExecPin extends Pin {
             // 24dp
             return dp(24);
         }
-    }
-
-    class UncheckedDrawable extends MaterialDrawable {
-
-        UncheckedDrawable() {}
 
         @Override
-        public void draw(@Nonnull Canvas canvas) {
-            final Rect r = getBounds();
+        public void draw(@NotNull Canvas canvas) {
+            final Rect r = getBounds().copy();
 
             Paint paint = Paint.get();
 
@@ -88,28 +69,83 @@ public interface ExecPin extends Pin {
             paint.setColor(mColor);
             paint.setAlpha(modulateAlpha(paint.getAlpha(), mAlpha));
 
-            final var cX = r.centerX() + 5;
+            final var cX = r.centerX();
             final var cY = r.centerY();
 
             if (paint.getAlpha() != 0) {
-                canvas.drawRoundLine(r.left, r.top, r.left + cX, r.top, paint);
-                canvas.drawRoundLine(r.left + cX, r.top, r.right, r.top + cY, paint);
-                canvas.drawRoundLine(r.right, r.top + cY, r.left + cX, r.bottom, paint);
-                canvas.drawRoundLine(r.left + cX, r.bottom, r.left, r.bottom, paint);
-                canvas.drawRoundLine(r.left, r.bottom, r.left, r.top, paint);
+                onDraw(canvas, r, paint, cX, cY);
             }
         }
 
-        @Override
-        public int getIntrinsicWidth() {
-            // 24dp
-            return dp(30);
-        }
+        protected abstract void onDraw(Canvas canvas, Rect r, Paint paint, int cX, int cY);
+    }
+
+    class CheckedDrawable extends ExecDrawable {
+
+        CheckedDrawable() {}
 
         @Override
-        public int getIntrinsicHeight() {
-            // 24dp
-            return dp(24);
+        protected void onDraw(Canvas canvas, Rect r, Paint paint, int cX, int cY) {
+            canvas.drawRect(
+                    r.left + widthOffset,
+                    r.top + heightOffset,
+                    r.left + cX,
+                    r.bottom - heightOffset,
+                    paint
+            );
+            canvas.drawTriangle(
+                    r.left + cX,
+                    r.top + heightOffset,
+                    r.right - widthOffset,
+                    r.top + cY,
+                    r.left + cX,
+                    r.bottom - heightOffset,
+                    paint
+            );
+        }
+    }
+
+    class UncheckedDrawable extends ExecDrawable {
+
+        UncheckedDrawable() {}
+
+        @Override
+        protected void onDraw(Canvas canvas, Rect r, Paint paint, int cX, int cY) {
+            canvas.drawRoundLine(
+                    r.left + widthOffset,
+                    r.top + heightOffset,
+                    r.left + cX,
+                    r.top + heightOffset,
+                    paint
+            );
+            canvas.drawRoundLine(
+                    r.left + cX,
+                    r.top + heightOffset,
+                    r.right - widthOffset,
+                    r.top + cY,
+                    paint
+            );
+            canvas.drawRoundLine(
+                    r.right - widthOffset,
+                    r.top + cY,
+                    r.left + cX,
+                    r.bottom - heightOffset,
+                    paint
+            );
+            canvas.drawRoundLine(
+                    r.left + cX,
+                    r.bottom - heightOffset,
+                    r.left + widthOffset,
+                    r.bottom - heightOffset,
+                    paint
+            );
+            canvas.drawRoundLine(
+                    r.left + widthOffset,
+                    r.bottom - heightOffset,
+                    r.left + widthOffset,
+                    r.top + heightOffset,
+                    paint
+            );
         }
     }
 }

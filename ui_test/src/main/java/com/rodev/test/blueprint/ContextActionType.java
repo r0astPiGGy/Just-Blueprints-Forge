@@ -14,6 +14,33 @@ import static com.rodev.test.Colors.*;
 
 public enum ContextActionType {
 
+    BRANCH("Branch"){
+        @Override
+        public View createNode(int nodeColor, Consumer<Pin> onPinCreated, Consumer<BPNode> onNodeCreated) {
+            var inputExec = ExecPin.inputPin();
+            onPinCreated.accept(inputExec);
+
+            var trueOutputExec = ExecPin.outputPin();
+            onPinCreated.accept(trueOutputExec);
+
+            var falseOutputExec = ExecPin.outputPin();
+            onPinCreated.accept(falseOutputExec);
+
+            var conditionInput = VarPin.inputPin(RED);
+            onPinCreated.accept(conditionInput);
+
+            var node = NodeBuilder.builder(HEADER_COLORS.UTIL,"Branch")
+                    .addPin(inputExec, "")
+                    .addPin(conditionInput, "Condition")
+                    .addPin(trueOutputExec, "True")
+                    .addPin(falseOutputExec, "False")
+                    .build();
+
+            onNodeCreated.accept(node);
+
+            return node;
+        }
+    },
     ON_START_EVENT("Startup Event"){
         @Override
         public View createNode(int nodeColor, Consumer<Pin> onPinCreated, Consumer<BPNode> onNodeCreated) {
@@ -26,7 +53,7 @@ public enum ContextActionType {
             var output = VarPin.outputPin(BLUE);
             onPinCreated.accept(output);
 
-            var node = NodeBuilder.builder("Event onStartup")
+            var node = NodeBuilder.builder(HEADER_COLORS.EVENT,"Event onStartup")
                     .addPin(outputExec, "")
                     .addPin(output, "Startup string")
                     .build();
@@ -54,7 +81,7 @@ public enum ContextActionType {
             var isDebug = VarPin.inputPin(RED);
             onPinCreated.accept(isDebug);
 
-            var node = NodeBuilder.builder("Print string")
+            var node = NodeBuilder.builder(HEADER_COLORS.FUNCTION, "Print string")
                     .addPin(outputExec, "")
                     .addPin(inputExec, "")
                     //.addPin(output, "Return value")

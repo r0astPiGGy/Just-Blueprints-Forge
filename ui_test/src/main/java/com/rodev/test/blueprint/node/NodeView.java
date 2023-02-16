@@ -1,5 +1,6 @@
 package com.rodev.test.blueprint.node;
 
+import com.rodev.test.Colors;
 import com.rodev.test.blueprint.ChildRoot;
 import com.rodev.test.blueprint.pin.PinRowView;
 import com.rodev.test.blueprint.pin.Position;
@@ -26,17 +27,18 @@ public class NodeView extends LinearLayout implements BPNode {
 
     private final NodeTouchHandler<NodeView> nodeTouchHandler;
 
-    public NodeView(String nodeName) {
+    public NodeView(int headerColor, String nodeName) {
         nodeTouchHandler = new NodeTouchHandler<>(this, this::updatePinsPosition);
 
         setOrientation(VERTICAL);
         setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-        setBackground(new SelectableDrawable());
 
         var nodeLabel = new TextView();
         nodeLabel.setText(nodeName);
         nodeLabel.setPadding(0, 0, 0, dp(10));
         addView(nodeLabel);
+
+        setBackground(new NodeDrawable(nodeLabel::getHeight, headerColor));
 
         LinearLayout allRowsContainer = new LinearLayout();
         allRowsContainer.setOrientation(HORIZONTAL);

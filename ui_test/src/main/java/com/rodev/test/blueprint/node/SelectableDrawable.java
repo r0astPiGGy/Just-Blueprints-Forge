@@ -13,9 +13,10 @@ import static icyllis.modernui.view.View.dp;
 
 public class SelectableDrawable extends Drawable {
 
-    private boolean isSelected;
-    private final int mRadius;
-    private final int selectionOffset;
+    protected boolean isSelected;
+    protected final int mRadius;
+    protected final int selectionOffset;
+    protected int backgroundColor = Color.rgb(10, 10, 10);
 
     public SelectableDrawable() {
         this(3, dp(8));
@@ -32,7 +33,7 @@ public class SelectableDrawable extends Drawable {
 
     @Override
     public void draw(@Nonnull Canvas canvas) {
-        Paint paint = Paint.get();
+        Paint paint = Paint.take();
         Rect b = getBounds();
 
         if (isSelected) {
@@ -40,7 +41,7 @@ public class SelectableDrawable extends Drawable {
             canvas.drawRoundRect(b.left, b.top, b.right, b.bottom, mRadius, paint);
         }
 
-        paint.setColor(Color.rgb(10, 10, 10));
+        paint.setColor(backgroundColor);
         canvas.drawRoundRect(
                 b.left + selectionOffset,
                 b.top + selectionOffset,
@@ -49,6 +50,8 @@ public class SelectableDrawable extends Drawable {
                 mRadius,
                 paint
         );
+
+        paint.drop();
     }
 
     @Override

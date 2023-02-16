@@ -5,7 +5,7 @@ import java.util.UUID;
 
 public abstract class AbstractPin implements Pin {
     private final int color;
-    private final UUID id = UUID.randomUUID();
+    private final UUID id;
     private PinDragListener pinDragListener;
     private PinHoverListener pinHoverListener;
     private PinToggleListener pinToggleListener;
@@ -14,7 +14,17 @@ public abstract class AbstractPin implements Pin {
     private Position position;
 
     public AbstractPin(int color) {
+        this(color, UUID.randomUUID());
+    }
+
+    public AbstractPin(int color, UUID uuid) {
         this.color = color;
+        this.id = uuid;
+    }
+
+    @Override
+    public UUID getId() {
+        return id;
     }
 
     @Override

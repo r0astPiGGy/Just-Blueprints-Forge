@@ -21,6 +21,11 @@ public abstract class OutputPin extends AbstractPin {
     }
 
     @Override
+    public PinRowView createRowView() {
+        return PinRowView.rightDirectedRow(new PinView(this), "");
+    }
+
+    @Override
     public void connect(Pin pin) {
         if (pin == this) return;
 
