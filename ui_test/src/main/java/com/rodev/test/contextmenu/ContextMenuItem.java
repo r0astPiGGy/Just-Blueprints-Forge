@@ -1,8 +1,10 @@
 package com.rodev.test.contextmenu;
 
+import com.rodev.test.blueprint.data.action.Action;
 import icyllis.modernui.view.View;
 import icyllis.modernui.widget.TextView;
 
+import java.util.function.Consumer;
 import java.util.function.Predicate;
 
 public interface ContextMenuItem {
@@ -13,31 +15,25 @@ public interface ContextMenuItem {
 
     void onClick();
 
-    default boolean hideIf(Predicate<ContextMenuItem> predicate) {
-        if(predicate.test(this)) {
-            hide();
-            return true;
-        }
-
-        return false;
-    }
-
-    boolean showIf(Predicate<ContextMenuItem> predicate);
-
     void show();
 
     void hide();
 
-    static ContextMenuItem of(View view, String name) {
-        return new ContextMenuItemImpl(view, name);
+    static ContextMenuItem of(View view, String name, Runnable onClick) {
+        return new ContextMenuItemImpl(view, name) {
+            @Override
+            public void onClick() {
+                onClick.run();
+            }
+        };
     }
 
-    static ContextMenuItem of(String name) {
+    static ContextMenuItem of(String name, Runnable onClick) {
         var view = new TextView();
         view.setText(name);
         view.setTextSize(View.sp(14));
 
-        return of(view, name);
+        return of(view, name, onClick);
     }
 
 }

@@ -1,12 +1,19 @@
 package com.rodev.test.blueprint.pin.var_pin;
 
+import com.rodev.test.blueprint.data.variable.VariableType;
 import com.rodev.test.blueprint.pin.OutputPin;
 import com.rodev.test.blueprint.pin.Pin;
 
+import java.util.UUID;
+
 public class OutVarPin extends OutputPin implements VarPin {
 
-    public OutVarPin(int color) {
-        super(color);
+    public OutVarPin(VariableType variableType) {
+        super(variableType);
+    }
+
+    public OutVarPin(VariableType variableType, UUID uuid) {
+        super(variableType, uuid);
     }
 
     @Override
@@ -15,6 +22,6 @@ public class OutVarPin extends OutputPin implements VarPin {
 
         if(another instanceof OutVarPin) return false;
 
-        return getColor() == another.getColor() && another.isInput();
+        return isTheSameTypeAs(another) && another.isInput();
     }
 }

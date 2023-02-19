@@ -18,21 +18,18 @@
 
 package com.rodev.test.blueprint;
 
+import com.rodev.test.blueprint.data.action.Action;
+import com.rodev.test.blueprint.graph.ContextMenuOpenListener;
 import com.rodev.test.contextmenu.BPContextMenuBuilder;
-import icyllis.modernui.graphics.BlendMode;
-import icyllis.modernui.graphics.Canvas;
-import icyllis.modernui.graphics.Paint;
 import icyllis.modernui.math.Rect;
 import icyllis.modernui.view.*;
-import icyllis.modernui.view.menu.ContextMenuBuilder;
 import icyllis.modernui.view.menu.MenuHelper;
 import icyllis.modernui.widget.*;
-import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nonnull;
-import java.util.List;
+import java.util.function.Consumer;
 
-public class BPViewPort extends FrameLayout {
+public class BPViewPort extends FrameLayout implements ContextMenuOpenListener {
 
     private final Rect mTempRect = new Rect();
 
@@ -118,14 +115,14 @@ public class BPViewPort extends FrameLayout {
     MenuHelper mContextMenuHelper;
 
     @Override
-    public boolean showContextMenuForChild(View originalView, float x, float y) {
+    public void onContextMenuOpen(Consumer<Action> onItemClick, View caller, float x, float y) {
         if (mContextMenuHelper != null) {
             mContextMenuHelper.dismiss();
             mContextMenuHelper = null;
         }
 
         if (mContextMenu == null) {
-            mContextMenu = new BPContextMenuBuilder();
+            mContextMenu = new BPContextMenuBuilder(onItemClick);
         } else {
             mContextMenu.clearAll();
         }
@@ -133,13 +130,12 @@ public class BPViewPort extends FrameLayout {
         final MenuHelper helper;
         final boolean isPopup = !Float.isNaN(x) && !Float.isNaN(y);
         if (isPopup) {
-            helper = mContextMenu.showPopup(originalView, x, y);
+            helper = mContextMenu.showPopup(caller, x, y);
         } else {
-            helper = mContextMenu.showPopup(originalView, 0, 0);
+            helper = mContextMenu.showPopup(caller, 0, 0);
         }
 
         mContextMenuHelper = helper;
-        return helper != null;
     }
 
     @Override

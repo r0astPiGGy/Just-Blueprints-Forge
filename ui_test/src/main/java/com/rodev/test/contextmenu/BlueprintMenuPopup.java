@@ -1,6 +1,8 @@
 package com.rodev.test.contextmenu;
 
 import com.rodev.test.Colors;
+import com.rodev.test.blueprint.data.DataAccess;
+import com.rodev.test.blueprint.data.action.Action;
 import icyllis.modernui.graphics.Canvas;
 import icyllis.modernui.graphics.Paint;
 import icyllis.modernui.graphics.drawable.Drawable;
@@ -14,11 +16,17 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nonnull;
 
+import java.util.function.Consumer;
+
 import static icyllis.modernui.view.View.dp;
 
 public class BlueprintMenuPopup extends MenuPopup implements PopupWindow.OnDismissListener {
 
+    private final Consumer<Action> onItemClick;
+
     private final BPContextMenu mPopup;
+
+    private final ContextTreeRootView treeRootView = new ContextTreeRootView();
 
     private final ViewTreeObserver.OnGlobalLayoutListener mGlobalLayoutListener =
             new ViewTreeObserver.OnGlobalLayoutListener() {
@@ -69,14 +77,14 @@ public class BlueprintMenuPopup extends MenuPopup implements PopupWindow.OnDismi
 
     private int mDropDownGravity = Gravity.NO_GRAVITY;
 
-    public BlueprintMenuPopup(@Nonnull View anchorView) {
+    public BlueprintMenuPopup(Consumer<Action> onItemClick, @Nonnull View anchorView) {
+        this.onItemClick = onItemClick;
         mAnchorView = anchorView;
         mPopup = new BPContextMenu(400, 400, () -> {
             var popupRoot = new RelativeLayout() { @Override public boolean onTouchEvent(@NotNull MotionEvent event) {return true;} };
             popupRoot.setGravity(Gravity.TOP | Gravity.CENTER);
             int headerId = 45145;
             int searchBarId = 454551;
-            var treeRoot = new ContextTreeRootView();
             {
                 var headerLabel = new TextView();
                 headerLabel.setId(headerId);
@@ -101,7 +109,7 @@ public class BlueprintMenuPopup extends MenuPopup implements PopupWindow.OnDismi
                     @Override
                     public void afterTextChanged(Editable s) {
                         var textToFilter = s.toString();
-                        treeRoot.hideIfNot(item -> {
+                        treeRootView.hideIfNot(item -> {
                             return item.getName().toLowerCase().contains(textToFilter.toLowerCase());
                         });
                     }
@@ -139,18 +147,8 @@ public class BlueprintMenuPopup extends MenuPopup implements PopupWindow.OnDismi
             {
                 var scrollView = new ScrollView();
                 {
-                    var events = treeRoot.getOrCreate("Events");
-                    events.add("Startup event");
-                    events.add("Bebra event");
-                    var functions = treeRoot.getOrCreate("Functions");
-                    var worldFuncs = functions.getOrCreate("World");
-                    worldFuncs.add("Spawn entity at location");
-                    worldFuncs.add("Set block at location");
-                    functions.add("Print string");
-                    functions.add("Print bebr");
-                    functions.add("Bebr sup");
-
-                    scrollView.addView(treeRoot, new ViewGroup.LayoutParams(
+                    onContextTreeFill();
+                    scrollView.addView(treeRootView, new ViewGroup.LayoutParams(
                             ViewGroup.LayoutParams.MATCH_PARENT,
                             ViewGroup.LayoutParams.WRAP_CONTENT
                     ));
@@ -185,6 +183,21 @@ public class BlueprintMenuPopup extends MenuPopup implements PopupWindow.OnDismi
             }
         });
         mPopup.setOverlapAnchor(true);
+    }
+
+    public void onContextTreeFill() {
+        var actionRegistry = DataAccess.getInstance().actionRegistry;
+
+        for(var action : actionRegistry.getAll()) {
+            action.addTo(treeRootView, createItem(action.name(), action));
+        }
+    }
+
+    public ContextMenuItem createItem(String displayText, Action action) {
+        return ContextMenuItem.of(displayText, () -> {
+            dismiss();
+            onItemClick.accept(action);
+        });
     }
 
     @Override

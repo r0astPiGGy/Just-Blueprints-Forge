@@ -16,6 +16,7 @@ import java.util.function.Consumer;
 
 public class TreeNodeHeaderLabel extends LinearLayout {
 
+    private final TextView headerLabel = new TextView();
     private boolean arrowEnabled = true;
 
     private final Consumer<Integer> onPaddingChangedCallback;
@@ -25,7 +26,6 @@ public class TreeNodeHeaderLabel extends LinearLayout {
 
         setOrientation(HORIZONTAL);
 
-        var headerLabel = new TextView();
         headerLabel.setText(text);
         headerLabel.setTextStyle(FontPaint.BOLD);
         headerLabel.setTextSize(View.sp(13));
@@ -36,6 +36,10 @@ public class TreeNodeHeaderLabel extends LinearLayout {
         ));
 
         setBackground(new Background());
+    }
+
+    public void setText(String text) {
+        headerLabel.setText(text);
     }
 
     public boolean isArrowEnabled() {

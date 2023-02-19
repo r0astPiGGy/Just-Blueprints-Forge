@@ -1,10 +1,13 @@
 package com.rodev.test.blueprint.pin;
 
+import com.rodev.test.blueprint.data.action.PinType;
+import com.rodev.test.blueprint.data.variable.VariableType;
+
 import java.util.Arrays;
 import java.util.UUID;
 
 public abstract class AbstractPin implements Pin {
-    private final int color;
+    private final VariableType variableType;
     private final UUID id;
     private PinDragListener pinDragListener;
     private PinHoverListener pinHoverListener;
@@ -13,13 +16,18 @@ public abstract class AbstractPin implements Pin {
 
     private Position position;
 
-    public AbstractPin(int color) {
-        this(color, UUID.randomUUID());
+    public AbstractPin(VariableType variableType) {
+        this(variableType, UUID.randomUUID());
     }
 
-    public AbstractPin(int color, UUID uuid) {
-        this.color = color;
+    public AbstractPin(VariableType variableType, UUID uuid) {
+        this.variableType = variableType;
         this.id = uuid;
+    }
+
+    @Override
+    public VariableType getType() {
+        return variableType;
     }
 
     @Override
@@ -94,9 +102,13 @@ public abstract class AbstractPin implements Pin {
         pinToggleListener.onDisable(this);
     }
 
+    public boolean isTheSameTypeAs(Pin anotherPin) {
+        return getType().type().equals(anotherPin.getType().type());
+    }
+
     @Override
     public int getColor() {
-        return color;
+        return variableType.color();
     }
 
     @Override

@@ -1,20 +1,14 @@
 package com.rodev.test.blueprint.graph;
 
-import com.rodev.test.blueprint.ContextActionType;
-import com.rodev.test.blueprint.pin.LineDrawDispatcher;
-import com.rodev.test.blueprint.pin.Pin;
-import com.rodev.test.blueprint.pin.PinDragListener;
-import com.rodev.test.blueprint.pin.PinHoverListener;
+import com.rodev.test.blueprint.data.action.Action;
 import icyllis.modernui.graphics.Canvas;
 import icyllis.modernui.graphics.Paint;
 import icyllis.modernui.view.*;
 import icyllis.modernui.widget.AbsoluteLayout;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
 import java.util.function.Consumer;
 
 public class GraphLayout extends AbsoluteLayout implements ViewMoveListener {
@@ -25,24 +19,14 @@ public class GraphLayout extends AbsoluteLayout implements ViewMoveListener {
     private GraphController graphController;
     private DrawListener drawListener;
     private GraphTouchListener graphTouchListener;
-
-    private Consumer<ContextActionType> onContextActionExecuted = a -> {};
-
-    public GraphLayout() {
-        setOnCreateContextMenuListener((menu, v, menuInfo) -> {
-            menu.setQwertyMode(false);
-            menu.setHeaderTitle("All actions for this Blueprint");
-            for (var contextAction : ContextActionType.values()) {
-                menu.add(contextAction.contextMenuLabel).setOnMenuItemClickListener(i -> {
-                    onContextActionExecuted.accept(contextAction);
-                    return true;
-                });
-            }
-        });
-    }
+    private ContextMenuOpenListener contextMenuOpenListener;
 
     public void setGraphController(GraphController graphController) {
         this.graphController = graphController;
+    }
+
+    public void setContextMenuOpenListener(ContextMenuOpenListener contextMenuOpenListener) {
+        this.contextMenuOpenListener = contextMenuOpenListener;
     }
 
     public void setDrawListener(DrawListener drawListener) {
@@ -147,14 +131,13 @@ public class GraphLayout extends AbsoluteLayout implements ViewMoveListener {
             var x = event.getX();
             var y = event.getY();
 
-            onContextActionExecuted = type -> {
-                var created = graphController.createViewAt((int) x, (int) y, type);
-                _add(created, (int) x, (int) y, Positioning.GLOBAL);
-                created.requestLayout();
-
-                onContextActionExecuted = a -> {};
-            };
-            showContextMenu(x, y);
+            if(contextMenuOpenListener != null) {
+                contextMenuOpenListener.onContextMenuOpen(type -> {
+                    var created = graphController.createViewAt((int) x, (int) y, type);
+                    _add(created, (int) x, (int) y, Positioning.GLOBAL);
+                    created.requestLayout();
+                }, this, x, y);
+            }
         }
 
         if(event.getButtonState() == MotionEvent.BUTTON_PRIMARY) {

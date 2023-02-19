@@ -1,19 +1,22 @@
 package com.rodev.test.contextmenu;
 
+import com.rodev.test.blueprint.data.action.Action;
 import icyllis.modernui.math.Rect;
 import icyllis.modernui.view.Gravity;
 import icyllis.modernui.view.View;
 import icyllis.modernui.view.ViewConfiguration;
 import icyllis.modernui.view.menu.*;
-import icyllis.modernui.widget.PopupMenu;
 import icyllis.modernui.widget.PopupWindow;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import java.util.function.Consumer;
 
 public class BPMenuPopupHelper implements MenuHelper {
 
     // Mutable cached popup menu properties.
+
+    private final Consumer<Action> onItemClick;
     private View mAnchorView;
     private int mDropDownGravity = Gravity.START;
     private MenuPresenter.Callback mPresenterCallback;
@@ -26,7 +29,8 @@ public class BPMenuPopupHelper implements MenuHelper {
      */
     private final PopupWindow.OnDismissListener mInternalOnDismissListener = this::onDismiss;
 
-    public BPMenuPopupHelper(View anchorView) {
+    public BPMenuPopupHelper(Consumer<Action> onItemClick, View anchorView) {
+        this.onItemClick = onItemClick;
         mAnchorView = anchorView;
     }
 
@@ -109,7 +113,7 @@ public class BPMenuPopupHelper implements MenuHelper {
      */
     @Nonnull
     private MenuPopup createPopup() {
-        final MenuPopup popup = new BlueprintMenuPopup(mAnchorView);
+        final BlueprintMenuPopup popup = new BlueprintMenuPopup(onItemClick, mAnchorView);
 
         popup.setOnDismissListener(mInternalOnDismissListener);
 

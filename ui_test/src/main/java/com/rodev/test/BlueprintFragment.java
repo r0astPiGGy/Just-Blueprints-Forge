@@ -1,7 +1,6 @@
 package com.rodev.test;
 
 import com.rodev.test.blueprint.BPViewPort;
-import com.rodev.test.blueprint.ContextActionType;
 import com.rodev.test.blueprint.graph.GraphController;
 import com.rodev.test.blueprint.graph.GraphControllerImpl;
 import com.rodev.test.blueprint.graph.GraphLayout;
@@ -119,6 +118,7 @@ public class BlueprintFragment extends Fragment {
 
                             graphController.setViewMoveListener(graphLayout);
 
+                            graphLayout.setContextMenuOpenListener(blueprintView);
                             graphLayout.setGraphTouchListener(graphController);
                             graphLayout.setGraphController(graphController);
                             graphLayout.setDrawListener(graphController);

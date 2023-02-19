@@ -17,6 +17,7 @@ dependencies {
     implementation "icyllis.modernui:ModernUI-Core:3.6.3.117"
     // apply appropriate LWJGL platform here
     implementation platform("org.lwjgl:lwjgl-bom:3.3.1")
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.13.3'
 
     implementation "org.lwjgl:lwjgl"
     implementation "org.lwjgl:lwjgl-assimp"
@@ -39,6 +40,7 @@ dependencies {
     runtimeOnly "org.lwjgl:lwjgl-opengl::natives-linux"
     runtimeOnly "org.lwjgl:lwjgl-par::natives-linux"
     runtimeOnly "org.lwjgl:lwjgl-stb::natives-linux"
+
 
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'

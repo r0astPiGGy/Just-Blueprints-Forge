@@ -2,13 +2,17 @@ package com.rodev.test.blueprint.graph;
 
 import com.rodev.test.Colors;
 import com.rodev.test.blueprint.BPViewPort;
-import com.rodev.test.blueprint.ContextActionType;
+import com.rodev.test.blueprint.data.DataAccess;
+import com.rodev.test.blueprint.data.action.Action;
 import com.rodev.test.blueprint.node.BPNode;
 import com.rodev.test.blueprint.node.NodeMoveListener;
 import com.rodev.test.blueprint.node.NodeTouchListener;
 import com.rodev.test.blueprint.pin.Pin;
 import com.rodev.test.blueprint.pin.PinDragListener;
 import com.rodev.test.blueprint.pin.PinHoverListener;
+import com.rodev.test.contextmenu.BlueprintMenuPopup;
+import com.rodev.test.contextmenu.ContextMenuItem;
+import com.rodev.test.contextmenu.ContextMenuItemImpl;
 import icyllis.modernui.graphics.Canvas;
 import icyllis.modernui.graphics.Paint;
 import icyllis.modernui.view.View;
@@ -33,8 +37,8 @@ public class GraphControllerImpl implements
     }
 
     @Override
-    public View createViewAt(int x, int y, ContextActionType actionType) {
-        return actionType.createNode(Colors.RED, pin -> {
+    public View createViewAt(int x, int y, Action action) {
+        return (View) action.toNode(pin -> {
             pin.setPinHoverListener(this);
             pin.setPinDragListener(this);
         }, node -> {

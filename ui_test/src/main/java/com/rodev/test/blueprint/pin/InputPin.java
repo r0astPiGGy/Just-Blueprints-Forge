@@ -1,17 +1,23 @@
 package com.rodev.test.blueprint.pin;
 
+import com.rodev.test.blueprint.data.variable.VariableType;
 import com.rodev.test.blueprint.pin.AbstractPin;
 import com.rodev.test.blueprint.pin.Pin;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.UUID;
 
 public abstract class InputPin extends AbstractPin {
 
     private Pin connectedPin;
 
-    public InputPin(int color) {
-        super(color);
+    public InputPin(VariableType variableType) {
+        super(variableType);
+    }
+
+    public InputPin(VariableType variableType, UUID uuid) {
+        super(variableType, uuid);
     }
 
     @Override

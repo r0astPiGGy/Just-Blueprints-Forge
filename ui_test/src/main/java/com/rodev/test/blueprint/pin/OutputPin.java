@@ -1,18 +1,24 @@
 package com.rodev.test.blueprint.pin;
 
+import com.rodev.test.blueprint.data.variable.VariableType;
 import com.rodev.test.blueprint.pin.AbstractPin;
 import com.rodev.test.blueprint.pin.Pin;
 
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.UUID;
 
 public abstract class OutputPin extends AbstractPin {
 
     private final Set<Pin> connectionSet = new HashSet<>();
 
-    public OutputPin(int color) {
-        super(color);
+    public OutputPin(VariableType variableType) {
+        super(variableType);
+    }
+
+    public OutputPin(VariableType variableType, UUID uuid) {
+        super(variableType, uuid);
     }
 
     @Override

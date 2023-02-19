@@ -2,9 +2,7 @@ package com.rodev.test.contextmenu;
 
 import icyllis.modernui.view.View;
 
-import java.util.function.Predicate;
-
-public class ContextMenuItemImpl implements ContextMenuItem {
+public abstract class ContextMenuItemImpl implements ContextMenuItem {
 
     private final View root;
     private final String name;
@@ -12,6 +10,8 @@ public class ContextMenuItemImpl implements ContextMenuItem {
     public ContextMenuItemImpl(View root, String name) {
         this.root = root;
         this.name = name;
+
+        root.setOnClickListener(view -> onClick());
     }
 
     @Override
@@ -22,16 +22,6 @@ public class ContextMenuItemImpl implements ContextMenuItem {
     @Override
     public View getView() {
         return root;
-    }
-
-    @Override
-    public void onClick() {
-
-    }
-
-    @Override
-    public boolean showIf(Predicate<ContextMenuItem> predicate) {
-        return false;
     }
 
     @Override

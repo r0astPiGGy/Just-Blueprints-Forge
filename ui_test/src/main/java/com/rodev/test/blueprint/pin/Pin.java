@@ -1,5 +1,6 @@
 package com.rodev.test.blueprint.pin;
 
+import com.rodev.test.blueprint.data.variable.VariableType;
 import icyllis.modernui.graphics.drawable.Drawable;
 
 import java.util.Collection;
@@ -22,6 +23,8 @@ public interface Pin {
     void enable();
 
     void disable();
+
+    VariableType getType();
 
     int getColor();
 

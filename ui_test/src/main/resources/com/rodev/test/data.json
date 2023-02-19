@@ -1,0 +1,51 @@
+{
+  "variable_types": [
+    {
+      "id": "boolean",
+      "color": "255, 59, 48"
+    },
+    {
+      "id": "text",
+      "color": "100, 210, 255"
+    }
+  ],
+  "action_types": [
+    {
+      "id": "event",
+      "header_color": "255, 69, 58"
+    },
+    {
+      "id": "function",
+      "header_color": "100, 210, 255"
+    },
+    {
+      "id": "util",
+      "header_color": "142, 142, 147"
+    }
+  ],
+  "categories": {
+    "function": "Functions",
+    "util": "Utils"
+  },
+  "actions": [
+    {
+      "id": "send_message",
+      "name": "Send message",
+      "type": "function",
+      "category": "function.util",
+      "input": [
+        {
+          "id": "text_to_print",
+          "label": "Text to print",
+          "type": "text"
+        },
+        {
+          "id": "debug",
+          "label": "Is debug",
+          "type": "boolean"
+        }
+      ],
+      "output": []
+    }
+  ]
+}

@@ -2,6 +2,7 @@ package com.rodev.test.blueprint.node;
 
 import com.rodev.test.Colors;
 import com.rodev.test.blueprint.ChildRoot;
+import com.rodev.test.blueprint.pin.Pin;
 import com.rodev.test.blueprint.pin.PinRowView;
 import com.rodev.test.blueprint.pin.Position;
 import icyllis.modernui.view.Gravity;
@@ -122,6 +123,16 @@ public class NodeView extends LinearLayout implements BPNode {
     @Override
     public void setNodeMoveListener(NodeMoveListener listener) {
         nodeTouchHandler.setNodeMoveListener(listener);
+    }
+
+    @Override
+    public void addInputPin(Pin pin, String name) {
+        addInput(pin.createRowView().setText(name));
+    }
+
+    @Override
+    public void addOutputPin(Pin pin, String name) {
+        addOutput(pin.createRowView().setText(name));
     }
 
     @Override

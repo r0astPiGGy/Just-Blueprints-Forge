@@ -14,7 +14,7 @@ public class ContextTreeNodeView extends ContextTreeRootView {
 
     private boolean opened = true;
 
-    private final String name;
+    private String name;
 
     public ContextTreeNodeView(String name) {
         this.name = name;
@@ -34,6 +34,11 @@ public class ContextTreeNodeView extends ContextTreeRootView {
         addView(content, new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
     }
 
+    public void setName(String name) {
+        this.name = name;
+        header.setText(name);
+    }
+
     public String getName() {
         return name;
     }
@@ -46,10 +51,6 @@ public class ContextTreeNodeView extends ContextTreeRootView {
     @Override
     public void onAddView(ContextTreeNodeView node) {
         content.addView(node, 0, new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
-    }
-
-    public void add(String itemName) {
-        add(ContextMenuItem.of(itemName));
     }
 
     public void toggle() {

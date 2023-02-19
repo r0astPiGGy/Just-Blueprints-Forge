@@ -84,6 +84,16 @@ public class VarGetterNode extends FrameLayout implements BPNode {
     }
 
     @Override
+    public void addInputPin(Pin pin, String name) {
+
+    }
+
+    @Override
+    public void addOutputPin(Pin pin, String name) {
+
+    }
+
+    @Override
     public @Nullable BPNode getPrevious() {
         return null;
     }

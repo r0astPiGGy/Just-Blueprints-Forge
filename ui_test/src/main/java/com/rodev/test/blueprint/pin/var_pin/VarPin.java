@@ -1,5 +1,6 @@
 package com.rodev.test.blueprint.pin.var_pin;
 
+import com.rodev.test.blueprint.data.variable.VariableType;
 import com.rodev.test.blueprint.pin.*;
 import icyllis.modernui.graphics.Canvas;
 import icyllis.modernui.graphics.Paint;
@@ -26,12 +27,12 @@ public interface VarPin extends Pin {
         return drawable;
     }
 
-    static Pin outputPin(int color) {
-        return new OutVarPin(color);
+    static Pin outputPin(VariableType variableType) {
+        return new OutVarPin(variableType);
     }
 
-    static Pin inputPin(int color) {
-        return new InVarPin(color);
+    static Pin inputPin(VariableType variableType) {
+        return new InVarPin(variableType);
     }
 
     class CheckedDrawable extends MaterialDrawable {
