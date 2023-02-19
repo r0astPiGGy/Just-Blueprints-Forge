@@ -41,16 +41,13 @@ public class BPContextMenuBuilder extends MenuBuilder implements ContextMenu {
             originalView.createContextMenu(this);
         }
 
-        if (getVisibleItems().size() > 0) {
-            int[] location = new int[2];
-            assert originalView != null;
-            originalView.getLocationInWindow(location);
+        int[] location = new int[2];
+        assert originalView != null;
+        originalView.getLocationInWindow(location);
 
-            final BPMenuPopupHelper helper = new BPMenuPopupHelper(this, originalView, false);
-            helper.show(Math.round(x), Math.round(y));
-            return helper;
-        }
+        final BPMenuPopupHelper helper = new BPMenuPopupHelper(originalView);
+        helper.show(Math.round(x), Math.round(y));
 
-        return null;
+        return helper;
     }
 }

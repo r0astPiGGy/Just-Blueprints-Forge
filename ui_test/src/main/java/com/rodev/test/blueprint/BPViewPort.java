@@ -126,7 +126,6 @@ public class BPViewPort extends FrameLayout {
 
         if (mContextMenu == null) {
             mContextMenu = new BPContextMenuBuilder();
-            //mContextMenu.setCallback(callback);
         } else {
             mContextMenu.clearAll();
         }
@@ -137,10 +136,6 @@ public class BPViewPort extends FrameLayout {
             helper = mContextMenu.showPopup(originalView, x, y);
         } else {
             helper = mContextMenu.showPopup(originalView, 0, 0);
-        }
-
-        if (helper != null) {
-            //helper.setPresenterCallback(callback);
         }
 
         mContextMenuHelper = helper;

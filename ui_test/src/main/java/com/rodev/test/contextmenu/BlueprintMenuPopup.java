@@ -1,31 +1,24 @@
 package com.rodev.test.contextmenu;
 
+import com.rodev.test.Colors;
 import icyllis.modernui.graphics.Canvas;
-import icyllis.modernui.graphics.Color;
 import icyllis.modernui.graphics.Paint;
 import icyllis.modernui.graphics.drawable.Drawable;
 import icyllis.modernui.math.Rect;
-import icyllis.modernui.transition.AutoTransition;
+import icyllis.modernui.text.Editable;
+import icyllis.modernui.text.TextWatcher;
 import icyllis.modernui.view.*;
 import icyllis.modernui.view.menu.*;
 import icyllis.modernui.widget.*;
+import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nonnull;
 
 import static icyllis.modernui.view.View.dp;
-import static icyllis.modernui.view.ViewGroup.LayoutParams.MATCH_PARENT;
-import static icyllis.modernui.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 
-public class BlueprintMenuPopup extends MenuPopup implements PopupWindow.OnDismissListener,
-        AdapterView.OnItemClickListener, MenuPresenter, View.OnKeyListener {
+public class BlueprintMenuPopup extends MenuPopup implements PopupWindow.OnDismissListener {
 
-    private final MenuBuilder mMenu;
-    private final MenuAdapter mAdapter;
-    private final boolean mOverflowOnly;
-    private final int mPopupMaxWidth;
-    // The popup window is final in order to couple its lifecycle to the lifecycle of the
-    // StandardMenuPopup.
-    private final MenuPopupWindow mPopup;
+    private final BPContextMenu mPopup;
 
     private final ViewTreeObserver.OnGlobalLayoutListener mGlobalLayoutListener =
             new ViewTreeObserver.OnGlobalLayoutListener() {
@@ -74,60 +67,128 @@ public class BlueprintMenuPopup extends MenuPopup implements PopupWindow.OnDismi
      */
     private boolean mWasDismissed;
 
-    /**
-     * Whether the cached content width value is valid.
-     */
-    private boolean mHasContentWidth;
-
-    /**
-     * Cached content width.
-     */
-    private int mContentWidth;
-
     private int mDropDownGravity = Gravity.NO_GRAVITY;
 
-    private boolean mShowTitle;
-
-    public BlueprintMenuPopup(@Nonnull MenuBuilder menu, @Nonnull View anchorView, boolean overflowOnly) {
-        mMenu = menu;
-        mOverflowOnly = overflowOnly;
-        mAdapter = new MenuAdapter(menu, mOverflowOnly);
-
-        mPopupMaxWidth = anchorView.getRootView().getMeasuredWidth() / 2;
-
+    public BlueprintMenuPopup(@Nonnull View anchorView) {
         mAnchorView = anchorView;
+        mPopup = new BPContextMenu(400, 400, () -> {
+            var popupRoot = new RelativeLayout() { @Override public boolean onTouchEvent(@NotNull MotionEvent event) {return true;} };
+            popupRoot.setGravity(Gravity.TOP | Gravity.CENTER);
+            int headerId = 45145;
+            int searchBarId = 454551;
+            var treeRoot = new ContextTreeRootView();
+            {
+                var headerLabel = new TextView();
+                headerLabel.setId(headerId);
+                headerLabel.setText("All actions for this Blueprint");
+                headerLabel.setTextSize(View.sp(17));
+                var params = new RelativeLayout.LayoutParams(
+                        RelativeLayout.LayoutParams.WRAP_CONTENT,
+                        RelativeLayout.LayoutParams.WRAP_CONTENT
+                );
+                params.addRule(RelativeLayout.ALIGN_PARENT_START);
+                params.addRule(RelativeLayout.ALIGN_PARENT_TOP);
+                popupRoot.addView(headerLabel, params);
+            }
+            {
+                var textField = new EditText();
+                textField.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {}
 
-        mPopup = new BPMenuPopupWindow();
+                    @Override
+                    public void afterTextChanged(Editable s) {
+                        var textToFilter = s.toString();
+                        treeRoot.hideIfNot(item -> {
+                            return item.getName().toLowerCase().contains(textToFilter.toLowerCase());
+                        });
+                    }
+                });
+                textField.setId(454551);
+                textField.setHint("Search");
+                textField.setTextSize(View.sp(13));
+                textField.setBackground(new Drawable() {
+                    private final int mRadius = dp(4);
+
+                    @Override
+                    public void draw(@Nonnull Canvas canvas) {
+                        Paint paint = Paint.get();
+                        paint.setColor(Colors.WHITE);
+                        Rect b = getBounds();
+                        canvas.drawRoundRect(b.left, b.top, b.right, b.bottom, mRadius, paint);
+                    }
+
+                    @Override
+                    public boolean getPadding(@Nonnull Rect padding) {
+                        int r = (int) Math.ceil(mRadius / 2f);
+                        padding.set(r, r, r, r);
+                        return true;
+                    }
+                });
+                textField.setTextColor(Colors.NODE_BACKGROUND);
+                var params = new RelativeLayout.LayoutParams(
+                        RelativeLayout.LayoutParams.MATCH_PARENT,
+                        RelativeLayout.LayoutParams.WRAP_CONTENT
+                );
+                params.addRule(RelativeLayout.BELOW, headerId);
+                params.setMargins(0, 5, 0, 5);
+                popupRoot.addView(textField, params);
+            }
+            {
+                var scrollView = new ScrollView();
+                {
+                    var events = treeRoot.getOrCreate("Events");
+                    events.add("Startup event");
+                    events.add("Bebra event");
+                    var functions = treeRoot.getOrCreate("Functions");
+                    var worldFuncs = functions.getOrCreate("World");
+                    worldFuncs.add("Spawn entity at location");
+                    worldFuncs.add("Set block at location");
+                    functions.add("Print string");
+                    functions.add("Print bebr");
+                    functions.add("Bebr sup");
+
+                    scrollView.addView(treeRoot, new ViewGroup.LayoutParams(
+                            ViewGroup.LayoutParams.MATCH_PARENT,
+                            ViewGroup.LayoutParams.WRAP_CONTENT
+                    ));
+                }
+                var params = new RelativeLayout.LayoutParams(
+                        RelativeLayout.LayoutParams.MATCH_PARENT,
+                        RelativeLayout.LayoutParams.MATCH_PARENT
+                );
+                params.addRule(RelativeLayout.BELOW, searchBarId);
+                popupRoot.addView(scrollView, params);
+            }
+            popupRoot.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+
+            return popupRoot;
+        });
         mPopup.setBackgroundDrawable(new Drawable() {
-            private final int mRadius = 0; //dp(8);
+            //private final int mRadius = dp(8);
 
             @Override
             public void draw(@Nonnull Canvas canvas) {
                 Paint paint = Paint.get();
-                paint.setColor(Color.argb(80, 100, 100, 100));
+                paint.setColor(Colors.NODE_BACKGROUND);
                 Rect b = getBounds();
-                canvas.drawRoundRect(b.left, b.top, b.right, b.bottom, mRadius, paint);
+                canvas.drawRect(b.left, b.top, b.right, b.bottom, paint);
             }
 
             @Override
             public boolean getPadding(@Nonnull Rect padding) {
-                int r = (int) Math.ceil(mRadius / 2f);
+                int r = (int) Math.ceil(8);
                 padding.set(r, r, r, r);
                 return true;
             }
         });
-        //mPopup.setEnterTransition(new AutoTransition());
-        //mPopup.setExitTransition(new AutoTransition());
-        mPopup.setOverlapAnchor(false);
-
-        // Present the menu using our context, not the menu builder's context.
-        menu.addMenuPresenter(this);
+        mPopup.setOverlapAnchor(true);
     }
 
     @Override
-    public void setForceShowIcon(boolean forceShow) {
-        mAdapter.setForceShowIcon(forceShow);
-    }
+    public void setForceShowIcon(boolean forceShow) {}
 
     @Override
     public void setGravity(int gravity) {
@@ -144,54 +205,22 @@ public class BlueprintMenuPopup extends MenuPopup implements PopupWindow.OnDismi
         }
 
         mShownAnchorView = mAnchorView;
-
-        mPopup.setOnDismissListener(this);
-        mPopup.setOnItemClickListener(this);
-        mPopup.setAdapter(mAdapter);
         mPopup.setModal(true);
 
         final View anchor = mShownAnchorView;
         final boolean addGlobalListener = mTreeObserver == null;
+
         mTreeObserver = anchor.getViewTreeObserver(); // Refresh to latest
+
         if (addGlobalListener) {
             mTreeObserver.addOnGlobalLayoutListener(mGlobalLayoutListener);
         }
         anchor.addOnAttachStateChangeListener(mAttachStateChangeListener);
         mPopup.setAnchorView(anchor);
         mPopup.setDropDownGravity(mDropDownGravity);
-
-        if (!mHasContentWidth) {
-            mContentWidth = measureIndividualMenuWidth(mAdapter, null, mPopupMaxWidth);
-            mHasContentWidth = true;
-        }
-
-        mPopup.setContentWidth(mContentWidth);
         mPopup.setEpicenterBounds(getEpicenterBounds());
         mPopup.show();
 
-        ListView listView = mPopup.getListView();
-        assert listView != null;
-        listView.setOnKeyListener(this);
-
-        if (mShowTitle && mMenu.getHeaderTitle() != null) {
-            FrameLayout titleItemView = new FrameLayout();
-            titleItemView.setMinimumWidth(dp(196));
-            titleItemView.setPadding(dp(16), 0, dp(16), 0);
-            titleItemView.setLayoutParams(new ViewGroup.LayoutParams(MATCH_PARENT, dp(48)));
-
-            TextView titleView = new TextView();
-            titleView.setText(mMenu.getHeaderTitle());
-            titleView.setGravity(Gravity.CENTER_VERTICAL);
-            titleView.setSingleLine();
-            titleView.setTextAlignment(View.TEXT_ALIGNMENT_VIEW_START);
-            titleItemView.addView(titleView, MATCH_PARENT, WRAP_CONTENT);
-
-            titleItemView.setEnabled(false);
-            listView.addHeaderView(titleItemView, null, false);
-
-            // Update to show the title.
-            mPopup.show();
-        }
         return true;
     }
 
@@ -222,7 +251,6 @@ public class BlueprintMenuPopup extends MenuPopup implements PopupWindow.OnDismi
     @Override
     public void onDismiss() {
         mWasDismissed = true;
-        mMenu.close();
 
         if (mTreeObserver != null) {
             if (!mTreeObserver.isAlive()) mTreeObserver = mShownAnchorView.getViewTreeObserver();
@@ -238,11 +266,6 @@ public class BlueprintMenuPopup extends MenuPopup implements PopupWindow.OnDismi
 
     @Override
     public void updateMenuView(boolean cleared) {
-        mHasContentWidth = false;
-
-        if (mAdapter != null) {
-            mAdapter.notifyDataSetChanged();
-        }
     }
 
     @Override
@@ -252,45 +275,11 @@ public class BlueprintMenuPopup extends MenuPopup implements PopupWindow.OnDismi
 
     @Override
     public boolean onSubMenuSelected(@Nonnull SubMenuBuilder subMenu) {
-        if (subMenu.hasVisibleItems()) {
-            final BPMenuPopupHelper subPopup = new BPMenuPopupHelper(subMenu,
-                    mShownAnchorView, mOverflowOnly);
-            subPopup.setPresenterCallback(mPresenterCallback);
-            subPopup.setForceShowIcon(MenuPopup.shouldPreserveIconSpacing(subMenu));
-
-            // Pass responsibility for handling onDismiss to the submenu.
-            subPopup.setOnDismissListener(mOnDismissListener);
-            mOnDismissListener = null;
-
-            // Close this menu popup to make room for the submenu popup.
-            mMenu.close(false /* closeAllMenus */);
-
-            // Show the new sub-menu popup at the same location as this popup.
-            int horizontalOffset = mPopup.getHorizontalOffset();
-            final int verticalOffset = mPopup.getVerticalOffset();
-
-            // As xOffset of parent menu popup is subtracted with Anchor width for Gravity.RIGHT,
-            // So, again to display sub-menu popup in same xOffset, add the Anchor width.
-            final int hgrav = Gravity.getAbsoluteGravity(mDropDownGravity,
-                    mAnchorView.getLayoutDirection()) & Gravity.HORIZONTAL_GRAVITY_MASK;
-            if (hgrav == Gravity.RIGHT) {
-                horizontalOffset += mAnchorView.getWidth();
-            }
-
-            if (subPopup.tryShow(horizontalOffset, verticalOffset)) {
-                if (mPresenterCallback != null) {
-                    mPresenterCallback.onOpenSubMenu(subMenu);
-                }
-                return true;
-            }
-        }
         return false;
     }
 
     @Override
     public void onCloseMenu(MenuBuilder menu, boolean allMenusAreClosing) {
-        // Only care about the (sub)menu we're presenting.
-        if (menu != mMenu) return;
 
         dismiss();
         if (mPresenterCallback != null) {
@@ -306,15 +295,6 @@ public class BlueprintMenuPopup extends MenuPopup implements PopupWindow.OnDismi
     @Override
     public void setAnchorView(View anchor) {
         mAnchorView = anchor;
-    }
-
-    @Override
-    public boolean onKey(View v, int keyCode, KeyEvent event) {
-        /*if (event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_MENU) {
-            dismiss();
-            return true;
-        }*/
-        return false;
     }
 
     @Override
@@ -339,6 +319,5 @@ public class BlueprintMenuPopup extends MenuPopup implements PopupWindow.OnDismi
 
     @Override
     public void setShowTitle(boolean showTitle) {
-        mShowTitle = showTitle;
     }
 }

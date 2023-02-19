@@ -14,6 +14,121 @@ import static com.rodev.test.Colors.*;
 
 public enum ContextActionType {
 
+    BEBRA_FUNC("Bebra func"){
+        @Override
+        public View createNode(int nodeColor, Consumer<Pin> onPinCreated, Consumer<BPNode> onNodeCreated) {
+            var inputExec = ExecPin.inputPin();
+            onPinCreated.accept(inputExec);
+
+            var falseOutputExec = ExecPin.outputPin();
+            onPinCreated.accept(falseOutputExec);
+
+            var conditionInput = VarPin.inputPin(GREEN);
+            onPinCreated.accept(conditionInput);
+
+            var locationInput = VarPin.inputPin(LOCATION);
+            onPinCreated.accept(locationInput);
+
+            var listInput = VarPin.inputPin(LIST_YELLOW);
+            onPinCreated.accept(listInput);
+
+            var numberInput = VarPin.inputPin(NUMBER_RED);
+            onPinCreated.accept(numberInput);
+
+            var textInput = VarPin.inputPin(LIGHT_BLUE);
+            onPinCreated.accept(textInput);
+
+            var soundInput = VarPin.inputPin(SOUND_COLOR);
+            onPinCreated.accept(soundInput);
+
+            var vectorInput = VarPin.inputPin(VECTOR_COLOR);
+            onPinCreated.accept(vectorInput);
+
+            var particleInput = VarPin.inputPin(PARTICLE_COLOR);
+            onPinCreated.accept(particleInput);
+
+            var potionInput = VarPin.inputPin(POTION);
+            onPinCreated.accept(potionInput);
+
+            var node = NodeBuilder.builder(POTION,"Potion")
+                    .addPin(inputExec, "")
+                    .addPin(conditionInput, "Variable")
+                    .addPin(locationInput, "Location")
+                    .addPin(listInput, "List")
+                    .addPin(numberInput, "Number")
+                    .addPin(textInput, "Text")
+                    .addPin(potionInput, "Potion")
+                    .addPin(particleInput, "Particle")
+                    .addPin(vectorInput, "Vector")
+                    .addPin(soundInput, "Sound")
+                    .addPin(falseOutputExec, "")
+                    .build();
+
+            onNodeCreated.accept(node);
+
+            return node;
+        }
+    },
+
+    BEBRA_FUNC2("Bebra func2"){
+        @Override
+        public View createNode(int nodeColor, Consumer<Pin> onPinCreated, Consumer<BPNode> onNodeCreated) {
+            var inputExec = ExecPin.inputPin();
+            onPinCreated.accept(inputExec);
+
+            var falseOutputExec = ExecPin.outputPin();
+            onPinCreated.accept(falseOutputExec);
+
+            var conditionInput = VarPin.inputPin(GREEN);
+            onPinCreated.accept(conditionInput);
+
+            var locationInput = VarPin.inputPin(LOCATION);
+            onPinCreated.accept(locationInput);
+
+            var listInput = VarPin.inputPin(LIST_YELLOW);
+            onPinCreated.accept(listInput);
+
+            var numberInput = VarPin.inputPin(NUMBER_RED);
+            onPinCreated.accept(numberInput);
+
+            var textInput = VarPin.inputPin(LIGHT_BLUE);
+            onPinCreated.accept(textInput);
+
+            var soundInput = VarPin.inputPin(SOUND_COLOR);
+            onPinCreated.accept(soundInput);
+
+            var vectorInput = VarPin.inputPin(VECTOR_COLOR);
+            onPinCreated.accept(vectorInput);
+
+            var particleInput = VarPin.inputPin(PARTICLE_COLOR);
+            onPinCreated.accept(particleInput);
+
+            var potionInput = VarPin.inputPin(POTION);
+            onPinCreated.accept(potionInput);
+
+            var mapInput = VarPin.inputPin(MAP);
+            onPinCreated.accept(mapInput);
+
+            var node = NodeBuilder.builder(NUMBER_RED,"Number")
+                    .addPin(inputExec, "")
+                    .addPin(conditionInput, "Variable")
+                    .addPin(locationInput, "Location")
+                    .addPin(listInput, "List")
+                    .addPin(mapInput, "Map")
+                    .addPin(numberInput, "Number")
+                    .addPin(potionInput, "Potion")
+                    .addPin(textInput, "Text")
+                    .addPin(vectorInput, "Vector")
+                    .addPin(particleInput, "Particle")
+                    .addPin(soundInput, "Sound")
+                    .addPin(falseOutputExec, "")
+                    .build();
+
+            onNodeCreated.accept(node);
+
+            return node;
+        }
+    },
     BRANCH("Branch"){
         @Override
         public View createNode(int nodeColor, Consumer<Pin> onPinCreated, Consumer<BPNode> onNodeCreated) {

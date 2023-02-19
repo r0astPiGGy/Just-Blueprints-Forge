@@ -13,14 +13,9 @@ import javax.annotation.Nullable;
 
 public class BPMenuPopupHelper implements MenuHelper {
 
-    // Immutable cached popup menu properties.
-    private final MenuBuilder mMenu;
-    private final boolean mOverflowOnly;
-
     // Mutable cached popup menu properties.
     private View mAnchorView;
     private int mDropDownGravity = Gravity.START;
-    private boolean mForceShowIcon;
     private MenuPresenter.Callback mPresenterCallback;
 
     private MenuPopup mPopup;
@@ -31,52 +26,12 @@ public class BPMenuPopupHelper implements MenuHelper {
      */
     private final PopupWindow.OnDismissListener mInternalOnDismissListener = this::onDismiss;
 
-    public BPMenuPopupHelper(@Nonnull MenuBuilder menu) {
-        this(menu, null, false);
-    }
-
-    public BPMenuPopupHelper(@Nonnull MenuBuilder menu, View anchorView) {
-        this(menu, anchorView, false);
-    }
-
-    public BPMenuPopupHelper(@Nonnull MenuBuilder menu, View anchorView, boolean overflowOnly) {
-        mMenu = menu;
+    public BPMenuPopupHelper(View anchorView) {
         mAnchorView = anchorView;
-        mOverflowOnly = overflowOnly;
     }
 
     public void setOnDismissListener(@Nullable PopupWindow.OnDismissListener listener) {
         mOnDismissListener = listener;
-    }
-
-    /**
-     * Sets the view to which the popup window is anchored.
-     * <p>
-     * Changes take effect on the next call to show().
-     *
-     * @param anchor the view to which the popup window should be anchored
-     */
-    public void setAnchorView(@Nonnull View anchor) {
-        mAnchorView = anchor;
-    }
-
-    /**
-     * Sets whether the popup menu's adapter is forced to show icons in the
-     * menu item views.
-     * <p>
-     * Changes take effect on the next call to show().
-     * <p>
-     * This method should not be accessed directly outside the framework, please use
-     * {@link PopupMenu#setForceShowIcon(boolean)} instead.
-     *
-     * @param forceShowIcon {@code true} to force icons to be shown, or
-     *                      {@code false} for icons to be optionally shown
-     */
-    public void setForceShowIcon(boolean forceShowIcon) {
-        mForceShowIcon = forceShowIcon;
-        if (mPopup != null) {
-            mPopup.setForceShowIcon(forceShowIcon);
-        }
     }
 
     /**
@@ -97,12 +52,6 @@ public class BPMenuPopupHelper implements MenuHelper {
         return mDropDownGravity;
     }
 
-    public void show() {
-        if (!tryShow()) {
-            throw new IllegalStateException("MenuPopupHelper cannot be used without an anchor");
-        }
-    }
-
     public void show(int x, int y) {
         if (!tryShow(x, y)) {
             throw new IllegalStateException("MenuPopupHelper cannot be used without an anchor");
@@ -115,25 +64,6 @@ public class BPMenuPopupHelper implements MenuHelper {
             mPopup = createPopup();
         }
         return mPopup;
-    }
-
-    /**
-     * Attempts to show the popup anchored to the view specified by {@link #setAnchorView(View)}.
-     *
-     * @return {@code true} if the popup was shown or was already showing prior to calling this
-     * method, {@code false} otherwise
-     */
-    public boolean tryShow() {
-        if (isShowing()) {
-            return true;
-        }
-
-        if (mAnchorView == null) {
-            return false;
-        }
-
-        showPopup(0, 0, false, false);
-        return true;
     }
 
     /**
@@ -179,30 +109,13 @@ public class BPMenuPopupHelper implements MenuHelper {
      */
     @Nonnull
     private MenuPopup createPopup() {
-        /*final WindowManager windowManager = mContext.getSystemService(WindowManager.class);
-        final Rect maxWindowBounds = windowManager.getMaximumWindowMetrics().getBounds();
+        final MenuPopup popup = new BlueprintMenuPopup(mAnchorView);
 
-        final int smallestWidth = Math.min(maxWindowBounds.width(), maxWindowBounds.height());
-        final int minSmallestWidthCascading = mContext.getResources().getDimensionPixelSize(
-                com.android.internal.R.dimen.cascading_menus_min_smallest_width);
-        final boolean enableCascadingSubmenus = smallestWidth >= minSmallestWidthCascading;*/
-
-        final MenuPopup popup;
-        /*if (enableCascadingSubmenus) {
-            popup = new CascadingMenuPopup(mContext, mAnchorView, mPopupStyleAttr,
-                    mPopupStyleRes, mOverflowOnly);
-        } else {*/
-        popup = new BlueprintMenuPopup(mMenu, mAnchorView, mOverflowOnly);
-        //}
-
-        // Assign immutable properties.
-        popup.addMenu(mMenu);
         popup.setOnDismissListener(mInternalOnDismissListener);
 
         // Assign mutable properties. These may be reassigned later.
         popup.setAnchorView(mAnchorView);
         popup.setCallback(mPresenterCallback);
-        popup.setForceShowIcon(mForceShowIcon);
         popup.setGravity(mDropDownGravity);
 
         return popup;

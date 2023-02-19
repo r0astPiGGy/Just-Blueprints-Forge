@@ -102,8 +102,6 @@ public class BlueprintFragment extends Fragment {
                             paint.setRGBA(0, 0, 0, 80);
 
                             paint.setStyle(Paint.STROKE);
-                            //paint.setStrokeCap(Paint.CAP_SQUARE);
-                            //paint.setBlendMode(BlendMode.OVERLAY);
                             paint.setStrokeWidth(25);
                             paint.setSmoothRadius(15);
 
@@ -111,7 +109,6 @@ public class BlueprintFragment extends Fragment {
                             canvas.drawRoundLine(getWidth(), 0, getWidth(), getHeight(), paint);
                             canvas.drawRoundLine(getWidth(), getHeight(), 0, getHeight(), paint);
                             canvas.drawRoundLine(0, getHeight(), 0, 0, paint);
-                            //canvas.drawRect(0, 0, getWidth(), getHeight(), paint);
                         }
                     };
                     {
@@ -161,7 +158,7 @@ public class BlueprintFragment extends Fragment {
                     public void draw(@Nonnull Canvas canvas) {
                         Paint paint = Paint.get();
                         Rect b = getBounds();
-                        paint.setRGBA(150, 150, 150, 80);
+                        paint.setRGB(58, 58, 60);
                         canvas.drawRect(b.left, b.top, b.right, b.bottom, paint);
                     }
                 });

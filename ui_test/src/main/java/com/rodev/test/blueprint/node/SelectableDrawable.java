@@ -16,7 +16,7 @@ public class SelectableDrawable extends Drawable {
     protected boolean isSelected;
     protected final int mRadius;
     protected final int selectionOffset;
-    protected int backgroundColor = Color.rgb(10, 10, 10);
+    protected int backgroundColor = Colors.NODE_BACKGROUND;
 
     public SelectableDrawable() {
         this(3, dp(8));

@@ -37,6 +37,8 @@ public class NodeDrawable extends SelectableDrawable {
         int headerHeight = headerHeightSupplier.get();
 
         paint.setColors(headerColors);
+
+        // TODO Use sides чтобы убрать костыль
         canvas.drawRoundRect(
                 b.left + selectionOffset,
                 b.top + selectionOffset,
