@@ -15,13 +15,11 @@ import java.util.function.Consumer;
 public class BPMenuPopupHelper implements MenuHelper {
 
     // Mutable cached popup menu properties.
-
-    private final Consumer<Action> onItemClick;
-    private View mAnchorView;
+    private final View mAnchorView;
     private int mDropDownGravity = Gravity.START;
     private MenuPresenter.Callback mPresenterCallback;
 
-    private MenuPopup mPopup;
+    private BlueprintMenuPopup mPopup;
     private PopupWindow.OnDismissListener mOnDismissListener;
 
     /**
@@ -29,8 +27,7 @@ public class BPMenuPopupHelper implements MenuHelper {
      */
     private final PopupWindow.OnDismissListener mInternalOnDismissListener = this::onDismiss;
 
-    public BPMenuPopupHelper(Consumer<Action> onItemClick, View anchorView) {
-        this.onItemClick = onItemClick;
+    public BPMenuPopupHelper(View anchorView) {
         mAnchorView = anchorView;
     }
 
@@ -38,34 +35,16 @@ public class BPMenuPopupHelper implements MenuHelper {
         mOnDismissListener = listener;
     }
 
-    /**
-     * Sets the alignment of the popup window relative to the anchor view.
-     * <p>
-     * Changes take effect on the next call to show().
-     *
-     * @param gravity alignment of the popup relative to the anchor
-     */
-    public void setGravity(int gravity) {
-        mDropDownGravity = gravity;
-    }
-
-    /**
-     * @return alignment of the popup relative to the anchor
-     */
-    public int getGravity() {
-        return mDropDownGravity;
-    }
-
-    public void show(int x, int y) {
-        if (!tryShow(x, y)) {
+    public void show(Consumer<Action> onClick, int x, int y) {
+        if (!tryShow(onClick, x, y)) {
             throw new IllegalStateException("MenuPopupHelper cannot be used without an anchor");
         }
     }
 
     @Nonnull
-    public MenuPopup getPopup() {
+    public BlueprintMenuPopup getPopup(Consumer<Action> onClick) {
         if (mPopup == null) {
-            mPopup = createPopup();
+            mPopup = createPopup(onClick);
         }
         return mPopup;
     }
@@ -93,7 +72,7 @@ public class BPMenuPopupHelper implements MenuHelper {
      * @return {@code true} if the popup was shown or was already showing prior
      * to calling this method, {@code false} otherwise
      */
-    public boolean tryShow(int x, int y) {
+    public boolean tryShow(Consumer<Action> onClick, int x, int y) {
         if (isShowing()) {
             return true;
         }
@@ -102,7 +81,7 @@ public class BPMenuPopupHelper implements MenuHelper {
             return false;
         }
 
-        showPopup(x, y, true, true);
+        showPopup(onClick, x, y, true, true);
         return true;
     }
 
@@ -112,7 +91,7 @@ public class BPMenuPopupHelper implements MenuHelper {
      * @return an initialized popup
      */
     @Nonnull
-    private MenuPopup createPopup() {
+    private BlueprintMenuPopup createPopup(Consumer<Action> onItemClick) {
         final BlueprintMenuPopup popup = new BlueprintMenuPopup(onItemClick, mAnchorView);
 
         popup.setOnDismissListener(mInternalOnDismissListener);
@@ -125,8 +104,8 @@ public class BPMenuPopupHelper implements MenuHelper {
         return popup;
     }
 
-    private void showPopup(int xOffset, int yOffset, boolean useOffsets, boolean showTitle) {
-        final MenuPopup popup = getPopup();
+    private void showPopup(Consumer<Action> onClick, int xOffset, int yOffset, boolean useOffsets, boolean showTitle) {
+        final BlueprintMenuPopup popup = getPopup(onClick);
         popup.setShowTitle(showTitle);
 
         if (useOffsets) {

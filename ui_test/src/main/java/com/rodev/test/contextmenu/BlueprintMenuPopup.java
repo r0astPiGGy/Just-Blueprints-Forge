@@ -77,96 +77,14 @@ public class BlueprintMenuPopup extends MenuPopup implements PopupWindow.OnDismi
 
     private int mDropDownGravity = Gravity.NO_GRAVITY;
 
+    private final int popupHeaderId = 45145;
+    private final int popupSearchBarId = 454551;
+
     public BlueprintMenuPopup(Consumer<Action> onItemClick, @Nonnull View anchorView) {
         this.onItemClick = onItemClick;
         mAnchorView = anchorView;
-        mPopup = new BPContextMenu(400, 400, () -> {
-            var popupRoot = new RelativeLayout() { @Override public boolean onTouchEvent(@NotNull MotionEvent event) {return true;} };
-            popupRoot.setGravity(Gravity.TOP | Gravity.CENTER);
-            int headerId = 45145;
-            int searchBarId = 454551;
-            {
-                var headerLabel = new TextView();
-                headerLabel.setId(headerId);
-                headerLabel.setText("All actions for this Blueprint");
-                headerLabel.setTextSize(View.sp(17));
-                var params = new RelativeLayout.LayoutParams(
-                        RelativeLayout.LayoutParams.WRAP_CONTENT,
-                        RelativeLayout.LayoutParams.WRAP_CONTENT
-                );
-                params.addRule(RelativeLayout.ALIGN_PARENT_START);
-                params.addRule(RelativeLayout.ALIGN_PARENT_TOP);
-                popupRoot.addView(headerLabel, params);
-            }
-            {
-                var textField = new EditText();
-                textField.addTextChangedListener(new TextWatcher() {
-                    @Override
-                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-                    @Override
-                    public void onTextChanged(CharSequence s, int start, int before, int count) {}
-
-                    @Override
-                    public void afterTextChanged(Editable s) {
-                        var textToFilter = s.toString();
-                        treeRootView.hideIfNot(item -> {
-                            return item.getName().toLowerCase().contains(textToFilter.toLowerCase());
-                        });
-                    }
-                });
-                textField.setId(454551);
-                textField.setHint("Search");
-                textField.setTextSize(View.sp(13));
-                textField.setBackground(new Drawable() {
-                    private final int mRadius = dp(4);
-
-                    @Override
-                    public void draw(@Nonnull Canvas canvas) {
-                        Paint paint = Paint.get();
-                        paint.setColor(Colors.WHITE);
-                        Rect b = getBounds();
-                        canvas.drawRoundRect(b.left, b.top, b.right, b.bottom, mRadius, paint);
-                    }
-
-                    @Override
-                    public boolean getPadding(@Nonnull Rect padding) {
-                        int r = (int) Math.ceil(mRadius / 2f);
-                        padding.set(r, r, r, r);
-                        return true;
-                    }
-                });
-                textField.setTextColor(Colors.NODE_BACKGROUND);
-                var params = new RelativeLayout.LayoutParams(
-                        RelativeLayout.LayoutParams.MATCH_PARENT,
-                        RelativeLayout.LayoutParams.WRAP_CONTENT
-                );
-                params.addRule(RelativeLayout.BELOW, headerId);
-                params.setMargins(0, 5, 0, 5);
-                popupRoot.addView(textField, params);
-            }
-            {
-                var scrollView = new ScrollView();
-                {
-                    onContextTreeFill();
-                    scrollView.addView(treeRootView, new ViewGroup.LayoutParams(
-                            ViewGroup.LayoutParams.MATCH_PARENT,
-                            ViewGroup.LayoutParams.WRAP_CONTENT
-                    ));
-                }
-                var params = new RelativeLayout.LayoutParams(
-                        RelativeLayout.LayoutParams.MATCH_PARENT,
-                        RelativeLayout.LayoutParams.MATCH_PARENT
-                );
-                params.addRule(RelativeLayout.BELOW, searchBarId);
-                popupRoot.addView(scrollView, params);
-            }
-            popupRoot.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
-
-            return popupRoot;
-        });
+        mPopup = new BPContextMenu(400, 400, this::createPopupContent);
         mPopup.setBackgroundDrawable(new Drawable() {
-            //private final int mRadius = dp(8);
-
             @Override
             public void draw(@Nonnull Canvas canvas) {
                 Paint paint = Paint.get();
@@ -183,6 +101,113 @@ public class BlueprintMenuPopup extends MenuPopup implements PopupWindow.OnDismi
             }
         });
         mPopup.setOverlapAnchor(true);
+    }
+
+    private RelativeLayout createPopupContent() {
+        var popupRoot = new RelativeLayout() { @Override public boolean onTouchEvent(@NotNull MotionEvent event) {return true;} };
+        popupRoot.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        popupRoot.setGravity(Gravity.TOP | Gravity.CENTER);
+
+        var headerLabel = createHeaderLabel();
+        var searchView = createSearchView();
+        var contextContent = createContextMenuContent();
+
+        popupRoot.addView(headerLabel);
+        popupRoot.addView(searchView);
+        popupRoot.addView(contextContent);
+
+        return popupRoot;
+    }
+
+    private TextView createHeaderLabel() {
+        var headerLabel = new TextView();
+
+        headerLabel.setId(popupHeaderId);
+        headerLabel.setText("All actions for this Blueprint");
+        headerLabel.setTextSize(View.sp(17));
+
+        var params = new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.WRAP_CONTENT,
+                RelativeLayout.LayoutParams.WRAP_CONTENT
+        );
+        params.addRule(RelativeLayout.ALIGN_PARENT_START);
+        params.addRule(RelativeLayout.ALIGN_PARENT_TOP);
+
+        headerLabel.setLayoutParams(params);
+
+        return headerLabel;
+    }
+
+    private EditText createSearchView() {
+        var searchView = new EditText();
+
+        searchView.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                var textToFilter = s.toString();
+                treeRootView.hideIfNot(item -> {
+                    return item.getName().toLowerCase().contains(textToFilter.toLowerCase());
+                });
+            }
+        });
+
+        searchView.setId(popupSearchBarId);
+        searchView.setHint("Search");
+        searchView.setTextSize(View.sp(13));
+        searchView.setBackground(new Drawable() {
+            private final int mRadius = dp(4);
+
+            @Override
+            public void draw(@Nonnull Canvas canvas) {
+                Paint paint = Paint.get();
+                paint.setColor(Colors.WHITE);
+                Rect b = getBounds();
+                canvas.drawRoundRect(b.left, b.top, b.right, b.bottom, mRadius, paint);
+            }
+
+            @Override
+            public boolean getPadding(@Nonnull Rect padding) {
+                int r = (int) Math.ceil(mRadius / 2f);
+                padding.set(r, r, r, r);
+                return true;
+            }
+        });
+        searchView.setTextColor(Colors.NODE_BACKGROUND);
+
+        var params = new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.MATCH_PARENT,
+                RelativeLayout.LayoutParams.WRAP_CONTENT
+        );
+        params.addRule(RelativeLayout.BELOW, popupHeaderId);
+        params.setMargins(0, 5, 0, 5);
+
+        searchView.setLayoutParams(params);
+
+        return searchView;
+    }
+
+    private ScrollView createContextMenuContent() {
+        var scrollView = new ScrollView();
+        var params = new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.MATCH_PARENT,
+                RelativeLayout.LayoutParams.MATCH_PARENT
+        );
+        params.addRule(RelativeLayout.BELOW, popupSearchBarId);
+
+        scrollView.setLayoutParams(params);
+
+        onContextTreeFill();
+        scrollView.addView(treeRootView, new ViewGroup.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+        ));
+
+        return scrollView;
     }
 
     public void onContextTreeFill() {
@@ -252,9 +277,7 @@ public class BlueprintMenuPopup extends MenuPopup implements PopupWindow.OnDismi
     }
 
     @Override
-    public void addMenu(MenuBuilder menu) {
-        // No-op: standard implementation has only one menu which is set in the constructor.
-    }
+    public void addMenu(MenuBuilder menu) {}
 
     @Override
     public boolean isShowing() {

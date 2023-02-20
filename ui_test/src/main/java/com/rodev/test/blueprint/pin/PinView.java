@@ -1,24 +1,12 @@
 package com.rodev.test.blueprint.pin;
 
-import com.rodev.test.blueprint.ViewUtils;
+import com.rodev.test.utils.ViewUtils;
 import icyllis.modernui.R;
-import icyllis.modernui.graphics.Canvas;
-import icyllis.modernui.graphics.Color;
-import icyllis.modernui.graphics.Paint;
-import icyllis.modernui.graphics.drawable.StateListDrawable;
-import icyllis.modernui.material.MaterialCheckBox;
-import icyllis.modernui.material.MaterialDrawable;
-import icyllis.modernui.material.MaterialRadioButton;
-import icyllis.modernui.math.Rect;
 import icyllis.modernui.util.ColorStateList;
 import icyllis.modernui.util.StateSet;
 import icyllis.modernui.view.MotionEvent;
-import icyllis.modernui.view.View;
-import icyllis.modernui.view.ViewGroup;
 import icyllis.modernui.widget.CompoundButton;
 import org.jetbrains.annotations.NotNull;
-
-import javax.annotation.Nonnull;
 
 public class PinView extends CompoundButton implements PinToggleListener, PinPositionSupplier {
 
@@ -50,7 +38,6 @@ public class PinView extends CompoundButton implements PinToggleListener, PinPos
 
     @Override
     public boolean onHoverEvent(@NotNull MotionEvent event) {
-        //if(event.getButtonState() != MotionEvent.BUTTON_PRIMARY) return super.onHoverEvent(event);
 
         switch (event.getAction()) {
             case MotionEvent.ACTION_HOVER_ENTER -> pin.onPinHoverStarted();

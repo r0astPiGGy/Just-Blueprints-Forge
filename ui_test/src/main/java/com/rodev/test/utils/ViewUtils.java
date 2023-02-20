@@ -1,5 +1,6 @@
-package com.rodev.test.blueprint;
+package com.rodev.test.utils;
 
+import com.rodev.test.blueprint.ChildRoot;
 import icyllis.modernui.view.View;
 
 public class ViewUtils {

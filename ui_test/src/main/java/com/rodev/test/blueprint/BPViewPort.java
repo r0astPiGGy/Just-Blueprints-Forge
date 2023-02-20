@@ -20,16 +20,15 @@ package com.rodev.test.blueprint;
 
 import com.rodev.test.blueprint.data.action.Action;
 import com.rodev.test.blueprint.graph.ContextMenuOpenListener;
-import com.rodev.test.contextmenu.BPContextMenuBuilder;
+import com.rodev.test.contextmenu.BPMenuPopupHelper;
 import icyllis.modernui.math.Rect;
 import icyllis.modernui.view.*;
-import icyllis.modernui.view.menu.MenuHelper;
 import icyllis.modernui.widget.*;
 
 import javax.annotation.Nonnull;
 import java.util.function.Consumer;
 
-public class BPViewPort extends FrameLayout implements ContextMenuOpenListener {
+public class BPViewPort extends FrameLayout implements ContextMenuOpenListener, Navigable {
 
     private final Rect mTempRect = new Rect();
 
@@ -83,13 +82,6 @@ public class BPViewPort extends FrameLayout implements ContextMenuOpenListener {
     private VelocityTracker mVelocityTracker;
 
     private final int mTouchSlop;
-    private final int mMinimumVelocity = 0;
-    private final int mMaximumVelocity = 0;
-
-    private final int mOverscrollDistanceY = 0;
-    private final int mOverscrollDistanceX = 0;
-    private final int mOverflingDistanceY = 0;
-    private final int mOverflingDistanceX = 0;
 
     private final int[] mScrollOffset = new int[2];
     private final int[] mScrollConsumed = new int[2];
@@ -110,9 +102,7 @@ public class BPViewPort extends FrameLayout implements ContextMenuOpenListener {
 
         setOverScrollMode(OVER_SCROLL_NEVER);
     }
-
-    BPContextMenuBuilder mContextMenu;
-    MenuHelper mContextMenuHelper;
+    BPMenuPopupHelper mContextMenuHelper;
 
     @Override
     public void onContextMenuOpen(Consumer<Action> onItemClick, View caller, float x, float y) {
@@ -121,21 +111,24 @@ public class BPViewPort extends FrameLayout implements ContextMenuOpenListener {
             mContextMenuHelper = null;
         }
 
-        if (mContextMenu == null) {
-            mContextMenu = new BPContextMenuBuilder(onItemClick);
-        } else {
-            mContextMenu.clearAll();
-        }
-
-        final MenuHelper helper;
         final boolean isPopup = !Float.isNaN(x) && !Float.isNaN(y);
-        if (isPopup) {
-            helper = mContextMenu.showPopup(caller, x, y);
-        } else {
-            helper = mContextMenu.showPopup(caller, 0, 0);
+
+        if (!isPopup) {
+            x = 0;
+            y = 0;
         }
 
-        mContextMenuHelper = helper;
+        mContextMenuHelper = showPopup(onItemClick, caller, x, y);
+    }
+
+    private BPMenuPopupHelper showPopup(Consumer<Action> onItemClick, View originalView, float x, float y) {
+        int[] location = new int[2];
+        originalView.getLocationInWindow(location);
+
+        final BPMenuPopupHelper helper = new BPMenuPopupHelper(originalView);
+        helper.show(onItemClick, Math.round(x), Math.round(y));
+
+        return helper;
     }
 
     @Override
@@ -412,6 +405,8 @@ public class BPViewPort extends FrameLayout implements ContextMenuOpenListener {
 
                     // Calling overScrollBy will call onOverScrolled, which
                     // calls onScrollChanged if applicable.
+                    int mOverscrollDistanceY = 0;
+                    int mOverscrollDistanceX = 0;
                     if (overScrollBy(deltaX, deltaY, mScrollX, mScrollY, xRange, yRange, mOverscrollDistanceX, mOverscrollDistanceY, true)
                             && !hasNestedScrollingParent(TYPE_TOUCH)) {
                         // Break our velocity if we hit a scroll barrier.
@@ -435,9 +430,11 @@ public class BPViewPort extends FrameLayout implements ContextMenuOpenListener {
             case MotionEvent.ACTION_UP:
                 if (mIsBeingDragged) {
                     final VelocityTracker velocityTracker = mVelocityTracker;
+                    int mMaximumVelocity = 0;
                     velocityTracker.computeCurrentVelocity(1000, mMaximumVelocity);
                     int initialVelocity = (int) velocityTracker.getYVelocity();
 
+                    int mMinimumVelocity = 0;
                     if ((Math.abs(initialVelocity) > mMinimumVelocity)) {
                         throw new IllegalStateException("Unknown method");
                         //flingWithNestedDispatch(-initialVelocity);
@@ -669,6 +666,8 @@ public class BPViewPort extends FrameLayout implements ContextMenuOpenListener {
                 final boolean canOverscroll = overscrollMode == OVER_SCROLL_ALWAYS ||
                         (overscrollMode == OVER_SCROLL_IF_CONTENT_SCROLLS && rangeY > 0);
 
+                int mOverflingDistanceY = 0;
+                int mOverflingDistanceX = 0;
                 overScrollBy(x - oldX, y - oldY, oldX, oldY, rangeX, rangeY,
                         mOverflingDistanceX, mOverflingDistanceY, false);
                 onScrollChanged(mScrollX, mScrollY, oldX, oldY);
@@ -1003,5 +1002,13 @@ public class BPViewPort extends FrameLayout implements ContextMenuOpenListener {
             return child - my;
         }
         return n;
+    }
+
+    @Override
+    public void navigateTo(int x, int y) {
+        var offsetX = getWidth() / 2;
+        var offsetY = getHeight() / 2;
+
+        scrollTo(x - offsetX, y - offsetY);
     }
 }

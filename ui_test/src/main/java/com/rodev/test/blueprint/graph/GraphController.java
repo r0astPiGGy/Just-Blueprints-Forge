@@ -7,8 +7,6 @@ public interface GraphController {
 
     View createViewAt(int x, int y, Action action);
 
-    void navigateTo(int x, int y);
-
     void setViewMoveListener(ViewMoveListener viewMoveListener);
 
 }

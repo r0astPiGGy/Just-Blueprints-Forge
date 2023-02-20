@@ -10,6 +10,7 @@ import icyllis.modernui.view.MotionEvent;
 import icyllis.modernui.view.View;
 import icyllis.modernui.view.ViewGroup;
 import icyllis.modernui.widget.LinearLayout;
+import icyllis.modernui.widget.RelativeLayout;
 import icyllis.modernui.widget.TextView;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -37,16 +38,32 @@ public class NodeView extends LinearLayout implements BPNode {
 
         var nodeLabel = new TextView();
         nodeLabel.setText(nodeName);
-        nodeLabel.setPadding(0, 0, 0, dp(10));
+        nodeLabel.setPadding(0, 0, dp(30), dp(10));
         addView(nodeLabel);
 
         setBackground(new NodeDrawable(nodeLabel::getHeight, headerColor));
 
-        LinearLayout allRowsContainer = new LinearLayout();
-        allRowsContainer.setOrientation(HORIZONTAL);
-        //allRowsContainer.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-        allRowsContainer.addView(inputRowsContainer);
-        allRowsContainer.addView(outputRowsContainer);
+        RelativeLayout allRowsContainer = new RelativeLayout();
+        {
+            inputRowsContainer.setId(4155423);
+            var params = new RelativeLayout.LayoutParams(
+                    RelativeLayout.LayoutParams.WRAP_CONTENT,
+                    RelativeLayout.LayoutParams.WRAP_CONTENT
+            );
+            params.addRule(RelativeLayout.ALIGN_PARENT_START);
+            allRowsContainer.addView(inputRowsContainer, params);
+        }
+        {
+            outputRowsContainer.setId(541455);
+            var params = new RelativeLayout.LayoutParams(
+                    RelativeLayout.LayoutParams.WRAP_CONTENT,
+                    RelativeLayout.LayoutParams.WRAP_CONTENT
+            );
+            params.addRule(RelativeLayout.ALIGN_END, inputRowsContainer.getId());
+            params.addRule(RelativeLayout.ALIGN_PARENT_END);
+
+            allRowsContainer.addView(outputRowsContainer, params);
+        }
 
         addView(allRowsContainer);
     }

@@ -23,7 +23,6 @@ import java.util.Set;
 public class GraphControllerImpl implements
         GraphController, PinHoverListener, PinDragListener, DrawListener, NodeTouchListener, GraphTouchListener, NodeMoveListener {
 
-    private final BPViewPort viewPort;
     private final Set<Pin> outputPins = new HashSet<>();
     private LineDrawCallback lineDrawCallback = (c, paint) -> {};
     private Runnable invalidationCallback = () -> {};
@@ -31,10 +30,6 @@ public class GraphControllerImpl implements
     private Pin currentHoveringPin;
     private BPNode currentSelectedNode;
     private ViewMoveListener viewMoveListener;
-
-    public GraphControllerImpl(BPViewPort viewPort) {
-        this.viewPort = viewPort;
-    }
 
     @Override
     public View createViewAt(int x, int y, Action action) {
@@ -45,13 +40,6 @@ public class GraphControllerImpl implements
             node.setNodeTouchListener(this);
             node.setNodeMoveListener(this);
         });
-    }
-
-    @Override
-    public void navigateTo(int x, int y) {
-        var offsetX = viewPort.getWidth() / 2;
-        var offsetY = viewPort.getHeight() / 2;
-        viewPort.scrollTo(x - offsetX, y - offsetY);
     }
 
     @Override
@@ -222,10 +210,6 @@ public class GraphControllerImpl implements
     @Override
     public <T extends View & BPNode> boolean onMove(T node, int xStart, int yStart, int xEnd, int yEnd) {
         if(!isNodeSelected(node)) return false;
-
-//        xEnd = (int) ((double) xEnd / 40) * 40;
-//        yEnd = (int) ((double) yEnd / 40) * 40;
-//        if(xStart == xEnd && yStart == yEnd) return false;
 
         if(viewMoveListener != null) {
             viewMoveListener.onMove(node, xEnd, yEnd);

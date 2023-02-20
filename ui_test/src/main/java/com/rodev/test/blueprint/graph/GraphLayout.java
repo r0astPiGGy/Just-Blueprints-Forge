@@ -1,25 +1,35 @@
 package com.rodev.test.blueprint.graph;
 
-import com.rodev.test.blueprint.data.action.Action;
+import com.rodev.test.blueprint.Navigable;
 import icyllis.modernui.graphics.Canvas;
 import icyllis.modernui.graphics.Paint;
 import icyllis.modernui.view.*;
 import icyllis.modernui.widget.AbsoluteLayout;
+import icyllis.modernui.widget.FrameLayout;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.LinkedList;
 import java.util.List;
-import java.util.function.Consumer;
 
 public class GraphLayout extends AbsoluteLayout implements ViewMoveListener {
 
     private final List<Runnable> coordinateRecalculationCallbacks = new LinkedList<>();
     private boolean laidOut = false;
 
+    private Navigable navigator;
     private GraphController graphController;
     private DrawListener drawListener;
     private GraphTouchListener graphTouchListener;
     private ContextMenuOpenListener contextMenuOpenListener;
+
+    public GraphLayout() {
+        var params = new FrameLayout.LayoutParams(
+                Integer.MAX_VALUE,
+                Integer.MAX_VALUE
+        );
+        setLayoutParams(params);
+    }
+
 
     public void setGraphController(GraphController graphController) {
         this.graphController = graphController;
@@ -34,23 +44,11 @@ public class GraphLayout extends AbsoluteLayout implements ViewMoveListener {
         drawListener.setInvalidationCallback(this::invalidate);
     }
 
-    public void add(View view) {
-        add(view, 0, 0, Positioning.ORIGIN);
+    public void setNavigator(Navigable navigator) {
+        this.navigator = navigator;
     }
 
-    // TODO: Rename
-    public void add(View view, int x, int y, Positioning positioning) {
-        if(!laidOut) {
-            coordinateRecalculationCallbacks.add(()-> {
-                var layout = (LayoutParams) view.getLayoutParams();
-                setCoordinatesRelativelyToPositioning(layout, x, y, positioning);
-                view.requestLayout();
-            });
-        }
-        _add(view, x, y, positioning);
-    }
-
-    private void _add(View view, int x, int y, Positioning positioning) {
+    private void addNodeInternal(View view, int x, int y) {
         var oldLayoutParams = view.getLayoutParams();
         if(oldLayoutParams == null) {
             oldLayoutParams = new ViewGroup.LayoutParams(
@@ -60,19 +58,10 @@ public class GraphLayout extends AbsoluteLayout implements ViewMoveListener {
 
         var layoutParams = new AbsoluteLayout.LayoutParams(oldLayoutParams);
 
-        setCoordinatesRelativelyToPositioning(layoutParams, x, y, positioning);
+        layoutParams.x = x;
+        layoutParams.y = y;
 
         addView(view, layoutParams);
-    }
-
-    private void setCoordinatesRelativelyToPositioning(
-            LayoutParams layoutParams, int x, int y, Positioning positioning
-    ) {
-        var xOffset = getWidth() / 2;
-        var yOffset = getHeight() / 2;
-
-        layoutParams.x = positioning.calculateX(xOffset, x);
-        layoutParams.y = positioning.calculateY(yOffset, y);
     }
 
     @Override
@@ -93,7 +82,7 @@ public class GraphLayout extends AbsoluteLayout implements ViewMoveListener {
         var x = layout.x + (view.getWidth() / 2);
         var y = layout.y + (view.getWidth() / 2);
 
-        graphController.navigateTo(x, y);
+        navigator.navigateTo(x, y);
     }
 
     private int childIterator = 0;
@@ -117,10 +106,6 @@ public class GraphLayout extends AbsoluteLayout implements ViewMoveListener {
     public boolean onTouchEvent(@NotNull MotionEvent event) {
         if(!event.isTouchEvent()) return false;
 
-//        boolean shouldNotProcess = super.onTouchEvent(event);
-//
-//        if(shouldNotProcess) return true;
-
         if(event.getAction() == MotionEvent.ACTION_MOVE) return false;
 
         if(event.getButtonState() == MotionEvent.BUTTON_BACK) {
@@ -131,13 +116,7 @@ public class GraphLayout extends AbsoluteLayout implements ViewMoveListener {
             var x = event.getX();
             var y = event.getY();
 
-            if(contextMenuOpenListener != null) {
-                contextMenuOpenListener.onContextMenuOpen(type -> {
-                    var created = graphController.createViewAt((int) x, (int) y, type);
-                    _add(created, (int) x, (int) y, Positioning.GLOBAL);
-                    created.requestLayout();
-                }, this, x, y);
-            }
+            openContextMenu((int) x, (int) y);
         }
 
         if(event.getButtonState() == MotionEvent.BUTTON_PRIMARY) {
@@ -147,6 +126,19 @@ public class GraphLayout extends AbsoluteLayout implements ViewMoveListener {
         }
 
         return true;
+    }
+
+    private void openContextMenu(int x, int y) {
+        if(contextMenuOpenListener == null) {
+            System.out.println("Tried to open context menu, but have no listener...");
+            return;
+        }
+
+        contextMenuOpenListener.onContextMenuOpen(type -> {
+            var created = graphController.createViewAt(x, y, type);
+            addNodeInternal(created, x, y);
+            created.requestLayout();
+        }, this, x, y);
     }
 
     @Override
@@ -167,35 +159,5 @@ public class GraphLayout extends AbsoluteLayout implements ViewMoveListener {
             params.y = y;
             view.requestLayout();
         }
-    }
-
-    enum Positioning {
-        ORIGIN {
-            @Override
-            public int calculateX(int offset, int x) {
-                return offset + x;
-            }
-
-            @Override
-            public int calculateY(int offset, int y) {
-                return offset + y;
-            }
-        },
-        GLOBAL
-
-        ;
-
-        public int calculateX(int offset, int x) {
-            return x;
-        }
-
-        public int calculateY(int offset, int y) {
-            return y;
-        }
-    }
-
-    @FunctionalInterface
-    interface LineDrawCallback {
-        void draw(Canvas canvas, Paint paint);
     }
 }

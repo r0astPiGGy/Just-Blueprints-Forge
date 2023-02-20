@@ -29,16 +29,6 @@ import java.util.function.Supplier;
 
 import static icyllis.modernui.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 
-/**
- * A ListPopupWindow anchors itself to a host view and displays a
- * list of choices.
- *
- * <p>ListPopupWindow contains a number of tricky behaviors surrounding
- * positioning, scrolling parents to fit the dropdown, interacting
- * sanely with the IME if present, and others.
- *
- * @see Spinner
- */
 public class BPContextMenu implements ShowableListMenu {
     private int mDropDownHorizontalOffset;
     private int mDropDownVerticalOffset;
@@ -166,9 +156,6 @@ public class BPContextMenu implements ShowableListMenu {
             mPopup.setWidth(POPUP_WIDTH____REWORK);
             mPopup.setHeight(POPUP_HEIGHT____REWORK);
             mPopup.setIsClippedToScreen(true);
-
-            // use outside touchable to dismiss drop down when touching outside of it, so
-            // only set this if the dropdown is not always visible
             mPopup.setOutsideTouchable(true);
             mPopup.setEpicenterBounds(mEpicenterBounds);
             mPopup.setOverlapAnchor(mOverlapAnchor);
@@ -188,16 +175,6 @@ public class BPContextMenu implements ShowableListMenu {
     }
 
     /**
-     * Remove existing exit transition from PopupWindow and force immediate dismissal.
-     *
-     * @hide
-     */
-    public void dismissImmediate() {
-        mPopup.setExitTransition(null);
-        dismiss();
-    }
-
-    /**
      * @return {@code true} if the popup is currently showing, {@code false} otherwise.
      */
     @Override
@@ -205,10 +182,6 @@ public class BPContextMenu implements ShowableListMenu {
         return mPopup.isShowing();
     }
 
-    /**
-     * @return The {@link ListView} displayed within the popup window.
-     * Only valid when {@link #isShowing()} == {@code true}.
-     */
     @Nullable
     @Override
     public ListView getListView() {
