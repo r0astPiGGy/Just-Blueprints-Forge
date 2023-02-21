@@ -174,7 +174,7 @@ dependencies {
     library "icyllis.modernui:ModernUI-Core:3.5.4.113"
     implementation fg.deobf("icyllis.modernui:ModernUI-Forge:1.18.2-3.5.4.113")
 
-    implementation project(":ui_test")
+    library project(":core")
     // Real mod deobf dependency examples - these get remapped to your current mappings
     // compileOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}:api") // Adds JEI API as a compile dependency
     // runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}") // Adds the full JEI mod as a runtime dependency

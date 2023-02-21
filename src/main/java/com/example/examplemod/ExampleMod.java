@@ -1,6 +1,7 @@
 package com.example.examplemod;
 
 import com.mojang.logging.LogUtils;
+import com.rodev.test.blueprint.data.DataAccess;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.MinecraftForge;
@@ -15,6 +16,7 @@ import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 
+import java.io.IOException;
 import java.util.stream.Collectors;
 
 // The value here should match an entry in the META-INF/mods.toml file
@@ -28,6 +30,12 @@ public class ExampleMod
 
     public ExampleMod()
     {
+        try {
+            DataAccess.load(ExampleMod.class.getResourceAsStream("data.json"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         // Register the setup method for modloading
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
         // Register the enqueueIMC method for modloading
