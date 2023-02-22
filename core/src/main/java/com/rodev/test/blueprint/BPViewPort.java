@@ -19,8 +19,9 @@
 package com.rodev.test.blueprint;
 
 import com.rodev.test.blueprint.data.action.Action;
-import com.rodev.test.blueprint.graph.ContextMenuOpenListener;
+import com.rodev.test.blueprint.graph.ContextMenuOpenHandler;
 import com.rodev.test.contextmenu.BPMenuPopupHelper;
+import com.rodev.test.contextmenu.ContextMenuBuilder;
 import icyllis.modernui.math.Rect;
 import icyllis.modernui.view.*;
 import icyllis.modernui.widget.*;
@@ -28,7 +29,7 @@ import icyllis.modernui.widget.*;
 import javax.annotation.Nonnull;
 import java.util.function.Consumer;
 
-public class BPViewPort extends FrameLayout implements ContextMenuOpenListener, Navigable {
+public class BPViewPort extends FrameLayout implements ContextMenuOpenHandler, Navigable {
 
     private final Rect mTempRect = new Rect();
 
@@ -105,30 +106,33 @@ public class BPViewPort extends FrameLayout implements ContextMenuOpenListener, 
     BPMenuPopupHelper mContextMenuHelper;
 
     @Override
-    public void onContextMenuOpen(Consumer<Action> onItemClick, View caller, float x, float y) {
+    public ContextMenuBuilder createBuilder(View caller, float x, float y) {
+        return new ContextMenuBuilder((int) x, (int) y) {
+            @Override
+            public void show() {
+                onContextMenuOpen(this, caller);
+            }
+        };
+    }
+
+    public void onContextMenuOpen(ContextMenuBuilder builder, View caller) {
         if (mContextMenuHelper != null) {
             mContextMenuHelper.dismiss();
             mContextMenuHelper = null;
         }
 
-        final boolean isPopup = !Float.isNaN(x) && !Float.isNaN(y);
+        int x = builder.x;
+        int y = builder.y;
+
+        final boolean isPopup = true;
 
         if (!isPopup) {
             x = 0;
             y = 0;
         }
 
-        mContextMenuHelper = showPopup(onItemClick, caller, x, y);
-    }
-
-    private BPMenuPopupHelper showPopup(Consumer<Action> onItemClick, View originalView, float x, float y) {
-        int[] location = new int[2];
-        originalView.getLocationInWindow(location);
-
-        final BPMenuPopupHelper helper = new BPMenuPopupHelper(originalView);
-        helper.show(onItemClick, Math.round(x), Math.round(y));
-
-        return helper;
+        final BPMenuPopupHelper helper = new BPMenuPopupHelper(caller);
+        helper.show(builder);
     }
 
     @Override

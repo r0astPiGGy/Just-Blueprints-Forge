@@ -1,16 +1,12 @@
 package com.rodev.test;
 
 import com.rodev.test.blueprint.BPViewPort;
-import com.rodev.test.blueprint.graph.GraphController;
 import com.rodev.test.blueprint.graph.GraphControllerImpl;
 import com.rodev.test.blueprint.graph.GraphLayout;
-import icyllis.modernui.core.Handler;
-import icyllis.modernui.core.Looper;
 import icyllis.modernui.fragment.Fragment;
 import icyllis.modernui.graphics.Canvas;
 import icyllis.modernui.graphics.Paint;
 import icyllis.modernui.graphics.drawable.Drawable;
-import icyllis.modernui.graphics.drawable.ImageDrawable;
 import icyllis.modernui.math.Rect;
 import icyllis.modernui.util.DataSet;
 import icyllis.modernui.view.Gravity;
@@ -191,7 +187,7 @@ public class BlueprintFragment extends Fragment {
         var graphLayout = createGraphLayout();
 
         graphLayout.setNavigator(blueprintView);
-        graphLayout.setContextMenuOpenListener(blueprintView);
+        graphLayout.setContextMenuOpenHandler(blueprintView);
 
         blueprintView.addView(graphLayout);
         postProcessView.addView(blueprintView);
@@ -204,10 +200,9 @@ public class BlueprintFragment extends Fragment {
         var graphController = new GraphControllerImpl();
 
         graphController.setViewMoveListener(graphLayout);
+        graphController.setContextMenuBuilderProvider(graphLayout);
 
-        graphLayout.setGraphTouchListener(graphController);
         graphLayout.setGraphController(graphController);
-        graphLayout.setDrawListener(graphController);
 
         graphLayout.setMinimumHeight(Integer.MAX_VALUE);
         graphLayout.setMinimumWidth(Integer.MAX_VALUE);
@@ -252,7 +247,7 @@ public class BlueprintFragment extends Fragment {
 
     private TextView createTextView(String text) {
         var textView = new TextView();
-        textView.setText("Details");
+        textView.setText(text);
 
         return textView;
     }

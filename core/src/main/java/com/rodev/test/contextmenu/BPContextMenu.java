@@ -75,6 +75,10 @@ public class BPContextMenu implements ShowableListMenu {
         mPopup.setFocusable(modal);
     }
 
+    public void setDismissListener(PopupWindow.OnDismissListener listener) {
+        mPopup.setOnDismissListener(listener);
+    }
+
     public boolean isModal() {
         return mModal;
     }

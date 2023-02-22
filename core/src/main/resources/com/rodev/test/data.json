@@ -11,6 +11,14 @@
     {
       "id": "player",
       "color": "1, 167, 246"
+    },
+    {
+      "id": "number",
+      "color": "255, 69, 58"
+    },
+    {
+      "id": "location",
+      "color": "172, 142, 104"
     }
   ],
   "action_types": [
@@ -50,6 +58,35 @@
           "id": "text_to_print",
           "label": "Сообщение",
           "type": "text"
+        }
+      ],
+      "output": []
+    },
+    {
+      "id": "launch_to_location",
+      "name": "Запустить к местоположению",
+      "type": "function",
+      "category": "function.player_functions",
+      "input": [
+        {
+          "id": "target",
+          "label": "Игрок",
+          "type": "player"
+        },
+        {
+          "id": "location",
+          "label": "Конечная позиция",
+          "type": "location"
+        },
+        {
+          "id": "power",
+          "label": "Сила запуска",
+          "type": "number"
+        },
+        {
+          "id": "increment",
+          "label": "Учитывать текущую инерцию",
+          "type": "boolean"
         }
       ],
       "output": []

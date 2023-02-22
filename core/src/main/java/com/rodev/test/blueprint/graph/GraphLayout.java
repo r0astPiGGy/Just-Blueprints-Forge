@@ -1,6 +1,7 @@
 package com.rodev.test.blueprint.graph;
 
 import com.rodev.test.blueprint.Navigable;
+import com.rodev.test.contextmenu.ContextMenuBuilder;
 import icyllis.modernui.graphics.Canvas;
 import icyllis.modernui.graphics.Paint;
 import icyllis.modernui.view.*;
@@ -8,19 +9,10 @@ import icyllis.modernui.widget.AbsoluteLayout;
 import icyllis.modernui.widget.FrameLayout;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.LinkedList;
-import java.util.List;
-
-public class GraphLayout extends AbsoluteLayout implements ViewMoveListener {
-
-    private final List<Runnable> coordinateRecalculationCallbacks = new LinkedList<>();
-    private boolean laidOut = false;
-
+public class GraphLayout extends AbsoluteLayout implements ViewMoveListener, ContextMenuBuilderProvider, ViewHolder {
     private Navigable navigator;
     private GraphController graphController;
-    private DrawListener drawListener;
-    private GraphTouchListener graphTouchListener;
-    private ContextMenuOpenListener contextMenuOpenListener;
+    private ContextMenuOpenHandler contextMenuOpenHandler;
 
     public GraphLayout() {
         var params = new FrameLayout.LayoutParams(
@@ -33,15 +25,12 @@ public class GraphLayout extends AbsoluteLayout implements ViewMoveListener {
 
     public void setGraphController(GraphController graphController) {
         this.graphController = graphController;
+        this.graphController.setInvalidationCallback(this::invalidate);
+        this.graphController.setViewHolder(this);
     }
 
-    public void setContextMenuOpenListener(ContextMenuOpenListener contextMenuOpenListener) {
-        this.contextMenuOpenListener = contextMenuOpenListener;
-    }
-
-    public void setDrawListener(DrawListener drawListener) {
-        this.drawListener = drawListener;
-        drawListener.setInvalidationCallback(this::invalidate);
+    public void setContextMenuOpenHandler(ContextMenuOpenHandler contextMenuOpenHandler) {
+        this.contextMenuOpenHandler = contextMenuOpenHandler;
     }
 
     public void setNavigator(Navigable navigator) {
@@ -50,7 +39,7 @@ public class GraphLayout extends AbsoluteLayout implements ViewMoveListener {
 
     private void addNodeInternal(View view, int x, int y) {
         var oldLayoutParams = view.getLayoutParams();
-        if(oldLayoutParams == null) {
+        if (oldLayoutParams == null) {
             oldLayoutParams = new ViewGroup.LayoutParams(
                     ViewGroup.LayoutParams.WRAP_CONTENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -62,17 +51,6 @@ public class GraphLayout extends AbsoluteLayout implements ViewMoveListener {
         layoutParams.y = y;
 
         addView(view, layoutParams);
-    }
-
-    @Override
-    protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
-        super.onLayout(changed, left, top, right, bottom);
-
-        if(!laidOut) {
-            laidOut = true;
-            coordinateRecalculationCallbacks.forEach(Runnable::run);
-            coordinateRecalculationCallbacks.clear();
-        }
     }
 
     public void navigateTo(int childIndex) {
@@ -87,6 +65,7 @@ public class GraphLayout extends AbsoluteLayout implements ViewMoveListener {
 
     private int childIterator = 0;
 
+    // Only for debug
     private int nextChild() {
         int childCount = getChildCount();
         int old = childIterator;
@@ -95,11 +74,6 @@ public class GraphLayout extends AbsoluteLayout implements ViewMoveListener {
             childIterator = 0;
 
         return old;
-    }
-
-    @Override
-    protected void onCreateContextMenu(@NotNull ContextMenu menu) {
-        super.onCreateContextMenu(menu);
     }
 
     @Override
@@ -120,36 +94,26 @@ public class GraphLayout extends AbsoluteLayout implements ViewMoveListener {
         }
 
         if(event.getButtonState() == MotionEvent.BUTTON_PRIMARY) {
-            if(graphTouchListener != null) {
-                graphTouchListener.onGraphTouch(event.getX(), event.getY());
-            }
+            graphController.onGraphTouch(event.getX(), event.getY());
         }
 
         return true;
     }
 
     private void openContextMenu(int x, int y) {
-        if(contextMenuOpenListener == null) {
-            System.out.println("Tried to open context menu, but have no listener...");
-            return;
-        }
+        graphController.onContextMenuOpen(x, y);
+    }
 
-        contextMenuOpenListener.onContextMenuOpen(type -> {
-            var created = graphController.createViewAt(x, y, type);
-            addNodeInternal(created, x, y);
-            created.requestLayout();
-        }, this, x, y);
+    public void addViewAt(View view, int x, int y) {
+        addNodeInternal(view, x, y);
+        view.requestLayout();
     }
 
     @Override
     protected void onDraw(@NotNull Canvas canvas) {
-        drawListener.onDraw(canvas, Paint.take());
+        graphController.onDraw(canvas, Paint.take());
 
         super.onDraw(canvas);
-    }
-
-    public void setGraphTouchListener(GraphTouchListener graphTouchListener) {
-        this.graphTouchListener = graphTouchListener;
     }
 
     @Override
@@ -159,5 +123,13 @@ public class GraphLayout extends AbsoluteLayout implements ViewMoveListener {
             params.y = y;
             view.requestLayout();
         }
+    }
+
+    @Override
+    public ContextMenuBuilder createBuilder(float x, float y) {
+        if(contextMenuOpenHandler == null) {
+            throw new IllegalStateException("Tried to open context menu, but there is no handler...");
+        }
+        return contextMenuOpenHandler.createBuilder(this, x, y);
     }
 }

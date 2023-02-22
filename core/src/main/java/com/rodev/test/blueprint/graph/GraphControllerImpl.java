@@ -1,8 +1,5 @@
 package com.rodev.test.blueprint.graph;
 
-import com.rodev.test.Colors;
-import com.rodev.test.blueprint.BPViewPort;
-import com.rodev.test.blueprint.data.DataAccess;
 import com.rodev.test.blueprint.data.action.Action;
 import com.rodev.test.blueprint.node.BPNode;
 import com.rodev.test.blueprint.node.NodeMoveListener;
@@ -10,9 +7,8 @@ import com.rodev.test.blueprint.node.NodeTouchListener;
 import com.rodev.test.blueprint.pin.Pin;
 import com.rodev.test.blueprint.pin.PinDragListener;
 import com.rodev.test.blueprint.pin.PinHoverListener;
-import com.rodev.test.contextmenu.BlueprintMenuPopup;
-import com.rodev.test.contextmenu.ContextMenuItem;
-import com.rodev.test.contextmenu.ContextMenuItemImpl;
+import com.rodev.test.blueprint.pin.exec_pin.ExecPin;
+import com.rodev.test.contextmenu.ContextMenuBuilder;
 import icyllis.modernui.graphics.Canvas;
 import icyllis.modernui.graphics.Paint;
 import icyllis.modernui.view.View;
@@ -21,30 +17,60 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class GraphControllerImpl implements
-        GraphController, PinHoverListener, PinDragListener, DrawListener, NodeTouchListener, GraphTouchListener, NodeMoveListener {
+        GraphController, PinHoverListener, PinDragListener, NodeTouchListener, NodeMoveListener {
 
     private final Set<Pin> outputPins = new HashSet<>();
-    private LineDrawCallback lineDrawCallback = (c, paint) -> {};
+    private ViewHolder viewHolder;
+    private ContextMenuBuilderProvider contextMenuBuilderProvider;
+    private LineDrawCallback temporaryLineCallback = (c, paint) -> {};
     private Runnable invalidationCallback = () -> {};
     private Pin currentDraggingPin;
     private Pin currentHoveringPin;
     private BPNode currentSelectedNode;
     private ViewMoveListener viewMoveListener;
 
-    @Override
-    public View createViewAt(int x, int y, Action action) {
-        return (View) action.toNode(pin -> {
+    public void createViewAt(int x, int y, Action action) {
+        var view = (View) action.toNode(pin -> {
             pin.setPinHoverListener(this);
             pin.setPinDragListener(this);
         }, node -> {
             node.setNodeTouchListener(this);
             node.setNodeMoveListener(this);
         });
+
+        viewHolder.addViewAt(view, x, y);
+    }
+
+    @Override
+    public void onContextMenuOpen(int x, int y) {
+        contextMenuBuilderProvider.createBuilder(x, y)
+                .withHeader("All actions for this Blueprint")
+                .onItemClick(action -> {
+                    createViewAt(x, y, action);
+                })
+                .onDismiss(this::clearLastTemporaryLine)
+                .show();
     }
 
     @Override
     public void setViewMoveListener(ViewMoveListener viewMoveListener) {
         this.viewMoveListener = viewMoveListener;
+    }
+
+    @Override
+    public void setViewHolder(ViewHolder viewHolder) {
+        this.viewHolder = viewHolder;
+    }
+
+    @Override
+    public void setContextMenuBuilderProvider(ContextMenuBuilderProvider provider) {
+        contextMenuBuilderProvider = provider;
+    }
+
+    @Override
+    public void onDraw(Canvas canvas, Paint paint) {
+        temporaryLineCallback.draw(canvas, paint);
+        outputPins.forEach(c -> drawAllConnections(c, canvas, paint));
     }
 
     private void drawAllConnections(Pin outputPin, Canvas canvas, Paint paint) {
@@ -80,14 +106,14 @@ public class GraphControllerImpl implements
     }
 
     public void drawTemporaryLineAt(int xStart, int yStart, int xEnd, int yEnd, int color) {
-        lineDrawCallback = (canvas, paint) -> {
+        temporaryLineCallback = (canvas, paint) -> {
             drawBezierLine(canvas, paint, xStart, yStart, xEnd, yEnd, color);
         };
         invalidationCallback.run();
     }
 
     public void clearLastTemporaryLine() {
-        lineDrawCallback = (c, paint) -> {};
+        temporaryLineCallback = (c, paint) -> {};
         invalidationCallback.run();
     }
 
@@ -108,9 +134,21 @@ public class GraphControllerImpl implements
     public void onLineDragEnded(Pin pin, int xStart, int yStart, int xEnd, int yEnd) {
         System.out.println("==========");
         System.out.println("trying to connect " + currentHoveringPin + " to " + pin);
-        clearLastTemporaryLine();
 
-        if (currentHoveringPin == null) return;
+        if (currentHoveringPin == null) {
+            // Open context menu for applicable input/output types
+            if(pin instanceof ExecPin) {
+                onContextMenuOpen(xEnd, yEnd);
+                return;
+            }
+
+            var builder = contextMenuBuilderProvider.createBuilder(xEnd, yEnd);
+            handleContextMenuOpen(builder, pin);
+
+            return;
+        }
+
+        clearLastTemporaryLine();
 
         if (!currentHoveringPin.isApplicable(pin)) return;
 
@@ -124,6 +162,39 @@ public class GraphControllerImpl implements
             return;
         }
 
+    }
+
+    private void handleContextMenuOpen(ContextMenuBuilder builder, Pin pin) {
+        if(pin.isInput()) {
+            handleInputContextMenuOpen(builder, pin);
+        }
+        if(pin.isOutput()) {
+            handleOutputContextMenuOpen(builder, pin);
+        }
+    }
+
+    private void handleOutputContextMenuOpen(ContextMenuBuilder builder, Pin pin) {
+        builder
+                .withHeader("Actions taking a " + pin.getType().type())
+                .filtering(action -> !action.acceptsInputType(pin.getType()))
+                .onItemClick(action -> {
+                    createViewAt(builder.x, builder.y, action);
+                    clearLastTemporaryLine();
+                })
+                .onDismiss(this::clearLastTemporaryLine)
+                .show();
+    }
+
+    private void handleInputContextMenuOpen(ContextMenuBuilder builder, Pin pin) {
+        builder
+                .withHeader("Actions returning a " + pin.getType().type())
+                .filtering(action -> !action.acceptsOutputType(pin.getType()))
+                .onItemClick(action -> {
+                    createViewAt(builder.x, builder.y, action);
+                    clearLastTemporaryLine();
+                })
+                .onDismiss(this::clearLastTemporaryLine)
+                .show();
     }
 
     private void handleInputConnection(Pin input, Pin output) {
@@ -189,12 +260,6 @@ public class GraphControllerImpl implements
     @Override
     public void onPinHoverEnded(Pin pin) {
         currentHoveringPin = null;
-    }
-
-    @Override
-    public void onDraw(Canvas canvas, Paint paint) {
-        lineDrawCallback.draw(canvas, paint);
-        outputPins.forEach(c -> drawAllConnections(c, canvas, paint));
     }
 
     @Override

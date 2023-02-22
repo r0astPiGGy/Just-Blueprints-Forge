@@ -22,8 +22,6 @@ import static icyllis.modernui.view.View.dp;
 
 public class BlueprintMenuPopup extends MenuPopup implements PopupWindow.OnDismissListener {
 
-    private final Consumer<Action> onItemClick;
-
     private final BPContextMenu mPopup;
 
     private final ContextTreeRootView treeRootView = new ContextTreeRootView();
@@ -69,6 +67,7 @@ public class BlueprintMenuPopup extends MenuPopup implements PopupWindow.OnDismi
     private View mShownAnchorView;
     private Callback mPresenterCallback;
     private ViewTreeObserver mTreeObserver;
+    private ContextMenuBuilder builder;
 
     /**
      * Whether the popup has been dismissed. Once dismissed, it cannot be opened again.
@@ -80,8 +79,9 @@ public class BlueprintMenuPopup extends MenuPopup implements PopupWindow.OnDismi
     private final int popupHeaderId = 45145;
     private final int popupSearchBarId = 454551;
 
-    public BlueprintMenuPopup(Consumer<Action> onItemClick, @Nonnull View anchorView) {
-        this.onItemClick = onItemClick;
+    public BlueprintMenuPopup(ContextMenuBuilder builder, @Nonnull View anchorView) {
+        this.builder = builder;
+
         mAnchorView = anchorView;
         mPopup = new BPContextMenu(400, 400, this::createPopupContent);
         mPopup.setBackgroundDrawable(new Drawable() {
@@ -123,7 +123,7 @@ public class BlueprintMenuPopup extends MenuPopup implements PopupWindow.OnDismi
         var headerLabel = new TextView();
 
         headerLabel.setId(popupHeaderId);
-        headerLabel.setText("All actions for this Blueprint");
+        headerLabel.setText(builder.header);
         headerLabel.setTextSize(View.sp(17));
 
         var params = new RelativeLayout.LayoutParams(
@@ -214,6 +214,10 @@ public class BlueprintMenuPopup extends MenuPopup implements PopupWindow.OnDismi
         var actionRegistry = DataAccess.getInstance().actionRegistry;
 
         for(var action : actionRegistry.getAll()) {
+            var invalid = builder.filter.test(action);
+
+            if(invalid) continue;
+
             action.addTo(treeRootView, createItem(action.name(), action));
         }
     }
@@ -221,7 +225,7 @@ public class BlueprintMenuPopup extends MenuPopup implements PopupWindow.OnDismi
     public ContextMenuItem createItem(String displayText, Action action) {
         return ContextMenuItem.of(displayText, () -> {
             dismiss();
-            onItemClick.accept(action);
+            builder.onClick.accept(action);
         });
     }
 
@@ -335,7 +339,10 @@ public class BlueprintMenuPopup extends MenuPopup implements PopupWindow.OnDismi
 
     @Override
     public void setOnDismissListener(PopupWindow.OnDismissListener listener) {
-        mOnDismissListener = listener;
+        mPopup.setDismissListener(() -> {
+            listener.onDismiss();
+            builder.onDismiss.run();
+        });
     }
 
     @Override

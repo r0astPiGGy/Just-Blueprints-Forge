@@ -20,7 +20,6 @@ public class BPMenuPopupHelper implements MenuHelper {
     private MenuPresenter.Callback mPresenterCallback;
 
     private BlueprintMenuPopup mPopup;
-    private PopupWindow.OnDismissListener mOnDismissListener;
 
     /**
      * Listener used to proxy dismiss callbacks to the helper's owner.
@@ -31,48 +30,22 @@ public class BPMenuPopupHelper implements MenuHelper {
         mAnchorView = anchorView;
     }
 
-    public void setOnDismissListener(@Nullable PopupWindow.OnDismissListener listener) {
-        mOnDismissListener = listener;
-    }
-
-    public void show(Consumer<Action> onClick, int x, int y) {
-        if (!tryShow(onClick, x, y)) {
+    public void show(ContextMenuBuilder builder) {
+        if (!tryShow(builder)) {
             throw new IllegalStateException("MenuPopupHelper cannot be used without an anchor");
         }
     }
 
     @Nonnull
-    public BlueprintMenuPopup getPopup(Consumer<Action> onClick) {
+    public BlueprintMenuPopup getPopup(ContextMenuBuilder builder) {
         if (mPopup == null) {
-            mPopup = createPopup(onClick);
+            mPopup = createPopup(builder);
         }
         return mPopup;
     }
 
-    /**
-     * Shows the popup menu and makes a best-effort to anchor it to the
-     * specified (x,y) coordinate relative to the anchor view.
-     * <p>
-     * Additionally, the popup's transition epicenter (see
-     * {@link PopupWindow#setEpicenterBounds(Rect)} will be
-     * centered on the specified coordinate, rather than using the bounds of
-     * the anchor view.
-     * <p>
-     * If the popup's resolved gravity is {@link Gravity#LEFT}, this will
-     * display the popup with its top-left corner at (x,y) relative to the
-     * anchor view. If the resolved gravity is {@link Gravity#RIGHT}, the
-     * popup's top-right corner will be at (x,y).
-     * <p>
-     * If the popup cannot be displayed fully on-screen, this method will
-     * attempt to scroll the anchor view's ancestors and/or offset the popup
-     * such that it may be displayed fully on-screen.
-     *
-     * @param x x coordinate relative to the anchor view
-     * @param y y coordinate relative to the anchor view
-     * @return {@code true} if the popup was shown or was already showing prior
-     * to calling this method, {@code false} otherwise
-     */
-    public boolean tryShow(Consumer<Action> onClick, int x, int y) {
+
+    public boolean tryShow(ContextMenuBuilder builder) {
         if (isShowing()) {
             return true;
         }
@@ -81,7 +54,7 @@ public class BPMenuPopupHelper implements MenuHelper {
             return false;
         }
 
-        showPopup(onClick, x, y, true, true);
+        showPopup(builder, true, true);
         return true;
     }
 
@@ -91,8 +64,8 @@ public class BPMenuPopupHelper implements MenuHelper {
      * @return an initialized popup
      */
     @Nonnull
-    private BlueprintMenuPopup createPopup(Consumer<Action> onItemClick) {
-        final BlueprintMenuPopup popup = new BlueprintMenuPopup(onItemClick, mAnchorView);
+    private BlueprintMenuPopup createPopup(ContextMenuBuilder contextMenuBuilder) {
+        final BlueprintMenuPopup popup = new BlueprintMenuPopup(contextMenuBuilder, mAnchorView);
 
         popup.setOnDismissListener(mInternalOnDismissListener);
 
@@ -104,9 +77,12 @@ public class BPMenuPopupHelper implements MenuHelper {
         return popup;
     }
 
-    private void showPopup(Consumer<Action> onClick, int xOffset, int yOffset, boolean useOffsets, boolean showTitle) {
-        final BlueprintMenuPopup popup = getPopup(onClick);
+    private void showPopup(ContextMenuBuilder builder, boolean useOffsets, boolean showTitle) {
+        final BlueprintMenuPopup popup = getPopup(builder);
         popup.setShowTitle(showTitle);
+
+        int xOffset = builder.x;
+        int yOffset = builder.y;
 
         if (useOffsets) {
             // If the resolved drop-down gravity is RIGHT, the popup's right
@@ -144,20 +120,8 @@ public class BPMenuPopupHelper implements MenuHelper {
         }
     }
 
-    /**
-     * Called after the popup has been dismissed.
-     * <p>
-     * <strong>Note:</strong> Subclasses should call the super implementation
-     * last to ensure that any necessary tear down has occurred before the
-     * listener specified by {@link #setOnDismissListener(PopupWindow.OnDismissListener)}
-     * is called.
-     */
     protected void onDismiss() {
         mPopup = null;
-
-        if (mOnDismissListener != null) {
-            mOnDismissListener.onDismiss();
-        }
     }
 
     public boolean isShowing() {
