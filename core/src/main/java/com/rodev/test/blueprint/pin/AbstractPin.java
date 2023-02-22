@@ -1,9 +1,7 @@
 package com.rodev.test.blueprint.pin;
 
-import com.rodev.test.blueprint.data.action.PinType;
 import com.rodev.test.blueprint.data.variable.VariableType;
 
-import java.util.Arrays;
 import java.util.UUID;
 
 public abstract class AbstractPin implements Pin {
@@ -11,7 +9,7 @@ public abstract class AbstractPin implements Pin {
     private final UUID id;
     private PinDragListener pinDragListener;
     private PinHoverListener pinHoverListener;
-    private PinToggleListener pinToggleListener;
+    private PinConnectionListener pinConnectionListener;
     private PinPositionSupplier pinPositionSupplier;
 
     private Position position;
@@ -70,8 +68,8 @@ public abstract class AbstractPin implements Pin {
     }
 
     @Override
-    public void setPinToggleListener(PinToggleListener pinToggleListener) {
-        this.pinToggleListener = pinToggleListener;
+    public void setPinToggleListener(PinConnectionListener pinConnectionListener) {
+        this.pinConnectionListener = pinConnectionListener;
     }
 
     @Override
@@ -90,16 +88,16 @@ public abstract class AbstractPin implements Pin {
 
     @Override
     public void enable() {
-        if(pinToggleListener == null) return;
+        if(pinConnectionListener == null) return;
 
-        pinToggleListener.onEnable(this);
+        pinConnectionListener.onConnected(this);
     }
 
     @Override
     public void disable() {
-        if(pinToggleListener == null) return;
+        if(pinConnectionListener == null) return;
 
-        pinToggleListener.onDisable(this);
+        pinConnectionListener.onDisconnected(this);
     }
 
     public boolean isTheSameTypeAs(Pin anotherPin) {

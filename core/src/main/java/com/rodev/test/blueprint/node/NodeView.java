@@ -2,6 +2,7 @@ package com.rodev.test.blueprint.node;
 
 import com.rodev.test.Colors;
 import com.rodev.test.blueprint.ChildRoot;
+import com.rodev.test.blueprint.data.variable.VariableTypeRegistry;
 import com.rodev.test.blueprint.pin.Pin;
 import com.rodev.test.blueprint.pin.PinRowView;
 import com.rodev.test.blueprint.pin.Position;
@@ -144,7 +145,12 @@ public class NodeView extends LinearLayout implements BPNode {
 
     @Override
     public void addInputPin(Pin pin, String name) {
-        addInput(pin.createRowView().setText(name));
+        var rowView = pin.createRowView();
+        rowView.setText(name);
+
+        VariableTypeRegistry.onPinRowViewCreated(pin, rowView);
+
+        addInput(rowView);
     }
 
     @Override

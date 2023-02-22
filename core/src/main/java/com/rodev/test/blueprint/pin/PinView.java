@@ -8,7 +8,7 @@ import icyllis.modernui.view.MotionEvent;
 import icyllis.modernui.widget.CompoundButton;
 import org.jetbrains.annotations.NotNull;
 
-public class PinView extends CompoundButton implements PinToggleListener, PinPositionSupplier {
+public class PinView extends CompoundButton implements PinConnectionListener, PinPositionSupplier {
 
     private static final int[][] ENABLED_CHECKED_STATES = {
             new int[]{R.attr.state_enabled, R.attr.state_checked}, // [0]
@@ -19,6 +19,8 @@ public class PinView extends CompoundButton implements PinToggleListener, PinPos
     private final Pin pin;
 
     private boolean isDragging;
+
+    private PinConnectionListener pinConnectionListener;
 
     public PinView(Pin pin) {
         this.pin = pin;
@@ -100,6 +102,10 @@ public class PinView extends CompoundButton implements PinToggleListener, PinPos
         );
     }
 
+    public void setPinConnectionListener(PinConnectionListener pinConnectionListener) {
+        this.pinConnectionListener = pinConnectionListener;
+    }
+
     private int getHalfWidth() {
         return getWidth() / 2;
     }
@@ -114,12 +120,20 @@ public class PinView extends CompoundButton implements PinToggleListener, PinPos
     }
 
     @Override
-    public void onEnable(Pin pin) {
+    public void onConnected(Pin pin) {
         setChecked(true);
+
+        if(pinConnectionListener != null) {
+            pinConnectionListener.onConnected(pin);
+        }
     }
 
     @Override
-    public void onDisable(Pin pin) {
+    public void onDisconnected(Pin pin) {
         setChecked(false);
+
+        if(pinConnectionListener != null) {
+            pinConnectionListener.onDisconnected(pin);
+        }
     }
 }

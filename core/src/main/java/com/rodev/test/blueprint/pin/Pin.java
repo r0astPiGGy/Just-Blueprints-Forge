@@ -56,7 +56,7 @@ public interface Pin {
 
     void setPinHoverListener(PinHoverListener pinHoverListener);
 
-    void setPinToggleListener(PinToggleListener pinToggleListener);
+    void setPinToggleListener(PinConnectionListener pinConnectionListener);
 
     void setPositionSupplier(PinPositionSupplier positionSupplier);
 
