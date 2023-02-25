@@ -19,6 +19,10 @@
     {
       "id": "location",
       "color": "172, 142, 104"
+    },
+    {
+      "id": "enum",
+      "color": "50, 80, 252"
     }
   ],
   "action_types": [
@@ -29,6 +33,10 @@
     {
       "id": "function",
       "header_color": "100, 210, 255"
+    },
+    {
+      "id": "pure-function",
+      "header_color": "4, 222, 113"
     },
     {
       "id": "util",
@@ -102,6 +110,37 @@
           "id": "joined_player",
           "label": "Игрок",
           "type": "player"
+        }
+      ]
+    },
+    {
+      "id": "gamemode_equals",
+      "name": "Режим игры равен",
+      "type": "pure-function",
+      "category": "function.player_functions",
+      "input": [
+        {
+          "id": "target",
+          "label": "Игрок",
+          "type": "player"
+        },
+        {
+          "id": "gamemode",
+          "label": "Режим игры",
+          "type": "enum",
+          "extra_data": {
+            "SURVIVAL": "Выживание",
+            "CREATIVE": "Творческий",
+            "ADVENTURE": "Приключение",
+            "SPECTATOR": "Наблюдатель"
+          }
+        }
+      ],
+      "output": [
+        {
+          "id": "-",
+          "label": "Return value",
+          "type": "boolean"
         }
       ]
     }

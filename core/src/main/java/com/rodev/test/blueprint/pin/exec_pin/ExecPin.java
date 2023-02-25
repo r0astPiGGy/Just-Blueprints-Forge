@@ -33,11 +33,19 @@ public interface ExecPin extends Pin {
     }
 
     static Pin outputPin() {
-        return new OutExecPin();
+        return outputPin("");
+    }
+
+    static Pin outputPin(String name) {
+        return new OutExecPin(name);
     }
 
     static Pin inputPin() {
-        return new InExecPin();
+        return inputPin("");
+    }
+
+    static Pin inputPin(String name) {
+        return new InExecPin(name);
     }
 
     abstract class ExecDrawable extends MaterialDrawable {

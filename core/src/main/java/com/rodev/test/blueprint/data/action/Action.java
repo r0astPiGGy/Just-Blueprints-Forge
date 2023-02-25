@@ -41,10 +41,10 @@ public final class Action {
 
     private void fillAcceptablePins() {
         inputPins.forEach(pin -> {
-            acceptableInputPins.add(pin.type());
+            acceptableInputPins.add(pin.getVariableType());
         });
         outputPins.forEach(pin -> {
-            acceptableOutputPins.add(pin.type());
+            acceptableOutputPins.add(pin.getVariableType());
         });
     }
 
@@ -79,15 +79,15 @@ public final class Action {
         var node = actionType().createNode(onPinCreated, name);
 
         for (var inputPinType : inputPins()) {
-            var pin = VarPin.inputPin(inputPinType.type());
+            var pin = VarPin.inputPin(inputPinType);
             onPinCreated.accept(pin);
-            node.addInputPin(pin, inputPinType.name());
+            node.addInputPin(pin, inputPinType.getName());
         }
 
         for (var outputPinType : outputPins()) {
-            var pin = VarPin.outputPin(outputPinType.type());
+            var pin = VarPin.outputPin(outputPinType);
             onPinCreated.accept(pin);
-            node.addOutputPin(pin, outputPinType.name());
+            node.addOutputPin(pin, outputPinType.getName());
         }
 
         onNodeCreated.accept(node);

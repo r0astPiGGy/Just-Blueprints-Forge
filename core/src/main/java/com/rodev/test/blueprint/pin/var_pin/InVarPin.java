@@ -1,5 +1,6 @@
 package com.rodev.test.blueprint.pin.var_pin;
 
+import com.rodev.test.blueprint.data.action.PinType;
 import com.rodev.test.blueprint.data.variable.VariableType;
 import com.rodev.test.blueprint.pin.InputPin;
 import com.rodev.test.blueprint.pin.Pin;
@@ -8,12 +9,12 @@ import java.util.UUID;
 
 public class InVarPin extends InputPin implements VarPin {
 
-    public InVarPin(VariableType variableType) {
-        super(variableType);
+    public InVarPin(PinType pinType) {
+        super(pinType);
     }
 
-    public InVarPin(VariableType variableType, UUID uuid) {
-        super(variableType, uuid);
+    public InVarPin(PinType pinType, UUID uuid) {
+        super(pinType, uuid);
     }
 
     @Override

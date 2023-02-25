@@ -14,6 +14,7 @@ public class ActionEntity {
         public String id;
         public String label;
         public String type;
+        public Object extra_data;
     }
 }
 

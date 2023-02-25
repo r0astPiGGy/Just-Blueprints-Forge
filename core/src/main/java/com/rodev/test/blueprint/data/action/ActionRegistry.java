@@ -5,15 +5,16 @@ import com.rodev.test.blueprint.data.action.type.ActionTypeRegistry;
 import com.rodev.test.blueprint.data.json.ActionEntity;
 import com.rodev.test.blueprint.data.variable.VariableTypeRegistry;
 
-import java.util.Collection;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class ActionRegistry extends Registry<String, Action> {
 
     private final ActionTypeRegistry actionTypeRegistry;
     private final VariableTypeRegistry variableTypeRegistry;
+    private final Map<String, PinTypeFactory> pinTypeFactoryMap = new HashMap<>();
+
+    private static final PinTypeFactory defaultPinTypeFactory =
+            (entity, type) -> new PinType(entity.id, entity.label, type);
 
     public ActionRegistry(ActionTypeRegistry actionTypeRegistry, VariableTypeRegistry variableTypeRegistry) {
         this.actionTypeRegistry = actionTypeRegistry;
@@ -22,6 +23,10 @@ public class ActionRegistry extends Registry<String, Action> {
 
     public void load(List<ActionEntity> actions){
         actions.stream().map(this::create).forEach(this::add);
+    }
+
+    public void registerPinTypeFactory(String typeId, PinTypeFactory factory) {
+        pinTypeFactoryMap.put(typeId, factory);
     }
 
     private Action create(ActionEntity entity) {
@@ -55,7 +60,9 @@ public class ActionRegistry extends Registry<String, Action> {
             throw new IllegalArgumentException("Unknown variable type: " + entity.type);
         }
 
-        return new PinType(entity.id, entity.label, varType);
+        var factory = pinTypeFactoryMap.getOrDefault(varType.type(), defaultPinTypeFactory);
+
+        return factory.create(entity, varType);
     }
 
     public Collection<Action> getAll() {

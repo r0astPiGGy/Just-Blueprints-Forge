@@ -21,9 +21,9 @@ public class VariableTypeRegistry extends Registry<String, VariableType> {
     }
 
     public static void onPinRowViewCreated(Pin pin, PinRowView rowView) {
-        var type = pin.getType().type();
+        var type = pin.getType().getVariableType();
 
-        var listener = inputPinRowCreatedListeners.get(type);
+        var listener = inputPinRowCreatedListeners.get(type.type());
 
         if(listener == null) return;
 

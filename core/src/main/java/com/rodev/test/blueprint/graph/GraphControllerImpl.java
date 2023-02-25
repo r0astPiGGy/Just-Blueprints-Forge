@@ -175,8 +175,8 @@ public class GraphControllerImpl implements
 
     private void handleOutputContextMenuOpen(ContextMenuBuilder builder, Pin pin) {
         builder
-                .withHeader("Actions taking a " + pin.getType().type())
-                .filtering(action -> !action.acceptsInputType(pin.getType()))
+                .withHeader("Actions taking a " + pin.getType().getVariableType().type())
+                .filtering(action -> !action.acceptsInputType(pin.getType().getVariableType()))
                 .onItemClick(action -> {
                     createViewAt(builder.x, builder.y, action);
                     clearLastTemporaryLine();
@@ -187,8 +187,8 @@ public class GraphControllerImpl implements
 
     private void handleInputContextMenuOpen(ContextMenuBuilder builder, Pin pin) {
         builder
-                .withHeader("Actions returning a " + pin.getType().type())
-                .filtering(action -> !action.acceptsOutputType(pin.getType()))
+                .withHeader("Actions returning a " + pin.getType().getVariableType().type())
+                .filtering(action -> !action.acceptsOutputType(pin.getType().getVariableType()))
                 .onItemClick(action -> {
                     createViewAt(builder.x, builder.y, action);
                     clearLastTemporaryLine();

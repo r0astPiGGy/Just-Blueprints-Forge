@@ -1,5 +1,6 @@
 package com.rodev.test.blueprint.pin;
 
+import com.rodev.test.blueprint.data.action.PinType;
 import com.rodev.test.blueprint.data.variable.VariableType;
 import com.rodev.test.blueprint.pin.AbstractPin;
 import com.rodev.test.blueprint.pin.Pin;
@@ -12,12 +13,12 @@ public abstract class InputPin extends AbstractPin {
 
     private Pin connectedPin;
 
-    public InputPin(VariableType variableType) {
-        super(variableType);
+    public InputPin(PinType pinType) {
+        super(pinType);
     }
 
-    public InputPin(VariableType variableType, UUID uuid) {
-        super(variableType, uuid);
+    public InputPin(PinType pinType, UUID uuid) {
+        super(pinType, uuid);
     }
 
     @Override

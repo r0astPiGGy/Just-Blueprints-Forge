@@ -29,7 +29,7 @@ public class BlueprintFragment extends Fragment {
 
     @Override
     public View onCreateView(@Nullable ViewGroup container, @Nullable DataSet savedInstanceState) {
-        //ViewConfiguration.get().setViewScale(1);
+        ViewConfiguration.get().setViewScale(1);
 
         return createRoot();
     }
