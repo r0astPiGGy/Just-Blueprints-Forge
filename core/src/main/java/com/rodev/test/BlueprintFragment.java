@@ -20,6 +20,7 @@ import org.jetbrains.annotations.Nullable;
 import javax.annotation.Nonnull;
 
 import static icyllis.modernui.view.View.dp;
+import static icyllis.modernui.view.View.sp;
 
 public class BlueprintFragment extends Fragment {
 
@@ -28,7 +29,7 @@ public class BlueprintFragment extends Fragment {
 
     @Override
     public View onCreateView(@Nullable ViewGroup container, @Nullable DataSet savedInstanceState) {
-        ViewConfiguration.get().setViewScale(1);
+        //ViewConfiguration.get().setViewScale(1);
 
         return createRoot();
     }
@@ -42,7 +43,6 @@ public class BlueprintFragment extends Fragment {
         );
 
         params.gravity = Gravity.CENTER;
-        params.setMargins(dp(5), dp(5), dp(5), dp(5));
         base.setLayoutParams(params);
 
         base.setBackground(new Drawable() {
@@ -149,7 +149,7 @@ public class BlueprintFragment extends Fragment {
         detailsPanel.setGravity(Gravity.CENTER | Gravity.TOP);
 
         var params = new RelativeLayout.LayoutParams(
-                dp(150),
+                150,
                 RelativeLayout.LayoutParams.MATCH_PARENT
         );
         params.addRule(RelativeLayout.ALIGN_PARENT_START, RelativeLayout.TRUE);
@@ -167,7 +167,7 @@ public class BlueprintFragment extends Fragment {
         });
 
         var detailsHeader = createTextView("Details");
-        detailsHeader.setTextSize(dp(8));
+        detailsHeader.setTextSize(sp(8));
 
         detailsPanel.addView(detailsHeader);
 

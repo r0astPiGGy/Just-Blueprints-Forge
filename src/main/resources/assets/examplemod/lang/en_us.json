@@ -1,3 +1,4 @@
 {
-  "key.examplemod.open_ide_key": "Open IDE"
+  "key.examplemod.open_ide": "Open IDE",
+  "key.category.examplemod": "JustBlueprints bindings"
 }

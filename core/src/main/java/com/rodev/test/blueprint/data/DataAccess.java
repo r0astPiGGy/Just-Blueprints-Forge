@@ -107,7 +107,7 @@ public class DataAccess {
                             ViewGroup.LayoutParams.MATCH_PARENT,
                             ViewGroup.LayoutParams.WRAP_CONTENT
                     ));
-                    view.setHint("Enter text..");
+                    view.setHint("Текст");
                     view.setTextColor(Colors.NODE_BACKGROUND);
                     view.setBackground(new Drawable() {
                         private final int mRadius = dp(4);

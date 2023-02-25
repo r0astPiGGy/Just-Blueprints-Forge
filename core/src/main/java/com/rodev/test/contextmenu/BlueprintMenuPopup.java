@@ -83,7 +83,7 @@ public class BlueprintMenuPopup extends MenuPopup implements PopupWindow.OnDismi
         this.builder = builder;
 
         mAnchorView = anchorView;
-        mPopup = new BPContextMenu(400, 400, this::createPopupContent);
+        mPopup = new BPContextMenu(dp(400), dp(400), this::createPopupContent);
         mPopup.setBackgroundDrawable(new Drawable() {
             @Override
             public void draw(@Nonnull Canvas canvas) {

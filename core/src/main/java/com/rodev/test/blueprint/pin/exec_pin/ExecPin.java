@@ -42,8 +42,8 @@ public interface ExecPin extends Pin {
 
     abstract class ExecDrawable extends MaterialDrawable {
 
-        protected final int heightOffset = 3;
-        protected final int widthOffset = 3;
+        protected final int heightOffset = dp(3);
+        protected final int widthOffset = dp(3);
 
         ExecDrawable() {}
 

@@ -1,0 +1,52 @@
+plugins {
+    id 'java'
+}
+
+group 'com.rodev.test'
+version '1.0'
+
+repositories {
+    mavenCentral()
+    maven {
+        name 'IzzelAliz Maven'
+        url 'https://maven.izzel.io/releases/'
+    }
+}
+
+dependencies {
+    implementation project(":core")
+    implementation "icyllis.modernui:ModernUI-Core:3.6.3.117"
+    // apply appropriate LWJGL platform here
+    implementation platform("org.lwjgl:lwjgl-bom:3.3.1")
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.13.3'
+
+    implementation "org.lwjgl:lwjgl"
+    implementation "org.lwjgl:lwjgl-assimp"
+    implementation "org.lwjgl:lwjgl-bgfx"
+    implementation "org.lwjgl:lwjgl-glfw"
+    implementation "org.lwjgl:lwjgl-nanovg"
+    implementation "org.lwjgl:lwjgl-nuklear"
+    implementation "org.lwjgl:lwjgl-openal"
+    implementation "org.lwjgl:lwjgl-opengl"
+    implementation "org.lwjgl:lwjgl-par"
+    implementation "org.lwjgl:lwjgl-stb"
+    implementation "org.lwjgl:lwjgl-vulkan"
+    runtimeOnly "org.lwjgl:lwjgl::natives-linux"
+    runtimeOnly "org.lwjgl:lwjgl-assimp::natives-linux"
+    runtimeOnly "org.lwjgl:lwjgl-bgfx::natives-linux"
+    runtimeOnly "org.lwjgl:lwjgl-glfw::natives-linux"
+    runtimeOnly "org.lwjgl:lwjgl-nanovg::natives-linux"
+    runtimeOnly "org.lwjgl:lwjgl-nuklear::natives-linux"
+    runtimeOnly "org.lwjgl:lwjgl-openal::natives-linux"
+    runtimeOnly "org.lwjgl:lwjgl-opengl::natives-linux"
+    runtimeOnly "org.lwjgl:lwjgl-par::natives-linux"
+    runtimeOnly "org.lwjgl:lwjgl-stb::natives-linux"
+
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+}
+
+test {
+    useJUnitPlatform()
+}

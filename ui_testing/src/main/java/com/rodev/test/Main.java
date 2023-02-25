@@ -2,7 +2,7 @@ package com.rodev.test;
 
 import com.rodev.test.blueprint.data.DataAccess;
 import icyllis.modernui.ModernUI;
-import icyllis.modernui.test.TestFragment;
+import icyllis.modernui.view.ViewConfiguration;
 
 import java.io.IOException;
 
