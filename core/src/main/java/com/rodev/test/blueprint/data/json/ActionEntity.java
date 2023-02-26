@@ -1,7 +1,12 @@
 package com.rodev.test.blueprint.data.json;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+
 import java.util.List;
 
+@NoArgsConstructor
+@AllArgsConstructor
 public class ActionEntity {
     public String id;
     public String type;
@@ -10,6 +15,8 @@ public class ActionEntity {
     public List<PinTypeEntity> input;
     public List<PinTypeEntity> output;
 
+    @NoArgsConstructor
+    @AllArgsConstructor
     public static class PinTypeEntity {
         public String id;
         public String label;

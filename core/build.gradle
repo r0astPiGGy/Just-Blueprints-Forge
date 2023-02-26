@@ -14,6 +14,8 @@ repositories {
 }
 
 dependencies {
+    implementation 'org.projectlombok:lombok:1.18.22'
+    annotationProcessor 'org.projectlombok:lombok:1.18.22'
     compileOnly "icyllis.modernui:ModernUI-Core:3.6.0.114"
     // apply appropriate LWJGL platform here
     implementation platform("org.lwjgl:lwjgl-bom:3.3.1")

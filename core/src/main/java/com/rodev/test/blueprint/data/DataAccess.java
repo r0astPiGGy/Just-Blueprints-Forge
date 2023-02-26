@@ -48,7 +48,7 @@ public class DataAccess {
 
         if(cat == null) return null;
 
-        return cat.name;
+        return cat.name();
     }
 
     public static DataAccess load(InputStream dataInputStream) throws IOException {
