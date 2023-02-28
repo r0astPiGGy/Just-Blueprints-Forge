@@ -75,22 +75,18 @@ public final class Action {
         treeNode.add(contextMenuItem);
     }
 
-    public BPNode toNode(Consumer<Pin> onPinCreated, Consumer<BPNode> onNodeCreated) {
-        var node = actionType().createNode(onPinCreated, name);
+    public BPNode toNode() {
+        var node = actionType().createNode(id, name);
 
         for (var inputPinType : inputPins()) {
             var pin = VarPin.inputPin(inputPinType);
-            onPinCreated.accept(pin);
             node.addInputPin(pin, inputPinType.getName());
         }
 
         for (var outputPinType : outputPins()) {
             var pin = VarPin.outputPin(outputPinType);
-            onPinCreated.accept(pin);
             node.addOutputPin(pin, outputPinType.getName());
         }
-
-        onNodeCreated.accept(node);
 
         return node;
     }

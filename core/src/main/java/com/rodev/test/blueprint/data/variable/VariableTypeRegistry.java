@@ -7,6 +7,7 @@ import com.rodev.test.blueprint.pin.PinRowView;
 import com.rodev.test.utils.StringParse;
 import icyllis.modernui.graphics.Color;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -31,9 +32,9 @@ public class VariableTypeRegistry extends Registry<String, VariableType> {
     }
 
 
-    public void load(List<VariableTypeEntity> variableTypeList) {
+    public void load(VariableTypeEntity[] variableTypeList) {
         data.clear();
-        variableTypeList.stream().map(this::create).forEach(this::add);
+        Arrays.stream(variableTypeList).map(this::create).forEach(this::add);
     }
 
     private VariableType create(VariableTypeEntity entity) {

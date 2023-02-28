@@ -21,8 +21,8 @@ public class ActionRegistry extends Registry<String, Action> {
         this.variableTypeRegistry = variableTypeRegistry;
     }
 
-    public void load(List<ActionEntity> actions){
-        actions.stream().map(this::create).forEach(this::add);
+    public void load(ActionEntity[] actions){
+        Arrays.stream(actions).map(this::create).forEach(this::add);
     }
 
     public void registerPinTypeFactory(String typeId, PinTypeFactory factory) {

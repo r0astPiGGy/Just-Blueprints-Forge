@@ -2,6 +2,7 @@ package com.rodev.test.blueprint.pin;
 
 import com.rodev.test.blueprint.data.variable.DefaultInputValue;
 import com.rodev.test.blueprint.node.BPNode;
+import com.rodev.test.utils.TextViewCreationListener;
 import icyllis.modernui.view.Gravity;
 import icyllis.modernui.view.MotionEvent;
 import icyllis.modernui.view.View;
@@ -27,6 +28,8 @@ public class PinRowView extends LinearLayout implements PinConnectionListener {
 
         var textView = new TextView();
         textView.setText(text);
+
+        TextViewCreationListener.onPinTextCreated(textView);
 
         setMinimumWidth(dp(100));
         setLayoutParams(new ViewGroup.LayoutParams(

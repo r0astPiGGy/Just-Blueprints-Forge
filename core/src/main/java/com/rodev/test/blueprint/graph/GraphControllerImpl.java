@@ -30,15 +30,17 @@ public class GraphControllerImpl implements
     private ViewMoveListener viewMoveListener;
 
     public void createViewAt(int x, int y, Action action) {
-        var view = (View) action.toNode(pin -> {
+        var node = action.toNode();
+
+        node.forEachPin(pin -> {
             pin.setPinHoverListener(this);
             pin.setPinDragListener(this);
-        }, node -> {
-            node.setNodeTouchListener(this);
-            node.setNodeMoveListener(this);
         });
 
-        viewHolder.addViewAt(view, x, y);
+        node.setNodeTouchListener(this);
+        node.setNodeMoveListener(this);
+
+        viewHolder.addViewAt((View) node, x, y);
     }
 
     @Override

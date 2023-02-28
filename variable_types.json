@@ -1,0 +1,46 @@
+[ {
+  "id" : "item",
+  "color" : ""
+}, {
+  "id" : "potion",
+  "color" : ""
+}, {
+  "id" : "select",
+  "color" : ""
+}, {
+  "id" : "sound",
+  "color" : ""
+}, {
+  "id" : "any",
+  "color" : ""
+}, {
+  "id" : "enum",
+  "color" : ""
+}, {
+  "id" : "number",
+  "color" : ""
+}, {
+  "id" : "boolean",
+  "color" : ""
+}, {
+  "id" : "variable",
+  "color" : ""
+}, {
+  "id" : "location",
+  "color" : ""
+}, {
+  "id" : "particle",
+  "color" : ""
+}, {
+  "id" : "vector",
+  "color" : ""
+}, {
+  "id" : "text",
+  "color" : ""
+}, {
+  "id" : "entity",
+  "color" : ""
+}, {
+  "id" : "player",
+  "color" : ""
+} ]

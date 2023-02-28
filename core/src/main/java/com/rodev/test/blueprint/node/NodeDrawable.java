@@ -34,7 +34,7 @@ public class NodeDrawable extends SelectableDrawable {
         var b = getBounds();
         var paint = Paint.take();
 
-        int headerHeight = headerHeightSupplier.get();
+        int headerHeight = headerHeightSupplier.get() + padding;
 
         paint.setColors(headerColors);
 
@@ -43,7 +43,7 @@ public class NodeDrawable extends SelectableDrawable {
                 b.left + selectionOffset,
                 b.top + selectionOffset,
                 b.right - selectionOffset,
-                b.top + selectionOffset + headerHeight,
+                b.top + headerHeight,
                 mRadius,
                 paint
         );
@@ -52,7 +52,7 @@ public class NodeDrawable extends SelectableDrawable {
                 b.left + selectionOffset,
                 b.top + selectionOffset + mRadius,
                 b.right - selectionOffset,
-                b.top + selectionOffset + headerHeight,
+                b.top + headerHeight,
                 paint
         );
 

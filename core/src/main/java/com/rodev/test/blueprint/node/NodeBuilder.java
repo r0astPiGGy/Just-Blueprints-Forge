@@ -48,7 +48,7 @@ public class NodeBuilder {
     }
 
     public NodeView build() {
-        var nodeView = new NodeView(nodeColor, functionName);
+        var nodeView = new NodeView(nodeColor, "", functionName);
 
         inputPinSuppliers.forEach(s -> {
             nodeView.addInput(s.get());

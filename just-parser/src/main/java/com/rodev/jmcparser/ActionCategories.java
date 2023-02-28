@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.rodev.jmcparser.data.CategoryProvider;
 import com.rodev.jmcparser.util.TimeCounter;
+import org.jetbrains.annotations.Nullable;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -31,7 +32,14 @@ public class ActionCategories implements CategoryProvider {
         for (var entity : data) {
             if(entity == null) continue;
 
-            categoriesById.put(entity.id, entity.category);
+            var category = entity.category;
+            var sub = entity.subcategory;
+
+            if(sub != null) {
+                category = String.format("%s.%s-%s", category, category, sub);
+            }
+
+            categoriesById.put(entity.id, category);
         }
 
         counter.print(estimated -> "Loaded " + categoriesById.size() + " actions by categories in " + estimated + "ms.");
@@ -45,12 +53,17 @@ public class ActionCategories implements CategoryProvider {
     private static class ActionEntity {
         public String id;
         public String category;
+        @Nullable
+        public String subcategory;
 
         @JsonIgnore
         public Object type;
 
         @JsonIgnore
         public Object args;
+
+        @JsonIgnore
+        public Object icon;
 
     }
 }

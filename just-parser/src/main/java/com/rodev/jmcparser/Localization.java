@@ -2,6 +2,7 @@ package com.rodev.jmcparser;
 
 import com.rodev.jmcparser.data.LocaleProvider;
 import com.rodev.jmcparser.util.TimeCounter;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.*;
 import java.util.HashMap;
@@ -30,8 +31,8 @@ public class Localization implements LocaleProvider {
         values.put(valueByKey[0], valueByKey[1]);
     }
 
-    public String translateKey(String key) {
-        var translated = values.get(key);
+    public @NotNull String translateKeyOrDefault(String key) {
+        var translated = translateKey(key);
 
         if(translated == null) {
             translated = key;
@@ -42,4 +43,8 @@ public class Localization implements LocaleProvider {
         return translated;
     }
 
+    @Override
+    public String translateKey(String key) {
+        return values.get(key);
+    }
 }

@@ -6,7 +6,6 @@ import com.rodev.jmcparser.util.TimeCounter;
 import com.rodev.test.blueprint.data.json.ActionEntity;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
-import lombok.val;
 
 import java.util.*;
 import java.util.function.Function;
@@ -14,6 +13,8 @@ import java.util.function.Function;
 @RequiredArgsConstructor
 public class DataInterpreter implements ActionNameHandler {
 
+    private final Set<String> variableTypes = new HashSet<>();
+    private final Set<String> withoutCategory = new HashSet<>();
     private final ActionData[] data;
     private final LocaleProvider localeProvider;
     private final CategoryProvider categoryProvider;
@@ -26,6 +27,7 @@ public class DataInterpreter implements ActionNameHandler {
 
     @Setter
     private PinTypeNameHandler pinTypeNameHandler = typeId -> typeId;
+
 
     public ActionEntity[] interpret() {
         var counter = new TimeCounter();
@@ -41,6 +43,8 @@ public class DataInterpreter implements ActionNameHandler {
         }
 
         counter.print(ms -> "Interpreted " + array.length + " actions in " + ms + "ms.");
+        System.out.println("Variable types [" + variableTypes.size() + "]: " + String.join(", ", variableTypes));
+        System.out.println("Actions without category [" + withoutCategory.size() + "]:" + String.join(", ", withoutCategory));
 
         return array;
     }
@@ -51,24 +55,44 @@ public class DataInterpreter implements ActionNameHandler {
         actionEntity.id = actionData.id;
         actionEntity.type = actionTypeHandler.handleActionType(actionData);
         actionEntity.name = actionNameHandler.handleActionName(actionData, localeProvider);
-        actionEntity.category = categoryProvider.getCategoryForActionId(actionData.id);
+        actionEntity.category = getCategoryFor(actionData);
         actionEntity.input = createInput(actionData);
         actionEntity.output = createOutput(actionData);
 
         return actionEntity;
     }
 
+    private String getCategoryFor(ActionData actionData) {
+        var id = actionData.id;
+        var base = categoryProvider.getCategoryForActionId(id);
+
+        if(base != null) return base;
+
+        if(id.startsWith("if_game")) return "if_game";
+
+        if(id.startsWith("game")) return "game_action";
+
+        withoutCategory.add(id);
+
+        return "misc";
+    }
+
     @Override
     public String handleActionName(ActionData data, LocaleProvider localeProvider) {
         var key = "creative_plus.action." + data.id + ".name";
 
-        return localeProvider.translateKey(key);
+        return localeProvider.translateKeyOrDefault(key);
     }
 
     private List<ActionEntity.PinTypeEntity> createInput(ActionData actionData) {
         var input = new LinkedList<ActionEntity.PinTypeEntity>();
 
-        input.add(createObjectInputPin(actionData));
+        var inputPin = createObjectInputPin(actionData);
+
+        if(inputPin != null) {
+            input.add(inputPin);
+        }
+
 
         for(var arg : actionData.args) {
             if(arg == null) continue;
@@ -80,10 +104,22 @@ public class DataInterpreter implements ActionNameHandler {
     }
 
     private ActionEntity.PinTypeEntity createObjectInputPin(ActionData actionData) {
+        switch (actionData.object) {
+            case "code":
+            case "world":
+            case "repeat":
+                return null;
+        }
+
         var pin = new ActionEntity.PinTypeEntity();
+
         pin.type = actionData.object;
         pin.label = pinTypeNameHandler.handlePinTypeName(actionData.object);
         pin.id = actionData.object;
+
+        if(pin.type != null) {
+            variableTypes.add(pin.type);
+        }
 
         return pin;
     }
@@ -97,16 +133,22 @@ public class DataInterpreter implements ActionNameHandler {
                         String.format("creative_plus.action.%s.argument.%s.enum.%s.name",
                         actionData.id, arg.name, rawEnumValue.toLowerCase());
 
-                return localeProvider.translateKey(localeId);
+                return localeProvider.translateKeyOrDefault(localeId);
             });
         }
 
         pin.type = arg.type;
         pin.id = arg.name;
 
+        if(pin.type != null) {
+            variableTypes.add(pin.type);
+        } else {
+            pin.type = "variable";
+        }
+
         var localeId = String.format("creative_plus.action.%s.argument.%s.name", actionData.id, arg.name);
 
-        pin.label = localeProvider.translateKey(localeId);
+        pin.label = localeProvider.translateKeyOrDefault(localeId);
 
         return pin;
     }
@@ -124,12 +166,22 @@ public class DataInterpreter implements ActionNameHandler {
     }
 
     private List<ActionEntity.PinTypeEntity> createOutput(ActionData actionData) {
-        if(actionData.assigning == null) return Collections.emptyList();
+        if(actionData.containing == null && actionData.assigning == null) {
+            return Collections.emptyList();
+        }
+
+        var type = "variable";
+
+        if (actionData.containing != null && actionData.containing.equalsIgnoreCase("predicate")) {
+            type = "boolean";
+        } else {
+            return Collections.emptyList();
+        }
 
         var pinTypeEntity = new ActionEntity.PinTypeEntity();
-
+        pinTypeEntity.label = "Return value";
+        pinTypeEntity.type = type;
         pinTypeEntity.id = "-";
-        pinTypeEntity.type = "variable";
 
         return List.of(pinTypeEntity);
     }

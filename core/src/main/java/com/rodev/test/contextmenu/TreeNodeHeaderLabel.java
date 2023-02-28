@@ -1,6 +1,7 @@
 package com.rodev.test.contextmenu;
 
 import com.rodev.test.Colors;
+import com.rodev.test.utils.TextViewCreationListener;
 import icyllis.modernui.graphics.Canvas;
 import icyllis.modernui.graphics.Paint;
 import icyllis.modernui.graphics.drawable.Drawable;
@@ -27,8 +28,7 @@ public class TreeNodeHeaderLabel extends LinearLayout {
         setOrientation(HORIZONTAL);
 
         headerLabel.setText(text);
-        headerLabel.setTextStyle(FontPaint.BOLD);
-        headerLabel.setTextSize(View.sp(13));
+        TextViewCreationListener.onContextMenuCategoryTextCreated(headerLabel);
 
         addView(headerLabel, new LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,

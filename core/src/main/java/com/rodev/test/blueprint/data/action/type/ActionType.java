@@ -1,6 +1,7 @@
 package com.rodev.test.blueprint.data.action.type;
 
 
+import com.rodev.test.blueprint.data.action.Action;
 import com.rodev.test.blueprint.data.action.NodeSupplier;
 import com.rodev.test.blueprint.node.BPNode;
 import com.rodev.test.blueprint.pin.Pin;
@@ -23,8 +24,8 @@ public final class ActionType {
         return type;
     }
 
-    public BPNode createNode(Consumer<Pin> onPinCreated, String name) {
-        return nodeSupplier.create(onPinCreated, headerColor, name);
+    public BPNode createNode(String id, String name) {
+        return nodeSupplier.create(headerColor, id, name);
     }
 
     @Override

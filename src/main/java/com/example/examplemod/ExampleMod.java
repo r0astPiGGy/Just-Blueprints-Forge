@@ -3,6 +3,7 @@ package com.example.examplemod;
 import com.mojang.logging.LogUtils;
 //import com.rodev.test.blueprint.data.DataAccess;
 import com.rodev.test.blueprint.data.DataAccess;
+import com.rodev.test.blueprint.data.DataProvider;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.InterModComms;
@@ -15,11 +16,12 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.stream.Collectors;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(ExampleMod.MODID)
-public class ExampleMod
+public class ExampleMod implements DataProvider
 {
     public static final String MODID = "examplemod";
 
@@ -29,7 +31,7 @@ public class ExampleMod
     public ExampleMod()
     {
         try {
-            DataAccess.load(ExampleMod.class.getResourceAsStream("data.json"));
+            DataAccess.load(this);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -69,5 +71,29 @@ public class ExampleMod
     {
         // Do something when the server starts
         LOGGER.info("HELLO from server starting");
+    }
+
+    @Override
+    public InputStream getActionsInputStream() {
+        return getResourceAsStream("actions.json");
+    }
+
+    @Override
+    public InputStream getCategoriesInputStream() {
+        return getResourceAsStream("categories.json");
+    }
+
+    @Override
+    public InputStream getVariableTypesInputStream() {
+        return getResourceAsStream("variable_types.json");
+    }
+
+    @Override
+    public InputStream getActionTypesInputStream() {
+        return getResourceAsStream("action_types.json");
+    }
+
+    private InputStream getResourceAsStream(String name) {
+        return ExampleMod.class.getResourceAsStream(name);
     }
 }

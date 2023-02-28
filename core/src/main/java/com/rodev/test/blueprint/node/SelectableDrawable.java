@@ -17,6 +17,7 @@ public class SelectableDrawable extends Drawable {
     protected final int mRadius;
     protected final int selectionOffset;
     protected int backgroundColor = Colors.NODE_BACKGROUND;
+    protected int padding = 0;
 
     public SelectableDrawable() {
         this(3, dp(8));
@@ -56,7 +57,8 @@ public class SelectableDrawable extends Drawable {
 
     @Override
     public boolean getPadding(@Nonnull Rect padding) {
-        int r = (int) Math.ceil(mRadius / 2f) + (selectionOffset * 2);
+        int r = (int) Math.ceil(mRadius / 2f) + selectionOffset;
+        this.padding = r;
         padding.set(r, r, r, r);
         return true;
     }

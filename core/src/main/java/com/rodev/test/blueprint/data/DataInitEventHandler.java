@@ -19,18 +19,15 @@ public class DataInitEventHandler {
     private DataInitEventHandler() {}
 
     public static void onActionTypeRegistryPreLoad(ActionTypeRegistry registry) {
-        registry.addNodeSupplier("event", (onPinCreated, color, name) -> {
-            var node = new NodeView(color, name);
+        registry.addNodeSupplier("event", (color, id, name) -> {
+            var node = new NodeView(color, id, name);
             var output = ExecPin.outputPin();
-            onPinCreated.accept(output);
 
             node.addOutput(output.createRowView());
 
             return node;
         });
-        registry.addNodeSupplier("pure-function", (onPinCreated, color, name) -> {
-            return new NodeView(color, name);
-        });
+        registry.addNodeSupplier("pure-function", NodeView::new);
     }
 
     public static void onVariableTypeRegistryPreLoad(VariableTypeRegistry registry) {

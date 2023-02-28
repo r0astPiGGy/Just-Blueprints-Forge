@@ -6,6 +6,7 @@ import com.rodev.test.blueprint.data.json.ActionTypeEntity;
 import com.rodev.test.utils.StringParse;
 import icyllis.modernui.graphics.Color;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,9 +19,9 @@ public class ActionTypeRegistry extends Registry<String, ActionType> {
         nodeSupplierMap.put(actionType, nodeSupplier);
     }
 
-    public void load(List<ActionTypeEntity> actions) {
+    public void load(ActionTypeEntity[] actions) {
         data.clear();
-        actions.stream().map(this::create).forEach(this::add);
+        Arrays.stream(actions).map(this::create).forEach(this::add);
     }
 
     private ActionType create(ActionTypeEntity entity) {

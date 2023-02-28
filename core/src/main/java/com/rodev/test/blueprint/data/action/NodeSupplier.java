@@ -9,21 +9,15 @@ import java.util.function.Consumer;
 
 public interface NodeSupplier {
 
-    NodeSupplier identity = (onPinCreated, color, name) -> {
-        var node = new NodeView(color, name);
+    NodeSupplier identity = (color, id, name) -> {
+        var node = new NodeView(color, id, name);
 
-        var input = ExecPin.inputPin();
-        onPinCreated.accept(input);
-
-        var output = ExecPin.outputPin();
-        onPinCreated.accept(output);
-
-        node.addInput(input.createRowView());
-        node.addOutput(output.createRowView());
+        node.addInput(ExecPin.inputPin().createRowView());
+        node.addOutput(ExecPin.outputPin().createRowView());
 
         return node;
     };
 
-    BPNode create(Consumer<Pin> onPinCreated, int color, String name);
+    BPNode create(int color, String id, String name);
 
 }

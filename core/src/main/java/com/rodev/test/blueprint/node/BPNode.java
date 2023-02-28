@@ -4,6 +4,8 @@ import com.rodev.test.blueprint.ChildRoot;
 import com.rodev.test.blueprint.pin.Pin;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.function.Consumer;
+
 public interface BPNode extends ChildRoot {
 
     void select();
@@ -19,6 +21,8 @@ public interface BPNode extends ChildRoot {
     void addInputPin(Pin pin, String name);
 
     void addOutputPin(Pin pin, String name);
+
+    void forEachPin(Consumer<Pin> pinConsumer);
 
     @Nullable
     BPNode getPrevious();

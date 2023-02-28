@@ -3,6 +3,7 @@ package com.rodev.test.contextmenu;
 import com.rodev.test.Colors;
 import com.rodev.test.blueprint.data.DataAccess;
 import com.rodev.test.blueprint.data.action.Action;
+import com.rodev.test.utils.TextViewCreationListener;
 import icyllis.modernui.graphics.Canvas;
 import icyllis.modernui.graphics.Paint;
 import icyllis.modernui.graphics.drawable.Drawable;
@@ -15,8 +16,6 @@ import icyllis.modernui.widget.*;
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nonnull;
-
-import java.util.function.Consumer;
 
 import static icyllis.modernui.view.View.dp;
 
@@ -124,7 +123,7 @@ public class BlueprintMenuPopup extends MenuPopup implements PopupWindow.OnDismi
 
         headerLabel.setId(popupHeaderId);
         headerLabel.setText(builder.header);
-        headerLabel.setTextSize(View.sp(17));
+        TextViewCreationListener.onContextMenuHeaderTextCreated(headerLabel);
 
         var params = new RelativeLayout.LayoutParams(
                 RelativeLayout.LayoutParams.WRAP_CONTENT,
@@ -158,7 +157,7 @@ public class BlueprintMenuPopup extends MenuPopup implements PopupWindow.OnDismi
 
         searchView.setId(popupSearchBarId);
         searchView.setHint("Search");
-        searchView.setTextSize(View.sp(13));
+        TextViewCreationListener.onContextMenuSearchViewCreated(searchView);
         searchView.setBackground(new Drawable() {
             private final int mRadius = dp(4);
 
@@ -223,7 +222,7 @@ public class BlueprintMenuPopup extends MenuPopup implements PopupWindow.OnDismi
     }
 
     public ContextMenuItem createItem(String displayText, Action action) {
-        return ContextMenuItem.of(displayText, () -> {
+        return ContextMenuItem.of(displayText, action.id(), () -> {
             dismiss();
             builder.onClick.accept(action);
         });

@@ -18,7 +18,7 @@ import org.jetbrains.annotations.Nullable;
 
 import javax.annotation.Nonnull;
 
-public class VarGetterNode extends FrameLayout implements BPNode {
+public abstract class VarGetterNode extends FrameLayout implements BPNode {
 
     private final PinRowView pinRowView;
 
