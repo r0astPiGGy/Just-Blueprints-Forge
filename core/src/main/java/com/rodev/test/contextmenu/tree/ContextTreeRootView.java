@@ -1,5 +1,6 @@
-package com.rodev.test.contextmenu;
+package com.rodev.test.contextmenu.tree;
 
+import com.rodev.test.contextmenu.Item;
 import icyllis.modernui.widget.LinearLayout;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -16,7 +17,7 @@ public class ContextTreeRootView extends LinearLayout {
         setOrientation(VERTICAL);
     }
 
-    public boolean hideIfNot(Predicate<ContextMenuItem> contextMenuItemPredicate) {
+    public boolean hideIfNot(Predicate<Item> contextMenuItemPredicate) {
         var found = false;
         for(ContextTreeNodeView treeNode : child.values()) {
             var tested = treeNode.hideIfNot(contextMenuItemPredicate);

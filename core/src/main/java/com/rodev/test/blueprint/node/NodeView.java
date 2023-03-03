@@ -31,16 +31,14 @@ public class NodeView extends LinearLayout implements BPNode {
     private final List<PinRowView> inputPins = new LinkedList<>();
 
     private final String id;
-    private final String nodeName;
-
-    private String subtitle;
+    private final String title;
     private TextView subtitleView;
 
     private final NodeTouchHandler<NodeView> nodeTouchHandler;
 
-    public NodeView(int headerColor, String id, String name) {
+    public NodeView(int headerColor, String id, String title) {
         this.id = id;
-        this.nodeName = name;
+        this.title = title;
 
         nodeTouchHandler = new NodeTouchHandler<>(this, this::updatePinsPosition);
 
@@ -141,7 +139,7 @@ public class NodeView extends LinearLayout implements BPNode {
 
     private TextView createTitle() {
         var title = new TextView();
-        title.setText(nodeName);
+        title.setText(this.title);
         title.setGravity(Gravity.CENTER);
 
         TextViewCreationListener.onNodeTitleCreated(title);
@@ -247,7 +245,10 @@ public class NodeView extends LinearLayout implements BPNode {
 
     @Override
     public void addOutputPin(Pin pin, String name) {
-        addOutput(pin.createRowView().setText(name));
+        var rowView = pin.createRowView();
+        rowView.setText(name);
+
+        addOutput(rowView);
     }
 
     @Override
@@ -261,7 +262,6 @@ public class NodeView extends LinearLayout implements BPNode {
         if(subTitle == null || subTitle.isEmpty()) {
             subtitleView.setVisibility(GONE);
         } else {
-            this.subtitle = subTitle;
             subtitleView.setText(subTitle);
             subtitleView.setVisibility(VISIBLE);
         }

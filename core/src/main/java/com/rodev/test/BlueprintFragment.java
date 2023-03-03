@@ -35,7 +35,7 @@ public class BlueprintFragment extends Fragment {
     }
 
     private FrameLayout createRoot() {
-        var base = new FrameLayout();
+        var root = new FrameLayout();
 
         var params = new FrameLayout.LayoutParams(
                 FrameLayout.LayoutParams.MATCH_PARENT,
@@ -43,9 +43,9 @@ public class BlueprintFragment extends Fragment {
         );
 
         params.gravity = Gravity.CENTER;
-        base.setLayoutParams(params);
+        root.setLayoutParams(params);
 
-        base.setBackground(new Drawable() {
+        root.setBackground(new Drawable() {
             @Override
             public void draw(@Nonnull Canvas canvas) {
                 Paint paint = Paint.get();
@@ -57,9 +57,9 @@ public class BlueprintFragment extends Fragment {
 
         var content = createContent();
 
-        base.addView(content);
+        root.addView(content);
 
-        return base;
+        return root;
     }
 
     private RelativeLayout createContent() {
@@ -87,10 +87,13 @@ public class BlueprintFragment extends Fragment {
 
         toolsPanel.setOrientation(LinearLayout.HORIZONTAL);
 
-        var toolPanelParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-        toolPanelParams.addRule(RelativeLayout.CENTER_HORIZONTAL);
+        var params = new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.MATCH_PARENT,
+                RelativeLayout.LayoutParams.WRAP_CONTENT
+        );
+        params.addRule(RelativeLayout.CENTER_HORIZONTAL);
 
-        toolsPanel.setLayoutParams(toolPanelParams);
+        toolsPanel.setLayoutParams(params);
 
         toolsPanel.setBackground(new Drawable() {
             @Override
@@ -113,14 +116,14 @@ public class BlueprintFragment extends Fragment {
     private RelativeLayout createBody() {
         var body = new RelativeLayout();
 
-        var bodyParams = new RelativeLayout.LayoutParams(
+        var params = new RelativeLayout.LayoutParams(
                 RelativeLayout.LayoutParams.MATCH_PARENT,
                 RelativeLayout.LayoutParams.MATCH_PARENT
         );
-        bodyParams.addRule(RelativeLayout.BELOW, toolsViewId);
-        bodyParams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+        params.addRule(RelativeLayout.BELOW, toolsViewId);
+        params.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
 
-        body.setLayoutParams(bodyParams);
+        body.setLayoutParams(params);
 
         body.setBackground(new Drawable() {
             @Override
@@ -229,20 +232,20 @@ public class BlueprintFragment extends Fragment {
                 canvas.drawRoundLine(0, getHeight(), 0, 0, paint);
             }
         };
-        var postProcessParams = new RelativeLayout.LayoutParams(
+        var params = new RelativeLayout.LayoutParams(
                 RelativeLayout.LayoutParams.MATCH_PARENT,
                 RelativeLayout.LayoutParams.MATCH_PARENT
         );
-        postProcessParams.addRule(RelativeLayout.END_OF, detailsPanelId);
-        postProcessView.setLayoutParams(postProcessParams);
+        params.addRule(RelativeLayout.END_OF, detailsPanelId);
+        postProcessView.setLayoutParams(params);
         return postProcessView;
     }
 
     private Button createButton(String text) {
-        var btn = new Button();
-        btn.setText(text);
+        var button = new Button();
+        button.setText(text);
 
-        return btn;
+        return button;
     }
 
     private TextView createTextView(String text) {
@@ -251,6 +254,5 @@ public class BlueprintFragment extends Fragment {
 
         return textView;
     }
-
 
 }

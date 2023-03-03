@@ -45,6 +45,7 @@ public class TextViewCreationListener {
     public static void onContextMenuSearchViewCreated(TextView textView) {
         setDefaultFont(textView);
         textView.setTextSize(View.sp(13));
+        textView.setTextColor(Colors.NODE_BACKGROUND);
     }
 
     public static void onContextMenuCategoryTextCreated(TextView textView) {

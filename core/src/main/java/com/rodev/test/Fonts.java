@@ -5,24 +5,22 @@ import icyllis.modernui.text.Typeface;
 
 import java.awt.*;
 import java.io.IOException;
-import java.util.Objects;
 
 import static java.awt.Font.TRUETYPE_FONT;
-import static java.awt.Font.TYPE1_FONT;
 
 public class Fonts {
 
     public static Typeface MINECRAFT_FONT;
 
-    public static void init() throws IOException, FontFormatException {
-        var is = Fonts.class.getResourceAsStream("fonts/Minecraft.ttf");
-        if(is == null) return;
+    public static void loadFonts() throws IOException, FontFormatException {
+        var inputStream = Fonts.class.getResourceAsStream("fonts/Minecraft.ttf");
+        if(inputStream == null) return;
 
-        Font f = Font.createFont(TRUETYPE_FONT, is);
-        FontFamily family = new FontFamily(f);
+        var font = Font.createFont(TRUETYPE_FONT, inputStream);
+        var family = new FontFamily(font);
         MINECRAFT_FONT = Typeface.createTypeface(family);
 
-        is.close();
+        inputStream.close();
     }
 
 }

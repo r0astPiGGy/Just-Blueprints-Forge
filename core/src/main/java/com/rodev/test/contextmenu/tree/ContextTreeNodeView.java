@@ -1,5 +1,6 @@
-package com.rodev.test.contextmenu;
+package com.rodev.test.contextmenu.tree;
 
+import com.rodev.test.contextmenu.Item;
 import icyllis.modernui.view.View;
 import icyllis.modernui.widget.LinearLayout;
 
@@ -10,7 +11,7 @@ public class ContextTreeNodeView extends ContextTreeRootView {
 
     private final TreeNodeHeaderLabel header;
     private final LinearLayout content = new LinearLayout();
-    private final Set<ContextMenuItem> contextMenuItemList = new HashSet<>();
+    private final Set<Item> itemList = new HashSet<>();
 
     private boolean opened = true;
 
@@ -43,8 +44,8 @@ public class ContextTreeNodeView extends ContextTreeRootView {
         return name;
     }
 
-    public void add(ContextMenuItem item) {
-        contextMenuItemList.add(item);
+    public void add(Item item) {
+        itemList.add(item);
         content.addView(item.getView(), new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
     }
 
@@ -73,10 +74,10 @@ public class ContextTreeNodeView extends ContextTreeRootView {
         opened = false;
     }
 
-    public boolean hideIfNot(Predicate<ContextMenuItem> contextMenuItemPredicate){
+    public boolean hideIfNot(Predicate<Item> contextMenuItemPredicate){
         var found = super.hideIfNot(contextMenuItemPredicate);
 
-        for(ContextMenuItem item : contextMenuItemList) {
+        for(Item item : itemList) {
             var tested = contextMenuItemPredicate.test(item);
             if(!tested) {
                 item.hide();

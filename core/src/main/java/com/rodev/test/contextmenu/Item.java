@@ -1,6 +1,5 @@
 package com.rodev.test.contextmenu;
 
-import com.rodev.test.blueprint.data.action.Action;
 import com.rodev.test.utils.TextViewCreationListener;
 import icyllis.modernui.graphics.drawable.ImageDrawable;
 import icyllis.modernui.view.View;
@@ -8,12 +7,9 @@ import icyllis.modernui.view.ViewGroup;
 import icyllis.modernui.widget.LinearLayout;
 import icyllis.modernui.widget.TextView;
 
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-
 import static icyllis.modernui.view.View.dp;
 
-public interface ContextMenuItem {
+public interface Item {
 
     String getName();
 
@@ -25,8 +21,8 @@ public interface ContextMenuItem {
 
     void hide();
 
-    static ContextMenuItem of(View view, String name, Runnable onClick) {
-        return new ContextMenuItemImpl(view, name) {
+    static Item of(View view, String name, Runnable onClick) {
+        return new ItemImpl(view, name) {
             @Override
             public void onClick() {
                 onClick.run();
@@ -34,7 +30,7 @@ public interface ContextMenuItem {
         };
     }
 
-    static ContextMenuItem of(String name, String iconId, Runnable onClick) {
+    static Item of(String name, String iconId, Runnable onClick) {
         var linearLayout = new LinearLayout();
         linearLayout.setOrientation(LinearLayout.HORIZONTAL);
         linearLayout.setLayoutParams(

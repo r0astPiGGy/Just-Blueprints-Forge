@@ -18,16 +18,14 @@
 
 package com.rodev.test.blueprint;
 
-import com.rodev.test.blueprint.data.action.Action;
 import com.rodev.test.blueprint.graph.ContextMenuOpenHandler;
-import com.rodev.test.contextmenu.BPMenuPopupHelper;
+import com.rodev.test.contextmenu.PopupHelper;
 import com.rodev.test.contextmenu.ContextMenuBuilder;
 import icyllis.modernui.math.Rect;
 import icyllis.modernui.view.*;
 import icyllis.modernui.widget.*;
 
 import javax.annotation.Nonnull;
-import java.util.function.Consumer;
 
 public class BPViewPort extends FrameLayout implements ContextMenuOpenHandler, Navigable {
 
@@ -103,7 +101,6 @@ public class BPViewPort extends FrameLayout implements ContextMenuOpenHandler, N
 
         setOverScrollMode(OVER_SCROLL_NEVER);
     }
-    BPMenuPopupHelper mContextMenuHelper;
 
     @Override
     public ContextMenuBuilder createBuilder(View caller, float x, float y) {
@@ -116,23 +113,7 @@ public class BPViewPort extends FrameLayout implements ContextMenuOpenHandler, N
     }
 
     public void onContextMenuOpen(ContextMenuBuilder builder, View caller) {
-        if (mContextMenuHelper != null) {
-            mContextMenuHelper.dismiss();
-            mContextMenuHelper = null;
-        }
-
-        int x = builder.x;
-        int y = builder.y;
-
-        final boolean isPopup = true;
-
-        if (!isPopup) {
-            x = 0;
-            y = 0;
-        }
-
-        final BPMenuPopupHelper helper = new BPMenuPopupHelper(caller);
-        helper.show(builder);
+        PopupHelper.show(caller, builder);
     }
 
     @Override

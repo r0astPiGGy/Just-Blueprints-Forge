@@ -2,12 +2,12 @@ package com.rodev.test.contextmenu;
 
 import icyllis.modernui.view.View;
 
-public abstract class ContextMenuItemImpl implements ContextMenuItem {
+public abstract class ItemImpl implements Item {
 
     private final View root;
     private final String name;
 
-    public ContextMenuItemImpl(View root, String name) {
+    public ItemImpl(View root, String name) {
         this.root = root;
         this.name = name;
 

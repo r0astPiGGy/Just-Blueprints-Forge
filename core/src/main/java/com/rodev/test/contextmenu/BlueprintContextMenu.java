@@ -18,25 +18,27 @@
 
 package com.rodev.test.contextmenu;
 
+import com.rodev.test.Colors;
+import icyllis.modernui.graphics.Canvas;
+import icyllis.modernui.graphics.Paint;
 import icyllis.modernui.graphics.drawable.Drawable;
 import icyllis.modernui.math.Rect;
 import icyllis.modernui.view.*;
-import icyllis.modernui.view.menu.ShowableListMenu;
 import icyllis.modernui.widget.*;
+import org.jetbrains.annotations.NotNull;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.function.Supplier;
 
-import static icyllis.modernui.view.ViewGroup.LayoutParams.WRAP_CONTENT;
-
-public class BPContextMenu implements ShowableListMenu {
+public class BlueprintContextMenu {
     private int mDropDownHorizontalOffset;
     private int mDropDownVerticalOffset;
     private boolean mOverlapAnchor;
 
     private int mDropDownGravity = Gravity.NO_GRAVITY;
 
-    private View POPUP_ORIGIN_VIEW__REWORK;
+    private View anchorView;
 
     /**
      * Optional anchor-relative bounds to be used as the transition epicenter.
@@ -48,17 +50,19 @@ public class BPContextMenu implements ShowableListMenu {
 
     PopupWindow mPopup;
 
-    private final int POPUP_WIDTH____REWORK;// = WRAP_CONTENT;
-    private final int POPUP_HEIGHT____REWORK;// = WRAP_CONTENT;
+    private final int width;
+    private final int height;
 
     private final Supplier<View> viewFiller;
 
-    public BPContextMenu(int width, int height, Supplier<View> viewFiller) {
+    public BlueprintContextMenu(int width, int height, Supplier<View> viewFiller) {
         this.viewFiller = viewFiller;
-        this.POPUP_WIDTH____REWORK = width;
-        this.POPUP_HEIGHT____REWORK = height;
+        this.width = width;
+        this.height = height;
 
-        mPopup = new PopupWindow(POPUP_WIDTH____REWORK, POPUP_HEIGHT____REWORK);
+        mPopup = new PopupWindow(this.width, this.height);
+
+        setBackgroundDrawable(new Background());
     }
 
     /**
@@ -99,7 +103,7 @@ public class BPContextMenu implements ShowableListMenu {
      * @param anchor The view to use as an anchor.
      */
     public void setAnchorView(@Nullable View anchor) {
-        POPUP_ORIGIN_VIEW__REWORK = anchor;
+        anchorView = anchor;
     }
     /**
      * Set the horizontal offset of this popup from its anchor view in pixels.
@@ -133,67 +137,65 @@ public class BPContextMenu implements ShowableListMenu {
         mDropDownGravity = gravity;
     }
 
-    /**
-     * Show the popup list. If the list is already showing, this method
-     * will recalculate the popup's size and position.
-     */
-    @Override
     public void show() {
         mPopup.setContentView(viewFiller.get());
 
         if (mPopup.isShowing()) {
-            if (!POPUP_ORIGIN_VIEW__REWORK.isAttachedToWindow()) {
+            if (!anchorView.isAttachedToWindow()) {
                 //Don't update position if the anchor view is detached from window.
                 return;
             }
             mPopup.setOutsideTouchable(true);
             mPopup.update(
-                    POPUP_ORIGIN_VIEW__REWORK,
+                    anchorView,
                     mDropDownHorizontalOffset,
                     mDropDownVerticalOffset,
-                    POPUP_WIDTH____REWORK,
-                    POPUP_HEIGHT____REWORK
+                    width,
+                    height
             );
             mPopup.setOverlapAnchor(mOverlapAnchor);
             mPopup.getContentView().restoreDefaultFocus();
         } else {
-            mPopup.setWidth(POPUP_WIDTH____REWORK);
-            mPopup.setHeight(POPUP_HEIGHT____REWORK);
+            mPopup.setWidth(width);
+            mPopup.setHeight(height);
             mPopup.setIsClippedToScreen(true);
             mPopup.setOutsideTouchable(true);
             mPopup.setEpicenterBounds(mEpicenterBounds);
             mPopup.setOverlapAnchor(mOverlapAnchor);
-            mPopup.showAsDropDown(POPUP_ORIGIN_VIEW__REWORK, mDropDownHorizontalOffset,
+            mPopup.showAsDropDown(anchorView, mDropDownHorizontalOffset,
                     mDropDownVerticalOffset, mDropDownGravity);
             mPopup.getContentView().restoreDefaultFocus();
         }
     }
 
-    /**
-     * Dismiss the popup window.
-     */
-    @Override
     public void dismiss() {
         mPopup.dismiss();
         mPopup.setContentView(null);
     }
 
-    /**
-     * @return {@code true} if the popup is currently showing, {@code false} otherwise.
-     */
-    @Override
     public boolean isShowing() {
         return mPopup.isShowing();
-    }
-
-    @Nullable
-    @Override
-    public ListView getListView() {
-        throw new IllegalStateException();
     }
 
     public void setOverlapAnchor(boolean overlap) {
         mOverlapAnchor = overlap;
     }
 
+    private static class Background extends Drawable {
+
+        @Override
+        public void draw(@Nonnull Canvas canvas) {
+            Paint paint = Paint.get();
+            paint.setColor(Colors.NODE_BACKGROUND);
+            Rect b = getBounds();
+            canvas.drawRect(b.left, b.top, b.right, b.bottom, paint);
+        }
+
+        @Override
+        public boolean getPadding(@Nonnull Rect padding) {
+            int r = (int) Math.ceil(8);
+            padding.set(r, r, r, r);
+            return true;
+        }
+    }
 }

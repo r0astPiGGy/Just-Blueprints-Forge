@@ -8,7 +8,7 @@ import java.util.function.Predicate;
 public abstract class ContextMenuBuilder {
 
     public final int x, y;
-    protected Predicate<Action> filter = a -> false;
+    protected Predicate<Action> actionFilter = a -> false;
     protected String header;
     protected Consumer<Action> onClick = a -> {};
     protected Runnable onDismiss = () -> {};
@@ -19,7 +19,7 @@ public abstract class ContextMenuBuilder {
     }
 
     public ContextMenuBuilder filtering(Predicate<Action> predicate) {
-        this.filter = predicate;
+        this.actionFilter = predicate;
         return this;
     }
 

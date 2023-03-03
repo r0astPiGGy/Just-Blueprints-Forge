@@ -5,9 +5,9 @@ import com.rodev.test.blueprint.data.action.type.ActionType;
 import com.rodev.test.blueprint.data.variable.VariableType;
 import com.rodev.test.blueprint.node.BPNode;
 import com.rodev.test.blueprint.pin.var_pin.VarPin;
-import com.rodev.test.contextmenu.ContextMenuItem;
-import com.rodev.test.contextmenu.ContextTreeNodeView;
-import com.rodev.test.contextmenu.ContextTreeRootView;
+import com.rodev.test.contextmenu.Item;
+import com.rodev.test.contextmenu.tree.ContextTreeNodeView;
+import com.rodev.test.contextmenu.tree.ContextTreeRootView;
 
 import java.util.HashSet;
 import java.util.List;
@@ -56,7 +56,7 @@ public final class Action {
         return acceptableInputPins.contains(inputType);
     }
 
-    public void addTo(ContextTreeRootView contextTreeRootView, ContextMenuItem contextMenuItem) {
+    public void addTo(ContextTreeRootView contextTreeRootView, Item item) {
         ContextTreeNodeView treeNode = null;
         for (String id : category.split("\\.")) {
             if (treeNode == null) {
@@ -72,7 +72,7 @@ public final class Action {
 
         if (treeNode == null) return;
 
-        treeNode.add(contextMenuItem);
+        treeNode.add(item);
     }
 
     public BPNode toNode() {
