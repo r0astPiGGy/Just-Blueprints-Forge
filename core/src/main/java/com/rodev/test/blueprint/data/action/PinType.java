@@ -10,7 +10,11 @@ public class PinType {
     private final VariableType type;
 
     public static PinType execType(String name) {
-        return new PinType("exec", name, VariableType.execType());
+        return execType("exec", name);
+    }
+
+    public static PinType execType(String id, String name) {
+        return new PinType(id, name, VariableType.execType());
     }
 
     public PinType(String id, String name, VariableType type) {

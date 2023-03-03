@@ -45,7 +45,8 @@ public class ActionRegistry extends Registry<String, Action> {
                 actionType,
                 inputPins,
                 outputPins,
-                entity.category
+                entity.category,
+                entity.extra_data
         );
     }
 
@@ -54,6 +55,10 @@ public class ActionRegistry extends Registry<String, Action> {
     }
 
     private PinType create(ActionEntity.PinTypeEntity entity) {
+        if(entity.type.equals("exec")) {
+            return PinType.execType(entity.label);
+        }
+
         var varType = variableTypeRegistry.get(entity.type);
 
         if(varType == null) {

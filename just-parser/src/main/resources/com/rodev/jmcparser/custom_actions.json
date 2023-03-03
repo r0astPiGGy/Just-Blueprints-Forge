@@ -1,0 +1,22 @@
+[
+  {
+    "id" : "native_branch",
+    "type" : "util",
+    "name" : "Ветвление",
+    "category" : "control",
+    "input" : [ {
+      "id" : "branch_condition",
+      "label" : "Условие",
+      "type" : "boolean"
+    } ],
+    "output" : [ {
+      "id" : "branch_true",
+      "label" : "True",
+      "type" : "exec"
+    }, {
+      "id" : "branch_false",
+      "label" : "False",
+      "type" : "exec"
+    } ]
+  }
+]

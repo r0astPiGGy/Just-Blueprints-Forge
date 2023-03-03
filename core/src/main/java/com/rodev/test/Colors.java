@@ -27,5 +27,6 @@ public class Colors {
     }
 
     public static final int NODE_BACKGROUND = Color.rgb(28, 28, 30);
+    public static final int NODE_SUBTITLE_COLOR = Color.rgb(242, 242, 247);
 
 }

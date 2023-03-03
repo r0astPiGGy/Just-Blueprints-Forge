@@ -1,21 +1,22 @@
 package com.rodev.jmcparser.data;
 
-import com.rodev.jmcparser.json.ActionData;
-import com.rodev.jmcparser.json.ActionDataArgument;
+import com.rodev.jmcparser.json.*;
 import com.rodev.jmcparser.util.TimeCounter;
 import com.rodev.test.blueprint.data.json.ActionEntity;
+import com.rodev.test.blueprint.data.json.EventEntity;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 import java.util.*;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
-public class DataInterpreter implements ActionNameHandler {
+public class DataInterpreter implements ActionNameHandler, EventNameHandler {
 
     private final Set<String> variableTypes = new HashSet<>();
     private final Set<String> withoutCategory = new HashSet<>();
-    private final ActionData[] data;
+    private final DataBlob dataBlob;
     private final LocaleProvider localeProvider;
     private final CategoryProvider categoryProvider;
 
@@ -26,20 +27,44 @@ public class DataInterpreter implements ActionNameHandler {
     private ActionNameHandler actionNameHandler = this;
 
     @Setter
+    private EventNameHandler eventNameHandler = this;
+
+    @Setter
     private PinTypeNameHandler pinTypeNameHandler = typeId -> typeId;
 
 
     public ActionEntity[] interpret() {
         var counter = new TimeCounter();
 
-        var array = new ActionEntity[data.length];
+        var actions = dataBlob.getActions();
+        var events = dataBlob.getEvents();
+        var gameValues = dataBlob.getGameValues();
+        var customActions = dataBlob.getCustomActions();
 
-        for(int i = 0; i < data.length; i++) {
-            var actionData = data[i];
+        EventOutputFiller.fill(events, gameValues);
+        GameValueTranslator.translate(gameValues, localeProvider);
+
+        var totalSize = actions.length + events.length + customActions.length;
+        var array = new ActionEntity[totalSize];
+
+        for(int i = 0; i < actions.length; i++) {
+            var actionData = actions[i];
 
             if(actionData == null) continue;
 
             array[i] = create(actionData);
+        }
+
+        for(int i = 0; i < events.length; i++) {
+            var event = events[i];
+
+            if(event == null) continue;
+
+            array[actions.length + i] = createEvent(event);
+        }
+
+        for(int i = 0; i < customActions.length; i++) {
+            array[actions.length + events.length + i] = customActions[i];
         }
 
         counter.print(ms -> "Interpreted " + array.length + " actions in " + ms + "ms.");
@@ -58,6 +83,22 @@ public class DataInterpreter implements ActionNameHandler {
         actionEntity.category = getCategoryFor(actionData);
         actionEntity.input = createInput(actionData);
         actionEntity.output = createOutput(actionData);
+
+        return actionEntity;
+    }
+
+    private ActionEntity createEvent(Event event) {
+        var actionEntity = EventEntity.create(event.cancellable);
+
+        actionEntity.id = event.id;
+        actionEntity.name = eventNameHandler.handleEventName(event, localeProvider);
+        if(event.category == null) {
+            actionEntity.category = "events";
+        } else {
+            actionEntity.category = String.format("%s.%s-%s", "events", "events", event.category);
+        }
+        actionEntity.input = Collections.emptyList();
+        actionEntity.output = createOutput(event);
 
         return actionEntity;
     }
@@ -84,6 +125,13 @@ public class DataInterpreter implements ActionNameHandler {
         return localeProvider.translateKeyOrDefault(key);
     }
 
+    @Override
+    public String handleEventName(Event data, LocaleProvider localeProvider) {
+        var key = "creative_plus.trigger." + data.id + ".name";
+
+        return localeProvider.translateKeyOrDefault(key);
+    }
+
     private List<ActionEntity.PinTypeEntity> createInput(ActionData actionData) {
         var input = new LinkedList<ActionEntity.PinTypeEntity>();
 
@@ -103,10 +151,44 @@ public class DataInterpreter implements ActionNameHandler {
         return input;
     }
 
+    private List<ActionEntity.PinTypeEntity> createOutput(Event event) {
+        return event.rawOutput.stream().map(v -> {
+            var pin = new ActionEntity.PinTypeEntity();
+
+            pin.id = v.id;
+            pin.type = v.type;
+            pin.label = v.name;
+
+            return pin;
+        }).collect(Collectors.toList());
+    }
+
+    private List<ActionEntity.PinTypeEntity> createOutput(ActionData actionData) {
+        if(actionData.containing == null && actionData.assigning == null) {
+            return Collections.emptyList();
+        }
+
+        var type = "variable";
+
+        if (actionData.containing != null && actionData.containing.equalsIgnoreCase("predicate")) {
+            type = "boolean";
+        } else {
+            return Collections.emptyList();
+        }
+
+        var pinTypeEntity = new ActionEntity.PinTypeEntity();
+        pinTypeEntity.label = "Return value";
+        pinTypeEntity.type = type;
+        pinTypeEntity.id = "-";
+
+        return List.of(pinTypeEntity);
+    }
+
     private ActionEntity.PinTypeEntity createObjectInputPin(ActionData actionData) {
         switch (actionData.object) {
             case "code":
             case "world":
+            case "select":
             case "repeat":
                 return null;
         }
@@ -163,26 +245,5 @@ public class DataInterpreter implements ActionNameHandler {
         }
 
         return map;
-    }
-
-    private List<ActionEntity.PinTypeEntity> createOutput(ActionData actionData) {
-        if(actionData.containing == null && actionData.assigning == null) {
-            return Collections.emptyList();
-        }
-
-        var type = "variable";
-
-        if (actionData.containing != null && actionData.containing.equalsIgnoreCase("predicate")) {
-            type = "boolean";
-        } else {
-            return Collections.emptyList();
-        }
-
-        var pinTypeEntity = new ActionEntity.PinTypeEntity();
-        pinTypeEntity.label = "Return value";
-        pinTypeEntity.type = type;
-        pinTypeEntity.id = "-";
-
-        return List.of(pinTypeEntity);
     }
 }

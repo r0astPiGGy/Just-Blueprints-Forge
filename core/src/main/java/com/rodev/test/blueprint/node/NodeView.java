@@ -1,20 +1,11 @@
 package com.rodev.test.blueprint.node;
 
-import com.rodev.test.Colors;
-import com.rodev.test.Fonts;
 import com.rodev.test.blueprint.ChildRoot;
 import com.rodev.test.blueprint.data.variable.VariableTypeRegistry;
 import com.rodev.test.blueprint.pin.Pin;
 import com.rodev.test.blueprint.pin.PinRowView;
-import com.rodev.test.blueprint.pin.Position;
 import com.rodev.test.utils.TextViewCreationListener;
-import icyllis.modernui.graphics.Canvas;
-import icyllis.modernui.graphics.Image;
-import icyllis.modernui.graphics.Paint;
-import icyllis.modernui.graphics.drawable.Drawable;
 import icyllis.modernui.graphics.drawable.ImageDrawable;
-import icyllis.modernui.math.Rect;
-import icyllis.modernui.text.Typeface;
 import icyllis.modernui.view.Gravity;
 import icyllis.modernui.view.MotionEvent;
 import icyllis.modernui.view.View;
@@ -41,6 +32,9 @@ public class NodeView extends LinearLayout implements BPNode {
 
     private final String id;
     private final String nodeName;
+
+    private String subtitle;
+    private TextView subtitleView;
 
     private final NodeTouchHandler<NodeView> nodeTouchHandler;
 
@@ -118,21 +112,50 @@ public class NodeView extends LinearLayout implements BPNode {
     private View createIcon() {
         var icon = new View();
         var drawable = new ImageDrawable("actions", id + ".png");
+
         icon.setBackground(drawable);
-        icon.setLayoutParams(new ViewGroup.LayoutParams(dp(30), dp(30)));
+
+        var params = new LayoutParams(dp(30), dp(30));
+        params.gravity = Gravity.TOP | Gravity.LEFT;
+        icon.setLayoutParams(params);
 
         return icon;
     }
 
-    private TextView createLabel() {
-        var nodeLabel = new TextView();
-        nodeLabel.setText(nodeName);
-        nodeLabel.setGravity(Gravity.CENTER);
+    private LinearLayout createLabel() {
+        var nodeHeader = new LinearLayout();
+        nodeHeader.setOrientation(VERTICAL);
+        var params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        nodeHeader.setPadding(dp(6), 0, 0, 0);
+        nodeHeader.setGravity(Gravity.CENTER | Gravity.START);
+        nodeHeader.setLayoutParams(params);
 
-        TextViewCreationListener.onNodeLabelCreated(nodeLabel);
-        nodeLabel.setPadding(dp(6), 0, 0, 0);
+        var title = createTitle();
+        var subtitle = subtitleView = createSubtitle();
 
-        return nodeLabel;
+        nodeHeader.addView(title);
+        nodeHeader.addView(subtitle);
+
+        return nodeHeader;
+    }
+
+    private TextView createTitle() {
+        var title = new TextView();
+        title.setText(nodeName);
+        title.setGravity(Gravity.CENTER);
+
+        TextViewCreationListener.onNodeTitleCreated(title);
+
+        return title;
+    }
+
+    private TextView createSubtitle() {
+        var subtitleView = new TextView();
+
+        TextViewCreationListener.onNodeSubtitleCreated(subtitleView);
+        subtitleView.setVisibility(GONE);
+
+        return subtitleView;
     }
 
     private static LinearLayout createRowContainer(LinearLayout linearLayout, int gravity) {
@@ -231,6 +254,17 @@ public class NodeView extends LinearLayout implements BPNode {
     public void forEachPin(Consumer<Pin> pinConsumer) {
         outputPins.forEach(row -> pinConsumer.accept(row.getPinView().getPin()));
         inputPins.forEach(row -> pinConsumer.accept(row.getPinView().getPin()));
+    }
+
+    @Override
+    public void setSubTitle(String subTitle) {
+        if(subTitle == null || subTitle.isEmpty()) {
+            subtitleView.setVisibility(GONE);
+        } else {
+            this.subtitle = subTitle;
+            subtitleView.setText(subTitle);
+            subtitleView.setVisibility(VISIBLE);
+        }
     }
 
     @Override

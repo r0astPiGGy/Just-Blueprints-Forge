@@ -14,6 +14,7 @@ public class ActionEntity {
     public String category;
     public List<PinTypeEntity> input;
     public List<PinTypeEntity> output;
+    public Object extra_data;
 
     @NoArgsConstructor
     @AllArgsConstructor

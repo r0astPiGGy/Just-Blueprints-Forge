@@ -11,6 +11,8 @@ import com.rodev.test.blueprint.pin.default_input_value.DefaultEnumInputView;
 import com.rodev.test.blueprint.pin.default_input_value.DefaultNumberInputView;
 import com.rodev.test.blueprint.pin.default_input_value.DefaultTextInputView;
 import com.rodev.test.blueprint.pin.exec_pin.ExecPin;
+import icyllis.modernui.graphics.Image;
+import icyllis.modernui.graphics.opengl.TextureManager;
 
 import java.util.Map;
 
@@ -19,15 +21,22 @@ public class DataInitEventHandler {
     private DataInitEventHandler() {}
 
     public static void onActionTypeRegistryPreLoad(ActionTypeRegistry registry) {
-        registry.addNodeSupplier("event", (color, id, name) -> {
-            var node = new NodeView(color, id, name);
+        registry.addNodeSupplier("event", (color, action) -> {
+            var node = new NodeView(color, action.id(), action.name());
             var output = ExecPin.outputPin();
 
             node.addOutput(output.createRowView());
+            //noinspection unchecked
+            Map<Object, Object> map = (Map<Object, Object>) action.extraData();
+            boolean cancellable = (boolean) map.get("cancellable");
+
+            if(cancellable) {
+                node.setSubTitle("Отменяемое");
+            }
 
             return node;
         });
-        registry.addNodeSupplier("pure-function", NodeView::new);
+        registry.addNodeSupplier("pure-function", (color, action) -> new NodeView(color, action.id(), action.name()));
     }
 
     public static void onVariableTypeRegistryPreLoad(VariableTypeRegistry registry) {
@@ -59,6 +68,14 @@ public class DataInitEventHandler {
         VariableTypeRegistry.registerInputPinRowCreatedListener("enum", (inputPin, rowView) -> {
             rowView.addDefaultValueView(new DefaultEnumInputView((EnumPinType) inputPin.getType()));
         });
+
+        loadIcons(dataAccess);
     }
 
+    private static void loadIcons(DataAccess dataAccess) {
+        dataAccess.actionRegistry.getAll().forEach(a -> {
+            TextureManager.getInstance().getOrCreate("actions", "textures/" + a.id() + ".png",
+                    TextureManager.CACHE_MASK | TextureManager.MIPMAP_MASK);
+        });
+    }
 }

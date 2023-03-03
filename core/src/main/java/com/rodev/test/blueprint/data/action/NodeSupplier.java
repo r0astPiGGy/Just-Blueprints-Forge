@@ -9,8 +9,8 @@ import java.util.function.Consumer;
 
 public interface NodeSupplier {
 
-    NodeSupplier identity = (color, id, name) -> {
-        var node = new NodeView(color, id, name);
+    NodeSupplier identity = (color, action) -> {
+        var node = new NodeView(color, action.id(), action.name());
 
         node.addInput(ExecPin.inputPin().createRowView());
         node.addOutput(ExecPin.outputPin().createRowView());
@@ -18,6 +18,6 @@ public interface NodeSupplier {
         return node;
     };
 
-    BPNode create(int color, String id, String name);
+    BPNode create(int color, Action action);
 
 }

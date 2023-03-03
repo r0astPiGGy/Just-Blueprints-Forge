@@ -4,7 +4,6 @@ import com.rodev.test.blueprint.data.DataAccess;
 import com.rodev.test.blueprint.data.action.type.ActionType;
 import com.rodev.test.blueprint.data.variable.VariableType;
 import com.rodev.test.blueprint.node.BPNode;
-import com.rodev.test.blueprint.pin.Pin;
 import com.rodev.test.blueprint.pin.var_pin.VarPin;
 import com.rodev.test.contextmenu.ContextMenuItem;
 import com.rodev.test.contextmenu.ContextTreeNodeView;
@@ -14,7 +13,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
-import java.util.function.Consumer;
 
 public final class Action {
     private final String id;
@@ -23,18 +21,20 @@ public final class Action {
     private final List<PinType> inputPins;
     private final List<PinType> outputPins;
     private final String category;
+    private final Object extraData;
 
     private final Set<VariableType> acceptableOutputPins = new HashSet<>();
     private final Set<VariableType> acceptableInputPins = new HashSet<>();
 
     public Action(String id, String name, ActionType actionType, List<PinType> inputPins, List<PinType> outputPins,
-                  String category) {
+                  String category, Object extraData) {
         this.id = id;
         this.name = name;
         this.actionType = actionType;
         this.inputPins = inputPins;
         this.outputPins = outputPins;
         this.category = category;
+        this.extraData = extraData;
 
         fillAcceptablePins();
     }
@@ -76,7 +76,7 @@ public final class Action {
     }
 
     public BPNode toNode() {
-        var node = actionType().createNode(id, name);
+        var node = actionType().createNode(this);
 
         for (var inputPinType : inputPins()) {
             var pin = VarPin.inputPin(inputPinType);
@@ -115,6 +115,10 @@ public final class Action {
         return category;
     }
 
+    public Object extraData() {
+        return extraData;
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (obj == this) return true;
@@ -141,6 +145,7 @@ public final class Action {
                 "actionType=" + actionType + ", " +
                 "inputPins=" + inputPins + ", " +
                 "outputPins=" + outputPins + ", " +
+                "extraData=" + extraData + ", " +
                 "category=" + category + ']';
     }
 

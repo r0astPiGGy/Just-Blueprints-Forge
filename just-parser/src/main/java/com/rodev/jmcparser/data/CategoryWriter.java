@@ -10,11 +10,14 @@ import java.util.Map;
 public class CategoryWriter {
 
     private final JsonDataWriter jsonDataWriter;
-    private final LocaleProvider localeProvider;
+
+    private final CategoryTranslator categoryTranslator;
+    private final EventCategoryTranslator eventCategoryTranslator;
 
     public CategoryWriter(File fileToWrite, LocaleProvider localeProvider) {
         this.jsonDataWriter = new JsonDataWriter(fileToWrite);
-        this.localeProvider = localeProvider;
+        this.categoryTranslator = new CategoryTranslator(localeProvider);
+        this.eventCategoryTranslator = new EventCategoryTranslator(localeProvider);
     }
 
     public void write(ActionEntity[] actions) {
@@ -28,51 +31,23 @@ public class CategoryWriter {
 
     private void addCategory(Map<Object, Object> map, String category) {
         var split = category.split("\\.");
-
         var categoryKey = split[0];
 
+        var categoryTranslator = this.categoryTranslator;
+
+        if(categoryKey.equals("events")) {
+            categoryTranslator = eventCategoryTranslator;
+        }
 
         if(split.length > 1) {
             String subCategoryKey = split[1];
 
-            var translatedSubCategory = translateSubCategory(categoryKey, subCategoryKey.split("-")[1]);
-
+            var translatedSubCategory = categoryTranslator.translateSubCategory(categoryKey, subCategoryKey.split("-")[1]);
             map.put(subCategoryKey, translatedSubCategory);
         }
 
-        var translatedCategory = translateCategory(categoryKey);
-
+        var translatedCategory = categoryTranslator.translateCategory(categoryKey);
         map.put(categoryKey, translatedCategory);
     }
-
-    private String resolveTranslationKey(String category) {
-        var localeKey = "creative_plus.category." + category;
-        var translated = localeProvider.translateKey(localeKey + ".name");
-
-        if(translated != null)
-            return localeKey;
-
-        return localeKey + "_action";
-    }
-
-    private String translateCategory(String category) {
-        var localeKey = resolveTranslationKey(category) + ".name";
-        var translated = localeProvider.translateKey(localeKey);
-
-        if(translated != null) return translated;
-
-        return localeKey;
-    }
-
-    private String translateSubCategory(String parent, String child) {
-        var parentKey = resolveTranslationKey(parent);
-        var localeKey = String.format("%s.subcategory.%s.name", parentKey, child);
-        var translated = localeProvider.translateKey(localeKey);
-
-        if(translated != null) return translated;
-
-        return localeKey;
-    }
-
 
 }

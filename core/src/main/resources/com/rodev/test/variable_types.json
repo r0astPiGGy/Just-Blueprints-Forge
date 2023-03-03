@@ -44,6 +44,12 @@
   "id" : "player",
   "color" : "1, 167, 246"
 }, {
+  "id": "structure",
+  "color" : "255, 159, 10"
+}, {
   "id": "dictionary",
+  "color" : "255, 159, 10"
+}, {
+  "id": "list",
   "color" : "255, 159, 10"
 } ]

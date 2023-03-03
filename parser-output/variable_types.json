@@ -5,10 +5,10 @@
   "id" : "potion",
   "color" : ""
 }, {
-  "id" : "select",
+  "id" : "sound",
   "color" : ""
 }, {
-  "id" : "sound",
+  "id" : "list",
   "color" : ""
 }, {
   "id" : "any",
@@ -21,6 +21,9 @@
   "color" : ""
 }, {
   "id" : "boolean",
+  "color" : ""
+}, {
+  "id" : "dictionary",
   "color" : ""
 }, {
   "id" : "variable",
@@ -39,6 +42,9 @@
   "color" : ""
 }, {
   "id" : "entity",
+  "color" : ""
+}, {
+  "id" : "exec",
   "color" : ""
 }, {
   "id" : "player",

@@ -24,8 +24,8 @@ public final class ActionType {
         return type;
     }
 
-    public BPNode createNode(String id, String name) {
-        return nodeSupplier.create(headerColor, id, name);
+    public BPNode createNode(Action action) {
+        return nodeSupplier.create(headerColor, action);
     }
 
     @Override

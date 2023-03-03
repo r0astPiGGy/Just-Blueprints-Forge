@@ -1,11 +1,13 @@
 package com.rodev.test.utils;
 
+import com.rodev.test.Colors;
 import com.rodev.test.Fonts;
 import icyllis.modernui.graphics.font.FontPaint;
 import icyllis.modernui.view.View;
 import icyllis.modernui.widget.TextView;
 
 import static icyllis.modernui.graphics.font.FontPaint.BOLD;
+import static icyllis.modernui.graphics.font.FontPaint.ITALIC;
 
 public class TextViewCreationListener {
 
@@ -13,9 +15,17 @@ public class TextViewCreationListener {
         throw new IllegalStateException("why");
     }
 
-    public static void onNodeLabelCreated(TextView textView) {
+    public static void onNodeTitleCreated(TextView textView) {
         setDefaultFont(textView);
         textView.setTextStyle(BOLD);
+        textView.setTextSize(View.sp(16));
+    }
+
+    public static void onNodeSubtitleCreated(TextView textView) {
+        setDefaultFont(textView);
+        textView.setTextStyle(ITALIC);
+        textView.setTextSize(View.sp(14));
+        textView.setTextColor(Colors.NODE_SUBTITLE_COLOR);
     }
 
     public static void onPinTextCreated(TextView textView) {

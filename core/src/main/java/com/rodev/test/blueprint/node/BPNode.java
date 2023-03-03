@@ -24,6 +24,8 @@ public interface BPNode extends ChildRoot {
 
     void forEachPin(Consumer<Pin> pinConsumer);
 
+    void setSubTitle(String subTitle);
+
     @Nullable
     BPNode getPrevious();
 
