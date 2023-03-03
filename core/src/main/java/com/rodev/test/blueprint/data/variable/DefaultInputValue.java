@@ -8,4 +8,12 @@ public interface DefaultInputValue {
 
     View asView();
 
+    default void show() {
+        asView().setVisibility(View.VISIBLE);
+    }
+
+    default void hide() {
+        asView().setVisibility(View.GONE);
+    }
+
 }

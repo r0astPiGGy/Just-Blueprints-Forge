@@ -32,39 +32,47 @@ public class DataInterpreter implements ActionNameHandler, EventNameHandler {
     @Setter
     private PinTypeNameHandler pinTypeNameHandler = typeId -> typeId;
 
-
     public ActionEntity[] interpret() {
         var counter = new TimeCounter();
 
         var actions = dataBlob.getActions();
         var events = dataBlob.getEvents();
-        var gameValues = dataBlob.getGameValues();
         var customActions = dataBlob.getCustomActions();
+
+        var gameValues = dataBlob.getGameValues();
 
         EventOutputFiller.fill(events, gameValues);
         GameValueTranslator.translate(gameValues, localeProvider);
 
-        var totalSize = actions.length + events.length + customActions.length;
+        var gameValueGetters = GameValuesActionAdapter.adapt(gameValues);
+
+        var totalSize = sumAllArraysLength(actions, events, customActions, gameValueGetters);
         var array = new ActionEntity[totalSize];
 
-        for(int i = 0; i < actions.length; i++) {
+        var arrayIndex = 0;
+
+        for(int i = 0; i < actions.length; i++, arrayIndex++) {
             var actionData = actions[i];
 
             if(actionData == null) continue;
 
-            array[i] = create(actionData);
+            array[arrayIndex] = create(actionData);
         }
 
-        for(int i = 0; i < events.length; i++) {
+        for(int i = 0; i < events.length; i++, arrayIndex++) {
             var event = events[i];
 
             if(event == null) continue;
 
-            array[actions.length + i] = createEvent(event);
+            array[arrayIndex] = createEvent(event);
         }
 
-        for(int i = 0; i < customActions.length; i++) {
-            array[actions.length + events.length + i] = customActions[i];
+        for(int i = 0; i < customActions.length; i++, arrayIndex++) {
+            array[arrayIndex] = customActions[i];
+        }
+
+        for(int i = 0; i < gameValueGetters.length; i++, arrayIndex++) {
+            array[arrayIndex] = gameValueGetters[i];
         }
 
         counter.print(ms -> "Interpreted " + array.length + " actions in " + ms + "ms.");
@@ -72,6 +80,16 @@ public class DataInterpreter implements ActionNameHandler, EventNameHandler {
         System.out.println("Actions without category [" + withoutCategory.size() + "]:" + String.join(", ", withoutCategory));
 
         return array;
+    }
+
+    private int sumAllArraysLength(Object[]... arrays) {
+        int sum = 0;
+
+        for (Object[] array : arrays) {
+            sum += array.length;
+        }
+
+        return sum;
     }
 
     private ActionEntity create(ActionData actionData) {

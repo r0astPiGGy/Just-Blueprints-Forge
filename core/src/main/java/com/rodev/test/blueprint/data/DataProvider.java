@@ -12,4 +12,6 @@ public interface DataProvider {
 
     InputStream getActionTypesInputStream();
 
+    InputStream getSelectorGroupsInputStream();
+
 }

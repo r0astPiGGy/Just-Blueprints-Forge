@@ -93,6 +93,11 @@ public class ExampleMod implements DataProvider
         return getResourceAsStream("action_types.json");
     }
 
+    @Override
+    public InputStream getSelectorGroupsInputStream() {
+        return getResourceAsStream("selectors.json");
+    }
+
     private InputStream getResourceAsStream(String name) {
         return ExampleMod.class.getResourceAsStream(name);
     }

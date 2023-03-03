@@ -4,8 +4,10 @@ import com.rodev.test.blueprint.data.action.ActionRegistry;
 import com.rodev.test.blueprint.data.action.EnumPinType;
 import com.rodev.test.blueprint.data.action.type.ActionTypeRegistry;
 import com.rodev.test.blueprint.data.category.ContextCategoryRegistry;
+import com.rodev.test.blueprint.data.selectors.SelectorGroupRegistry;
 import com.rodev.test.blueprint.data.variable.VariableTypeRegistry;
 import com.rodev.test.blueprint.node.NodeView;
+import com.rodev.test.blueprint.node.SelectorVariableGetterNode;
 import com.rodev.test.blueprint.pin.default_input_value.DefaultBooleanInputView;
 import com.rodev.test.blueprint.pin.default_input_value.DefaultEnumInputView;
 import com.rodev.test.blueprint.pin.default_input_value.DefaultNumberInputView;
@@ -36,6 +38,16 @@ public class DataInitEventHandler {
 
             return node;
         });
+        registry.addNodeSupplier("game_value_getter", (color, action) -> {
+            var selectorGroup = DataAccess.getInstance().selectorGroupRegistry.get("game_value");
+            // TODO fixme
+            action.setIconSupplier(IconSupplier.gameValueIconSupplier);
+
+            var node = new SelectorVariableGetterNode(action.id(), selectorGroup);
+            node.setSubTitle(action.name());
+
+            return node;
+        });
         registry.addNodeSupplier("pure-function", (color, action) -> new NodeView(color, action.id(), action.name()));
     }
 
@@ -44,6 +56,10 @@ public class DataInitEventHandler {
     }
 
     public static void onContextCategoryRegistryPreLoad(ContextCategoryRegistry registry) {
+
+    }
+
+    public static void onSelectorGroupRegistryPreLoad(SelectorGroupRegistry registry) {
 
     }
 

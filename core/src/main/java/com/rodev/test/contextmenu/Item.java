@@ -7,6 +7,8 @@ import icyllis.modernui.view.ViewGroup;
 import icyllis.modernui.widget.LinearLayout;
 import icyllis.modernui.widget.TextView;
 
+import java.util.function.Supplier;
+
 import static icyllis.modernui.view.View.dp;
 
 public interface Item {
@@ -30,7 +32,7 @@ public interface Item {
         };
     }
 
-    static Item of(String name, String iconId, Runnable onClick) {
+    static Item of(String name, ImageDrawable imageDrawable, Runnable onClick) {
         var linearLayout = new LinearLayout();
         linearLayout.setOrientation(LinearLayout.HORIZONTAL);
         linearLayout.setLayoutParams(
@@ -38,8 +40,7 @@ public interface Item {
         );
 
         var icon = new View();
-        var drawable = new ImageDrawable("actions", iconId + ".png");
-        icon.setBackground(drawable);
+        icon.setBackground(imageDrawable);
         icon.setLayoutParams(new ViewGroup.LayoutParams(dp(20), dp(20)));
         linearLayout.addView(icon);
 

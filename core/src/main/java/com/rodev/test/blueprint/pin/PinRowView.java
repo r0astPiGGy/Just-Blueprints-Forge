@@ -78,7 +78,7 @@ public class PinRowView extends LinearLayout implements PinConnectionListener {
         if(defaultInputValue == null) return;
 
         System.out.println("Default value hidden");
-        defaultInputValue.asView().setVisibility(GONE);
+        defaultInputValue.hide();
     }
 
     @Override
@@ -86,7 +86,7 @@ public class PinRowView extends LinearLayout implements PinConnectionListener {
         if(defaultInputValue == null) return;
 
         System.out.println("Default value shown");
-        defaultInputValue.asView().setVisibility(VISIBLE);
+        defaultInputValue.show();
     }
 
     public static PinRowView leftDirectedRow(PinView pinView, String variableName) {

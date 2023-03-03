@@ -1,6 +1,7 @@
 package com.rodev.test.blueprint.data.action;
 
 import com.rodev.test.blueprint.data.DataAccess;
+import com.rodev.test.blueprint.data.IconSupplier;
 import com.rodev.test.blueprint.data.action.type.ActionType;
 import com.rodev.test.blueprint.data.variable.VariableType;
 import com.rodev.test.blueprint.node.BPNode;
@@ -8,6 +9,9 @@ import com.rodev.test.blueprint.pin.var_pin.VarPin;
 import com.rodev.test.contextmenu.Item;
 import com.rodev.test.contextmenu.tree.ContextTreeNodeView;
 import com.rodev.test.contextmenu.tree.ContextTreeRootView;
+import icyllis.modernui.graphics.drawable.ImageDrawable;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.HashSet;
 import java.util.List;
@@ -22,9 +26,12 @@ public final class Action {
     private final List<PinType> outputPins;
     private final String category;
     private final Object extraData;
-
     private final Set<VariableType> acceptableOutputPins = new HashSet<>();
     private final Set<VariableType> acceptableInputPins = new HashSet<>();
+
+    @Getter
+    @Setter
+    private IconSupplier iconSupplier = IconSupplier.actionIconSupplier;
 
     public Action(String id, String name, ActionType actionType, List<PinType> inputPins, List<PinType> outputPins,
                   String category, Object extraData) {
@@ -89,6 +96,10 @@ public final class Action {
         }
 
         return node;
+    }
+
+    public ImageDrawable createIcon() {
+        return iconSupplier.create(id);
     }
 
     public String id() {

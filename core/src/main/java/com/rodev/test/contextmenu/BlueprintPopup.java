@@ -83,7 +83,7 @@ public class BlueprintPopup implements PopupWindow.OnDismissListener {
     }
 
     public Item createItem(String displayText, Action action) {
-        return Item.of(displayText, action.id(), () -> {
+        return Item.of(displayText, action.createIcon(), () -> {
             dismiss();
             builder.onClick.accept(action);
         });

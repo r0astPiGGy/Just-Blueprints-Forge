@@ -18011,4 +18011,1525 @@
     "extra_data" : null
   } ],
   "extra_data" : null
+}, {
+  "id" : "current_health_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Текущее здоровье",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "current_health",
+    "label" : "",
+    "type" : "number",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "max_health_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Максимальное здоровье",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "max_health",
+    "label" : "",
+    "type" : "number",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "absorption_health_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Дополнительное здоровье",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "absorption_health",
+    "label" : "",
+    "type" : "number",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "food_level_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Уровень голода",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "food_level",
+    "label" : "",
+    "type" : "number",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "food_saturation_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Уровень насыщения",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "food_saturation",
+    "label" : "",
+    "type" : "number",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "food_exhaustion_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Уровень истощения",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "food_exhaustion",
+    "label" : "",
+    "type" : "number",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "attack_damage_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Урон от атаки",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "attack_damage",
+    "label" : "",
+    "type" : "number",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "attack_speed_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Скорость атаки",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "attack_speed",
+    "label" : "",
+    "type" : "number",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "armor_points_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Очки защиты",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "armor_points",
+    "label" : "",
+    "type" : "number",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "armor_toughness_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Твёрдость брони",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "armor_toughness",
+    "label" : "",
+    "type" : "number",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "invulnerability_ticks_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Время бессмертия",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "invulnerability_ticks",
+    "label" : "",
+    "type" : "number",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "experience_level_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Уровень опыта",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "experience_level",
+    "label" : "",
+    "type" : "number",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "experience_progress_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Прогресс опыта",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "experience_progress",
+    "label" : "",
+    "type" : "number",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "fire_ticks_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Время горения",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "fire_ticks",
+    "label" : "",
+    "type" : "number",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "freeze_ticks_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Время заморозки",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "freeze_ticks",
+    "label" : "",
+    "type" : "number",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "remaining_air_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Оставшийся воздух",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "remaining_air",
+    "label" : "",
+    "type" : "number",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "fall_distance_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Дистанция падения",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "fall_distance",
+    "label" : "",
+    "type" : "number",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "held_slot_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Выбранный слот в хот-баре",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "held_slot",
+    "label" : "",
+    "type" : "number",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "walking_speed_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Скорость ходьбы",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "walking_speed",
+    "label" : "",
+    "type" : "number",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "flying_speed_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Скорость полёта",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "flying_speed",
+    "label" : "",
+    "type" : "number",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "ping_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Пинг игрока",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "ping",
+    "label" : "",
+    "type" : "number",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "protocol_version_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Версия протокола клиента",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "protocol_version",
+    "label" : "",
+    "type" : "number",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "item_usage_progress_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Прогресс использования предмета",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "item_usage_progress",
+    "label" : "",
+    "type" : "number",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "entity_ticks_lived_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Время жизни цели",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "entity_ticks_lived",
+    "label" : "",
+    "type" : "number",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "arrows_in_body_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Количество стрел в теле",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "arrows_in_body",
+    "label" : "",
+    "type" : "number",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "age_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Возраст цели",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "age",
+    "label" : "",
+    "type" : "number",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "steer_forward_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Прямолинейное движение транспорта",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "steer_forward",
+    "label" : "",
+    "type" : "number",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "steer_sideways_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Движение транспорта в стороны",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "steer_sideways",
+    "label" : "",
+    "type" : "number",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "location_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Местоположение",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "location",
+    "label" : "",
+    "type" : "location",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "target_block_location_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Местоположение целевого блока",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "target_block_location",
+    "label" : "",
+    "type" : "location",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "target_fluid_location_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Местоположение целевой жидкости",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "target_fluid_location",
+    "label" : "",
+    "type" : "location",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "target_block_face_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Сторона целевого блока",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "target_block_face",
+    "label" : "",
+    "type" : "text",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "eye_location_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Местоположение глаз",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "eye_location",
+    "label" : "",
+    "type" : "location",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "x_coordinate_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Координата X",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "x_coordinate",
+    "label" : "",
+    "type" : "number",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "y_coordinate_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Координата Y",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "y_coordinate",
+    "label" : "",
+    "type" : "number",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "z_coordinate_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Координата Z",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "z_coordinate",
+    "label" : "",
+    "type" : "number",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "pitch_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Вертикальный поворот",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "pitch",
+    "label" : "",
+    "type" : "number",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "yaw_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Горизонтальный поворот",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "yaw",
+    "label" : "",
+    "type" : "number",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "direction_of_view_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Направление взгляда",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "direction_of_view",
+    "label" : "",
+    "type" : "vector",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "cardinal_direction_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Кардинальное направление",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "cardinal_direction",
+    "label" : "",
+    "type" : "text",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "spawn_location_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Местоположение спавна",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "spawn_location",
+    "label" : "",
+    "type" : "location",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "origin_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Местоположение появления",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "origin",
+    "label" : "",
+    "type" : "location",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "velocity_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Вектор скорости",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "velocity",
+    "label" : "",
+    "type" : "vector",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "main_hand_item_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Предмет в ведущей руке",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "main_hand_item",
+    "label" : "",
+    "type" : "item",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "off_hand_item_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Предмет во второй руке",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "off_hand_item",
+    "label" : "",
+    "type" : "item",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "armor_items_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Предметы брони",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "armor_items",
+    "label" : "",
+    "type" : "list",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "hotbar_items_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Предметы в хот-баре",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "hotbar_items",
+    "label" : "",
+    "type" : "list",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "inventory_items_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Предметы в инвентаре",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "inventory_items",
+    "label" : "",
+    "type" : "list",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "custom_inventory_items_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Список предметов в открытом инвентаре",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "custom_inventory_items",
+    "label" : "",
+    "type" : "list",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "cursor_item_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Предмет на курсоре",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "cursor_item",
+    "label" : "",
+    "type" : "item",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "saddle_item_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Предмет на седле",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "saddle_item",
+    "label" : "",
+    "type" : "item",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "entity_item_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Предмет сущности",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "entity_item",
+    "label" : "",
+    "type" : "item",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "name_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Имя",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "name",
+    "label" : "",
+    "type" : "text",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "uuid_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "UUID",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "uuid",
+    "label" : "",
+    "type" : "text",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "display_name_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Отображаемое имя игрока",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "display_name",
+    "label" : "",
+    "type" : "text",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "entity_type_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Тип сущности",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "entity_type",
+    "label" : "",
+    "type" : "text",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "client_brand_name_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Название клиента игрока",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "client_brand_name",
+    "label" : "",
+    "type" : "text",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "user_locale_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Язык клиента игрока",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "user_locale",
+    "label" : "",
+    "type" : "text",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "open_inventory_title_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Заголовок открытого инвентаря",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "open_inventory_title",
+    "label" : "",
+    "type" : "text",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "gamemode_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Режим игры",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "gamemode",
+    "label" : "",
+    "type" : "text",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "last_damage_cause_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Последняя причина урона",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "last_damage_cause",
+    "label" : "",
+    "type" : "text",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "potion_effects_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Эффекты зелий",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "potion_effects",
+    "label" : "",
+    "type" : "list",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "vehicle_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Транспорт",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "vehicle",
+    "label" : "",
+    "type" : "text",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "passengers_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Пассажиры",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "passengers",
+    "label" : "",
+    "type" : "list",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "lead_holder_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Поводырь",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "lead_holder",
+    "label" : "",
+    "type" : "text",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "attached_leads_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Привязанные сущности",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "attached_leads",
+    "label" : "",
+    "type" : "list",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "spawn_reason_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Причина спавна",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "spawn_reason",
+    "label" : "",
+    "type" : "text",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "main_hand_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Ведущая рука",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "main_hand",
+    "label" : "",
+    "type" : "text",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "event_block_location_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Местоположение блока события",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "event_block_location",
+    "label" : "",
+    "type" : "location",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "event_block_face_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Сторона блока события",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "event_block_face",
+    "label" : "",
+    "type" : "text",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "event_blocks_involved_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Задействованные блоки события",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "event_blocks_involved",
+    "label" : "",
+    "type" : "list",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "event_interaction_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Тип взаимодействия события",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "event_interaction",
+    "label" : "",
+    "type" : "text",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "event_new_location_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Новая локация игрока",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "event_new_location",
+    "label" : "",
+    "type" : "location",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "event_damage_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Нанесённый урон",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "event_damage",
+    "label" : "",
+    "type" : "number",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "event_damage_cause_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Причина полученного урона",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "event_damage_cause",
+    "label" : "",
+    "type" : "text",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "event_chat_message_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Сообщение чата",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "event_chat_message",
+    "label" : "",
+    "type" : "text",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "event_message_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Сообщение события",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "event_message",
+    "label" : "",
+    "type" : "text",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "event_heal_amount_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Количество восстановленного здоровья",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "event_heal_amount",
+    "label" : "",
+    "type" : "number",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "event_heal_cause_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Причина исцеления",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "event_heal_cause",
+    "label" : "",
+    "type" : "text",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "event_power_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Процент силы выполнения",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "event_power",
+    "label" : "",
+    "type" : "number",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "event_item_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Предмет события",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "event_item",
+    "label" : "",
+    "type" : "item",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "event_equipment_slot_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Тип задействованного слота",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "event_equipment_slot",
+    "label" : "",
+    "type" : "text",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "event_slot_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Слот события",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "event_slot",
+    "label" : "",
+    "type" : "number",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "event_hotbar_slot_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Слот хот-бара в событии",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "event_hotbar_slot",
+    "label" : "",
+    "type" : "number",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "event_added_items_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Распределённые предметы",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "event_added_items",
+    "label" : "",
+    "type" : "dictionary",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "event_slot_type_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Тип слота при клике",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "event_slot_type",
+    "label" : "",
+    "type" : "text",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "event_close_inventory_cause_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Причина закрытия инвентаря",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "event_close_inventory_cause",
+    "label" : "",
+    "type" : "text",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "event_inventory_click_type_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Тип клика по инвентарю",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "event_inventory_click_type",
+    "label" : "",
+    "type" : "text",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "event_inventory_action_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Действие в инвентаре при клике",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "event_inventory_action",
+    "label" : "",
+    "type" : "text",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "event_drag_type_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Тип перетягивания по инвентарю",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "event_drag_type",
+    "label" : "",
+    "type" : "text",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "event_slots_involved_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Задействованные слоты",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "event_slots_involved",
+    "label" : "",
+    "type" : "list",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "event_fish_state_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Причина события рыбалки",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "event_fish_state",
+    "label" : "",
+    "type" : "text",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "event_experience_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Количество опыта события",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "event_experience",
+    "label" : "",
+    "type" : "number",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "event_hanging_break_cause_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Причина удаление висящей сущности",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "event_hanging_break_cause",
+    "label" : "",
+    "type" : "text",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "event_time_skip_reason_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Причина пропуска времени",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "event_time_skip_reason",
+    "label" : "",
+    "type" : "text",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "event_time_skip_amount_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Количество тиков пропуска времени",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "event_time_skip_amount",
+    "label" : "",
+    "type" : "number",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "event_food_level_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Восполненный голод события",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "event_food_level",
+    "label" : "",
+    "type" : "number",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "event_projectile_item_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Предмет снаряда события",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "event_projectile_item",
+    "label" : "",
+    "type" : "item",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "event_teleport_cause_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Причина телепортации",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "event_teleport_cause",
+    "label" : "",
+    "type" : "text",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "player_count_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Количество игроков в мире",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "player_count",
+    "label" : "",
+    "type" : "number",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "cpu_usage_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Процент использования процессора",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "cpu_usage",
+    "label" : "",
+    "type" : "number",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "server_tps_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "TPS сервера",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "server_tps",
+    "label" : "",
+    "type" : "number",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "timestamp_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "UNIX-время",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "timestamp",
+    "label" : "",
+    "type" : "number",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "server_current_tick_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Текущее время сервера",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "server_current_tick",
+    "label" : "",
+    "type" : "number",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "selection_size_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Количество выбранных целей",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "selection_size",
+    "label" : "",
+    "type" : "number",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "selection_target_names_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Имена выбранных целей",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "selection_target_names",
+    "label" : "",
+    "type" : "list",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "selection_target_uuids_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "UUID выбранных целей",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "selection_target_uuids",
+    "label" : "",
+    "type" : "list",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "url_response_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Ответ на веб-запрос",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "url_response",
+    "label" : "",
+    "type" : "text",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "url_response_code_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Код ответа на веб-запрос",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "url_response_code",
+    "label" : "",
+    "type" : "number",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "url_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Ссылка веб-запроса",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "url",
+    "label" : "",
+    "type" : "text",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "world_time_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Текущее время мира",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "world_time",
+    "label" : "",
+    "type" : "number",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "world_weather_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Текущая погода мира",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "world_weather",
+    "label" : "",
+    "type" : "text",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "server_stopped_time_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Время остановки сервера",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "server_stopped_time",
+    "label" : "",
+    "type" : "number",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "action_count_per_tick_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Количество действий за тик",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "action_count_per_tick",
+    "label" : "",
+    "type" : "number",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "owner_uuid_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "UUID владельца мира",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "owner_uuid",
+    "label" : "",
+    "type" : "text",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "world_size_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "Размер мира",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "world_size",
+    "label" : "",
+    "type" : "number",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
+}, {
+  "id" : "world_id_gamevalue_getter",
+  "type" : "game_value_getter",
+  "name" : "ID мира",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "world_id",
+    "label" : "",
+    "type" : "text",
+    "extra_data" : null
+  } ],
+  "extra_data" : null
 } ]

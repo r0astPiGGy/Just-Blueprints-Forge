@@ -1,0 +1,45 @@
+[
+  {
+    "id": "game_value",
+    "selectors": {
+      "current": "Текущая цель",
+      "default": "По умолчанию",
+      "default_entity": "Существо по умолчанию",
+      "killer_entity": "Убийца",
+      "damager_entity": "Атакующий",
+      "victim_entity": "Жертва",
+      "shooter_entity": "Стрелок",
+      "projectile": "Снаряд",
+      "last_entity": "Последняя сущность"
+    }
+  },
+  {
+    "id": "entity",
+    "selectors": {
+      "current": "Текущая цель",
+      "default_entity": "Сущность по умолчанию",
+      "killer_entity": "Убийца",
+      "damager_entity": "Атакующая сущность",
+      "victim_entity": "Жертва",
+      "shooter_entity": "Стрелок",
+      "projectile": "Снаряд стрелка",
+      "last_entity": "Последняя сущность",
+      "all_entities": "Все сущности",
+      "random_entity": "Случайная сущность",
+      "all_mobs": "Все мобы"
+    }
+  },
+  {
+    "id": "player",
+    "selectors": {
+      "current": "Текущая цель",
+      "default_player": "Игрок по умолчанию",
+      "killer_player": "Убийца",
+      "damager_player": "Атакующий",
+      "shooter_player": "Стрелок",
+      "victim_player": "Жертва",
+      "random_player": "Случайный игрок",
+      "all_players": "Все игроки"
+    }
+  }
+]

@@ -14,5 +14,9 @@
   {
     "id": "util",
     "header_color": "142, 142, 147"
+  },
+  {
+    "id": "game_value_getter",
+    "header_color": "0, 0, 0"
   }
 ]

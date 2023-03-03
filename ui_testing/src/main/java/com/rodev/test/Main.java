@@ -42,6 +42,11 @@ public class Main extends ModernUI implements DataProvider {
         return getResourceAsStream("action_types.json");
     }
 
+    @Override
+    public InputStream getSelectorGroupsInputStream() {
+        return getResourceAsStream("selectors.json");
+    }
+
     private InputStream getResourceAsStream(String name) {
         return Main.class.getResourceAsStream(name);
     }
@@ -49,8 +54,8 @@ public class Main extends ModernUI implements DataProvider {
     @NotNull
     @Override
     public InputStream getResourceStream(@NotNull String res, @NotNull String path) throws IOException {
-        if(res.equalsIgnoreCase("actions")) {
-            var resPath = "icons/actions/" + path;
+        if(res.equalsIgnoreCase("actions") || res.equalsIgnoreCase("game_values")) {
+            var resPath = String.format("icons/%s/%s", res, path);
             InputStream stream = getResourceAsStream(resPath);
             if (stream == null) {
                 throw new FileNotFoundException(resPath);

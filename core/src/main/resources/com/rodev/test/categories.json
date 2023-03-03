@@ -18,6 +18,7 @@
   "set_variable-map" : "Действия над словарями",
   "if_variable" : "Если переменная",
   "events-player" : "Событие игрока",
+  "game_values" : "creative_plus.category.game_values_action.name",
   "player-miscellaneous" : "Разное",
   "player-settings" : "Настройки",
   "set_variable-item" : "Операции над предметами",
