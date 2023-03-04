@@ -1,7 +1,7 @@
 package com.rodev.test.blueprint.data.action;
 
 import com.rodev.test.blueprint.data.DataAccess;
-import com.rodev.test.blueprint.data.IconSupplier;
+import com.rodev.test.blueprint.data.IconPathResolver;
 import com.rodev.test.blueprint.data.action.type.ActionType;
 import com.rodev.test.blueprint.data.variable.VariableType;
 import com.rodev.test.blueprint.node.BPNode;
@@ -10,8 +10,6 @@ import com.rodev.test.contextmenu.Item;
 import com.rodev.test.contextmenu.tree.ContextTreeNodeView;
 import com.rodev.test.contextmenu.tree.ContextTreeRootView;
 import icyllis.modernui.graphics.drawable.ImageDrawable;
-import lombok.Getter;
-import lombok.Setter;
 
 import java.util.HashSet;
 import java.util.List;
@@ -28,13 +26,10 @@ public final class Action {
     private final Object extraData;
     private final Set<VariableType> acceptableOutputPins = new HashSet<>();
     private final Set<VariableType> acceptableInputPins = new HashSet<>();
-
-    @Getter
-    @Setter
-    private IconSupplier iconSupplier = IconSupplier.actionIconSupplier;
+    private final String iconNamespace;
 
     public Action(String id, String name, ActionType actionType, List<PinType> inputPins, List<PinType> outputPins,
-                  String category, Object extraData) {
+                  String category, Object extraData, String iconNamespace) {
         this.id = id;
         this.name = name;
         this.actionType = actionType;
@@ -42,6 +37,7 @@ public final class Action {
         this.outputPins = outputPins;
         this.category = category;
         this.extraData = extraData;
+        this.iconNamespace = iconNamespace;
 
         fillAcceptablePins();
     }
@@ -63,27 +59,8 @@ public final class Action {
         return acceptableInputPins.contains(inputType);
     }
 
-    public void addTo(ContextTreeRootView contextTreeRootView, Item item) {
-        ContextTreeNodeView treeNode = null;
-        for (String id : category.split("\\.")) {
-            if (treeNode == null) {
-                treeNode = contextTreeRootView.getOrCreate(id);
-            } else {
-                treeNode = treeNode.getOrCreate(id);
-            }
-            var translated = DataAccess.translateCategoryId(id);
-            if (translated == null) translated = id;
-
-            treeNode.setName(translated);
-        }
-
-        if (treeNode == null) return;
-
-        treeNode.add(item);
-    }
-
     public BPNode toNode() {
-        var node = actionType().createNode(this);
+        var node = actionType.createNode(this);
 
         for (var inputPinType : inputPins()) {
             var pin = VarPin.inputPin(inputPinType);
@@ -98,8 +75,14 @@ public final class Action {
         return node;
     }
 
+    private String iconPathCache;
+
     public ImageDrawable createIcon() {
-        return iconSupplier.create(id);
+        if(iconPathCache == null) {
+            iconPathCache = IconPathResolver.resolve(this);
+        }
+
+        return new ImageDrawable(DataAccess.TEXTURE_NAMESPACE, iconPathCache);
     }
 
     public String id() {
@@ -108,10 +91,6 @@ public final class Action {
 
     public String name() {
         return name;
-    }
-
-    public ActionType actionType() {
-        return actionType;
     }
 
     public List<PinType> inputPins() {
@@ -128,6 +107,10 @@ public final class Action {
 
     public Object extraData() {
         return extraData;
+    }
+
+    public String iconNamespace() {
+        return iconNamespace;
     }
 
     @Override
@@ -157,6 +140,7 @@ public final class Action {
                 "inputPins=" + inputPins + ", " +
                 "outputPins=" + outputPins + ", " +
                 "extraData=" + extraData + ", " +
+                "iconNamespace=" + iconNamespace + ", " +
                 "category=" + category + ']';
     }
 

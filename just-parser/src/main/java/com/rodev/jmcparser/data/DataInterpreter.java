@@ -101,6 +101,7 @@ public class DataInterpreter implements ActionNameHandler, EventNameHandler {
         actionEntity.category = getCategoryFor(actionData);
         actionEntity.input = createInput(actionData);
         actionEntity.output = createOutput(actionData);
+        actionEntity.icon_namespace = "actions";
 
         return actionEntity;
     }
@@ -117,6 +118,7 @@ public class DataInterpreter implements ActionNameHandler, EventNameHandler {
         }
         actionEntity.input = Collections.emptyList();
         actionEntity.output = createOutput(event);
+        actionEntity.icon_namespace = "events";
 
         return actionEntity;
     }

@@ -37,12 +37,9 @@ public class SelectableDrawable extends Drawable {
         Paint paint = Paint.take();
         Rect b = getBounds();
 
-        if (isSelected) {
-            paint.setColor(Colors.YELLOW);
-            canvas.drawRoundRect(b.left, b.top, b.right, b.bottom, mRadius, paint);
-        }
+        drawSelectionOutlineIfSelected(canvas, paint);
 
-        paint.setColor(backgroundColor);
+        onBackgroundColorSet(paint);
         canvas.drawRoundRect(
                 b.left + selectionOffset,
                 b.top + selectionOffset,
@@ -55,12 +52,29 @@ public class SelectableDrawable extends Drawable {
         paint.drop();
     }
 
+    protected void drawSelectionOutlineIfSelected(Canvas canvas, Paint paint) {
+        var b = getBounds();
+
+        if (isSelected) {
+            paint.setColor(Colors.YELLOW);
+            canvas.drawRoundRect(b.left, b.top, b.right, b.bottom, mRadius, paint);
+        }
+    }
+
+    protected void onBackgroundColorSet(Paint paint) {
+        paint.setColor(backgroundColor);
+    }
+
     @Override
     public boolean getPadding(@Nonnull Rect padding) {
-        int r = (int) Math.ceil(mRadius / 2f) + selectionOffset;
-        this.padding = r;
+        var r = this.padding = calcPadding();
         padding.set(r, r, r, r);
+
         return true;
+    }
+
+    protected int calcPadding() {
+        return (int) Math.ceil(mRadius / 2f) + selectionOffset;
     }
 
 

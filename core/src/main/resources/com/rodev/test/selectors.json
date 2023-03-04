@@ -2,9 +2,9 @@
   {
     "id": "game_value",
     "selectors": {
-      "current": "Текущая цель",
       "default": "По умолчанию",
       "default_entity": "Существо по умолчанию",
+      "current": "Текущая цель",
       "killer_entity": "Убийца",
       "damager_entity": "Атакующий",
       "victim_entity": "Жертва",
@@ -16,8 +16,8 @@
   {
     "id": "entity",
     "selectors": {
-      "current": "Текущая цель",
       "default_entity": "Сущность по умолчанию",
+      "current": "Текущая цель",
       "killer_entity": "Убийца",
       "damager_entity": "Атакующая сущность",
       "victim_entity": "Жертва",
@@ -32,8 +32,8 @@
   {
     "id": "player",
     "selectors": {
-      "current": "Текущая цель",
       "default_player": "Игрок по умолчанию",
+      "current": "Текущая цель",
       "killer_player": "Убийца",
       "damager_player": "Атакующий",
       "shooter_player": "Стрелок",

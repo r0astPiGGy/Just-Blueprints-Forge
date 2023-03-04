@@ -17,6 +17,14 @@
   },
   {
     "id": "game_value_getter",
-    "header_color": "0, 0, 0"
+    "header_color": "191, 90, 242"
+  },
+  {
+    "id": "player_getter",
+    "header_color": "100, 210, 255"
+  },
+  {
+    "id": "entity_getter",
+    "header_color": "100, 210, 255"
   }
 ]

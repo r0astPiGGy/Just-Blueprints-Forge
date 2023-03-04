@@ -19,7 +19,7 @@ public class PopupSearchView extends EditText {
         addTextChangedListener(new TextChangedListener());
         setBackground(new Background());
 
-        setHint("Search");
+        setHint("Поиск");
         TextViewCreationListener.onContextMenuSearchViewCreated(this);
     }
 

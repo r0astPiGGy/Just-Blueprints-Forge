@@ -46,7 +46,8 @@ public class ActionRegistry extends Registry<String, Action> {
                 inputPins,
                 outputPins,
                 entity.category,
-                entity.extra_data
+                entity.extra_data,
+                entity.icon_namespace
         );
     }
 

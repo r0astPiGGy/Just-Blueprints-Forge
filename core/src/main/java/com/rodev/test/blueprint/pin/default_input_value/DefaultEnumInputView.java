@@ -10,16 +10,20 @@ import icyllis.modernui.graphics.Paint;
 import icyllis.modernui.graphics.drawable.Drawable;
 import icyllis.modernui.math.Rect;
 import icyllis.modernui.view.View;
+import icyllis.modernui.view.ViewGroup;
 import icyllis.modernui.widget.ArrayAdapter;
 import icyllis.modernui.widget.Spinner;
 import icyllis.modernui.widget.SpinnerAdapter;
+import icyllis.modernui.widget.TextView;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import javax.annotation.Nonnull;
 
 public class DefaultEnumInputView extends Spinner implements DefaultInputValue {
 
     public DefaultEnumInputView(EnumPinType pinType) {
-        ArrayAdapter<EnumValue> arrayAdapter = new ArrayAdapter<>(pinType.values());
+        ArrayAdapter<EnumValue> arrayAdapter = new CustomArrayAdapter<>(pinType.values());
 
         setAdapter(arrayAdapter);
 

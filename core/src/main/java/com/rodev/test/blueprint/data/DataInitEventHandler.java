@@ -4,30 +4,41 @@ import com.rodev.test.blueprint.data.action.ActionRegistry;
 import com.rodev.test.blueprint.data.action.EnumPinType;
 import com.rodev.test.blueprint.data.action.type.ActionTypeRegistry;
 import com.rodev.test.blueprint.data.category.ContextCategoryRegistry;
+import com.rodev.test.blueprint.data.selectors.SelectorGroup;
 import com.rodev.test.blueprint.data.selectors.SelectorGroupRegistry;
 import com.rodev.test.blueprint.data.variable.VariableTypeRegistry;
-import com.rodev.test.blueprint.node.NodeView;
-import com.rodev.test.blueprint.node.SelectorVariableGetterNode;
+import com.rodev.test.blueprint.node.impl.NodeView;
+import com.rodev.test.blueprint.node.impl.getter.PureGetterNode;
+import com.rodev.test.blueprint.node.impl.getter.SelectorVariableGetterNode;
 import com.rodev.test.blueprint.pin.default_input_value.DefaultBooleanInputView;
 import com.rodev.test.blueprint.pin.default_input_value.DefaultEnumInputView;
 import com.rodev.test.blueprint.pin.default_input_value.DefaultNumberInputView;
 import com.rodev.test.blueprint.pin.default_input_value.DefaultTextInputView;
 import com.rodev.test.blueprint.pin.exec_pin.ExecPin;
-import icyllis.modernui.graphics.Image;
 import icyllis.modernui.graphics.opengl.TextureManager;
 
+import java.io.File;
 import java.util.Map;
+
+import static com.rodev.test.blueprint.data.DataAccess.TEXTURE_NAMESPACE;
 
 public class DataInitEventHandler {
 
     private DataInitEventHandler() {}
 
+    public static void onDataPreLoad() {
+        IconPathResolver.registerResolver("game_values", action -> {
+            return String.format("%s%s%s.png", action.iconNamespace(), File.separator, action.id().replace("_gamevalue_getter", ""));
+        });
+    }
+
     public static void onActionTypeRegistryPreLoad(ActionTypeRegistry registry) {
         registry.addNodeSupplier("event", (color, action) -> {
-            var node = new NodeView(color, action.id(), action.name());
+            var node = new NodeView(color, action.id(), action.name(), action.createIcon());
             var output = ExecPin.outputPin();
 
             node.addOutput(output.createRowView());
+
             //noinspection unchecked
             Map<Object, Object> map = (Map<Object, Object>) action.extraData();
             boolean cancellable = (boolean) map.get("cancellable");
@@ -39,16 +50,45 @@ public class DataInitEventHandler {
             return node;
         });
         registry.addNodeSupplier("game_value_getter", (color, action) -> {
-            var selectorGroup = DataAccess.getInstance().selectorGroupRegistry.get("game_value");
-            // TODO fixme
-            action.setIconSupplier(IconSupplier.gameValueIconSupplier);
+            boolean selectorEnabled = true;
 
-            var node = new SelectorVariableGetterNode(action.id(), selectorGroup);
+            if(action.extraData() != null) {
+                //noinspection unchecked
+                Map<Object, Object> map = (Map<Object, Object>) action.extraData();
+                selectorEnabled = !(boolean) map.get("selector_disabled");
+            }
+
+            SelectorGroup selectorGroup = null;
+
+            if(selectorEnabled) {
+                selectorGroup = DataAccess.getInstance()
+                        .selectorGroupRegistry
+                        .get(SelectorGroup.Type.GAME_VALUE);
+            }
+
+            var node = new PureGetterNode(color, action.id(), "Игровое значение" , action.createIcon(), selectorGroup);
             node.setSubTitle(action.name());
 
             return node;
         });
-        registry.addNodeSupplier("pure-function", (color, action) -> new NodeView(color, action.id(), action.name()));
+        registry.addNodeSupplier("entity_getter", (color, action) -> {
+            var selectorGroup = DataAccess.getInstance()
+                    .selectorGroupRegistry
+                    .get(SelectorGroup.Type.ENTITY);
+
+            return new SelectorVariableGetterNode(color, action.id(), action.name(), action.createIcon(), selectorGroup);
+        });
+        registry.addNodeSupplier("player_getter", (color, action) -> {
+            var selectorGroup = DataAccess.getInstance()
+                    .selectorGroupRegistry
+                    .get(SelectorGroup.Type.PLAYER);
+
+            return new SelectorVariableGetterNode(color, action.id(), action.name(), action.createIcon(), selectorGroup);
+        });
+
+        registry.addNodeSupplier("pure-function", (color, action) -> {
+            return new NodeView(color, action.id(), action.name(), action.createIcon());
+        });
     }
 
     public static void onVariableTypeRegistryPreLoad(VariableTypeRegistry registry) {
@@ -90,7 +130,11 @@ public class DataInitEventHandler {
 
     private static void loadIcons(DataAccess dataAccess) {
         dataAccess.actionRegistry.getAll().forEach(a -> {
-            TextureManager.getInstance().getOrCreate("actions", "textures/" + a.id() + ".png",
+            var path = IconPathResolver.resolve(a);
+
+            path = String.format("textures%s%s", File.separator, path);
+
+            TextureManager.getInstance().getOrCreate(TEXTURE_NAMESPACE, path,
                     TextureManager.CACHE_MASK | TextureManager.MIPMAP_MASK);
         });
     }

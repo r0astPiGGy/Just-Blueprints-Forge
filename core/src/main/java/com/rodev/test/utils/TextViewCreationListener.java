@@ -2,6 +2,7 @@ package com.rodev.test.utils;
 
 import com.rodev.test.Colors;
 import com.rodev.test.Fonts;
+import com.rodev.test.blueprint.pin.default_input_value.DefaultTextInputView;
 import icyllis.modernui.graphics.font.FontPaint;
 import icyllis.modernui.view.View;
 import icyllis.modernui.widget.TextView;
@@ -42,6 +43,10 @@ public class TextViewCreationListener {
         textView.setTextSize(View.sp(17));
     }
 
+    public static void onArrayAdapterTextItemCreated(TextView textView) {
+        setDefaultFont(textView);
+    }
+
     public static void onContextMenuSearchViewCreated(TextView textView) {
         setDefaultFont(textView);
         textView.setTextSize(View.sp(13));
@@ -58,4 +63,7 @@ public class TextViewCreationListener {
         textView.setTypeface(Fonts.MINECRAFT_FONT);
     }
 
+    public static void onDefaultTextInputViewCreated(TextView textView) {
+        setDefaultFont(textView);
+    }
 }

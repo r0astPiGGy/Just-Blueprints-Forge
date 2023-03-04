@@ -2,6 +2,7 @@ package com.rodev.test.blueprint.pin.default_input_value;
 
 import com.rodev.test.Colors;
 import com.rodev.test.blueprint.data.variable.DefaultInputValue;
+import com.rodev.test.utils.TextViewCreationListener;
 import icyllis.modernui.graphics.Canvas;
 import icyllis.modernui.graphics.Paint;
 import icyllis.modernui.graphics.drawable.Drawable;
@@ -19,6 +20,7 @@ public class DefaultTextInputView extends EditText implements DefaultInputValue 
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT
         ));
+        TextViewCreationListener.onDefaultTextInputViewCreated(this);
         setHint("Текст");
         //setTextColor(Colors.NODE_BACKGROUND);
         setBackground(new Drawable() {

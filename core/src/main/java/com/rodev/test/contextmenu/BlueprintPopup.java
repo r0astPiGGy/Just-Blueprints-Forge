@@ -2,6 +2,7 @@ package com.rodev.test.contextmenu;
 
 import com.rodev.test.blueprint.data.DataAccess;
 import com.rodev.test.blueprint.data.action.Action;
+import com.rodev.test.contextmenu.tree.ContextTreeNodeView;
 import com.rodev.test.contextmenu.tree.ContextTreeRootView;
 import icyllis.modernui.math.Rect;
 import icyllis.modernui.view.*;
@@ -55,8 +56,9 @@ public class BlueprintPopup implements PopupWindow.OnDismissListener {
         ));
 
         var searchView = popupRoot.getSearchView();
-        searchView.setOnTextChangedListener(text -> {
-            treeRootView.hideIfNot(item -> !item.getName().contains(text));
+        searchView.setOnTextChangedListener(changedText -> {
+            var textToFind = changedText.toLowerCase();
+            treeRootView.hideIfNot(item -> item.getName().toLowerCase().contains(textToFind));
         });
 
         return popupRoot;
@@ -70,8 +72,29 @@ public class BlueprintPopup implements PopupWindow.OnDismissListener {
 
             if(invalid) continue;
 
-            action.addTo(treeRootView, createItem(action.name(), action));
+            var item = createItem(action.name(), action);
+
+            addItemToTreeRootView(treeRootView, item, action.category());
         }
+    }
+
+    private void addItemToTreeRootView(ContextTreeRootView rootView, Item item, String category) {
+        ContextTreeNodeView treeNode = null;
+        for (String id : category.split("\\.")) {
+            if (treeNode == null) {
+                treeNode = rootView.getOrCreate(id);
+            } else {
+                treeNode = treeNode.getOrCreate(id);
+            }
+            var translated = DataAccess.translateCategoryId(id);
+            if (translated == null) translated = id;
+
+            treeNode.setName(translated);
+        }
+
+        if (treeNode == null) return;
+
+        treeNode.add(item);
     }
 
     public void setEpicenterBounds(Rect bounds) {

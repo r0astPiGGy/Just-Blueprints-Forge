@@ -20,6 +20,8 @@ import java.util.*;
 @RequiredArgsConstructor
 public class DataAccess {
 
+    public static final String TEXTURE_NAMESPACE = "justblueprints";
+
     public final ActionTypeRegistry actionTypeRegistry;
     public final VariableTypeRegistry variableTypeRegistry;
     public final ContextCategoryRegistry contextCategoryRegistry;
@@ -42,6 +44,8 @@ public class DataAccess {
     }
 
     public static DataAccess load(DataProvider dataProvider) throws IOException {
+        DataInitEventHandler.onDataPreLoad();
+
         var objectMapper = new ObjectMapper();
 
         var actions = objectMapper.readValue(dataProvider.getActionsInputStream(), ActionEntity[].class);

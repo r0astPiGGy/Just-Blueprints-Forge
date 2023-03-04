@@ -15,6 +15,7 @@ public class ActionEntity {
     public List<PinTypeEntity> input;
     public List<PinTypeEntity> output;
     public Object extra_data;
+    public String icon_namespace;
 
     @NoArgsConstructor
     @AllArgsConstructor

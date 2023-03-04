@@ -1,17 +1,18 @@
-package com.rodev.test.blueprint.node;
+package com.rodev.test.blueprint.node.impl.getter;
 
 import com.rodev.test.Colors;
-import com.rodev.test.blueprint.data.IconSupplier;
-import com.rodev.test.blueprint.data.action.EnumPinType;
 import com.rodev.test.blueprint.data.action.EnumValue;
 import com.rodev.test.blueprint.data.selectors.Selector;
 import com.rodev.test.blueprint.data.selectors.SelectorGroup;
 import com.rodev.test.blueprint.data.variable.DefaultInputValue;
+import com.rodev.test.blueprint.node.impl.NodeView;
 import com.rodev.test.blueprint.pin.Pin;
 import com.rodev.test.blueprint.pin.PinRowView;
+import com.rodev.test.blueprint.pin.default_input_value.CustomArrayAdapter;
 import icyllis.modernui.graphics.Canvas;
 import icyllis.modernui.graphics.Paint;
 import icyllis.modernui.graphics.drawable.Drawable;
+import icyllis.modernui.graphics.drawable.ImageDrawable;
 import icyllis.modernui.math.Rect;
 import icyllis.modernui.view.View;
 import icyllis.modernui.widget.ArrayAdapter;
@@ -24,8 +25,8 @@ public class SelectorVariableGetterNode extends NodeView {
     private PinRowView output;
     private final SelectorGroup selectorGroup;
 
-    public SelectorVariableGetterNode(String id, SelectorGroup selectorGroup) {
-        super(Colors.PARTICLE_COLOR, id, "Получить игровое значение", IconSupplier.gameValueIconSupplier);
+    public SelectorVariableGetterNode(int headerColor, String id, String name, ImageDrawable icon, SelectorGroup selectorGroup) {
+        super(headerColor, id, name, icon);
 
         this.selectorGroup = selectorGroup;
     }
@@ -49,14 +50,17 @@ public class SelectorVariableGetterNode extends NodeView {
         output = pinRowView;
 
         super.addOutput(pinRowView);
-        pinRowView.setText("Селектор");
-        pinRowView.addDefaultValueView(new SelectorValueView(selectorGroup));
+
+        if(selectorGroup != null) {
+            pinRowView.setText("Селектор");
+            pinRowView.addDefaultValueView(new SelectorValueView(selectorGroup));
+        }
     }
 
     private static class SelectorValueView extends Spinner implements DefaultInputValue {
 
         public SelectorValueView(SelectorGroup selectorGroup) {
-            ArrayAdapter<Selector> arrayAdapter = new ArrayAdapter<>(selectorGroup.selectors().toArray(new Selector[0]));
+            ArrayAdapter<Selector> arrayAdapter = new CustomArrayAdapter<>(selectorGroup.selectors());
 
             setAdapter(arrayAdapter);
 

@@ -10,6 +10,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 
+import static com.rodev.test.blueprint.data.DataAccess.TEXTURE_NAMESPACE;
+
 public class Main extends ModernUI implements DataProvider {
 
     public static void main(String[] args) throws IOException {
@@ -53,14 +55,16 @@ public class Main extends ModernUI implements DataProvider {
 
     @NotNull
     @Override
-    public InputStream getResourceStream(@NotNull String res, @NotNull String path) throws IOException {
-        if(res.equalsIgnoreCase("actions") || res.equalsIgnoreCase("game_values")) {
-            var resPath = String.format("icons/%s/%s", res, path);
-            InputStream stream = getResourceAsStream(resPath);
-            if (stream == null) {
-                throw new FileNotFoundException(resPath);
-            }
-            return stream;
-        } else return super.getResourceStream(res, path);
+    public InputStream getResourceStream(@NotNull String namespace, @NotNull String path) throws IOException {
+        if(!namespace.equalsIgnoreCase(TEXTURE_NAMESPACE)) {
+            return super.getResourceStream(namespace, path);
+        }
+
+        InputStream stream = getResourceAsStream(path);
+        if (stream == null) {
+            throw new FileNotFoundException(path);
+        }
+
+        return stream;
     }
 }

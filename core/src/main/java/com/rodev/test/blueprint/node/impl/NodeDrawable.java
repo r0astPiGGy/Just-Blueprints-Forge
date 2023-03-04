@@ -1,11 +1,9 @@
-package com.rodev.test.blueprint.node;
+package com.rodev.test.blueprint.node.impl;
 
-import com.rodev.test.Colors;
-import icyllis.modernui.graphics.BlendMode;
+import com.rodev.test.blueprint.node.SelectableDrawable;
 import icyllis.modernui.graphics.Canvas;
-import icyllis.modernui.graphics.Color;
 import icyllis.modernui.graphics.Paint;
-import icyllis.modernui.math.Rect;
+import icyllis.modernui.view.Gravity;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Supplier;
@@ -21,12 +19,6 @@ public class NodeDrawable extends SelectableDrawable {
         headerColors = new int[]{headerColor, backgroundColor, backgroundColor, headerColor};
     }
 
-    public NodeDrawable(Supplier<Integer> headerHeightSupplier, int headerColor, int selectionOffset, int mRadius) {
-        super(selectionOffset, mRadius);
-        this.headerHeightSupplier = headerHeightSupplier;
-        headerColors = new int[]{headerColor, backgroundColor, backgroundColor, headerColor};
-    }
-
     @Override
     public void draw(@NotNull Canvas canvas) {
         super.draw(canvas);
@@ -37,22 +29,13 @@ public class NodeDrawable extends SelectableDrawable {
         int headerHeight = headerHeightSupplier.get() + padding;
 
         paint.setColors(headerColors);
-
-        // TODO Use sides чтобы убрать костыль
         canvas.drawRoundRect(
                 b.left + selectionOffset,
                 b.top + selectionOffset,
                 b.right - selectionOffset,
                 b.top + headerHeight,
                 mRadius,
-                paint
-        );
-
-        canvas.drawRect(
-                b.left + selectionOffset,
-                b.top + selectionOffset + mRadius,
-                b.right - selectionOffset,
-                b.top + headerHeight,
+                Gravity.TOP,
                 paint
         );
 

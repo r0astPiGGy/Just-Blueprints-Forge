@@ -1,22 +1,15 @@
-package com.rodev.test.blueprint.node;
+package com.rodev.test.blueprint.node.impl.getter;
 
 import com.rodev.test.blueprint.ChildRoot;
+import com.rodev.test.blueprint.node.*;
 import com.rodev.test.blueprint.pin.Pin;
 import com.rodev.test.blueprint.pin.PinRowView;
-import com.rodev.test.blueprint.pin.PinView;
-import icyllis.modernui.graphics.Canvas;
-import icyllis.modernui.graphics.Color;
-import icyllis.modernui.graphics.Paint;
-import icyllis.modernui.graphics.drawable.Drawable;
-import icyllis.modernui.math.Rect;
 import icyllis.modernui.view.MotionEvent;
 import icyllis.modernui.view.View;
 import icyllis.modernui.view.ViewGroup;
 import icyllis.modernui.widget.FrameLayout;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-
-import javax.annotation.Nonnull;
 
 public abstract class VarGetterNode extends FrameLayout implements BPNode {
 

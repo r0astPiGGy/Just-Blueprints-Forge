@@ -17,6 +17,33 @@
       "id" : "branch_false",
       "label" : "False",
       "type" : "exec"
-    } ]
+    } ],
+    "icon_namespace": "actions"
+  },
+  {
+    "id" : "player_getter",
+    "type" : "player_getter",
+    "name" : "Получить игрока",
+    "category" : "game_values",
+    "input" : [],
+    "output" : [ {
+      "id" : "player",
+      "label" : "",
+      "type" : "player"
+    } ],
+    "icon_namespace": "game_values"
+  },
+  {
+    "id" : "entity_getter",
+    "type" : "entity_getter",
+    "name" : "Получить сущность",
+    "category" : "game_values",
+    "input" : [],
+    "output" : [ {
+      "id" : "entity",
+      "label" : "",
+      "type" : "entity"
+    } ],
+    "icon_namespace": "game_values"
   }
 ]

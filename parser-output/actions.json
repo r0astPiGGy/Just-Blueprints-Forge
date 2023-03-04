@@ -10,7 +10,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "else",
   "type" : "function",
@@ -18,7 +19,8 @@
   "category" : "else",
   "input" : [ ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "start_process",
   "type" : "function",
@@ -50,7 +52,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "control_call_exception",
   "type" : "function",
@@ -77,7 +80,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "control_end_thread",
   "type" : "function",
@@ -85,7 +89,8 @@
   "category" : "control",
   "input" : [ ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "control_return_function",
   "type" : "function",
@@ -93,7 +98,8 @@
   "category" : "control",
   "input" : [ ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "control_skip_iteration",
   "type" : "function",
@@ -101,7 +107,8 @@
   "category" : "control",
   "input" : [ ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "control_stop_repeat",
   "type" : "function",
@@ -109,7 +116,8 @@
   "category" : "control",
   "input" : [ ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "control_wait",
   "type" : "function",
@@ -131,7 +139,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "controller_async_run",
   "type" : "function",
@@ -139,7 +148,8 @@
   "category" : "control",
   "input" : [ ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "controller_exception",
   "type" : "function",
@@ -161,7 +171,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "controller_measure_time",
   "type" : "function",
@@ -183,7 +194,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_disguise_as_block",
   "type" : "function",
@@ -201,7 +213,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_disguise_as_entity",
   "type" : "function",
@@ -219,7 +232,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_disguise_as_item",
   "type" : "function",
@@ -237,7 +251,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_disguise_as_player",
   "type" : "function",
@@ -268,7 +283,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_play_damage_animation",
   "type" : "function",
@@ -290,7 +306,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_remove_disguise",
   "type" : "function",
@@ -303,7 +320,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_set_armor_stand_parts",
   "type" : "function",
@@ -334,7 +352,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_set_armor_stand_pose",
   "type" : "function",
@@ -374,7 +393,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_set_axolotl_type",
   "type" : "function",
@@ -398,7 +418,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_set_bee_nectar",
   "type" : "function",
@@ -416,7 +437,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_set_cat_lying_down",
   "type" : "function",
@@ -434,7 +456,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_set_cat_type",
   "type" : "function",
@@ -464,7 +487,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_set_dye_color",
   "type" : "function",
@@ -499,7 +523,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_set_enderman_block",
   "type" : "function",
@@ -517,7 +542,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_set_fox_leaping",
   "type" : "function",
@@ -535,7 +561,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_set_fox_type",
   "type" : "function",
@@ -556,7 +583,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_set_frog_type",
   "type" : "function",
@@ -578,7 +606,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_set_glow_squid_dark",
   "type" : "function",
@@ -596,7 +625,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_set_glowing",
   "type" : "function",
@@ -614,7 +644,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_set_horse_pattern",
   "type" : "function",
@@ -653,7 +684,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_set_item_in_frame",
   "type" : "function",
@@ -671,7 +703,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_set_llama_type",
   "type" : "function",
@@ -694,7 +727,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_set_minecart_block",
   "type" : "function",
@@ -717,7 +751,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_set_mushroom_cow_type",
   "type" : "function",
@@ -738,7 +773,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_set_parrot_type",
   "type" : "function",
@@ -762,7 +798,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_set_pose",
   "type" : "function",
@@ -795,7 +832,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_set_projectile_display_item",
   "type" : "function",
@@ -813,7 +851,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_set_rabbit_type",
   "type" : "function",
@@ -839,7 +878,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_set_snowman_pumpkin",
   "type" : "function",
@@ -857,7 +897,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_set_tropical_fish_pattern",
   "type" : "function",
@@ -935,7 +976,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_set_villager_biome",
   "type" : "function",
@@ -961,7 +1003,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_set_visual_fire",
   "type" : "function",
@@ -979,7 +1022,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_set_zombie_arms_raised",
   "type" : "function",
@@ -997,7 +1041,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_eat_grass",
   "type" : "function",
@@ -1010,7 +1055,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_eat_target",
   "type" : "function",
@@ -1028,7 +1074,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_explode",
   "type" : "function",
@@ -1041,7 +1088,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_ignite_creeper",
   "type" : "function",
@@ -1054,7 +1102,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_jump",
   "type" : "function",
@@ -1067,7 +1116,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_move_to_location",
   "type" : "function",
@@ -1090,7 +1140,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_move_to_location_stop",
   "type" : "function",
@@ -1103,7 +1154,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_ram_target",
   "type" : "function",
@@ -1121,7 +1173,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_set_allay_dancing",
   "type" : "function",
@@ -1139,7 +1192,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_set_aware",
   "type" : "function",
@@ -1157,7 +1211,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_set_celebrating",
   "type" : "function",
@@ -1175,7 +1230,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_set_dragon_phase",
   "type" : "function",
@@ -1205,7 +1261,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_set_shulker_bullet_target",
   "type" : "function",
@@ -1223,7 +1280,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_set_target",
   "type" : "function",
@@ -1241,7 +1299,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_sleep",
   "type" : "function",
@@ -1259,7 +1318,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_use_item",
   "type" : "function",
@@ -1285,7 +1345,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_get_custom_tag",
   "type" : "function",
@@ -1308,7 +1369,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_launch_projectile",
   "type" : "function",
@@ -1351,7 +1413,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_remove",
   "type" : "function",
@@ -1364,7 +1427,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_remove_custom_tag",
   "type" : "function",
@@ -1382,7 +1446,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_set_armor_items",
   "type" : "function",
@@ -1415,7 +1480,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_set_custom_tag",
   "type" : "function",
@@ -1438,7 +1504,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_set_equipment_item",
   "type" : "function",
@@ -1468,7 +1535,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_set_item",
   "type" : "function",
@@ -1486,7 +1554,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_set_warden_digging",
   "type" : "function",
@@ -1507,7 +1576,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_shear_sheep",
   "type" : "function",
@@ -1520,7 +1590,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_attach_lead",
   "type" : "function",
@@ -1543,7 +1614,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_face_location",
   "type" : "function",
@@ -1561,7 +1633,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_launch_forward",
   "type" : "function",
@@ -1592,7 +1665,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_launch_to_location",
   "type" : "function",
@@ -1620,7 +1694,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_launch_up",
   "type" : "function",
@@ -1643,7 +1718,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_ride_entity",
   "type" : "function",
@@ -1661,7 +1737,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_set_gliding",
   "type" : "function",
@@ -1679,7 +1756,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_set_gravity",
   "type" : "function",
@@ -1697,7 +1775,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_set_rotation",
   "type" : "function",
@@ -1720,7 +1799,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_set_location",
   "type" : "function",
@@ -1743,7 +1823,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_teleport",
   "type" : "function",
@@ -1766,7 +1847,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_celar_potion_effects",
   "type" : "function",
@@ -1779,7 +1861,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_damage",
   "type" : "function",
@@ -1797,7 +1880,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_give_potion_effects",
   "type" : "function",
@@ -1834,7 +1918,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_heal",
   "type" : "function",
@@ -1852,7 +1937,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_remove_potion_effect",
   "type" : "function",
@@ -1870,7 +1956,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_set_absorption_health",
   "type" : "function",
@@ -1888,7 +1975,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_set_animal_age",
   "type" : "function",
@@ -1915,7 +2003,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_set_attribute",
   "type" : "function",
@@ -1951,7 +2040,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_set_creeper_fuse",
   "type" : "function",
@@ -1969,7 +2059,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_set_current_health",
   "type" : "function",
@@ -1987,7 +2078,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_set_death_time",
   "type" : "function",
@@ -2005,7 +2097,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_set_explosive_power",
   "type" : "function",
@@ -2023,7 +2116,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_set_fall_distance",
   "type" : "function",
@@ -2041,7 +2135,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_set_fire_ticks",
   "type" : "function",
@@ -2059,7 +2154,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_set_fishing_wait",
   "type" : "function",
@@ -2077,7 +2173,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_set_freeze_ticks",
   "type" : "function",
@@ -2100,7 +2197,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_set_horse_jump",
   "type" : "function",
@@ -2118,7 +2216,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_set_invulnerability_ticks",
   "type" : "function",
@@ -2136,7 +2235,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_set_max_health",
   "type" : "function",
@@ -2159,7 +2259,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_set_pickup_delay",
   "type" : "function",
@@ -2177,7 +2278,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_set_potion_cloud_radius",
   "type" : "function",
@@ -2200,7 +2302,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_set_villager_experience",
   "type" : "function",
@@ -2218,7 +2321,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_set_warden_anger_level",
   "type" : "function",
@@ -2241,7 +2345,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_set_wither_invulnerability_ticks",
   "type" : "function",
@@ -2259,7 +2364,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_set_ai",
   "type" : "function",
@@ -2277,7 +2383,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_set_angry",
   "type" : "function",
@@ -2300,7 +2407,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_set_baby",
   "type" : "function",
@@ -2318,7 +2426,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_set_carrying_chest",
   "type" : "function",
@@ -2336,7 +2445,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_set_collidable",
   "type" : "function",
@@ -2354,7 +2464,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_set_creeper_charge",
   "type" : "function",
@@ -2372,7 +2483,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_set_custom_name",
   "type" : "function",
@@ -2390,7 +2502,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_set_custom_name_visibility",
   "type" : "function",
@@ -2408,7 +2521,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_set_death_drops",
   "type" : "function",
@@ -2426,7 +2540,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_set_despawning",
   "type" : "function",
@@ -2444,7 +2559,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_set_end_crystal_beam",
   "type" : "function",
@@ -2462,7 +2578,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_set_goat_screaming",
   "type" : "function",
@@ -2480,7 +2597,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_set_invisible",
   "type" : "function",
@@ -2498,7 +2616,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_set_invulnerable",
   "type" : "function",
@@ -2516,7 +2635,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_set_marker",
   "type" : "function",
@@ -2534,7 +2654,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_set_panda_gene",
   "type" : "function",
@@ -2569,7 +2690,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_set_persistence",
   "type" : "function",
@@ -2587,7 +2709,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_set_projectile_shooter",
   "type" : "function",
@@ -2605,7 +2728,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_set_rearing",
   "type" : "function",
@@ -2623,7 +2747,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_set_riptiding",
   "type" : "function",
@@ -2641,7 +2766,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_set_sheep_sheared",
   "type" : "function",
@@ -2659,7 +2785,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_set_silenced",
   "type" : "function",
@@ -2677,7 +2804,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_set_sitting",
   "type" : "function",
@@ -2695,7 +2823,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_set_size",
   "type" : "function",
@@ -2713,7 +2842,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_set_tame",
   "type" : "function",
@@ -2731,7 +2861,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_set_villager_profession",
   "type" : "function",
@@ -2765,7 +2896,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "entity_set_wearing_saddle",
   "type" : "function",
@@ -2783,7 +2915,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "game_block_growth",
   "type" : "function",
@@ -2809,7 +2942,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "game_bone_meal_block",
   "type" : "function",
@@ -2827,7 +2961,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "game_break_block",
   "type" : "function",
@@ -2840,7 +2975,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "game_clear_container",
   "type" : "function",
@@ -2853,7 +2989,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "game_clear_container_items",
   "type" : "function",
@@ -2871,7 +3008,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "game_clear_region",
   "type" : "function",
@@ -2889,7 +3027,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "game_clone_region",
   "type" : "function",
@@ -2927,7 +3066,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "game_fill_container",
   "type" : "function",
@@ -2945,7 +3085,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "game_generate_tree",
   "type" : "function",
@@ -2984,7 +3125,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "game_random_tick_block",
   "type" : "function",
@@ -3002,7 +3144,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "game_remove_container_items",
   "type" : "function",
@@ -3020,7 +3163,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "game_replace_blocks_in_region",
   "type" : "function",
@@ -3048,7 +3192,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "game_replace_container_items",
   "type" : "function",
@@ -3076,7 +3221,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "game_set_age",
   "type" : "function",
@@ -3094,7 +3240,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "game_set_block",
   "type" : "function",
@@ -3112,7 +3259,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "game_set_block_custom_tag",
   "type" : "function",
@@ -3135,7 +3283,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "game_set_block_data",
   "type" : "function",
@@ -3153,7 +3302,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "game_set_campfire_item",
   "type" : "function",
@@ -3186,7 +3336,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "game_set_container",
   "type" : "function",
@@ -3204,7 +3355,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "game_set_container_lock",
   "type" : "function",
@@ -3222,7 +3374,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "game_set_container_name",
   "type" : "function",
@@ -3240,7 +3393,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "game_set_furnace_cook_time",
   "type" : "function",
@@ -3258,7 +3412,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "game_set_item_in_container_slot",
   "type" : "function",
@@ -3281,7 +3436,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "game_set_lectern_book",
   "type" : "function",
@@ -3304,7 +3460,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "game_set_player_head",
   "type" : "function",
@@ -3322,7 +3479,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "game_set_region",
   "type" : "function",
@@ -3345,7 +3503,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "game_set_sign_text",
   "type" : "function",
@@ -3368,7 +3527,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "game_set_sign_text_color",
   "type" : "function",
@@ -3408,7 +3568,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "game_create_explosion",
   "type" : "function",
@@ -3426,7 +3587,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "game_launch_firework",
   "type" : "function",
@@ -3457,7 +3619,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "game_launch_projectile",
   "type" : "function",
@@ -3495,7 +3658,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "game_spawn_armor_stand",
   "type" : "function",
@@ -3573,7 +3737,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "game_spawn_effect_cloud",
   "type" : "function",
@@ -3611,7 +3776,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "game_spawn_end_crystal",
   "type" : "function",
@@ -3634,7 +3800,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "game_spawn_evoker_fangs",
   "type" : "function",
@@ -3652,7 +3819,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "game_spawn_experience_orb",
   "type" : "function",
@@ -3675,7 +3843,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "game_spawn_eye_of_ender",
   "type" : "function",
@@ -3712,7 +3881,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "game_spawn_falling_block",
   "type" : "function",
@@ -3740,7 +3910,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "game_spawn_item",
   "type" : "function",
@@ -3778,7 +3949,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "game_spawn_lightning_bolt",
   "type" : "function",
@@ -3791,7 +3963,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "game_spawn_mob",
   "type" : "function",
@@ -3859,7 +4032,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "game_spawn_primed_tnt",
   "type" : "function",
@@ -3887,7 +4061,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "game_spawn_shulker_bullet",
   "type" : "function",
@@ -3905,7 +4080,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "game_spawn_vehicle",
   "type" : "function",
@@ -3928,7 +4104,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "game_cancel_event",
   "type" : "function",
@@ -3936,7 +4113,8 @@
   "category" : "game.game-event",
   "input" : [ ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "game_clear_exploded_blocks",
   "type" : "function",
@@ -3949,7 +4127,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "game_hide_event_message",
   "type" : "function",
@@ -3962,7 +4141,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "game_set_event_damage",
   "type" : "function",
@@ -3975,7 +4155,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "game_set_event_experience",
   "type" : "function",
@@ -3988,7 +4169,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "game_set_event_heal",
   "type" : "function",
@@ -4001,7 +4183,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "game_set_event_projectile",
   "type" : "function",
@@ -4019,7 +4202,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "game_set_event_sound",
   "type" : "function",
@@ -4032,7 +4216,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "game_uncancel_event",
   "type" : "function",
@@ -4040,7 +4225,8 @@
   "category" : "game.game-event",
   "input" : [ ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "game_clear_scoreboard_scores",
   "type" : "function",
@@ -4053,7 +4239,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "game_create_scoreboard",
   "type" : "function",
@@ -4071,7 +4258,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "game_remove_scoreboard",
   "type" : "function",
@@ -4084,7 +4272,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "game_remove_scoreboard_score_by_name",
   "type" : "function",
@@ -4102,7 +4291,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "game_remove_scoreboard_score_by_score",
   "type" : "function",
@@ -4120,7 +4310,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "game_set_scoreboard_score",
   "type" : "function",
@@ -4143,7 +4334,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "game_set_scoreboard_title",
   "type" : "function",
@@ -4161,7 +4353,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "game_set_block_drops_enabled",
   "type" : "function",
@@ -4174,7 +4367,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "game_set_world_difficulty",
   "type" : "function",
@@ -4192,7 +4386,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "game_set_world_time",
   "type" : "function",
@@ -4205,7 +4400,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "game_set_world_weather",
   "type" : "function",
@@ -4227,7 +4423,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "game_send_web_request",
   "type" : "function",
@@ -4263,7 +4460,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "if_entity_exists",
   "type" : "pure-function",
@@ -4281,7 +4479,8 @@
     "type" : "boolean",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "if_entity_has_custom_tag",
   "type" : "pure-function",
@@ -4309,7 +4508,8 @@
     "type" : "boolean",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "if_entity_has_potion_effect",
   "type" : "pure-function",
@@ -4340,7 +4540,8 @@
     "type" : "boolean",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "if_entity_is_disguised",
   "type" : "pure-function",
@@ -4358,7 +4559,8 @@
     "type" : "boolean",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "if_entity_is_grounded",
   "type" : "pure-function",
@@ -4376,7 +4578,8 @@
     "type" : "boolean",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "if_entity_is_item",
   "type" : "pure-function",
@@ -4394,7 +4597,8 @@
     "type" : "boolean",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "if_entity_is_mob",
   "type" : "pure-function",
@@ -4412,7 +4616,8 @@
     "type" : "boolean",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "if_entity_is_near_location",
   "type" : "pure-function",
@@ -4445,7 +4650,8 @@
     "type" : "boolean",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "if_entity_is_projectile",
   "type" : "pure-function",
@@ -4463,7 +4669,8 @@
     "type" : "boolean",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "if_entity_is_riding_entity",
   "type" : "pure-function",
@@ -4494,7 +4701,8 @@
     "type" : "boolean",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "if_entity_is_standing_on_block",
   "type" : "pure-function",
@@ -4522,7 +4730,8 @@
     "type" : "boolean",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "if_entity_is_type",
   "type" : "pure-function",
@@ -4545,7 +4754,8 @@
     "type" : "boolean",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "if_entity_is_vehicle",
   "type" : "pure-function",
@@ -4563,7 +4773,8 @@
     "type" : "boolean",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "if_entity_name_equals",
   "type" : "pure-function",
@@ -4586,7 +4797,8 @@
     "type" : "boolean",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "if_entity_spawn_reason_equals",
   "type" : "pure-function",
@@ -4645,7 +4857,8 @@
     "type" : "boolean",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "if_game_block_equals",
   "type" : "pure-function",
@@ -4668,7 +4881,8 @@
     "type" : "boolean",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "if_game_block_powered",
   "type" : "pure-function",
@@ -4694,7 +4908,8 @@
     "type" : "boolean",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "if_game_container_has",
   "type" : "pure-function",
@@ -4735,7 +4950,8 @@
     "type" : "boolean",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "if_game_container_has_room_for_item",
   "type" : "pure-function",
@@ -4766,7 +4982,8 @@
     "type" : "boolean",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "if_game_damage_cause_equals",
   "type" : "pure-function",
@@ -4814,7 +5031,8 @@
     "type" : "boolean",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "if_game_event_attack_is_critical",
   "type" : "pure-function",
@@ -4827,7 +5045,8 @@
     "type" : "boolean",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "if_game_event_block_equals",
   "type" : "pure-function",
@@ -4850,7 +5069,8 @@
     "type" : "boolean",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "if_game_event_is_canceled",
   "type" : "pure-function",
@@ -4863,7 +5083,8 @@
     "type" : "boolean",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "if_game_event_item_equals",
   "type" : "pure-function",
@@ -4891,7 +5112,8 @@
     "type" : "boolean",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "if_game_has_player",
   "type" : "pure-function",
@@ -4909,7 +5131,8 @@
     "type" : "boolean",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "if_game_heal_cause_equals",
   "type" : "pure-function",
@@ -4937,7 +5160,8 @@
     "type" : "boolean",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "if_game_ignite_cause_equals",
   "type" : "pure-function",
@@ -4964,7 +5188,8 @@
     "type" : "boolean",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "if_game_instrument_equals",
   "type" : "pure-function",
@@ -4999,7 +5224,8 @@
     "type" : "boolean",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "if_game_sign_contains",
   "type" : "pure-function",
@@ -5041,7 +5267,8 @@
     "type" : "boolean",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "if_player_cursor_item_equals",
   "type" : "pure-function",
@@ -5074,7 +5301,8 @@
     "type" : "boolean",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "if_player_has_item",
   "type" : "pure-function",
@@ -5115,7 +5343,8 @@
     "type" : "boolean",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "if_player_has_item_at_least",
   "type" : "pure-function",
@@ -5151,7 +5380,8 @@
     "type" : "boolean",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "if_player_has_item_in_slot",
   "type" : "pure-function",
@@ -5189,7 +5419,8 @@
     "type" : "boolean",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "if_player_has_room_for_item",
   "type" : "pure-function",
@@ -5231,7 +5462,8 @@
     "type" : "boolean",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "if_player_inventory_menu_slot_equals",
   "type" : "pure-function",
@@ -5269,7 +5501,8 @@
     "type" : "boolean",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "if_player_is_holding",
   "type" : "pure-function",
@@ -5311,7 +5544,8 @@
     "type" : "boolean",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "if_player_item_is_not_on_cooldown",
   "type" : "pure-function",
@@ -5334,7 +5568,8 @@
     "type" : "boolean",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "if_player_is_using_item",
   "type" : "pure-function",
@@ -5367,7 +5602,8 @@
     "type" : "boolean",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "if_player_is_wearing_item",
   "type" : "pure-function",
@@ -5408,7 +5644,8 @@
     "type" : "boolean",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "if_player_in_area",
   "type" : "pure-function",
@@ -5441,7 +5678,8 @@
     "type" : "boolean",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "if_player_is_looking_at_block",
   "type" : "pure-function",
@@ -5483,7 +5721,8 @@
     "type" : "boolean",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "if_player_is_near",
   "type" : "pure-function",
@@ -5516,7 +5755,8 @@
     "type" : "boolean",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "if_player_is_standing_on_block",
   "type" : "pure-function",
@@ -5544,7 +5784,8 @@
     "type" : "boolean",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "if_player_chat_message_equals",
   "type" : "pure-function",
@@ -5567,7 +5808,8 @@
     "type" : "boolean",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "if_player_gamemode_equals",
   "type" : "pure-function",
@@ -5595,7 +5837,8 @@
     "type" : "boolean",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "if_player_has_potion_effect",
   "type" : "pure-function",
@@ -5626,7 +5869,8 @@
     "type" : "boolean",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "if_player_has_privilege",
   "type" : "pure-function",
@@ -5660,7 +5904,8 @@
     "type" : "boolean",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "if_player_hotbar_slot_equals",
   "type" : "pure-function",
@@ -5683,7 +5928,8 @@
     "type" : "boolean",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "if_player_inventory_type_open",
   "type" : "pure-function",
@@ -5733,7 +5979,8 @@
     "type" : "boolean",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "if_player_is_riding_entity",
   "type" : "pure-function",
@@ -5764,7 +6011,8 @@
     "type" : "boolean",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "if_player_name_equals",
   "type" : "pure-function",
@@ -5787,7 +6035,8 @@
     "type" : "boolean",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "if_player_is_blocking",
   "type" : "pure-function",
@@ -5805,7 +6054,8 @@
     "type" : "boolean",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "if_player_is_disguised",
   "type" : "pure-function",
@@ -5823,7 +6073,8 @@
     "type" : "boolean",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "if_player_is_flying",
   "type" : "pure-function",
@@ -5841,7 +6092,8 @@
     "type" : "boolean",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "if_player_is_gliding",
   "type" : "pure-function",
@@ -5859,7 +6111,8 @@
     "type" : "boolean",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "if_player_is_on_ground",
   "type" : "pure-function",
@@ -5877,7 +6130,8 @@
     "type" : "boolean",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "if_player_is_online_mode",
   "type" : "pure-function",
@@ -5895,7 +6149,8 @@
     "type" : "boolean",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "if_player_is_self_disguised",
   "type" : "pure-function",
@@ -5913,7 +6168,8 @@
     "type" : "boolean",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "if_player_is_sleeping",
   "type" : "pure-function",
@@ -5931,7 +6187,8 @@
     "type" : "boolean",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "if_player_is_sneaking",
   "type" : "pure-function",
@@ -5949,7 +6206,8 @@
     "type" : "boolean",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "if_player_is_sprinting",
   "type" : "pure-function",
@@ -5967,7 +6225,8 @@
     "type" : "boolean",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "if_player_is_swimming",
   "type" : "pure-function",
@@ -5985,7 +6244,8 @@
     "type" : "boolean",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "if_variable_equals",
   "type" : "pure-function",
@@ -6013,7 +6273,8 @@
     "type" : "boolean",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "if_variable_exists",
   "type" : "pure-function",
@@ -6036,7 +6297,8 @@
     "type" : "boolean",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "if_variable_greater",
   "type" : "pure-function",
@@ -6064,7 +6326,8 @@
     "type" : "boolean",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "if_variable_greater_or_equals",
   "type" : "pure-function",
@@ -6092,7 +6355,8 @@
     "type" : "boolean",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "if_variable_in_range",
   "type" : "pure-function",
@@ -6125,7 +6389,8 @@
     "type" : "boolean",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "if_variable_is_type",
   "type" : "pure-function",
@@ -6164,7 +6429,8 @@
     "type" : "boolean",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "if_variable_item_equals",
   "type" : "pure-function",
@@ -6202,7 +6468,8 @@
     "type" : "boolean",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "if_variable_item_has_tag",
   "type" : "pure-function",
@@ -6235,7 +6502,8 @@
     "type" : "boolean",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "if_variable_less",
   "type" : "pure-function",
@@ -6263,7 +6531,8 @@
     "type" : "boolean",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "if_variable_less_or_equals",
   "type" : "pure-function",
@@ -6291,7 +6560,8 @@
     "type" : "boolean",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "if_variable_list_contains_value",
   "type" : "pure-function",
@@ -6319,7 +6589,8 @@
     "type" : "boolean",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "if_variable_list_value_equals",
   "type" : "pure-function",
@@ -6352,7 +6623,8 @@
     "type" : "boolean",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "if_variable_location_is_near",
   "type" : "pure-function",
@@ -6395,7 +6667,8 @@
     "type" : "boolean",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "if_variable_map_has_key",
   "type" : "pure-function",
@@ -6423,7 +6696,8 @@
     "type" : "boolean",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "if_variable_map_value_equals",
   "type" : "pure-function",
@@ -6456,7 +6730,8 @@
     "type" : "boolean",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "if_variable_not_equals",
   "type" : "pure-function",
@@ -6484,7 +6759,8 @@
     "type" : "boolean",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "if_variable_text_contains",
   "type" : "pure-function",
@@ -6517,7 +6793,8 @@
     "type" : "boolean",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "if_variable_text_ends_with",
   "type" : "pure-function",
@@ -6550,7 +6827,8 @@
     "type" : "boolean",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "if_variable_text_matches",
   "type" : "pure-function",
@@ -6588,7 +6866,8 @@
     "type" : "boolean",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "if_variable_text_starts_with",
   "type" : "pure-function",
@@ -6621,7 +6900,8 @@
     "type" : "boolean",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_disguise_as_block",
   "type" : "function",
@@ -6639,7 +6919,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_disguise_as_entity",
   "type" : "function",
@@ -6657,7 +6938,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_disguise_as_item",
   "type" : "function",
@@ -6675,7 +6957,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_play_animation_action",
   "type" : "function",
@@ -6698,7 +6981,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_remove_disguise",
   "type" : "function",
@@ -6711,7 +6995,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_remove_pose",
   "type" : "function",
@@ -6724,7 +7009,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_remove_self_disguise",
   "type" : "function",
@@ -6737,7 +7023,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_remove_skin",
   "type" : "function",
@@ -6750,7 +7037,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_self_disguise_as_block",
   "type" : "function",
@@ -6768,7 +7056,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_self_disguise_as_entity",
   "type" : "function",
@@ -6786,7 +7075,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_self_disguise_as_item",
   "type" : "function",
@@ -6804,7 +7094,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_set_arrows_in_body",
   "type" : "function",
@@ -6822,7 +7113,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_set_bee_stingers_in_body",
   "type" : "function",
@@ -6840,7 +7132,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_set_pose",
   "type" : "function",
@@ -6878,7 +7171,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_set_skin",
   "type" : "function",
@@ -6904,7 +7198,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_set_visual_fire",
   "type" : "function",
@@ -6922,7 +7217,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_swing_hand",
   "type" : "function",
@@ -6943,7 +7239,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_clear_chat",
   "type" : "function",
@@ -6956,7 +7253,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_open_book",
   "type" : "function",
@@ -6974,7 +7272,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_play_sound",
   "type" : "function",
@@ -7013,7 +7312,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_play_sound_sequence",
   "type" : "function",
@@ -7057,7 +7357,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_remove_boss_bar",
   "type" : "function",
@@ -7075,7 +7376,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_send_action_bar",
   "type" : "function",
@@ -7101,7 +7403,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_send_advancement",
   "type" : "function",
@@ -7133,7 +7436,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_send_dialogue",
   "type" : "function",
@@ -7156,7 +7460,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_send_hover",
   "type" : "function",
@@ -7179,7 +7484,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_send_message",
   "type" : "function",
@@ -7206,7 +7512,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_send_minimessage",
   "type" : "function",
@@ -7224,7 +7531,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_send_title",
   "type" : "function",
@@ -7262,7 +7570,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_set_boss_bar",
   "type" : "function",
@@ -7324,7 +7633,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_set_player_list_info",
   "type" : "function",
@@ -7359,7 +7669,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_show_demo_screen",
   "type" : "function",
@@ -7372,7 +7683,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_stop_sound",
   "type" : "function",
@@ -7406,7 +7718,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_add_inventory_menu_row",
   "type" : "function",
@@ -7432,7 +7745,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_close_inventory",
   "type" : "function",
@@ -7445,7 +7759,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_expand_inventory_menu",
   "type" : "function",
@@ -7468,7 +7783,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_open_container_inventory",
   "type" : "function",
@@ -7486,7 +7802,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_remove_inventory_menu_row",
   "type" : "function",
@@ -7512,7 +7829,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_set_inventory_menu_item",
   "type" : "function",
@@ -7535,7 +7853,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_set_inventory_menu_name",
   "type" : "function",
@@ -7553,7 +7872,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_show_inventory_menu",
   "type" : "function",
@@ -7598,7 +7918,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_clear_ender_chest_contents",
   "type" : "function",
@@ -7611,7 +7932,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_clear_inventory",
   "type" : "function",
@@ -7635,7 +7957,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_clear_items",
   "type" : "function",
@@ -7653,7 +7976,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_give_items",
   "type" : "function",
@@ -7676,7 +8000,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_give_random_item",
   "type" : "function",
@@ -7694,7 +8019,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_load_inventory",
   "type" : "function",
@@ -7707,7 +8033,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_remove_items",
   "type" : "function",
@@ -7725,7 +8052,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_replace_items",
   "type" : "function",
@@ -7753,7 +8081,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_save_inventory",
   "type" : "function",
@@ -7766,7 +8095,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_set_armor",
   "type" : "function",
@@ -7799,7 +8129,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_set_cursor_item",
   "type" : "function",
@@ -7817,7 +8148,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_set_ender_chest_contents",
   "type" : "function",
@@ -7835,7 +8167,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_set_equipment",
   "type" : "function",
@@ -7865,7 +8198,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_set_item_cooldown",
   "type" : "function",
@@ -7893,7 +8227,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_set_items",
   "type" : "function",
@@ -7911,7 +8246,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_set_slot_item",
   "type" : "function",
@@ -7934,7 +8270,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_hide_scoreboard",
   "type" : "function",
@@ -7947,7 +8284,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_kick",
   "type" : "function",
@@ -7960,7 +8298,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_redirect_world",
   "type" : "function",
@@ -7978,7 +8317,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_show_scoreboard",
   "type" : "function",
@@ -7996,7 +8336,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_boost_elytra",
   "type" : "function",
@@ -8014,7 +8355,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_face_location",
   "type" : "function",
@@ -8032,7 +8374,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_force_flight_mode",
   "type" : "function",
@@ -8050,7 +8393,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_launch_forward",
   "type" : "function",
@@ -8081,7 +8425,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_launch_to_location",
   "type" : "function",
@@ -8109,7 +8454,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_launch_up",
   "type" : "function",
@@ -8132,7 +8478,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_randomized_teleport",
   "type" : "function",
@@ -8170,7 +8517,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_ride_entity",
   "type" : "function",
@@ -8188,7 +8536,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_set_flying",
   "type" : "function",
@@ -8206,7 +8555,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_set_gliding",
   "type" : "function",
@@ -8224,7 +8574,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_set_rotation",
   "type" : "function",
@@ -8247,7 +8598,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_set_velocity",
   "type" : "function",
@@ -8270,7 +8622,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_spectate_target",
   "type" : "function",
@@ -8288,7 +8641,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_teleport",
   "type" : "function",
@@ -8326,7 +8680,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_teleport_sequence",
   "type" : "function",
@@ -8349,7 +8704,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_clear_potion_effects",
   "type" : "function",
@@ -8362,7 +8718,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_damage",
   "type" : "function",
@@ -8385,7 +8742,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_give_experience",
   "type" : "function",
@@ -8412,7 +8770,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_give_potion_effect",
   "type" : "function",
@@ -8449,7 +8808,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_heal",
   "type" : "function",
@@ -8467,7 +8827,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_remove_potion_effect",
   "type" : "function",
@@ -8485,7 +8846,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_set_absorption_health",
   "type" : "function",
@@ -8503,7 +8865,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_set_air_ticks",
   "type" : "function",
@@ -8521,7 +8884,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_set_attack_speed",
   "type" : "function",
@@ -8539,7 +8903,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_set_experience",
   "type" : "function",
@@ -8566,7 +8931,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_set_fall_distance",
   "type" : "function",
@@ -8584,7 +8950,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_set_fire_ticks",
   "type" : "function",
@@ -8602,7 +8969,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_set_food",
   "type" : "function",
@@ -8620,7 +8988,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_set_freeze_ticks",
   "type" : "function",
@@ -8643,7 +9012,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_set_health",
   "type" : "function",
@@ -8661,7 +9031,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_set_hotbar_slot",
   "type" : "function",
@@ -8679,7 +9050,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_set_invulnerability_ticks",
   "type" : "function",
@@ -8697,7 +9069,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_set_max_health",
   "type" : "function",
@@ -8720,7 +9093,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_set_movement_speed",
   "type" : "function",
@@ -8746,7 +9120,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_set_saturation",
   "type" : "function",
@@ -8764,7 +9139,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_display_lightning",
   "type" : "function",
@@ -8782,7 +9158,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_display_particle",
   "type" : "function",
@@ -8805,7 +9182,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_display_particle_line",
   "type" : "function",
@@ -8846,7 +9224,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_display_particle_ray",
   "type" : "function",
@@ -8887,7 +9266,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_display_vibration",
   "type" : "function",
@@ -8915,7 +9295,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_allow_placing_breaking_blocks",
   "type" : "function",
@@ -8938,7 +9319,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_set_allow_flying",
   "type" : "function",
@@ -8956,7 +9338,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_set_collidable",
   "type" : "function",
@@ -8974,7 +9357,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_set_death_drops",
   "type" : "function",
@@ -8992,7 +9376,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_set_gamemode",
   "type" : "function",
@@ -9023,7 +9408,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_set_instant_respawn",
   "type" : "function",
@@ -9041,7 +9427,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_set_inventory_kept",
   "type" : "function",
@@ -9059,7 +9446,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_set_nametag_visible",
   "type" : "function",
@@ -9077,7 +9465,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_set_pvp",
   "type" : "function",
@@ -9095,7 +9484,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_set_spawn_point",
   "type" : "function",
@@ -9113,7 +9503,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_display_block",
   "type" : "function",
@@ -9136,7 +9527,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_set_block_opened_state",
   "type" : "function",
@@ -9159,7 +9551,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_display_end_gateway_beam",
   "type" : "function",
@@ -9185,7 +9578,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_display_hologram",
   "type" : "function",
@@ -9208,7 +9602,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_display_pick_up_animation",
   "type" : "function",
@@ -9236,7 +9631,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_display_sign_text",
   "type" : "function",
@@ -9274,7 +9670,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_hide_entity",
   "type" : "function",
@@ -9297,7 +9694,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_launch_projectile",
   "type" : "function",
@@ -9340,7 +9738,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_remove_world_border",
   "type" : "function",
@@ -9353,7 +9752,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_send_break_animation",
   "type" : "function",
@@ -9376,7 +9776,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_set_compass_target",
   "type" : "function",
@@ -9394,7 +9795,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_set_fog_distance",
   "type" : "function",
@@ -9412,7 +9814,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_set_time",
   "type" : "function",
@@ -9430,7 +9833,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_set_weather",
   "type" : "function",
@@ -9451,7 +9855,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_set_world_border",
   "type" : "function",
@@ -9479,7 +9884,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_shift_world_border",
   "type" : "function",
@@ -9507,7 +9913,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "repeat_adjacently",
   "type" : "function",
@@ -9545,7 +9952,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "repeat_for_each_in_list",
   "type" : "function",
@@ -9568,7 +9976,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "repeat_for_each_map_entry",
   "type" : "function",
@@ -9591,7 +10000,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "repeat_forever",
   "type" : "function",
@@ -9599,7 +10009,8 @@
   "category" : "repeat",
   "input" : [ ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "repeat_multi_times",
   "type" : "function",
@@ -9617,7 +10028,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "repeat_on_circle",
   "type" : "function",
@@ -9663,7 +10075,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "repeat_on_grid",
   "type" : "function",
@@ -9686,7 +10099,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "repeat_on_path",
   "type" : "function",
@@ -9714,7 +10128,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "repeat_on_range",
   "type" : "function",
@@ -9742,7 +10157,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "repeat_while",
   "type" : "function",
@@ -9750,7 +10166,8 @@
   "category" : "repeat",
   "input" : [ ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "select_all_entities",
   "type" : "function",
@@ -9758,7 +10175,8 @@
   "category" : "select.select-creation",
   "input" : [ ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "select_all_mobs",
   "type" : "function",
@@ -9766,7 +10184,8 @@
   "category" : "select.select-creation",
   "input" : [ ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "select_all_players",
   "type" : "function",
@@ -9774,7 +10193,8 @@
   "category" : "select.select-creation",
   "input" : [ ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "select_entity_by_conditional",
   "type" : "function",
@@ -9782,7 +10202,8 @@
   "category" : "select.select-creation",
   "input" : [ ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "select_entity_by_name",
   "type" : "function",
@@ -9795,7 +10216,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "select_event_target",
   "type" : "function",
@@ -9815,7 +10237,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "select_invert",
   "type" : "function",
@@ -9823,7 +10246,8 @@
   "category" : "select.select-creation",
   "input" : [ ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "select_last_entity",
   "type" : "function",
@@ -9831,7 +10255,8 @@
   "category" : "select.select-creation",
   "input" : [ ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "select_last_mob",
   "type" : "function",
@@ -9839,7 +10264,8 @@
   "category" : "select.select-creation",
   "input" : [ ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "select_mob_by_name",
   "type" : "function",
@@ -9852,7 +10278,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "select_player_by_conditional",
   "type" : "function",
@@ -9860,7 +10287,8 @@
   "category" : "select.select-creation",
   "input" : [ ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "select_player_by_name",
   "type" : "function",
@@ -9873,7 +10301,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "select_random_entity",
   "type" : "function",
@@ -9881,7 +10310,8 @@
   "category" : "select.select-creation",
   "input" : [ ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "select_random_mob",
   "type" : "function",
@@ -9889,7 +10319,8 @@
   "category" : "select.select-creation",
   "input" : [ ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "select_random_player",
   "type" : "function",
@@ -9897,7 +10328,8 @@
   "category" : "select.select-creation",
   "input" : [ ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "select_reset",
   "type" : "function",
@@ -9905,7 +10337,8 @@
   "category" : "select.select-creation",
   "input" : [ ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "select_filter_by_conditional",
   "type" : "function",
@@ -9913,7 +10346,8 @@
   "category" : "select.select-filter",
   "input" : [ ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "select_filter_by_distance",
   "type" : "function",
@@ -9944,7 +10378,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "select_filter_by_raycast",
   "type" : "function",
@@ -9996,7 +10431,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "select_filter_randomly",
   "type" : "function",
@@ -10009,7 +10445,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_append_list",
   "type" : "function",
@@ -10037,7 +10474,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_append_value",
   "type" : "function",
@@ -10060,7 +10498,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_create_list",
   "type" : "function",
@@ -10083,7 +10522,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_list_index_of_value",
   "type" : "function",
@@ -10119,7 +10559,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_list_length",
   "type" : "function",
@@ -10142,7 +10583,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_list_value",
   "type" : "function",
@@ -10175,7 +10617,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_insert_list_value",
   "type" : "function",
@@ -10208,7 +10651,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_randomize_list_order",
   "type" : "function",
@@ -10231,7 +10675,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_remove_list_value",
   "type" : "function",
@@ -10259,7 +10704,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_remove_list_value_at_index",
   "type" : "function",
@@ -10287,7 +10733,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_reverse_list",
   "type" : "function",
@@ -10310,7 +10757,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_set_list_value",
   "type" : "function",
@@ -10343,7 +10791,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_sort_any_list",
   "type" : "function",
@@ -10374,7 +10823,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_trim_list",
   "type" : "function",
@@ -10407,7 +10857,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_add_item_enchantment",
   "type" : "function",
@@ -10440,7 +10891,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_add_item_potion_effects",
   "type" : "function",
@@ -10487,7 +10939,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_book_text",
   "type" : "function",
@@ -10515,7 +10968,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_compass_lodestone",
   "type" : "function",
@@ -10538,7 +10992,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_item_amount",
   "type" : "function",
@@ -10561,7 +11016,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_item_attribute",
   "type" : "function",
@@ -10630,7 +11086,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_item_color",
   "type" : "function",
@@ -10653,7 +11110,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_item_custom_model_data",
   "type" : "function",
@@ -10676,7 +11134,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_item_custom_tag",
   "type" : "function",
@@ -10709,7 +11168,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_item_custom_tags",
   "type" : "function",
@@ -10732,7 +11192,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_item_durability",
   "type" : "function",
@@ -10766,7 +11227,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_item_enchantments",
   "type" : "function",
@@ -10789,7 +11251,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_item_lore",
   "type" : "function",
@@ -10812,7 +11275,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_item_lore_line",
   "type" : "function",
@@ -10840,7 +11304,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_item_type",
   "type" : "function",
@@ -10872,7 +11337,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_item_max_stack_size",
   "type" : "function",
@@ -10895,7 +11361,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_item_name",
   "type" : "function",
@@ -10918,7 +11385,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_item_nbt_tags",
   "type" : "function",
@@ -10941,7 +11409,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_item_potion_effects",
   "type" : "function",
@@ -10964,7 +11433,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_item_rarity",
   "type" : "function",
@@ -10987,7 +11457,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_player_head",
   "type" : "function",
@@ -11010,7 +11481,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_player_head_owner",
   "type" : "function",
@@ -11041,7 +11513,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_remove_compass_lodestone",
   "type" : "function",
@@ -11064,7 +11537,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_remove_item_custom_model_data",
   "type" : "function",
@@ -11087,7 +11561,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_remove_item_custom_tag",
   "type" : "function",
@@ -11115,7 +11590,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_remove_enchantment",
   "type" : "function",
@@ -11143,7 +11619,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_remove_item_lore_line",
   "type" : "function",
@@ -11171,7 +11648,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_remove_item_potion_effects",
   "type" : "function",
@@ -11199,7 +11677,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_set_book_page",
   "type" : "function",
@@ -11240,7 +11719,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_set_book_pages",
   "type" : "function",
@@ -11268,7 +11748,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_set_compass_lodestone",
   "type" : "function",
@@ -11301,7 +11782,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_set_item_amount",
   "type" : "function",
@@ -11329,7 +11811,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_set_item_attribute",
   "type" : "function",
@@ -11403,7 +11886,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_set_item_color",
   "type" : "function",
@@ -11431,7 +11915,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_set_item_custom_model_data",
   "type" : "function",
@@ -11459,7 +11944,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_set_item_custom_tag",
   "type" : "function",
@@ -11492,7 +11978,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_set_item_destroyable_blocks",
   "type" : "function",
@@ -11520,7 +12007,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_set_item_durability",
   "type" : "function",
@@ -11558,7 +12046,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_set_item_enchantments",
   "type" : "function",
@@ -11586,7 +12075,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_set_item_lore",
   "type" : "function",
@@ -11614,7 +12104,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_set_item_lore_line",
   "type" : "function",
@@ -11655,7 +12146,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_set_item_type",
   "type" : "function",
@@ -11683,7 +12175,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_set_item_name",
   "type" : "function",
@@ -11711,7 +12204,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_set_item_placeable_blocks",
   "type" : "function",
@@ -11739,7 +12233,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_set_item_unbreakable",
   "type" : "function",
@@ -11767,7 +12262,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_set_item_visibility_flags",
   "type" : "function",
@@ -11853,7 +12349,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_set_texture_to_map",
   "type" : "function",
@@ -11881,7 +12378,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_align_location",
   "type" : "function",
@@ -11929,7 +12427,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_center_location",
   "type" : "function",
@@ -11952,7 +12451,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_face_location",
   "type" : "function",
@@ -11980,7 +12480,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_all_coordinates",
   "type" : "function",
@@ -12023,7 +12524,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_coordinate",
   "type" : "function",
@@ -12057,7 +12559,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_location_direction",
   "type" : "function",
@@ -12080,7 +12583,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_location_relative",
   "type" : "function",
@@ -12124,7 +12628,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_locations_distance",
   "type" : "function",
@@ -12161,7 +12666,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_random_location",
   "type" : "function",
@@ -12189,7 +12695,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_set_all_coordinates",
   "type" : "function",
@@ -12232,7 +12739,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_set_coordinate",
   "type" : "function",
@@ -12271,7 +12779,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_set_location_direction",
   "type" : "function",
@@ -12299,7 +12808,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_shift_all_coordinates",
   "type" : "function",
@@ -12347,7 +12857,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_shift_coordinate",
   "type" : "function",
@@ -12386,7 +12897,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_shift_location_in_direction",
   "type" : "function",
@@ -12423,7 +12935,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_shift_location_on_vector",
   "type" : "function",
@@ -12451,7 +12964,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_shift_location_towards_location",
   "type" : "function",
@@ -12484,7 +12998,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_append_map",
   "type" : "function",
@@ -12512,7 +13027,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_clear_map",
   "type" : "function",
@@ -12530,7 +13046,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_create_map",
   "type" : "function",
@@ -12558,7 +13075,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_map_keys",
   "type" : "function",
@@ -12581,7 +13099,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_map_size",
   "type" : "function",
@@ -12604,7 +13123,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_map_value",
   "type" : "function",
@@ -12637,7 +13157,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_map_values",
   "type" : "function",
@@ -12660,7 +13181,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_remove_map_entry",
   "type" : "function",
@@ -12693,7 +13215,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_set_map_value",
   "type" : "function",
@@ -12726,7 +13249,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_sort_any_map",
   "type" : "function",
@@ -12765,7 +13289,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_color_channels",
   "type" : "function",
@@ -12797,7 +13322,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_potion_effect_amplifier",
   "type" : "function",
@@ -12820,7 +13346,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_potion_effect_duration",
   "type" : "function",
@@ -12843,7 +13370,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_potion_effect_type",
   "type" : "function",
@@ -12866,7 +13394,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_sound_pitch",
   "type" : "function",
@@ -12889,7 +13418,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_sound_type",
   "type" : "function",
@@ -12912,7 +13442,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_sound_volume_action",
   "type" : "function",
@@ -12935,7 +13466,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_template_code",
   "type" : "function",
@@ -12966,7 +13498,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_set_potion_effect_amplifier",
   "type" : "function",
@@ -12994,7 +13527,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_set_potion_effect_duration",
   "type" : "function",
@@ -13022,7 +13556,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_set_potion_effect_type",
   "type" : "function",
@@ -13050,7 +13585,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_set_sound_pitch",
   "type" : "function",
@@ -13078,7 +13614,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_set_sound_type",
   "type" : "function",
@@ -13111,7 +13648,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_set_sound_volume_action",
   "type" : "function",
@@ -13139,7 +13677,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_set_template_code",
   "type" : "function",
@@ -13167,7 +13706,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_to_hsb",
   "type" : "function",
@@ -13200,7 +13740,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_to_hsl",
   "type" : "function",
@@ -13233,7 +13774,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_to_rgb",
   "type" : "function",
@@ -13266,7 +13808,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_absolute",
   "type" : "function",
@@ -13289,7 +13832,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_add",
   "type" : "function",
@@ -13312,7 +13856,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_average",
   "type" : "function",
@@ -13335,7 +13880,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_bitwise_operation",
   "type" : "function",
@@ -13376,7 +13922,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_clamp",
   "type" : "function",
@@ -13409,7 +13956,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_convert_text_to_number",
   "type" : "function",
@@ -13437,7 +13985,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_cosine",
   "type" : "function",
@@ -13477,7 +14026,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_cotangent",
   "type" : "function",
@@ -13517,7 +14067,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_decrement",
   "type" : "function",
@@ -13540,7 +14091,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_divide",
   "type" : "function",
@@ -13571,7 +14123,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_gaussian_distribution",
   "type" : "function",
@@ -13607,7 +14160,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_increment",
   "type" : "function",
@@ -13630,7 +14184,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_log",
   "type" : "function",
@@ -13658,7 +14213,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_max",
   "type" : "function",
@@ -13681,7 +14237,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_min",
   "type" : "function",
@@ -13704,7 +14261,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_multiply",
   "type" : "function",
@@ -13727,7 +14285,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_perlin_noise_3d",
   "type" : "function",
@@ -13775,7 +14334,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_pow",
   "type" : "function",
@@ -13803,7 +14363,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_random_number",
   "type" : "function",
@@ -13836,7 +14397,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_remainder",
   "type" : "function",
@@ -13864,7 +14426,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_root",
   "type" : "function",
@@ -13892,7 +14455,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_round",
   "type" : "function",
@@ -13929,7 +14493,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_simplex_noise_3d",
   "type" : "function",
@@ -13957,7 +14522,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_sine",
   "type" : "function",
@@ -13997,7 +14563,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_subtract",
   "type" : "function",
@@ -14020,7 +14587,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_tangent",
   "type" : "function",
@@ -14060,7 +14628,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_voronoi_noise_3d",
   "type" : "function",
@@ -14093,7 +14662,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_warp",
   "type" : "function",
@@ -14126,7 +14696,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_particle_amount",
   "type" : "function",
@@ -14149,7 +14720,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_particle_color",
   "type" : "function",
@@ -14172,7 +14744,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_particle_material",
   "type" : "function",
@@ -14195,7 +14768,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_particle_offset",
   "type" : "function",
@@ -14218,7 +14792,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_particle_size",
   "type" : "function",
@@ -14241,7 +14816,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_particle_spread",
   "type" : "function",
@@ -14272,7 +14848,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_particle_type",
   "type" : "function",
@@ -14295,7 +14872,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_set_particle_amount",
   "type" : "function",
@@ -14323,7 +14901,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_set_particle_color",
   "type" : "function",
@@ -14351,7 +14930,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_set_particle_material",
   "type" : "function",
@@ -14379,7 +14959,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_set_particle_offset",
   "type" : "function",
@@ -14407,7 +14988,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_set_particle_size",
   "type" : "function",
@@ -14435,7 +15017,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_set_particle_spread",
   "type" : "function",
@@ -14468,7 +15051,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_set_particle_type",
   "type" : "function",
@@ -14496,7 +15080,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_list_variables",
   "type" : "function",
@@ -14523,7 +15108,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_purge",
   "type" : "function",
@@ -14564,7 +15150,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_random",
   "type" : "function",
@@ -14587,7 +15174,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_value",
   "type" : "function",
@@ -14610,7 +15198,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_char_to_number",
   "type" : "function",
@@ -14633,7 +15222,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_clear_color_codes",
   "type" : "function",
@@ -14656,7 +15246,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_convert_number_to_text",
   "type" : "function",
@@ -14684,7 +15275,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_format_timestamp",
   "type" : "function",
@@ -14741,7 +15333,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_char_at",
   "type" : "function",
@@ -14769,7 +15362,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_index_of_subtext",
   "type" : "function",
@@ -14810,7 +15404,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_text_length",
   "type" : "function",
@@ -14833,7 +15428,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_text_width",
   "type" : "function",
@@ -14856,7 +15452,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_hash",
   "type" : "function",
@@ -14888,7 +15485,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_join_text",
   "type" : "function",
@@ -14936,7 +15534,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_parse_json",
   "type" : "function",
@@ -14959,7 +15558,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_regex_replace_text",
   "type" : "function",
@@ -15035,7 +15635,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_remove_text",
   "type" : "function",
@@ -15068,7 +15669,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_repeat_text",
   "type" : "function",
@@ -15096,7 +15698,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_replace_text",
   "type" : "function",
@@ -15142,7 +15745,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_split_text",
   "type" : "function",
@@ -15170,7 +15774,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_strip_text",
   "type" : "function",
@@ -15203,7 +15808,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_text",
   "type" : "function",
@@ -15235,7 +15841,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_text_case",
   "type" : "function",
@@ -15269,7 +15876,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_to_char",
   "type" : "function",
@@ -15292,7 +15900,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_to_json",
   "type" : "function",
@@ -15320,7 +15929,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_trim_text",
   "type" : "function",
@@ -15353,7 +15963,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_add_vectors",
   "type" : "function",
@@ -15376,7 +15987,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_align_to_axis_vector",
   "type" : "function",
@@ -15404,7 +16016,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_vector_cross_product",
   "type" : "function",
@@ -15432,7 +16045,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_vector_dot_product",
   "type" : "function",
@@ -15460,7 +16074,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_angle_between_vectors",
   "type" : "function",
@@ -15496,7 +16111,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_midpoint_between_vectors",
   "type" : "function",
@@ -15524,7 +16140,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_vector_between_locations",
   "type" : "function",
@@ -15552,7 +16169,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_vector_component",
   "type" : "function",
@@ -15584,7 +16202,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_vector_from_block_face",
   "type" : "function",
@@ -15607,7 +16226,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_vector_length",
   "type" : "function",
@@ -15638,7 +16258,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_multiply_vector",
   "type" : "function",
@@ -15666,7 +16287,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_reflect_vector_product",
   "type" : "function",
@@ -15699,7 +16321,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_rotate_vector_around_axis",
   "type" : "function",
@@ -15744,7 +16367,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_rotate_vector_around_vector",
   "type" : "function",
@@ -15785,7 +16409,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_set_vector_component",
   "type" : "function",
@@ -15822,7 +16447,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_set_vector_length",
   "type" : "function",
@@ -15850,7 +16476,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_subtract_vectors",
   "type" : "function",
@@ -15873,7 +16500,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_vector",
   "type" : "function",
@@ -15906,7 +16534,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_vector_to_direction_name",
   "type" : "function",
@@ -15929,7 +16558,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_all_block_data",
   "type" : "function",
@@ -15957,7 +16587,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_block_custom_tag",
   "type" : "function",
@@ -15995,7 +16626,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_block_data",
   "type" : "function",
@@ -16023,7 +16655,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_block_growth",
   "type" : "function",
@@ -16054,7 +16687,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_block_material",
   "type" : "function",
@@ -16087,7 +16721,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_block_power",
   "type" : "function",
@@ -16110,7 +16745,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_container_contents",
   "type" : "function",
@@ -16138,7 +16774,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_container_lock",
   "type" : "function",
@@ -16161,7 +16798,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_container_name",
   "type" : "function",
@@ -16184,7 +16822,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_lectern_book",
   "type" : "function",
@@ -16207,7 +16846,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_lectern_page",
   "type" : "function",
@@ -16230,7 +16870,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_light_level",
   "type" : "function",
@@ -16262,7 +16903,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_sign_text",
   "type" : "function",
@@ -16296,7 +16938,8 @@
     }
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_ray_trace_result",
   "type" : "function",
@@ -16372,7 +17015,8 @@
     "extra_data" : null
   } ],
   "output" : [ ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
 }, {
   "id" : "player_join",
   "type" : "event",
@@ -16387,7 +17031,8 @@
   } ],
   "extra_data" : {
     "cancellable" : false
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "player_quit",
   "type" : "event",
@@ -16402,7 +17047,8 @@
   } ],
   "extra_data" : {
     "cancellable" : false
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "player_rejoin",
   "type" : "event",
@@ -16412,7 +17058,8 @@
   "output" : [ ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "player_chat",
   "type" : "event",
@@ -16427,7 +17074,8 @@
   } ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "player_interact",
   "type" : "event",
@@ -16457,7 +17105,8 @@
   } ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "player_right_click",
   "type" : "event",
@@ -16487,7 +17136,8 @@
   } ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "player_left_click",
   "type" : "event",
@@ -16517,7 +17167,8 @@
   } ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "player_place_block",
   "type" : "event",
@@ -16537,7 +17188,8 @@
   } ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "player_break_block",
   "type" : "event",
@@ -16557,7 +17209,8 @@
   } ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "player_right_click_entity",
   "type" : "event",
@@ -16577,7 +17230,8 @@
   } ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "player_right_click_player",
   "type" : "event",
@@ -16597,7 +17251,8 @@
   } ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "player_imbue_potion_cloud",
   "type" : "event",
@@ -16607,7 +17262,8 @@
   "output" : [ ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "player_pickup_projectile",
   "type" : "event",
@@ -16617,7 +17273,8 @@
   "output" : [ ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "player_pickup_experience",
   "type" : "event",
@@ -16632,7 +17289,8 @@
   } ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "player_tame_entity",
   "type" : "event",
@@ -16642,7 +17300,8 @@
   "output" : [ ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "player_leash_entity",
   "type" : "event",
@@ -16652,7 +17311,8 @@
   "output" : [ ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "player_start_spectating_entity",
   "type" : "event",
@@ -16662,7 +17322,8 @@
   "output" : [ ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "player_stop_spectating_entity",
   "type" : "event",
@@ -16672,7 +17333,8 @@
   "output" : [ ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "player_open_inventory",
   "type" : "event",
@@ -16682,7 +17344,8 @@
   "output" : [ ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "player_click_inventory",
   "type" : "event",
@@ -16717,7 +17380,8 @@
   } ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "player_drag_inventory",
   "type" : "event",
@@ -16742,7 +17406,8 @@
   } ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "player_click_own_inventory",
   "type" : "event",
@@ -16777,7 +17442,8 @@
   } ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "player_craft_item",
   "type" : "event",
@@ -16797,7 +17463,8 @@
   } ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "player_close_inventory",
   "type" : "event",
@@ -16812,7 +17479,8 @@
   } ],
   "extra_data" : {
     "cancellable" : false
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "player_swap_hands",
   "type" : "event",
@@ -16822,7 +17490,8 @@
   "output" : [ ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "player_change_slot",
   "type" : "event",
@@ -16842,7 +17511,8 @@
   } ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "player_shot_bow",
   "type" : "event",
@@ -16867,7 +17537,8 @@
   } ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "player_launch_projectile",
   "type" : "event",
@@ -16877,7 +17548,8 @@
   "output" : [ ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "player_pickup_item",
   "type" : "event",
@@ -16892,7 +17564,8 @@
   } ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "player_drop_item",
   "type" : "event",
@@ -16907,7 +17580,8 @@
   } ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "player_consume_item",
   "type" : "event",
@@ -16922,7 +17596,8 @@
   } ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "player_break_item",
   "type" : "event",
@@ -16937,7 +17612,8 @@
   } ],
   "extra_data" : {
     "cancellable" : false
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "player_edit_book",
   "type" : "event",
@@ -16952,7 +17628,8 @@
   } ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "player_fish",
   "type" : "event",
@@ -16977,7 +17654,8 @@
   } ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "player_move",
   "type" : "event",
@@ -16992,7 +17670,8 @@
   } ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "player_jump",
   "type" : "event",
@@ -17002,7 +17681,8 @@
   "output" : [ ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "player_sneak",
   "type" : "event",
@@ -17012,7 +17692,8 @@
   "output" : [ ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "player_unsneak",
   "type" : "event",
@@ -17022,7 +17703,8 @@
   "output" : [ ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "player_teleport",
   "type" : "event",
@@ -17037,7 +17719,8 @@
   } ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "player_start_sprint",
   "type" : "event",
@@ -17047,7 +17730,8 @@
   "output" : [ ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "player_stop_sprint",
   "type" : "event",
@@ -17057,7 +17741,8 @@
   "output" : [ ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "player_start_flight",
   "type" : "event",
@@ -17067,7 +17752,8 @@
   "output" : [ ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "player_stop_flight",
   "type" : "event",
@@ -17077,7 +17763,8 @@
   "output" : [ ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "player_riptide",
   "type" : "event",
@@ -17087,7 +17774,8 @@
   "output" : [ ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "player_dismount",
   "type" : "event",
@@ -17097,7 +17785,8 @@
   "output" : [ ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "player_horse_jump",
   "type" : "event",
@@ -17112,7 +17801,8 @@
   } ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "player_vehicle_jump",
   "type" : "event",
@@ -17122,7 +17812,8 @@
   "output" : [ ],
   "extra_data" : {
     "cancellable" : false
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "player_take_damage",
   "type" : "event",
@@ -17142,7 +17833,8 @@
   } ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "player_damage_player",
   "type" : "event",
@@ -17152,7 +17844,8 @@
   "output" : [ ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "entity_damage_player",
   "type" : "event",
@@ -17162,7 +17855,8 @@
   "output" : [ ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "player_damage_entity",
   "type" : "event",
@@ -17172,7 +17866,8 @@
   "output" : [ ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "player_heal",
   "type" : "event",
@@ -17192,7 +17887,8 @@
   } ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "player_food_level_change",
   "type" : "event",
@@ -17207,7 +17903,8 @@
   } ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "player_projectile_hit",
   "type" : "event",
@@ -17217,7 +17914,8 @@
   "output" : [ ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "projectile_damage_player",
   "type" : "event",
@@ -17227,7 +17925,8 @@
   "output" : [ ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "player_death",
   "type" : "event",
@@ -17247,7 +17946,8 @@
   } ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "player_kill_player",
   "type" : "event",
@@ -17257,7 +17957,8 @@
   "output" : [ ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "player_kill_mob",
   "type" : "event",
@@ -17267,7 +17968,8 @@
   "output" : [ ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "mob_kill_player",
   "type" : "event",
@@ -17277,7 +17979,8 @@
   "output" : [ ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "player_respawn",
   "type" : "event",
@@ -17287,7 +17990,8 @@
   "output" : [ ],
   "extra_data" : {
     "cancellable" : false
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "entity_spawn",
   "type" : "event",
@@ -17297,7 +18001,8 @@
   "output" : [ ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "entity_removed_from_world",
   "type" : "event",
@@ -17307,7 +18012,8 @@
   "output" : [ ],
   "extra_data" : {
     "cancellable" : false
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "entity_damage_entity",
   "type" : "event",
@@ -17317,7 +18023,8 @@
   "output" : [ ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "entity_kill_entity",
   "type" : "event",
@@ -17327,7 +18034,8 @@
   "output" : [ ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "entity_take_damage",
   "type" : "event",
@@ -17347,7 +18055,8 @@
   } ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "entity_heal",
   "type" : "event",
@@ -17367,7 +18076,8 @@
   } ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "entity_death",
   "type" : "event",
@@ -17382,7 +18092,8 @@
   } ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "entity_spell_cast",
   "type" : "event",
@@ -17392,7 +18103,8 @@
   "output" : [ ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "firework_explode",
   "type" : "event",
@@ -17402,7 +18114,8 @@
   "output" : [ ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "hanging_break",
   "type" : "event",
@@ -17417,7 +18130,8 @@
   } ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "projectile_damage_entity",
   "type" : "event",
@@ -17427,7 +18141,8 @@
   "output" : [ ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "projectile_kill_entity",
   "type" : "event",
@@ -17437,7 +18152,8 @@
   "output" : [ ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "projectile_hit",
   "type" : "event",
@@ -17457,7 +18173,8 @@
   } ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "entity_drop_item",
   "type" : "event",
@@ -17472,7 +18189,8 @@
   } ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "entity_pickup_item",
   "type" : "event",
@@ -17487,7 +18205,8 @@
   } ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "item_despawn",
   "type" : "event",
@@ -17502,7 +18221,8 @@
   } ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "vehicle_take_damage",
   "type" : "event",
@@ -17522,7 +18242,8 @@
   } ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "block_fall",
   "type" : "event",
@@ -17537,7 +18258,8 @@
   } ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "entity_interact",
   "type" : "event",
@@ -17547,7 +18269,8 @@
   "output" : [ ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "dispenser_shear_sheep",
   "type" : "event",
@@ -17557,7 +18280,8 @@
   "output" : [ ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "world_start",
   "type" : "event",
@@ -17567,7 +18291,8 @@
   "output" : [ ],
   "extra_data" : {
     "cancellable" : false
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "world_stop",
   "type" : "event",
@@ -17577,7 +18302,8 @@
   "output" : [ ],
   "extra_data" : {
     "cancellable" : false
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "time_skip",
   "type" : "event",
@@ -17597,7 +18323,8 @@
   } ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "world_web_response",
   "type" : "event",
@@ -17607,7 +18334,8 @@
   "output" : [ ],
   "extra_data" : {
     "cancellable" : false
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "block_ignite",
   "type" : "event",
@@ -17622,7 +18350,8 @@
   } ],
   "extra_data" : {
     "cancellable" : false
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "block_burn",
   "type" : "event",
@@ -17637,7 +18366,8 @@
   } ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "block_damage",
   "type" : "event",
@@ -17652,7 +18382,8 @@
   } ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "block_fade",
   "type" : "event",
@@ -17667,7 +18398,8 @@
   } ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "tnt_prime",
   "type" : "event",
@@ -17677,7 +18409,8 @@
   "output" : [ ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "block_explode",
   "type" : "event",
@@ -17697,7 +18430,8 @@
   } ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "entity_explode",
   "type" : "event",
@@ -17707,7 +18441,8 @@
   "output" : [ ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "entity_explosion",
   "type" : "event",
@@ -17717,7 +18452,8 @@
   "output" : [ ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "block_piston_extend",
   "type" : "event",
@@ -17742,7 +18478,8 @@
   } ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "block_piston_retract",
   "type" : "event",
@@ -17767,7 +18504,8 @@
   } ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "leaves_decay",
   "type" : "event",
@@ -17777,7 +18515,8 @@
   "output" : [ ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "block_grow",
   "type" : "event",
@@ -17792,7 +18531,8 @@
   } ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "block_flow",
   "type" : "event",
@@ -17807,7 +18547,8 @@
   } ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "block_fertilize",
   "type" : "event",
@@ -17822,7 +18563,8 @@
   } ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "redstone_level_change",
   "type" : "event",
@@ -17832,7 +18574,8 @@
   "output" : [ ],
   "extra_data" : {
     "cancellable" : false
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "brew_complete",
   "type" : "event",
@@ -17842,7 +18585,8 @@
   "output" : [ ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "block_form",
   "type" : "event",
@@ -17857,7 +18601,8 @@
   } ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "block_spread",
   "type" : "event",
@@ -17872,7 +18617,8 @@
   } ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "block_form_by_entity",
   "type" : "event",
@@ -17887,7 +18633,8 @@
   } ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "portal_create",
   "type" : "event",
@@ -17897,7 +18644,8 @@
   "output" : [ ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "bell_ring",
   "type" : "event",
@@ -17907,7 +18655,8 @@
   "output" : [ ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "entity_bell_ring",
   "type" : "event",
@@ -17917,7 +18666,8 @@
   "output" : [ ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "note_play",
   "type" : "event",
@@ -17927,7 +18677,8 @@
   "output" : [ ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "dispenser_dispense_item",
   "type" : "event",
@@ -17942,7 +18693,8 @@
   } ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "dispenser_equip_armor",
   "type" : "event",
@@ -17952,7 +18704,8 @@
   "output" : [ ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "fluid_level_change",
   "type" : "event",
@@ -17962,7 +18715,8 @@
   "output" : [ ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "sponge_absorb",
   "type" : "event",
@@ -17972,7 +18726,8 @@
   "output" : [ ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "falling_block_land",
   "type" : "event",
@@ -17987,7 +18742,8 @@
   } ],
   "extra_data" : {
     "cancellable" : true
-  }
+  },
+  "icon_namespace" : "events"
 }, {
   "id" : "native_branch",
   "type" : "util",
@@ -18010,7 +18766,36 @@
     "type" : "exec",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "actions"
+}, {
+  "id" : "player_getter",
+  "type" : "player_getter",
+  "name" : "Получить игрока",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "player",
+    "label" : "",
+    "type" : "player",
+    "extra_data" : null
+  } ],
+  "extra_data" : null,
+  "icon_namespace" : "game_values"
+}, {
+  "id" : "entity_getter",
+  "type" : "entity_getter",
+  "name" : "Получить сущность",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "entity",
+    "label" : "",
+    "type" : "entity",
+    "extra_data" : null
+  } ],
+  "extra_data" : null,
+  "icon_namespace" : "game_values"
 }, {
   "id" : "current_health_gamevalue_getter",
   "type" : "game_value_getter",
@@ -18023,7 +18808,8 @@
     "type" : "number",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "game_values"
 }, {
   "id" : "max_health_gamevalue_getter",
   "type" : "game_value_getter",
@@ -18036,7 +18822,8 @@
     "type" : "number",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "game_values"
 }, {
   "id" : "absorption_health_gamevalue_getter",
   "type" : "game_value_getter",
@@ -18049,7 +18836,8 @@
     "type" : "number",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "game_values"
 }, {
   "id" : "food_level_gamevalue_getter",
   "type" : "game_value_getter",
@@ -18062,7 +18850,8 @@
     "type" : "number",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "game_values"
 }, {
   "id" : "food_saturation_gamevalue_getter",
   "type" : "game_value_getter",
@@ -18075,7 +18864,8 @@
     "type" : "number",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "game_values"
 }, {
   "id" : "food_exhaustion_gamevalue_getter",
   "type" : "game_value_getter",
@@ -18088,7 +18878,8 @@
     "type" : "number",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "game_values"
 }, {
   "id" : "attack_damage_gamevalue_getter",
   "type" : "game_value_getter",
@@ -18101,7 +18892,8 @@
     "type" : "number",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "game_values"
 }, {
   "id" : "attack_speed_gamevalue_getter",
   "type" : "game_value_getter",
@@ -18114,7 +18906,8 @@
     "type" : "number",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "game_values"
 }, {
   "id" : "armor_points_gamevalue_getter",
   "type" : "game_value_getter",
@@ -18127,7 +18920,8 @@
     "type" : "number",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "game_values"
 }, {
   "id" : "armor_toughness_gamevalue_getter",
   "type" : "game_value_getter",
@@ -18140,7 +18934,8 @@
     "type" : "number",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "game_values"
 }, {
   "id" : "invulnerability_ticks_gamevalue_getter",
   "type" : "game_value_getter",
@@ -18153,7 +18948,8 @@
     "type" : "number",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "game_values"
 }, {
   "id" : "experience_level_gamevalue_getter",
   "type" : "game_value_getter",
@@ -18166,7 +18962,8 @@
     "type" : "number",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "game_values"
 }, {
   "id" : "experience_progress_gamevalue_getter",
   "type" : "game_value_getter",
@@ -18179,7 +18976,8 @@
     "type" : "number",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "game_values"
 }, {
   "id" : "fire_ticks_gamevalue_getter",
   "type" : "game_value_getter",
@@ -18192,7 +18990,8 @@
     "type" : "number",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "game_values"
 }, {
   "id" : "freeze_ticks_gamevalue_getter",
   "type" : "game_value_getter",
@@ -18205,7 +19004,8 @@
     "type" : "number",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "game_values"
 }, {
   "id" : "remaining_air_gamevalue_getter",
   "type" : "game_value_getter",
@@ -18218,7 +19018,8 @@
     "type" : "number",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "game_values"
 }, {
   "id" : "fall_distance_gamevalue_getter",
   "type" : "game_value_getter",
@@ -18231,7 +19032,8 @@
     "type" : "number",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "game_values"
 }, {
   "id" : "held_slot_gamevalue_getter",
   "type" : "game_value_getter",
@@ -18244,7 +19046,8 @@
     "type" : "number",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "game_values"
 }, {
   "id" : "walking_speed_gamevalue_getter",
   "type" : "game_value_getter",
@@ -18257,7 +19060,8 @@
     "type" : "number",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "game_values"
 }, {
   "id" : "flying_speed_gamevalue_getter",
   "type" : "game_value_getter",
@@ -18270,7 +19074,8 @@
     "type" : "number",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "game_values"
 }, {
   "id" : "ping_gamevalue_getter",
   "type" : "game_value_getter",
@@ -18283,7 +19088,8 @@
     "type" : "number",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "game_values"
 }, {
   "id" : "protocol_version_gamevalue_getter",
   "type" : "game_value_getter",
@@ -18296,7 +19102,8 @@
     "type" : "number",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "game_values"
 }, {
   "id" : "item_usage_progress_gamevalue_getter",
   "type" : "game_value_getter",
@@ -18309,7 +19116,8 @@
     "type" : "number",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "game_values"
 }, {
   "id" : "entity_ticks_lived_gamevalue_getter",
   "type" : "game_value_getter",
@@ -18322,7 +19130,8 @@
     "type" : "number",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "game_values"
 }, {
   "id" : "arrows_in_body_gamevalue_getter",
   "type" : "game_value_getter",
@@ -18335,7 +19144,8 @@
     "type" : "number",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "game_values"
 }, {
   "id" : "age_gamevalue_getter",
   "type" : "game_value_getter",
@@ -18348,7 +19158,8 @@
     "type" : "number",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "game_values"
 }, {
   "id" : "steer_forward_gamevalue_getter",
   "type" : "game_value_getter",
@@ -18361,7 +19172,8 @@
     "type" : "number",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "game_values"
 }, {
   "id" : "steer_sideways_gamevalue_getter",
   "type" : "game_value_getter",
@@ -18374,7 +19186,8 @@
     "type" : "number",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "game_values"
 }, {
   "id" : "location_gamevalue_getter",
   "type" : "game_value_getter",
@@ -18387,7 +19200,8 @@
     "type" : "location",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "game_values"
 }, {
   "id" : "target_block_location_gamevalue_getter",
   "type" : "game_value_getter",
@@ -18400,7 +19214,8 @@
     "type" : "location",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "game_values"
 }, {
   "id" : "target_fluid_location_gamevalue_getter",
   "type" : "game_value_getter",
@@ -18413,7 +19228,8 @@
     "type" : "location",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "game_values"
 }, {
   "id" : "target_block_face_gamevalue_getter",
   "type" : "game_value_getter",
@@ -18426,7 +19242,8 @@
     "type" : "text",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "game_values"
 }, {
   "id" : "eye_location_gamevalue_getter",
   "type" : "game_value_getter",
@@ -18439,7 +19256,8 @@
     "type" : "location",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "game_values"
 }, {
   "id" : "x_coordinate_gamevalue_getter",
   "type" : "game_value_getter",
@@ -18452,7 +19270,8 @@
     "type" : "number",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "game_values"
 }, {
   "id" : "y_coordinate_gamevalue_getter",
   "type" : "game_value_getter",
@@ -18465,7 +19284,8 @@
     "type" : "number",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "game_values"
 }, {
   "id" : "z_coordinate_gamevalue_getter",
   "type" : "game_value_getter",
@@ -18478,7 +19298,8 @@
     "type" : "number",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "game_values"
 }, {
   "id" : "pitch_gamevalue_getter",
   "type" : "game_value_getter",
@@ -18491,7 +19312,8 @@
     "type" : "number",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "game_values"
 }, {
   "id" : "yaw_gamevalue_getter",
   "type" : "game_value_getter",
@@ -18504,7 +19326,8 @@
     "type" : "number",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "game_values"
 }, {
   "id" : "direction_of_view_gamevalue_getter",
   "type" : "game_value_getter",
@@ -18517,7 +19340,8 @@
     "type" : "vector",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "game_values"
 }, {
   "id" : "cardinal_direction_gamevalue_getter",
   "type" : "game_value_getter",
@@ -18530,7 +19354,8 @@
     "type" : "text",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "game_values"
 }, {
   "id" : "spawn_location_gamevalue_getter",
   "type" : "game_value_getter",
@@ -18543,7 +19368,8 @@
     "type" : "location",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "game_values"
 }, {
   "id" : "origin_gamevalue_getter",
   "type" : "game_value_getter",
@@ -18556,7 +19382,8 @@
     "type" : "location",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "game_values"
 }, {
   "id" : "velocity_gamevalue_getter",
   "type" : "game_value_getter",
@@ -18569,7 +19396,8 @@
     "type" : "vector",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "game_values"
 }, {
   "id" : "main_hand_item_gamevalue_getter",
   "type" : "game_value_getter",
@@ -18582,7 +19410,8 @@
     "type" : "item",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "game_values"
 }, {
   "id" : "off_hand_item_gamevalue_getter",
   "type" : "game_value_getter",
@@ -18595,7 +19424,8 @@
     "type" : "item",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "game_values"
 }, {
   "id" : "armor_items_gamevalue_getter",
   "type" : "game_value_getter",
@@ -18608,7 +19438,8 @@
     "type" : "list",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "game_values"
 }, {
   "id" : "hotbar_items_gamevalue_getter",
   "type" : "game_value_getter",
@@ -18621,7 +19452,8 @@
     "type" : "list",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "game_values"
 }, {
   "id" : "inventory_items_gamevalue_getter",
   "type" : "game_value_getter",
@@ -18634,7 +19466,8 @@
     "type" : "list",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "game_values"
 }, {
   "id" : "custom_inventory_items_gamevalue_getter",
   "type" : "game_value_getter",
@@ -18647,7 +19480,8 @@
     "type" : "list",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "game_values"
 }, {
   "id" : "cursor_item_gamevalue_getter",
   "type" : "game_value_getter",
@@ -18660,7 +19494,8 @@
     "type" : "item",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "game_values"
 }, {
   "id" : "saddle_item_gamevalue_getter",
   "type" : "game_value_getter",
@@ -18673,7 +19508,8 @@
     "type" : "item",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "game_values"
 }, {
   "id" : "entity_item_gamevalue_getter",
   "type" : "game_value_getter",
@@ -18686,7 +19522,8 @@
     "type" : "item",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "game_values"
 }, {
   "id" : "name_gamevalue_getter",
   "type" : "game_value_getter",
@@ -18699,7 +19536,8 @@
     "type" : "text",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "game_values"
 }, {
   "id" : "uuid_gamevalue_getter",
   "type" : "game_value_getter",
@@ -18712,7 +19550,8 @@
     "type" : "text",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "game_values"
 }, {
   "id" : "display_name_gamevalue_getter",
   "type" : "game_value_getter",
@@ -18725,7 +19564,8 @@
     "type" : "text",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "game_values"
 }, {
   "id" : "entity_type_gamevalue_getter",
   "type" : "game_value_getter",
@@ -18738,7 +19578,8 @@
     "type" : "text",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "game_values"
 }, {
   "id" : "client_brand_name_gamevalue_getter",
   "type" : "game_value_getter",
@@ -18751,7 +19592,8 @@
     "type" : "text",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "game_values"
 }, {
   "id" : "user_locale_gamevalue_getter",
   "type" : "game_value_getter",
@@ -18764,7 +19606,8 @@
     "type" : "text",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "game_values"
 }, {
   "id" : "open_inventory_title_gamevalue_getter",
   "type" : "game_value_getter",
@@ -18777,7 +19620,8 @@
     "type" : "text",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "game_values"
 }, {
   "id" : "gamemode_gamevalue_getter",
   "type" : "game_value_getter",
@@ -18790,7 +19634,8 @@
     "type" : "text",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "game_values"
 }, {
   "id" : "last_damage_cause_gamevalue_getter",
   "type" : "game_value_getter",
@@ -18803,7 +19648,8 @@
     "type" : "text",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "game_values"
 }, {
   "id" : "potion_effects_gamevalue_getter",
   "type" : "game_value_getter",
@@ -18816,7 +19662,8 @@
     "type" : "list",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "game_values"
 }, {
   "id" : "vehicle_gamevalue_getter",
   "type" : "game_value_getter",
@@ -18829,7 +19676,8 @@
     "type" : "text",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "game_values"
 }, {
   "id" : "passengers_gamevalue_getter",
   "type" : "game_value_getter",
@@ -18842,7 +19690,8 @@
     "type" : "list",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "game_values"
 }, {
   "id" : "lead_holder_gamevalue_getter",
   "type" : "game_value_getter",
@@ -18855,7 +19704,8 @@
     "type" : "text",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "game_values"
 }, {
   "id" : "attached_leads_gamevalue_getter",
   "type" : "game_value_getter",
@@ -18868,7 +19718,8 @@
     "type" : "list",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "game_values"
 }, {
   "id" : "spawn_reason_gamevalue_getter",
   "type" : "game_value_getter",
@@ -18881,7 +19732,8 @@
     "type" : "text",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "game_values"
 }, {
   "id" : "main_hand_gamevalue_getter",
   "type" : "game_value_getter",
@@ -18894,7 +19746,8 @@
     "type" : "text",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "game_values"
 }, {
   "id" : "event_block_location_gamevalue_getter",
   "type" : "game_value_getter",
@@ -18907,7 +19760,10 @@
     "type" : "location",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : {
+    "selector_disabled" : true
+  },
+  "icon_namespace" : "game_values"
 }, {
   "id" : "event_block_face_gamevalue_getter",
   "type" : "game_value_getter",
@@ -18920,7 +19776,10 @@
     "type" : "text",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : {
+    "selector_disabled" : true
+  },
+  "icon_namespace" : "game_values"
 }, {
   "id" : "event_blocks_involved_gamevalue_getter",
   "type" : "game_value_getter",
@@ -18933,7 +19792,10 @@
     "type" : "list",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : {
+    "selector_disabled" : true
+  },
+  "icon_namespace" : "game_values"
 }, {
   "id" : "event_interaction_gamevalue_getter",
   "type" : "game_value_getter",
@@ -18946,7 +19808,10 @@
     "type" : "text",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : {
+    "selector_disabled" : true
+  },
+  "icon_namespace" : "game_values"
 }, {
   "id" : "event_new_location_gamevalue_getter",
   "type" : "game_value_getter",
@@ -18959,7 +19824,10 @@
     "type" : "location",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : {
+    "selector_disabled" : true
+  },
+  "icon_namespace" : "game_values"
 }, {
   "id" : "event_damage_gamevalue_getter",
   "type" : "game_value_getter",
@@ -18972,7 +19840,10 @@
     "type" : "number",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : {
+    "selector_disabled" : true
+  },
+  "icon_namespace" : "game_values"
 }, {
   "id" : "event_damage_cause_gamevalue_getter",
   "type" : "game_value_getter",
@@ -18985,7 +19856,10 @@
     "type" : "text",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : {
+    "selector_disabled" : true
+  },
+  "icon_namespace" : "game_values"
 }, {
   "id" : "event_chat_message_gamevalue_getter",
   "type" : "game_value_getter",
@@ -18998,7 +19872,10 @@
     "type" : "text",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : {
+    "selector_disabled" : true
+  },
+  "icon_namespace" : "game_values"
 }, {
   "id" : "event_message_gamevalue_getter",
   "type" : "game_value_getter",
@@ -19011,7 +19888,10 @@
     "type" : "text",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : {
+    "selector_disabled" : true
+  },
+  "icon_namespace" : "game_values"
 }, {
   "id" : "event_heal_amount_gamevalue_getter",
   "type" : "game_value_getter",
@@ -19024,7 +19904,10 @@
     "type" : "number",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : {
+    "selector_disabled" : true
+  },
+  "icon_namespace" : "game_values"
 }, {
   "id" : "event_heal_cause_gamevalue_getter",
   "type" : "game_value_getter",
@@ -19037,7 +19920,10 @@
     "type" : "text",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : {
+    "selector_disabled" : true
+  },
+  "icon_namespace" : "game_values"
 }, {
   "id" : "event_power_gamevalue_getter",
   "type" : "game_value_getter",
@@ -19050,7 +19936,10 @@
     "type" : "number",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : {
+    "selector_disabled" : true
+  },
+  "icon_namespace" : "game_values"
 }, {
   "id" : "event_item_gamevalue_getter",
   "type" : "game_value_getter",
@@ -19063,7 +19952,10 @@
     "type" : "item",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : {
+    "selector_disabled" : true
+  },
+  "icon_namespace" : "game_values"
 }, {
   "id" : "event_equipment_slot_gamevalue_getter",
   "type" : "game_value_getter",
@@ -19076,7 +19968,10 @@
     "type" : "text",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : {
+    "selector_disabled" : true
+  },
+  "icon_namespace" : "game_values"
 }, {
   "id" : "event_slot_gamevalue_getter",
   "type" : "game_value_getter",
@@ -19089,7 +19984,10 @@
     "type" : "number",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : {
+    "selector_disabled" : true
+  },
+  "icon_namespace" : "game_values"
 }, {
   "id" : "event_hotbar_slot_gamevalue_getter",
   "type" : "game_value_getter",
@@ -19102,7 +20000,10 @@
     "type" : "number",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : {
+    "selector_disabled" : true
+  },
+  "icon_namespace" : "game_values"
 }, {
   "id" : "event_added_items_gamevalue_getter",
   "type" : "game_value_getter",
@@ -19115,7 +20016,10 @@
     "type" : "dictionary",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : {
+    "selector_disabled" : true
+  },
+  "icon_namespace" : "game_values"
 }, {
   "id" : "event_slot_type_gamevalue_getter",
   "type" : "game_value_getter",
@@ -19128,7 +20032,10 @@
     "type" : "text",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : {
+    "selector_disabled" : true
+  },
+  "icon_namespace" : "game_values"
 }, {
   "id" : "event_close_inventory_cause_gamevalue_getter",
   "type" : "game_value_getter",
@@ -19141,7 +20048,10 @@
     "type" : "text",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : {
+    "selector_disabled" : true
+  },
+  "icon_namespace" : "game_values"
 }, {
   "id" : "event_inventory_click_type_gamevalue_getter",
   "type" : "game_value_getter",
@@ -19154,7 +20064,10 @@
     "type" : "text",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : {
+    "selector_disabled" : true
+  },
+  "icon_namespace" : "game_values"
 }, {
   "id" : "event_inventory_action_gamevalue_getter",
   "type" : "game_value_getter",
@@ -19167,7 +20080,10 @@
     "type" : "text",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : {
+    "selector_disabled" : true
+  },
+  "icon_namespace" : "game_values"
 }, {
   "id" : "event_drag_type_gamevalue_getter",
   "type" : "game_value_getter",
@@ -19180,7 +20096,10 @@
     "type" : "text",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : {
+    "selector_disabled" : true
+  },
+  "icon_namespace" : "game_values"
 }, {
   "id" : "event_slots_involved_gamevalue_getter",
   "type" : "game_value_getter",
@@ -19193,7 +20112,10 @@
     "type" : "list",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : {
+    "selector_disabled" : true
+  },
+  "icon_namespace" : "game_values"
 }, {
   "id" : "event_fish_state_gamevalue_getter",
   "type" : "game_value_getter",
@@ -19206,7 +20128,10 @@
     "type" : "text",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : {
+    "selector_disabled" : true
+  },
+  "icon_namespace" : "game_values"
 }, {
   "id" : "event_experience_gamevalue_getter",
   "type" : "game_value_getter",
@@ -19219,7 +20144,10 @@
     "type" : "number",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : {
+    "selector_disabled" : true
+  },
+  "icon_namespace" : "game_values"
 }, {
   "id" : "event_hanging_break_cause_gamevalue_getter",
   "type" : "game_value_getter",
@@ -19232,7 +20160,10 @@
     "type" : "text",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : {
+    "selector_disabled" : true
+  },
+  "icon_namespace" : "game_values"
 }, {
   "id" : "event_time_skip_reason_gamevalue_getter",
   "type" : "game_value_getter",
@@ -19245,7 +20176,10 @@
     "type" : "text",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : {
+    "selector_disabled" : true
+  },
+  "icon_namespace" : "game_values"
 }, {
   "id" : "event_time_skip_amount_gamevalue_getter",
   "type" : "game_value_getter",
@@ -19258,7 +20192,10 @@
     "type" : "number",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : {
+    "selector_disabled" : true
+  },
+  "icon_namespace" : "game_values"
 }, {
   "id" : "event_food_level_gamevalue_getter",
   "type" : "game_value_getter",
@@ -19271,7 +20208,10 @@
     "type" : "number",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : {
+    "selector_disabled" : true
+  },
+  "icon_namespace" : "game_values"
 }, {
   "id" : "event_projectile_item_gamevalue_getter",
   "type" : "game_value_getter",
@@ -19284,7 +20224,10 @@
     "type" : "item",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : {
+    "selector_disabled" : true
+  },
+  "icon_namespace" : "game_values"
 }, {
   "id" : "event_teleport_cause_gamevalue_getter",
   "type" : "game_value_getter",
@@ -19297,7 +20240,10 @@
     "type" : "text",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : {
+    "selector_disabled" : true
+  },
+  "icon_namespace" : "game_values"
 }, {
   "id" : "player_count_gamevalue_getter",
   "type" : "game_value_getter",
@@ -19310,7 +20256,8 @@
     "type" : "number",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : null,
+  "icon_namespace" : "game_values"
 }, {
   "id" : "cpu_usage_gamevalue_getter",
   "type" : "game_value_getter",
@@ -19323,7 +20270,10 @@
     "type" : "number",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : {
+    "selector_disabled" : true
+  },
+  "icon_namespace" : "game_values"
 }, {
   "id" : "server_tps_gamevalue_getter",
   "type" : "game_value_getter",
@@ -19336,7 +20286,10 @@
     "type" : "number",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : {
+    "selector_disabled" : true
+  },
+  "icon_namespace" : "game_values"
 }, {
   "id" : "timestamp_gamevalue_getter",
   "type" : "game_value_getter",
@@ -19349,7 +20302,10 @@
     "type" : "number",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : {
+    "selector_disabled" : true
+  },
+  "icon_namespace" : "game_values"
 }, {
   "id" : "server_current_tick_gamevalue_getter",
   "type" : "game_value_getter",
@@ -19362,7 +20318,10 @@
     "type" : "number",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : {
+    "selector_disabled" : true
+  },
+  "icon_namespace" : "game_values"
 }, {
   "id" : "selection_size_gamevalue_getter",
   "type" : "game_value_getter",
@@ -19375,7 +20334,10 @@
     "type" : "number",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : {
+    "selector_disabled" : true
+  },
+  "icon_namespace" : "game_values"
 }, {
   "id" : "selection_target_names_gamevalue_getter",
   "type" : "game_value_getter",
@@ -19388,7 +20350,10 @@
     "type" : "list",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : {
+    "selector_disabled" : true
+  },
+  "icon_namespace" : "game_values"
 }, {
   "id" : "selection_target_uuids_gamevalue_getter",
   "type" : "game_value_getter",
@@ -19401,7 +20366,10 @@
     "type" : "list",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : {
+    "selector_disabled" : true
+  },
+  "icon_namespace" : "game_values"
 }, {
   "id" : "url_response_gamevalue_getter",
   "type" : "game_value_getter",
@@ -19414,7 +20382,10 @@
     "type" : "text",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : {
+    "selector_disabled" : true
+  },
+  "icon_namespace" : "game_values"
 }, {
   "id" : "url_response_code_gamevalue_getter",
   "type" : "game_value_getter",
@@ -19427,7 +20398,10 @@
     "type" : "number",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : {
+    "selector_disabled" : true
+  },
+  "icon_namespace" : "game_values"
 }, {
   "id" : "url_gamevalue_getter",
   "type" : "game_value_getter",
@@ -19440,7 +20414,10 @@
     "type" : "text",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : {
+    "selector_disabled" : true
+  },
+  "icon_namespace" : "game_values"
 }, {
   "id" : "world_time_gamevalue_getter",
   "type" : "game_value_getter",
@@ -19453,7 +20430,10 @@
     "type" : "number",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : {
+    "selector_disabled" : true
+  },
+  "icon_namespace" : "game_values"
 }, {
   "id" : "world_weather_gamevalue_getter",
   "type" : "game_value_getter",
@@ -19466,7 +20446,10 @@
     "type" : "text",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : {
+    "selector_disabled" : true
+  },
+  "icon_namespace" : "game_values"
 }, {
   "id" : "server_stopped_time_gamevalue_getter",
   "type" : "game_value_getter",
@@ -19479,7 +20462,10 @@
     "type" : "number",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : {
+    "selector_disabled" : true
+  },
+  "icon_namespace" : "game_values"
 }, {
   "id" : "action_count_per_tick_gamevalue_getter",
   "type" : "game_value_getter",
@@ -19492,7 +20478,10 @@
     "type" : "number",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : {
+    "selector_disabled" : true
+  },
+  "icon_namespace" : "game_values"
 }, {
   "id" : "owner_uuid_gamevalue_getter",
   "type" : "game_value_getter",
@@ -19505,7 +20494,10 @@
     "type" : "text",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : {
+    "selector_disabled" : true
+  },
+  "icon_namespace" : "game_values"
 }, {
   "id" : "world_size_gamevalue_getter",
   "type" : "game_value_getter",
@@ -19518,7 +20510,10 @@
     "type" : "number",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : {
+    "selector_disabled" : true
+  },
+  "icon_namespace" : "game_values"
 }, {
   "id" : "world_id_gamevalue_getter",
   "type" : "game_value_getter",
@@ -19531,5 +20526,8 @@
     "type" : "text",
     "extra_data" : null
   } ],
-  "extra_data" : null
+  "extra_data" : {
+    "selector_disabled" : true
+  },
+  "icon_namespace" : "game_values"
 } ]

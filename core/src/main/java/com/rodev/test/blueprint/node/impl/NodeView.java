@@ -1,8 +1,9 @@
-package com.rodev.test.blueprint.node;
+package com.rodev.test.blueprint.node.impl;
 
-import com.rodev.test.blueprint.data.IconSupplier;
+import com.rodev.test.blueprint.node.BaseNode;
 import com.rodev.test.blueprint.pin.PinRowView;
 import com.rodev.test.utils.TextViewCreationListener;
+import icyllis.modernui.graphics.drawable.ImageDrawable;
 import icyllis.modernui.view.Gravity;
 import icyllis.modernui.view.View;
 import icyllis.modernui.view.ViewGroup;
@@ -18,20 +19,14 @@ public class NodeView extends BaseNode {
     private final String title;
     private TextView subtitleView;
 
-    private final int headerColor;
     private final LinearLayout nodeHeader;
 
-    private final IconSupplier iconSupplier;
+    private final ImageDrawable iconDrawable;
 
-    public NodeView(int headerColor, String id, String title) {
-        this(headerColor, id, title, IconSupplier.actionIconSupplier);
-    }
-
-    public NodeView(int headerColor, String id, String title, IconSupplier iconSupplier) {
+    public NodeView(int headerColor, String id, String title, ImageDrawable iconDrawable) {
         super(id);
         this.title = title;
-        this.headerColor = headerColor;
-        this.iconSupplier = iconSupplier;
+        this.iconDrawable = iconDrawable;
 
         nodeHeader = createNodeHeader();
         addView(nodeHeader);
@@ -100,9 +95,7 @@ public class NodeView extends BaseNode {
 
     private View createIcon() {
         var icon = new View();
-        var drawable = iconSupplier.create(getNodeId());
-
-        icon.setBackground(drawable);
+        icon.setBackground(this.iconDrawable);
 
         var params = new LayoutParams(dp(30), dp(30));
         params.gravity = Gravity.TOP | Gravity.LEFT;
@@ -131,7 +124,6 @@ public class NodeView extends BaseNode {
     private TextView createTitle() {
         var title = new TextView();
         title.setText(this.title);
-        title.setGravity(Gravity.CENTER);
 
         TextViewCreationListener.onNodeTitleCreated(title);
 
