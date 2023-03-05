@@ -4,6 +4,7 @@ import com.rodev.jmcparser.json.*;
 import com.rodev.jmcparser.util.TimeCounter;
 import com.rodev.test.blueprint.data.json.ActionEntity;
 import com.rodev.test.blueprint.data.json.EventEntity;
+import com.rodev.test.utils.StringUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
@@ -155,14 +156,25 @@ public class DataInterpreter implements ActionNameHandler, EventNameHandler {
     private List<ActionEntity.PinTypeEntity> createInput(ActionData actionData) {
         var input = new LinkedList<ActionEntity.PinTypeEntity>();
 
-        var inputPin = createObjectInputPin(actionData);
+        var id = actionData.id;
+        var isVariableSetter = id.startsWith("set_variable");
+        if(!isVariableSetter) {
+            var inputPin = createObjectInputPin(actionData);
 
-        if(inputPin != null) {
-            input.add(inputPin);
+            if (inputPin != null) {
+                input.add(inputPin);
+            }
         }
 
+        int i = 0;
 
-        for(var arg : actionData.args) {
+        var isVariableGetter = id.startsWith("set_variable_get");
+        if(isVariableGetter)
+            i = 1; // Skip first arg
+
+        for(; i < actionData.args.length; i++) {
+            var arg = actionData.args[i];
+
             if(arg == null) continue;
 
             input.add(createInputPin(actionData, arg));
@@ -184,16 +196,21 @@ public class DataInterpreter implements ActionNameHandler, EventNameHandler {
     }
 
     private List<ActionEntity.PinTypeEntity> createOutput(ActionData actionData) {
-        if(actionData.containing == null && actionData.assigning == null) {
+        var variableGetter = actionData.id.startsWith("set_variable_get");
+        var predicate = false;
+
+        if(actionData.containing != null) {
+            predicate = actionData.containing.equalsIgnoreCase("predicate");
+        }
+
+        if(!predicate && !variableGetter) {
             return Collections.emptyList();
         }
 
         var type = "variable";
 
-        if (actionData.containing != null && actionData.containing.equalsIgnoreCase("predicate")) {
+        if(predicate) {
             type = "boolean";
-        } else {
-            return Collections.emptyList();
         }
 
         var pinTypeEntity = new ActionEntity.PinTypeEntity();
@@ -209,6 +226,7 @@ public class DataInterpreter implements ActionNameHandler, EventNameHandler {
             case "code":
             case "world":
             case "select":
+            case "variable":
             case "repeat":
                 return null;
         }

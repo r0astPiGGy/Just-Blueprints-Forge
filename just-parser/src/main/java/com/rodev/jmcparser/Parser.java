@@ -1,6 +1,7 @@
 package com.rodev.jmcparser;
 
 import com.rodev.jmcparser.data.*;
+import com.rodev.test.utils.StringUtils;
 
 import java.io.File;
 
@@ -25,11 +26,17 @@ public class Parser implements Runnable {
             var containing = data.containing;
 
             if(containing != null && containing.equalsIgnoreCase("predicate")) {
-                return "pure-function";
+                return "pure_function";
+            }
+
+            if(data.id.startsWith("set_variable_get") && data.args.length < 3) {
+                if(data.args[1].type.equals(data.origin))
+                    return "variable_property";
             }
 
             return "function";
         });
+        interpreter.setPinTypeNameHandler(StringUtils::capitalize);
 
         var actions = interpreter.interpret();
 

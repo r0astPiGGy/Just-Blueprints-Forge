@@ -8,6 +8,7 @@ import com.rodev.test.blueprint.data.selectors.SelectorGroup;
 import com.rodev.test.blueprint.data.selectors.SelectorGroupRegistry;
 import com.rodev.test.blueprint.data.variable.VariableTypeRegistry;
 import com.rodev.test.blueprint.node.impl.NodeView;
+import com.rodev.test.blueprint.node.impl.getter.PropertyGetterNode;
 import com.rodev.test.blueprint.node.impl.getter.PureGetterNode;
 import com.rodev.test.blueprint.node.impl.getter.SelectorVariableGetterNode;
 import com.rodev.test.blueprint.pin.default_input_value.DefaultBooleanInputView;
@@ -85,8 +86,10 @@ public class DataInitEventHandler {
 
             return new SelectorVariableGetterNode(color, action.id(), action.name(), action.createIcon(), selectorGroup);
         });
-
-        registry.addNodeSupplier("pure-function", (color, action) -> {
+        registry.addNodeSupplier("variable_property", (color, action) -> {
+            return new PropertyGetterNode(color, action.id(), action.name(), action.createIcon());
+        });
+        registry.addNodeSupplier("pure_function", (color, action) -> {
             return new NodeView(color, action.id(), action.name(), action.createIcon());
         });
     }

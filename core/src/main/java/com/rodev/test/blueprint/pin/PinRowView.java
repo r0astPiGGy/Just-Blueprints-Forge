@@ -31,7 +31,7 @@ public class PinRowView extends LinearLayout implements PinConnectionListener {
 
         TextViewCreationListener.onPinTextCreated(textView);
 
-        setMinimumWidth(dp(100));
+        enableMinimumWidth();
         setLayoutParams(new ViewGroup.LayoutParams(
                 ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT
@@ -87,6 +87,14 @@ public class PinRowView extends LinearLayout implements PinConnectionListener {
 
         System.out.println("Default value shown");
         defaultInputValue.show();
+    }
+
+    public void enableMinimumWidth() {
+        setMinimumWidth(dp(100));
+    }
+
+    public void disableMinimumWidth() {
+        setMinimumWidth(0);
     }
 
     public static PinRowView leftDirectedRow(PinView pinView, String variableName) {

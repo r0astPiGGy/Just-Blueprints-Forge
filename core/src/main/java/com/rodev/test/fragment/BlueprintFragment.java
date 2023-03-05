@@ -1,4 +1,4 @@
-package com.rodev.test;
+package com.rodev.test.fragment;
 
 import com.rodev.test.blueprint.BPViewPort;
 import com.rodev.test.blueprint.graph.GraphControllerImpl;

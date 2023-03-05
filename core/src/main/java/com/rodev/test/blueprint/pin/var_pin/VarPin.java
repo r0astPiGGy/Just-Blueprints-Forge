@@ -1,5 +1,6 @@
 package com.rodev.test.blueprint.pin.var_pin;
 
+import com.rodev.test.Colors;
 import com.rodev.test.blueprint.data.action.PinType;
 import com.rodev.test.blueprint.data.variable.VariableType;
 import com.rodev.test.blueprint.pin.*;
@@ -87,9 +88,12 @@ public interface VarPin extends Pin {
             float cx = r.exactCenterX();
             float cy = r.exactCenterY();
             Paint paint = Paint.get();
-            paint.setColor(mColor);
+            paint.setColor(Colors.NODE_BACKGROUND);
             paint.setAlpha(modulateAlpha(paint.getAlpha(), mAlpha));
             if (paint.getAlpha() != 0) {
+                canvas.drawCircle(cx, cy, mRadius * 1.6f, paint);
+                paint.setColor(mColor);
+                paint.setAlpha(modulateAlpha(paint.getAlpha(), mAlpha));
                 paint.setStyle(Paint.STROKE);
                 paint.setStrokeWidth(mRadius * 0.5f);
                 canvas.drawCircle(cx, cy, mRadius * 1.6f, paint);

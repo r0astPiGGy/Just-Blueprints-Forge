@@ -8,12 +8,16 @@
     "header_color": "100, 210, 255"
   },
   {
-    "id": "pure-function",
+    "id": "pure_function",
     "header_color": "4, 222, 113"
   },
   {
     "id": "util",
     "header_color": "142, 142, 147"
+  },
+  {
+    "id": "variable_property",
+    "header_color": "94, 92, 230"
   },
   {
     "id": "game_value_getter",

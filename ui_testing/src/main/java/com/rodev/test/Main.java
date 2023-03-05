@@ -2,6 +2,8 @@ package com.rodev.test;
 
 import com.rodev.test.blueprint.data.DataAccess;
 import com.rodev.test.blueprint.data.DataProvider;
+import com.rodev.test.fragment.BlueprintFragment;
+import com.rodev.test.fragment.WelcomeScreenFragment;
 import icyllis.modernui.ModernUI;
 import org.jetbrains.annotations.NotNull;
 
@@ -18,7 +20,7 @@ public class Main extends ModernUI implements DataProvider {
         try (Main app = new Main()) {
             Fonts.loadFonts();
             DataAccess.load(app);
-            app.run(new BlueprintFragment());
+            app.run(new WelcomeScreenFragment());
         } catch (FontFormatException e) {
             throw new RuntimeException(e);
         }
