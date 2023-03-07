@@ -10,9 +10,11 @@ import com.rodev.test.blueprint.data.json.SelectorGroupEntity;
 import com.rodev.test.blueprint.data.json.VariableTypeEntity;
 import com.rodev.test.blueprint.data.selectors.SelectorGroupRegistry;
 import com.rodev.test.blueprint.data.variable.VariableTypeRegistry;
+import icyllis.modernui.graphics.drawable.ImageDrawable;
 import lombok.RequiredArgsConstructor;
 import org.jetbrains.annotations.Nullable;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.*;
@@ -41,6 +43,14 @@ public class DataAccess {
         if(cat == null) return null;
 
         return cat.name();
+    }
+
+    public static String getPath(String namespace, String name) {
+        return String.format("%s%s%s.png", namespace, File.separator, name);
+    }
+
+    public static ImageDrawable createImage(String namespace, String name) {
+        return new ImageDrawable(TEXTURE_NAMESPACE, getPath(namespace, name));
     }
 
     public static DataAccess load(DataProvider dataProvider) throws IOException {
