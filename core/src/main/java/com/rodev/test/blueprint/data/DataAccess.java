@@ -22,7 +22,7 @@ import java.util.*;
 @RequiredArgsConstructor
 public class DataAccess {
 
-    public static final String TEXTURE_NAMESPACE = "justblueprints";
+    public static String TEXTURE_NAMESPACE = "justblueprints";
 
     public final ActionTypeRegistry actionTypeRegistry;
     public final VariableTypeRegistry variableTypeRegistry;

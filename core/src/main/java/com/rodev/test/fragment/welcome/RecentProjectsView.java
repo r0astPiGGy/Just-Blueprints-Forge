@@ -133,9 +133,8 @@ public class RecentProjectsView extends LinearLayout {
                     .squareShape(dp(15))
                     .setup(p -> {
                         p.addRule(RelativeLayout.ALIGN_PARENT_END);
-                        p.addRule(RelativeLayout.CENTER_HORIZONTAL);
+                        p.addRule(RelativeLayout.CENTER_VERTICAL);
                         p.rightMargin = dp(3);
-                        p.topMargin = dp(3);
                     }).applyTo(crossButton);
 
             row.addView(name);
@@ -224,6 +223,7 @@ public class RecentProjectsView extends LinearLayout {
         private boolean hovering;
 
         public CrossView() {
+            // TODO draw two lines instead of using icon
             var crossImage = new ImageDrawable(TEXTURE_NAMESPACE, getPath("ui", "ic-cross")) {
                 @Override
                 public void draw(@NotNull Canvas canvas) {

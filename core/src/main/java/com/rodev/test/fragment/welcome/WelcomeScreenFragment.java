@@ -2,13 +2,19 @@ package com.rodev.test.fragment.welcome;
 
 import com.rodev.test.Colors;
 import com.rodev.test.JustBlueprints;
+import com.rodev.test.blueprint.data.DataAccess;
 import com.rodev.test.utils.ColoredBackground;
 import com.rodev.test.utils.ParamsBuilder;
 import icyllis.modernui.fragment.Fragment;
+import icyllis.modernui.graphics.BlendMode;
+import icyllis.modernui.graphics.Canvas;
+import icyllis.modernui.graphics.Color;
+import icyllis.modernui.graphics.Paint;
 import icyllis.modernui.graphics.drawable.ImageDrawable;
 import icyllis.modernui.util.DataSet;
 import icyllis.modernui.view.*;
 import icyllis.modernui.widget.*;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.annotation.Nonnull;
@@ -179,7 +185,6 @@ public class WelcomeScreenFragment extends Fragment {
         return content;
     }
 
-    // TODO add actual image
     private FrameLayout iconImage() {
         var image = new FrameLayout();
 
@@ -187,7 +192,8 @@ public class WelcomeScreenFragment extends Fragment {
         params.bottomMargin = dp(30);
         image.setLayoutParams(params);
 
-        ColoredBackground.of(Colors.WHITE).applyTo(image);
+        var imageDrawable = DataAccess.createImage("ui", "logo");
+        image.setBackground(imageDrawable);
 
         return image;
     }

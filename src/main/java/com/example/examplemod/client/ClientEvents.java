@@ -4,6 +4,7 @@ import com.example.examplemod.ExampleMod;
 //import com.rodev.test.fragment.BlueprintFragment;
 //import icyllis.modernui.forge.MuiForgeApi;
 import com.rodev.test.fragment.BlueprintFragment;
+import com.rodev.test.fragment.welcome.WelcomeScreenFragment;
 import icyllis.modernui.forge.MuiForgeApi;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.InputEvent;
@@ -19,7 +20,7 @@ public class ClientEvents {
         @SubscribeEvent
         public static void onKeyInput(InputEvent.Key event) {
             if(KeyBinding.OPEN_IDE_KEY.isDown()) {
-                MuiForgeApi.openScreen(new BlueprintFragment());
+                MuiForgeApi.openScreen(new WelcomeScreenFragment());
             }
         }
     }

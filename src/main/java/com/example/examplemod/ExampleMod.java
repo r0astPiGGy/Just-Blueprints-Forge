@@ -2,6 +2,8 @@ package com.example.examplemod;
 
 import com.mojang.logging.LogUtils;
 //import com.rodev.test.blueprint.data.DataAccess;
+import com.rodev.test.Fonts;
+import com.rodev.test.JustBlueprints;
 import com.rodev.test.blueprint.data.DataAccess;
 import com.rodev.test.blueprint.data.DataProvider;
 import net.minecraftforge.common.MinecraftForge;
@@ -15,6 +17,7 @@ import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 
+import java.awt.*;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.stream.Collectors;
@@ -30,10 +33,16 @@ public class ExampleMod implements DataProvider
 
     public ExampleMod()
     {
+        DataAccess.TEXTURE_NAMESPACE = MODID;
         try {
-            DataAccess.load(this);
+            Fonts.loadFonts();
+//      DataAccess.load(app);
+
+            JustBlueprints.setWorkspace(new WorkspaceImpl());
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (FontFormatException e) {
+            throw new RuntimeException(e);
         }
 
         // Register the setup method for modloading
