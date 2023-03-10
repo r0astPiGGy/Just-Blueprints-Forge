@@ -1,4 +1,4 @@
-package com.rodev.test.contextmenu;
+package com.rodev.test.view;
 
 import icyllis.modernui.text.Editable;
 import icyllis.modernui.text.TextWatcher;

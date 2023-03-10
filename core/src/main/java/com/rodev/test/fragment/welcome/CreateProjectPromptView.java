@@ -2,12 +2,21 @@ package com.rodev.test.fragment.welcome;
 
 import com.rodev.test.Colors;
 import com.rodev.test.utils.ColoredBackground;
+import com.rodev.test.utils.ParamsBuilder;
+import com.rodev.test.utils.RoundedColoredBackground;
+import com.rodev.test.view.DefaultTextWatcher;
+import com.rodev.test.view.LabeledEditText;
+import com.rodev.test.view.MaterialButton;
+import icyllis.modernui.text.Editable;
 import icyllis.modernui.view.Gravity;
 import icyllis.modernui.view.MeasureSpec;
 import icyllis.modernui.view.View;
 import icyllis.modernui.view.ViewGroup;
 import icyllis.modernui.widget.*;
+import icyllis.modernui.widget.Button;
 import lombok.Setter;
+
+import java.util.function.BiConsumer;
 
 import static com.rodev.test.Fonts.MINECRAFT_FONT;
 import static icyllis.modernui.view.MeasureSpec.EXACTLY;
@@ -17,6 +26,10 @@ public class CreateProjectPromptView extends RelativeLayout {
 
     private final static int HEADER_ID = 1355334;
     private final static int FOOTER_ID = 1354321;
+    private final static int BODY_ID = 3255245;
+
+    @Setter
+    private ProjectNameValidator nameValidator = (s, r) -> {};
 
     @Setter
     private Runnable onDeclineListener = () -> {};
@@ -25,7 +38,12 @@ public class CreateProjectPromptView extends RelativeLayout {
     private Runnable onAcceptListener = () -> {};
 
     public CreateProjectPromptView() {
-        ColoredBackground.of(Colors.NODE_BACKGROUND).applyTo(this);
+        RoundedColoredBackground.builder()
+                .color(Colors.NODE_BACKGROUND)
+                .paddingOffset(dp(15))
+                .radius(dp(10))
+                .build()
+                .applyTo(this);
 
         var params = new FrameLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
@@ -53,27 +71,65 @@ public class CreateProjectPromptView extends RelativeLayout {
         params.addRule(ALIGN_PARENT_TOP);
         textView.setLayoutParams(params);
 
-        textView.setPadding(dp(5), dp(5), dp(5), dp(5));
         textView.setTypeface(MINECRAFT_FONT);
-        ColoredBackground.of(Colors.NODE_BACKGROUND_SECONDARY).applyTo(textView);
 
         return textView;
     }
+    
+    private RelativeLayout createBody() {
+        var body = new LabeledEditText();
 
-    private LinearLayout createBody() {
-        var body = new LinearLayout();
+        body.setLabel("Название:");
+        body.setId(BODY_ID);
 
-        var params = new RelativeLayout.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT
-        );
-        params.addRule(BELOW, HEADER_ID);
-        params.addRule(ABOVE, FOOTER_ID);
+        ParamsBuilder.using(RelativeLayout.LayoutParams::new)
+                .wrapContent()
+                .setup(params -> {
+                    params.addRule(CENTER_IN_PARENT);
+                    params.addRule(CENTER_VERTICAL);
+                    params.addRule(CENTER_HORIZONTAL);
+                }).applyTo(body);
 
-        body.setLayoutParams(params);
-        ColoredBackground.of(Colors.WHITE).applyTo(body);
+        // ватафак, эти три строчки кода фиксят баг с диалогом (нет блин монолог)
+        // nvm, it doesn't
+        body.setOnEditTextCreatedListener(materialEditText -> {
+            ParamsBuilder.using(LinearLayout.LayoutParams::new)
+                    .heightWrapContent()
+                    .width(dp(350))
+                    .setup(p -> {
+                        p.leftMargin = dp(10);
+                    })
+                    .applyTo(materialEditText);
+            materialEditText.addTextChangedListener(new DefaultTextWatcher() {
+                @Override
+                public void afterTextChanged(Editable s) {
+                    onNameEditTextChanged(body, s);
+                }
+            });
+            materialEditText.setHint("Введите текст...");
+            materialEditText.setMinimumWidth(dp(350));
+            materialEditText.setSingleLine();
+            materialEditText.setMaxWidth(dp(350));
+        });
+
+        body.fill();
 
         return body;
+    }
+
+    private final ValidateResult lastInputResult = new ValidateResult(false, null);
+
+    private void onNameEditTextChanged(LabeledEditText parent, Editable editText) {
+        var input = editText.toString();
+        lastInputResult.restore();
+        nameValidator.accept(input, lastInputResult);
+
+        if(lastInputResult.isSuccess()) {
+            parent.hideErrorMessage();
+        } else {
+            parent.setErrorMessage(lastInputResult.getErrorMessage());
+            parent.showErrorMessage();
+        }
     }
 
     private RelativeLayout createFooter() {
@@ -96,53 +152,45 @@ public class CreateProjectPromptView extends RelativeLayout {
     }
 
     private Button createDeclineButton() {
-        var button = new Button();
+        var button = new MaterialButton();
 
-        var params = new RelativeLayout.LayoutParams(
-                ViewGroup.LayoutParams.WRAP_CONTENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT
-        );
-
-        params.addRule(ALIGN_PARENT_BOTTOM);
-        params.addRule(ALIGN_PARENT_LEFT);
-
-        button.setLayoutParams(params);
+        ParamsBuilder.using(RelativeLayout.LayoutParams::new)
+                .wrapContent()
+                .setup(params -> {
+                    params.addRule(ALIGN_PARENT_BOTTOM);
+                    params.addRule(ALIGN_PARENT_LEFT);
+                })
+                .applyTo(button);
 
         button.setOnClickListener(v -> {
             onDeclineListener.run();
         });
 
+        button.setBackgroundColor(Colors.NODE_BACKGROUND_SECONDARY);
         button.setText("Отмена");
-        button.setTextSize(sp(20));
-        button.setTypeface(MINECRAFT_FONT);
-        button.setTextColor(Colors.NODE_BACKGROUND);
-        ColoredBackground.of(Colors.VECTOR_COLOR).applyTo(button);
 
         return button;
     }
 
     private Button createAcceptButton() {
-        var button = new Button();
+        var button = new MaterialButton();
 
-        var params = new RelativeLayout.LayoutParams(
-                ViewGroup.LayoutParams.WRAP_CONTENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT
-        );
-
-        params.addRule(ALIGN_PARENT_BOTTOM);
-        params.addRule(ALIGN_PARENT_RIGHT);
-
-        button.setLayoutParams(params);
+        ParamsBuilder.using(RelativeLayout.LayoutParams::new)
+                .wrapContent()
+                .setup(params -> {
+                    params.addRule(ALIGN_PARENT_BOTTOM);
+                    params.addRule(ALIGN_PARENT_RIGHT);
+                })
+                .applyTo(button);
 
         button.setOnClickListener(v -> {
-            onAcceptListener.run();
+            if(lastInputResult.isSuccess()) {
+                onAcceptListener.run();
+            }
         });
 
+        button.setBackgroundColor(Colors.SELECTED_COLOR);
         button.setText("Создать");
-        button.setTextSize(sp(20));
-        button.setTypeface(MINECRAFT_FONT);
-        button.setTextColor(Colors.NODE_BACKGROUND);
-        ColoredBackground.of(Colors.VECTOR_COLOR).applyTo(button);
 
         return button;
     }
@@ -154,5 +202,7 @@ public class CreateProjectPromptView extends RelativeLayout {
 
         super.onMeasure(makeMeasureSpec(width, EXACTLY), makeMeasureSpec(height, EXACTLY));
     }
+
+    public interface ProjectNameValidator extends BiConsumer<String, ValidateResult> { }
 
 }

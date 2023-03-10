@@ -20,6 +20,8 @@ public class Colors {
     public static final int LOCATION = Color.rgb(172, 142, 104);
     public static final int MAP = Color.rgb(255, 159, 10);
 
+    public static final int SELECTED_COLOR = Color.rgb(65 ,137,225);
+
     public static class HEADER_COLORS {
         public static final int EVENT = Color.rgb(255, 69, 58);
         public static final int UTIL= Color.rgb(142, 142, 147);

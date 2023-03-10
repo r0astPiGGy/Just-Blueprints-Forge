@@ -39,7 +39,6 @@ public class BlueprintPopup implements PopupWindow.OnDismissListener {
         mAnchorView = anchorView;
 
         mPopup = new BlueprintContextMenu(dp(400), dp(400), this::createPopupContent);
-        mPopup.setOverlapAnchor(true);
     }
 
     private RelativeLayout createPopupContent() {
@@ -176,6 +175,7 @@ public class BlueprintPopup implements PopupWindow.OnDismissListener {
 
     public void setOnDismissListener(PopupWindow.OnDismissListener listener) {
         mPopup.setDismissListener(() -> {
+            onDismiss();
             listener.onDismiss();
             builder.onDismiss.run();
         });

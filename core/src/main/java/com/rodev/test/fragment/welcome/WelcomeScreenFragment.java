@@ -19,6 +19,8 @@ import org.jetbrains.annotations.Nullable;
 
 import javax.annotation.Nonnull;
 import java.util.function.Supplier;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static com.rodev.test.Fonts.MINECRAFT_FONT;
 import static com.rodev.test.blueprint.data.DataAccess.TEXTURE_NAMESPACE;
@@ -37,6 +39,8 @@ public class WelcomeScreenFragment extends Fragment {
     public static int getBackgroundCornerRadius() {
         return BACKGROUND_CORNER_RADIUS.get();
     }
+
+    private View root;
 
     @Nullable
     @Override
@@ -71,6 +75,8 @@ public class WelcomeScreenFragment extends Fragment {
         root.addView(version());
 
         rootContainer.addView(root);
+
+        this.root = rootContainer;
 
         return rootContainer;
     }
@@ -240,20 +246,43 @@ public class WelcomeScreenFragment extends Fragment {
     }
 
     private LinearLayout buttons() {
-        var content = new LinearLayout();
+        var content = new LinearLayout() {
+        };
 
         content.setOrientation(LinearLayout.VERTICAL);
         wrapContent(content);
 
         var createProject = createButton("Создать Новый Проект", "ic-plus");
         createProject.setOnClickListener(v -> {
-            new CreateProjectPopup(WelcomeScreenFragment.this.getView()).show();
+            var popup = new CreateProjectPopup(root);
+
+            popup.setOnPromptCreated(prompt -> {
+                prompt.setNameValidator(createValidator());
+            });
+
+            popup.show();
         });
         content.addView(createProject);
 
         content.addView(createButton("Открыть", "ic-folder"));
 
         return content;
+    }
+
+    private CreateProjectPromptView.ProjectNameValidator createValidator() {
+        return new CreateProjectPromptView.ProjectNameValidator() {
+
+            private static final Pattern pattern = Pattern.compile("^[a-zA-Z\\d\\-]{1,30}$");
+
+            @Override
+            public void accept(String s, ValidateResult validateResult) {
+                boolean matches = pattern.matcher(s).matches();
+
+                if(!matches) {
+                    validateResult.asError("Ввод не соответствует выражению " + pattern.pattern());
+                }
+            }
+        };
     }
 
     private LinearLayout createButton(String text, String icon) {

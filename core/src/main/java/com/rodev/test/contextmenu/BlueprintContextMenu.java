@@ -34,7 +34,7 @@ import java.util.function.Supplier;
 public class BlueprintContextMenu {
     private int mDropDownHorizontalOffset;
     private int mDropDownVerticalOffset;
-    private boolean mOverlapAnchor;
+    private final boolean mOverlapAnchor = true;
 
     private int mDropDownGravity = Gravity.NO_GRAVITY;
 
@@ -175,10 +175,6 @@ public class BlueprintContextMenu {
 
     public boolean isShowing() {
         return mPopup.isShowing();
-    }
-
-    public void setOverlapAnchor(boolean overlap) {
-        mOverlapAnchor = overlap;
     }
 
     private static class Background extends Drawable {

@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import javax.annotation.Nonnull;
 import java.util.function.Consumer;
 
+import static com.rodev.test.Colors.SELECTED_COLOR;
 import static com.rodev.test.Fonts.MINECRAFT_FONT;
 import static com.rodev.test.blueprint.data.DataAccess.*;
 
@@ -54,6 +55,7 @@ public class RecentProjectsView extends LinearLayout {
 
     private void onProjectClick(ProjectView projectView) {
         System.out.println(projectView.project.getName() + " clicked");
+        onItemClick.accept(projectView.project);
     }
 
     public void init() {
@@ -68,17 +70,15 @@ public class RecentProjectsView extends LinearLayout {
         return new ProjectView(project);
     }
 
-    private class ProjectView extends LinearLayout {
+    private class ProjectView extends RelativeLayout {
 
         private boolean selected;
-        private final TextView pathView;
+        private TextView pathView;
         private final CrossView crossButton = new CrossView();
         public final Project project;
 
         private ProjectView(Project project) {
             this.project = project;
-
-            setOrientation(VERTICAL);
 
             var params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
             params.setMargins(0, dp(10), 0, dp(10));
@@ -87,44 +87,8 @@ public class RecentProjectsView extends LinearLayout {
 
             ProjectView.this.setPadding(dp(20), dp(5), dp(5), dp(5));
 
-            var headerRow = createHeaderRow();
+            var nameAndPath = createNameAndPath();
 
-            addView(headerRow);
-
-            pathView = createText();
-            pathView.setText(project.getDirectory().getPath());
-            pathView.setEllipsize(TextUtils.TruncateAt.MIDDLE);
-            pathView.setSingleLine();
-            pathView.setTextSize(sp(20));
-            pathView.setTextColor(Colors.NODE_BACKGROUND_PRIMARY);
-
-            setOnClickListener(this::onClick);
-
-            setBackground(new Background());
-
-            addView(pathView);
-        }
-
-        private RelativeLayout createHeaderRow() {
-            var row = new RelativeLayout();
-            ParamsBuilder.using(LinearLayout.LayoutParams::new)
-                    .widthMatchParent()
-                    .heightWrapContent()
-                    .applyTo(row);
-
-            var crossId = 13435;
-
-            var name = createText();
-            name.setText(project.getName());
-            ParamsBuilder.using(RelativeLayout.LayoutParams::new)
-                    .heightWrapContent()
-                    .widthMatchParent()
-                    .setup(p -> {
-                        p.addRule(RelativeLayout.ALIGN_PARENT_START);
-                        p.addRule(RelativeLayout.START_OF, crossId);
-                    }).applyTo(name);
-
-            crossButton.setId(crossId);
             crossButton.disable();
             crossButton.setOnClickListener(v -> {
                 onProjectDelete(this);
@@ -137,10 +101,49 @@ public class RecentProjectsView extends LinearLayout {
                         p.rightMargin = dp(3);
                     }).applyTo(crossButton);
 
-            row.addView(name);
-            row.addView(crossButton);
+            addView(nameAndPath);
+            addView(crossButton);
 
-            return row;
+            setOnClickListener(this::onClick);
+
+            setBackground(new Background());
+        }
+
+        private LinearLayout createNameAndPath() {
+            var textContainer = new LinearLayout();
+            textContainer.setOrientation(LinearLayout.VERTICAL);
+
+            ParamsBuilder.using(RelativeLayout.LayoutParams::new)
+                    .heightWrapContent()
+                    .widthMatchParent()
+                    .setup(params -> {
+                        params.addRule(RelativeLayout.ALIGN_PARENT_START);
+                        params.addRule(START_OF, crossButton.getId());
+                    })
+                    .applyTo(textContainer);
+
+            var name = createText();
+            name.setText(project.getName());
+            ParamsBuilder.using(LinearLayout.LayoutParams::new)
+                    .heightWrapContent()
+                    .widthMatchParent()
+                    .applyTo(name);
+
+            pathView = createText();
+            pathView.setText(project.getDirectory().getPath());
+            pathView.setEllipsize(TextUtils.TruncateAt.MIDDLE);
+            pathView.setSingleLine();
+            pathView.setTextSize(sp(20));
+            pathView.setTextColor(Colors.NODE_BACKGROUND_PRIMARY);
+            ParamsBuilder.using(LinearLayout.LayoutParams::new)
+                    .heightWrapContent()
+                    .widthMatchParent()
+                    .applyTo(pathView);
+
+            textContainer.addView(name);
+            textContainer.addView(pathView);
+
+            return textContainer;
         }
 
         private TextView createText() {
@@ -195,8 +198,6 @@ public class RecentProjectsView extends LinearLayout {
         }
 
         private class Background extends Drawable {
-
-            private final int SELECTED_COLOR = Color.rgb(65 ,137,225);
             private final float mRadius = dp(5);
 
             @Override
@@ -236,6 +237,7 @@ public class RecentProjectsView extends LinearLayout {
                     super.draw(canvas);
                 }
             };
+            setId(12341325);
             setBackground(crossImage);
         }
 
