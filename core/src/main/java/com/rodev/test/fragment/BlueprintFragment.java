@@ -3,6 +3,7 @@ package com.rodev.test.fragment;
 import com.rodev.test.blueprint.BPViewPort;
 import com.rodev.test.blueprint.graph.GraphControllerImpl;
 import com.rodev.test.blueprint.graph.GraphLayout;
+import com.rodev.test.workspace.Project;
 import icyllis.modernui.fragment.Fragment;
 import icyllis.modernui.graphics.Canvas;
 import icyllis.modernui.graphics.Paint;
@@ -19,13 +20,18 @@ import org.jetbrains.annotations.Nullable;
 
 import javax.annotation.Nonnull;
 
-import static icyllis.modernui.view.View.dp;
 import static icyllis.modernui.view.View.sp;
 
 public class BlueprintFragment extends Fragment {
 
     private final int toolsViewId = 152;
     private final int detailsPanelId = 3453;
+
+    private final Project project;
+
+    public BlueprintFragment(Project project) {
+        this.project = project;
+    }
 
     @Override
     public View onCreateView(@Nullable ViewGroup container, @Nullable DataSet savedInstanceState) {

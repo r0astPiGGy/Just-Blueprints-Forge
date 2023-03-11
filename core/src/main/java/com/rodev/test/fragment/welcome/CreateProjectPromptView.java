@@ -17,6 +17,7 @@ import icyllis.modernui.widget.Button;
 import lombok.Setter;
 
 import java.util.function.BiConsumer;
+import java.util.function.Consumer;
 
 import static com.rodev.test.Fonts.MINECRAFT_FONT;
 import static icyllis.modernui.view.MeasureSpec.EXACTLY;
@@ -28,6 +29,8 @@ public class CreateProjectPromptView extends RelativeLayout {
     private final static int FOOTER_ID = 1354321;
     private final static int BODY_ID = 3255245;
 
+    private EditText editText;
+
     @Setter
     private ProjectNameValidator nameValidator = (s, r) -> {};
 
@@ -35,7 +38,7 @@ public class CreateProjectPromptView extends RelativeLayout {
     private Runnable onDeclineListener = () -> {};
 
     @Setter
-    private Runnable onAcceptListener = () -> {};
+    private OnCreateButtonClicked onAcceptListener = projectName -> {};
 
     public CreateProjectPromptView() {
         RoundedColoredBackground.builder()
@@ -93,6 +96,7 @@ public class CreateProjectPromptView extends RelativeLayout {
         // ватафак, эти три строчки кода фиксят баг с диалогом (нет блин монолог)
         // nvm, it doesn't
         body.setOnEditTextCreatedListener(materialEditText -> {
+            editText = materialEditText;
             ParamsBuilder.using(LinearLayout.LayoutParams::new)
                     .heightWrapContent()
                     .width(dp(350))
@@ -185,7 +189,7 @@ public class CreateProjectPromptView extends RelativeLayout {
 
         button.setOnClickListener(v -> {
             if(lastInputResult.isSuccess()) {
-                onAcceptListener.run();
+                onAcceptListener.accept(editText.getText().toString());
             }
         });
 
@@ -204,5 +208,7 @@ public class CreateProjectPromptView extends RelativeLayout {
     }
 
     public interface ProjectNameValidator extends BiConsumer<String, ValidateResult> { }
+
+    public interface OnCreateButtonClicked extends Consumer<String> {}
 
 }

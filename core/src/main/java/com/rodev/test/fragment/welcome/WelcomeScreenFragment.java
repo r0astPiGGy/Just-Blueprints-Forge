@@ -5,6 +5,7 @@ import com.rodev.test.JustBlueprints;
 import com.rodev.test.blueprint.data.DataAccess;
 import com.rodev.test.utils.ColoredBackground;
 import com.rodev.test.utils.ParamsBuilder;
+import com.rodev.test.workspace.Project;
 import icyllis.modernui.fragment.Fragment;
 import icyllis.modernui.graphics.BlendMode;
 import icyllis.modernui.graphics.Canvas;
@@ -35,6 +36,8 @@ public class WelcomeScreenFragment extends Fragment {
     private final int recentProjectsId = 15433;
 
     private static final Supplier<Integer> BACKGROUND_CORNER_RADIUS = () -> dp(20);
+
+    private final WelcomeScreenController welcomeScreenController = new WelcomeScreenController(this);
 
     public static int getBackgroundCornerRadius() {
         return BACKGROUND_CORNER_RADIUS.get();
@@ -72,7 +75,6 @@ public class WelcomeScreenFragment extends Fragment {
 
         root.addView(createWelcomeCard());
         root.addView(createRecentProjectsContainer());
-        root.addView(version());
 
         rootContainer.addView(root);
 
@@ -99,20 +101,9 @@ public class WelcomeScreenFragment extends Fragment {
         container.setLayoutParams(params);
         container.setPadding(dp(5), dp(5), dp(5), dp(5));
 
-        //container.addView(recentProjectsTextView());
         container.addView(createRecentProjectsScrollView());
 
         return container;
-    }
-
-    private TextView recentProjectsTextView() {
-        var text = new TextView();
-
-        text.setText("Недавние проекты");
-        text.setTextSize(sp(24));
-        text.setTypeface(MINECRAFT_FONT);
-
-        return text;
     }
 
     private ScrollView createRecentProjectsScrollView() {
@@ -130,6 +121,7 @@ public class WelcomeScreenFragment extends Fragment {
     private RecentProjectsView createRecentProjects() {
         var view = new RecentProjectsView();
         view.init();
+        view.setOnItemClick(welcomeScreenController::onRecentProjectClicked);
 
         return view;
     }
@@ -139,8 +131,6 @@ public class WelcomeScreenFragment extends Fragment {
         var params = new RelativeLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT
         );
-
-        //welcomeCard.setPadding(0, dp(200), 0, dp(200));
 
         params.addRule(RelativeLayout.ALIGN_PARENT_START);
         params.addRule(RelativeLayout.START_OF, recentProjectsId);
@@ -246,43 +236,35 @@ public class WelcomeScreenFragment extends Fragment {
     }
 
     private LinearLayout buttons() {
-        var content = new LinearLayout() {
-        };
+        var content = new LinearLayout();
 
         content.setOrientation(LinearLayout.VERTICAL);
         wrapContent(content);
 
-        var createProject = createButton("Создать Новый Проект", "ic-plus");
-        createProject.setOnClickListener(v -> {
-            var popup = new CreateProjectPopup(root);
-
-            popup.setOnPromptCreated(prompt -> {
-                prompt.setNameValidator(createValidator());
-            });
-
-            popup.show();
-        });
-        content.addView(createProject);
-
+        content.addView(createProjectButton());
         content.addView(createButton("Открыть", "ic-folder"));
 
         return content;
     }
 
-    private CreateProjectPromptView.ProjectNameValidator createValidator() {
-        return new CreateProjectPromptView.ProjectNameValidator() {
+    private View createProjectButton() {
+        var createProject = createButton("Создать Новый Проект", "ic-plus");
+        createProject.setOnClickListener(this::onCreateProjectButtonClicked);
 
-            private static final Pattern pattern = Pattern.compile("^[a-zA-Z\\d\\-]{1,30}$");
+        return createProject;
+    }
 
-            @Override
-            public void accept(String s, ValidateResult validateResult) {
-                boolean matches = pattern.matcher(s).matches();
+    private void onCreateProjectButtonClicked(View button) {
+        var popup = new CreateProjectPopup(root);
 
-                if(!matches) {
-                    validateResult.asError("Ввод не соответствует выражению " + pattern.pattern());
-                }
-            }
-        };
+        popup.setOnPromptCreated(this::onCreateProjectPromptCreated);
+
+        popup.show();
+    }
+
+    private void onCreateProjectPromptCreated(CreateProjectPromptView prompt) {
+        prompt.setNameValidator(welcomeScreenController::validateProjectName);
+        prompt.setOnAcceptListener(welcomeScreenController::onProjectCreated);
     }
 
     private LinearLayout createButton(String text, String icon) {

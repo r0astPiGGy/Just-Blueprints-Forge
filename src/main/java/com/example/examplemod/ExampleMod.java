@@ -6,6 +6,7 @@ import com.rodev.test.Fonts;
 import com.rodev.test.JustBlueprints;
 import com.rodev.test.blueprint.data.DataAccess;
 import com.rodev.test.blueprint.data.DataProvider;
+import com.rodev.test.workspace.impl.WorkspaceImpl;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.InterModComms;

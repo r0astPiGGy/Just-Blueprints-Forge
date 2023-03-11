@@ -10,6 +10,14 @@ public interface Project {
 
     Object loadBlueprint();
 
+    long getCreatedDate();
+
+    long getLastOpenDate();
+
+    void setLastOpenDate(long date);
+
     void saveBlueprint(Object object);
+
+    void saveInfo();
 
 }

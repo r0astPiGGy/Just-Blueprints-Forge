@@ -10,6 +10,12 @@ public interface ProgramData {
 
     void setMostRecentProject(Project project);
 
+    void addRecentProject(String name);
+
+    void removeRecentProject(String name);
+
+    void reload(Workspace workspace);
+
     void save();
 
 }

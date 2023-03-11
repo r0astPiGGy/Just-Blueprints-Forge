@@ -49,17 +49,23 @@ public class RecentProjectsView extends LinearLayout {
     }
 
     private void onProjectDelete(ProjectView projectView) {
-        System.out.println(projectView.project.getName() + " deleted");
+        var programData = JustBlueprints.getWorkspace().getProgramData();
+
+        programData.removeRecentProject(projectView.project.getName());
+        programData.save();
+
         removeView(projectView);
     }
 
     private void onProjectClick(ProjectView projectView) {
-        System.out.println(projectView.project.getName() + " clicked");
         onItemClick.accept(projectView.project);
     }
 
     public void init() {
-        JustBlueprints.getWorkspace().getProgramData().getRecentProjects().forEach(this::createAndAddProject);
+        JustBlueprints.getWorkspace()
+                .getProgramData()
+                .getRecentProjects()
+                .forEach(this::createAndAddProject);
     }
 
     private void createAndAddProject(Project project) {
