@@ -1,5 +1,6 @@
 package com.rodev.test.blueprint.node;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.rodev.test.blueprint.ChildRoot;
 import com.rodev.test.blueprint.data.variable.VariableTypeRegistry;
 import com.rodev.test.blueprint.pin.Pin;
@@ -11,8 +12,7 @@ import icyllis.modernui.widget.LinearLayout;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 import java.util.function.Consumer;
 
 public abstract class BaseNode extends LinearLayout implements BPNode {
@@ -98,6 +98,21 @@ public abstract class BaseNode extends LinearLayout implements BPNode {
     }
 
     @Override
+    public @NotNull String getType() {
+        return id;
+    }
+
+    @Override
+    public int getNodeX() {
+        return getLeft();
+    }
+
+    @Override
+    public int getNodeY() {
+        return getTop();
+    }
+
+    @Override
     public void setNodeTouchListener(NodeTouchListener listener) {
         nodeTouchHandler.setNodeTouchListener(listener);
     }
@@ -141,4 +156,30 @@ public abstract class BaseNode extends LinearLayout implements BPNode {
         return null;
     }
 
+    @Override
+    public Object serialize() {
+        var nodeData = new BPNodeData();
+        nodeData.input = serialize(inputPins);
+        nodeData.output = serialize(outputPins);
+
+        return nodeData;
+    }
+
+    private Map<String, Object> serialize(List<PinRowView> pinRowViews) {
+        return pinRowViews.stream().collect(
+                HashMap::new,
+                (m, row) -> {
+                    var pin = row.getPinView().getPin();
+                    var id = pin.getId().toString();
+
+                    m.put(id, row.serialize());
+                },
+                HashMap::putAll
+        );
+    }
+
+    private static class BPNodeData {
+        public Map<String, Object> input;
+        public Map<String, Object> output;
+    }
 }

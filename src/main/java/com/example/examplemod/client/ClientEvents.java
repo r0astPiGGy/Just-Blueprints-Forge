@@ -1,9 +1,8 @@
 package com.example.examplemod.client;
 
 import com.example.examplemod.ExampleMod;
-//import com.rodev.test.fragment.BlueprintFragment;
+//import com.rodev.test.fragment.editor.BlueprintFragment;
 //import icyllis.modernui.forge.MuiForgeApi;
-import com.rodev.test.fragment.BlueprintFragment;
 import com.rodev.test.fragment.welcome.WelcomeScreenFragment;
 import icyllis.modernui.forge.MuiForgeApi;
 import net.minecraftforge.api.distmarker.Dist;

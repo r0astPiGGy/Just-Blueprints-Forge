@@ -1,5 +1,6 @@
 package com.rodev.test.blueprint.pin;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.rodev.test.blueprint.data.variable.DefaultInputValue;
 import com.rodev.test.blueprint.node.BPNode;
 import com.rodev.test.utils.TextViewCreationListener;
@@ -76,16 +77,12 @@ public class PinRowView extends LinearLayout implements PinConnectionListener {
     @Override
     public void onConnected(Pin pin) {
         if(defaultInputValue == null) return;
-
-        System.out.println("Default value hidden");
         defaultInputValue.hide();
     }
 
     @Override
     public void onDisconnected(Pin pin) {
         if(defaultInputValue == null) return;
-
-        System.out.println("Default value shown");
         defaultInputValue.show();
     }
 
@@ -103,6 +100,33 @@ public class PinRowView extends LinearLayout implements PinConnectionListener {
 
     public static PinRowView rightDirectedRow(PinView pinView, String variableName) {
         return new PinRowView(pinView, variableName, Direction.RIGHT);
+    }
+
+    public Object serialize() {
+        var pinData = new PinData();
+
+        var pin = pinView.getPin();
+
+        pinData.name = pin.getType().getId();
+
+        if(pin.isInput() && pin.isConnected()) {
+            pinData.connectedTo = ((InputPin) pin).getConnections().get(0).getId().toString();
+        }
+        if(defaultInputValue != null) {
+            pinData.value = defaultInputValue.getDefaultValue();
+        }
+
+        return pinData;
+    }
+
+    private static class PinData {
+        public String name;
+
+        @JsonAlias("connected-to")
+        public String connectedTo;
+
+        @JsonAlias("default-value")
+        public String value;
     }
 
     public enum Direction {

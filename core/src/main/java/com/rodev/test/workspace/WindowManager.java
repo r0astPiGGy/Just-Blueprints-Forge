@@ -1,6 +1,6 @@
 package com.rodev.test.workspace;
 
-import com.rodev.test.fragment.BlueprintFragment;
+import com.rodev.test.fragment.editor.EditorFragment;
 import com.rodev.test.fragment.welcome.WelcomeScreenFragment;
 import icyllis.modernui.fragment.Fragment;
 import lombok.Setter;
@@ -65,7 +65,7 @@ public abstract class WindowManager {
 
         @Override
         protected Fragment getFragment() {
-            return new BlueprintFragment(projectToView);
+            return new EditorFragment(projectToView);
         }
     }
 }

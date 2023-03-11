@@ -8,15 +8,13 @@ public interface Project {
 
     File getDirectory();
 
-    Object loadBlueprint();
+    Blueprint getBlueprint();
 
     long getCreatedDate();
 
     long getLastOpenDate();
 
     void setLastOpenDate(long date);
-
-    void saveBlueprint(Object object);
 
     void saveInfo();
 

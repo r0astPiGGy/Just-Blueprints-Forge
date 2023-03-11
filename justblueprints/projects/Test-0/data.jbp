@@ -1,0 +1,41 @@
+{
+  "nodes" : [ {
+    "id" : "repeat_for_each_in_list",
+    "position" : {
+      "x" : 8388370,
+      "y" : 8388439
+    },
+    "deserializer" : "default",
+    "data" : {
+      "input" : {
+        "4b500fe0-f28d-4271-b439-4f68c864ea41" : {
+          "name" : "value_variable",
+          "connectedTo" : null,
+          "value" : null
+        },
+        "a7bde118-ff25-4d44-9e75-b6ea81ba8dd4" : {
+          "name" : "list",
+          "connectedTo" : null,
+          "value" : null
+        },
+        "29888444-de29-43c1-8d01-55a641a4fd8f" : {
+          "name" : "index_variable",
+          "connectedTo" : null,
+          "value" : null
+        },
+        "54efe178-a9c7-408a-9fdf-b5fd8b98f859" : {
+          "name" : "exec",
+          "connectedTo" : null,
+          "value" : null
+        }
+      },
+      "output" : {
+        "10e4b333-982b-4c7f-9095-b016f8186812" : {
+          "name" : "exec",
+          "connectedTo" : null,
+          "value" : null
+        }
+      }
+    }
+  } ]
+}

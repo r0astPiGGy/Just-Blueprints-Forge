@@ -1,8 +1,10 @@
-package com.rodev.test.fragment;
+package com.rodev.test.fragment.editor;
 
+import com.rodev.test.Colors;
 import com.rodev.test.blueprint.BPViewPort;
 import com.rodev.test.blueprint.graph.GraphControllerImpl;
 import com.rodev.test.blueprint.graph.GraphLayout;
+import com.rodev.test.view.MaterialButton;
 import com.rodev.test.workspace.Project;
 import icyllis.modernui.fragment.Fragment;
 import icyllis.modernui.graphics.Canvas;
@@ -22,14 +24,17 @@ import javax.annotation.Nonnull;
 
 import static icyllis.modernui.view.View.sp;
 
-public class BlueprintFragment extends Fragment {
+public class EditorFragment extends Fragment {
 
     private final int toolsViewId = 152;
     private final int detailsPanelId = 3453;
 
+    private final EditorController controller = new EditorController();
+    private GraphLayout graphLayout;
+
     private final Project project;
 
-    public BlueprintFragment(Project project) {
+    public EditorFragment(Project project) {
         this.project = project;
     }
 
@@ -114,7 +119,13 @@ public class BlueprintFragment extends Fragment {
         toolsPanel.setId(toolsViewId);
 
         var button = createButton("Tools");
+        var saveButton = createButton("Save");
+        saveButton.setOnClickListener(v -> {
+            controller.onSaveButtonClicked(project, graphLayout);
+        });
+
         toolsPanel.addView(button);
+        toolsPanel.addView(saveButton);
 
         return toolsPanel;
     }
@@ -205,7 +216,7 @@ public class BlueprintFragment extends Fragment {
     }
 
     private GraphLayout createGraphLayout() {
-        var graphLayout = new GraphLayout();
+        var graphLayout = this.graphLayout = new GraphLayout();
         var graphController = new GraphControllerImpl();
 
         graphController.setViewMoveListener(graphLayout);
@@ -248,8 +259,9 @@ public class BlueprintFragment extends Fragment {
     }
 
     private Button createButton(String text) {
-        var button = new Button();
+        var button = new MaterialButton();
         button.setText(text);
+        button.setBackgroundColor(Colors.SELECTED_COLOR);
 
         return button;
     }

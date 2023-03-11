@@ -22,7 +22,7 @@ public abstract class InputPin extends AbstractPin {
     }
 
     @Override
-    public Collection<Pin> getConnections() {
+    public List<Pin> getConnections() {
         if (connectedPin == null) return List.of();
 
         return List.of(connectedPin);

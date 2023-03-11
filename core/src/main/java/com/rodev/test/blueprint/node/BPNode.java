@@ -2,6 +2,7 @@ package com.rodev.test.blueprint.node;
 
 import com.rodev.test.blueprint.ChildRoot;
 import com.rodev.test.blueprint.pin.Pin;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.function.Consumer;
@@ -26,6 +27,13 @@ public interface BPNode extends ChildRoot {
 
     void setSubTitle(String subTitle);
 
+    @NotNull
+    String getType();
+
+    int getNodeX();
+
+    int getNodeY();
+
     @Nullable
     BPNode getPrevious();
 
@@ -33,4 +41,10 @@ public interface BPNode extends ChildRoot {
     BPNode getNext();
 
     void onDelete();
+
+    Object serialize();
+
+    default String getSerializerId() {
+        return "default";
+    }
 }

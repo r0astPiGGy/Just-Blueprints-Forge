@@ -188,8 +188,8 @@ public class PureGetterNode extends BaseNode {
 
         @Override
         public String getDefaultValue() {
-            if(getSelectedItem() instanceof EnumValue value) {
-                return value.key();
+            if(getSelectedItem() instanceof Selector value) {
+                return value.toString();
             }
 
             return null;

@@ -2,6 +2,8 @@ package com.rodev.test.workspace.impl;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.rodev.test.blueprint.node.BPNode;
 import com.rodev.test.fragment.welcome.ValidateResult;
 import com.rodev.test.workspace.ProgramData;
 import com.rodev.test.workspace.Project;
@@ -13,10 +15,9 @@ import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class WorkspaceImpl implements Workspace {
 
@@ -25,6 +26,7 @@ public class WorkspaceImpl implements Workspace {
     private final File projectDirectory;
     private static final Pattern projectNamePattern = Pattern.compile("^[a-zA-Z\\d\\-]{1,30}$");
     private static final String projectInfoFileName = "project.json";
+    private static final String blueprintDataFileName = "data.jbp";
 
     private final Map<String, Project> loadedProjects = new HashMap<>();
 
@@ -65,11 +67,37 @@ public class WorkspaceImpl implements Workspace {
         programData.reload(this);
     }
 
-    public Project createProject(File directory, ProjectInfoEntity infoEntity) {
-        return new ProjectImpl(infoEntity.name, directory, infoEntity.created) {
-            @Override
-            public void saveBlueprint(Object object) {
+    @Override
+    public Project createProject(String name) {
+        var directory = new File(getProjectsDirectory(), name);
 
+        if(projectExists(name))
+            throw new IllegalStateException("Project by name " + name + " already exists");
+
+        directory.mkdirs();
+
+        var project = createProject(name, directory);
+        project.saveInfo();
+
+        loadedProjects.put(name, project);
+
+        return project;
+    }
+
+    public Project createProject(File directory, ProjectInfoEntity infoEntity) {
+        return createProject(infoEntity.name, directory, infoEntity.created);
+    }
+
+    private Project createProject(String name, File directory) {
+        return createProject(name, directory, new Date().getTime());
+    }
+
+    private Project createProject(String name, File directory, long createdDate) {
+        return new ProjectImpl(name, directory, createdDate) {
+
+            @Override
+            protected void onBlueprintSave(Collection<BPNode> nodes) {
+                saveBlueprint(getDirectory(), nodes);
             }
 
             @Override
@@ -83,35 +111,48 @@ public class WorkspaceImpl implements Workspace {
         };
     }
 
-    @Override
-    public Project createProject(String name) {
-        var directory = new File(getProjectsDirectory(), name);
+    public void saveBlueprint(File projectDirectory, Collection<BPNode> nodes) {
+        var file = new File(projectDirectory, blueprintDataFileName);
 
-        if(projectExists(name))
-            throw new IllegalStateException("Project by name " + name + " already exists");
+        var nodeEntities = nodes.stream().map(this::serialize).toList();
+        var blueprint = new BlueprintEntity(nodeEntities);
 
-        directory.mkdirs();
+        var objectMapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
+        try {
+            objectMapper.writeValue(file, blueprint);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
-        var project = new ProjectImpl(name, directory, new Date().getTime()) {
-            @Override
-            public void saveBlueprint(Object object) {
+    public NodeEntity serialize(BPNode node) {
+        var entity = new NodeEntity();
 
-            }
+        entity.id = node.getType();
+        entity.deserializer = node.getSerializerId();
+        entity.position = new NodeLocation(node.getNodeX(), node.getNodeY());
+        entity.data = node.serialize();
 
-            @Override
-            public void saveInfo() {
-                try {
-                    writeProjectInfo(this);
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-        };
-        project.saveInfo();
+        return entity;
+    }
 
-        loadedProjects.put(name, project);
+    @AllArgsConstructor
+    @NoArgsConstructor
+    public static class BlueprintEntity {
+        public List<NodeEntity> nodes;
+    }
 
-        return project;
+    public static class NodeEntity {
+        public String id;
+        public NodeLocation position;
+        public String deserializer;
+        public Object data;
+    }
+
+    @AllArgsConstructor
+    @NoArgsConstructor
+    public static class NodeLocation {
+        public int x, y;
     }
 
     @Override

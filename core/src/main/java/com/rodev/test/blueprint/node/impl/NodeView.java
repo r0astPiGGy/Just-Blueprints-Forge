@@ -11,6 +11,8 @@ import icyllis.modernui.widget.LinearLayout;
 import icyllis.modernui.widget.RelativeLayout;
 import icyllis.modernui.widget.TextView;
 
+import java.util.HashMap;
+
 public class NodeView extends BaseNode {
 
     private final LinearLayout inputRowsContainer;
@@ -40,7 +42,7 @@ public class NodeView extends BaseNode {
 
         var spaceHelperView = new SpaceHelperView();
         inputRowsContainer = createRowContainer(Gravity.START);
-        outputRowsContainer = createRowContainer(new LinearLayout(){
+        outputRowsContainer = createRowContainer(new LinearLayout() {
             @Override
             protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
                 super.onMeasure(widthMeasureSpec, heightMeasureSpec);
