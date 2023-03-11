@@ -6,7 +6,10 @@ import com.rodev.test.Fonts;
 import com.rodev.test.JustBlueprints;
 import com.rodev.test.blueprint.data.DataAccess;
 import com.rodev.test.blueprint.data.DataProvider;
+import com.rodev.test.workspace.WindowManager;
 import com.rodev.test.workspace.impl.WorkspaceImpl;
+import icyllis.modernui.forge.MuiForgeApi;
+import icyllis.modernui.fragment.Fragment;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.InterModComms;
@@ -37,9 +40,15 @@ public class ExampleMod implements DataProvider
         DataAccess.TEXTURE_NAMESPACE = MODID;
         try {
             Fonts.loadFonts();
-//      DataAccess.load(app);
+            DataAccess.load(this);
 
             JustBlueprints.setWorkspace(new WorkspaceImpl());
+            JustBlueprints.setWindowManager(new WindowManager() {
+                @Override
+                protected void openFragment(Fragment fragment) {
+                    MuiForgeApi.openScreen(fragment);
+                }
+            });
         } catch (IOException e) {
             e.printStackTrace();
         } catch (FontFormatException e) {
