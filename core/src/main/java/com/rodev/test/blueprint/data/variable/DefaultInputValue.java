@@ -6,6 +6,8 @@ public interface DefaultInputValue {
 
     String getDefaultValue();
 
+    void setDefaultValue(String value);
+
     View asView();
 
     default void show() {

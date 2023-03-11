@@ -134,7 +134,7 @@ public final class Action {
     @Override
     public String toString() {
         return "Action[" +
-                "id=" + id + ", " +
+                "outputPin=" + id + ", " +
                 "name=" + name + ", " +
                 "actionType=" + actionType + ", " +
                 "inputPins=" + inputPins + ", " +

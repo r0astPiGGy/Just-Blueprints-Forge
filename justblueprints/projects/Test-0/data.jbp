@@ -2,8 +2,8 @@
   "nodes" : [ {
     "id" : "repeat_for_each_in_list",
     "position" : {
-      "x" : 8388370,
-      "y" : 8388439
+      "x" : 8388415,
+      "y" : 8388232
     },
     "deserializer" : "default",
     "data" : {
@@ -25,7 +25,7 @@
         },
         "54efe178-a9c7-408a-9fdf-b5fd8b98f859" : {
           "name" : "exec",
-          "connectedTo" : null,
+          "connectedTo" : "a23d5bd3-78fe-40d3-a7cd-eeead93c7193",
           "value" : null
         }
       },
@@ -34,6 +34,209 @@
           "name" : "exec",
           "connectedTo" : null,
           "value" : null
+        }
+      }
+    }
+  }, {
+    "id" : "repeat_for_each_in_list",
+    "position" : {
+      "x" : 8387859,
+      "y" : 8388223
+    },
+    "deserializer" : "default",
+    "data" : {
+      "input" : {
+        "31a719ee-9783-4796-b209-aa3e2d1f2e48" : {
+          "name" : "index_variable",
+          "connectedTo" : "b68f58f3-c2d3-4dc3-8be9-abdb34905d67",
+          "value" : null
+        },
+        "52b0f52a-007f-452a-b1ef-680d37260e94" : {
+          "name" : "list",
+          "connectedTo" : null,
+          "value" : null
+        },
+        "44c9629d-9c5a-47e6-96ab-7bcf9a101b41" : {
+          "name" : "value_variable",
+          "connectedTo" : null,
+          "value" : null
+        },
+        "cb0071af-a4a2-446d-844f-bbf529f09a2d" : {
+          "name" : "exec",
+          "connectedTo" : "a3f9cb47-163a-4d51-a05f-a199773f8443",
+          "value" : null
+        }
+      },
+      "output" : {
+        "a23d5bd3-78fe-40d3-a7cd-eeead93c7193" : {
+          "name" : "exec",
+          "connectedTo" : null,
+          "value" : null
+        }
+      }
+    }
+  }, {
+    "id" : "set_variable_get_item_type",
+    "position" : {
+      "x" : 8387441,
+      "y" : 8388230
+    },
+    "deserializer" : "default",
+    "data" : {
+      "input" : {
+        "556e5cf0-0c26-452a-b6f4-3a1877b59679" : {
+          "name" : "value",
+          "connectedTo" : null,
+          "value" : "ID"
+        },
+        "aaf1ba89-4f7f-41cd-8fdf-2f07cd25e66f" : {
+          "name" : "exec",
+          "connectedTo" : "c0fdbfeb-faf3-46e5-b852-267d0d2a5c59",
+          "value" : null
+        },
+        "2625db81-7589-4f9d-bc3f-d259245e7d4b" : {
+          "name" : "type",
+          "connectedTo" : "bf60d691-8ba8-4626-9509-4373c184d55f",
+          "value" : null
+        }
+      },
+      "output" : {
+        "a3f9cb47-163a-4d51-a05f-a199773f8443" : {
+          "name" : "exec",
+          "connectedTo" : null,
+          "value" : null
+        },
+        "b68f58f3-c2d3-4dc3-8be9-abdb34905d67" : {
+          "name" : "-",
+          "connectedTo" : null,
+          "value" : null
+        }
+      }
+    }
+  }, {
+    "id" : "main_hand_item_gamevalue_getter",
+    "position" : {
+      "x" : 8386964,
+      "y" : 8388378
+    },
+    "deserializer" : "default",
+    "data" : {
+      "input" : { },
+      "output" : {
+        "bf60d691-8ba8-4626-9509-4373c184d55f" : {
+          "name" : "main_hand_item",
+          "connectedTo" : null,
+          "value" : "killer_entity"
+        }
+      }
+    }
+  }, {
+    "id" : "projectile_damage_entity",
+    "position" : {
+      "x" : 8387129,
+      "y" : 8388226
+    },
+    "deserializer" : "default",
+    "data" : {
+      "input" : { },
+      "output" : {
+        "c0fdbfeb-faf3-46e5-b852-267d0d2a5c59" : {
+          "name" : "exec",
+          "connectedTo" : null,
+          "value" : null
+        }
+      }
+    }
+  }, {
+    "id" : "if_game_sign_contains",
+    "position" : {
+      "x" : 8387880,
+      "y" : 8388449
+    },
+    "deserializer" : "default",
+    "data" : {
+      "input" : {
+        "8e0c0111-89f6-4c53-b409-94d0df8a4a3e" : {
+          "name" : "location",
+          "connectedTo" : null,
+          "value" : null
+        },
+        "353b09df-be60-40a9-8ef0-897e2e0943d8" : {
+          "name" : "lines",
+          "connectedTo" : null,
+          "value" : "FOURTH"
+        },
+        "5eab5004-f661-4963-898a-809a14a0394f" : {
+          "name" : "texts",
+          "connectedTo" : null,
+          "value" : "ВАавыафдываодфлыв"
+        },
+        "cd46d465-7246-4e2b-b4b8-f3cdfb1484f4" : {
+          "name" : "check_mode",
+          "connectedTo" : null,
+          "value" : "EQUALS"
+        }
+      },
+      "output" : {
+        "99f82286-fe08-4b93-836c-e3ba87fe5f93" : {
+          "name" : "-",
+          "connectedTo" : null,
+          "value" : null
+        }
+      }
+    }
+  }, {
+    "id" : "player_give_items",
+    "position" : {
+      "x" : 8387426,
+      "y" : 8388446
+    },
+    "deserializer" : "default",
+    "data" : {
+      "input" : {
+        "d85ce173-3a7a-47e7-b5a0-7e9d23195612" : {
+          "name" : "items",
+          "connectedTo" : "bf60d691-8ba8-4626-9509-4373c184d55f",
+          "value" : null
+        },
+        "eee8e12f-f77e-4dc7-82b3-a8bd2a772ddd" : {
+          "name" : "amount",
+          "connectedTo" : null,
+          "value" : "228"
+        },
+        "6e01595b-fc4b-4c29-b69a-98c5905e5c55" : {
+          "name" : "exec",
+          "connectedTo" : null,
+          "value" : null
+        },
+        "ab275996-c33f-4b54-8b8b-5054b72e8402" : {
+          "name" : "player",
+          "connectedTo" : "e94148dc-ae37-4cb7-90da-647ed888b825",
+          "value" : null
+        }
+      },
+      "output" : {
+        "dfdd5a7b-6765-43db-8b5e-c7fc062d69aa" : {
+          "name" : "exec",
+          "connectedTo" : null,
+          "value" : null
+        }
+      }
+    }
+  }, {
+    "id" : "player_getter",
+    "position" : {
+      "x" : 8387093,
+      "y" : 8388514
+    },
+    "deserializer" : "default",
+    "data" : {
+      "input" : { },
+      "output" : {
+        "e94148dc-ae37-4cb7-90da-647ed888b825" : {
+          "name" : "player",
+          "connectedTo" : null,
+          "value" : "random_player"
         }
       }
     }

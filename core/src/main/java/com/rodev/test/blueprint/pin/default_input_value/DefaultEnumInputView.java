@@ -19,11 +19,15 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.annotation.Nonnull;
+import java.util.List;
 
 public class DefaultEnumInputView extends Spinner implements DefaultInputValue {
 
+    private final List<EnumValue> enumValueList;
+
     public DefaultEnumInputView(EnumPinType pinType) {
-        ArrayAdapter<EnumValue> arrayAdapter = new CustomArrayAdapter<>(pinType.values());
+        enumValueList = pinType.values();
+        ArrayAdapter<EnumValue> arrayAdapter = new CustomArrayAdapter<>(enumValueList);
 
         setAdapter(arrayAdapter);
 
@@ -56,6 +60,17 @@ public class DefaultEnumInputView extends Spinner implements DefaultInputValue {
         }
 
         return null;
+    }
+
+    @Override
+    public void setDefaultValue(String value) {
+        int i = 0;
+        for(var a : enumValueList) {
+            if(a.key().equalsIgnoreCase(value)) {
+                setSelection(i);
+            }
+            i++;
+        }
     }
 
     @Override

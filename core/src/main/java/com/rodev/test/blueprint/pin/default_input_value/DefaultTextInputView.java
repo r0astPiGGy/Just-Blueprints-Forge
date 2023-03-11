@@ -52,6 +52,11 @@ public class DefaultTextInputView extends EditText implements DefaultInputValue 
     }
 
     @Override
+    public void setDefaultValue(String value) {
+        setText(value);
+    }
+
+    @Override
     public View asView() {
         return this;
     }

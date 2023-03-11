@@ -122,11 +122,11 @@ public class PropertyGetterNode extends BaseNode {
     }
 
     @Override
-    public void setSubTitle(String subTitle) {
-        if(subTitle == null || subTitle.isEmpty()) {
+    public void setSubtitle(String subtitle) {
+        if(subtitle == null || subtitle.isEmpty()) {
             subtitleView.setVisibility(GONE);
         } else {
-            subtitleView.setText(subTitle);
+            subtitleView.setText(subtitle);
             subtitleView.setVisibility(VISIBLE);
         }
     }

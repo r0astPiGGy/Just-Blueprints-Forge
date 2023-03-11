@@ -1,24 +1,18 @@
 package com.rodev.test.blueprint.node;
 
-import java.util.HashMap;
+import com.rodev.test.blueprint.pin.Pin;
+
+import java.util.List;
 import java.util.Map;
 
-public class NodeDeserializer {
+public interface NodeDeserializer {
 
-    private static final Map<String, Deserializer> deserializers = new HashMap<>();
+    BPNode getNode();
 
-    public static BPNode deserialize(String deserializerId, Object data) {
-        return deserializers.get(deserializerId).deserialize(data);
-    }
+    void deserialize();
 
-    public static void register(String deserializerId, Deserializer deserializer) {
-        deserializers.put(deserializerId, deserializer);
-    }
+    Map<String, Pin> getOutputPins();
 
-    public interface Deserializer {
-
-        BPNode deserialize(Object data);
-
-    }
+    List<PinConnection> getPinConnections();
 
 }

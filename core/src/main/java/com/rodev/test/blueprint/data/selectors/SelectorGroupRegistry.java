@@ -3,6 +3,7 @@ package com.rodev.test.blueprint.data.selectors;
 import com.rodev.test.blueprint.data.Registry;
 import com.rodev.test.blueprint.data.json.SelectorGroupEntity;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.stream.Collectors;
@@ -20,7 +21,7 @@ public class SelectorGroupRegistry extends Registry<String, SelectorGroup> {
                 .entrySet()
                 .stream()
                 .map(entry -> new Selector(entry.getKey(), entry.getValue()))
-                .collect(LinkedList<Selector>::new, LinkedList::add, LinkedList::addAll);
+                .collect(ArrayList<Selector>::new, ArrayList::add, ArrayList::addAll);
 
         return new SelectorGroup(selectorGroupEntity.id, selectors);
     }

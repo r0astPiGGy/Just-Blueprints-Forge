@@ -2,6 +2,7 @@ package com.rodev.test.blueprint.graph;
 
 import com.rodev.test.blueprint.Navigable;
 import com.rodev.test.contextmenu.ContextMenuBuilder;
+import com.rodev.test.workspace.Blueprint;
 import icyllis.modernui.graphics.Canvas;
 import icyllis.modernui.graphics.Paint;
 import icyllis.modernui.view.*;
@@ -22,7 +23,6 @@ public class GraphLayout extends AbsoluteLayout implements ViewMoveListener, Con
         setLayoutParams(params);
     }
 
-
     public void setGraphController(GraphController graphController) {
         this.graphController = graphController;
         this.graphController.setInvalidationCallback(this::invalidate);
@@ -35,6 +35,10 @@ public class GraphLayout extends AbsoluteLayout implements ViewMoveListener, Con
 
     public void setNavigator(Navigable navigator) {
         this.navigator = navigator;
+    }
+
+    public void loadBlueprint(Blueprint blueprint) {
+        blueprint.loadTo(graphController);
     }
 
     private void addNodeInternal(View view, int x, int y) {

@@ -12,6 +12,11 @@ public class DefaultBooleanInputView extends MaterialCheckBox implements Default
     }
 
     @Override
+    public void setDefaultValue(String value) {
+        setChecked(Boolean.parseBoolean(value));
+    }
+
+    @Override
     public View asView() {
         return this;
     }

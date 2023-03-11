@@ -1,5 +1,6 @@
 package com.rodev.test.workspace.impl;
 
+import com.rodev.test.blueprint.graph.GraphController;
 import com.rodev.test.blueprint.node.BPNode;
 import com.rodev.test.workspace.Blueprint;
 import com.rodev.test.workspace.Project;
@@ -22,9 +23,25 @@ public abstract class ProjectImpl implements Project {
 
     @Override
     public Blueprint getBlueprint() {
-        return this::onBlueprintSave;
+        return new BlueprintImpl();
     }
 
     abstract
     protected void onBlueprintSave(Collection<BPNode> nodes);
+
+    abstract
+    protected void onBlueprintLoad(GraphController graphController);
+
+    private class BlueprintImpl implements Blueprint {
+
+        @Override
+        public void save(Collection<BPNode> nodes) {
+            onBlueprintSave(nodes);
+        }
+
+        @Override
+        public void loadTo(GraphController graphController) {
+            onBlueprintLoad(graphController);
+        }
+    }
 }

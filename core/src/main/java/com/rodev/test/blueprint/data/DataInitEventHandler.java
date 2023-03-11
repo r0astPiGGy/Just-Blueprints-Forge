@@ -38,14 +38,14 @@ public class DataInitEventHandler {
             var node = new NodeView(color, action.id(), action.name(), action.createIcon());
             var output = ExecPin.outputPin();
 
-            node.addOutput(output.createRowView());
+            node.addOutputPin(output, "");
 
             //noinspection unchecked
             Map<Object, Object> map = (Map<Object, Object>) action.extraData();
             boolean cancellable = (boolean) map.get("cancellable");
 
             if(cancellable) {
-                node.setSubTitle("Отменяемое");
+                node.setSubtitle("Отменяемое");
             }
 
             return node;
@@ -68,7 +68,7 @@ public class DataInitEventHandler {
             }
 
             var node = new PureGetterNode(color, action.id(), "Игровое значение" , action.createIcon(), selectorGroup);
-            node.setSubTitle(action.name());
+            node.setSubtitle(action.name());
 
             return node;
         });

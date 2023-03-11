@@ -4,6 +4,6 @@ import icyllis.modernui.view.View;
 
 public interface NodeMoveListener {
 
-    <T extends View & BPNode> boolean onMove(T node, int xStart, int yStart, int xEnd, int yEnd);
+    boolean onMove(BPNode node, int xStart, int yStart, int xEnd, int yEnd);
 
 }

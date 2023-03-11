@@ -53,7 +53,7 @@ public class PinType {
     @Override
     public String toString() {
         return "PinType[" +
-                "id=" + id + ", " +
+                "outputPin=" + id + ", " +
                 "name=" + name + ", " +
                 "type=" + type + ']';
     }

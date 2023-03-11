@@ -7,7 +7,7 @@ import java.util.UUID;
 
 public abstract class AbstractPin implements Pin {
     private final PinType pinType;
-    private final UUID id;
+    private UUID id;
     private PinDragListener pinDragListener;
     private PinHoverListener pinHoverListener;
     private PinConnectionListener pinConnectionListener;
@@ -32,6 +32,11 @@ public abstract class AbstractPin implements Pin {
     @Override
     public UUID getId() {
         return id;
+    }
+
+    @Override
+    public void setId(UUID id) {
+        this.id = id;
     }
 
     @Override

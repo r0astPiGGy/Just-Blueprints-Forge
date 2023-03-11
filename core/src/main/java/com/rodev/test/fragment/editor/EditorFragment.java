@@ -208,6 +208,7 @@ public class EditorFragment extends Fragment {
 
         graphLayout.setNavigator(blueprintView);
         graphLayout.setContextMenuOpenHandler(blueprintView);
+        graphLayout.loadBlueprint(project.getBlueprint());
 
         blueprintView.addView(graphLayout);
         postProcessView.addView(blueprintView);

@@ -25,6 +25,7 @@ import icyllis.modernui.widget.Spinner;
 import icyllis.modernui.widget.TextView;
 
 import javax.annotation.Nonnull;
+import java.util.List;
 
 public class PureGetterNode extends BaseNode {
 
@@ -131,11 +132,11 @@ public class PureGetterNode extends BaseNode {
     }
 
     @Override
-    public void setSubTitle(String subTitle) {
-        if(subTitle == null || subTitle.isEmpty()) {
+    public void setSubtitle(String subtitle) {
+        if(subtitle == null || subtitle.isEmpty()) {
             subtitleView.setVisibility(GONE);
         } else {
-            subtitleView.setText(subTitle);
+            subtitleView.setText(subtitle);
             subtitleView.setVisibility(VISIBLE);
         }
     }
@@ -159,8 +160,11 @@ public class PureGetterNode extends BaseNode {
 
     private static class SelectorValueView extends Spinner implements DefaultInputValue {
 
+        private final List<Selector> values;
+
         public SelectorValueView(SelectorGroup selectorGroup) {
-            ArrayAdapter<Selector> arrayAdapter = new CustomArrayAdapter<>(selectorGroup.selectors());
+            values = selectorGroup.selectors();
+            ArrayAdapter<Selector> arrayAdapter = new CustomArrayAdapter<>(values);
 
             setAdapter(arrayAdapter);
 
@@ -189,10 +193,21 @@ public class PureGetterNode extends BaseNode {
         @Override
         public String getDefaultValue() {
             if(getSelectedItem() instanceof Selector value) {
-                return value.toString();
+                return value.id();
             }
 
             return null;
+        }
+
+        @Override
+        public void setDefaultValue(String value) {
+            int i = 0;
+            for(var a : values) {
+                if(a.id().equalsIgnoreCase(value)) {
+                    setSelection(i);
+                }
+                i++;
+            }
         }
 
         @Override

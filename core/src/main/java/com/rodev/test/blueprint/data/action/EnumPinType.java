@@ -50,7 +50,7 @@ public class EnumPinType extends PinType {
     @Override
     public String toString() {
         return "EnumPinType[" +
-                "id=" + getId() + ", " +
+                "outputPin=" + getId() + ", " +
                 "name=" + getName() + ", " +
                 "type=" + getVariableType() + ", " +
                 "enumeration=" + enumeration() + ']';

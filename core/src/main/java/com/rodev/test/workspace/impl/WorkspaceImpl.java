@@ -3,21 +3,25 @@ package com.rodev.test.workspace.impl;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import com.rodev.test.blueprint.data.DataAccess;
+import com.rodev.test.blueprint.data.action.Action;
+import com.rodev.test.blueprint.graph.GraphController;
 import com.rodev.test.blueprint.node.BPNode;
+import com.rodev.test.blueprint.node.NodeDeserializer;
+import com.rodev.test.blueprint.node.PinConnection;
+import com.rodev.test.blueprint.pin.Pin;
 import com.rodev.test.fragment.welcome.ValidateResult;
 import com.rodev.test.workspace.ProgramData;
 import com.rodev.test.workspace.Project;
 import com.rodev.test.workspace.Workspace;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
 import java.util.regex.Pattern;
-import java.util.stream.Collectors;
 
 public class WorkspaceImpl implements Workspace {
 
@@ -101,6 +105,11 @@ public class WorkspaceImpl implements Workspace {
             }
 
             @Override
+            protected void onBlueprintLoad(GraphController graphController) {
+                loadBlueprint(getDirectory(), graphController);
+            }
+
+            @Override
             public void saveInfo() {
                 try {
                     writeProjectInfo(this);
@@ -122,6 +131,52 @@ public class WorkspaceImpl implements Workspace {
             objectMapper.writeValue(file, blueprint);
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    public void loadBlueprint(File projectDirectory, GraphController graphController) {
+        var file = new File(projectDirectory, blueprintDataFileName);
+
+        var objectMapper = new ObjectMapper();
+
+        BlueprintEntity blueprint;
+        try {
+            blueprint = objectMapper.readValue(file, BlueprintEntity.class);
+        } catch (IOException e) {
+            return;
+        }
+
+        Map<String, Pin> outputPins = new HashMap<>();
+        List<PinConnection> connections = new LinkedList<>();
+
+        for(var nodeEntity : blueprint.nodes) {
+            var actionId = nodeEntity.id;
+            Action action = DataAccess.getInstance().actionRegistry.get(actionId);
+
+            if(action == null) {
+                System.out.println("Action with outputPin " + actionId + " not found during blueprint load. (Outdated blueprint?)");
+                continue;
+            }
+
+            BPNode node = action.toNode();
+
+            var deserializer = node.getDeserializer(nodeEntity.data);
+            deserializer.deserialize();
+
+            outputPins.putAll(deserializer.getOutputPins());
+            connections.addAll(deserializer.getPinConnections());
+
+            int x = nodeEntity.position.x;
+            int y = nodeEntity.position.y;
+
+            graphController.createNodeAt(x, y, node);
+        }
+
+        for(var connection : connections) {
+            var outputPinId = connection.outputPin();
+            var outputPin = outputPins.get(outputPinId);
+
+            graphController.connect(connection.inputPin(), outputPin);
         }
     }
 

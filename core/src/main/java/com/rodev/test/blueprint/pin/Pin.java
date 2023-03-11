@@ -11,6 +11,8 @@ public interface Pin {
 
     UUID getId();
 
+    void setId(UUID id);
+
     PinRowView createRowView();
 
     Drawable createDrawable();

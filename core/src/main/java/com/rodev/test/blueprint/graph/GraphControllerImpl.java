@@ -3,6 +3,7 @@ package com.rodev.test.blueprint.graph;
 import com.rodev.test.blueprint.data.action.Action;
 import com.rodev.test.blueprint.node.BPNode;
 import com.rodev.test.blueprint.node.NodeMoveListener;
+import com.rodev.test.blueprint.node.NodePositionChangeListener;
 import com.rodev.test.blueprint.node.NodeTouchListener;
 import com.rodev.test.blueprint.pin.Pin;
 import com.rodev.test.blueprint.pin.PinDragListener;
@@ -17,7 +18,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class GraphControllerImpl implements
-        GraphController, PinHoverListener, PinDragListener, NodeTouchListener, NodeMoveListener {
+        GraphController, PinHoverListener, PinDragListener, NodeTouchListener, NodeMoveListener, NodePositionChangeListener {
 
     private final Set<Pin> outputPins = new HashSet<>();
     private ViewHolder viewHolder;
@@ -32,15 +33,18 @@ public class GraphControllerImpl implements
     public void createViewAt(int x, int y, Action action) {
         var node = action.toNode();
 
-        node.forEachPin(pin -> {
-            pin.setPinHoverListener(this);
-            pin.setPinDragListener(this);
-        });
+        createNodeAt(x, y, node);
+    }
 
+    @Override
+    public void createNodeAt(int x, int y, BPNode node) {
+        node.setPinHoverListener(this);
+        node.setPinDragListener(this);
         node.setNodeTouchListener(this);
         node.setNodeMoveListener(this);
+        node.setNodePositionChangeListener(this);
 
-        viewHolder.addViewAt((View) node, x, y);
+        viewHolder.addViewAt(node.asView(), x, y);
     }
 
     @Override
@@ -230,7 +234,7 @@ public class GraphControllerImpl implements
         connect(input, output);
     }
 
-    private void connect(Pin input, Pin output) {
+    public void connect(Pin input, Pin output) {
         outputPins.add(output);
 
         input.connect(output);
@@ -275,15 +279,22 @@ public class GraphControllerImpl implements
     }
 
     @Override
-    public <T extends View & BPNode> boolean onMove(T node, int xStart, int yStart, int xEnd, int yEnd) {
+    public boolean onMove(BPNode node, int xStart, int yStart, int xEnd, int yEnd) {
         if(!isNodeSelected(node)) return false;
 
         if(viewMoveListener != null) {
-            viewMoveListener.onMove(node, xEnd, yEnd);
+            moveTo(node, xEnd, yEnd);
             return true;
         }
 
         return false;
+    }
+
+    @Override
+    public void moveTo(BPNode node, int x, int y) {
+        if(viewMoveListener != null) {
+            viewMoveListener.onMove(node.asView(), x, y);
+        }
     }
 
     @Override

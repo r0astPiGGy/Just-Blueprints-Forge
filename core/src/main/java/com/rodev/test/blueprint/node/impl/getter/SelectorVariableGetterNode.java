@@ -19,6 +19,7 @@ import icyllis.modernui.widget.ArrayAdapter;
 import icyllis.modernui.widget.Spinner;
 
 import javax.annotation.Nonnull;
+import java.util.List;
 
 public class SelectorVariableGetterNode extends NodeView {
 
@@ -59,8 +60,10 @@ public class SelectorVariableGetterNode extends NodeView {
 
     private static class SelectorValueView extends Spinner implements DefaultInputValue {
 
+        private final List<Selector> values;
         public SelectorValueView(SelectorGroup selectorGroup) {
-            ArrayAdapter<Selector> arrayAdapter = new CustomArrayAdapter<>(selectorGroup.selectors());
+            values = selectorGroup.selectors();
+            ArrayAdapter<Selector> arrayAdapter = new CustomArrayAdapter<>(values);
 
             setAdapter(arrayAdapter);
 
@@ -88,11 +91,22 @@ public class SelectorVariableGetterNode extends NodeView {
 
         @Override
         public String getDefaultValue() {
-            if(getSelectedItem() instanceof EnumValue value) {
-                return value.key();
+            if(getSelectedItem() instanceof Selector value) {
+                return value.id();
             }
 
             return null;
+        }
+
+        @Override
+        public void setDefaultValue(String value) {
+            int i = 0;
+            for(var a : values) {
+                if(a.id().equalsIgnoreCase(value)) {
+                    setSelection(i);
+                }
+                i++;
+            }
         }
 
         @Override

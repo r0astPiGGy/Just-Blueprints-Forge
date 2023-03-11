@@ -9,8 +9,8 @@ public interface NodeSupplier {
     NodeSupplier identity = (color, action) -> {
         var node = new NodeView(color, action.id(), action.name(), action.createIcon());
 
-        node.addInput(ExecPin.inputPin().createRowView());
-        node.addOutput(ExecPin.outputPin().createRowView());
+        node.addInputPin(ExecPin.inputPin(), "");
+        node.addOutputPin(ExecPin.outputPin(), "");
 
         return node;
     };

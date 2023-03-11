@@ -90,7 +90,7 @@ public class EventOutputFiller {
     private List<Event> getEventGroupById(String id) {
         var group = eventGroupsById.get(id);
         if(group == null) {
-            System.out.println("Event group by id " + id + " not found.");
+            System.out.println("Event group by outputPin " + id + " not found.");
             return Collections.emptyList();
         }
 
@@ -117,7 +117,7 @@ public class EventOutputFiller {
 
         if(ev != null) return List.of(ev);
 
-        System.out.println("Event by id " + eventId + " not found. Is it group?");
+        System.out.println("Event by outputPin " + eventId + " not found. Is it group?");
 
         return List.of();
     }

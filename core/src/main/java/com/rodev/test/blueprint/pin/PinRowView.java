@@ -86,6 +86,20 @@ public class PinRowView extends LinearLayout implements PinConnectionListener {
         defaultInputValue.show();
     }
 
+    public String getDefaultValue() {
+        if (defaultInputValue == null) {
+            return null;
+        }
+
+        return defaultInputValue.getDefaultValue();
+    }
+
+    public void setDefaultValue(String value) {
+        if(defaultInputValue == null) return;
+
+        defaultInputValue.setDefaultValue(value);
+    }
+
     public void enableMinimumWidth() {
         setMinimumWidth(dp(100));
     }
@@ -100,33 +114,6 @@ public class PinRowView extends LinearLayout implements PinConnectionListener {
 
     public static PinRowView rightDirectedRow(PinView pinView, String variableName) {
         return new PinRowView(pinView, variableName, Direction.RIGHT);
-    }
-
-    public Object serialize() {
-        var pinData = new PinData();
-
-        var pin = pinView.getPin();
-
-        pinData.name = pin.getType().getId();
-
-        if(pin.isInput() && pin.isConnected()) {
-            pinData.connectedTo = ((InputPin) pin).getConnections().get(0).getId().toString();
-        }
-        if(defaultInputValue != null) {
-            pinData.value = defaultInputValue.getDefaultValue();
-        }
-
-        return pinData;
-    }
-
-    private static class PinData {
-        public String name;
-
-        @JsonAlias("connected-to")
-        public String connectedTo;
-
-        @JsonAlias("default-value")
-        public String value;
     }
 
     public enum Direction {
