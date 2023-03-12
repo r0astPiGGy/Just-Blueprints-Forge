@@ -1,13 +1,10 @@
 package com.rodev.jmcparser.data;
 
-import com.rodev.jmcparser.json.ActionData;
-import com.rodev.test.blueprint.data.json.ActionEntity;
-import com.rodev.test.blueprint.data.json.VariableTypeEntity;
-import lombok.RequiredArgsConstructor;
+import com.rodev.jbpcore.blueprint.data.json.ActionEntity;
+import com.rodev.jbpcore.blueprint.data.json.VariableTypeEntity;
 
 import java.io.File;
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class VariableTypeWriter {
 

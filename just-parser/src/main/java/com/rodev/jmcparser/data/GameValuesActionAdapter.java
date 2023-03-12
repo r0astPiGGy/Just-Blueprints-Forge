@@ -1,8 +1,7 @@
 package com.rodev.jmcparser.data;
 
 import com.rodev.jmcparser.json.GameValue;
-import com.rodev.test.blueprint.data.action.Action;
-import com.rodev.test.blueprint.data.json.ActionEntity;
+import com.rodev.jbpcore.blueprint.data.json.ActionEntity;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import org.jetbrains.annotations.Nullable;

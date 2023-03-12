@@ -2,9 +2,8 @@ package com.rodev.jmcparser.data;
 
 import com.rodev.jmcparser.json.*;
 import com.rodev.jmcparser.util.TimeCounter;
-import com.rodev.test.blueprint.data.json.ActionEntity;
-import com.rodev.test.blueprint.data.json.EventEntity;
-import com.rodev.test.utils.StringUtils;
+import com.rodev.jbpcore.blueprint.data.json.ActionEntity;
+import com.rodev.jbpcore.blueprint.data.json.EventEntity;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 

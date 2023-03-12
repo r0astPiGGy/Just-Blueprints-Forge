@@ -1,6 +1,6 @@
 package com.rodev.jmcparser.data;
 
-import com.rodev.test.blueprint.data.json.ActionEntity;
+import com.rodev.jbpcore.blueprint.data.json.ActionEntity;
 
 import java.io.File;
 import java.util.Arrays;

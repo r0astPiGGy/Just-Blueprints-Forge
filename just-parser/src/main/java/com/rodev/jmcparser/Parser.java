@@ -1,7 +1,7 @@
 package com.rodev.jmcparser;
 
 import com.rodev.jmcparser.data.*;
-import com.rodev.test.utils.StringUtils;
+import com.rodev.jbpcore.utils.StringUtils;
 
 import java.io.File;
 

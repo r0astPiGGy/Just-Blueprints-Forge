@@ -6,7 +6,7 @@ import com.rodev.jmcparser.json.DataBlob;
 import com.rodev.jmcparser.json.Event;
 import com.rodev.jmcparser.json.GameValue;
 import com.rodev.jmcparser.util.TimeCounter;
-import com.rodev.test.blueprint.data.json.ActionEntity;
+import com.rodev.jbpcore.blueprint.data.json.ActionEntity;
 
 import java.io.IOException;
 import java.io.InputStream;
