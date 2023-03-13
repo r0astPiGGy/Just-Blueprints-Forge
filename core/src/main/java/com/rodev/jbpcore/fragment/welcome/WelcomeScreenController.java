@@ -33,7 +33,7 @@ public class WelcomeScreenController {
 
         windowManager.setState(editorState);
 
-        windowManager.open();
+        windowManager.transactFrom(fragment);
     }
 
     public void validateProjectName(String name, ValidateResult validateResult) {

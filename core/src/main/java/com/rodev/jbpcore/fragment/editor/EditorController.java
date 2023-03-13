@@ -9,6 +9,10 @@ import java.util.LinkedList;
 public class EditorController {
 
     public void onSaveButtonClicked(Project project, GraphLayout graphLayout) {
+        saveProject(project, graphLayout);
+    }
+
+    public void saveProject(Project project, GraphLayout graphLayout) {
         var nodes = new LinkedList<BPNode>();
 
         for(int i = 0; i < graphLayout.getChildCount(); i++) {

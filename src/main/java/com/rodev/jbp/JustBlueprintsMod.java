@@ -4,12 +4,19 @@ import com.rodev.jbpcore.Fonts;
 import com.rodev.jbpcore.JustBlueprints;
 import com.rodev.jbpcore.blueprint.data.DataAccess;
 import com.rodev.jbpcore.blueprint.data.DataProvider;
+import com.rodev.jbpcore.fragment.LifecycleFragment;
 import com.rodev.jbpcore.workspace.WindowManager;
 import com.rodev.jbpcore.workspace.impl.WorkspaceImpl;
 import icyllis.modernui.forge.MuiForgeApi;
 import icyllis.modernui.fragment.Fragment;
+import net.minecraft.client.Minecraft;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.server.ServerStartingEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.registries.RegisterEvent;
 
 import java.awt.*;
 import java.io.IOException;
@@ -25,8 +32,6 @@ public class JustBlueprintsMod implements DataProvider
         DataAccess.TEXTURE_NAMESPACE = MODID;
         try {
             Fonts.loadFonts();
-            DataAccess.load(this);
-
             JustBlueprints.setWorkspace(new WorkspaceImpl());
             JustBlueprints.setWindowManager(new WindowManager() {
                 @Override
@@ -40,8 +45,34 @@ public class JustBlueprintsMod implements DataProvider
             throw new RuntimeException(e);
         }
 
+        // Register the setup method for modloading
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
+        // Register the enqueueIMC method for modloading
+//        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::enqueueIMC);
+//        // Register the processIMC method for modloading
+//        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::processIMC);
+
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
+    }
+
+    private void setup(final FMLCommonSetupEvent event){
+        try {
+            DataAccess.load(this);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    // You can use SubscribeEvent and let the Event Bus discover methods to call
+    @SubscribeEvent
+    public void onServerStarting(ServerStartingEvent event)
+    {
+        System.out.println("SERVER STARTING");
+    }
+
+    @SubscribeEvent
+    public void onRegistry(RegisterEvent event) {
     }
 
     @Override

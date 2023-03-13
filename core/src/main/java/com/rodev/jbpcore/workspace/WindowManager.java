@@ -1,35 +1,43 @@
 package com.rodev.jbpcore.workspace;
 
+import com.rodev.jbpcore.fragment.LifecycleFragment;
 import com.rodev.jbpcore.fragment.editor.EditorFragment;
 import com.rodev.jbpcore.fragment.welcome.WelcomeScreenFragment;
 import icyllis.modernui.fragment.Fragment;
 import lombok.Setter;
 
+import java.lang.ref.WeakReference;
+
 public abstract class WindowManager {
 
     public static final WelcomeScreenState WELCOME_SCREEN = new WelcomeScreenState();
     public static final EditorScreenState EDITOR_SCREEN = new EditorScreenState();
-    private State state = WELCOME_SCREEN;
+    protected State state = WELCOME_SCREEN;
 
-    private Fragment currentFragment;
+    private WeakReference<LifecycleFragment> cachedFragment;
 
     public void open() {
-        state.onOpen(this);
-        var fragment = state.getFragment();
-        if(currentFragment == null) {
-            currentFragment = fragment;
-            openFragment(fragment);
-        } else {
-            currentFragment.getParentFragmentManager().beginTransaction()
-                    .replace(currentFragment.getId(), fragment)
-                    .disallowAddToBackStack()
-                    .commit();
-            currentFragment = fragment;
+        if(cachedFragment != null) {
+            var cached = cachedFragment.get();
+            if(cached != null) {
+                cached.onLateCloseFromWindowManager(this);
+            }
         }
+
+        var fragment = state.getFragment();
+        cachedFragment = new WeakReference<>(fragment);
+        openFragment(fragment);
     }
 
-    public void close() {
-        state.onClose(this);
+    public void transactFrom(Fragment fragment) {
+        var destination = state.getFragment();
+
+        var fragmentManager = fragment.getParentFragmentManager();
+
+        fragmentManager.beginTransaction()
+                .replace(fragment.getId(), destination)
+                .runOnCommit(fragmentManager::popBackStack)
+                .commit();
     }
 
     public void setState(State state) {
@@ -43,17 +51,13 @@ public abstract class WindowManager {
 
         protected State() {}
 
-        protected void onOpen(WindowManager windowManager) {}
-
-        protected void onClose(WindowManager windowManager) {}
-
         abstract
-        protected Fragment getFragment();
+        protected LifecycleFragment getFragment();
     }
 
     public static class WelcomeScreenState extends State {
         @Override
-        protected Fragment getFragment() {
+        protected LifecycleFragment getFragment() {
             return new WelcomeScreenFragment();
         }
     }
@@ -64,7 +68,7 @@ public abstract class WindowManager {
         private Project projectToView;
 
         @Override
-        protected Fragment getFragment() {
+        protected LifecycleFragment getFragment() {
             return new EditorFragment(projectToView);
         }
     }

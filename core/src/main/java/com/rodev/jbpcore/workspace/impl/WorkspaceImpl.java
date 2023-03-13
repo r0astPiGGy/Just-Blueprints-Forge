@@ -268,7 +268,8 @@ public class WorkspaceImpl implements Workspace {
         boolean matches = projectNamePattern.matcher(name).matches();
 
         if(!matches) {
-            validateResult.asError("Ввод не соответствует выражению " + projectNamePattern.pattern());
+            validateResult.asError("Название имеет некорректный формат. Убедитесь, что нет пробелов, " +
+                    "точек и бла бла бла");
             return;
         }
 

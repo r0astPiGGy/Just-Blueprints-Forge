@@ -4,8 +4,10 @@ import com.rodev.jbpcore.Colors;
 import com.rodev.jbpcore.blueprint.BPViewPort;
 import com.rodev.jbpcore.blueprint.graph.GraphControllerImpl;
 import com.rodev.jbpcore.blueprint.graph.GraphLayout;
+import com.rodev.jbpcore.fragment.LifecycleFragment;
 import com.rodev.jbpcore.view.MaterialButton;
 import com.rodev.jbpcore.workspace.Project;
+import com.rodev.jbpcore.workspace.WindowManager;
 import icyllis.modernui.fragment.Fragment;
 import icyllis.modernui.graphics.Canvas;
 import icyllis.modernui.graphics.Paint;
@@ -24,7 +26,7 @@ import javax.annotation.Nonnull;
 
 import static icyllis.modernui.view.View.sp;
 
-public class EditorFragment extends Fragment {
+public class EditorFragment extends LifecycleFragment {
 
     private final int toolsViewId = 152;
     private final int detailsPanelId = 3453;
@@ -257,6 +259,20 @@ public class EditorFragment extends Fragment {
         params.addRule(RelativeLayout.END_OF, detailsPanelId);
         postProcessView.setLayoutParams(params);
         return postProcessView;
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+
+        controller.saveProject(project, graphLayout);
+    }
+
+    @Override
+    public void onLateCloseFromWindowManager(WindowManager windowManager) {
+        if(isDetached()) return;
+
+        controller.saveProject(project, graphLayout);
     }
 
     private Button createButton(String text) {

@@ -3,6 +3,7 @@ package com.rodev.jbpcore.fragment.welcome;
 import com.rodev.jbpcore.Colors;
 import com.rodev.jbpcore.JustBlueprints;
 import com.rodev.jbpcore.blueprint.data.DataAccess;
+import com.rodev.jbpcore.fragment.LifecycleFragment;
 import com.rodev.jbpcore.utils.ColoredBackground;
 import com.rodev.jbpcore.utils.ParamsBuilder;
 import icyllis.modernui.fragment.Fragment;
@@ -23,7 +24,7 @@ import static icyllis.modernui.view.MeasureSpec.makeMeasureSpec;
 import static icyllis.modernui.view.View.dp;
 import static icyllis.modernui.view.View.sp;
 
-public class WelcomeScreenFragment extends Fragment {
+public class WelcomeScreenFragment extends LifecycleFragment {
 
     private final int recentProjectsId = 15433;
 
