@@ -13,7 +13,7 @@ public class JsonDataWriter {
     private final File fileToWriteTo;
 
     public void write(Object objectToWrite) {
-        var objectMapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);;
+        var objectMapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
 
         try {
             objectMapper.writeValue(fileToWriteTo, objectToWrite);

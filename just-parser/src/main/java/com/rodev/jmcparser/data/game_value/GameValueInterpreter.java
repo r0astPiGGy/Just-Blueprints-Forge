@@ -1,20 +1,19 @@
-package com.rodev.jmcparser.data;
+package com.rodev.jmcparser.data.game_value;
 
-import com.rodev.jmcparser.json.GameValue;
 import com.rodev.jbpcore.blueprint.data.json.ActionEntity;
-import lombok.AccessLevel;
-import lombok.RequiredArgsConstructor;
+import com.rodev.jmcparser.data.Interpreter;
+import com.rodev.jmcparser.json.GameValue;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.*;
 
-@RequiredArgsConstructor(access = AccessLevel.PRIVATE)
-public class GameValuesActionAdapter {
+public class GameValueInterpreter extends Interpreter<GameValue> {
 
-    private final GameValue[] gameValues;
     private final Set<String> gameValueIdsWithDisabledSelectors = new HashSet<>();
 
-    {
+    public GameValueInterpreter(GameValue[] data) {
+        super(data);
         gameValueIdsWithDisabledSelectors.addAll(List.of(
                 "cpu_usage",
                 "server_tps",
@@ -36,21 +35,7 @@ public class GameValuesActionAdapter {
         ));
     }
 
-    public static ActionEntity[] adapt(GameValue[] gameValues) {
-        return new GameValuesActionAdapter(gameValues).adapt();
-    }
-
-    public ActionEntity[] adapt() {
-        var actions = new ActionEntity[gameValues.length];
-
-        for(int i = 0; i < gameValues.length; i++) {
-            actions[i] = adapt(gameValues[i]);
-        }
-
-        return actions;
-    }
-
-    private ActionEntity adapt(GameValue gameValue) {
+    protected ActionEntity interpret(@NotNull GameValue gameValue) {
         var action = new ActionEntity();
 
         action.name = gameValue.name;

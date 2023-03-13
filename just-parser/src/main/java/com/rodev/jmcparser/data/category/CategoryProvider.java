@@ -1,4 +1,4 @@
-package com.rodev.jmcparser.data;
+package com.rodev.jmcparser.data.category;
 
 public interface CategoryProvider {
 

@@ -1,0 +1,177 @@
+{
+  "nodes" : [ {
+    "id" : "native_branch",
+    "position" : {
+      "x" : 8388208,
+      "y" : 8388505
+    },
+    "deserializer" : "default",
+    "data" : {
+      "input" : {
+        "7c53fa03-ee19-4617-91d8-2263d84fadf6" : {
+          "name" : "branch_condition",
+          "connectedTo" : "8f925fdc-377f-4573-86f3-cbfe7544a4bb",
+          "value" : "false"
+        },
+        "18102881-fa0b-4923-878e-fe39061cea42" : {
+          "name" : "exec",
+          "connectedTo" : "2fe5adc2-22a9-43dd-8d08-3fde9531589c",
+          "value" : null
+        }
+      },
+      "output" : {
+        "af59f012-b1f9-4915-b4c1-b892f31e8a39" : {
+          "name" : "branch_true",
+          "connectedTo" : null,
+          "value" : null
+        },
+        "ca985c09-09e0-4903-af0b-166ffa9e982a" : {
+          "name" : "branch_false",
+          "connectedTo" : null,
+          "value" : null
+        }
+      }
+    }
+  }, {
+    "id" : "call_function",
+    "position" : {
+      "x" : 8388494,
+      "y" : 8388506
+    },
+    "deserializer" : "default",
+    "data" : {
+      "input" : {
+        "3510c88e-08ad-40a9-bc40-6e68aaa79cc2" : {
+          "name" : "exec",
+          "connectedTo" : "af59f012-b1f9-4915-b4c1-b892f31e8a39",
+          "value" : null
+        },
+        "4a8263ca-8ade-47f6-b21b-2ebbaee237d3" : {
+          "name" : "function_name",
+          "connectedTo" : null,
+          "value" : ""
+        }
+      },
+      "output" : {
+        "abb000a6-0e29-4004-b7bb-0a18c61807f8" : {
+          "name" : "exec",
+          "connectedTo" : null,
+          "value" : null
+        }
+      }
+    }
+  }, {
+    "id" : "entity_set_target",
+    "position" : {
+      "x" : 8388494,
+      "y" : 8388636
+    },
+    "deserializer" : "default",
+    "data" : {
+      "input" : {
+        "08816f72-8d76-49cf-b0fc-1f07cb604c1f" : {
+          "name" : "exec",
+          "connectedTo" : "ca985c09-09e0-4903-af0b-166ffa9e982a",
+          "value" : null
+        },
+        "fbb4b07c-f676-46ac-9e63-a65b9f16ddf6" : {
+          "name" : "entity",
+          "connectedTo" : "2e38f6de-28b2-4af0-b187-f4eac08cf482",
+          "value" : null
+        },
+        "b4a64841-3da8-45b6-9695-00aab02bfcf6" : {
+          "name" : "name_or_uuid",
+          "connectedTo" : null,
+          "value" : ""
+        }
+      },
+      "output" : {
+        "baac2ee1-782d-4f00-b752-37716059c938" : {
+          "name" : "exec",
+          "connectedTo" : null,
+          "value" : null
+        }
+      }
+    }
+  }, {
+    "id" : "if_entity_is_disguised",
+    "position" : {
+      "x" : 8387818,
+      "y" : 8388609
+    },
+    "deserializer" : "default",
+    "data" : {
+      "input" : {
+        "c24f6eed-f2bc-4956-8aab-249088bbe933" : {
+          "name" : "entity",
+          "connectedTo" : null,
+          "value" : null
+        }
+      },
+      "output" : {
+        "8f925fdc-377f-4573-86f3-cbfe7544a4bb" : {
+          "name" : "-",
+          "connectedTo" : null,
+          "value" : null
+        }
+      }
+    }
+  }, {
+    "id" : "projectile_damage_entity",
+    "position" : {
+      "x" : 8387846,
+      "y" : 8388502
+    },
+    "deserializer" : "default",
+    "data" : {
+      "input" : { },
+      "output" : {
+        "2fe5adc2-22a9-43dd-8d08-3fde9531589c" : {
+          "name" : "exec",
+          "connectedTo" : null,
+          "value" : null
+        }
+      }
+    }
+  }, {
+    "id" : "else",
+    "position" : {
+      "x" : 8387816,
+      "y" : 8388716
+    },
+    "deserializer" : "default",
+    "data" : {
+      "input" : {
+        "79d7a5bb-355f-41f2-ab4c-a6f13aeab9a0" : {
+          "name" : "exec",
+          "connectedTo" : null,
+          "value" : null
+        }
+      },
+      "output" : {
+        "90dcb4d5-33be-43f9-9ee9-06829f1c8c39" : {
+          "name" : "exec",
+          "connectedTo" : null,
+          "value" : null
+        }
+      }
+    }
+  }, {
+    "id" : "entity_getter",
+    "position" : {
+      "x" : 8388199,
+      "y" : 8388681
+    },
+    "deserializer" : "default",
+    "data" : {
+      "input" : { },
+      "output" : {
+        "2e38f6de-28b2-4af0-b187-f4eac08cf482" : {
+          "name" : "entity",
+          "connectedTo" : null,
+          "value" : "victim_entity"
+        }
+      }
+    }
+  } ]
+}

@@ -1,286 +1,53 @@
 package com.rodev.jmcparser.data;
 
-import com.rodev.jmcparser.json.*;
 import com.rodev.jmcparser.util.TimeCounter;
 import com.rodev.jbpcore.blueprint.data.json.ActionEntity;
-import com.rodev.jbpcore.blueprint.data.json.EventEntity;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.*;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 
-@RequiredArgsConstructor
-public class DataInterpreter implements ActionNameHandler, EventNameHandler {
+public class DataInterpreter extends Interpreter<Void> {
 
-    private final Set<String> variableTypes = new HashSet<>();
-    private final Set<String> withoutCategory = new HashSet<>();
-    private final DataBlob dataBlob;
-    private final LocaleProvider localeProvider;
-    private final CategoryProvider categoryProvider;
+    private final List<Interpreter<?>> interpreters = new LinkedList<>();
 
-    @Setter
-    private ActionTypeHandler actionTypeHandler = data -> "function";
-
-    @Setter
-    private ActionNameHandler actionNameHandler = this;
-
-    @Setter
-    private EventNameHandler eventNameHandler = this;
-
-    @Setter
-    private PinTypeNameHandler pinTypeNameHandler = typeId -> typeId;
+    public DataInterpreter() {
+        super(null);
+    }
 
     public ActionEntity[] interpret() {
         var counter = new TimeCounter();
 
-        var actions = dataBlob.getActions();
-        var events = dataBlob.getEvents();
-        var customActions = dataBlob.getCustomActions();
+        List<ActionEntity[]> data = new ArrayList<>();
 
-        var gameValues = dataBlob.getGameValues();
+        var totalSize = 0;
 
-        EventOutputFiller.fill(events, gameValues);
-        GameValueTranslator.translate(gameValues, localeProvider);
-
-        var gameValueGetters = GameValuesActionAdapter.adapt(gameValues);
-
-        var totalSize = sumAllArraysLength(actions, events, customActions, gameValueGetters);
-        var array = new ActionEntity[totalSize];
-
-        var arrayIndex = 0;
-
-        for(int i = 0; i < actions.length; i++, arrayIndex++) {
-            var actionData = actions[i];
-
-            if(actionData == null) continue;
-
-            array[arrayIndex] = create(actionData);
+        for(var interpreter : interpreters) {
+            var interpreted = interpreter.interpret();
+            totalSize += interpreted.length;
+            data.add(interpreted);
         }
 
-        for(int i = 0; i < events.length; i++, arrayIndex++) {
-            var event = events[i];
-
-            if(event == null) continue;
-
-            array[arrayIndex] = createEvent(event);
-        }
-
-        for(int i = 0; i < customActions.length; i++, arrayIndex++) {
-            array[arrayIndex] = customActions[i];
-        }
-
-        for(int i = 0; i < gameValueGetters.length; i++, arrayIndex++) {
-            array[arrayIndex] = gameValueGetters[i];
-        }
-
-        counter.print(ms -> "Interpreted " + array.length + " actions in " + ms + "ms.");
-        System.out.println("Variable types [" + variableTypes.size() + "]: " + String.join(", ", variableTypes));
-        System.out.println("Actions without category [" + withoutCategory.size() + "]:" + String.join(", ", withoutCategory));
-
-        return array;
-    }
-
-    private int sumAllArraysLength(Object[]... arrays) {
-        int sum = 0;
-
-        for (Object[] array : arrays) {
-            sum += array.length;
-        }
-
-        return sum;
-    }
-
-    private ActionEntity create(ActionData actionData) {
-        var actionEntity = new ActionEntity();
-
-        actionEntity.id = actionData.id;
-        actionEntity.type = actionTypeHandler.handleActionType(actionData);
-        actionEntity.name = actionNameHandler.handleActionName(actionData, localeProvider);
-        actionEntity.category = getCategoryFor(actionData);
-        actionEntity.input = createInput(actionData);
-        actionEntity.output = createOutput(actionData);
-        actionEntity.icon_namespace = "actions";
-
-        return actionEntity;
-    }
-
-    private ActionEntity createEvent(Event event) {
-        var actionEntity = EventEntity.create(event.cancellable);
-
-        actionEntity.id = event.id;
-        actionEntity.name = eventNameHandler.handleEventName(event, localeProvider);
-        if(event.category == null) {
-            actionEntity.category = "events";
-        } else {
-            actionEntity.category = String.format("%s.%s-%s", "events", "events", event.category);
-        }
-        actionEntity.input = Collections.emptyList();
-        actionEntity.output = createOutput(event);
-        actionEntity.icon_namespace = "events";
-
-        return actionEntity;
-    }
-
-    private String getCategoryFor(ActionData actionData) {
-        var id = actionData.id;
-        var base = categoryProvider.getCategoryForActionId(id);
-
-        if(base != null) return base;
-
-        if(id.startsWith("if_game")) return "if_game";
-
-        if(id.startsWith("game")) return "game_action";
-
-        withoutCategory.add(id);
-
-        return "misc";
-    }
-
-    @Override
-    public String handleActionName(ActionData data, LocaleProvider localeProvider) {
-        var key = "creative_plus.action." + data.id + ".name";
-
-        return localeProvider.translateKeyOrDefault(key);
-    }
-
-    @Override
-    public String handleEventName(Event data, LocaleProvider localeProvider) {
-        var key = "creative_plus.trigger." + data.id + ".name";
-
-        return localeProvider.translateKeyOrDefault(key);
-    }
-
-    private List<ActionEntity.PinTypeEntity> createInput(ActionData actionData) {
-        var input = new LinkedList<ActionEntity.PinTypeEntity>();
-
-        var id = actionData.id;
-        var isVariableSetter = id.startsWith("set_variable");
-        if(!isVariableSetter) {
-            var inputPin = createObjectInputPin(actionData);
-
-            if (inputPin != null) {
-                input.add(inputPin);
+        var actions = new ActionEntity[totalSize];
+        var index = 0;
+        for(var bulk : data) {
+            for (ActionEntity entity : bulk) {
+                actions[index] = entity;
+                index++;
             }
         }
 
-        int i = 0;
+        counter.print(ms -> "Interpreted " + actions.length + " actions in " + ms + "ms.");
 
-        var isVariableGetter = id.startsWith("set_variable_get");
-        if(isVariableGetter)
-            i = 1; // Skip first arg
-
-        for(; i < actionData.args.length; i++) {
-            var arg = actionData.args[i];
-
-            if(arg == null) continue;
-
-            input.add(createInputPin(actionData, arg));
-        }
-
-        return input;
+        return actions;
     }
 
-    private List<ActionEntity.PinTypeEntity> createOutput(Event event) {
-        return event.rawOutput.stream().map(v -> {
-            var pin = new ActionEntity.PinTypeEntity();
-
-            pin.id = v.id;
-            pin.type = v.type;
-            pin.label = v.name;
-
-            return pin;
-        }).collect(Collectors.toList());
+    @Override
+    protected @Nullable ActionEntity interpret(@NotNull Void object) {
+        return null;
     }
 
-    private List<ActionEntity.PinTypeEntity> createOutput(ActionData actionData) {
-        var variableGetter = actionData.id.startsWith("set_variable_get");
-        var predicate = false;
-
-        if(actionData.containing != null) {
-            predicate = actionData.containing.equalsIgnoreCase("predicate");
-        }
-
-        if(!predicate && !variableGetter) {
-            return Collections.emptyList();
-        }
-
-        var type = "variable";
-
-        if(predicate) {
-            type = "boolean";
-        }
-
-        var pinTypeEntity = new ActionEntity.PinTypeEntity();
-        pinTypeEntity.label = "Return value";
-        pinTypeEntity.type = type;
-        pinTypeEntity.id = "-";
-
-        return List.of(pinTypeEntity);
-    }
-
-    private ActionEntity.PinTypeEntity createObjectInputPin(ActionData actionData) {
-        switch (actionData.object) {
-            case "code":
-            case "world":
-            case "select":
-            case "variable":
-            case "repeat":
-                return null;
-        }
-
-        var pin = new ActionEntity.PinTypeEntity();
-
-        pin.type = actionData.object;
-        pin.label = pinTypeNameHandler.handlePinTypeName(actionData.object);
-        pin.id = actionData.object;
-
-        if(pin.type != null) {
-            variableTypes.add(pin.type);
-        }
-
-        return pin;
-    }
-
-    private ActionEntity.PinTypeEntity createInputPin(ActionData actionData, ActionDataArgument arg) {
-        var pin = new ActionEntity.PinTypeEntity();
-
-        if(arg._enum != null) {
-            pin.extra_data = generateEnumValues(arg._enum, rawEnumValue -> {
-                var localeId =
-                        String.format("creative_plus.action.%s.argument.%s.enum.%s.name",
-                        actionData.id, arg.name, rawEnumValue.toLowerCase());
-
-                return localeProvider.translateKeyOrDefault(localeId);
-            });
-        }
-
-        pin.type = arg.type;
-        pin.id = arg.name;
-
-        if(pin.type != null) {
-            variableTypes.add(pin.type);
-        } else {
-            pin.type = "variable";
-        }
-
-        var localeId = String.format("creative_plus.action.%s.argument.%s.name", actionData.id, arg.name);
-
-        pin.label = localeProvider.translateKeyOrDefault(localeId);
-
-        return pin;
-    }
-
-    private Map<String, String> generateEnumValues(String[] rawValues, Function<String, String> translationSupplier) {
-        var map = new HashMap<String, String>();
-
-        for(String rawValue : rawValues) {
-            String translation = translationSupplier.apply(rawValue);
-
-            map.put(rawValue, translation);
-        }
-
-        return map;
+    public void registerInterpreter(Interpreter<?> interpreter) {
+        interpreters.add(interpreter);
     }
 }

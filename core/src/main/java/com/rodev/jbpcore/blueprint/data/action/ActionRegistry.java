@@ -57,7 +57,7 @@ public class ActionRegistry extends Registry<String, Action> {
 
     private PinType create(ActionEntity.PinTypeEntity entity) {
         if(entity.type.equals("exec")) {
-            return PinType.execType(entity.label);
+            return PinType.execType(entity.id, entity.label);
         }
 
         var varType = variableTypeRegistry.get(entity.type);

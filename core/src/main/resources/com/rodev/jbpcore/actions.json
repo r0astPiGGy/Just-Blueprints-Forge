@@ -17611,7 +17611,7 @@
   "icon_namespace" : "events"
 }, {
   "id" : "native_branch",
-  "type" : "util",
+  "type" : "native_branch",
   "name" : "Ветвление",
   "category" : "control",
   "input" : [ {

@@ -6,12 +6,10 @@ import com.rodev.jbpcore.blueprint.data.json.VariableTypeEntity;
 import java.io.File;
 import java.util.*;
 
-public class VariableTypeWriter {
+public class VariableTypeWriter extends DataWriter<ActionEntity, VariableTypeEntity> {
 
-    private final JsonDataWriter jsonDataWriter;
-
-    public VariableTypeWriter(File fileToWrite) {
-        jsonDataWriter = new JsonDataWriter(fileToWrite);
+    public VariableTypeWriter(File file) {
+        super(file);
     }
 
     public void write(ActionEntity[] entities) {
@@ -29,9 +27,11 @@ public class VariableTypeWriter {
         var list = types.stream()
                 .filter(Objects::nonNull)
                 .map(t -> new VariableTypeEntity(t, ""))
+                .map(this::patch)
+                .filter(Objects::nonNull)
                 .toList();
 
-        jsonDataWriter.write(list);
+        writeToFile(list);
     }
 
 }

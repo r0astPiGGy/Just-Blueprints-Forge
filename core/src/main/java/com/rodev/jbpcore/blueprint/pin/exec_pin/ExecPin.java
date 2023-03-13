@@ -1,5 +1,6 @@
 package com.rodev.jbpcore.blueprint.pin.exec_pin;
 
+import com.rodev.jbpcore.blueprint.data.action.PinType;
 import com.rodev.jbpcore.blueprint.pin.Pin;
 import icyllis.modernui.graphics.Canvas;
 import icyllis.modernui.graphics.Paint;
@@ -33,12 +34,20 @@ public interface ExecPin extends Pin {
         return new OutExecPin(name);
     }
 
+    static Pin outputPin(PinType pinType) {
+        return new OutExecPin(pinType);
+    }
+
     static Pin inputPin() {
         return inputPin("");
     }
 
     static Pin inputPin(String name) {
         return new InExecPin(name);
+    }
+
+    static Pin inputPin(PinType pinType) {
+        return new InExecPin(pinType);
     }
 
     abstract class ExecDrawable extends MaterialDrawable {

@@ -1,4 +1,4 @@
-package com.rodev.jmcparser.data;
+package com.rodev.jmcparser.data.event;
 
 import com.rodev.jmcparser.json.Event;
 import com.rodev.jmcparser.json.GameValue;

@@ -1,5 +1,6 @@
-package com.rodev.jmcparser.data;
+package com.rodev.jmcparser.data.game_value;
 
+import com.rodev.jmcparser.data.LocaleProvider;
 import com.rodev.jmcparser.json.GameValue;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;

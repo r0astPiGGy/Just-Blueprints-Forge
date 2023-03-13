@@ -1,21 +1,23 @@
-package com.rodev.jmcparser.data;
+package com.rodev.jmcparser.data.category;
 
 import com.rodev.jbpcore.blueprint.data.json.ActionEntity;
+import com.rodev.jmcparser.data.DataWriter;
+import com.rodev.jmcparser.data.JsonDataWriter;
+import com.rodev.jmcparser.data.LocaleProvider;
+import com.rodev.jmcparser.data.event.EventCategoryTranslator;
 
 import java.io.File;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-public class CategoryWriter {
-
-    private final JsonDataWriter jsonDataWriter;
+public class CategoryWriter extends DataWriter<ActionEntity, Category> {
 
     private final CategoryTranslator categoryTranslator;
     private final EventCategoryTranslator eventCategoryTranslator;
 
     public CategoryWriter(File fileToWrite, LocaleProvider localeProvider) {
-        this.jsonDataWriter = new JsonDataWriter(fileToWrite);
+        super(fileToWrite);
         this.categoryTranslator = new CategoryTranslator(localeProvider);
         this.eventCategoryTranslator = new EventCategoryTranslator(localeProvider);
     }
@@ -26,7 +28,7 @@ public class CategoryWriter {
                 .distinct()
                 .collect(HashMap::new, this::addCategory, HashMap::putAll);
 
-        jsonDataWriter.write(map);
+        writeToFile(map);
     }
 
     private void addCategory(Map<Object, Object> map, String category) {
@@ -47,7 +49,11 @@ public class CategoryWriter {
         }
 
         var translatedCategory = categoryTranslator.translateCategory(categoryKey);
-        map.put(categoryKey, translatedCategory);
+
+        var patched = patch(new Category(categoryKey, translatedCategory));
+        if(patched == null) return;
+
+        map.put(patched.key, patched.name);
     }
 
 }

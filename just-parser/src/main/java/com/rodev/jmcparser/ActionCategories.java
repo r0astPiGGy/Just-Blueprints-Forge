@@ -2,13 +2,12 @@ package com.rodev.jmcparser;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.rodev.jmcparser.data.CategoryProvider;
+import com.rodev.jmcparser.data.category.CategoryProvider;
 import com.rodev.jmcparser.util.TimeCounter;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -65,5 +64,10 @@ public class ActionCategories implements CategoryProvider {
         @JsonIgnore
         public Object icon;
 
+        @JsonIgnore
+        public String additionalInfo;
+
+        @JsonIgnore
+        public String worksWith;
     }
 }

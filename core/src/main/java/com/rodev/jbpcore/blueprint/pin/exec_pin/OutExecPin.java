@@ -7,7 +7,11 @@ import com.rodev.jbpcore.blueprint.pin.Pin;
 public class OutExecPin extends OutputPin implements ExecPin {
 
     public OutExecPin(String name) {
-        super(PinType.execType(name));
+        this(PinType.execType(name));
+    }
+
+    public OutExecPin(PinType pinType) {
+        super(pinType);
     }
 
     @Override

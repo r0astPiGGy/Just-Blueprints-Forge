@@ -1,10 +1,12 @@
-package com.rodev.jmcparser.data;
+package com.rodev.jmcparser.data.category;
 
-public class EventCategoryTranslator extends CategoryTranslator {
+import com.rodev.jmcparser.data.LocaleProvider;
+import lombok.RequiredArgsConstructor;
 
-    public EventCategoryTranslator(LocaleProvider localeProvider) {
-        super(localeProvider);
-    }
+@RequiredArgsConstructor
+public class CategoryTranslator {
+
+    protected final LocaleProvider localeProvider;
 
     protected String resolveTranslationKey(String category) {
         var localeKey = "creative_plus.category." + category;
@@ -13,12 +15,10 @@ public class EventCategoryTranslator extends CategoryTranslator {
         if(translated != null)
             return localeKey;
 
-        return localeKey + "_event";
+        return localeKey + "_action";
     }
 
     public String translateCategory(String category) {
-        if(category.equals("events")) return "События";
-
         var localeKey = resolveTranslationKey(category) + ".name";
         var translated = localeProvider.translateKey(localeKey);
 
@@ -28,7 +28,13 @@ public class EventCategoryTranslator extends CategoryTranslator {
     }
 
     public String translateSubCategory(String parent, String child) {
-        return translateCategory(child);
+        var parentKey = resolveTranslationKey(parent);
+        var localeKey = String.format("%s.subcategory.%s.name", parentKey, child);
+        var translated = localeProvider.translateKey(localeKey);
+
+        if(translated != null) return translated;
+
+        return localeKey;
     }
 
 }

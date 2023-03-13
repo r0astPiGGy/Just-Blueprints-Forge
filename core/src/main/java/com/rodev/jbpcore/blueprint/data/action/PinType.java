@@ -1,6 +1,9 @@
 package com.rodev.jbpcore.blueprint.data.action;
 
 import com.rodev.jbpcore.blueprint.data.variable.VariableType;
+import com.rodev.jbpcore.blueprint.pin.Pin;
+import com.rodev.jbpcore.blueprint.pin.exec_pin.ExecPin;
+import com.rodev.jbpcore.blueprint.pin.var_pin.VarPin;
 
 import java.util.Objects;
 
@@ -14,7 +17,17 @@ public class PinType {
     }
 
     public static PinType execType(String id, String name) {
-        return new PinType(id, name, VariableType.execType());
+        return new PinType(id, name, VariableType.execType()) {
+            @Override
+            public Pin createInputPin() {
+                return ExecPin.inputPin(this);
+            }
+
+            @Override
+            public Pin createOutputPin() {
+                return ExecPin.outputPin(this);
+            }
+        };
     }
 
     public PinType(String id, String name, VariableType type) {
@@ -33,6 +46,14 @@ public class PinType {
 
     public VariableType getVariableType() {
         return type;
+    }
+
+    public Pin createInputPin() {
+        return VarPin.inputPin(this);
+    }
+
+    public Pin createOutputPin() {
+        return VarPin.outputPin(this);
     }
 
     @Override

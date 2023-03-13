@@ -92,6 +92,13 @@ public class DataInitEventHandler {
         registry.addNodeSupplier("pure_function", (color, action) -> {
             return new NodeView(color, action.id(), action.name(), action.createIcon());
         });
+        registry.addNodeSupplier("native_branch", (color, action) -> {
+            var node = new NodeView(color, action.id(), action.name(), action.createIcon());
+
+            node.addInputPin(ExecPin.inputPin(), "");
+
+            return node;
+        });
     }
 
     public static void onVariableTypeRegistryPreLoad(VariableTypeRegistry registry) {

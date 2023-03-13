@@ -1,67 +1,42 @@
 package com.rodev.jmcparser.data;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.rodev.jmcparser.json.ActionData;
-import com.rodev.jmcparser.json.DataBlob;
-import com.rodev.jmcparser.json.Event;
-import com.rodev.jmcparser.json.GameValue;
-import com.rodev.jmcparser.util.TimeCounter;
-import com.rodev.jbpcore.blueprint.data.json.ActionEntity;
+import com.rodev.jmcparser.data.action.ActionParser;
+import com.rodev.jmcparser.data.category.CategoryProvider;
+import com.rodev.jmcparser.data.event.EventOutputFiller;
+import com.rodev.jmcparser.data.event.EventParser;
+import com.rodev.jmcparser.data.game_value.GameValueParser;
+import com.rodev.jmcparser.data.game_value.GameValueTranslator;
+import lombok.Setter;
 
-import java.io.IOException;
-import java.io.InputStream;
+import java.util.LinkedList;
+import java.util.List;
 
 public class DataParser {
+    @Setter
+    private Runnable onAllDataLoaded = () -> {};
 
-    private DataBlob dataBlob;
-    private ActionData[] actionData;
-    private GameValue[] gameValues;
-    private ActionEntity[] customActions;
-    private Event[] events;
+    private final List<Parser<?, ?>> parsers = new LinkedList<>();
+
+    public void registerParser(Parser<?, ?> parser) {
+        parsers.add(parser);
+    }
 
     public void parseUsing(DataProvider dataProvider) {
-        var counter = new TimeCounter();
-
-        dataProvider.loadActionsAndApply(this::parseActions);
-        counter.printAndReset(ms -> "Loaded " + actionData.length + " actions in " + ms + "ms.");
-
-        dataProvider.loadEventsAndApply(this::parseEvents);
-        counter.printAndReset(ms -> "Loaded " + events.length + " events in " + ms + "ms.");
-
-        dataProvider.loadGameValuesAndApply(this::parseGameValues);
-        counter.printAndReset(ms -> "Loaded " + gameValues.length + " game values in " + ms + "ms.");
-
-        dataProvider.loadCustomActionsAndApply(this::parseCustomActions);
-
-        dataBlob = new DataBlob(actionData, events, gameValues, customActions);
-    }
-
-    private void parseActions(InputStream inputStream) {
-        actionData = parse(inputStream, ActionData[].class);
-    }
-
-    private void parseEvents(InputStream inputStream) {
-        events = parse(inputStream, Event[].class);
-    }
-
-    private void parseGameValues(InputStream inputStream) {
-        gameValues = parse(inputStream, GameValue[].class);
-    }
-
-    private void parseCustomActions(InputStream inputStream) {
-        customActions = parse(inputStream, ActionEntity[].class);
-    }
-
-    private <T> T parse(InputStream is, Class<T> clazz) {
-        try {
-            return new ObjectMapper().readValue(is, clazz);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        for(var parser : parsers) {
+            parser.load(dataProvider);
         }
+
+        onAllDataLoaded.run();
     }
 
-    public DataInterpreter createInterpreter(LocaleProvider localeProvider, CategoryProvider categoryProvider) {
-        return new DataInterpreter(dataBlob, localeProvider, categoryProvider);
+    public DataInterpreter createInterpreter() {
+        var interpreter = new DataInterpreter();
+
+        for(var parser : parsers) {
+            interpreter.registerInterpreter(parser.createInterpreter());
+        }
+
+        return interpreter;
     }
 
 }

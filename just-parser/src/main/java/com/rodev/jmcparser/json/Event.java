@@ -14,6 +14,8 @@ public class Event {
 
     public boolean cancellable;
     public String category;
+    @JsonIgnore
+    public String additionalInfo;
 
     public final List<GameValue> rawOutput = new LinkedList<>();
 

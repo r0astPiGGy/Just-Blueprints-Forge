@@ -1,9 +1,21 @@
 package com.rodev.jmcparser;
 
+import com.rodev.jbpcore.blueprint.data.json.ActionEntity;
+import com.rodev.jbpcore.blueprint.data.json.VariableTypeEntity;
 import com.rodev.jmcparser.data.*;
-import com.rodev.jbpcore.utils.StringUtils;
+import com.rodev.jmcparser.data.action.ActionWriter;
+import com.rodev.jmcparser.data.category.Category;
+import com.rodev.jmcparser.data.category.CategoryWriter;
+import com.rodev.jmcparser.patcher.AbstractPatcher;
+import com.rodev.jmcparser.patcher.Patcher;
+import com.rodev.jmcparser.patcher.action.ActionEntityPatch;
+import com.rodev.jmcparser.patcher.action.ActionPatcher;
+import com.rodev.jmcparser.patcher.category.CategoryPatch;
+import com.rodev.jmcparser.patcher.variable.VariableTypePatch;
 
 import java.io.File;
+import java.util.function.Function;
+import static com.rodev.jmcparser.data.Parser.parseJson;
 
 public class Parser implements Runnable {
 
@@ -12,40 +24,72 @@ public class Parser implements Runnable {
 
     private final DataParser dataParser = new DataParser();
     private final ActionCategories categories = new ActionCategories();
-    private final JsonDataWriter actionWriter = new JsonDataWriter(parserDirectoryChild("actions.json"));
 
     @Override
     public void run() {
-        dataParser.parseUsing(dataProvider);
+        var helper = new ParserRegisterHelper(localization, categories, dataParser);
+
         dataProvider.loadLocaleAndApply(localization::load);
         dataProvider.loadCategoriesAndApply(categories::load);
 
-        DataInterpreter interpreter = dataParser.createInterpreter(localization, categories);
+        helper.registerParsers();
 
-        interpreter.setActionTypeHandler(data -> {
-            var containing = data.containing;
+        dataParser.parseUsing(dataProvider);
 
-            if(containing != null && containing.equalsIgnoreCase("predicate")) {
-                return "pure_function";
-            }
-
-            if(data.id.startsWith("set_variable_get") && data.args.length < 3) {
-                if(data.args[1].type.equals(data.origin))
-                    return "variable_property";
-            }
-
-            return "function";
-        });
-        interpreter.setPinTypeNameHandler(StringUtils::capitalize);
+        DataInterpreter interpreter = dataParser.createInterpreter();
 
         var actions = interpreter.interpret();
+        var customActions = dataProvider.loadCustomActionsAndReturn(is -> {
+            return parseJson(is, ActionEntity[].class);
+        });
 
+        var allActions = combine(ActionEntity[]::new, actions, customActions);
+
+        var actionWriter = new ActionWriter(parserDirectoryChild("actions.json"));
+        dataProvider.loadActionPatchesAndApply(is -> {
+            var patches = parseJson(is, ActionEntityPatch[].class);
+            var patcher = new ActionPatcher(patches);
+
+            actionWriter.setPatcher(patcher);
+        });
         var categoryWriter = new CategoryWriter(parserDirectoryChild("categories.json"), localization);
-        var variableTypeWriter = new VariableTypeWriter(parserDirectoryChild("variable_types.json"));
+        dataProvider.loadCategoryPatchesAndApply(is -> {
+            var patches = parseJson(is, CategoryPatch[].class);
+            Patcher<Category> patcher = AbstractPatcher.defaultPatcher(patches, c -> c.key);
 
-        actionWriter.write(actions);
-        categoryWriter.write(actions);
-        variableTypeWriter.write(actions);
+            categoryWriter.setPatcher(patcher);
+        });
+        var variableTypeWriter = new VariableTypeWriter(parserDirectoryChild("variable_types.json"));
+        dataProvider.loadVariableTypePatchesAndApply(is -> {
+            var patches = parseJson(is, VariableTypePatch[].class);
+            Patcher<VariableTypeEntity> patcher = AbstractPatcher.defaultPatcher(patches, t -> t.id);
+
+            variableTypeWriter.setPatcher(patcher);
+        });
+
+        actionWriter.write(allActions);
+        categoryWriter.write(allActions);
+        variableTypeWriter.write(allActions);
+    }
+
+    @SafeVarargs
+    public static <T> T[] combine(Function<Integer, T[]> arrayProvider, T[]... arrays) {
+        var totalSize = 0;
+        for(var array : arrays) {
+            totalSize += array.length;
+        }
+
+        var newArray = arrayProvider.apply(totalSize);
+
+        int i = 0;
+        for(var array : arrays) {
+            for(var element : array) {
+                newArray[i] = element;
+                i++;
+            }
+        }
+
+        return newArray;
     }
 
     public static File parserDirectoryChild(String fileName) {

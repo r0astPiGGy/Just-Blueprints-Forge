@@ -60,12 +60,12 @@ public final class Action {
         var node = actionType.createNode(this);
 
         for (var inputPinType : inputPins()) {
-            var pin = VarPin.inputPin(inputPinType);
+            var pin = inputPinType.createInputPin();
             node.addInputPin(pin, inputPinType.getName());
         }
 
         for (var outputPinType : outputPins()) {
-            var pin = VarPin.outputPin(outputPinType);
+            var pin = outputPinType.createOutputPin();
             node.addOutputPin(pin, outputPinType.getName());
         }
 

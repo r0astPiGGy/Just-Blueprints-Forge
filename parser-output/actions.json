@@ -1,23 +1,14 @@
 [ {
   "id" : "call_function",
   "type" : "function",
-  "name" : "Вызвать функцию",
+  "name" : "Вызвать сладкую беброчку",
   "category" : "call_function",
   "input" : [ {
-    "id" : "function_name",
-    "label" : "Название функции",
+    "id" : "bebra_name",
+    "label" : "Имя беброчки",
     "type" : "text",
     "extra_data" : null
   } ],
-  "output" : [ ],
-  "extra_data" : null,
-  "icon_namespace" : "actions"
-}, {
-  "id" : "else",
-  "type" : "function",
-  "name" : "creative_plus.action.else.name",
-  "category" : "else",
-  "input" : [ ],
   "output" : [ ],
   "extra_data" : null,
   "icon_namespace" : "actions"
@@ -145,7 +136,7 @@
   "id" : "controller_async_run",
   "type" : "function",
   "name" : "Запуск в отдельном потоке",
-  "category" : "control",
+  "category" : "controller",
   "input" : [ ],
   "output" : [ ],
   "extra_data" : null,
@@ -154,7 +145,7 @@
   "id" : "controller_exception",
   "type" : "function",
   "name" : "Уловить ошибку",
-  "category" : "control",
+  "category" : "controller",
   "input" : [ {
     "id" : "variable",
     "label" : "Переменная для присвоения",
@@ -177,7 +168,7 @@
   "id" : "controller_measure_time",
   "type" : "function",
   "name" : "Замерить время выполнения",
-  "category" : "control",
+  "category" : "controller",
   "input" : [ {
     "id" : "variable",
     "label" : "Переменная для присвоения",
@@ -17610,58 +17601,6 @@
   },
   "icon_namespace" : "events"
 }, {
-  "id" : "native_branch",
-  "type" : "util",
-  "name" : "Ветвление",
-  "category" : "control",
-  "input" : [ {
-    "id" : "branch_condition",
-    "label" : "Условие",
-    "type" : "boolean",
-    "extra_data" : null
-  } ],
-  "output" : [ {
-    "id" : "branch_true",
-    "label" : "True",
-    "type" : "exec",
-    "extra_data" : null
-  }, {
-    "id" : "branch_false",
-    "label" : "False",
-    "type" : "exec",
-    "extra_data" : null
-  } ],
-  "extra_data" : null,
-  "icon_namespace" : "actions"
-}, {
-  "id" : "player_getter",
-  "type" : "player_getter",
-  "name" : "Получить игрока",
-  "category" : "game_values",
-  "input" : [ ],
-  "output" : [ {
-    "id" : "player",
-    "label" : "",
-    "type" : "player",
-    "extra_data" : null
-  } ],
-  "extra_data" : null,
-  "icon_namespace" : "game_values"
-}, {
-  "id" : "entity_getter",
-  "type" : "entity_getter",
-  "name" : "Получить сущность",
-  "category" : "game_values",
-  "input" : [ ],
-  "output" : [ {
-    "id" : "entity",
-    "label" : "",
-    "type" : "entity",
-    "extra_data" : null
-  } ],
-  "extra_data" : null,
-  "icon_namespace" : "game_values"
-}, {
   "id" : "current_health_gamevalue_getter",
   "type" : "game_value_getter",
   "name" : "Текущее здоровье",
@@ -19394,5 +19333,57 @@
   "extra_data" : {
     "selector_disabled" : true
   },
+  "icon_namespace" : "game_values"
+}, {
+  "id" : "native_branch",
+  "type" : "util",
+  "name" : "Ветвление",
+  "category" : "control",
+  "input" : [ {
+    "id" : "branch_condition",
+    "label" : "Условие",
+    "type" : "boolean",
+    "extra_data" : null
+  } ],
+  "output" : [ {
+    "id" : "branch_true",
+    "label" : "True",
+    "type" : "exec",
+    "extra_data" : null
+  }, {
+    "id" : "branch_false",
+    "label" : "False",
+    "type" : "exec",
+    "extra_data" : null
+  } ],
+  "extra_data" : null,
+  "icon_namespace" : "actions"
+}, {
+  "id" : "player_getter",
+  "type" : "player_getter",
+  "name" : "Получить игрока",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "player",
+    "label" : "",
+    "type" : "player",
+    "extra_data" : null
+  } ],
+  "extra_data" : null,
+  "icon_namespace" : "game_values"
+}, {
+  "id" : "entity_getter",
+  "type" : "entity_getter",
+  "name" : "Получить сущность",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "entity",
+    "label" : "",
+    "type" : "entity",
+    "extra_data" : null
+  } ],
+  "extra_data" : null,
   "icon_namespace" : "game_values"
 } ]

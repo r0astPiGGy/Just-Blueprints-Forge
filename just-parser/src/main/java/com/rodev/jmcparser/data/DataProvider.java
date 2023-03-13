@@ -9,6 +9,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.function.Consumer;
+import java.util.function.Function;
 
 public class DataProvider {
 
@@ -19,6 +20,9 @@ public class DataProvider {
     private static final String RAW_GAME_VALUES_URL = "https://raw.githubusercontent.com/justmc-os/justmc-assets/master/data/game_values.json";
 
     private static final String CUSTOM_ACTIONS_PATH = "custom_actions.json";
+    private static final String ACTION_PATCHES_PATH = "patches/actions.json";
+    private static final String CATEGORY_PATCHES_PATH = "patches/categories.json";
+    private static final String VARIABLE_TYPE_PATCHES_PATH = "patches/variable_types.json";
 
     public void loadActionsAndApply(Consumer<InputStream> inputStreamConsumer) {
         getInputStream(RAW_ACTIONS_URL, inputStreamConsumer);
@@ -42,6 +46,30 @@ public class DataProvider {
 
     public void loadCustomActionsAndApply(Consumer<InputStream> consumer) {
         getLocalInputStream(CUSTOM_ACTIONS_PATH, consumer);
+    }
+
+    public void loadActionPatchesAndApply(Consumer<InputStream> consumer) {
+        getLocalInputStream(ACTION_PATCHES_PATH, consumer);
+    }
+
+    public void loadVariableTypePatchesAndApply(Consumer<InputStream> consumer) {
+        getLocalInputStream(VARIABLE_TYPE_PATCHES_PATH, consumer);
+    }
+
+    public void loadCategoryPatchesAndApply(Consumer<InputStream> consumer) {
+        getLocalInputStream(CATEGORY_PATCHES_PATH, consumer);
+    }
+
+    public <T> T loadCustomActionsAndReturn(Function<InputStream, T> function) {
+        return getLocalInputStream(CUSTOM_ACTIONS_PATH, function);
+    }
+
+    private <T> T getLocalInputStream(String resId, Function<InputStream, T> function) {
+        try (var is = Parser.class.getResourceAsStream(resId)) {
+            return function.apply(is);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private void getLocalInputStream(String resId, Consumer<InputStream> inputStreamConsumer) {

@@ -1,0 +1,22 @@
+[
+  {
+    "id" : "else",
+    "remove" : true
+  },
+  {
+    "id" : "call_function",
+    "name": "Вызвать сладкую беброчку",
+    "input": [
+      {
+        "id" : "bebra_name",
+        "label" : "Имя беброчки",
+        "type" : "text",
+        "extra_data" : null
+      },
+      {
+        "id": "function_name",
+        "remove": true
+      }
+    ]
+  }
+]
