@@ -2,8 +2,8 @@
   "nodes" : [ {
     "id" : "native_branch",
     "position" : {
-      "x" : 8388208,
-      "y" : 8388505
+      "x" : 8388180,
+      "y" : 8388503
     },
     "deserializer" : "default",
     "data" : {
@@ -11,7 +11,7 @@
         "7c53fa03-ee19-4617-91d8-2263d84fadf6" : {
           "name" : "branch_condition",
           "connectedTo" : "8f925fdc-377f-4573-86f3-cbfe7544a4bb",
-          "value" : "false"
+          "value" : null
         },
         "18102881-fa0b-4923-878e-fe39061cea42" : {
           "name" : "exec",
@@ -35,8 +35,8 @@
   }, {
     "id" : "call_function",
     "position" : {
-      "x" : 8388494,
-      "y" : 8388506
+      "x" : 8388507,
+      "y" : 8388505
     },
     "deserializer" : "default",
     "data" : {
@@ -63,7 +63,7 @@
   }, {
     "id" : "entity_set_target",
     "position" : {
-      "x" : 8388494,
+      "x" : 8388487,
       "y" : 8388636
     },
     "deserializer" : "default",
@@ -96,8 +96,8 @@
   }, {
     "id" : "if_entity_is_disguised",
     "position" : {
-      "x" : 8387818,
-      "y" : 8388609
+      "x" : 8387846,
+      "y" : 8388648
     },
     "deserializer" : "default",
     "data" : {
@@ -119,7 +119,7 @@
   }, {
     "id" : "projectile_damage_entity",
     "position" : {
-      "x" : 8387846,
+      "x" : 8387862,
       "y" : 8388502
     },
     "deserializer" : "default",
@@ -134,33 +134,10 @@
       }
     }
   }, {
-    "id" : "else",
-    "position" : {
-      "x" : 8387816,
-      "y" : 8388716
-    },
-    "deserializer" : "default",
-    "data" : {
-      "input" : {
-        "79d7a5bb-355f-41f2-ab4c-a6f13aeab9a0" : {
-          "name" : "exec",
-          "connectedTo" : null,
-          "value" : null
-        }
-      },
-      "output" : {
-        "90dcb4d5-33be-43f9-9ee9-06829f1c8c39" : {
-          "name" : "exec",
-          "connectedTo" : null,
-          "value" : null
-        }
-      }
-    }
-  }, {
     "id" : "entity_getter",
     "position" : {
-      "x" : 8388199,
-      "y" : 8388681
+      "x" : 8388160,
+      "y" : 8388720
     },
     "deserializer" : "default",
     "data" : {
@@ -170,6 +147,62 @@
           "name" : "entity",
           "connectedTo" : null,
           "value" : "victim_entity"
+        }
+      }
+    }
+  }, {
+    "id" : "if_game_damage_cause_equals",
+    "position" : {
+      "x" : 8388451,
+      "y" : 8388798
+    },
+    "deserializer" : "default",
+    "data" : {
+      "input" : {
+        "7093f658-30f9-49eb-970d-395ea1724026" : {
+          "name" : "cause",
+          "connectedTo" : null,
+          "value" : "POISON"
+        }
+      },
+      "output" : {
+        "c44dcea2-e24d-4a0f-921e-3327a64dcd82" : {
+          "name" : "-",
+          "connectedTo" : null,
+          "value" : null
+        }
+      }
+    }
+  }, {
+    "id" : "native_branch",
+    "position" : {
+      "x" : 8388893,
+      "y" : 8388637
+    },
+    "deserializer" : "default",
+    "data" : {
+      "input" : {
+        "508ea6fc-37a8-49a3-b8ac-a6bb171f1720" : {
+          "name" : "exec",
+          "connectedTo" : "baac2ee1-782d-4f00-b752-37716059c938",
+          "value" : null
+        },
+        "7dd94427-957d-4103-8a29-ba9a21516568" : {
+          "name" : "branch_condition",
+          "connectedTo" : "c44dcea2-e24d-4a0f-921e-3327a64dcd82",
+          "value" : null
+        }
+      },
+      "output" : {
+        "536548bd-a6db-4922-879b-a351d100c589" : {
+          "name" : "branch_false",
+          "connectedTo" : null,
+          "value" : null
+        },
+        "e7d75bdb-fd6b-45df-ad3f-bc309ad90890" : {
+          "name" : "branch_true",
+          "connectedTo" : null,
+          "value" : null
         }
       }
     }

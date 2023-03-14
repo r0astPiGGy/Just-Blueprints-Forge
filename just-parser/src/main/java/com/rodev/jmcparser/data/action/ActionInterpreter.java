@@ -127,7 +127,7 @@ public class ActionInterpreter extends Interpreter<ActionData> implements Action
         var type = "variable";
 
         if(predicate) {
-            type = "boolean";
+            type = "condition";
         }
 
         var pinTypeEntity = new ActionEntity.PinTypeEntity();

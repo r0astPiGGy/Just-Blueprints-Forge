@@ -39,11 +39,6 @@ public class Parser implements Runnable {
         DataInterpreter interpreter = dataParser.createInterpreter();
 
         var actions = interpreter.interpret();
-        var customActions = dataProvider.loadCustomActionsAndReturn(is -> {
-            return parseJson(is, ActionEntity[].class);
-        });
-
-        var allActions = combine(ActionEntity[]::new, actions, customActions);
 
         var actionWriter = new ActionWriter(parserDirectoryChild("actions.json"));
         dataProvider.loadActionPatchesAndApply(is -> {
@@ -67,29 +62,9 @@ public class Parser implements Runnable {
             variableTypeWriter.setPatcher(patcher);
         });
 
-        actionWriter.write(allActions);
-        categoryWriter.write(allActions);
-        variableTypeWriter.write(allActions);
-    }
-
-    @SafeVarargs
-    public static <T> T[] combine(Function<Integer, T[]> arrayProvider, T[]... arrays) {
-        var totalSize = 0;
-        for(var array : arrays) {
-            totalSize += array.length;
-        }
-
-        var newArray = arrayProvider.apply(totalSize);
-
-        int i = 0;
-        for(var array : arrays) {
-            for(var element : array) {
-                newArray[i] = element;
-                i++;
-            }
-        }
-
-        return newArray;
+        actionWriter.write(actions);
+        categoryWriter.write(actions);
+        variableTypeWriter.write(actions);
     }
 
     public static File parserDirectoryChild(String fileName) {

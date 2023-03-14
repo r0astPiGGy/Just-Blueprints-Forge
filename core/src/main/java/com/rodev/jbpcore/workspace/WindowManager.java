@@ -1,5 +1,6 @@
 package com.rodev.jbpcore.workspace;
 
+import com.rodev.jbpcore.fragment.ContainerFragment;
 import com.rodev.jbpcore.fragment.LifecycleFragment;
 import com.rodev.jbpcore.fragment.editor.EditorFragment;
 import com.rodev.jbpcore.fragment.welcome.WelcomeScreenFragment;
@@ -14,19 +15,9 @@ public abstract class WindowManager {
     public static final EditorScreenState EDITOR_SCREEN = new EditorScreenState();
     protected State state = WELCOME_SCREEN;
 
-    private WeakReference<LifecycleFragment> cachedFragment;
-
     public void open() {
-        if(cachedFragment != null) {
-            var cached = cachedFragment.get();
-            if(cached != null) {
-                cached.onLateCloseFromWindowManager(this);
-            }
-        }
-
         var fragment = state.getFragment();
-        cachedFragment = new WeakReference<>(fragment);
-        openFragment(fragment);
+        openFragment(new ContainerFragment(fragment));
     }
 
     public void transactFrom(Fragment fragment) {
@@ -36,7 +27,6 @@ public abstract class WindowManager {
 
         fragmentManager.beginTransaction()
                 .replace(fragment.getId(), destination)
-                .runOnCommit(fragmentManager::popBackStack)
                 .commit();
     }
 

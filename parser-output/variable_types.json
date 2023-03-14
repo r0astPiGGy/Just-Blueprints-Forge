@@ -20,6 +20,9 @@
   "id" : "number",
   "color" : "255, 69, 58"
 }, {
+  "id" : "condition",
+  "color" : ""
+}, {
   "id" : "boolean",
   "color" : "255, 59, 48"
 }, {

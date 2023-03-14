@@ -1,0 +1,29 @@
+[
+  {
+    "id": "call_function",
+    "schema": "$d($args);"
+  },
+  {
+    "id": "native_branch",
+    "schema": [
+      "if ($branch_condition) {",
+      "  $branch_true",
+      "} else {",
+      "  $branch_false",
+      "}"
+    ]
+  },
+  {
+    "id": "if_player_is_sleeping",
+    "schema": "player::is_sleeping<$d>()"
+  },
+  {
+    "id": "player_join",
+    "type": "root",
+    "schema": [
+      "event<player_join> {",
+      "  $exec",
+      "}"
+    ]
+  }
+]

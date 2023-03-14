@@ -7,13 +7,9 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.*;
 
-public class DataInterpreter extends Interpreter<Void> {
+public class DataInterpreter {
 
     private final List<Interpreter<?>> interpreters = new LinkedList<>();
-
-    public DataInterpreter() {
-        super(null);
-    }
 
     public ActionEntity[] interpret() {
         var counter = new TimeCounter();
@@ -40,11 +36,6 @@ public class DataInterpreter extends Interpreter<Void> {
         counter.print(ms -> "Interpreted " + actions.length + " actions in " + ms + "ms.");
 
         return actions;
-    }
-
-    @Override
-    protected @Nullable ActionEntity interpret(@NotNull Void object) {
-        return null;
     }
 
     public void registerInterpreter(Interpreter<?> interpreter) {

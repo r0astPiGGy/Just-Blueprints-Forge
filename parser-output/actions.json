@@ -1,11 +1,11 @@
 [ {
   "id" : "call_function",
   "type" : "function",
-  "name" : "Вызвать сладкую беброчку",
+  "name" : "Вызвать функцию",
   "category" : "call_function",
   "input" : [ {
-    "id" : "bebra_name",
-    "label" : "Имя беброчки",
+    "id" : "function_name",
+    "label" : "Название функции",
     "type" : "text",
     "extra_data" : null
   } ],
@@ -4467,7 +4467,7 @@
   "output" : [ {
     "id" : "-",
     "label" : "Return value",
-    "type" : "boolean",
+    "type" : "condition",
     "extra_data" : null
   } ],
   "extra_data" : null,
@@ -4496,7 +4496,7 @@
   "output" : [ {
     "id" : "-",
     "label" : "Return value",
-    "type" : "boolean",
+    "type" : "condition",
     "extra_data" : null
   } ],
   "extra_data" : null,
@@ -4528,7 +4528,7 @@
   "output" : [ {
     "id" : "-",
     "label" : "Return value",
-    "type" : "boolean",
+    "type" : "condition",
     "extra_data" : null
   } ],
   "extra_data" : null,
@@ -4547,7 +4547,7 @@
   "output" : [ {
     "id" : "-",
     "label" : "Return value",
-    "type" : "boolean",
+    "type" : "condition",
     "extra_data" : null
   } ],
   "extra_data" : null,
@@ -4566,7 +4566,7 @@
   "output" : [ {
     "id" : "-",
     "label" : "Return value",
-    "type" : "boolean",
+    "type" : "condition",
     "extra_data" : null
   } ],
   "extra_data" : null,
@@ -4585,7 +4585,7 @@
   "output" : [ {
     "id" : "-",
     "label" : "Return value",
-    "type" : "boolean",
+    "type" : "condition",
     "extra_data" : null
   } ],
   "extra_data" : null,
@@ -4604,7 +4604,7 @@
   "output" : [ {
     "id" : "-",
     "label" : "Return value",
-    "type" : "boolean",
+    "type" : "condition",
     "extra_data" : null
   } ],
   "extra_data" : null,
@@ -4638,7 +4638,7 @@
   "output" : [ {
     "id" : "-",
     "label" : "Return value",
-    "type" : "boolean",
+    "type" : "condition",
     "extra_data" : null
   } ],
   "extra_data" : null,
@@ -4657,7 +4657,7 @@
   "output" : [ {
     "id" : "-",
     "label" : "Return value",
-    "type" : "boolean",
+    "type" : "condition",
     "extra_data" : null
   } ],
   "extra_data" : null,
@@ -4689,7 +4689,7 @@
   "output" : [ {
     "id" : "-",
     "label" : "Return value",
-    "type" : "boolean",
+    "type" : "condition",
     "extra_data" : null
   } ],
   "extra_data" : null,
@@ -4718,7 +4718,7 @@
   "output" : [ {
     "id" : "-",
     "label" : "Return value",
-    "type" : "boolean",
+    "type" : "condition",
     "extra_data" : null
   } ],
   "extra_data" : null,
@@ -4742,7 +4742,7 @@
   "output" : [ {
     "id" : "-",
     "label" : "Return value",
-    "type" : "boolean",
+    "type" : "condition",
     "extra_data" : null
   } ],
   "extra_data" : null,
@@ -4761,7 +4761,7 @@
   "output" : [ {
     "id" : "-",
     "label" : "Return value",
-    "type" : "boolean",
+    "type" : "condition",
     "extra_data" : null
   } ],
   "extra_data" : null,
@@ -4785,7 +4785,7 @@
   "output" : [ {
     "id" : "-",
     "label" : "Return value",
-    "type" : "boolean",
+    "type" : "condition",
     "extra_data" : null
   } ],
   "extra_data" : null,
@@ -4845,7 +4845,7 @@
   "output" : [ {
     "id" : "-",
     "label" : "Return value",
-    "type" : "boolean",
+    "type" : "condition",
     "extra_data" : null
   } ],
   "extra_data" : null,
@@ -4869,7 +4869,7 @@
   "output" : [ {
     "id" : "-",
     "label" : "Return value",
-    "type" : "boolean",
+    "type" : "condition",
     "extra_data" : null
   } ],
   "extra_data" : null,
@@ -4896,7 +4896,7 @@
   "output" : [ {
     "id" : "-",
     "label" : "Return value",
-    "type" : "boolean",
+    "type" : "condition",
     "extra_data" : null
   } ],
   "extra_data" : null,
@@ -4938,7 +4938,7 @@
   "output" : [ {
     "id" : "-",
     "label" : "Return value",
-    "type" : "boolean",
+    "type" : "condition",
     "extra_data" : null
   } ],
   "extra_data" : null,
@@ -4970,7 +4970,7 @@
   "output" : [ {
     "id" : "-",
     "label" : "Return value",
-    "type" : "boolean",
+    "type" : "condition",
     "extra_data" : null
   } ],
   "extra_data" : null,
@@ -5019,7 +5019,7 @@
   "output" : [ {
     "id" : "-",
     "label" : "Return value",
-    "type" : "boolean",
+    "type" : "condition",
     "extra_data" : null
   } ],
   "extra_data" : null,
@@ -5033,7 +5033,7 @@
   "output" : [ {
     "id" : "-",
     "label" : "Return value",
-    "type" : "boolean",
+    "type" : "condition",
     "extra_data" : null
   } ],
   "extra_data" : null,
@@ -5057,7 +5057,7 @@
   "output" : [ {
     "id" : "-",
     "label" : "Return value",
-    "type" : "boolean",
+    "type" : "condition",
     "extra_data" : null
   } ],
   "extra_data" : null,
@@ -5071,7 +5071,7 @@
   "output" : [ {
     "id" : "-",
     "label" : "Return value",
-    "type" : "boolean",
+    "type" : "condition",
     "extra_data" : null
   } ],
   "extra_data" : null,
@@ -5100,7 +5100,7 @@
   "output" : [ {
     "id" : "-",
     "label" : "Return value",
-    "type" : "boolean",
+    "type" : "condition",
     "extra_data" : null
   } ],
   "extra_data" : null,
@@ -5119,7 +5119,7 @@
   "output" : [ {
     "id" : "-",
     "label" : "Return value",
-    "type" : "boolean",
+    "type" : "condition",
     "extra_data" : null
   } ],
   "extra_data" : null,
@@ -5148,7 +5148,7 @@
   "output" : [ {
     "id" : "-",
     "label" : "Return value",
-    "type" : "boolean",
+    "type" : "condition",
     "extra_data" : null
   } ],
   "extra_data" : null,
@@ -5176,7 +5176,7 @@
   "output" : [ {
     "id" : "-",
     "label" : "Return value",
-    "type" : "boolean",
+    "type" : "condition",
     "extra_data" : null
   } ],
   "extra_data" : null,
@@ -5212,7 +5212,7 @@
   "output" : [ {
     "id" : "-",
     "label" : "Return value",
-    "type" : "boolean",
+    "type" : "condition",
     "extra_data" : null
   } ],
   "extra_data" : null,
@@ -5255,7 +5255,7 @@
   "output" : [ {
     "id" : "-",
     "label" : "Return value",
-    "type" : "boolean",
+    "type" : "condition",
     "extra_data" : null
   } ],
   "extra_data" : null,
@@ -5289,7 +5289,7 @@
   "output" : [ {
     "id" : "-",
     "label" : "Return value",
-    "type" : "boolean",
+    "type" : "condition",
     "extra_data" : null
   } ],
   "extra_data" : null,
@@ -5331,7 +5331,7 @@
   "output" : [ {
     "id" : "-",
     "label" : "Return value",
-    "type" : "boolean",
+    "type" : "condition",
     "extra_data" : null
   } ],
   "extra_data" : null,
@@ -5368,7 +5368,7 @@
   "output" : [ {
     "id" : "-",
     "label" : "Return value",
-    "type" : "boolean",
+    "type" : "condition",
     "extra_data" : null
   } ],
   "extra_data" : null,
@@ -5407,7 +5407,7 @@
   "output" : [ {
     "id" : "-",
     "label" : "Return value",
-    "type" : "boolean",
+    "type" : "condition",
     "extra_data" : null
   } ],
   "extra_data" : null,
@@ -5450,7 +5450,7 @@
   "output" : [ {
     "id" : "-",
     "label" : "Return value",
-    "type" : "boolean",
+    "type" : "condition",
     "extra_data" : null
   } ],
   "extra_data" : null,
@@ -5489,7 +5489,7 @@
   "output" : [ {
     "id" : "-",
     "label" : "Return value",
-    "type" : "boolean",
+    "type" : "condition",
     "extra_data" : null
   } ],
   "extra_data" : null,
@@ -5532,7 +5532,7 @@
   "output" : [ {
     "id" : "-",
     "label" : "Return value",
-    "type" : "boolean",
+    "type" : "condition",
     "extra_data" : null
   } ],
   "extra_data" : null,
@@ -5556,7 +5556,7 @@
   "output" : [ {
     "id" : "-",
     "label" : "Return value",
-    "type" : "boolean",
+    "type" : "condition",
     "extra_data" : null
   } ],
   "extra_data" : null,
@@ -5590,7 +5590,7 @@
   "output" : [ {
     "id" : "-",
     "label" : "Return value",
-    "type" : "boolean",
+    "type" : "condition",
     "extra_data" : null
   } ],
   "extra_data" : null,
@@ -5632,7 +5632,7 @@
   "output" : [ {
     "id" : "-",
     "label" : "Return value",
-    "type" : "boolean",
+    "type" : "condition",
     "extra_data" : null
   } ],
   "extra_data" : null,
@@ -5666,7 +5666,7 @@
   "output" : [ {
     "id" : "-",
     "label" : "Return value",
-    "type" : "boolean",
+    "type" : "condition",
     "extra_data" : null
   } ],
   "extra_data" : null,
@@ -5709,7 +5709,7 @@
   "output" : [ {
     "id" : "-",
     "label" : "Return value",
-    "type" : "boolean",
+    "type" : "condition",
     "extra_data" : null
   } ],
   "extra_data" : null,
@@ -5743,7 +5743,7 @@
   "output" : [ {
     "id" : "-",
     "label" : "Return value",
-    "type" : "boolean",
+    "type" : "condition",
     "extra_data" : null
   } ],
   "extra_data" : null,
@@ -5772,7 +5772,7 @@
   "output" : [ {
     "id" : "-",
     "label" : "Return value",
-    "type" : "boolean",
+    "type" : "condition",
     "extra_data" : null
   } ],
   "extra_data" : null,
@@ -5796,7 +5796,7 @@
   "output" : [ {
     "id" : "-",
     "label" : "Return value",
-    "type" : "boolean",
+    "type" : "condition",
     "extra_data" : null
   } ],
   "extra_data" : null,
@@ -5825,7 +5825,7 @@
   "output" : [ {
     "id" : "-",
     "label" : "Return value",
-    "type" : "boolean",
+    "type" : "condition",
     "extra_data" : null
   } ],
   "extra_data" : null,
@@ -5857,7 +5857,7 @@
   "output" : [ {
     "id" : "-",
     "label" : "Return value",
-    "type" : "boolean",
+    "type" : "condition",
     "extra_data" : null
   } ],
   "extra_data" : null,
@@ -5892,7 +5892,7 @@
   "output" : [ {
     "id" : "-",
     "label" : "Return value",
-    "type" : "boolean",
+    "type" : "condition",
     "extra_data" : null
   } ],
   "extra_data" : null,
@@ -5916,7 +5916,7 @@
   "output" : [ {
     "id" : "-",
     "label" : "Return value",
-    "type" : "boolean",
+    "type" : "condition",
     "extra_data" : null
   } ],
   "extra_data" : null,
@@ -5967,7 +5967,7 @@
   "output" : [ {
     "id" : "-",
     "label" : "Return value",
-    "type" : "boolean",
+    "type" : "condition",
     "extra_data" : null
   } ],
   "extra_data" : null,
@@ -5999,7 +5999,7 @@
   "output" : [ {
     "id" : "-",
     "label" : "Return value",
-    "type" : "boolean",
+    "type" : "condition",
     "extra_data" : null
   } ],
   "extra_data" : null,
@@ -6023,7 +6023,7 @@
   "output" : [ {
     "id" : "-",
     "label" : "Return value",
-    "type" : "boolean",
+    "type" : "condition",
     "extra_data" : null
   } ],
   "extra_data" : null,
@@ -6042,7 +6042,7 @@
   "output" : [ {
     "id" : "-",
     "label" : "Return value",
-    "type" : "boolean",
+    "type" : "condition",
     "extra_data" : null
   } ],
   "extra_data" : null,
@@ -6061,7 +6061,7 @@
   "output" : [ {
     "id" : "-",
     "label" : "Return value",
-    "type" : "boolean",
+    "type" : "condition",
     "extra_data" : null
   } ],
   "extra_data" : null,
@@ -6080,7 +6080,7 @@
   "output" : [ {
     "id" : "-",
     "label" : "Return value",
-    "type" : "boolean",
+    "type" : "condition",
     "extra_data" : null
   } ],
   "extra_data" : null,
@@ -6099,7 +6099,7 @@
   "output" : [ {
     "id" : "-",
     "label" : "Return value",
-    "type" : "boolean",
+    "type" : "condition",
     "extra_data" : null
   } ],
   "extra_data" : null,
@@ -6118,7 +6118,7 @@
   "output" : [ {
     "id" : "-",
     "label" : "Return value",
-    "type" : "boolean",
+    "type" : "condition",
     "extra_data" : null
   } ],
   "extra_data" : null,
@@ -6137,7 +6137,7 @@
   "output" : [ {
     "id" : "-",
     "label" : "Return value",
-    "type" : "boolean",
+    "type" : "condition",
     "extra_data" : null
   } ],
   "extra_data" : null,
@@ -6156,7 +6156,7 @@
   "output" : [ {
     "id" : "-",
     "label" : "Return value",
-    "type" : "boolean",
+    "type" : "condition",
     "extra_data" : null
   } ],
   "extra_data" : null,
@@ -6175,7 +6175,7 @@
   "output" : [ {
     "id" : "-",
     "label" : "Return value",
-    "type" : "boolean",
+    "type" : "condition",
     "extra_data" : null
   } ],
   "extra_data" : null,
@@ -6194,7 +6194,7 @@
   "output" : [ {
     "id" : "-",
     "label" : "Return value",
-    "type" : "boolean",
+    "type" : "condition",
     "extra_data" : null
   } ],
   "extra_data" : null,
@@ -6213,7 +6213,7 @@
   "output" : [ {
     "id" : "-",
     "label" : "Return value",
-    "type" : "boolean",
+    "type" : "condition",
     "extra_data" : null
   } ],
   "extra_data" : null,
@@ -6232,7 +6232,7 @@
   "output" : [ {
     "id" : "-",
     "label" : "Return value",
-    "type" : "boolean",
+    "type" : "condition",
     "extra_data" : null
   } ],
   "extra_data" : null,
@@ -6256,7 +6256,7 @@
   "output" : [ {
     "id" : "-",
     "label" : "Return value",
-    "type" : "boolean",
+    "type" : "condition",
     "extra_data" : null
   } ],
   "extra_data" : null,
@@ -6275,7 +6275,7 @@
   "output" : [ {
     "id" : "-",
     "label" : "Return value",
-    "type" : "boolean",
+    "type" : "condition",
     "extra_data" : null
   } ],
   "extra_data" : null,
@@ -6299,7 +6299,7 @@
   "output" : [ {
     "id" : "-",
     "label" : "Return value",
-    "type" : "boolean",
+    "type" : "condition",
     "extra_data" : null
   } ],
   "extra_data" : null,
@@ -6323,7 +6323,7 @@
   "output" : [ {
     "id" : "-",
     "label" : "Return value",
-    "type" : "boolean",
+    "type" : "condition",
     "extra_data" : null
   } ],
   "extra_data" : null,
@@ -6352,7 +6352,7 @@
   "output" : [ {
     "id" : "-",
     "label" : "Return value",
-    "type" : "boolean",
+    "type" : "condition",
     "extra_data" : null
   } ],
   "extra_data" : null,
@@ -6387,7 +6387,7 @@
   "output" : [ {
     "id" : "-",
     "label" : "Return value",
-    "type" : "boolean",
+    "type" : "condition",
     "extra_data" : null
   } ],
   "extra_data" : null,
@@ -6421,7 +6421,7 @@
   "output" : [ {
     "id" : "-",
     "label" : "Return value",
-    "type" : "boolean",
+    "type" : "condition",
     "extra_data" : null
   } ],
   "extra_data" : null,
@@ -6450,7 +6450,7 @@
   "output" : [ {
     "id" : "-",
     "label" : "Return value",
-    "type" : "boolean",
+    "type" : "condition",
     "extra_data" : null
   } ],
   "extra_data" : null,
@@ -6474,7 +6474,7 @@
   "output" : [ {
     "id" : "-",
     "label" : "Return value",
-    "type" : "boolean",
+    "type" : "condition",
     "extra_data" : null
   } ],
   "extra_data" : null,
@@ -6498,7 +6498,7 @@
   "output" : [ {
     "id" : "-",
     "label" : "Return value",
-    "type" : "boolean",
+    "type" : "condition",
     "extra_data" : null
   } ],
   "extra_data" : null,
@@ -6522,7 +6522,7 @@
   "output" : [ {
     "id" : "-",
     "label" : "Return value",
-    "type" : "boolean",
+    "type" : "condition",
     "extra_data" : null
   } ],
   "extra_data" : null,
@@ -6551,7 +6551,7 @@
   "output" : [ {
     "id" : "-",
     "label" : "Return value",
-    "type" : "boolean",
+    "type" : "condition",
     "extra_data" : null
   } ],
   "extra_data" : null,
@@ -6590,7 +6590,7 @@
   "output" : [ {
     "id" : "-",
     "label" : "Return value",
-    "type" : "boolean",
+    "type" : "condition",
     "extra_data" : null
   } ],
   "extra_data" : null,
@@ -6614,7 +6614,7 @@
   "output" : [ {
     "id" : "-",
     "label" : "Return value",
-    "type" : "boolean",
+    "type" : "condition",
     "extra_data" : null
   } ],
   "extra_data" : null,
@@ -6643,7 +6643,7 @@
   "output" : [ {
     "id" : "-",
     "label" : "Return value",
-    "type" : "boolean",
+    "type" : "condition",
     "extra_data" : null
   } ],
   "extra_data" : null,
@@ -6667,7 +6667,7 @@
   "output" : [ {
     "id" : "-",
     "label" : "Return value",
-    "type" : "boolean",
+    "type" : "condition",
     "extra_data" : null
   } ],
   "extra_data" : null,
@@ -6696,7 +6696,7 @@
   "output" : [ {
     "id" : "-",
     "label" : "Return value",
-    "type" : "boolean",
+    "type" : "condition",
     "extra_data" : null
   } ],
   "extra_data" : null,
@@ -6725,7 +6725,7 @@
   "output" : [ {
     "id" : "-",
     "label" : "Return value",
-    "type" : "boolean",
+    "type" : "condition",
     "extra_data" : null
   } ],
   "extra_data" : null,
@@ -6759,7 +6759,7 @@
   "output" : [ {
     "id" : "-",
     "label" : "Return value",
-    "type" : "boolean",
+    "type" : "condition",
     "extra_data" : null
   } ],
   "extra_data" : null,
@@ -6788,7 +6788,7 @@
   "output" : [ {
     "id" : "-",
     "label" : "Return value",
-    "type" : "boolean",
+    "type" : "condition",
     "extra_data" : null
   } ],
   "extra_data" : null,
@@ -19336,13 +19336,13 @@
   "icon_namespace" : "game_values"
 }, {
   "id" : "native_branch",
-  "type" : "util",
+  "type" : "native_branch",
   "name" : "Ветвление",
   "category" : "control",
   "input" : [ {
     "id" : "branch_condition",
     "label" : "Условие",
-    "type" : "boolean",
+    "type" : "condition",
     "extra_data" : null
   } ],
   "output" : [ {
