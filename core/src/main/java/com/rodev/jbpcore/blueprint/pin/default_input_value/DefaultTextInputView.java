@@ -48,12 +48,15 @@ public class DefaultTextInputView extends EditText implements DefaultInputValue 
 
     @Override
     public String getDefaultValue() {
-        return getText().toString();
+        return "\"" + getText() + "\"";
     }
 
     @Override
     public void setDefaultValue(String value) {
-        setText(value);
+        if(value.isEmpty()) return;
+        var builder = new StringBuilder(value);
+        builder.deleteCharAt(0).deleteCharAt(builder.length() - 1);
+        setText(builder.toString());
     }
 
     @Override

@@ -13,8 +13,15 @@ import com.rodev.jbpcore.fragment.welcome.ValidateResult;
 import com.rodev.jbpcore.workspace.ProgramData;
 import com.rodev.jbpcore.workspace.Project;
 import com.rodev.jbpcore.workspace.Workspace;
+import com.rodev.jmcgenerator.CodeGenerator;
+import com.rodev.jmcgenerator.data.GeneratorData;
+import com.rodev.jmcgenerator.entity.GeneratorEntity;
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.extern.java.Log;
+import lombok.extern.log4j.Log4j;
+import lombok.extern.slf4j.Slf4j;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
@@ -22,6 +29,7 @@ import java.io.IOException;
 import java.util.*;
 import java.util.regex.Pattern;
 
+@Log
 public class WorkspaceImpl implements Workspace {
 
     private final ProgramData programData;
@@ -30,6 +38,7 @@ public class WorkspaceImpl implements Workspace {
     private static final Pattern projectNamePattern = Pattern.compile("^[a-zA-Z\\d\\-]{1,30}$");
     private static final String projectInfoFileName = "project.json";
     private static final String blueprintDataFileName = "data.jbp";
+    private static final String compileDataFileName = "generated.jc";
 
     private final Map<String, Project> loadedProjects = new HashMap<>();
 
@@ -109,6 +118,11 @@ public class WorkspaceImpl implements Workspace {
             }
 
             @Override
+            protected void onBlueprintCompile() {
+                compileBlueprint(getDirectory());
+            }
+
+            @Override
             public void saveInfo() {
                 try {
                     writeProjectInfo(this);
@@ -117,6 +131,15 @@ public class WorkspaceImpl implements Workspace {
                 }
             }
         };
+    }
+
+    public void compileBlueprint(File projectDirectory) {
+        var input = new File(projectDirectory, blueprintDataFileName);
+        var output = new File(projectDirectory, compileDataFileName);
+
+        var codeGenerator = new CodeGenerator(input, output);
+
+        codeGenerator.generate(DataAccess.getInstance().generatorData, 4);
     }
 
     public void saveBlueprint(File projectDirectory, Collection<BPNode> nodes) {
@@ -153,7 +176,7 @@ public class WorkspaceImpl implements Workspace {
             Action action = DataAccess.getInstance().actionRegistry.get(actionId);
 
             if(action == null) {
-                System.out.println("Action with outputPin " + actionId + " not found during blueprint load. (Outdated blueprint?)");
+                log.warning("Action with outputPin " + actionId + " not found during blueprint load. (Outdated blueprint?)");
                 continue;
             }
 
@@ -183,7 +206,6 @@ public class WorkspaceImpl implements Workspace {
         var entity = new NodeEntity();
 
         entity.id = node.getType();
-        entity.deserializer = node.getSerializerId();
         entity.position = new NodeLocation(node.getNodeX(), node.getNodeY());
         entity.data = node.serialize();
 
@@ -199,6 +221,7 @@ public class WorkspaceImpl implements Workspace {
     public static class NodeEntity {
         public String id;
         public NodeLocation position;
+        @JsonIgnore
         public String deserializer;
         public Object data;
     }

@@ -1,6 +1,5 @@
 package com.rodev.jmcparser.data;
 
-import com.rodev.jbpcore.blueprint.data.json.ActionEntity;
 import com.rodev.jbpcore.utils.StringUtils;
 import com.rodev.jmcparser.data.action.ActionInterpreter;
 import com.rodev.jmcparser.data.action.ActionParser;
@@ -8,27 +7,38 @@ import com.rodev.jmcparser.data.action.custom.CustomActionParser;
 import com.rodev.jmcparser.data.category.CategoryProvider;
 import com.rodev.jmcparser.data.event.EventOutputFiller;
 import com.rodev.jmcparser.data.event.EventParser;
+import com.rodev.jmcparser.data.game_value.GameValueMappings;
 import com.rodev.jmcparser.data.game_value.GameValueParser;
 import com.rodev.jmcparser.data.game_value.GameValueTranslator;
-import com.rodev.jmcparser.json.ActionData;
+import com.rodev.jmcparser.generator.DataGenerator;
 import com.rodev.jmcparser.json.Event;
 import com.rodev.jmcparser.json.GameValue;
 import lombok.AccessLevel;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
-@RequiredArgsConstructor
 public class ParserRegisterHelper {
 
     private final LocaleProvider localeProvider;
     private final CategoryProvider categoryProvider;
     private final DataParser dataParser;
 
+    private final GameValueMappings gameValueMappings = new GameValueMappings();
+
+    private final DataGenerator dataGenerator;
+
     @Setter(AccessLevel.PRIVATE)
     private Event[] events;
 
     @Setter(AccessLevel.PRIVATE)
     private GameValue[] gameValues;
+
+    public ParserRegisterHelper(LocaleProvider localeProvider, CategoryProvider categoryProvider, DataParser dataParser) {
+        this.localeProvider = localeProvider;
+        this.categoryProvider = categoryProvider;
+        this.dataParser = dataParser;
+
+        dataGenerator = new DataGenerator(gameValueMappings);
+    }
 
     public void registerParsers() {
         dataParser.setOnAllDataLoaded(this::onAllDataLoaded);
@@ -39,10 +49,14 @@ public class ParserRegisterHelper {
         registerGameValueParser();
     }
 
+    public void onDataProvide(DataProvider dataProvider) {
+        gameValueMappings.load(dataProvider);
+    }
+
     private void registerCustomActionParser() {
         var parser = new CustomActionParser();
         parser.setOnInterpreterCreatedListener(i -> {
-            i.addOnActionInterpretedListener((e, e1) -> onCustomActionInterpreted(e));
+            i.addOnActionInterpretedListener((e, e1) -> dataGenerator.onCustomActionInterpreted(e1));
         });
         dataParser.registerParser(parser);
     }
@@ -68,7 +82,7 @@ public class ParserRegisterHelper {
 
             return "function";
         });
-        interpreter.addOnActionInterpretedListener(this::onActionInterpreted);
+        interpreter.addOnActionInterpretedListener(dataGenerator::onActionInterpreted);
         interpreter.setPinTypeNameHandler(StringUtils::capitalize);
     }
 
@@ -76,7 +90,7 @@ public class ParserRegisterHelper {
         var parser = new EventParser(localeProvider);
         parser.setOnDataChangedListener(this::setEvents);
         parser.setOnInterpreterCreatedListener(i -> {
-            i.addOnActionInterpretedListener(this::onEventInterpreted);
+            i.addOnActionInterpretedListener(dataGenerator::onEventInterpreted);
         });
         dataParser.registerParser(parser);
     }
@@ -85,25 +99,17 @@ public class ParserRegisterHelper {
         var parser = new GameValueParser();
         parser.setOnDataChangedListener(this::setGameValues);
         parser.setOnInterpreterCreatedListener(i -> {
-            i.addOnActionInterpretedListener(this::onGameValueInterpreted);
+            i.addOnActionInterpretedListener(dataGenerator::onGameValueInterpreted);
         });
         dataParser.registerParser(parser);
     }
 
-    private void onActionInterpreted(ActionEntity action, ActionData data) {
+    public void onAllDataInterpreted() {
 
     }
 
-    private void onCustomActionInterpreted(ActionEntity action) {
-
-    }
-
-    private void onEventInterpreted(ActionEntity action, Event data) {
-
-    }
-
-    private void onGameValueInterpreted(ActionEntity action, GameValue data) {
-
+    public DataGenerator getDataGenerator() {
+        return dataGenerator;
     }
 
     private void onAllDataLoaded() {

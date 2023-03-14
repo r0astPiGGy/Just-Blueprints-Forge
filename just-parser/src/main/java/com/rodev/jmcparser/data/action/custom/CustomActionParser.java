@@ -4,16 +4,16 @@ import com.rodev.jbpcore.blueprint.data.json.ActionEntity;
 import com.rodev.jmcparser.data.DataProvider;
 import com.rodev.jmcparser.data.Parser;
 
-public class CustomActionParser extends Parser<ActionEntity, CustomActionInterpreter> {
+public class CustomActionParser extends Parser<CustomActionEntity, CustomActionInterpreter> {
     @Override
     public void load(DataProvider dataProvider) {
         dataProvider.loadCustomActionsAndApply(is -> {
-            setParsedData(Parser.parseJson(is, ActionEntity[].class));
+            setParsedData(Parser.parseJson(is, CustomActionEntity[].class));
         });
     }
 
     @Override
-    protected CustomActionInterpreter createInterpreter(ActionEntity[] parsedData) {
+    protected CustomActionInterpreter createInterpreter(CustomActionEntity[] parsedData) {
         return new CustomActionInterpreter(parsedData);
     }
 }

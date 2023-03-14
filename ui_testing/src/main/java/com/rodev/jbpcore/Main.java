@@ -58,6 +58,12 @@ public class Main extends ModernUI implements DataProvider {
         return getResourceAsStream("selectors.json");
     }
 
+    @Override
+    public InputStream getDataGeneratorInputStream() {
+        return getResourceAsStream("generator_data.json");
+    }
+
+
     private InputStream getResourceAsStream(String name) {
         return Main.class.getResourceAsStream(name);
     }

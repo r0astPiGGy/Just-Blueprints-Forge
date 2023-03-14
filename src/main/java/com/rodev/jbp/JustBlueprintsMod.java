@@ -103,6 +103,11 @@ public class JustBlueprintsMod implements DataProvider
         return getResourceAsStream("selectors.json");
     }
 
+    @Override
+    public InputStream getDataGeneratorInputStream() {
+        return getResourceAsStream("generator_data.json");
+    }
+
     private InputStream getResourceAsStream(String name) {
         return JustBlueprintsMod.class.getResourceAsStream(name);
     }

@@ -15,7 +15,8 @@
   },
   {
     "id": "if_player_is_sleeping",
-    "schema": "player::is_sleeping<$d>()"
+    "schema": "player::is_sleeping<$d>()",
+    "arg-offset": 1
   },
   {
     "id": "player_join",
@@ -24,6 +25,9 @@
       "event<player_join> {",
       "  $exec",
       "}"
-    ]
+    ],
+    "output": {
+      "event_message": "value::event_message"
+    }
   }
 ]

@@ -15874,6 +15874,58 @@
   "extra_data" : null,
   "icon_namespace" : "actions"
 }, {
+  "id" : "native_branch",
+  "type" : "native_branch",
+  "name" : "Ветвление",
+  "category" : "control",
+  "input" : [ {
+    "id" : "branch_condition",
+    "label" : "Условие",
+    "type" : "condition",
+    "extra_data" : null
+  } ],
+  "output" : [ {
+    "id" : "branch_true",
+    "label" : "True",
+    "type" : "exec",
+    "extra_data" : null
+  }, {
+    "id" : "branch_false",
+    "label" : "False",
+    "type" : "exec",
+    "extra_data" : null
+  } ],
+  "extra_data" : null,
+  "icon_namespace" : "native"
+}, {
+  "id" : "player_getter",
+  "type" : "player_getter",
+  "name" : "Получить игрока",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "player",
+    "label" : "",
+    "type" : "player",
+    "extra_data" : null
+  } ],
+  "extra_data" : null,
+  "icon_namespace" : "game_values"
+}, {
+  "id" : "entity_getter",
+  "type" : "entity_getter",
+  "name" : "Получить сущность",
+  "category" : "game_values",
+  "input" : [ ],
+  "output" : [ {
+    "id" : "entity",
+    "label" : "",
+    "type" : "entity",
+    "extra_data" : null
+  } ],
+  "extra_data" : null,
+  "icon_namespace" : "game_values"
+}, {
   "id" : "player_join",
   "type" : "event",
   "name" : "Игрок зашёл в мир",
@@ -19333,57 +19385,5 @@
   "extra_data" : {
     "selector_disabled" : true
   },
-  "icon_namespace" : "game_values"
-}, {
-  "id" : "native_branch",
-  "type" : "native_branch",
-  "name" : "Ветвление",
-  "category" : "control",
-  "input" : [ {
-    "id" : "branch_condition",
-    "label" : "Условие",
-    "type" : "condition",
-    "extra_data" : null
-  } ],
-  "output" : [ {
-    "id" : "branch_true",
-    "label" : "True",
-    "type" : "exec",
-    "extra_data" : null
-  }, {
-    "id" : "branch_false",
-    "label" : "False",
-    "type" : "exec",
-    "extra_data" : null
-  } ],
-  "extra_data" : null,
-  "icon_namespace" : "actions"
-}, {
-  "id" : "player_getter",
-  "type" : "player_getter",
-  "name" : "Получить игрока",
-  "category" : "game_values",
-  "input" : [ ],
-  "output" : [ {
-    "id" : "player",
-    "label" : "",
-    "type" : "player",
-    "extra_data" : null
-  } ],
-  "extra_data" : null,
-  "icon_namespace" : "game_values"
-}, {
-  "id" : "entity_getter",
-  "type" : "entity_getter",
-  "name" : "Получить сущность",
-  "category" : "game_values",
-  "input" : [ ],
-  "output" : [ {
-    "id" : "entity",
-    "label" : "",
-    "type" : "entity",
-    "extra_data" : null
-  } ],
-  "extra_data" : null,
   "icon_namespace" : "game_values"
 } ]

@@ -8,7 +8,6 @@ import com.rodev.jbpcore.fragment.LifecycleFragment;
 import com.rodev.jbpcore.view.MaterialButton;
 import com.rodev.jbpcore.workspace.Project;
 import com.rodev.jbpcore.workspace.WindowManager;
-import icyllis.modernui.fragment.Fragment;
 import icyllis.modernui.graphics.Canvas;
 import icyllis.modernui.graphics.Paint;
 import icyllis.modernui.graphics.drawable.Drawable;
@@ -125,9 +124,14 @@ public class EditorFragment extends LifecycleFragment {
         saveButton.setOnClickListener(v -> {
             controller.onSaveButtonClicked(project, graphLayout);
         });
+        var compileButton = createButton("Compile");
+        compileButton.setOnClickListener(v -> {
+            controller.onCompileButtonClicked(project, graphLayout);
+        });
 
         toolsPanel.addView(button);
         toolsPanel.addView(saveButton);
+        toolsPanel.addView(compileButton);
 
         return toolsPanel;
     }

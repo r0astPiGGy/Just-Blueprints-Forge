@@ -1,0 +1,7 @@
+event<projectile_damage_entity> {
+    if (entity::is_disguised<victim_entity>()) {
+        world::cancel_event();
+    } else {
+        entity::set_invisible<victim_entity>(invisible = "true");
+    }
+}

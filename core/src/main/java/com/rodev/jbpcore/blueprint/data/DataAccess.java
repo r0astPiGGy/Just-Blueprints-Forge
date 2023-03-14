@@ -10,13 +10,17 @@ import com.rodev.jbpcore.blueprint.data.json.SelectorGroupEntity;
 import com.rodev.jbpcore.blueprint.data.json.VariableTypeEntity;
 import com.rodev.jbpcore.blueprint.data.selectors.SelectorGroupRegistry;
 import com.rodev.jbpcore.blueprint.data.variable.VariableTypeRegistry;
+import com.rodev.jmcgenerator.data.GeneratorData;
+import com.rodev.jmcgenerator.entity.GeneratorEntity;
 import icyllis.modernui.graphics.drawable.ImageDrawable;
 import lombok.RequiredArgsConstructor;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.*;
+import java.util.function.Supplier;
 
 @RequiredArgsConstructor
 public class DataAccess {
@@ -28,6 +32,7 @@ public class DataAccess {
     public final ContextCategoryRegistry contextCategoryRegistry;
     public final ActionRegistry actionRegistry;
     public final SelectorGroupRegistry selectorGroupRegistry;
+    public final GeneratorData generatorData;
 
     private static DataAccess instance;
 
@@ -62,6 +67,11 @@ public class DataAccess {
         var variable_types = objectMapper.readValue(dataProvider.getVariableTypesInputStream(), VariableTypeEntity[].class);
         var action_types = objectMapper.readValue(dataProvider.getActionTypesInputStream(), ActionTypeEntity[].class);
         var selectorGroups = objectMapper.readValue(dataProvider.getSelectorGroupsInputStream(), SelectorGroupEntity[].class);
+        var generatorInputData = objectMapper.readValue(dataProvider.getDataGeneratorInputStream(), GeneratorEntity[].class);
+
+        var generatorData = new GeneratorData();
+
+        generatorData.load(generatorInputData);
 
         var actionTypeRegistry = new ActionTypeRegistry();
         DataInitEventHandler.onActionTypeRegistryPreLoad(actionTypeRegistry);
@@ -87,7 +97,14 @@ public class DataAccess {
 
         actionRegistry.load(actions);
 
-        var dao = new DataAccess(actionTypeRegistry, variableTypeRegistry, categoryRegistry, actionRegistry, selectorGroupRegistry);
+        var dao = new DataAccess(
+                actionTypeRegistry,
+                variableTypeRegistry,
+                categoryRegistry,
+                actionRegistry,
+                selectorGroupRegistry,
+                generatorData
+        );
 
         instance = dao;
 

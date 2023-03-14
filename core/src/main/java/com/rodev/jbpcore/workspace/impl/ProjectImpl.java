@@ -32,6 +32,9 @@ public abstract class ProjectImpl implements Project {
     abstract
     protected void onBlueprintLoad(GraphController graphController);
 
+    abstract
+    protected void onBlueprintCompile();
+
     private class BlueprintImpl implements Blueprint {
 
         @Override
@@ -42,6 +45,11 @@ public abstract class ProjectImpl implements Project {
         @Override
         public void loadTo(GraphController graphController) {
             onBlueprintLoad(graphController);
+        }
+
+        @Override
+        public void compile() {
+            onBlueprintCompile();
         }
     }
 }

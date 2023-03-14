@@ -1,0 +1,193 @@
+{
+  "nodes" : [ {
+    "id" : "native_branch",
+    "position" : {
+      "x" : 8388338,
+      "y" : 8388423
+    },
+    "data" : {
+      "input" : {
+        "6850fc88-1776-497d-b518-3ec810bea15f" : {
+          "name" : "exec",
+          "connectedTo" : "b5262c65-1da5-49a5-ab9e-ad5829eda891",
+          "value" : null,
+          "type" : "exec"
+        },
+        "014075ea-05c0-4872-aa98-0e83c76d20f6" : {
+          "name" : "branch_condition",
+          "connectedTo" : "afebf9bc-3c22-4107-b1e2-f8dad6dee3dd",
+          "value" : null,
+          "type" : "default"
+        }
+      },
+      "output" : {
+        "23d3a420-6b04-489a-9527-6cc5f0bf754c" : {
+          "name" : "branch_true",
+          "connectedTo" : null,
+          "value" : null,
+          "type" : "exec"
+        },
+        "8e4dd6ed-b2e2-4c43-b61d-da3a9826f772" : {
+          "name" : "branch_false",
+          "connectedTo" : null,
+          "value" : null,
+          "type" : "exec"
+        }
+      }
+    }
+  }, {
+    "id" : "if_entity_has_potion_effect",
+    "position" : {
+      "x" : 8388048,
+      "y" : 8387880
+    },
+    "data" : {
+      "input" : {
+        "c63c5de7-50b8-4319-9073-8e31ae8647c1" : {
+          "name" : "potions",
+          "connectedTo" : null,
+          "value" : null,
+          "type" : "default"
+        },
+        "2c17488a-03a2-40cb-858d-a4ac414015ef" : {
+          "name" : "check_mode",
+          "connectedTo" : null,
+          "value" : "\"ALL\"",
+          "type" : "enum"
+        },
+        "41e54eec-93b4-4152-99ec-dc772302c37f" : {
+          "name" : "entity",
+          "connectedTo" : null,
+          "value" : null,
+          "type" : "default"
+        }
+      },
+      "output" : {
+        "50d39e7a-7af6-4789-ba8a-8c157bef26d1" : {
+          "name" : "-",
+          "connectedTo" : null,
+          "value" : null,
+          "type" : "default"
+        }
+      }
+    }
+  }, {
+    "id" : "if_entity_is_disguised",
+    "position" : {
+      "x" : 8388078,
+      "y" : 8388505
+    },
+    "data" : {
+      "input" : {
+        "253e38a0-72db-4a0c-9f1d-49661723d9f5" : {
+          "name" : "entity",
+          "connectedTo" : "7cb070d8-858e-440f-a647-f2735c9ad4a2",
+          "value" : null,
+          "type" : "default"
+        }
+      },
+      "output" : {
+        "afebf9bc-3c22-4107-b1e2-f8dad6dee3dd" : {
+          "name" : "-",
+          "connectedTo" : null,
+          "value" : null,
+          "type" : "default"
+        }
+      }
+    }
+  }, {
+    "id" : "entity_getter",
+    "position" : {
+      "x" : 8387808,
+      "y" : 8388596
+    },
+    "data" : {
+      "input" : { },
+      "output" : {
+        "7cb070d8-858e-440f-a647-f2735c9ad4a2" : {
+          "name" : "entity",
+          "connectedTo" : null,
+          "value" : "victim_entity",
+          "type" : "default"
+        }
+      }
+    }
+  }, {
+    "id" : "projectile_damage_entity",
+    "position" : {
+      "x" : 8387801,
+      "y" : 8388387
+    },
+    "data" : {
+      "input" : { },
+      "output" : {
+        "b5262c65-1da5-49a5-ab9e-ad5829eda891" : {
+          "name" : "exec",
+          "connectedTo" : null,
+          "value" : null,
+          "type" : "exec"
+        }
+      }
+    }
+  }, {
+    "id" : "game_cancel_event",
+    "position" : {
+      "x" : 8388606,
+      "y" : 8388381
+    },
+    "data" : {
+      "input" : {
+        "7aad0e13-c6be-4af1-b276-132658bc250f" : {
+          "name" : "exec",
+          "connectedTo" : "23d3a420-6b04-489a-9527-6cc5f0bf754c",
+          "value" : null,
+          "type" : "exec"
+        }
+      },
+      "output" : {
+        "2d80bfaa-4d1c-4b84-ab1e-c96e32758b7a" : {
+          "name" : "exec",
+          "connectedTo" : null,
+          "value" : null,
+          "type" : "exec"
+        }
+      }
+    }
+  }, {
+    "id" : "entity_set_invisible",
+    "position" : {
+      "x" : 8388611,
+      "y" : 8388505
+    },
+    "data" : {
+      "input" : {
+        "486a54c0-298a-4f50-ab5e-c70a0d5d8f40" : {
+          "name" : "exec",
+          "connectedTo" : "8e4dd6ed-b2e2-4c43-b61d-da3a9826f772",
+          "value" : null,
+          "type" : "exec"
+        },
+        "49854e50-16b9-4adf-9c41-e8c1e07d3d73" : {
+          "name" : "invisible",
+          "connectedTo" : null,
+          "value" : "\"true\"",
+          "type" : "default"
+        },
+        "0100ff80-132d-4d52-8ab7-9f22ce92ecfa" : {
+          "name" : "entity",
+          "connectedTo" : "7cb070d8-858e-440f-a647-f2735c9ad4a2",
+          "value" : null,
+          "type" : "default"
+        }
+      },
+      "output" : {
+        "72efca64-f32f-4aec-8d21-2d07dbac4963" : {
+          "name" : "exec",
+          "connectedTo" : null,
+          "value" : null,
+          "type" : "exec"
+        }
+      }
+    }
+  } ]
+}

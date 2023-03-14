@@ -248,6 +248,7 @@ public abstract class BaseNode extends LinearLayout implements BPNode, PinHoverL
             pinData.connectedTo = ((InputPin) pin).getConnections().get(0).getId().toString();
         }
         pinData.value = row.getDefaultValue();
+        pinData.type = pin.getType().getType();
 
         return pinData;
     }
@@ -341,6 +342,7 @@ public abstract class BaseNode extends LinearLayout implements BPNode, PinHoverL
         public String name;
         public String connectedTo;
         public String value;
+        public String type;
 
     }
 }

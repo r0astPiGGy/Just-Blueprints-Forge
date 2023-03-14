@@ -18,11 +18,13 @@ public class DataProvider {
     private static final String RAW_CATEGORIES_URL = "https://raw.githubusercontent.com/justmc-os/justmc-assets/master/data/actions.json";
     private static final String RAW_EVENTS_URL = "https://raw.githubusercontent.com/justmc-os/justmc-assets/master/data/events.json";
     private static final String RAW_GAME_VALUES_URL = "https://raw.githubusercontent.com/justmc-os/justmc-assets/master/data/game_values.json";
+    private static final String RAW_GAME_VALUES_MAPPING = "https://raw.githubusercontent.com/justmc-os/jmcc/main/data/values.json";
 
     private static final String CUSTOM_ACTIONS_PATH = "custom_actions.json";
     private static final String ACTION_PATCHES_PATH = "patches/actions.json";
     private static final String CATEGORY_PATCHES_PATH = "patches/categories.json";
     private static final String VARIABLE_TYPE_PATCHES_PATH = "patches/variable_types.json";
+    private static final String GENERATOR_DATA_PATCHES_PATH = "patches/generator_data.json";
 
     public void loadActionsAndApply(Consumer<InputStream> inputStreamConsumer) {
         getInputStream(RAW_ACTIONS_URL, inputStreamConsumer);
@@ -44,6 +46,10 @@ public class DataProvider {
         getInputStream(RAW_GAME_VALUES_URL, consumer);
     }
 
+    public void loadMappedGameValuesAndApply(Consumer<InputStream> consumer) {
+        getInputStream(RAW_GAME_VALUES_MAPPING, consumer);
+    }
+
     public void loadCustomActionsAndApply(Consumer<InputStream> consumer) {
         getLocalInputStream(CUSTOM_ACTIONS_PATH, consumer);
     }
@@ -54,6 +60,10 @@ public class DataProvider {
 
     public void loadVariableTypePatchesAndApply(Consumer<InputStream> consumer) {
         getLocalInputStream(VARIABLE_TYPE_PATCHES_PATH, consumer);
+    }
+
+    public void loadGeneratorDataPatchesAndApply(Consumer<InputStream> consumer) {
+        getLocalInputStream(GENERATOR_DATA_PATCHES_PATH, consumer);
     }
 
     public void loadCategoryPatchesAndApply(Consumer<InputStream> consumer) {

@@ -29,4 +29,12 @@ public class EditorController {
         System.out.println("Took " + (System.currentTimeMillis() - millis) + "ms. to save blueprint");
     }
 
+    public void onCompileButtonClicked(Project project, GraphLayout graphLayout) {
+        saveProject(project, graphLayout);
+
+        long millis = System.currentTimeMillis();
+        project.getBlueprint().compile();
+        System.out.println("Took " + (System.currentTimeMillis() - millis) + "ms. to compile blueprint");
+    }
+
 }

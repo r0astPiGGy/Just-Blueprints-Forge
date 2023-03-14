@@ -14,4 +14,6 @@ public interface DataProvider {
 
     InputStream getSelectorGroupsInputStream();
 
+    InputStream getDataGeneratorInputStream();
+
 }

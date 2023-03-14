@@ -8,4 +8,14 @@ public class DefaultNumberInputView extends DefaultTextInputView {
         setHint("Число");
     }
 
+    @Override
+    public String getDefaultValue() {
+        return getText().toString();
+    }
+
+    @Override
+    public void setDefaultValue(String value) {
+        setText(value);
+    }
+
 }

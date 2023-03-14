@@ -4,6 +4,8 @@ import com.rodev.jmcparser.patcher.Patcher;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
+import java.util.Arrays;
+import java.util.Objects;
 
 public abstract class DataWriter<T, P> {
 
@@ -32,5 +34,26 @@ public abstract class DataWriter<T, P> {
         if(!patcher.shouldPatch(object)) return object;
 
         return patcher.patch(object);
+    }
+
+    public static <T> Default<T> defaultDataWriter(File file) {
+        return new Default<>(file);
+    }
+
+    public static class Default<T> extends DataWriter<T, T> {
+
+        private Default(File file) {
+            super(file);
+        }
+
+        @Override
+        public void write(T[] data) {
+            var list = Arrays.stream(data)
+                    .map(this::patch)
+                    .filter(Objects::nonNull)
+                    .toList();
+
+            writeToFile(list);
+        }
     }
 }

@@ -50,7 +50,7 @@ public class DefaultEnumInputView extends Spinner implements DefaultInputValue {
     @Override
     public String getDefaultValue() {
         if(getSelectedItem() instanceof EnumValue value) {
-            return value.key();
+            return "\"" + value.key() + "\"";
         }
 
         return null;
@@ -58,6 +58,7 @@ public class DefaultEnumInputView extends Spinner implements DefaultInputValue {
 
     @Override
     public void setDefaultValue(String value) {
+        value = value.replace("\"", "");
         int i = 0;
         for(var a : enumValueList) {
             if(a.key().equalsIgnoreCase(value)) {

@@ -27,6 +27,11 @@ public class PinType {
             public Pin createOutputPin() {
                 return ExecPin.outputPin(this);
             }
+
+            @Override
+            public String getType() {
+                return "exec";
+            }
         };
     }
 
@@ -42,6 +47,10 @@ public class PinType {
 
     public String getName() {
         return name;
+    }
+
+    public String getType() {
+        return "default";
     }
 
     public VariableType getVariableType() {

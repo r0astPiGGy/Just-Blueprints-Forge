@@ -18,7 +18,16 @@
       "label" : "False",
       "type" : "exec"
     } ],
-    "icon_namespace": "actions"
+    "icon_namespace": "native",
+    "generator": {
+      "schema": [
+        "if ($branch_condition) {",
+        "$branch_true",
+        "} else {",
+        "$branch_false",
+        "}"
+      ]
+    }
   },
   {
     "id" : "player_getter",
@@ -31,7 +40,10 @@
       "label" : "",
       "type" : "player"
     } ],
-    "icon_namespace": "game_values"
+    "icon_namespace": "game_values",
+    "generator": {
+      "schema": "$player"
+    }
   },
   {
     "id" : "entity_getter",
@@ -44,6 +56,9 @@
       "label" : "",
       "type" : "entity"
     } ],
-    "icon_namespace": "game_values"
+    "icon_namespace": "game_values",
+    "generator": {
+      "schema": "$entity"
+    }
   }
 ]

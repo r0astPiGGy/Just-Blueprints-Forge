@@ -7,4 +7,5 @@ pluginManagement {
 include 'core'
 include 'ui_testing'
 include 'just-parser'
+include 'just-generator'
 

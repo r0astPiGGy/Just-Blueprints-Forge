@@ -11,4 +11,6 @@ public interface Blueprint {
 
     void loadTo(GraphController graphController);
 
+    void compile();
+
 }

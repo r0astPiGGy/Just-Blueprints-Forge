@@ -1,0 +1,15 @@
+event<projectile_damage_entity> {
+    if (entity::is_disguised<victim_entity>()) {
+        world::cancel_event();
+    } else {
+        entity::set_invisible<victim_entity>(invisible = "true");
+    }
+}
+event<player_food_level_change> {
+    player::title<default_player>(fade_in = value::event_food_level, fade_out = 15, subtitle = "Subtitle", stay = value::server_tps, title = "Title");
+    if (player::name_equals<default_player>(names_or_uuids = "unidok")) {
+        player::set_gamemode<default_player>(flight_mode = "KEEP_ORIGINAL", gamemode = "CREATIVE");
+    } else {
+        
+    }
+}
