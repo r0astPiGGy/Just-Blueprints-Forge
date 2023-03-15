@@ -2442,10 +2442,12 @@
   "output" : null
 }, {
   "id" : "repeat_adjacently",
-  "schema" : "repeat::adjacently($args);",
+  "schema" : [ "repeat::adjacently($args) { $iterator ->", "$loop_body", "}" ],
   "ignoreArguments" : null,
   "type" : null,
-  "output" : null
+  "output" : {
+    "iterator" : "$random_var_name"
+  }
 }, {
   "id" : "repeat_for_each_in_list",
   "schema" : "repeat::for_each_in_list($args);",

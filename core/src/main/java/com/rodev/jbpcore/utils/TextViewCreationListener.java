@@ -8,6 +8,7 @@ import icyllis.modernui.widget.TextView;
 
 import static icyllis.modernui.graphics.font.FontPaint.BOLD;
 import static icyllis.modernui.graphics.font.FontPaint.ITALIC;
+import static icyllis.modernui.view.View.dp;
 
 public class TextViewCreationListener {
 
@@ -30,6 +31,7 @@ public class TextViewCreationListener {
 
     public static void onPinTextCreated(TextView textView) {
         setDefaultFont(textView);
+        textView.setMaxWidth(dp(300));
     }
 
     public static void onContextMenuItemTextCreated(TextView textView) {

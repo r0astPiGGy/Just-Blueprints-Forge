@@ -1,7 +1,7 @@
 [
   {
     "id" : "native_branch",
-    "type" : "native_branch",
+    "type" : "custom_with_input_exec",
     "name" : "Ветвление",
     "category" : "control",
     "input" : [ {

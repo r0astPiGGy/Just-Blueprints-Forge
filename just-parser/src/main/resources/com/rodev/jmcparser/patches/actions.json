@@ -2,5 +2,30 @@
   {
     "id" : "else",
     "remove" : true
+  },
+  {
+    "id" : "repeat_adjacently",
+    "type" : "custom_with_input_exec",
+    "input" : [ {
+      "id" : "variable",
+      "remove": true
+    } ],
+    "output" : [
+      {
+        "id" : "loop_body",
+        "label" : "Тело цикла",
+        "type" : "exec"
+      },
+      {
+        "id" : "iterator",
+        "label" : "Местоположение",
+        "type" : "location"
+      },
+      {
+        "id" : "loop_end",
+        "label" : "Цикл завершён",
+        "type" : "exec"
+      }
+    ]
   }
 ]

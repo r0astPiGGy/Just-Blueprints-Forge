@@ -30,23 +30,25 @@ public class ActionPatcher extends AbstractPatcher<ActionEntity, ActionEntityPat
     }
 
     private List<ActionEntity.PinTypeEntity> patchLists(List<ActionEntity.PinTypeEntity> targetEntities, List<ActionEntityPatch.PinTypePatch> patches) {
-        var list = new LinkedList<ActionEntity.PinTypeEntity>();
-
         if(targetEntities == null) {
             return patches.stream().map(this::convert).toList();
         }
 
+        var list = new LinkedList<ActionEntity.PinTypeEntity>();
         var targetEntitiesById = new HashMap<String, ActionEntity.PinTypeEntity>();
         targetEntities.forEach(p -> targetEntitiesById.put(p.id, p));
 
         var newPins = new LinkedList<ActionEntity.PinTypeEntity>();
 
         for(var patch : patches) {
-            var target = targetEntitiesById.get(patch.getPatchedId());
+            var patchId = patch.getPatchedId();
+            var target = targetEntitiesById.get(patchId);
             if(target == null) {
                 newPins.add(convert(patch));
                 continue;
             }
+
+            targetEntitiesById.remove(patchId);
 
             if(patch.isRemoveType()) {
                 continue;
@@ -57,6 +59,7 @@ public class ActionPatcher extends AbstractPatcher<ActionEntity, ActionEntityPat
             list.add(target);
         }
 
+        list.addAll(targetEntitiesById.values());
         list.addAll(newPins);
 
         return list;

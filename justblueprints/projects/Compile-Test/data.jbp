@@ -263,8 +263,8 @@
   }, {
     "id" : "player_send_action_bar",
     "position" : {
-      "x" : 8387145,
-      "y" : 8388415
+      "x" : 8387113,
+      "y" : 8388466
     },
     "data" : {
       "input" : {
@@ -382,8 +382,8 @@
   }, {
     "id" : "server_tps_gamevalue_getter",
     "position" : {
-      "x" : 8387758,
-      "y" : 8388914
+      "x" : 8387845,
+      "y" : 8388860
     },
     "data" : {
       "input" : { },
@@ -527,6 +527,220 @@
       },
       "output" : {
         "c491d0ec-85df-4f00-bb63-b85a64f8abf0" : {
+          "name" : "exec",
+          "connectedTo" : null,
+          "value" : null,
+          "type" : "exec"
+        }
+      }
+    }
+  }, {
+    "id" : "repeat_adjacently",
+    "position" : {
+      "x" : 8389576,
+      "y" : 8389063
+    },
+    "data" : {
+      "input" : {
+        "752f5b5d-f719-487a-8b0a-174f5cd09ab5" : {
+          "name" : "exec",
+          "connectedTo" : "c491d0ec-85df-4f00-bb63-b85a64f8abf0",
+          "value" : null,
+          "type" : "exec"
+        },
+        "7157236a-1d3c-4db4-b989-1bd868e27b27" : {
+          "name" : "change_rotation",
+          "connectedTo" : null,
+          "value" : "\"true\"",
+          "type" : "default"
+        },
+        "49c6a248-63c7-40a6-b274-9e7d4202e71c" : {
+          "name" : "origin",
+          "connectedTo" : "2efd76b2-f914-465d-9791-5ae918a713e8",
+          "value" : null,
+          "type" : "default"
+        },
+        "a817fa81-148d-49a7-955a-7c5e3814c9bb" : {
+          "name" : "pattern",
+          "connectedTo" : null,
+          "value" : "\"SQUARE\"",
+          "type" : "enum"
+        },
+        "b5b1ad74-95bd-478c-a80a-6c117c76cc2f" : {
+          "name" : "include_self",
+          "connectedTo" : null,
+          "value" : "\"true\"",
+          "type" : "default"
+        }
+      },
+      "output" : {
+        "29881da9-77cd-4812-9528-9747c2f3794a" : {
+          "name" : "loop_body",
+          "connectedTo" : null,
+          "value" : null,
+          "type" : "exec"
+        },
+        "03f788c7-51bb-4742-9062-db90ba9854c3" : {
+          "name" : "loop_end",
+          "connectedTo" : null,
+          "value" : null,
+          "type" : "exec"
+        },
+        "2c8e02d1-8219-48ec-876f-8c658612abf3" : {
+          "name" : "iterator",
+          "connectedTo" : null,
+          "value" : null,
+          "type" : "default"
+        }
+      }
+    }
+  }, {
+    "id" : "event_block_location_gamevalue_getter",
+    "position" : {
+      "x" : 8388914,
+      "y" : 8389200
+    },
+    "data" : {
+      "input" : { },
+      "output" : {
+        "2efd76b2-f914-465d-9791-5ae918a713e8" : {
+          "name" : "event_block_location",
+          "connectedTo" : null,
+          "value" : null,
+          "type" : "default"
+        }
+      }
+    }
+  }, {
+    "id" : "player_send_message",
+    "position" : {
+      "x" : 8390198,
+      "y" : 8389063
+    },
+    "data" : {
+      "input" : {
+        "65cbdf8c-8528-47d4-9efb-17a246965152" : {
+          "name" : "exec",
+          "connectedTo" : "29881da9-77cd-4812-9528-9747c2f3794a",
+          "value" : null,
+          "type" : "exec"
+        },
+        "de6a74f2-4aba-4c3a-998c-36bd5d54cee1" : {
+          "name" : "messages",
+          "connectedTo" : null,
+          "value" : "\"HELLLOOOO\"",
+          "type" : "default"
+        },
+        "74767b10-3d2a-49fe-93e3-2bd3cb9ef917" : {
+          "name" : "player",
+          "connectedTo" : "1782a947-f40b-4654-b16a-cb5d7dd96428",
+          "value" : null,
+          "type" : "default"
+        },
+        "28e91327-7a98-4e87-a286-b93ab671e22c" : {
+          "name" : "merging",
+          "connectedTo" : null,
+          "value" : "\"SEPARATE_LINES\"",
+          "type" : "enum"
+        }
+      },
+      "output" : {
+        "910c7acd-5837-4292-b110-877070761fb1" : {
+          "name" : "exec",
+          "connectedTo" : null,
+          "value" : null,
+          "type" : "exec"
+        }
+      }
+    }
+  }, {
+    "id" : "player_getter",
+    "position" : {
+      "x" : 8389884,
+      "y" : 8388950
+    },
+    "data" : {
+      "input" : { },
+      "output" : {
+        "1782a947-f40b-4654-b16a-cb5d7dd96428" : {
+          "name" : "player",
+          "connectedTo" : null,
+          "value" : "default_player",
+          "type" : "default"
+        }
+      }
+    }
+  }, {
+    "id" : "game_generate_tree",
+    "position" : {
+      "x" : 8390569,
+      "y" : 8389064
+    },
+    "data" : {
+      "input" : {
+        "309f397a-4da7-4310-8ebe-eb1198273ad6" : {
+          "name" : "exec",
+          "connectedTo" : "910c7acd-5837-4292-b110-877070761fb1",
+          "value" : null,
+          "type" : "exec"
+        },
+        "58af19e7-0ffd-4947-b84c-9088c8a667ed" : {
+          "name" : "tree_type",
+          "connectedTo" : null,
+          "value" : "\"BROWN_MUSHROOM\"",
+          "type" : "enum"
+        },
+        "e5185b2c-dcbf-4470-a0e1-ef565eb8589e" : {
+          "name" : "location",
+          "connectedTo" : "2c8e02d1-8219-48ec-876f-8c658612abf3",
+          "value" : null,
+          "type" : "default"
+        }
+      },
+      "output" : {
+        "4ed060ee-8ea7-48c5-9812-9c8b78ffd15e" : {
+          "name" : "exec",
+          "connectedTo" : null,
+          "value" : null,
+          "type" : "exec"
+        }
+      }
+    }
+  }, {
+    "id" : "player_send_message",
+    "position" : {
+      "x" : 8390195,
+      "y" : 8389276
+    },
+    "data" : {
+      "input" : {
+        "3757f5b4-b704-46ac-b344-4030eff68cce" : {
+          "name" : "exec",
+          "connectedTo" : "03f788c7-51bb-4742-9062-db90ba9854c3",
+          "value" : null,
+          "type" : "exec"
+        },
+        "02b6fca3-a4d8-4917-9671-1644166847b6" : {
+          "name" : "messages",
+          "connectedTo" : null,
+          "value" : "\"Цикл завершен\"",
+          "type" : "default"
+        },
+        "9362d6a9-0f5b-4775-bf2e-84af595c962c" : {
+          "name" : "merging",
+          "connectedTo" : null,
+          "value" : "\"SEPARATE_LINES\"",
+          "type" : "enum"
+        },
+        "c44d455f-e756-4733-b6ee-68092c7ba372" : {
+          "name" : "player",
+          "connectedTo" : "1782a947-f40b-4654-b16a-cb5d7dd96428",
+          "value" : null,
+          "type" : "default"
+        }
+      },
+      "output" : {
+        "72144b10-e53f-48b6-8856-522d0326940a" : {
           "name" : "exec",
           "connectedTo" : null,
           "value" : null,

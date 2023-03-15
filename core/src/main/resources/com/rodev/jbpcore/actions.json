@@ -9808,15 +9808,10 @@
   "icon_namespace" : "actions"
 }, {
   "id" : "repeat_adjacently",
-  "type" : "function",
+  "type" : "custom_with_input_exec",
   "name" : "Проход по смежным блокам",
   "category" : "repeat",
   "input" : [ {
-    "id" : "variable",
-    "label" : "Для присвоения местоположения",
-    "type" : "variable",
-    "extra_data" : null
-  }, {
     "id" : "origin",
     "label" : "Центральный блок",
     "type" : "location",
@@ -9824,11 +9819,6 @@
   }, {
     "id" : "change_rotation",
     "label" : "Поворачивать направление взгляда текущего элемента относительно указанного местоположения ",
-    "type" : "boolean",
-    "extra_data" : null
-  }, {
-    "id" : "include_self",
-    "label" : "Учитывать центральный блок",
     "type" : "boolean",
     "extra_data" : null
   }, {
@@ -9841,8 +9831,28 @@
       "CUBE" : "Кубический",
       "ADJACENT" : "Примыкающий"
     }
+  }, {
+    "id" : "include_self",
+    "label" : "Учитывать центральный блок",
+    "type" : "boolean",
+    "extra_data" : null
   } ],
-  "output" : [ ],
+  "output" : [ {
+    "id" : "loop_body",
+    "label" : "Тело цикла",
+    "type" : "exec",
+    "extra_data" : null
+  }, {
+    "id" : "iterator",
+    "label" : "Местоположение",
+    "type" : "location",
+    "extra_data" : null
+  }, {
+    "id" : "loop_end",
+    "label" : "Цикл завершён",
+    "type" : "exec",
+    "extra_data" : null
+  } ],
   "extra_data" : null,
   "icon_namespace" : "actions"
 }, {
@@ -15875,7 +15885,7 @@
   "icon_namespace" : "actions"
 }, {
   "id" : "native_branch",
-  "type" : "native_branch",
+  "type" : "custom_with_input_exec",
   "name" : "Ветвление",
   "category" : "control",
   "input" : [ {

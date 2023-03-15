@@ -1,1 +1,13 @@
-[]
+[
+  {
+    "id" : "repeat_adjacently",
+    "schema" : [
+      "repeat::adjacently($args) { $iterator ->",
+      "$loop_body",
+      "}"
+    ],
+    "output" : {
+      "iterator": "$random_var_name"
+    }
+  }
+]

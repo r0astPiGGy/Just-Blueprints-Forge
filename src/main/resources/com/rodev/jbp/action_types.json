@@ -34,5 +34,9 @@
   {
     "id": "native_branch",
     "header_color": "142, 142, 147"
+  },
+  {
+    "id": "custom_with_input_exec",
+    "header_color": "142, 142, 147"
   }
 ]

@@ -32,6 +32,7 @@ public class CodeGenerator {
     @SneakyThrows
     public void generate(GeneratorData data, int indentation) {
         this.generatorData = data;
+        counter = 0;
         pins.clear();
         events.clear();
         userInput.clear();
@@ -178,10 +179,22 @@ public class CodeGenerator {
         var representation = pin.parent.representation;
 
         if(representation.output != null) {
-            return representation.output.get(pin.id);
+            var output = representation.output.get(pin.id);
+
+            if(output != null) {
+                return output.replace("$random_var_name", getRandomVariableName());
+            }
         }
 
         return pin.parent.getCode();
+    }
+
+    private static int counter = 0;
+
+    private static String getRandomVariableName() {
+        counter++;
+
+        return "generated_var" + counter;
     }
 
     private static String join(List<String> lines) {
