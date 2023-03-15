@@ -27,5 +27,258 @@
         "type" : "exec"
       }
     ]
+  },
+  {
+    "id" : "repeat_for_each_in_list",
+    "type" : "custom_with_input_exec",
+    "input" : [
+      {
+        "id" : "index_variable",
+        "remove": true
+      },
+      {
+        "id": "value_variable",
+        "remove": true
+      }
+    ],
+    "output" : [
+      {
+        "id" : "loop_body",
+        "label" : "Тело цикла",
+        "type" : "exec"
+      },
+      {
+        "id" : "index_variable",
+        "label" : "Индекс",
+        "type" : "number",
+        "extra_data" : null
+      },
+      {
+        "id" : "value_variable",
+        "label" : "Элемент",
+        "type" : "variable",
+        "extra_data" : null
+      },
+      {
+        "id" : "loop_end",
+        "label" : "Цикл завершён",
+        "type" : "exec"
+      }
+    ]
+  },
+  {
+    "id" : "repeat_for_each_map_entry",
+    "type" : "custom_with_input_exec",
+    "input" : [
+      {
+        "id" : "key_variable",
+        "remove": true
+      }, {
+        "id" : "value_variable",
+        "remove": true
+      }
+    ],
+    "output" : [
+      {
+        "id" : "loop_body",
+        "label" : "Тело цикла",
+        "type" : "exec"
+      },
+      {
+        "id" : "key_variable",
+        "label" : "Ключ элемента",
+        "type" : "variable",
+        "extra_data" : null
+      },
+      {
+        "id" : "value_variable",
+        "label" : "Значение элемента",
+        "type" : "variable",
+        "extra_data" : null
+      },
+      {
+        "id" : "loop_end",
+        "label" : "Цикл завершён",
+        "type" : "exec"
+      }
+    ]
+  },
+  {
+    "id" : "repeat_forever",
+    "type" : "custom_with_input_exec",
+    "output" : [
+      {
+        "id" : "loop_body",
+        "label" : "Тело цикла",
+        "type" : "exec"
+      },
+      {
+        "id" : "loop_end",
+        "label" : "Цикл завершён",
+        "type" : "exec"
+      }
+    ]
+  },
+  {
+    "id" : "repeat_multi_times",
+    "type" : "custom_with_input_exec",
+    "input" : [
+      {
+        "id" : "variable",
+        "remove": true
+      }
+    ],
+    "output" : [
+      {
+        "id" : "loop_body",
+        "label" : "Тело цикла",
+        "type" : "exec"
+      },
+      {
+        "id" : "iterator",
+        "label" : "Текущее значения счетчика",
+        "type" : "number"
+      },
+      {
+        "id" : "loop_end",
+        "label" : "Цикл завершён",
+        "type" : "exec"
+      }
+    ]
+  },
+  {
+    "id" : "repeat_on_circle",
+    "type" : "custom_with_input_exec",
+    "input" : [
+      {
+        "id" : "variable",
+        "remove": true
+      },
+      {
+        "id" : "perpendicular_to_plane",
+        "label" : "Нормаль плоскости, к которому окружность будет перпендикулярна"
+      }
+    ],
+    "output" : [
+      {
+        "id" : "loop_body",
+        "label" : "Тело цикла",
+        "type" : "exec"
+      },
+      {
+        "id" : "iterator",
+        "label" : "Местоположение",
+        "type" : "location"
+      },
+      {
+        "id" : "loop_end",
+        "label" : "Цикл завершён",
+        "type" : "exec"
+      }
+    ]
+  },
+  {
+    "id" : "repeat_on_grid",
+    "type" : "custom_with_input_exec",
+    "input" : [
+      {
+        "id" : "variable",
+        "remove": true
+      }
+    ],
+    "output" : [
+      {
+        "id" : "loop_body",
+        "label" : "Тело цикла",
+        "type" : "exec"
+      },
+      {
+        "id" : "iterator",
+        "label" : "Местоположение",
+        "type" : "location"
+      },
+      {
+        "id" : "loop_end",
+        "label" : "Цикл завершён",
+        "type" : "exec"
+      }
+    ]
+  },
+  {
+    "id" : "repeat_on_path",
+    "type" : "custom_with_input_exec",
+    "input" : [
+      {
+        "id" : "variable",
+        "remove": true
+      }
+    ],
+    "output" : [
+      {
+        "id" : "loop_body",
+        "label" : "Тело цикла",
+        "type" : "exec"
+      },
+      {
+        "id" : "iterator",
+        "label" : "Местоположение",
+        "type" : "location"
+      },
+      {
+        "id" : "loop_end",
+        "label" : "Цикл завершён",
+        "type" : "exec"
+      }
+    ]
+  },
+  {
+    "id" : "repeat_on_range",
+    "type" : "custom_with_input_exec",
+    "input" : [
+      {
+        "id" : "variable",
+        "remove": true
+      }
+    ],
+    "output" : [
+      {
+        "id" : "loop_body",
+        "label" : "Тело цикла",
+        "type" : "exec"
+      },
+      {
+        "id" : "iterator",
+        "label" : "Текущее число из диапазона",
+        "type" : "number"
+      },
+      {
+        "id" : "loop_end",
+        "label" : "Цикл завершён",
+        "type" : "exec"
+      }
+    ]
+  },
+  {
+    "id" : "repeat_while",
+    "type" : "custom_with_input_exec",
+    "input" : [
+      {
+        "id" : "condition",
+        "label" : "Условие",
+        "type" : "condition"
+      }
+    ],
+    "output" : [
+      {
+        "id" : "loop_body",
+        "label" : "Тело цикла",
+        "type" : "exec"
+      },
+      {
+        "id" : "loop_end",
+        "label" : "Цикл завершён",
+        "type" : "exec"
+      }
+    ]
   }
 ]

@@ -8,6 +8,7 @@ import com.rodev.jmcgenerator.entity.GeneratorEntity;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.extern.java.Log;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
@@ -52,19 +53,19 @@ public class CodeGenerator {
         var builder = new StringBuilder();
 
         for(var event : events) {
-            var code = walkNode(event);
-            builder.append(code).append("\n");
+            var eventCode = getCodeForEventNode(event);
+            builder.append(eventCode).append("\n");
         }
 
-        var code = builder.toString();
+        var generatedCode = builder.toString();
 
-        code = performIndentation(code, indentation);
+        generatedCode = performIndentation(generatedCode, indentation);
 
         for(var pair : userInput.entrySet()) {
-            code = code.replace(pair.getKey(), pair.getValue());
+            generatedCode = generatedCode.replace(pair.getKey(), pair.getValue());
         }
 
-        Files.writeString(fileToWrite.toPath(), code);
+        Files.writeString(fileToWrite.toPath(), generatedCode);
     }
 
     private String performIndentation(String code, final int spacing) {
@@ -98,7 +99,7 @@ public class CodeGenerator {
         return join(lines);
     }
 
-    private String walkNode(NodeEntity node) {
+    private String getCodeForEventNode(NodeEntity node) {
         var schema = node.getRawSchema();
 
         for(var outputExec : node.outputExecPins) {
@@ -112,7 +113,9 @@ public class CodeGenerator {
         return schema;
     }
 
-    private static String getCodeForNode(NodeEntity node) {
+    // TODO: требует рефакторинг
+    // присутствует баг с бесконечной рекурсией, когда у ноды аргумент является предыдущей подсоединенной нодой
+    private static String getCodeForNode(@NotNull NodeEntity node) {
         var schema = node.getRawSchema();
 
         List<String> args = new LinkedList<>();
@@ -150,8 +153,9 @@ public class CodeGenerator {
         }
 
         for(var output : node.returns) {
-            if(output.value != null) {
-                schema = schema.replace("$" + output.id, output.value);
+            var value = getValueForPin(output);
+            if(value != null) {
+                schema = schema.replace("$" + output.id, value);
             }
         }
 
@@ -175,16 +179,31 @@ public class CodeGenerator {
         return schema;
     }
 
-    private static String getInput(Pin pin) {
+    private static String getValueForPin(Pin pin) {
         var representation = pin.parent.representation;
 
         if(representation.output != null) {
             var output = representation.output.get(pin.id);
 
             if(output != null) {
-                return output.replace("$random_var_name", getRandomVariableName());
+                if(output.contains("$random_var_name")) {
+                    output = output.replace("$random_var_name", getRandomVariableName());
+                }
+
+                representation.output.put(pin.id, output);
+                pin.value = output;
+
+                return output;
             }
         }
+
+        return null;
+    }
+
+    private static String getInput(Pin pin) {
+        var value = getValueForPin(pin);
+
+        if(value != null) return value;
 
         return pin.parent.getCode();
     }

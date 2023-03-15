@@ -26,6 +26,9 @@
   "id" : "boolean",
   "color" : "255, 59, 48"
 }, {
+  "id" : "condition",
+  "color" : "255, 59, 48"
+}, {
   "id" : "variable",
   "color" : "99, 230, 226"
 }, {

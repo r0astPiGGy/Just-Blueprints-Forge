@@ -1,0 +1,27 @@
+event<block_fade> {
+    variable::get_vector_from_block_face(block_face = "DFDFSDF");
+    repeat::for_each_in_list() { generated_var1, generated_var2 ->
+        repeat::on_circle(radius = 2342, center = value::eye_location<$eye_location>, angle_unit = "RADIANS", circle_points = 2342, start_angle = generated_var1) { generated_var8 ->
+            repeat::adjacently(pattern = "CARDINAL", change_rotation = "false", include_self = "false", origin = generated_var8) { generated_var9 ->
+                repeat::forever() { 
+                    entity::set_target<$entity>(name_or_uuid = "1343");
+                }
+            }
+            repeat::while(condition = world::damage_cause_equals(cause = "FREEZE")) { 
+                repeat::on_range(start = , interval = 32423, end = 2342) { generated_var10 ->
+                    
+                }
+            }
+        }
+    }
+    repeat::on_path(locations = value::eye_location<$eye_location>, rotation = "true", step = 34234) { generated_var3 ->
+        repeat::for_each_map_entry() { generated_var4, generated_var5 ->
+            repeat::on_grid() { generated_var6 ->
+                
+            }
+        }
+        repeat::multi_times(amount = 2342342) { generated_var7 ->
+            
+        }
+    }
+}

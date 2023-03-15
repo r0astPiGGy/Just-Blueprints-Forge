@@ -9857,114 +9857,129 @@
   "icon_namespace" : "actions"
 }, {
   "id" : "repeat_for_each_in_list",
-  "type" : "function",
+  "type" : "custom_with_input_exec",
   "name" : "Проход по списку",
   "category" : "repeat",
   "input" : [ {
-    "id" : "index_variable",
-    "label" : "Для присвоения индекса элемента",
-    "type" : "variable",
-    "extra_data" : null
-  }, {
-    "id" : "value_variable",
-    "label" : "Для присвоения значения элемента",
-    "type" : "variable",
-    "extra_data" : null
-  }, {
     "id" : "list",
     "label" : "Список, по которому необходимо проходиться",
     "type" : "variable",
     "extra_data" : null
   } ],
-  "output" : [ ],
+  "output" : [ {
+    "id" : "loop_body",
+    "label" : "Тело цикла",
+    "type" : "exec",
+    "extra_data" : null
+  }, {
+    "id" : "index_variable",
+    "label" : "Индекс",
+    "type" : "number",
+    "extra_data" : null
+  }, {
+    "id" : "value_variable",
+    "label" : "Элемент",
+    "type" : "variable",
+    "extra_data" : null
+  }, {
+    "id" : "loop_end",
+    "label" : "Цикл завершён",
+    "type" : "exec",
+    "extra_data" : null
+  } ],
   "extra_data" : null,
   "icon_namespace" : "actions"
 }, {
   "id" : "repeat_for_each_map_entry",
-  "type" : "function",
+  "type" : "custom_with_input_exec",
   "name" : "Проход по словарю",
   "category" : "repeat",
   "input" : [ {
-    "id" : "key_variable",
-    "label" : "Переменная для присвоения ключа элемента",
-    "type" : "variable",
-    "extra_data" : null
-  }, {
-    "id" : "value_variable",
-    "label" : "Переменная для присвоения значения элемента",
-    "type" : "variable",
-    "extra_data" : null
-  }, {
     "id" : "map",
     "label" : "Словарь, по которому необходимо проходиться",
     "type" : "variable",
     "extra_data" : null
   } ],
-  "output" : [ ],
+  "output" : [ {
+    "id" : "loop_body",
+    "label" : "Тело цикла",
+    "type" : "exec",
+    "extra_data" : null
+  }, {
+    "id" : "key_variable",
+    "label" : "Ключ элемента",
+    "type" : "variable",
+    "extra_data" : null
+  }, {
+    "id" : "value_variable",
+    "label" : "Значение элемента",
+    "type" : "variable",
+    "extra_data" : null
+  }, {
+    "id" : "loop_end",
+    "label" : "Цикл завершён",
+    "type" : "exec",
+    "extra_data" : null
+  } ],
   "extra_data" : null,
   "icon_namespace" : "actions"
 }, {
   "id" : "repeat_forever",
-  "type" : "function",
+  "type" : "custom_with_input_exec",
   "name" : "Повторять вечно",
   "category" : "repeat",
   "input" : [ ],
-  "output" : [ ],
+  "output" : [ {
+    "id" : "loop_body",
+    "label" : "Тело цикла",
+    "type" : "exec",
+    "extra_data" : null
+  }, {
+    "id" : "loop_end",
+    "label" : "Цикл завершён",
+    "type" : "exec",
+    "extra_data" : null
+  } ],
   "extra_data" : null,
   "icon_namespace" : "actions"
 }, {
   "id" : "repeat_multi_times",
-  "type" : "function",
+  "type" : "custom_with_input_exec",
   "name" : "Цикл со счётчиком",
   "category" : "repeat",
   "input" : [ {
-    "id" : "variable",
-    "label" : "Текущее значения счетчика",
-    "type" : "variable",
-    "extra_data" : null
-  }, {
     "id" : "amount",
     "label" : "Количество выполнений кода",
     "type" : "number",
     "extra_data" : null
   } ],
-  "output" : [ ],
+  "output" : [ {
+    "id" : "loop_body",
+    "label" : "Тело цикла",
+    "type" : "exec",
+    "extra_data" : null
+  }, {
+    "id" : "iterator",
+    "label" : "Текущее значения счетчика",
+    "type" : "number",
+    "extra_data" : null
+  }, {
+    "id" : "loop_end",
+    "label" : "Цикл завершён",
+    "type" : "exec",
+    "extra_data" : null
+  } ],
   "extra_data" : null,
   "icon_namespace" : "actions"
 }, {
   "id" : "repeat_on_circle",
-  "type" : "function",
+  "type" : "custom_with_input_exec",
   "name" : "Проход по окружности",
   "category" : "repeat",
   "input" : [ {
-    "id" : "variable",
-    "label" : "Для присвоения местоположения",
-    "type" : "variable",
-    "extra_data" : null
-  }, {
-    "id" : "center",
-    "label" : "Центр окружности",
-    "type" : "location",
-    "extra_data" : null
-  }, {
-    "id" : "radius",
-    "label" : "Радиус круга",
-    "type" : "number",
-    "extra_data" : null
-  }, {
-    "id" : "circle_points",
-    "label" : "Количество точек круга",
-    "type" : "number",
-    "extra_data" : null
-  }, {
     "id" : "perpendicular_to_plane",
-    "label" : "Нормаль плоскости, к которому окружность будет перпендикулярно",
+    "label" : "Нормаль плоскости, к которому окружность будет перпендикулярна",
     "type" : "vector",
-    "extra_data" : null
-  }, {
-    "id" : "start_angle",
-    "label" : "Начальный угол",
-    "type" : "number",
     "extra_data" : null
   }, {
     "id" : "angle_unit",
@@ -9974,21 +9989,51 @@
       "DEGREES" : "Градусы",
       "RADIANS" : "Радианы"
     }
+  }, {
+    "id" : "center",
+    "label" : "Центр окружности",
+    "type" : "location",
+    "extra_data" : null
+  }, {
+    "id" : "start_angle",
+    "label" : "Начальный угол",
+    "type" : "number",
+    "extra_data" : null
+  }, {
+    "id" : "circle_points",
+    "label" : "Количество точек круга",
+    "type" : "number",
+    "extra_data" : null
+  }, {
+    "id" : "radius",
+    "label" : "Радиус круга",
+    "type" : "number",
+    "extra_data" : null
   } ],
-  "output" : [ ],
+  "output" : [ {
+    "id" : "loop_body",
+    "label" : "Тело цикла",
+    "type" : "exec",
+    "extra_data" : null
+  }, {
+    "id" : "iterator",
+    "label" : "Местоположение",
+    "type" : "location",
+    "extra_data" : null
+  }, {
+    "id" : "loop_end",
+    "label" : "Цикл завершён",
+    "type" : "exec",
+    "extra_data" : null
+  } ],
   "extra_data" : null,
   "icon_namespace" : "actions"
 }, {
   "id" : "repeat_on_grid",
-  "type" : "function",
+  "type" : "custom_with_input_exec",
   "name" : "Проход по региону",
   "category" : "repeat",
   "input" : [ {
-    "id" : "variable",
-    "label" : "Для присвоения текущего местоположения региона",
-    "type" : "variable",
-    "extra_data" : null
-  }, {
     "id" : "start",
     "label" : "Начальное местоположение",
     "type" : "location",
@@ -9999,18 +10044,33 @@
     "type" : "location",
     "extra_data" : null
   } ],
-  "output" : [ ],
+  "output" : [ {
+    "id" : "loop_body",
+    "label" : "Тело цикла",
+    "type" : "exec",
+    "extra_data" : null
+  }, {
+    "id" : "iterator",
+    "label" : "Местоположение",
+    "type" : "location",
+    "extra_data" : null
+  }, {
+    "id" : "loop_end",
+    "label" : "Цикл завершён",
+    "type" : "exec",
+    "extra_data" : null
+  } ],
   "extra_data" : null,
   "icon_namespace" : "actions"
 }, {
   "id" : "repeat_on_path",
-  "type" : "function",
+  "type" : "custom_with_input_exec",
   "name" : "Проход по пути",
   "category" : "repeat",
   "input" : [ {
-    "id" : "variable",
-    "label" : "Для присвоения местоположения",
-    "type" : "variable",
+    "id" : "rotation",
+    "label" : "Сохранять поворот указанного местоположения",
+    "type" : "boolean",
     "extra_data" : null
   }, {
     "id" : "step",
@@ -10022,26 +10082,31 @@
     "label" : "Местоположения концов прямых",
     "type" : "location",
     "extra_data" : null
+  } ],
+  "output" : [ {
+    "id" : "loop_body",
+    "label" : "Тело цикла",
+    "type" : "exec",
+    "extra_data" : null
   }, {
-    "id" : "rotation",
-    "label" : "Сохранять поворот указанного местоположения",
-    "type" : "boolean",
+    "id" : "iterator",
+    "label" : "Местоположение",
+    "type" : "location",
+    "extra_data" : null
+  }, {
+    "id" : "loop_end",
+    "label" : "Цикл завершён",
+    "type" : "exec",
     "extra_data" : null
   } ],
-  "output" : [ ],
   "extra_data" : null,
   "icon_namespace" : "actions"
 }, {
   "id" : "repeat_on_range",
-  "type" : "function",
+  "type" : "custom_with_input_exec",
   "name" : "Цикл в диапазоне",
   "category" : "repeat",
   "input" : [ {
-    "id" : "variable",
-    "label" : "Текущее число из диапазона",
-    "type" : "variable",
-    "extra_data" : null
-  }, {
     "id" : "start",
     "label" : "Нижняя граница диапазона",
     "type" : "number",
@@ -10057,16 +10122,46 @@
     "type" : "number",
     "extra_data" : null
   } ],
-  "output" : [ ],
+  "output" : [ {
+    "id" : "loop_body",
+    "label" : "Тело цикла",
+    "type" : "exec",
+    "extra_data" : null
+  }, {
+    "id" : "iterator",
+    "label" : "Текущее число из диапазона",
+    "type" : "number",
+    "extra_data" : null
+  }, {
+    "id" : "loop_end",
+    "label" : "Цикл завершён",
+    "type" : "exec",
+    "extra_data" : null
+  } ],
   "extra_data" : null,
   "icon_namespace" : "actions"
 }, {
   "id" : "repeat_while",
-  "type" : "function",
+  "type" : "custom_with_input_exec",
   "name" : "Цикл с условием",
   "category" : "repeat",
-  "input" : [ ],
-  "output" : [ ],
+  "input" : [ {
+    "id" : "condition",
+    "label" : "Условие",
+    "type" : "condition",
+    "extra_data" : null
+  } ],
+  "output" : [ {
+    "id" : "loop_body",
+    "label" : "Тело цикла",
+    "type" : "exec",
+    "extra_data" : null
+  }, {
+    "id" : "loop_end",
+    "label" : "Цикл завершён",
+    "type" : "exec",
+    "extra_data" : null
+  } ],
   "extra_data" : null,
   "icon_namespace" : "actions"
 }, {

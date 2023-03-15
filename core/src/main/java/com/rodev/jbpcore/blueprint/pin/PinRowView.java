@@ -7,6 +7,7 @@ import icyllis.modernui.view.ViewGroup;
 import icyllis.modernui.widget.LinearLayout;
 import icyllis.modernui.widget.TextView;
 
+// TODO: Переделать под RelativeLayout
 public class PinRowView extends LinearLayout implements PinConnectionListener {
 
     private final PinView pinView;
@@ -23,6 +24,9 @@ public class PinRowView extends LinearLayout implements PinConnectionListener {
 
         var textView = new TextView();
         textView.setText(text);
+        textView.setPadding(dp(3), 0, dp(3), 0);
+
+        setPadding(0, dp(1.5f), 0, dp(1.5f));
 
         TextViewCreationListener.onPinTextCreated(textView);
 

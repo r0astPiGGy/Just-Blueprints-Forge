@@ -47,7 +47,8 @@ public class NodeView extends BaseNode {
                 spaceHelperView.onLastMeasure(inputRowsContainer.getMeasuredWidth(), getMeasuredWidth(), nodeHeader.getMeasuredWidth());
             }
         }, Gravity.END);
-        outputRowsContainer.setPadding(dp(10), 0, 0, 0);
+        inputRowsContainer.setPadding(dp(3), 0, dp(15), dp(5));
+        outputRowsContainer.setPadding(dp(15), 0, dp(3), dp(5));
         {
             inputRowsContainer.setId(4155423);
             var params = new LinearLayout.LayoutParams(

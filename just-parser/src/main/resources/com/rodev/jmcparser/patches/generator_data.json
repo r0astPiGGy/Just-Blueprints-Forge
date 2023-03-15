@@ -9,5 +9,100 @@
     "output" : {
       "iterator": "$random_var_name"
     }
+  },
+  {
+    "id" : "repeat_for_each_in_list",
+    "schema" : [
+      "repeat::for_each_in_list($args) { $index_variable, $value_variable ->",
+      "$loop_body",
+      "}"
+    ],
+    "output" : {
+      "index_variable": "$random_var_name",
+      "value_variable": "$random_var_name"
+    }
+  },
+  {
+    "id" : "repeat_for_each_map_entry",
+    "schema" : [
+      "repeat::for_each_map_entry($args) { $key_variable, $value_variable ->",
+      "$loop_body",
+      "}"
+    ],
+    "output" : {
+      "key_variable": "$random_var_name",
+      "value_variable": "$random_var_name"
+    }
+  },
+  {
+    "id" : "repeat_forever",
+    "schema" : [
+      "repeat::forever($args) { ",
+      "$loop_body",
+      "}"
+    ]
+  },
+  {
+    "id" : "repeat_multi_times",
+    "schema" : [
+      "repeat::multi_times($args) { $iterator ->",
+      "$loop_body",
+      "}"
+    ],
+    "output" : {
+      "iterator": "$random_var_name"
+    }
+  },
+  {
+    "id" : "repeat_on_circle",
+    "schema" : [
+      "repeat::on_circle($args) { $iterator ->",
+      "$loop_body",
+      "}"
+    ],
+    "output" : {
+      "iterator": "$random_var_name"
+    }
+  },
+  {
+    "id" : "repeat_on_grid",
+    "schema" : [
+      "repeat::on_grid($args) { $iterator ->",
+      "$loop_body",
+      "}"
+    ],
+    "output" : {
+      "iterator": "$random_var_name"
+    }
+  },
+  {
+    "id" : "repeat_on_path",
+    "schema" : [
+      "repeat::on_path($args) { $iterator ->",
+      "$loop_body",
+      "}"
+    ],
+    "output" : {
+      "iterator": "$random_var_name"
+    }
+  },
+  {
+    "id" : "repeat_on_range",
+    "schema" : [
+      "repeat::on_range($args) { $iterator ->",
+      "$loop_body",
+      "}"
+    ],
+    "output" : {
+      "iterator": "$random_var_name"
+    }
+  },
+  {
+    "id" : "repeat_while",
+    "schema" : [
+      "repeat::while($args) { ",
+      "$loop_body",
+      "}"
+    ]
   }
 ]

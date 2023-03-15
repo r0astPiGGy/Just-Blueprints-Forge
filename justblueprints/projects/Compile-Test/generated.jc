@@ -11,7 +11,7 @@ event<player_food_level_change> {
         player::set_gamemode<default_player>(flight_mode = "KEEP_ORIGINAL", gamemode = "CREATIVE");
         repeat::adjacently(change_rotation = "true", origin = value::event_block, pattern = "SQUARE", include_self = "true") { $iterator ->
             player::message<default_player>(messages = "HELLLOOOO", merging = "SEPARATE_LINES");
-            world::generate_tree(tree_type = "BROWN_MUSHROOM", location = generated_var2);
+            world::generate_tree(tree_type = "BROWN_MUSHROOM", location = generated_var1);
         }
         player::message<default_player>(messages = "Цикл завершен", merging = "SEPARATE_LINES");
     } else {

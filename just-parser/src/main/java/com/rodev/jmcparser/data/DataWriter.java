@@ -36,6 +36,10 @@ public abstract class DataWriter<T, P> {
         return patcher.patch(object);
     }
 
+    public void setAdditionalDestinationDirectories(File... directories) {
+        jsonDataWriter.setAdditionalDestinationDirectories(directories);
+    }
+
     public static <T> Default<T> defaultDataWriter(File file) {
         return new Default<>(file);
     }

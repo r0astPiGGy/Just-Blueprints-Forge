@@ -75,12 +75,23 @@ public class Parser implements Runnable {
 
         var generatorDataEntities = helper.getDataGenerator().getGeneratorEntities();
 
+        applyAdditionalDirectories(actionWriter, categoryWriter, variableTypeWriter, generatorDataWriter);
+
         actionWriter.write(actions);
         categoryWriter.write(actions);
         variableTypeWriter.write(actions);
         generatorDataWriter.write(generatorDataEntities);
 
         helper.onAllDataInterpreted();
+    }
+
+    private void applyAdditionalDirectories(DataWriter<?, ?>... writers) {
+        for (DataWriter<?, ?> writer : writers) {
+            writer.setAdditionalDestinationDirectories(
+                    new File("core/src/main/resources/com/rodev/jbpcore/"),
+                    new File("src/main/resources/com/rodev/jbp/")
+            );
+        }
     }
 
     public static File parserDirectoryChild(String fileName) {
