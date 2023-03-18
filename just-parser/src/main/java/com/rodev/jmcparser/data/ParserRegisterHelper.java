@@ -75,9 +75,11 @@ public class ParserRegisterHelper {
                 return "pure_function";
             }
 
-            if (data.id.startsWith("set_variable_get") && data.args.length < 3) {
-                if (data.args[1].type.equals(data.origin))
+            if (data.id.startsWith("set_variable_get")) {
+                if (data.args[1].type.equals(data.origin) && data.args.length < 3)
                     return "variable_property";
+
+                return "pure_function";
             }
 
             return "function";

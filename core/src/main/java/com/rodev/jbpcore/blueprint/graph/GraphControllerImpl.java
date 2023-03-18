@@ -275,6 +275,7 @@ public class GraphControllerImpl implements
 
         currentSelectedNode = node;
         currentSelectedNode.select();
+        currentSelectedNode.asView().requestFocus();
     }
 
     @Override

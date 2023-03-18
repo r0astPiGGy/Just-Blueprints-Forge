@@ -1,0 +1,92 @@
+{
+  "nodes" : [ {
+    "id" : "entity_removed_from_world",
+    "position" : {
+      "x" : 8388036,
+      "y" : 8388456
+    },
+    "data" : {
+      "input" : { },
+      "output" : {
+        "85f16312-af42-45ce-8c36-33a25c3bbbea" : {
+          "name" : "exec",
+          "connectedTo" : null,
+          "value" : null,
+          "type" : "exec"
+        }
+      }
+    }
+  }, {
+    "id" : "set_variable_get_list_variables",
+    "position" : {
+      "x" : 8388246,
+      "y" : 8388640
+    },
+    "data" : {
+      "input" : {
+        "59c81ba2-6537-4270-ae6e-c9aa50713011" : {
+          "name" : "scope",
+          "connectedTo" : null,
+          "value" : "\"SAVE\"",
+          "type" : "enum"
+        }
+      },
+      "output" : {
+        "eb94ee91-2ed9-444f-b5e6-b87103359607" : {
+          "name" : "-",
+          "connectedTo" : null,
+          "value" : null,
+          "type" : "default"
+        }
+      }
+    }
+  }, {
+    "id" : "repeat_for_each_map_entry",
+    "position" : {
+      "x" : 8388625,
+      "y" : 8388457
+    },
+    "data" : {
+      "input" : {
+        "0ea69266-f1cc-4201-b4d2-bb3a453adf94" : {
+          "name" : "exec",
+          "connectedTo" : "85f16312-af42-45ce-8c36-33a25c3bbbea",
+          "value" : null,
+          "type" : "exec"
+        },
+        "f52e6950-6e25-487d-b07f-1d147da5ccf9" : {
+          "name" : "map",
+          "connectedTo" : "eb94ee91-2ed9-444f-b5e6-b87103359607",
+          "value" : null,
+          "type" : "default"
+        }
+      },
+      "output" : {
+        "4674a60e-27cd-477a-81d3-ce1f23c7fc58" : {
+          "name" : "key_variable",
+          "connectedTo" : null,
+          "value" : null,
+          "type" : "default"
+        },
+        "f91d5c95-61b0-46ee-b963-582bd9a6d92b" : {
+          "name" : "loop_end",
+          "connectedTo" : null,
+          "value" : null,
+          "type" : "exec"
+        },
+        "cd374a55-2c61-4167-a78c-ced6ce43e21f" : {
+          "name" : "loop_body",
+          "connectedTo" : null,
+          "value" : null,
+          "type" : "exec"
+        },
+        "567acbb2-1f1d-4f2c-902e-38012ce97db1" : {
+          "name" : "value_variable",
+          "connectedTo" : null,
+          "value" : null,
+          "type" : "default"
+        }
+      }
+    }
+  } ]
+}

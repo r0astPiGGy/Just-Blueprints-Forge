@@ -12,8 +12,13 @@ public class GeneratorEntity {
     public String id;
     public Object schema;
 
+    public PlaceAt placeAt = PlaceAt.AFTER;
+
     @Nullable
     public Set<String> ignoreArguments;
+
+    @JsonAlias("use-cache")
+    public boolean useCache = true;
 
     @Nullable
     public String type;

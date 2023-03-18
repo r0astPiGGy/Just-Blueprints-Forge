@@ -3,6 +3,7 @@ package com.rodev.jbpcore.blueprint.node;
 import com.rodev.jbpcore.blueprint.ChildRoot;
 import com.rodev.jbpcore.blueprint.data.variable.VariableTypeRegistry;
 import com.rodev.jbpcore.blueprint.pin.*;
+import icyllis.modernui.view.KeyEvent;
 import icyllis.modernui.view.MotionEvent;
 import icyllis.modernui.view.View;
 import icyllis.modernui.view.ViewGroup;
@@ -43,6 +44,17 @@ public abstract class BaseNode extends LinearLayout implements BPNode, PinHoverL
         setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
 
         onBackgroundInit();
+
+        setFocusable(true);
+        setFocusableInTouchMode(true);
+
+        setOnKeyListener((v, key, event) -> {
+            if(key == KeyEvent.KEY_DELETE && event.getAction() == KeyEvent.ACTION_UP) {
+                System.out.println("ON NODE DELETE = " + getNodeId());
+                return true;
+            }
+            return false;
+        });
     }
 
     @Override

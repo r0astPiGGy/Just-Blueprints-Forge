@@ -10507,7 +10507,7 @@
   "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_list_index_of_value",
-  "type" : "function",
+  "type" : "pure_function",
   "name" : "Получить индекс значения списка",
   "category" : "set_variable.set_variable-list",
   "input" : [ {
@@ -10539,7 +10539,7 @@
   "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_list_length",
-  "type" : "function",
+  "type" : "pure_function",
   "name" : "Получить размер списка",
   "category" : "set_variable.set_variable-list",
   "input" : [ {
@@ -10558,7 +10558,7 @@
   "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_list_value",
-  "type" : "function",
+  "type" : "pure_function",
   "name" : "Получить значение из списка",
   "category" : "set_variable.set_variable-list",
   "input" : [ {
@@ -10859,7 +10859,7 @@
   "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_book_text",
-  "type" : "function",
+  "type" : "pure_function",
   "name" : "Получить текст книги",
   "category" : "set_variable.set_variable-item",
   "input" : [ {
@@ -10883,7 +10883,7 @@
   "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_compass_lodestone",
-  "type" : "function",
+  "type" : "pure_function",
   "name" : "Получить местоположение магнетита",
   "category" : "set_variable.set_variable-item",
   "input" : [ {
@@ -10921,7 +10921,7 @@
   "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_item_attribute",
-  "type" : "function",
+  "type" : "pure_function",
   "name" : "Получить атрибут предмета",
   "category" : "set_variable.set_variable-item",
   "input" : [ {
@@ -11005,7 +11005,7 @@
   "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_item_custom_model_data",
-  "type" : "function",
+  "type" : "pure_function",
   "name" : "Получить данные модели предмета",
   "category" : "set_variable.set_variable-item",
   "input" : [ {
@@ -11024,7 +11024,7 @@
   "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_item_custom_tag",
-  "type" : "function",
+  "type" : "pure_function",
   "name" : "Получить кастомный тег предмета",
   "category" : "set_variable.set_variable-item",
   "input" : [ {
@@ -11072,7 +11072,7 @@
   "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_item_durability",
-  "type" : "function",
+  "type" : "pure_function",
   "name" : "Получить прочность предмета",
   "category" : "set_variable.set_variable-item",
   "input" : [ {
@@ -11140,7 +11140,7 @@
   "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_item_lore_line",
-  "type" : "function",
+  "type" : "pure_function",
   "name" : "Получить строку описания предмета",
   "category" : "set_variable.set_variable-item",
   "input" : [ {
@@ -11164,7 +11164,7 @@
   "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_item_type",
-  "type" : "function",
+  "type" : "pure_function",
   "name" : "Получить тип предмета",
   "category" : "set_variable.set_variable-item",
   "input" : [ {
@@ -11249,7 +11249,7 @@
   "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_item_potion_effects",
-  "type" : "function",
+  "type" : "pure_function",
   "name" : "Получить эффекты зелий из предмета",
   "category" : "set_variable.set_variable-item",
   "input" : [ {
@@ -11268,7 +11268,7 @@
   "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_item_rarity",
-  "type" : "function",
+  "type" : "pure_function",
   "name" : "Получить редкость предмета",
   "category" : "set_variable.set_variable-item",
   "input" : [ {
@@ -11287,7 +11287,7 @@
   "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_player_head",
-  "type" : "function",
+  "type" : "pure_function",
   "name" : "Получить голову игрока",
   "category" : "set_variable.set_variable-item",
   "input" : [ {
@@ -11306,7 +11306,7 @@
   "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_player_head_owner",
-  "type" : "function",
+  "type" : "pure_function",
   "name" : "Получить владельца головы",
   "category" : "set_variable.set_variable-item",
   "input" : [ {
@@ -12160,7 +12160,7 @@
   "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_all_coordinates",
-  "type" : "function",
+  "type" : "pure_function",
   "name" : "Получить все координаты местоположения",
   "category" : "set_variable.set_variable-location",
   "input" : [ {
@@ -12199,7 +12199,7 @@
   "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_coordinate",
-  "type" : "function",
+  "type" : "pure_function",
   "name" : "Получить координату местоположения",
   "category" : "set_variable.set_variable-location",
   "input" : [ {
@@ -12670,7 +12670,7 @@
   "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_map_keys",
-  "type" : "function",
+  "type" : "pure_function",
   "name" : "Получить список ключей словаря",
   "category" : "set_variable.set_variable-map",
   "input" : [ {
@@ -12689,7 +12689,7 @@
   "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_map_size",
-  "type" : "function",
+  "type" : "pure_function",
   "name" : "Получить размер словаря",
   "category" : "set_variable.set_variable-map",
   "input" : [ {
@@ -12708,7 +12708,7 @@
   "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_map_value",
-  "type" : "function",
+  "type" : "pure_function",
   "name" : "Получить значение словаря",
   "category" : "set_variable.set_variable-map",
   "input" : [ {
@@ -12737,7 +12737,7 @@
   "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_map_values",
-  "type" : "function",
+  "type" : "pure_function",
   "name" : "Получить список значений словаря",
   "category" : "set_variable.set_variable-map",
   "input" : [ {
@@ -12849,7 +12849,7 @@
   "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_color_channels",
-  "type" : "function",
+  "type" : "pure_function",
   "name" : "Получить цветовые каналы",
   "category" : "set_variable.set_variable-misc",
   "input" : [ {
@@ -12991,7 +12991,7 @@
   "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_template_code",
-  "type" : "function",
+  "type" : "pure_function",
   "name" : "Получить код из шаблона",
   "category" : "set_variable.set_variable-misc",
   "input" : [ {
@@ -14121,7 +14121,7 @@
   "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_particle_spread",
-  "type" : "function",
+  "type" : "pure_function",
   "name" : "Получить разброс частицы",
   "category" : "set_variable.set_variable-particle",
   "input" : [ {
@@ -14340,7 +14340,7 @@
   "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_list_variables",
-  "type" : "function",
+  "type" : "pure_function",
   "name" : "Получить имена переменных",
   "category" : "set_variable.set_variable-setting",
   "input" : [ {
@@ -14553,7 +14553,7 @@
   "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_char_at",
-  "type" : "function",
+  "type" : "pure_function",
   "name" : "Получить символ по индексу",
   "category" : "set_variable.set_variable-text",
   "input" : [ {
@@ -14577,7 +14577,7 @@
   "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_index_of_subtext",
-  "type" : "function",
+  "type" : "pure_function",
   "name" : "Получить индекс подтекста",
   "category" : "set_variable.set_variable-text",
   "input" : [ {
@@ -14633,7 +14633,7 @@
   "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_text_width",
-  "type" : "function",
+  "type" : "pure_function",
   "name" : "Получить ширину текста в пикселях",
   "category" : "set_variable.set_variable-text",
   "input" : [ {
@@ -15184,7 +15184,7 @@
   "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_angle_between_vectors",
-  "type" : "function",
+  "type" : "pure_function",
   "name" : "Получить угол между двумя векторами",
   "category" : "set_variable.set_variable-vector",
   "input" : [ {
@@ -15216,7 +15216,7 @@
   "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_midpoint_between_vectors",
-  "type" : "function",
+  "type" : "pure_function",
   "name" : "Получить центральное значение между векторами",
   "category" : "set_variable.set_variable-vector",
   "input" : [ {
@@ -15240,7 +15240,7 @@
   "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_vector_between_locations",
-  "type" : "function",
+  "type" : "pure_function",
   "name" : "Создать вектор между местоположениями",
   "category" : "set_variable.set_variable-vector",
   "input" : [ {
@@ -15264,7 +15264,7 @@
   "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_vector_component",
-  "type" : "function",
+  "type" : "pure_function",
   "name" : "Получить координату вектора",
   "category" : "set_variable.set_variable-vector",
   "input" : [ {
@@ -15292,7 +15292,7 @@
   "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_vector_from_block_face",
-  "type" : "function",
+  "type" : "pure_function",
   "name" : "Создать вектор из кардинального направления",
   "category" : "set_variable.set_variable-vector",
   "input" : [ {
@@ -15311,7 +15311,7 @@
   "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_vector_length",
-  "type" : "function",
+  "type" : "pure_function",
   "name" : "Получить длину вектора",
   "category" : "set_variable.set_variable-vector",
   "input" : [ {
@@ -15593,7 +15593,7 @@
   "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_all_block_data",
-  "type" : "function",
+  "type" : "pure_function",
   "name" : "Получить все данные блока",
   "category" : "set_variable.set_variable-world",
   "input" : [ {
@@ -15617,7 +15617,7 @@
   "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_block_custom_tag",
-  "type" : "function",
+  "type" : "pure_function",
   "name" : "creative_plus.action.set_variable_get_block_custom_tag.name",
   "category" : "set_variable",
   "input" : [ {
@@ -15651,7 +15651,7 @@
   "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_block_data",
-  "type" : "function",
+  "type" : "pure_function",
   "name" : "Получить данные блока",
   "category" : "set_variable.set_variable-world",
   "input" : [ {
@@ -15675,7 +15675,7 @@
   "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_block_growth",
-  "type" : "function",
+  "type" : "pure_function",
   "name" : "Получить уровень роста блока",
   "category" : "set_variable.set_variable-world",
   "input" : [ {
@@ -15702,7 +15702,7 @@
   "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_block_material",
-  "type" : "function",
+  "type" : "pure_function",
   "name" : "Получить тип блока",
   "category" : "set_variable.set_variable-world",
   "input" : [ {
@@ -15731,7 +15731,7 @@
   "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_block_power",
-  "type" : "function",
+  "type" : "pure_function",
   "name" : "Получить силу редстоуна",
   "category" : "set_variable.set_variable-world",
   "input" : [ {
@@ -15750,7 +15750,7 @@
   "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_container_contents",
-  "type" : "function",
+  "type" : "pure_function",
   "name" : "Получить содержимое контейнера",
   "category" : "set_variable.set_variable-world",
   "input" : [ {
@@ -15774,7 +15774,7 @@
   "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_container_lock",
-  "type" : "function",
+  "type" : "pure_function",
   "name" : "Получить ключ контейнера",
   "category" : "set_variable.set_variable-world",
   "input" : [ {
@@ -15812,7 +15812,7 @@
   "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_lectern_book",
-  "type" : "function",
+  "type" : "pure_function",
   "name" : "Получить книгу с кафедры",
   "category" : "set_variable.set_variable-world",
   "input" : [ {
@@ -15831,7 +15831,7 @@
   "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_lectern_page",
-  "type" : "function",
+  "type" : "pure_function",
   "name" : "Получить страницу книги с кафедры",
   "category" : "set_variable.set_variable-world",
   "input" : [ {
@@ -15850,7 +15850,7 @@
   "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_light_level",
-  "type" : "function",
+  "type" : "pure_function",
   "name" : "Получить уровень освещения",
   "category" : "set_variable.set_variable-world",
   "input" : [ {
@@ -15878,7 +15878,7 @@
   "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_get_sign_text",
-  "type" : "function",
+  "type" : "pure_function",
   "name" : "Получить текст строки таблички",
   "category" : "set_variable.set_variable-world",
   "input" : [ {

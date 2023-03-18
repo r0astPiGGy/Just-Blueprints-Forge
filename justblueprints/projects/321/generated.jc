@@ -1,0 +1,5 @@
+event<entity_removed_from_world> {
+    repeat::for_each_map_entry(map = generated_var1) { generated_var2, generated_var3 ->
+        
+    }
+}
