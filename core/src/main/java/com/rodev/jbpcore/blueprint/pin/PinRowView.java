@@ -8,7 +8,7 @@ import icyllis.modernui.widget.LinearLayout;
 import icyllis.modernui.widget.TextView;
 
 // TODO: Переделать под RelativeLayout
-public class PinRowView extends LinearLayout implements PinConnectionListener {
+public class PinRowView extends LinearLayout implements PinToggleListener {
 
     private final PinView pinView;
     private final TextView textView;
@@ -73,13 +73,13 @@ public class PinRowView extends LinearLayout implements PinConnectionListener {
     }
 
     @Override
-    public void onConnected(Pin pin) {
+    public void onPinEnabled(Pin pin) {
         if(defaultInputValue == null) return;
         defaultInputValue.hide();
     }
 
     @Override
-    public void onDisconnected(Pin pin) {
+    public void onPinDisabled(Pin pin) {
         if(defaultInputValue == null) return;
         defaultInputValue.show();
     }

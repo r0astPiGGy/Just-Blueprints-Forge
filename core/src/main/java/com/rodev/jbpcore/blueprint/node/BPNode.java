@@ -2,6 +2,7 @@ package com.rodev.jbpcore.blueprint.node;
 
 import com.rodev.jbpcore.blueprint.ChildRoot;
 import com.rodev.jbpcore.blueprint.pin.Pin;
+import com.rodev.jbpcore.blueprint.pin.PinConnectionHandler;
 import com.rodev.jbpcore.blueprint.pin.PinDragListener;
 import com.rodev.jbpcore.blueprint.pin.PinHoverListener;
 import icyllis.modernui.view.View;
@@ -25,6 +26,8 @@ public interface BPNode extends ChildRoot {
     void setPinHoverListener(PinHoverListener listener);
 
     void setPinDragListener(PinDragListener listener);
+
+    void setPinConnectionHandler(PinConnectionHandler pinConnectionHandler);
 
     void setNodePositionChangeListener(NodePositionChangeListener listener);
 

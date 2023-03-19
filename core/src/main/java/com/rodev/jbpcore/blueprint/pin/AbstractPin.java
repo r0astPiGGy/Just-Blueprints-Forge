@@ -9,9 +9,10 @@ public abstract class AbstractPin implements Pin {
     private UUID id;
     private PinDragListener pinDragListener;
     private PinHoverListener pinHoverListener;
-    private PinConnectionListener pinConnectionListener;
+    private PinToggleListener pinToggleListener;
     private PinPositionSupplier pinPositionSupplier;
-
+    private PinConnectionHandler pinConnectionHandler;
+    private boolean isBeingDisconnected;
     private Position position;
 
     public AbstractPin(PinType pinType) {
@@ -21,6 +22,15 @@ public abstract class AbstractPin implements Pin {
     public AbstractPin(PinType pinType, UUID uuid) {
         this.pinType = pinType;
         this.id = uuid;
+    }
+
+    @Override
+    public void setIsBeingDisconnected(boolean value) {
+        isBeingDisconnected = value;
+    }
+
+    public boolean isBeingDisconnected() {
+        return isBeingDisconnected;
     }
 
     @Override
@@ -54,6 +64,38 @@ public abstract class AbstractPin implements Pin {
     }
 
     @Override
+    public void setPinConnectionHandler(PinConnectionHandler pinConnectionHandler) {
+        this.pinConnectionHandler = pinConnectionHandler;
+    }
+
+    protected boolean handleOnConnect(Pin connection) {
+//        var connecting = isBeingConnected;
+//
+//        isBeingConnected = false;
+//
+//        if(shouldConnect && connecting) {
+//            shouldConnect = false;
+//            return true;
+//        }
+
+        if(pinConnectionHandler == null) return true;
+
+        return pinConnectionHandler.handleConnect(this, connection);
+    }
+
+    protected boolean handleOnDisconnect(Pin connection) {
+        if(pinConnectionHandler == null) return true;
+
+        return pinConnectionHandler.handleDisconnect(this, connection);
+    }
+
+    protected boolean handleOnDisconnectAll() {
+        if(pinConnectionHandler == null) return true;
+
+        return pinConnectionHandler.onDisconnectedAll(this);
+    }
+
+    @Override
     public void onPositionUpdate() {
         if(pinPositionSupplier == null || position == null) return;
 
@@ -73,8 +115,8 @@ public abstract class AbstractPin implements Pin {
     }
 
     @Override
-    public void setPinToggleListener(PinConnectionListener pinConnectionListener) {
-        this.pinConnectionListener = pinConnectionListener;
+    public void setPinToggleListener(PinToggleListener pinToggleListener) {
+        this.pinToggleListener = pinToggleListener;
     }
 
     @Override
@@ -93,16 +135,16 @@ public abstract class AbstractPin implements Pin {
 
     @Override
     public void enable() {
-        if(pinConnectionListener == null) return;
+        if(pinToggleListener == null) return;
 
-        pinConnectionListener.onConnected(this);
+        pinToggleListener.onPinEnabled(this);
     }
 
     @Override
     public void disable() {
-        if(pinConnectionListener == null) return;
+        if(pinToggleListener == null) return;
 
-        pinConnectionListener.onDisconnected(this);
+        pinToggleListener.onPinDisabled(this);
     }
 
     public boolean isTheSameTypeAs(Pin anotherPin) {

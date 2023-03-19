@@ -5,10 +5,11 @@ import icyllis.modernui.R;
 import icyllis.modernui.util.ColorStateList;
 import icyllis.modernui.util.StateSet;
 import icyllis.modernui.view.MotionEvent;
+import icyllis.modernui.view.View;
 import icyllis.modernui.widget.CompoundButton;
 import org.jetbrains.annotations.NotNull;
 
-public class PinView extends CompoundButton implements PinConnectionListener, PinPositionSupplier {
+public class PinView extends CompoundButton implements PinToggleListener, PinPositionSupplier {
 
     private static final int[][] ENABLED_CHECKED_STATES = {
             new int[]{R.attr.state_enabled, R.attr.state_checked}, // [0]
@@ -20,7 +21,7 @@ public class PinView extends CompoundButton implements PinConnectionListener, Pi
 
     private boolean isDragging;
 
-    private PinConnectionListener pinConnectionListener;
+    private PinToggleListener pinToggleListener;
 
     public PinView(Pin pin) {
         this.pin = pin;
@@ -102,8 +103,8 @@ public class PinView extends CompoundButton implements PinConnectionListener, Pi
         );
     }
 
-    public void setPinConnectionListener(PinConnectionListener pinConnectionListener) {
-        this.pinConnectionListener = pinConnectionListener;
+    public void setPinConnectionListener(PinToggleListener pinToggleListener) {
+        this.pinToggleListener = pinToggleListener;
     }
 
     private int getHalfWidth() {
@@ -120,20 +121,20 @@ public class PinView extends CompoundButton implements PinConnectionListener, Pi
     }
 
     @Override
-    public void onConnected(Pin pin) {
+    public void onPinEnabled(Pin pin) {
         setChecked(true);
 
-        if(pinConnectionListener != null) {
-            pinConnectionListener.onConnected(pin);
+        if(pinToggleListener != null) {
+            pinToggleListener.onPinEnabled(pin);
         }
     }
 
     @Override
-    public void onDisconnected(Pin pin) {
+    public void onPinDisabled(Pin pin) {
         setChecked(false);
 
-        if(pinConnectionListener != null) {
-            pinConnectionListener.onDisconnected(pin);
+        if(pinToggleListener != null) {
+            pinToggleListener.onPinDisabled(pin);
         }
     }
 }

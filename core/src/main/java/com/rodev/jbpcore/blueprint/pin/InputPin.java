@@ -25,11 +25,13 @@ public abstract class InputPin extends AbstractPin {
     }
 
     @Override
-    public void connect(Pin pin) {
-        if(pin == this) return;
+    public boolean connect(Pin pin) {
+        if(!handleOnConnect(pin)) return false;
 
         connectedPin = pin;
         enable();
+
+        return true;
     }
 
     @Override
@@ -38,16 +40,20 @@ public abstract class InputPin extends AbstractPin {
     }
 
     @Override
-    public void disconnect(Pin pin) {
-        disconnectAll();
-    }
-
-    @Override
-    public void disconnectAll() {
-        if(connectedPin == null) return;
+    public boolean disconnect(Pin pin) {
+        if(!handleOnDisconnect(pin)) return true;
 
         disable();
         connectedPin = null;
+
+        return true;
+    }
+
+    @Override
+    public boolean disconnectAll() {
+        if(connectedPin == null) return false;
+
+        return disconnect(connectedPin);
     }
 
     @Override

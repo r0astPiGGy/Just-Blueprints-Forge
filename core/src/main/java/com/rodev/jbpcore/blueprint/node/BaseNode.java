@@ -17,11 +17,11 @@ import org.jetbrains.annotations.Nullable;
 import java.util.*;
 import java.util.function.Consumer;
 
-public abstract class BaseNode extends LinearLayout implements BPNode, PinHoverListener, PinDragListener {
+public abstract class BaseNode extends LinearLayout implements BPNode, PinHoverListener, PinDragListener, PinConnectionHandler {
 
     private Boolean selected = false;
 
-    // TODO: Remove, find another solution due to huge memory consume
+    // TODO: Remove, find another solution due to relatively huge memory consume
     private final Map<String, PinRowView> outputPinsByName = new HashMap<>();
     private final Map<String, PinRowView> inputPinsByName = new HashMap<>();
     private final List<PinRowView> outputPins = new LinkedList<>();
@@ -34,6 +34,8 @@ public abstract class BaseNode extends LinearLayout implements BPNode, PinHoverL
     private PinHoverListener pinHoverListener;
     @Setter
     private PinDragListener pinDragListener;
+    @Setter
+    private PinConnectionHandler pinConnectionHandler;
 
     public BaseNode(String id) {
         this.id = id;
@@ -47,14 +49,6 @@ public abstract class BaseNode extends LinearLayout implements BPNode, PinHoverL
 
         setFocusable(true);
         setFocusableInTouchMode(true);
-
-        setOnKeyListener((v, key, event) -> {
-            if(key == KeyEvent.KEY_DELETE && event.getAction() == KeyEvent.ACTION_UP) {
-                System.out.println("ON NODE DELETE = " + getNodeId());
-                return true;
-            }
-            return false;
-        });
     }
 
     @Override
@@ -190,6 +184,7 @@ public abstract class BaseNode extends LinearLayout implements BPNode, PinHoverL
 
         pin.setPinHoverListener(this);
         pin.setPinDragListener(this);
+        pin.setPinConnectionHandler(this);
         inputPinsByName.put(pin.getType().getId(), rowView);
 
         addInput(rowView);
@@ -202,6 +197,7 @@ public abstract class BaseNode extends LinearLayout implements BPNode, PinHoverL
 
         pin.setPinHoverListener(this);
         pin.setPinDragListener(this);
+        pin.setPinConnectionHandler(this);
         outputPinsByName.put(pin.getType().getId(), rowView);
 
         addOutput(rowView);
@@ -268,6 +264,21 @@ public abstract class BaseNode extends LinearLayout implements BPNode, PinHoverL
     @Override
     public NodeDeserializer getDeserializer(Object data) {
         return new Deserializer(data, this);
+    }
+
+    @Override
+    public boolean handleConnect(Pin target, Pin connection) {
+        return pinConnectionHandler.handleConnect(target, connection);
+    }
+
+    @Override
+    public boolean handleDisconnect(Pin target, Pin connection) {
+        return pinConnectionHandler.handleDisconnect(target, connection);
+    }
+
+    @Override
+    public boolean onDisconnectedAll(Pin target) {
+        return pinConnectionHandler.onDisconnectedAll(target);
     }
 
     // TODO: Move serialization/deserialization to WorkspaceImpl.java

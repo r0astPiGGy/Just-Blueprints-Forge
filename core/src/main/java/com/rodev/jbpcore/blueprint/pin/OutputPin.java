@@ -30,31 +30,39 @@ public abstract class OutputPin extends AbstractPin {
     }
 
     @Override
-    public void connect(Pin pin) {
-        if (pin == this) return;
+    public boolean connect(Pin pin) {
+        if(!handleOnConnect(pin)) return false;
 
         if (connectionSet.isEmpty()) {
             enable();
         }
 
         connectionSet.add(pin);
+
+        return true;
     }
 
     @Override
-    public void disconnect(Pin pin) {
-        if (pin == this) return;
+    public boolean disconnect(Pin pin) {
+        if(!handleOnDisconnect(pin)) return false;
 
         connectionSet.remove(pin);
 
         if(connectionSet.isEmpty()) {
             disable();
         }
+
+        return true;
     }
 
     @Override
-    public void disconnectAll() {
+    public boolean disconnectAll() {
+        if(!handleOnDisconnectAll()) return false;
+
         connectionSet.clear();
         disable();
+
+        return true;
     }
 
     @Override

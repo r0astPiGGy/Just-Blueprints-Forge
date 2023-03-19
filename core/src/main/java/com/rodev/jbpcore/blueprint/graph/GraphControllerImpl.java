@@ -6,18 +6,23 @@ import com.rodev.jbpcore.blueprint.node.NodeMoveListener;
 import com.rodev.jbpcore.blueprint.node.NodePositionChangeListener;
 import com.rodev.jbpcore.blueprint.node.NodeTouchListener;
 import com.rodev.jbpcore.blueprint.pin.Pin;
+import com.rodev.jbpcore.blueprint.pin.PinConnectionHandler;
 import com.rodev.jbpcore.blueprint.pin.PinDragListener;
 import com.rodev.jbpcore.blueprint.pin.PinHoverListener;
 import com.rodev.jbpcore.blueprint.pin.exec_pin.ExecPin;
 import com.rodev.jbpcore.contextmenu.ContextMenuBuilder;
 import icyllis.modernui.graphics.Canvas;
 import icyllis.modernui.graphics.Paint;
+import icyllis.modernui.view.KeyEvent;
+import icyllis.modernui.view.MotionEvent;
+import icyllis.modernui.view.ViewGroup;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class GraphControllerImpl implements
-        GraphController, PinHoverListener, PinDragListener, NodeTouchListener, NodeMoveListener, NodePositionChangeListener {
+        GraphController, PinHoverListener, PinDragListener, NodeTouchListener, NodeMoveListener, NodePositionChangeListener, PinConnectionHandler {
 
     private final Set<Pin> outputPins = new HashSet<>();
     private ViewHolder viewHolder;
@@ -41,7 +46,11 @@ public class GraphControllerImpl implements
         node.setPinDragListener(this);
         node.setNodeTouchListener(this);
         node.setNodeMoveListener(this);
+        node.setPinConnectionHandler(this);
         node.setNodePositionChangeListener(this);
+        node.asView().setOnKeyListener((v, keyCode, event) -> {
+            return onSelectedNodeKeyPressed(node, keyCode, event);
+        });
 
         viewHolder.addViewAt(node.asView(), x, y);
     }
@@ -55,6 +64,28 @@ public class GraphControllerImpl implements
                 })
                 .onDismiss(this::clearLastTemporaryLine)
                 .show();
+    }
+
+    private boolean onSelectedNodeKeyPressed(BPNode node, int keyCode, KeyEvent keyEvent) {
+        if(keyEvent.getAction() != MotionEvent.ACTION_UP) return false;
+
+        if(keyCode == KeyEvent.KEY_DELETE && currentSelectedNode == node) {
+            handleOnNodeDelete(node);
+
+            return true;
+        }
+
+        return false;
+    }
+
+    private void handleOnNodeDelete(BPNode node) {
+        var nodeView = node.asView();
+
+        node.forEachPin(Pin::disconnectAll);
+
+        if(nodeView.getParent() instanceof ViewGroup parent) {
+            parent.removeView(nodeView);
+        }
     }
 
     @Override
@@ -129,7 +160,7 @@ public class GraphControllerImpl implements
         }
 
         if(pin.isConnected() && !pin.supportMultipleConnections()) {
-            disconnectSingleConnectionPin(pin);
+            pin.disconnectAll();
         }
 
         drawTemporaryLineAt(xStart, yStart, xEnd, yEnd, pin.getColor());
@@ -155,18 +186,7 @@ public class GraphControllerImpl implements
 
         clearLastTemporaryLine();
 
-        if (!currentHoveringPin.isApplicable(pin)) return;
-
-        if(pin.isInput() && currentHoveringPin.isOutput()) {
-            handleInputConnection(pin, currentHoveringPin);
-            return;
-        }
-
-        if(currentHoveringPin.isInput() && pin.isOutput()) {
-            handleOutputConnection(currentHoveringPin, pin);
-            return;
-        }
-
+        connect(pin, currentHoveringPin);
     }
 
     private void handleContextMenuOpen(ContextMenuBuilder builder, Pin pin) {
@@ -202,59 +222,73 @@ public class GraphControllerImpl implements
                 .show();
     }
 
-    private void handleInputConnection(Pin input, Pin output) {
-        System.out.println("HANDLING INPUT CONNECTION");
-        System.out.println("Input = " + input);
-        System.out.println("Output = " + output);
+    @Override
+    public boolean handleConnect(Pin pin, Pin connection) {
+        if(pin == connection) return false;
 
-        if(output.isPinConnected(input)) return;
+        if(!pin.isApplicable(connection)) return false;
 
-        System.out.println("Pins aren't connected to each other, connecting them");
+        if(pin.isPinConnected(connection)) return false;
 
-        connect(input, output);
-    }
-
-    private void handleOutputConnection(Pin input, Pin output) {
-        System.out.println("HANDLING OUTPUT CONNECTION");
-        System.out.println("Input = " + input);
-        System.out.println("Output = " + output);
-
-        if(input.isPinConnected(output)) return;
-
-        System.out.println("Pins aren't connected to each other, checking if input is connected");
-
-        if(input.isConnected()) {
-            System.out.println("Input is connected, trying to disconnect it");
-            disconnectSingleConnectionPin(input);
+        if(pin.isOutput()) {
+            outputPins.add(pin);
+        } else {
+            outputPins.add(connection);
         }
 
-        System.out.println("Connecting input and output pins");
-
-        connect(input, output);
+        return true;
     }
 
-    public void connect(Pin input, Pin output) {
-        outputPins.add(output);
+    @Override
+    public boolean handleDisconnect(Pin target, Pin connection) {
+        if(!target.isPinConnected(connection)) return false;
 
-        input.connect(output);
-        output.connect(input);
+        target.setIsBeingDisconnected(true);
 
-        System.out.println("Pins " + input + " and " + output + " connected");
-    }
-
-    private void disconnectSingleConnectionPin(Pin pin) {
-        var outputPin = pin.getConnections().stream().findFirst().orElse(null);
-
-        if(outputPin == null) throw new IllegalStateException();
-
-        outputPin.disconnect(pin);
-        if (!outputPin.isConnected()) {
-            outputPins.remove(outputPin);
+        if (connection.isBeingDisconnected() || !connection.disconnect(target)) {
+            return true;
         }
 
-        pin.disconnectAll();
+        target.setIsBeingDisconnected(false);
+        connection.setIsBeingDisconnected(false);
 
-        System.out.println("Pins " + pin + " and " + outputPin + " disconnected");
+        if(target.isOutput()) {
+            onOutputDisconnected(target);
+        } else {
+            onOutputDisconnected(connection);
+        }
+
+        return true;
+    }
+
+    private void onOutputDisconnected(Pin output) {
+        if(output.isConnected()) return;
+
+        outputPins.remove(output);
+    }
+
+    @Override
+    public boolean onDisconnectedAll(Pin target) {
+        target.getConnections()
+                .stream() // Avoid ConcurrentModificationException
+                .toList()
+                .forEach(target::disconnect);
+
+        return true;
+    }
+
+    public void connect(Pin pin, Pin connection) {
+        if (!pin.connect(connection)) {
+            return;
+        }
+
+        if(connection.isInput()) {
+            connection.disconnectAll();
+        }
+
+        if(!connection.connect(pin)) {
+            throw new IllegalStateException("Couldn't get here.");
+        }
     }
 
     @Override

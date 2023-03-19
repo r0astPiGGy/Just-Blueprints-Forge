@@ -40,11 +40,11 @@ public interface Pin {
 
     Collection<Pin> getConnections();
 
-    void connect(Pin pin);
+    boolean connect(Pin pin);
 
-    void disconnect(Pin pin);
+    boolean disconnect(Pin pin);
 
-    void disconnectAll();
+    boolean disconnectAll();
 
     boolean supportMultipleConnections();
 
@@ -58,12 +58,18 @@ public interface Pin {
 
     void setPinHoverListener(PinHoverListener pinHoverListener);
 
-    void setPinToggleListener(PinConnectionListener pinConnectionListener);
+    void setPinToggleListener(PinToggleListener pinToggleListener);
+
+    void setPinConnectionHandler(PinConnectionHandler pinConnectionHandler);
 
     void setPositionSupplier(PinPositionSupplier positionSupplier);
 
     boolean isPinConnected(Pin pin);
 
     boolean isInput();
+
+    void setIsBeingDisconnected(boolean value);
+
+    boolean isBeingDisconnected();
 
 }

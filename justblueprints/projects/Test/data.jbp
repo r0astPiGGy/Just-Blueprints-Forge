@@ -86,8 +86,8 @@
   }, {
     "id" : "player_getter",
     "position" : {
-      "x" : 8387849,
-      "y" : 8388423
+      "x" : 8387838,
+      "y" : 8388448
     },
     "data" : {
       "input" : { },
@@ -103,8 +103,8 @@
   }, {
     "id" : "main_hand_item_gamevalue_getter",
     "position" : {
-      "x" : 8387704,
-      "y" : 8388535
+      "x" : 8387696,
+      "y" : 8388580
     },
     "data" : {
       "input" : { },
@@ -113,23 +113,6 @@
           "name" : "main_hand_item",
           "connectedTo" : null,
           "value" : "damager_entity",
-          "type" : "default"
-        }
-      }
-    }
-  }, {
-    "id" : "eye_location_gamevalue_getter",
-    "position" : {
-      "x" : 8387879,
-      "y" : 8388840
-    },
-    "data" : {
-      "input" : { },
-      "output" : {
-        "d1556568-a4b1-4c72-939d-2eb510ee2216" : {
-          "name" : "eye_location",
-          "connectedTo" : null,
-          "value" : "default",
           "type" : "default"
         }
       }
@@ -229,40 +212,10 @@
       }
     }
   }, {
-    "id" : "if_variable_less_or_equals",
-    "position" : {
-      "x" : 8388780,
-      "y" : 8388832
-    },
-    "data" : {
-      "input" : {
-        "390a3a56-8540-4cf0-9328-c2b589b5010c" : {
-          "name" : "compare",
-          "connectedTo" : null,
-          "value" : "",
-          "type" : "default"
-        },
-        "6703009b-7036-4464-9840-5f9ecacec466" : {
-          "name" : "value",
-          "connectedTo" : null,
-          "value" : "",
-          "type" : "default"
-        }
-      },
-      "output" : {
-        "7c442605-51ec-483f-9817-a820a6255b6c" : {
-          "name" : "-",
-          "connectedTo" : null,
-          "value" : null,
-          "type" : "default"
-        }
-      }
-    }
-  }, {
     "id" : "game_cancel_event",
     "position" : {
-      "x" : 8388997,
-      "y" : 8388390
+      "x" : 8388989,
+      "y" : 8388384
     },
     "data" : {
       "input" : {
@@ -328,7 +281,7 @@
       "input" : {
         "76c91a2b-3b96-4dd0-afde-833c61f3b441" : {
           "name" : "list",
-          "connectedTo" : "016fe024-2e48-46a9-82f3-d0a23cb71b62",
+          "connectedTo" : null,
           "value" : null,
           "type" : "default"
         },
@@ -362,59 +315,6 @@
           "name" : "value_variable",
           "connectedTo" : null,
           "value" : null,
-          "type" : "default"
-        }
-      }
-    }
-  }, {
-    "id" : "set_variable_get_angle_between_vectors",
-    "position" : {
-      "x" : 8389272,
-      "y" : 8388633
-    },
-    "data" : {
-      "input" : {
-        "12af9620-8a59-49c1-b140-3c43df0bc2ee" : {
-          "name" : "vector_2",
-          "connectedTo" : "e86c980f-0f4d-49fe-8c08-915a53c199f4",
-          "value" : null,
-          "type" : "default"
-        },
-        "0e24677d-0208-4362-a44e-171e3707fab3" : {
-          "name" : "angle_units",
-          "connectedTo" : null,
-          "value" : "\"RADIANS\"",
-          "type" : "enum"
-        },
-        "20b87696-59da-4cc9-809a-3073a1c8c933" : {
-          "name" : "vector_1",
-          "connectedTo" : "e86c980f-0f4d-49fe-8c08-915a53c199f4",
-          "value" : null,
-          "type" : "default"
-        }
-      },
-      "output" : {
-        "016fe024-2e48-46a9-82f3-d0a23cb71b62" : {
-          "name" : "-",
-          "connectedTo" : null,
-          "value" : null,
-          "type" : "default"
-        }
-      }
-    }
-  }, {
-    "id" : "velocity_gamevalue_getter",
-    "position" : {
-      "x" : 8388810,
-      "y" : 8388675
-    },
-    "data" : {
-      "input" : { },
-      "output" : {
-        "e86c980f-0f4d-49fe-8c08-915a53c199f4" : {
-          "name" : "velocity",
-          "connectedTo" : null,
-          "value" : "default",
           "type" : "default"
         }
       }
@@ -458,8 +358,8 @@
   }, {
     "id" : "entity_getter",
     "position" : {
-      "x" : 8390051,
-      "y" : 8388201
+      "x" : 8389975,
+      "y" : 8388234
     },
     "data" : {
       "input" : { },
@@ -578,13 +478,13 @@
         },
         "d94b8cf4-bd79-4106-b171-14996caf7b72" : {
           "name" : "variable",
-          "connectedTo" : "016fe024-2e48-46a9-82f3-d0a23cb71b62",
+          "connectedTo" : null,
           "value" : null,
           "type" : "default"
         },
         "98188471-7bc3-4ab4-81f2-8e34e6ddf8ad" : {
           "name" : "origin",
-          "connectedTo" : "55d258e7-6eaf-4e11-a195-6e8ed68d746e",
+          "connectedTo" : null,
           "value" : null,
           "type" : "default"
         },
@@ -607,23 +507,6 @@
           "connectedTo" : null,
           "value" : null,
           "type" : "exec"
-        }
-      }
-    }
-  }, {
-    "id" : "location_gamevalue_getter",
-    "position" : {
-      "x" : 8390120,
-      "y" : 8388762
-    },
-    "data" : {
-      "input" : { },
-      "output" : {
-        "55d258e7-6eaf-4e11-a195-6e8ed68d746e" : {
-          "name" : "location",
-          "connectedTo" : null,
-          "value" : "default",
-          "type" : "default"
         }
       }
     }
