@@ -26,13 +26,8 @@ public class NodeEntity {
     }
 
     @JsonIgnore
-    public PlaceAt placeAt() {
-        return data.representation.placeAt;
-    }
-
-    @JsonIgnore
-    public boolean useCache() {
-        return data.representation.useCache;
+    public String getLocalId() {
+        return data.localId.toString();
     }
 
     public static class GeneratorRelatedData {
@@ -52,11 +47,7 @@ public class NodeEntity {
         // Возвращаемые значения ноды
         public final List<PinEntity> returns = new LinkedList<>();
 
-        @Nullable
-        public String cachedCode;
-
         public GeneratorEntity representation;
 
-        public boolean codeGenerated = false;
     }
 }

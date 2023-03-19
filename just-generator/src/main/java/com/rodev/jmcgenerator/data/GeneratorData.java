@@ -9,10 +9,19 @@ import java.util.Map;
 
 public class GeneratorData {
 
+    private final Map<String, GeneratorEntity> immutableData = new HashMap<>();
     private final Map<String, GeneratorEntity> data = new HashMap<>();
 
     public void load(GeneratorEntity[] entities) {
-        Arrays.stream(entities).forEach(e -> data.put(e.id, e));
+        Arrays.stream(entities).forEach(e -> immutableData.put(e.id, e));
+        recycle();
+    }
+
+    public void recycle() {
+        data.clear();
+        immutableData.forEach((id, e) -> {
+            data.put(id, e.clone());
+        });
     }
 
     @Nullable

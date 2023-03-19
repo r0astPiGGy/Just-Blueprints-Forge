@@ -2,7 +2,6 @@ package com.rodev.jmcparser.generator;
 
 import com.rodev.jbpcore.blueprint.data.json.ActionEntity;
 import com.rodev.jmcgenerator.entity.GeneratorEntity;
-import com.rodev.jmcgenerator.entity.PlaceAt;
 import com.rodev.jmcparser.data.action.custom.CustomActionEntity;
 import com.rodev.jmcparser.data.game_value.GameValueMappings;
 import com.rodev.jmcparser.json.ActionData;
@@ -30,8 +29,6 @@ public class DataGenerator {
 
         StringBuilder builder = new StringBuilder();
 
-        generatorEntity.placeAt = PlaceAt.AFTER;
-
         // TODO REWORK
         if(action.id.startsWith("set_variable_get")) {
             var output = action.output.get(0);
@@ -41,8 +38,6 @@ public class DataGenerator {
             generatorEntity.output = new HashMap<>(){{
                put(output.id, "$random_var_name");
             }};
-            generatorEntity.placeAt = PlaceAt.BEFORE;
-            generatorEntity.useCache = false;
         }
 
         builder.append(data.object);
@@ -57,7 +52,7 @@ public class DataGenerator {
         }
         builder.append("($args)");
         if(data.containing != null && data.containing.equals("predicate")) {
-            generatorEntity.placeAt = PlaceAt.INSIDE;
+            generatorEntity.codeNeedsToBePlaced = false;
         } else {
             //builder.append(";");
         }
@@ -118,7 +113,7 @@ public class DataGenerator {
 
         String realId = gameValueMappings.getRealId(data.id);
 
-        generatorEntity.placeAt = PlaceAt.INSIDE;
+        generatorEntity.codeNeedsToBePlaced = false;
 
         builder.append("value::");
         builder.append(realId);

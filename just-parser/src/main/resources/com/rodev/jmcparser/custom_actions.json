@@ -42,7 +42,8 @@
     } ],
     "icon_namespace": "game_values",
     "generator": {
-      "schema": "$player"
+      "schema": "$player",
+      "codeNeedsToBePlaced" : false
     }
   },
   {
@@ -58,7 +59,8 @@
     } ],
     "icon_namespace": "game_values",
     "generator": {
-      "schema": "$entity"
+      "schema": "$entity",
+      "codeNeedsToBePlaced" : false
     }
   }
 ]

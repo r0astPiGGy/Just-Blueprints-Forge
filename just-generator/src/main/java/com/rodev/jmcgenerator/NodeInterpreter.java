@@ -2,9 +2,7 @@ package com.rodev.jmcgenerator;
 
 import com.rodev.jmcgenerator.entity.NodeEntity;
 import com.rodev.jmcgenerator.entity.PinEntity;
-import com.rodev.jmcgenerator.entity.PlaceAt;
 import lombok.AccessLevel;
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.jetbrains.annotations.NotNull;
 
@@ -23,19 +21,15 @@ public class NodeInterpreter {
     private String schema;
     private List<String> args;
 
-    @Getter
-    private final Map<String, PinEntity> callbackPins = new HashMap<>();
-    @Getter
-    private final Map<String, NodeEntity> callbackNodes = new HashMap<>();
+    private boolean useArgumentNames = true;
 
-    private boolean includeArgumentName = true;
+    private final List<PinEntity> selfOutputPins = new LinkedList<>();
 
     public String interpret() {
         schema = node.getRawSchema();
 
-        node.data.codeGenerated = true;
-
         fillSchema();
+        fillSelfOutputPins();
 
         return schema;
     }
@@ -43,20 +37,26 @@ public class NodeInterpreter {
     private void fillSchema() {
         fillInput();
         fillOutput();
+    }
 
-        // SRP violation
-        insertOutputNodes();
+    private void fillSelfOutputPins() {
+        for (var pin : selfOutputPins) {
+            pin.value = schema;
+        }
     }
 
     private void fillInput() {
         args = new LinkedList<>();
-        includeArgumentName = shouldIncludeArgumentName();
+        useArgumentNames = shouldIncludeArgumentName();
         node.data.arguments.forEach(this::addArgument);
 
-        var joinedArguments = String.join(", ", args);
-        schema = schema.replace("$args", joinedArguments);
+        replacePlaceholder("args", joinArguments());
 
         args = null;
+    }
+
+    private String joinArguments() {
+        return String.join(", ", args);
     }
 
     private boolean shouldIncludeArgumentName() {
@@ -71,53 +71,61 @@ public class NodeInterpreter {
         return counter > 1;
     }
 
-    private void addArgument(PinEntity inputPin) {
-        var argId = inputPin.id;
-        var value = inputPin.value;
+    private void addArgument(PinEntity arg) {
+        var argId = arg.id;
+        var value = getCodeForArgument(arg);
 
-        var inputConnection = inputPin.data.getConnection();
+        // Заменяем $<arg> в схеме, если таковой есть
+        replacePlaceholder(argId, value);
 
-        boolean userInput = value != null;
-        boolean shouldNotIgnoreArgument = !node.data.representation.shouldIgnoreArgumentById(argId);
+        // Не добавляем в список исключенные аргументы (по типу селекторов)
+        if(shouldIgnoreArgument(arg)) return;
 
-        if(inputConnection != null) {
-            fillOutputPinValue(inputConnection);
+        // Добавляем к аргументу "<name> = ", если актуальных аргументов больше одного
+        if(useArgumentNames) {
+            value = argId + " = " + value;
+        }
 
-            var input = inputConnection.value;
+        args.add(value);
+    }
+
+    private String getCodeForArgument(PinEntity arg) {
+        var output = arg.data.getConnection();
+
+        boolean connected = output != null;
+
+        // Если аргумент подключен, то получаем значение у подключенного Pin
+        if(connected) {
+            var input = output.value;
 
             if(input == null) {
-                input = "$[" + UUID.randomUUID() + "]";
-
-                callbackPins.put(input, inputPin);
+                throw new IllegalStateException("Connected value cannot be null!");
             }
 
-            value = input;
-            userInput = false;
+            return input;
         }
 
-        if (userInput) {
-            var uuid = UUID.randomUUID().toString();
-
-            onUserInputEscape.accept(uuid, value);
-
-            value = uuid;
+        // Если аргумент не подключен и не равен null, то он является пользовательским вводом
+        if (arg.value != null) {
+            return onUserInputEscape(arg.value);
         }
 
-        if(shouldNotIgnoreArgument){
-            var tempValue = value;
+        return "NULL";
+    }
 
-            if(includeArgumentName) {
-                tempValue = argId + " = " + tempValue;
-            }
+    private String onUserInputEscape(String userInput) {
+        var id = UUID.randomUUID().toString();
 
-            args.add(tempValue);
-        }
+        onUserInputEscape.accept(id, userInput);
 
-        if(value == null) {
-            value = "NULL";
-        }
+        return id;
+    }
 
-        schema = schema.replace("$" + argId, value);
+    private boolean shouldIgnoreArgument(PinEntity arg) {
+        var id = arg.id;
+        var representation = node.data.representation;
+
+        return representation.shouldIgnoreArgumentById(id);
     }
 
     private void fillOutput() {
@@ -125,39 +133,20 @@ public class NodeInterpreter {
             fillOutputPinValue(output);
 
             if(output.value != null) {
-                schema = schema.replace("$" + output.id, output.value);
+                replacePlaceholder(output.id, output.value);
             }
-        }
-    }
-
-    private void insertOutputNodes() {
-        for(var outputExec : node.data.outputExecPins) {
-            var conId = "$" + outputExec.id;
-            for(var con : outputExec.data.getConnections()) {
-                var nextNode = con.data.parent;
-
-                //if(nextNode.data.codeGenerated) continue;
-
-                var code = nextNode.data.localId.toString();
-
-                if(nextNode.placeAt() == PlaceAt.BEFORE) {
-                    schema = code + "\n" + schema;
-                } else if(schema.contains(conId)) {
-                    schema = schema.replace(conId, code);
-                } else {
-                    schema += "\n" + code;
-                }
-
-                callbackNodes.put(code, nextNode);
-            }
-            schema = schema.replace(conId, "");
         }
     }
 
     private void fillOutputPinValue(PinEntity pin) {
         var representation = pin.data.parent.data.representation;
 
-        if(representation.output == null) return;
+        if(representation.output == null) {
+            if(!representation.codeNeedsToBePlaced) {
+                selfOutputPins.add(pin);
+            }
+            return;
+        }
 
         var output = representation.output.get(pin.id);
 
@@ -170,6 +159,14 @@ public class NodeInterpreter {
         representation.output.put(pin.id, output);
 
         pin.value = output;
+    }
+
+    private void replacePlaceholder(String target, String replacement) {
+        replaceInCode("$" + target, replacement);
+    }
+
+    private void replaceInCode(String target, String replacement) {
+        schema = schema.replace(target, replacement);
     }
 
     private String getRandomVariableName() {

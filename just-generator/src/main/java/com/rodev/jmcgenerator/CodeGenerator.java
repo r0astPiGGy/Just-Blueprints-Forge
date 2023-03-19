@@ -2,143 +2,81 @@ package com.rodev.jmcgenerator;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.rodev.jmcgenerator.data.GeneratorData;
-import com.rodev.jmcgenerator.entity.BlueprintEntity;
-import com.rodev.jmcgenerator.entity.NodeEntity;
-import com.rodev.jmcgenerator.entity.PinEntity;
+import com.rodev.jmcgenerator.entity.*;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
-import lombok.extern.java.Log;
 
 import java.io.File;
 import java.nio.file.Files;
 import java.util.*;
 
 @RequiredArgsConstructor
-@Log
 public class CodeGenerator {
 
     private final File savedBlueprint;
     private final File fileToWrite;
 
-    private GeneratorData generatorData;
-
-    private final Map<String, PinEntity> pins = new HashMap<>();
-
-    private final List<NodeEntity> events = new LinkedList<>();
-
-    private NodeFillerHelper nodeFillerHelper;
-
     @SneakyThrows
     public void generate(GeneratorData data, int indentation) {
-        this.generatorData = data;
-        pins.clear();
-        events.clear();
-
-        nodeFillerHelper = new NodeFillerHelper();
-
         var objectMapper = new ObjectMapper();
         var blueprint = objectMapper.readValue(savedBlueprint, BlueprintEntity.class);
 
-        for(var node : blueprint.nodes) {
-            collectOutputPins(node);
-            applyRepresentation(node);
+        var blueprintEntityFiller = new BlueprintEntityFiller(data);
+        blueprintEntityFiller.fill(blueprint);
+
+        var tree = new TreeRoot();
+        for (var event : blueprintEntityFiller.getEvents()) {
+            walkNode(event, tree);
         }
 
-        for(var node : blueprint.nodes) {
-            collectInputPins(node);
-        }
+        var nodeFillerHelper = new GeneratorHelper(tree);
 
-        var builder = new StringBuilder();
+        var code = nodeFillerHelper.generateCode();
 
-        for(var event : events) {
-            var eventCode = getCodeForEventNode(event);
-            builder.append(eventCode).append("\n");
-        }
+        code = CodeIndentation.applyIndentation(code, indentation);
+        code = nodeFillerHelper.replaceUserInputIn(code);
 
-        var generatedCode = builder.toString();
+        Files.writeString(fileToWrite.toPath(), code);
 
-        generatedCode = CodeIndentation.applyIndentation(generatedCode, indentation);
-        generatedCode = nodeFillerHelper.replaceUserInputIn(generatedCode);
-
-        Files.writeString(fileToWrite.toPath(), generatedCode);
+        data.recycle();
     }
+    
+    private void walkNode(NodeEntity node, TreeNode tree) {
+        if (tree.isAdded(node)) return;
 
-    private String getCodeForEventNode(NodeEntity node) {
-        var schema = node.getRawSchema();
+        for (var arg : node.data.arguments) {
+            var connection = arg.data.getConnection();
 
-        for(var outputExec : node.data.outputExecPins) {
-            for(var con : outputExec.data.getConnections()) {
-                var connectedNode = con.data.parent;
-                var code = nodeFillerHelper.getCode(connectedNode);
-                schema = schema.replace("$" + con.id, code);
-            }
-            schema = schema.replace("$" + outputExec.id, "");
+            if (connection == null) continue;
+
+            var connectedNode = connection.data.parent;
+
+            walkNode(connectedNode, tree);
         }
 
-        return schema;
-    }
+        var innerTree = tree.add(node);
+        var nodeSchema = node.getRawSchema();
 
-    private void applyRepresentation(NodeEntity entity) {
-        var representation = generatorData.getById(entity.id);
+        for (var outputExecPin : node.data.outputExecPins) {
+            var connections = outputExecPin.data.getConnections();
+            var placeholder = "$" + outputExecPin.id;
 
-        if(representation == null) {
-            log.warning("Representation data of the node by id '" + entity.id + "' not found! Skipping...");
-            return;
-        }
+            boolean containsExecPin = nodeSchema.contains(placeholder);
 
-        if(representation.isEvent()) {
-            events.add(entity);
-        }
+            var localTree = tree;
 
-        entity.data.representation = representation;
-    }
-
-    private void collectOutputPins(NodeEntity parent) {
-        if(parent.pins.output == null) return;
-
-        parent.pins.output.forEach((id, pin) -> {
-            pin.data.setTypeOfOutput();
-
-            collectPin(id, pin, parent);
-            if(pin.isExecType()) {
-                parent.data.outputExecPins.add(pin);
-            } else {
-                parent.data.returns.add(pin);
-            }
-        });
-    }
-
-    private void collectInputPins(NodeEntity parent) {
-        if(parent.pins.input == null) return;
-
-        parent.pins.input.forEach((id, pin) -> {
-            collectPin(id, pin, parent);
-
-            pin.data.setTypeOfInput();
-
-            if(pin.isExecType()) {
-                parent.data.inputExecPin = pin;
-            } else {
-                parent.data.arguments.add(pin);
-            }
-            if(!pin.isConnected()) return;
-
-            var connectedId = pin.connectedTo;
-            var output = pins.get(connectedId);
-
-            if(output == null) {
-                log.warning("Output pin by id " + connectedId + " not found.");
-                return;
+            if (containsExecPin) {
+                var contextId = "$[" + UUID.randomUUID() + "]";
+                nodeSchema = nodeSchema.replace(placeholder, contextId);
+                node.data.representation.schema = nodeSchema;
+                localTree = innerTree;
+                localTree.setChildContext(contextId);
             }
 
-            output.data.addConnection(pin);
-            pin.data.setConnection(output);
-        });
-    }
-
-    private void collectPin(String id, PinEntity pin, NodeEntity parent) {
-        pin.data.parent = parent;
-        pins.put(id, pin);
+            for (var connection : connections) {
+                walkNode(connection.data.parent, localTree);
+            }
+        }
     }
 
 }

@@ -2,23 +2,23 @@ package com.rodev.jmcgenerator.entity;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-public class GeneratorEntity {
+public class GeneratorEntity implements Cloneable {
     public String id;
     public Object schema;
-
-    public PlaceAt placeAt = PlaceAt.AFTER;
 
     @Nullable
     public Set<String> ignoreArguments;
 
-    @JsonAlias("use-cache")
-    public boolean useCache = true;
+    @JsonAlias("place-code")
+    public boolean codeNeedsToBePlaced = true;
 
     @Nullable
     public String type;
@@ -46,4 +46,12 @@ public class GeneratorEntity {
         return ignoreArguments != null && ignoreArguments.contains(id);
     }
 
+    @Override
+    public GeneratorEntity clone() {
+        try {
+            return (GeneratorEntity) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
+    }
 }
