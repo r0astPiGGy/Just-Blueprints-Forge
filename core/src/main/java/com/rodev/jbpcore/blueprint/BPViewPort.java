@@ -499,7 +499,6 @@ public class BPViewPort extends FrameLayout implements ContextMenuOpenHandler, N
      * pixels of being on the screen.
      */
     private boolean isWithinDeltaOfScreen(@Nonnull View descendant, int delta, int height) {
-        System.out.println("isWithinDeltaOfScreen is USED");
         descendant.getDrawingRect(mTempRect);
         offsetDescendantRectToMyCoords(descendant, mTempRect);
 
@@ -511,22 +510,21 @@ public class BPViewPort extends FrameLayout implements ContextMenuOpenHandler, N
      * Like {@link View#scrollBy}, but scroll smoothly instead of immediately.
      *
      * @param deltaY the number of pixels to scroll by on the Y axis
-     * @return if actually scrolled
      */
-    public final boolean smoothScrollBy(int deltaX, int deltaY) {
-        System.out.println("smoothScrollBy is USED");
-        if (getChildCount() == 0) {
-            // Nothing to do.
-            return false;
-        }
-        deltaX = Math.max(0, Math.min(mScroller.getFinalX() + deltaX, getXScrollRange())) - mScrollX;
-        deltaY = Math.max(0, Math.min(mScroller.getFinalY() + deltaY, getYScrollRange())) - mScrollY;
-        if (deltaX != 0 || deltaY != 0) {
-            mScroller.startScroll(mScrollX, mScrollY, deltaX, deltaY);
-            postInvalidateOnAnimation();
-            return true;
-        }
-        return false;
+    public final void smoothScrollBy(int deltaX, int deltaY) {
+        scrollBy(deltaX, deltaY);
+        //        if (getChildCount() == 0) {
+//            // Nothing to do.
+//            return false;
+//        }
+//        deltaX = Math.max(0, Math.min(mScroller.getFinalX() + deltaX, getXScrollRange())) - mScrollX;
+//        deltaY = Math.max(0, Math.min(mScroller.getFinalY() + deltaY, getYScrollRange())) - mScrollY;
+//        if (deltaX != 0 || deltaY != 0) {
+//            mScroller.startScroll(mScrollX, mScrollY, deltaX, deltaY);
+//            postInvalidateOnAnimation();
+//            return true;
+//        }
+//        return false;
     }
 
     /**

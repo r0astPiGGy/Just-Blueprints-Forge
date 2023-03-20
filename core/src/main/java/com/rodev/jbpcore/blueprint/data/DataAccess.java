@@ -50,7 +50,7 @@ public class DataAccess {
     }
 
     public static String getPath(String namespace, String name) {
-        return String.format("%s%s%s.png", namespace, File.separator, name);
+        return String.format("%s/%s.png", namespace, name);
     }
 
     public static ImageDrawable createImage(String namespace, String name) {

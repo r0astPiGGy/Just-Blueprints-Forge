@@ -19,6 +19,7 @@ import icyllis.modernui.view.ViewGroup;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.function.Consumer;
 
 public class GraphControllerImpl implements
         GraphController, PinHoverListener, PinDragListener, NodeTouchListener, NodeMoveListener, NodePositionChangeListener, PinConnectionHandler {
@@ -33,10 +34,12 @@ public class GraphControllerImpl implements
     private BPNode currentSelectedNode;
     private ViewMoveListener viewMoveListener;
 
-    public void createViewAt(int x, int y, Action action) {
+    public BPNode createViewAt(int x, int y, Action action) {
         var node = action.toNode();
 
         createNodeAt(x, y, node);
+
+        return node;
     }
 
     @Override
@@ -84,7 +87,10 @@ public class GraphControllerImpl implements
 
         if(nodeView.getParent() instanceof ViewGroup parent) {
             parent.removeView(nodeView);
+            return;
         }
+
+        throw new IllegalStateException("Shouldn't get here.");
     }
 
     @Override
@@ -171,11 +177,11 @@ public class GraphControllerImpl implements
         System.out.println("trying to connect " + currentHoveringPin + " to " + pin);
 
         if (currentHoveringPin == null) {
-            // Open context menu for applicable input/output types
-            if(pin instanceof ExecPin) {
-                onContextMenuOpen(xEnd, yEnd);
-                return;
-            }
+//            // Open context menu for applicable input/output types
+//            if(pin instanceof ExecPin) {
+//                onContextMenuOpen(xEnd, yEnd);
+//                return;
+//            }
 
             var builder = contextMenuBuilderProvider.createBuilder(xEnd, yEnd);
             handleContextMenuOpen(builder, pin);
@@ -202,8 +208,7 @@ public class GraphControllerImpl implements
                 .withHeader("Actions taking a " + pin.getType().getVariableType().type())
                 .filtering(action -> !action.acceptsInputType(pin.getType().getVariableType()))
                 .onItemClick(action -> {
-                    createViewAt(builder.x, builder.y, action);
-                    clearLastTemporaryLine();
+                    handleOnContextMenuItemClicked(action, builder.x, builder.y, pin);
                 })
                 .onDismiss(this::clearLastTemporaryLine)
                 .show();
@@ -214,11 +219,31 @@ public class GraphControllerImpl implements
                 .withHeader("Actions returning a " + pin.getType().getVariableType().type())
                 .filtering(action -> !action.acceptsOutputType(pin.getType().getVariableType()))
                 .onItemClick(action -> {
-                    createViewAt(builder.x, builder.y, action);
-                    clearLastTemporaryLine();
+                    handleOnContextMenuItemClicked(action, builder.x, builder.y, pin);
                 })
                 .onDismiss(this::clearLastTemporaryLine)
                 .show();
+    }
+
+    private void handleOnContextMenuItemClicked(Action action, final int x, final int y, Pin pin) {
+        var node = createViewAt(x, y, action);
+
+        node.setOnNodeCreatedCallback(createdNode -> {
+            var found = createdNode.getFirstApplicablePinFor(pin);
+            if(found == null) return;
+
+            var pos = found.getPosition();
+
+            var nx = x - (pos.getX() - x);
+            var ny = y - (pos.getY() - y);
+
+            connect(pin, found);
+
+            // TODO fix: not updated
+            createdNode.moveTo(nx, ny);
+        });
+
+        clearLastTemporaryLine();
     }
 
     @Override

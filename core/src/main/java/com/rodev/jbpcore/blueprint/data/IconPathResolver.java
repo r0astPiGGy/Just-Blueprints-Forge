@@ -22,7 +22,7 @@ public class IconPathResolver {
 
     public interface Resolver {
 
-        Resolver identity = action -> String.format("%s%s%s.png", action.iconNamespace(), File.separator, action.id());
+        Resolver identity = action -> String.format("%s/%s.png", action.iconNamespace(), action.id());
 
         String resolve(Action action);
 

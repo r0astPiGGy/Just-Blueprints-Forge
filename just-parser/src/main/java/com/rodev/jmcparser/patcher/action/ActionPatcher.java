@@ -5,6 +5,7 @@ import com.rodev.jmcparser.patcher.AbstractPatcher;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -35,7 +36,7 @@ public class ActionPatcher extends AbstractPatcher<ActionEntity, ActionEntityPat
         }
 
         var list = new LinkedList<ActionEntity.PinTypeEntity>();
-        var targetEntitiesById = new HashMap<String, ActionEntity.PinTypeEntity>();
+        var targetEntitiesById = new LinkedHashMap<String, ActionEntity.PinTypeEntity>();
         targetEntities.forEach(p -> targetEntitiesById.put(p.id, p));
 
         var newPins = new LinkedList<ActionEntity.PinTypeEntity>();
@@ -48,15 +49,12 @@ public class ActionPatcher extends AbstractPatcher<ActionEntity, ActionEntityPat
                 continue;
             }
 
-            targetEntitiesById.remove(patchId);
-
             if(patch.isRemoveType()) {
+                targetEntitiesById.remove(patchId);
                 continue;
             }
 
             patchFields(target, patch);
-
-            list.add(target);
         }
 
         list.addAll(targetEntitiesById.values());

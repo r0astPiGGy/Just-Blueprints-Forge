@@ -53,8 +53,8 @@ public class ActionInterpreter extends Interpreter<ActionData> implements Action
         actionEntity.type = actionTypeHandler.handleActionType(actionData);
         actionEntity.name = actionNameHandler.handleActionName(actionData, localeProvider);
         actionEntity.category = getCategoryFor(actionData);
-        actionEntity.input = createInput(actionData);
-        actionEntity.output = createOutput(actionData);
+        actionEntity.input = createInput(actionEntity, actionData);
+        actionEntity.output = createOutput(actionEntity, actionData);
         actionEntity.icon_namespace = "actions";
 
         return actionEntity;
@@ -82,8 +82,12 @@ public class ActionInterpreter extends Interpreter<ActionData> implements Action
         return localeProvider.translateKeyOrDefault(key);
     }
 
-    private List<ActionEntity.PinTypeEntity> createInput(ActionData actionData) {
+    private List<ActionEntity.PinTypeEntity> createInput(ActionEntity action, ActionData actionData) {
         var input = new LinkedList<ActionEntity.PinTypeEntity>();
+
+        if(action.type.equalsIgnoreCase("function")) {
+            input.add(createExec());
+        }
 
         var id = actionData.id;
         var isVariableSetter = id.startsWith("set_variable");
@@ -97,7 +101,7 @@ public class ActionInterpreter extends Interpreter<ActionData> implements Action
 
         int i = 0;
 
-        var isVariableGetter = id.startsWith("set_variable_get");
+        var isVariableGetter = id.startsWith("set_variable_get") && actionData.assigning != null;
         if(isVariableGetter)
             i = 1; // Skip first arg
 
@@ -112,12 +116,27 @@ public class ActionInterpreter extends Interpreter<ActionData> implements Action
         return input;
     }
 
-    private List<ActionEntity.PinTypeEntity> createOutput(ActionData actionData) {
+    public ActionEntity.PinTypeEntity createExec() {
+        var exec = new ActionEntity.PinTypeEntity();
+        exec.id = "exec";
+        exec.type = "exec";
+        exec.label = "";
+
+        return exec;
+    }
+
+    private List<ActionEntity.PinTypeEntity> createOutput(ActionEntity action, ActionData actionData) {
         var variableGetter = actionData.id.startsWith("set_variable_get");
         var predicate = isPredicate(actionData);
 
+        var output = new LinkedList<ActionEntity.PinTypeEntity>();
+
+        if(action.type.equalsIgnoreCase("function")) {
+            output.add(createExec());
+        }
+
         if(!predicate && !variableGetter) {
-            return Collections.emptyList();
+            return output;
         }
 
         var type = "variable";

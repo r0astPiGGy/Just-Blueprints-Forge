@@ -7,12 +7,7 @@ import com.rodev.jbpcore.blueprint.pin.exec_pin.ExecPin;
 public interface NodeSupplier {
 
     NodeSupplier identity = (color, action) -> {
-        var node = new NodeView(color, action.id(), action.name(), action.createIcon());
-
-        node.addInputPin(ExecPin.inputPin(), "");
-        node.addOutputPin(ExecPin.outputPin(), "");
-
-        return node;
+        return new NodeView(color, action.id(), action.name(), action.createIcon());
     };
 
     BPNode create(int color, Action action);

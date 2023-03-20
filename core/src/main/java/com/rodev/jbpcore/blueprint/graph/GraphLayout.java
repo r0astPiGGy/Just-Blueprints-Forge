@@ -110,7 +110,6 @@ public class GraphLayout extends AbsoluteLayout implements ViewMoveListener, Con
 
     public void addViewAt(View view, int x, int y) {
         addNodeInternal(view, x, y);
-        view.requestLayout();
     }
 
     @Override
@@ -125,7 +124,7 @@ public class GraphLayout extends AbsoluteLayout implements ViewMoveListener, Con
         if(view.getLayoutParams() instanceof AbsoluteLayout.LayoutParams params) {
             params.x = x;
             params.y = y;
-            view.requestLayout();
+            view.setLayoutParams(params);
         }
     }
 

@@ -29,6 +29,9 @@ public abstract class BaseNode extends LinearLayout implements BPNode, PinHoverL
     private final String id;
     private final NodeTouchHandler<BaseNode> nodeTouchHandler;
 
+    @Setter
+    private Consumer<BPNode> onNodeCreatedCallback = node -> {};
+
     private NodePositionChangeListener nodePositionChangeListener;
     @Setter
     private PinHoverListener pinHoverListener;
@@ -49,6 +52,16 @@ public abstract class BaseNode extends LinearLayout implements BPNode, PinHoverL
 
         setFocusable(true);
         setFocusableInTouchMode(true);
+    }
+
+    @Override
+    protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
+        super.onLayout(changed, left, top, right, bottom);
+
+        if(changed) {
+            onNodeCreatedCallback.accept(this);
+            onNodeCreatedCallback = node -> {};
+        }
     }
 
     @Override
@@ -119,6 +132,22 @@ public abstract class BaseNode extends LinearLayout implements BPNode, PinHoverL
     @Override
     public void moveTo(int x, int y) {
         nodePositionChangeListener.moveTo(this, x, y);
+        //updatePinsPosition();
+    }
+
+    @Override
+    public @Nullable Pin getFirstApplicablePinFor(Pin pin) {
+        var pins = outputPins;
+
+        if(pin.isOutput()) {
+            pins = inputPins;
+        }
+
+        return pins.stream()
+                .map(v -> v.getPinView().getPin())
+                .filter(pin::isApplicable)
+                .findFirst()
+                .orElse(null);
     }
 
     @Override

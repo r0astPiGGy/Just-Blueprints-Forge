@@ -10,6 +10,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -44,7 +45,11 @@ public class EventInterpreter extends Interpreter<Event> implements EventNameHan
     }
 
     private List<ActionEntity.PinTypeEntity> createOutput(Event event) {
-        return event.rawOutput.stream().map(v -> {
+        var output = new LinkedList<ActionEntity.PinTypeEntity>();
+
+        output.add(createExec());
+
+        event.rawOutput.stream().map(v -> {
             var pin = new ActionEntity.PinTypeEntity();
 
             pin.id = v.id;
@@ -52,7 +57,18 @@ public class EventInterpreter extends Interpreter<Event> implements EventNameHan
             pin.label = v.name;
 
             return pin;
-        }).collect(Collectors.toList());
+        }).forEach(output::add);
+
+        return output;
+    }
+
+    public ActionEntity.PinTypeEntity createExec() {
+        var exec = new ActionEntity.PinTypeEntity();
+        exec.id = "exec";
+        exec.type = "exec";
+        exec.label = "";
+
+        return exec;
     }
 
     @Override

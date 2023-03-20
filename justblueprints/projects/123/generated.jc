@@ -1,6 +1,0 @@
-event<player_join> {
-    repeat::for_each_in_list(generated_var1) { generated_var3, generated_var2 ->
-        player::title<random_player>(fade_out = 0, fade_in = generated_var3, subtitle = "132341", title = "Цикл", stay = 1)
-    }
-    world::spawn_item(custom_name = default, can_player_pickup = "true", item = default, apply_motion = "false", location = default, can_mob_pickup = "false")
-}

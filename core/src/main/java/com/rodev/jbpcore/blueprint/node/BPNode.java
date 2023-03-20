@@ -31,6 +31,8 @@ public interface BPNode extends ChildRoot {
 
     void setNodePositionChangeListener(NodePositionChangeListener listener);
 
+    void setOnNodeCreatedCallback(Consumer<BPNode> callback);
+
     void moveTo(int x, int y);
 
     void addInputPin(Pin pin, String name);
@@ -68,6 +70,9 @@ public interface BPNode extends ChildRoot {
     NodeDeserializer getDeserializer(Object data);
 
     View asView();
+
+    @Nullable
+    Pin getFirstApplicablePinFor(Pin pin);
 
     default String getSerializerId() {
         return "default";

@@ -1,5 +1,6 @@
 package com.rodev.jbpcore.blueprint.data;
 
+import com.rodev.jbpcore.blueprint.data.action.Action;
 import com.rodev.jbpcore.blueprint.data.action.ActionRegistry;
 import com.rodev.jbpcore.blueprint.data.action.EnumPinType;
 import com.rodev.jbpcore.blueprint.data.action.type.ActionTypeRegistry;
@@ -7,6 +8,7 @@ import com.rodev.jbpcore.blueprint.data.category.ContextCategoryRegistry;
 import com.rodev.jbpcore.blueprint.data.selectors.SelectorGroup;
 import com.rodev.jbpcore.blueprint.data.selectors.SelectorGroupRegistry;
 import com.rodev.jbpcore.blueprint.data.variable.VariableTypeRegistry;
+import com.rodev.jbpcore.blueprint.node.BPNode;
 import com.rodev.jbpcore.blueprint.node.impl.NodeView;
 import com.rodev.jbpcore.blueprint.node.impl.getter.PropertyGetterNode;
 import com.rodev.jbpcore.blueprint.node.impl.getter.PureGetterNode;
@@ -29,16 +31,13 @@ public class DataInitEventHandler {
 
     public static void onDataPreLoad() {
         IconPathResolver.registerResolver("game_values", action -> {
-            return String.format("%s%s%s.png", action.iconNamespace(), File.separator, action.id().replace("_gamevalue_getter", ""));
+            return String.format("%s/%s.png", action.iconNamespace(), action.id().replace("_gamevalue_getter", ""));
         });
     }
 
     public static void onActionTypeRegistryPreLoad(ActionTypeRegistry registry) {
         registry.addNodeSupplier("event", (color, action) -> {
             var node = new NodeView(color, action.id(), action.name(), action.createIcon());
-            var output = ExecPin.outputPin();
-
-            node.addOutputPin(output, "");
 
             //noinspection unchecked
             Map<Object, Object> map = (Map<Object, Object>) action.extraData();
@@ -72,33 +71,27 @@ public class DataInitEventHandler {
 
             return node;
         });
-        registry.addNodeSupplier("entity_getter", (color, action) -> {
-            var selectorGroup = DataAccess.getInstance()
-                    .selectorGroupRegistry
-                    .get(SelectorGroup.Type.ENTITY);
-
-            return new SelectorVariableGetterNode(color, action.id(), action.name(), action.createIcon(), selectorGroup);
-        });
-        registry.addNodeSupplier("player_getter", (color, action) -> {
-            var selectorGroup = DataAccess.getInstance()
-                    .selectorGroupRegistry
-                    .get(SelectorGroup.Type.PLAYER);
-
-            return new SelectorVariableGetterNode(color, action.id(), action.name(), action.createIcon(), selectorGroup);
-        });
+        registry.addNodeSupplier("entity_getter", DataInitEventHandler::createEntitySelectorGetter);
+        registry.addNodeSupplier("player_getter", DataInitEventHandler::createPlayerSelectorGetter);
         registry.addNodeSupplier("variable_property", (color, action) -> {
             return new PropertyGetterNode(color, action.id(), action.name(), action.createIcon());
         });
-        registry.addNodeSupplier("pure_function", (color, action) -> {
-            return new NodeView(color, action.id(), action.name(), action.createIcon());
-        });
-        registry.addNodeSupplier("custom_with_input_exec", (color, action) -> {
-            var node = new NodeView(color, action.id(), action.name(), action.createIcon());
+    }
 
-            node.addInputPin(ExecPin.inputPin(), "");
+    private static BPNode createEntitySelectorGetter(int color, Action action) {
+        return createSelectorGetter(color, action, SelectorGroup.Type.ENTITY);
+    }
 
-            return node;
-        });
+    private static BPNode createPlayerSelectorGetter(int color, Action action) {
+        return createSelectorGetter(color, action, SelectorGroup.Type.PLAYER);
+    }
+
+    private static BPNode createSelectorGetter(int color, Action action, SelectorGroup.Type selectorType) {
+        var selectorGroup = DataAccess.getInstance()
+                .selectorGroupRegistry
+                .get(selectorType);
+
+        return new SelectorVariableGetterNode(color, action.id(), action.name(), action.createIcon(), selectorGroup);
     }
 
     public static void onVariableTypeRegistryPreLoad(VariableTypeRegistry registry) {
@@ -142,7 +135,7 @@ public class DataInitEventHandler {
         dataAccess.actionRegistry.getAll().forEach(a -> {
             var path = IconPathResolver.resolve(a);
 
-            path = String.format("textures%s%s", File.separator, path);
+            path = String.format("textures/%s", path);
 
             TextureManager.getInstance().getOrCreate(TEXTURE_NAMESPACE, path,
                     TextureManager.CACHE_MASK | TextureManager.MIPMAP_MASK);
