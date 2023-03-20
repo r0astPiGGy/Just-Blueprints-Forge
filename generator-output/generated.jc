@@ -1,15 +1,10 @@
 
-event<player_join> {
-    var generated_var1 = variable::get_vector_from_block_face(value::event_message)
-    repeat::for_each_in_list(generated_var1) { generated_var3, generated_var2 ->
-        player::title<random_player>(fade_out = 0, fade_in = generated_var3, subtitle = "132341", title = "Цикл", stay = 1)
+event<block_piston_extend> {
+    if (player::is_looking_at_block<default_player>(locations = value::event_block, fluid_mode = "SOURCE_ONLY", distance = 56, blocks = value::main_hand_item<damager_entity>)) {
+        
+    } else {
+        world::cancel_event()
         
     }
-    world::spawn_item(custom_name = value::user_locale<default>, can_player_pickup = "true", item = value::main_hand_item<default>, apply_motion = "false", location = value::location<default>, can_mob_pickup = "false")
-    repeat::while(player::cursor_item_equals<killer_player>(items = value::main_hand_item<default>, comparison_mode = "EXACTLY")) { 
-        code::start_process(process_name = "proccess-name", target_mode = "CURRENT_TARGET", local_variables_mode = "SHARE")
-        
-    }
-    world::launch_projectile(speed = 345, location = value::spawn_location<default>, inaccuracy = 0, projectile = value::saddle_item<current>, trail = null, custom_name = "2424")
     
 }

@@ -8,7 +8,7 @@ public class DefaultBooleanInputView extends MaterialCheckBox implements Default
 
     @Override
     public String getDefaultValue() {
-        return "\"" + isChecked() + "\"";
+        return "\"" + String.valueOf(isChecked()).toUpperCase() + "\"";
     }
 
     @Override

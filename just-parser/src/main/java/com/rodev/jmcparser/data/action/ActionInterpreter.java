@@ -114,11 +114,7 @@ public class ActionInterpreter extends Interpreter<ActionData> implements Action
 
     private List<ActionEntity.PinTypeEntity> createOutput(ActionData actionData) {
         var variableGetter = actionData.id.startsWith("set_variable_get");
-        var predicate = false;
-
-        if(actionData.containing != null) {
-            predicate = actionData.containing.equalsIgnoreCase("predicate");
-        }
+        var predicate = isPredicate(actionData);
 
         if(!predicate && !variableGetter) {
             return Collections.emptyList();
@@ -138,15 +134,25 @@ public class ActionInterpreter extends Interpreter<ActionData> implements Action
         return List.of(pinTypeEntity);
     }
 
+    private boolean isPredicate(ActionData actionData) {
+        if(actionData.containing != null) {
+            return actionData.containing.equalsIgnoreCase("predicate");
+        }
+
+        return false;
+    }
+
     private ActionEntity.PinTypeEntity createObjectInputPin(ActionData actionData) {
         switch (actionData.object) {
             case "code":
             case "world":
             case "select":
-            case "variable":
             case "repeat":
                 return null;
         }
+
+        if(actionData.object.equalsIgnoreCase("variable") && isPredicate(actionData))
+            return null;
 
         var pin = new ActionEntity.PinTypeEntity();
 

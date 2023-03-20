@@ -13,6 +13,7 @@ import com.rodev.jbpcore.fragment.welcome.ValidateResult;
 import com.rodev.jbpcore.workspace.ProgramData;
 import com.rodev.jbpcore.workspace.Project;
 import com.rodev.jbpcore.workspace.Workspace;
+import com.rodev.jbpcore.workspace.compiler.CodeCompiler;
 import com.rodev.jmcgenerator.CodeGenerator;
 import com.rodev.jmcgenerator.data.GeneratorData;
 import com.rodev.jmcgenerator.entity.GeneratorEntity;
@@ -134,12 +135,38 @@ public class WorkspaceImpl implements Workspace {
     }
 
     public void compileBlueprint(File projectDirectory) {
-        var input = new File(projectDirectory, blueprintDataFileName);
-        var output = new File(projectDirectory, compileDataFileName);
+        var savedBlueprint = new File(projectDirectory, blueprintDataFileName);
+        var generatedCode = new File(projectDirectory, compileDataFileName);
 
-        var codeGenerator = new CodeGenerator(input, output);
+        var codeGenerator = new CodeGenerator(savedBlueprint, generatedCode);
 
         codeGenerator.generate(DataAccess.getInstance().generatorData, 4);
+
+        var jmcc = CodeCompiler.getCompilerFile(programDirectory);
+
+        if(!jmcc.exists()) {
+            log.severe("Code was generated, but jmcc not found. Please install it to "
+                    + jmcc.getAbsolutePath());
+            return;
+        }
+
+        var compiler = CodeCompiler.getCompiler(jmcc);
+        File compiled;
+
+        try {
+            compiled = compiler.compile(generatedCode);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        var output = compiler.getOutput();
+
+        if(compiler.getExitCode() != 0) {
+            log.warning("Compilation finished unsuccessfully. Error message: \n" + output);
+            return;
+        }
+
+        log.info(output);
     }
 
     public void saveBlueprint(File projectDirectory, Collection<BPNode> nodes) {
@@ -221,8 +248,6 @@ public class WorkspaceImpl implements Workspace {
     public static class NodeEntity {
         public String id;
         public NodeLocation position;
-        @JsonIgnore
-        public String deserializer;
         public Object data;
     }
 

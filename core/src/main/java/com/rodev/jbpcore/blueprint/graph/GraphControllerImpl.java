@@ -19,7 +19,6 @@ import icyllis.modernui.view.ViewGroup;
 
 import java.util.HashSet;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 public class GraphControllerImpl implements
         GraphController, PinHoverListener, PinDragListener, NodeTouchListener, NodeMoveListener, NodePositionChangeListener, PinConnectionHandler {

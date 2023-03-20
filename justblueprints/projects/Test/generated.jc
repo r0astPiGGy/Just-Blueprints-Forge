@@ -1,21 +1,13 @@
 
 event<block_piston_extend> {
     if (player::is_looking_at_block<default_player>(locations = value::event_block, fluid_mode = "SOURCE_ONLY", distance = 56, blocks = value::main_hand_item<damager_entity>)) {
-        entity::launch_up<default_entity>(increment = "true", power = 4)
+        entity::set_ai<default_entity>("FALSE")
+        entity::launch_up<default_entity>(increment = "FALSE", power = 4)
+        select::all_players()
         
     } else {
         world::cancel_event()
         code::wait(duration = 15, time_unit = "MINUTES")
-        var generated_var1 = variable::get_angle_between_vectors(vector_2 = value::velocity<default>, angle_units = "RADIANS", vector_1 = value::velocity<default>)
-        repeat::for_each_in_list(generated_var1) { generated_var2, generated_var3 ->
-            entity::set_ai<default_entity>("true")
-            code::wait(time_unit = "TICKS", duration = generated_var2)
-            code::start_process(process_name = "54545", target_mode = "NO_TARGET", local_variables_mode = "COPY")
-            
-        }
-        code::call_function("function")
-        select::filter_by_raycast(selection_size = 9, ignore_passable_blocks = "true", ray_size = 56, fluid_collision_mode = "ALWAYS", variable = generated_var1, origin = value::location<default>, consider_blocks = "true", max_distance = 5226)
-        code::call_function("333323")
         
     }
     

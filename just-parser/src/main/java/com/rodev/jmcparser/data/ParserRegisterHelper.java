@@ -85,7 +85,11 @@ public class ParserRegisterHelper {
             return "function";
         });
         interpreter.addOnActionInterpretedListener(dataGenerator::onActionInterpreted);
-        interpreter.setPinTypeNameHandler(StringUtils::capitalize);
+        interpreter.setPinTypeNameHandler(s -> {
+            if(s.equalsIgnoreCase("variable")) return "Переменная";
+
+            return StringUtils.capitalize(s);
+        });
     }
 
     private void registerEventParser() {

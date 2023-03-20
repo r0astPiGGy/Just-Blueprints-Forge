@@ -155,15 +155,15 @@
   }, {
     "id" : "entity_launch_up",
     "position" : {
-      "x" : 8389241,
-      "y" : 8388163
+      "x" : 8389566,
+      "y" : 8387964
     },
     "data" : {
       "input" : {
         "41ea4ef5-e237-4c64-b691-261a2e00dce3" : {
           "name" : "increment",
           "connectedTo" : null,
-          "value" : "\"true\"",
+          "value" : "\"FALSE\"",
           "type" : "default"
         },
         "1db16a74-62b5-4688-887f-ee7d344516ea" : {
@@ -180,7 +180,7 @@
         },
         "7c5c2a33-bde7-4120-a308-72c9abc12c6a" : {
           "name" : "exec",
-          "connectedTo" : "4ce72aab-1a46-46a4-8a47-1382f4577b9a",
+          "connectedTo" : "1e63ff7b-d86a-4ae9-9dfc-546569a678bc",
           "value" : null,
           "type" : "exec"
         }
@@ -197,8 +197,8 @@
   }, {
     "id" : "entity_getter",
     "position" : {
-      "x" : 8388872,
-      "y" : 8388058
+      "x" : 8388865,
+      "y" : 8387979
     },
     "data" : {
       "input" : { },
@@ -281,13 +281,13 @@
       "input" : {
         "76c91a2b-3b96-4dd0-afde-833c61f3b441" : {
           "name" : "list",
-          "connectedTo" : null,
+          "connectedTo" : "d2425bc5-a0a2-4677-bdb4-e850ddbcfff1",
           "value" : null,
           "type" : "default"
         },
         "4769e898-3705-46b2-ad34-ed3ef4360afc" : {
           "name" : "exec",
-          "connectedTo" : "f476afe8-b741-4075-9a18-c51c9780ad4a",
+          "connectedTo" : null,
           "value" : null,
           "type" : "exec"
         }
@@ -336,7 +336,7 @@
         "686b9c46-31a8-4364-97c9-2076f5ae479a" : {
           "name" : "ai",
           "connectedTo" : null,
-          "value" : "\"true\"",
+          "value" : "\"TRUE\"",
           "type" : "default"
         },
         "5edd9947-4ff2-414d-a7dc-52f249f6c9a4" : {
@@ -455,7 +455,7 @@
         "ac2fa7ec-0d5a-4826-ba08-5a409239dfac" : {
           "name" : "ignore_passable_blocks",
           "connectedTo" : null,
-          "value" : "\"true\"",
+          "value" : "\"TRUE\"",
           "type" : "default"
         },
         "a89a7791-65ab-48a9-a350-b6767cdc1a5f" : {
@@ -478,20 +478,20 @@
         },
         "d94b8cf4-bd79-4106-b171-14996caf7b72" : {
           "name" : "variable",
-          "connectedTo" : null,
+          "connectedTo" : "d2425bc5-a0a2-4677-bdb4-e850ddbcfff1",
           "value" : null,
           "type" : "default"
         },
         "98188471-7bc3-4ab4-81f2-8e34e6ddf8ad" : {
           "name" : "origin",
-          "connectedTo" : null,
+          "connectedTo" : "2a17e753-a7a0-4f5a-8529-f73c0146474f",
           "value" : null,
           "type" : "default"
         },
         "63a205e4-f582-4ed6-a24f-80361b8d0c1d" : {
           "name" : "consider_blocks",
           "connectedTo" : null,
-          "value" : "\"true\"",
+          "value" : "\"TRUE\"",
           "type" : "default"
         },
         "f69a8f4f-7e47-4525-8512-a4650db9fc23" : {
@@ -575,6 +575,143 @@
       },
       "output" : {
         "44ed0cd2-79d1-4651-92c9-c4b57a7e50b2" : {
+          "name" : "exec",
+          "connectedTo" : null,
+          "value" : null,
+          "type" : "exec"
+        }
+      }
+    }
+  }, {
+    "id" : "set_variable_get_vector_from_block_face",
+    "position" : {
+      "x" : 8389135,
+      "y" : 8388790
+    },
+    "data" : {
+      "input" : {
+        "48d1086a-b1db-4af4-a6f0-a576ec752c9e" : {
+          "name" : "block_face",
+          "connectedTo" : null,
+          "value" : "\"\"",
+          "type" : "default"
+        }
+      },
+      "output" : {
+        "d2425bc5-a0a2-4677-bdb4-e850ddbcfff1" : {
+          "name" : "-",
+          "connectedTo" : null,
+          "value" : null,
+          "type" : "default"
+        }
+      }
+    }
+  }, {
+    "id" : "event_block_location_gamevalue_getter",
+    "position" : {
+      "x" : 8390075,
+      "y" : 8388933
+    },
+    "data" : {
+      "input" : { },
+      "output" : {
+        "2a17e753-a7a0-4f5a-8529-f73c0146474f" : {
+          "name" : "event_block_location",
+          "connectedTo" : null,
+          "value" : null,
+          "type" : "default"
+        }
+      }
+    }
+  }, {
+    "id" : "entity_set_ai",
+    "position" : {
+      "x" : 8389156,
+      "y" : 8388166
+    },
+    "data" : {
+      "input" : {
+        "a81421d6-dda5-4925-b574-05a80a9b6000" : {
+          "name" : "exec",
+          "connectedTo" : "4ce72aab-1a46-46a4-8a47-1382f4577b9a",
+          "value" : null,
+          "type" : "exec"
+        },
+        "6cd773ec-304e-41cf-8532-956aa75627a6" : {
+          "name" : "entity",
+          "connectedTo" : "9ebea257-3ec2-4602-a8e3-75ec88da354e",
+          "value" : null,
+          "type" : "default"
+        },
+        "404f2ec1-78e6-434a-892c-6f7acfcb3b29" : {
+          "name" : "ai",
+          "connectedTo" : null,
+          "value" : "\"FALSE\"",
+          "type" : "default"
+        }
+      },
+      "output" : {
+        "1e63ff7b-d86a-4ae9-9dfc-546569a678bc" : {
+          "name" : "exec",
+          "connectedTo" : null,
+          "value" : null,
+          "type" : "exec"
+        }
+      }
+    }
+  }, {
+    "id" : "select_all_players",
+    "position" : {
+      "x" : 8390003,
+      "y" : 8388036
+    },
+    "data" : {
+      "input" : {
+        "62d958c1-b700-4d80-a38f-291064a31813" : {
+          "name" : "exec",
+          "connectedTo" : "d2a0cc71-5feb-4917-b411-a5b3ce27678a",
+          "value" : null,
+          "type" : "exec"
+        }
+      },
+      "output" : {
+        "580ac00c-1a9f-407c-aea4-dc1be7c38191" : {
+          "name" : "exec",
+          "connectedTo" : null,
+          "value" : null,
+          "type" : "exec"
+        }
+      }
+    }
+  }, {
+    "id" : "set_variable_absolute",
+    "position" : {
+      "x" : 8388555,
+      "y" : 8388825
+    },
+    "data" : {
+      "input" : {
+        "8c852bbe-adce-4149-a8ba-aec887b11247" : {
+          "name" : "exec",
+          "connectedTo" : null,
+          "value" : null,
+          "type" : "exec"
+        },
+        "ecb7d8a4-13c3-4906-bba0-62e855692cc8" : {
+          "name" : "number",
+          "connectedTo" : null,
+          "value" : "",
+          "type" : "default"
+        },
+        "4c627c54-a97f-4abd-9ceb-61767f8d951c" : {
+          "name" : "variable",
+          "connectedTo" : null,
+          "value" : null,
+          "type" : "default"
+        }
+      },
+      "output" : {
+        "4569fda3-1299-4e74-9640-d5904a5ade95" : {
           "name" : "exec",
           "connectedTo" : null,
           "value" : null,

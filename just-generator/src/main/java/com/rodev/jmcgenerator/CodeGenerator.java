@@ -61,6 +61,13 @@ public class CodeGenerator {
             var connections = outputExecPin.data.getConnections();
             var placeholder = "$" + outputExecPin.id;
 
+            // Если у exec pin нет соединений, то убираем плейсхолдер и идём дальше.
+            if(connections.isEmpty()) {
+                nodeSchema = nodeSchema.replace(placeholder, "");
+                node.data.representation.schema = nodeSchema;
+                continue;
+            }
+
             boolean containsExecPin = nodeSchema.contains(placeholder);
 
             var localTree = tree;
