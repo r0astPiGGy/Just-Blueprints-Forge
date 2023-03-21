@@ -9,13 +9,11 @@ public class NodeTouchHandler<T extends View & BPNode> {
     private NodeTouchListener nodeTouchListener;
 
     private final T node;
-    private final Runnable onPositionUpdate;
 
     private int lastTouchX, lastTouchY;
 
-    public NodeTouchHandler(T node, Runnable positionUpdateCallback) {
+    public NodeTouchHandler(T node) {
         this.node = node;
-        onPositionUpdate = positionUpdateCallback;
     }
 
     public void setNodeTouchListener(NodeTouchListener nodeTouchListener) {
@@ -45,9 +43,7 @@ public class NodeTouchHandler<T extends View & BPNode> {
             int newX = x + (int) event.getX() - lastTouchX;
             int newY = y + (int) event.getY() - lastTouchY;
 
-            boolean moved = nodeMoveListener.onMove(node, x, y, newX, newY);
-
-            if(moved) onPositionUpdate.run();
+            nodeMoveListener.onMove(node, x, y, newX, newY);
 
             return true;
         }

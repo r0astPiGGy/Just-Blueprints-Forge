@@ -11,6 +11,10 @@ public interface GraphController extends DrawListener, GraphTouchListener {
 
     void setViewMoveListener(ViewMoveListener viewMoveListener);
 
+    /**
+     * @deprecated GraphController mustn't handle connections like this. Use Pin#connect instead.
+     */
+    @Deprecated(forRemoval = true)
     void connect(Pin inputPin, Pin outputPin);
 
     void setViewHolder(ViewHolder viewHolder);

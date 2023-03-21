@@ -9,7 +9,6 @@ import com.rodev.jbpcore.blueprint.pin.Pin;
 import com.rodev.jbpcore.blueprint.pin.PinConnectionHandler;
 import com.rodev.jbpcore.blueprint.pin.PinDragListener;
 import com.rodev.jbpcore.blueprint.pin.PinHoverListener;
-import com.rodev.jbpcore.blueprint.pin.exec_pin.ExecPin;
 import com.rodev.jbpcore.contextmenu.ContextMenuBuilder;
 import icyllis.modernui.graphics.Canvas;
 import icyllis.modernui.graphics.Paint;
@@ -19,7 +18,6 @@ import icyllis.modernui.view.ViewGroup;
 
 import java.util.HashSet;
 import java.util.Set;
-import java.util.function.Consumer;
 
 public class GraphControllerImpl implements
         GraphController, PinHoverListener, PinDragListener, NodeTouchListener, NodeMoveListener, NodePositionChangeListener, PinConnectionHandler {
@@ -131,7 +129,7 @@ public class GraphControllerImpl implements
     }
 
     private void drawBezierLine(Canvas canvas, Paint paint, int xStart, int yStart, int xEnd, int yEnd, int color) {
-        paint.setStrokeWidth(5);
+        paint.setStrokeWidth(7);
         paint.setColor(color);
         paint.setSmoothRadius(100);
         int xHalf = (xEnd - xStart) / 2;
@@ -173,16 +171,7 @@ public class GraphControllerImpl implements
 
     @Override
     public void onLineDragEnded(Pin pin, int xStart, int yStart, int xEnd, int yEnd) {
-        System.out.println("==========");
-        System.out.println("trying to connect " + currentHoveringPin + " to " + pin);
-
         if (currentHoveringPin == null) {
-//            // Open context menu for applicable input/output types
-//            if(pin instanceof ExecPin) {
-//                onContextMenuOpen(xEnd, yEnd);
-//                return;
-//            }
-
             var builder = contextMenuBuilderProvider.createBuilder(xEnd, yEnd);
             handleContextMenuOpen(builder, pin);
 
@@ -228,9 +217,9 @@ public class GraphControllerImpl implements
     private void handleOnContextMenuItemClicked(Action action, final int x, final int y, Pin pin) {
         var node = createViewAt(x, y, action);
 
-        node.setOnNodeCreatedCallback(createdNode -> {
+        node.setOnNodePreDrawCallback(createdNode -> {
             var found = createdNode.getFirstApplicablePinFor(pin);
-            if(found == null) return;
+            if(found == null) return true;
 
             var pos = found.getPosition();
 
@@ -239,13 +228,15 @@ public class GraphControllerImpl implements
 
             connect(pin, found);
 
-            // TODO fix: not updated
             createdNode.moveTo(nx, ny);
+
+            return false;
         });
 
         clearLastTemporaryLine();
     }
 
+    // TODO fix: should connect "connection" pin, as #handleDisconnect do.
     @Override
     public boolean handleConnect(Pin pin, Pin connection) {
         if(pin == connection) return false;
@@ -337,15 +328,12 @@ public class GraphControllerImpl implements
     }
 
     @Override
-    public boolean onMove(BPNode node, int xStart, int yStart, int xEnd, int yEnd) {
-        if(!isNodeSelected(node)) return false;
+    public void onMove(BPNode node, int xStart, int yStart, int xEnd, int yEnd) {
+        if(!isNodeSelected(node)) return;
 
         if(viewMoveListener != null) {
             moveTo(node, xEnd, yEnd);
-            return true;
         }
-
-        return false;
     }
 
     @Override

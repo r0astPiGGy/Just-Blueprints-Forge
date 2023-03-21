@@ -4,7 +4,10 @@ import com.rodev.jbpcore.Colors;
 import icyllis.modernui.graphics.Canvas;
 import icyllis.modernui.graphics.Paint;
 import icyllis.modernui.graphics.drawable.Drawable;
+import icyllis.modernui.material.MaterialDrawable;
 import icyllis.modernui.math.Rect;
+import icyllis.modernui.util.ColorStateList;
+import icyllis.modernui.util.StateSet;
 import icyllis.modernui.widget.Button;
 import org.jetbrains.annotations.NotNull;
 
@@ -16,7 +19,19 @@ public class MaterialButton extends Button {
 
     private final Background background = new Background(Colors.NODE_BACKGROUND, dp(5));
 
+    private static final ColorStateList TINT_LIST = new ColorStateList(
+            new int[][]{
+                    StateSet.get(StateSet.VIEW_STATE_SELECTED),
+                    StateSet.get(StateSet.VIEW_STATE_HOVERED),
+                    StateSet.WILD_CARD},
+            new int[]{
+                    Colors.WHITE,
+                    Colors.WHITE,
+                    Colors.NODE_BACKGROUND}
+    );
+
     public MaterialButton() {
+        background.setTintList(TINT_LIST);
         setBackground(background);
         setTextAlignment(TEXT_ALIGNMENT_CENTER);
         setMinWidth(dp(140));
@@ -29,7 +44,7 @@ public class MaterialButton extends Button {
         background.backgroundColor = color;
     }
 
-    private static class Background extends Drawable {
+    private static class Background extends MaterialDrawable {
 
         int padding = 0;
         int backgroundColor = Colors.NODE_BACKGROUND;
@@ -46,6 +61,11 @@ public class MaterialButton extends Button {
             var p = Paint.get();
 
             p.setColor(backgroundColor);
+            //p.setColor(mColor);
+            p.setAlpha(modulateAlpha(p.getAlpha(), mAlpha));
+
+            if(p.getAlpha() == 0) return;
+
             canvas.drawRoundRect(b.left, b.top, b.right, b.bottom, radius, p);
         }
 

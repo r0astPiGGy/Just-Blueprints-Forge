@@ -10,6 +10,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.function.Consumer;
+import java.util.function.Function;
 
 public interface BPNode extends ChildRoot {
 
@@ -31,7 +32,7 @@ public interface BPNode extends ChildRoot {
 
     void setNodePositionChangeListener(NodePositionChangeListener listener);
 
-    void setOnNodeCreatedCallback(Consumer<BPNode> callback);
+    void setOnNodePreDrawCallback(Function<BPNode, Boolean> callback);
 
     void moveTo(int x, int y);
 

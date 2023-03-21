@@ -3,10 +3,7 @@ package com.rodev.jbpcore.blueprint.node;
 import com.rodev.jbpcore.blueprint.ChildRoot;
 import com.rodev.jbpcore.blueprint.data.variable.VariableTypeRegistry;
 import com.rodev.jbpcore.blueprint.pin.*;
-import icyllis.modernui.view.KeyEvent;
-import icyllis.modernui.view.MotionEvent;
-import icyllis.modernui.view.View;
-import icyllis.modernui.view.ViewGroup;
+import icyllis.modernui.view.*;
 import icyllis.modernui.widget.LinearLayout;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -16,8 +13,9 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.*;
 import java.util.function.Consumer;
+import java.util.function.Function;
 
-public abstract class BaseNode extends LinearLayout implements BPNode, PinHoverListener, PinDragListener, PinConnectionHandler {
+public abstract class BaseNode extends LinearLayout implements BPNode, PinHoverListener, PinDragListener, PinConnectionHandler, ViewTreeObserver.OnPreDrawListener {
 
     private Boolean selected = false;
 
@@ -30,7 +28,7 @@ public abstract class BaseNode extends LinearLayout implements BPNode, PinHoverL
     private final NodeTouchHandler<BaseNode> nodeTouchHandler;
 
     @Setter
-    private Consumer<BPNode> onNodeCreatedCallback = node -> {};
+    private Function<BPNode, Boolean> onNodePreDrawCallback = node -> true;
 
     private NodePositionChangeListener nodePositionChangeListener;
     @Setter
@@ -43,7 +41,7 @@ public abstract class BaseNode extends LinearLayout implements BPNode, PinHoverL
     public BaseNode(String id) {
         this.id = id;
 
-        nodeTouchHandler = new NodeTouchHandler<>(this, this::updatePinsPosition);
+        nodeTouchHandler = new NodeTouchHandler<>(this);
 
         setOrientation(VERTICAL);
         setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
@@ -52,6 +50,18 @@ public abstract class BaseNode extends LinearLayout implements BPNode, PinHoverL
 
         setFocusable(true);
         setFocusableInTouchMode(true);
+
+        getViewTreeObserver().addOnPreDrawListener(this);
+    }
+
+    @Override
+    public boolean onPreDraw() {
+        if(onNodePreDrawCallback != null) {
+            var res = onNodePreDrawCallback.apply(this);
+            onNodePreDrawCallback = null;
+            return res;
+        }
+        return true;
     }
 
     @Override
@@ -59,8 +69,7 @@ public abstract class BaseNode extends LinearLayout implements BPNode, PinHoverL
         super.onLayout(changed, left, top, right, bottom);
 
         if(changed) {
-            onNodeCreatedCallback.accept(this);
-            onNodeCreatedCallback = node -> {};
+            updatePinsPosition();
         }
     }
 
@@ -68,6 +77,7 @@ public abstract class BaseNode extends LinearLayout implements BPNode, PinHoverL
     public View asView() {
         return this;
     }
+
     @Override
     public void onPinHovered(Pin pin) {
         pinHoverListener.onPinHovered(pin);
@@ -111,6 +121,7 @@ public abstract class BaseNode extends LinearLayout implements BPNode, PinHoverL
         return nodeTouchHandler.handle(event);
     }
 
+    // TODO: optimize
     private void updatePinsPosition() {
         outputPins.forEach(pinRowView -> pinRowView.getPinView().getPin().onPositionUpdate());
         inputPins.forEach(pinRowView -> pinRowView.getPinView().getPin().onPositionUpdate());
