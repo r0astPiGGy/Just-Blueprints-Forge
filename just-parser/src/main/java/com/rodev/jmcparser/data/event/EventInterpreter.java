@@ -62,15 +62,6 @@ public class EventInterpreter extends Interpreter<Event> implements EventNameHan
         return output;
     }
 
-    public ActionEntity.PinTypeEntity createExec() {
-        var exec = new ActionEntity.PinTypeEntity();
-        exec.id = "exec";
-        exec.type = "exec";
-        exec.label = "";
-
-        return exec;
-    }
-
     @Override
     public String handleEventName(Event data, LocaleProvider localeProvider) {
         var key = "creative_plus.trigger." + data.id + ".name";

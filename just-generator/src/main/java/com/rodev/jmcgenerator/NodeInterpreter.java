@@ -25,6 +25,8 @@ public class NodeInterpreter {
 
     private final List<PinEntity> selfOutputPins = new LinkedList<>();
 
+    private Map<String, String> argsById = new HashMap<>();
+
     public String interpret() {
         schema = node.getRawSchema();
 
@@ -77,6 +79,8 @@ public class NodeInterpreter {
 
         // Заменяем $<arg> в схеме, если таковой есть
         replacePlaceholder(argId, value);
+
+        argsById.put(argId, value);
 
         // Не добавляем в список исключенные аргументы (по типу селекторов)
         if(shouldIgnoreArgument(arg)) return;
@@ -156,9 +160,21 @@ public class NodeInterpreter {
             output = output.replace("$random_var_name", getRandomVariableName());
         }
 
+        output = replaceArgumentsInValue(output);
+
         representation.output.put(pin.id, output);
 
         pin.value = output;
+    }
+
+    private String replaceArgumentsInValue(String value) {
+        for (var argEntry : argsById.entrySet()) {
+            var placeholder = "$" + argEntry.getKey();
+
+            value = value.replace(placeholder, argEntry.getValue());
+        }
+
+        return value;
     }
 
     private void replacePlaceholder(String target, String replacement) {

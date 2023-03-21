@@ -35,6 +35,7 @@
   "select-creation" : "Создание выборки",
   "set_variable-particle" : "Действия над частицами",
   "set_variable-world" : "Действия над миром",
+  "native_cast" : "Приведение типов",
   "game" : "Действие над миром",
   "start_process" : "Вызов процесса",
   "entity-miscellaneous" : "Разное",

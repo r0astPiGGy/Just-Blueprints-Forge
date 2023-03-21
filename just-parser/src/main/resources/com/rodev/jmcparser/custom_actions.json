@@ -4,11 +4,18 @@
     "type" : "custom_with_input_exec",
     "name" : "Ветвление",
     "category" : "control",
-    "input" : [ {
-      "id" : "branch_condition",
-      "label" : "Условие",
-      "type" : "condition"
-    } ],
+    "input" : [
+      {
+        "id": "exec",
+        "label": "",
+        "type": "exec"
+      },
+      {
+        "id" : "branch_condition",
+        "label" : "Условие",
+        "type" : "condition"
+      }
+    ],
     "output" : [ {
       "id" : "branch_true",
       "label" : "True",

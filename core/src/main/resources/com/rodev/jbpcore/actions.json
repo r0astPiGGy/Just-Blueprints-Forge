@@ -20954,6 +20954,11 @@
   "name" : "Ветвление",
   "category" : "control",
   "input" : [ {
+    "id" : "exec",
+    "label" : "",
+    "type" : "exec",
+    "extra_data" : null
+  }, {
     "id" : "branch_condition",
     "label" : "Условие",
     "type" : "condition",
@@ -25021,4 +25026,344 @@
     "selector_disabled" : true
   },
   "icon_namespace" : "game_values"
+}, {
+  "id" : "native_cast_to_number",
+  "type" : "native_cast",
+  "name" : "Привести к типу Число",
+  "category" : "native_cast",
+  "input" : [ {
+    "id" : "exec",
+    "label" : "",
+    "type" : "exec",
+    "extra_data" : null
+  }, {
+    "id" : "var_to_cast",
+    "label" : "Переменная",
+    "type" : "variable",
+    "extra_data" : null
+  } ],
+  "output" : [ {
+    "id" : "cast_success",
+    "label" : "",
+    "type" : "exec",
+    "extra_data" : null
+  }, {
+    "id" : "casted_var",
+    "label" : "Число",
+    "type" : "number",
+    "extra_data" : null
+  }, {
+    "id" : "cast_failed",
+    "label" : "Приведение не удалось",
+    "type" : "exec",
+    "extra_data" : null
+  } ],
+  "extra_data" : null,
+  "icon_namespace" : "native"
+}, {
+  "id" : "native_cast_to_text",
+  "type" : "native_cast",
+  "name" : "Привести к типу Текст",
+  "category" : "native_cast",
+  "input" : [ {
+    "id" : "exec",
+    "label" : "",
+    "type" : "exec",
+    "extra_data" : null
+  }, {
+    "id" : "var_to_cast",
+    "label" : "Переменная",
+    "type" : "variable",
+    "extra_data" : null
+  } ],
+  "output" : [ {
+    "id" : "cast_success",
+    "label" : "",
+    "type" : "exec",
+    "extra_data" : null
+  }, {
+    "id" : "casted_var",
+    "label" : "Текст",
+    "type" : "text",
+    "extra_data" : null
+  }, {
+    "id" : "cast_failed",
+    "label" : "Приведение не удалось",
+    "type" : "exec",
+    "extra_data" : null
+  } ],
+  "extra_data" : null,
+  "icon_namespace" : "native"
+}, {
+  "id" : "native_cast_to_location",
+  "type" : "native_cast",
+  "name" : "Привести к типу Местоположение",
+  "category" : "native_cast",
+  "input" : [ {
+    "id" : "exec",
+    "label" : "",
+    "type" : "exec",
+    "extra_data" : null
+  }, {
+    "id" : "var_to_cast",
+    "label" : "Переменная",
+    "type" : "variable",
+    "extra_data" : null
+  } ],
+  "output" : [ {
+    "id" : "cast_success",
+    "label" : "",
+    "type" : "exec",
+    "extra_data" : null
+  }, {
+    "id" : "casted_var",
+    "label" : "Местоположение",
+    "type" : "location",
+    "extra_data" : null
+  }, {
+    "id" : "cast_failed",
+    "label" : "Приведение не удалось",
+    "type" : "exec",
+    "extra_data" : null
+  } ],
+  "extra_data" : null,
+  "icon_namespace" : "native"
+}, {
+  "id" : "native_cast_to_item",
+  "type" : "native_cast",
+  "name" : "Привести к типу Предмет",
+  "category" : "native_cast",
+  "input" : [ {
+    "id" : "exec",
+    "label" : "",
+    "type" : "exec",
+    "extra_data" : null
+  }, {
+    "id" : "var_to_cast",
+    "label" : "Переменная",
+    "type" : "variable",
+    "extra_data" : null
+  } ],
+  "output" : [ {
+    "id" : "cast_success",
+    "label" : "",
+    "type" : "exec",
+    "extra_data" : null
+  }, {
+    "id" : "casted_var",
+    "label" : "Предмет",
+    "type" : "item",
+    "extra_data" : null
+  }, {
+    "id" : "cast_failed",
+    "label" : "Приведение не удалось",
+    "type" : "exec",
+    "extra_data" : null
+  } ],
+  "extra_data" : null,
+  "icon_namespace" : "native"
+}, {
+  "id" : "native_cast_to_potion",
+  "type" : "native_cast",
+  "name" : "Привести к типу Зелье",
+  "category" : "native_cast",
+  "input" : [ {
+    "id" : "exec",
+    "label" : "",
+    "type" : "exec",
+    "extra_data" : null
+  }, {
+    "id" : "var_to_cast",
+    "label" : "Переменная",
+    "type" : "variable",
+    "extra_data" : null
+  } ],
+  "output" : [ {
+    "id" : "cast_success",
+    "label" : "",
+    "type" : "exec",
+    "extra_data" : null
+  }, {
+    "id" : "casted_var",
+    "label" : "Зелье",
+    "type" : "potion",
+    "extra_data" : null
+  }, {
+    "id" : "cast_failed",
+    "label" : "Приведение не удалось",
+    "type" : "exec",
+    "extra_data" : null
+  } ],
+  "extra_data" : null,
+  "icon_namespace" : "native"
+}, {
+  "id" : "native_cast_to_sound",
+  "type" : "native_cast",
+  "name" : "Привести к типу Звук",
+  "category" : "native_cast",
+  "input" : [ {
+    "id" : "exec",
+    "label" : "",
+    "type" : "exec",
+    "extra_data" : null
+  }, {
+    "id" : "var_to_cast",
+    "label" : "Переменная",
+    "type" : "variable",
+    "extra_data" : null
+  } ],
+  "output" : [ {
+    "id" : "cast_success",
+    "label" : "",
+    "type" : "exec",
+    "extra_data" : null
+  }, {
+    "id" : "casted_var",
+    "label" : "Звук",
+    "type" : "sound",
+    "extra_data" : null
+  }, {
+    "id" : "cast_failed",
+    "label" : "Приведение не удалось",
+    "type" : "exec",
+    "extra_data" : null
+  } ],
+  "extra_data" : null,
+  "icon_namespace" : "native"
+}, {
+  "id" : "native_cast_to_particle",
+  "type" : "native_cast",
+  "name" : "Привести к типу Частица",
+  "category" : "native_cast",
+  "input" : [ {
+    "id" : "exec",
+    "label" : "",
+    "type" : "exec",
+    "extra_data" : null
+  }, {
+    "id" : "var_to_cast",
+    "label" : "Переменная",
+    "type" : "variable",
+    "extra_data" : null
+  } ],
+  "output" : [ {
+    "id" : "cast_success",
+    "label" : "",
+    "type" : "exec",
+    "extra_data" : null
+  }, {
+    "id" : "casted_var",
+    "label" : "Частица",
+    "type" : "particle",
+    "extra_data" : null
+  }, {
+    "id" : "cast_failed",
+    "label" : "Приведение не удалось",
+    "type" : "exec",
+    "extra_data" : null
+  } ],
+  "extra_data" : null,
+  "icon_namespace" : "native"
+}, {
+  "id" : "native_cast_to_vector",
+  "type" : "native_cast",
+  "name" : "Привести к типу Вектор",
+  "category" : "native_cast",
+  "input" : [ {
+    "id" : "exec",
+    "label" : "",
+    "type" : "exec",
+    "extra_data" : null
+  }, {
+    "id" : "var_to_cast",
+    "label" : "Переменная",
+    "type" : "variable",
+    "extra_data" : null
+  } ],
+  "output" : [ {
+    "id" : "cast_success",
+    "label" : "",
+    "type" : "exec",
+    "extra_data" : null
+  }, {
+    "id" : "casted_var",
+    "label" : "Вектор",
+    "type" : "vector",
+    "extra_data" : null
+  }, {
+    "id" : "cast_failed",
+    "label" : "Приведение не удалось",
+    "type" : "exec",
+    "extra_data" : null
+  } ],
+  "extra_data" : null,
+  "icon_namespace" : "native"
+}, {
+  "id" : "native_cast_to_list",
+  "type" : "native_cast",
+  "name" : "Привести к типу Список",
+  "category" : "native_cast",
+  "input" : [ {
+    "id" : "exec",
+    "label" : "",
+    "type" : "exec",
+    "extra_data" : null
+  }, {
+    "id" : "var_to_cast",
+    "label" : "Переменная",
+    "type" : "variable",
+    "extra_data" : null
+  } ],
+  "output" : [ {
+    "id" : "cast_success",
+    "label" : "",
+    "type" : "exec",
+    "extra_data" : null
+  }, {
+    "id" : "casted_var",
+    "label" : "Список",
+    "type" : "list",
+    "extra_data" : null
+  }, {
+    "id" : "cast_failed",
+    "label" : "Приведение не удалось",
+    "type" : "exec",
+    "extra_data" : null
+  } ],
+  "extra_data" : null,
+  "icon_namespace" : "native"
+}, {
+  "id" : "native_cast_to_map",
+  "type" : "native_cast",
+  "name" : "Привести к типу Словарь",
+  "category" : "native_cast",
+  "input" : [ {
+    "id" : "exec",
+    "label" : "",
+    "type" : "exec",
+    "extra_data" : null
+  }, {
+    "id" : "var_to_cast",
+    "label" : "Переменная",
+    "type" : "variable",
+    "extra_data" : null
+  } ],
+  "output" : [ {
+    "id" : "cast_success",
+    "label" : "",
+    "type" : "exec",
+    "extra_data" : null
+  }, {
+    "id" : "casted_var",
+    "label" : "Словарь",
+    "type" : "map",
+    "extra_data" : null
+  }, {
+    "id" : "cast_failed",
+    "label" : "Приведение не удалось",
+    "type" : "exec",
+    "extra_data" : null
+  } ],
+  "extra_data" : null,
+  "icon_namespace" : "native"
 } ]

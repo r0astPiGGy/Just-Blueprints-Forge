@@ -180,7 +180,7 @@ public class GraphControllerImpl implements
 
         clearLastTemporaryLine();
 
-        connect(pin, currentHoveringPin);
+        pin.connect(currentHoveringPin);
     }
 
     private void handleContextMenuOpen(ContextMenuBuilder builder, Pin pin) {
@@ -226,7 +226,7 @@ public class GraphControllerImpl implements
             var nx = x - (pos.getX() - x);
             var ny = y - (pos.getY() - y);
 
-            connect(pin, found);
+            pin.connect(found);
 
             createdNode.moveTo(nx, ny);
 
@@ -236,17 +236,34 @@ public class GraphControllerImpl implements
         clearLastTemporaryLine();
     }
 
-    // TODO fix: should connect "connection" pin, as #handleDisconnect do.
     @Override
-    public boolean handleConnect(Pin pin, Pin connection) {
-        if(pin == connection) return false;
+    public boolean handleConnect(Pin target, Pin connection) {
+        if(target == connection) return false;
 
-        if(!pin.isApplicable(connection)) return false;
+        if(!target.isApplicable(connection)) return false;
 
-        if(pin.isPinConnected(connection)) return false;
+        if(target.isPinConnected(connection)) return false;
 
-        if(pin.isOutput()) {
-            outputPins.add(pin);
+        if(target.isConnected() && !target.supportMultipleConnections()) return false;
+        
+        target.setIsBeingConnected(true);
+
+        if (connection.isBeingConnected()) {
+            return true;
+        }
+
+        var connectResult = connection.connect(target);
+        var failed = !connectResult;
+
+        target.setIsBeingConnected(false);
+        connection.setIsBeingConnected(false);
+
+        if (failed) {
+            return false;
+        }
+
+        if(target.isOutput()) {
+            outputPins.add(target);
         } else {
             outputPins.add(connection);
         }
@@ -256,16 +273,25 @@ public class GraphControllerImpl implements
 
     @Override
     public boolean handleDisconnect(Pin target, Pin connection) {
+        if(target == connection) return false;
+        
         if(!target.isPinConnected(connection)) return false;
 
         target.setIsBeingDisconnected(true);
 
-        if (connection.isBeingDisconnected() || !connection.disconnect(target)) {
+        if (connection.isBeingDisconnected()) {
             return true;
         }
 
+        var disconnectResult = connection.disconnect(target);
+        var failed = !disconnectResult;
+
         target.setIsBeingDisconnected(false);
         connection.setIsBeingDisconnected(false);
+
+        if (failed) {
+            throw new IllegalStateException("Shouldn't get here.");
+        }
 
         if(target.isOutput()) {
             onOutputDisconnected(target);
@@ -290,20 +316,6 @@ public class GraphControllerImpl implements
                 .forEach(target::disconnect);
 
         return true;
-    }
-
-    public void connect(Pin pin, Pin connection) {
-        if (!pin.connect(connection)) {
-            return;
-        }
-
-        if(connection.isInput()) {
-            connection.disconnectAll();
-        }
-
-        if(!connection.connect(pin)) {
-            throw new IllegalStateException("Couldn't get here.");
-        }
     }
 
     @Override

@@ -68,6 +68,10 @@ public interface Pin {
 
     boolean isInput();
 
+    void setIsBeingConnected(boolean value);
+    
+    boolean isBeingConnected();
+    
     void setIsBeingDisconnected(boolean value);
 
     boolean isBeingDisconnected();

@@ -23,6 +23,7 @@ public class DataProvider {
     private static final String CUSTOM_ACTIONS_PATH = "custom_actions.json";
     private static final String ACTION_PATCHES_PATH = "patches/actions.json";
     private static final String CATEGORY_PATCHES_PATH = "patches/categories.json";
+    private static final String ACTION_TYPE_PATCHES_PATH = "patches/action_types.json";
     private static final String VARIABLE_TYPE_PATCHES_PATH = "patches/variable_types.json";
     private static final String GENERATOR_DATA_PATCHES_PATH = "patches/generator_data.json";
 
@@ -68,6 +69,10 @@ public class DataProvider {
 
     public void loadCategoryPatchesAndApply(Consumer<InputStream> consumer) {
         getLocalInputStream(CATEGORY_PATCHES_PATH, consumer);
+    }
+
+    public void loadActionTypePatchesAndApply(Consumer<InputStream> consumer) {
+        getLocalInputStream(ACTION_TYPE_PATCHES_PATH, consumer);
     }
 
     public <T> T loadCustomActionsAndReturn(Function<InputStream, T> function) {

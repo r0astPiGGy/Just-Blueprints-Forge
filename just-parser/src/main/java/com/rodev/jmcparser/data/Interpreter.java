@@ -45,6 +45,15 @@ public abstract class Interpreter<T> {
         return actions;
     }
 
+    public ActionEntity.PinTypeEntity createExec() {
+        var exec = new ActionEntity.PinTypeEntity();
+        exec.id = "exec";
+        exec.type = "exec";
+        exec.label = "";
+
+        return exec;
+    }
+
     abstract
     protected @Nullable ActionEntity interpret(@NotNull T object);
 

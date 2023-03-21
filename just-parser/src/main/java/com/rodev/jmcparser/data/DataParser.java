@@ -16,9 +16,14 @@ public class DataParser {
     private Runnable onAllDataLoaded = () -> {};
 
     private final List<Parser<?, ?>> parsers = new LinkedList<>();
+    private final List<Interpreter<?>> interpreters = new LinkedList<>();
 
     public void registerParser(Parser<?, ?> parser) {
         parsers.add(parser);
+    }
+
+    public void registerInterpreter(Interpreter<?> interpreter) {
+        interpreters.add(interpreter);
     }
 
     public void parseUsing(DataProvider dataProvider) {
@@ -34,6 +39,10 @@ public class DataParser {
 
         for(var parser : parsers) {
             interpreter.registerInterpreter(parser.createInterpreter());
+        }
+
+        for(var registered : interpreters) {
+            interpreter.registerInterpreter(registered);
         }
 
         return interpreter;

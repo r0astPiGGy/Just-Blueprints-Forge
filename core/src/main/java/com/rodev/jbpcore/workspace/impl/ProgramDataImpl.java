@@ -6,6 +6,8 @@ import com.rodev.jbpcore.workspace.Project;
 import com.rodev.jbpcore.workspace.Workspace;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.extern.log4j.Log4j;
+import lombok.extern.log4j.Log4j2;
 
 import java.io.File;
 import java.io.IOException;
@@ -84,6 +86,8 @@ public class ProgramDataImpl implements ProgramData {
 
     private void loadFromFile() throws IOException {
         var file = new File(workspace.getProgramDirectory(), cacheFileName);
+
+        if(!file.exists()) return;
 
         var objectMapper = new ObjectMapper();
 

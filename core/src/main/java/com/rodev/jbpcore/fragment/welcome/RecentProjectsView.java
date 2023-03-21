@@ -21,6 +21,9 @@ import icyllis.modernui.widget.TextView;
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nonnull;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.function.Consumer;
 
 import static com.rodev.jbpcore.Colors.SELECTED_COLOR;
@@ -64,6 +67,10 @@ public class RecentProjectsView extends LinearLayout {
         JustBlueprints.getWorkspace()
                 .getProgramData()
                 .getRecentProjects()
+                .stream()
+                .sorted(Comparator.comparingLong(Project::getLastOpenDate)
+                        .reversed())
+                .toList()
                 .forEach(this::createAndAddProject);
     }
 

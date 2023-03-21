@@ -4,6 +4,7 @@ import com.rodev.jbpcore.blueprint.data.DataAccess;
 import com.rodev.jbpcore.blueprint.data.DataProvider;
 import com.rodev.jbpcore.workspace.impl.WorkspaceImpl;
 import icyllis.modernui.ModernUI;
+import org.apache.logging.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;

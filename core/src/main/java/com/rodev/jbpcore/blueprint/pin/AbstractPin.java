@@ -13,6 +13,7 @@ public abstract class AbstractPin implements Pin {
     private PinPositionSupplier pinPositionSupplier;
     private PinConnectionHandler pinConnectionHandler;
     private boolean isBeingDisconnected;
+    private boolean isBeingConnected;
     private Position position;
 
     public AbstractPin(PinType pinType) {
@@ -25,8 +26,18 @@ public abstract class AbstractPin implements Pin {
     }
 
     @Override
+    public void setIsBeingConnected(boolean value) {
+        isBeingConnected = value;
+    }
+
+    @Override
     public void setIsBeingDisconnected(boolean value) {
         isBeingDisconnected = value;
+    }
+
+    @Override
+    public boolean isBeingConnected() {
+        return isBeingConnected;
     }
 
     public boolean isBeingDisconnected() {

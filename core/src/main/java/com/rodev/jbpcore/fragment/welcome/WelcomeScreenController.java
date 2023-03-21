@@ -7,6 +7,8 @@ import com.rodev.jbpcore.workspace.Workspace;
 import icyllis.modernui.fragment.Fragment;
 import lombok.RequiredArgsConstructor;
 
+import java.util.Date;
+
 @RequiredArgsConstructor
 public class WelcomeScreenController {
 
@@ -27,6 +29,9 @@ public class WelcomeScreenController {
 
     public void openProject(Project project) {
         WindowManager windowManager = JustBlueprints.getWindowManager();
+
+        project.setLastOpenDate(new Date().getTime());
+        project.saveInfo();
 
         var editorState = WindowManager.EDITOR_SCREEN;
         editorState.setProjectToView(project);

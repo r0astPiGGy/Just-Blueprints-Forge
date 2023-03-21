@@ -11,6 +11,10 @@
     }
   },
   {
+    "id" : "native_cast_to_list",
+    "schema" : [ "if (variable::is_type($args, \"ARRAY\")) {", "$cast_success", "} else {", "$cast_failed", "}" ]
+  },
+  {
     "id" : "repeat_for_each_in_list",
     "schema" : [
       "repeat::for_each_in_list($args) { $index_variable, $value_variable ->",

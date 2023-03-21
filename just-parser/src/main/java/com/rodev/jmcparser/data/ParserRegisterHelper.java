@@ -1,20 +1,38 @@
 package com.rodev.jmcparser.data;
 
+import com.rodev.jbpcore.blueprint.data.json.ActionEntity;
+import com.rodev.jbpcore.blueprint.data.json.ActionTypeEntity;
+import com.rodev.jbpcore.blueprint.data.json.VariableTypeEntity;
 import com.rodev.jbpcore.utils.StringUtils;
+import com.rodev.jmcgenerator.entity.GeneratorEntity;
 import com.rodev.jmcparser.data.action.ActionInterpreter;
 import com.rodev.jmcparser.data.action.ActionParser;
 import com.rodev.jmcparser.data.action.custom.CustomActionParser;
+import com.rodev.jmcparser.data.category.Category;
 import com.rodev.jmcparser.data.category.CategoryProvider;
+import com.rodev.jmcparser.data.category.CategoryWriter;
 import com.rodev.jmcparser.data.event.EventOutputFiller;
 import com.rodev.jmcparser.data.event.EventParser;
 import com.rodev.jmcparser.data.game_value.GameValueMappings;
 import com.rodev.jmcparser.data.game_value.GameValueParser;
 import com.rodev.jmcparser.data.game_value.GameValueTranslator;
+import com.rodev.jmcparser.data.native_actions.CastActionInterpreter;
 import com.rodev.jmcparser.generator.DataGenerator;
 import com.rodev.jmcparser.json.Event;
 import com.rodev.jmcparser.json.GameValue;
+import com.rodev.jmcparser.patcher.AbstractPatcher;
+import com.rodev.jmcparser.patcher.Patcher;
+import com.rodev.jmcparser.patcher.action.ActionEntityPatch;
+import com.rodev.jmcparser.patcher.action.ActionPatcher;
+import com.rodev.jmcparser.patcher.action.ActionTypeEntityPatch;
+import com.rodev.jmcparser.patcher.category.CategoryPatch;
+import com.rodev.jmcparser.patcher.generator.GeneratorEntityPatch;
+import com.rodev.jmcparser.patcher.variable.VariableTypePatch;
 import lombok.AccessLevel;
 import lombok.Setter;
+
+import static com.rodev.jmcparser.Parser.parserDirectoryChild;
+import static com.rodev.jmcparser.data.Parser.parseJson;
 
 public class ParserRegisterHelper {
 
@@ -47,6 +65,8 @@ public class ParserRegisterHelper {
         registerCustomActionParser();
         registerEventParser();
         registerGameValueParser();
+
+        registerCastActionInterpreter();
     }
 
     public void onDataProvide(DataProvider dataProvider) {
@@ -108,6 +128,13 @@ public class ParserRegisterHelper {
             i.addOnActionInterpretedListener(dataGenerator::onGameValueInterpreted);
         });
         dataParser.registerParser(parser);
+    }
+
+    private void registerCastActionInterpreter() {
+        var interpreter = new CastActionInterpreter();
+        interpreter.addOnActionInterpretedListener(dataGenerator::onCastActionInterpreted);
+
+        dataParser.registerInterpreter(interpreter);
     }
 
     public void onAllDataInterpreted() {

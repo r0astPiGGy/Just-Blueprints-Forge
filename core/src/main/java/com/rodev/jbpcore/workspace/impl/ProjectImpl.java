@@ -4,6 +4,7 @@ import com.rodev.jbpcore.blueprint.graph.GraphController;
 import com.rodev.jbpcore.blueprint.node.BPNode;
 import com.rodev.jbpcore.workspace.Blueprint;
 import com.rodev.jbpcore.workspace.Project;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -12,14 +13,14 @@ import java.io.File;
 import java.util.Collection;
 
 @Getter
-@RequiredArgsConstructor
+@AllArgsConstructor
 public abstract class ProjectImpl implements Project {
 
     private final String name;
     private final File directory;
     private final long createdDate;
     @Setter
-    private transient long lastOpenDate;
+    private long lastOpenDate;
 
     @Override
     public Blueprint getBlueprint() {

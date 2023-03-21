@@ -17,12 +17,16 @@ import com.rodev.jbpcore.workspace.compiler.CodeCompiler;
 import com.rodev.jmcgenerator.CodeGenerator;
 import com.rodev.jmcgenerator.data.GeneratorData;
 import com.rodev.jmcgenerator.entity.GeneratorEntity;
+import icyllis.modernui.ModernUI;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.extern.java.Log;
-import lombok.extern.log4j.Log4j;
+import lombok.extern.log4j.Log4j2;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.Marker;
+import org.apache.logging.log4j.MarkerManager;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
@@ -30,9 +34,8 @@ import java.io.IOException;
 import java.util.*;
 import java.util.regex.Pattern;
 
-@Log
+@Log4j2
 public class WorkspaceImpl implements Workspace {
-
     private final ProgramData programData;
     private final File programDirectory = new File("justblueprints");
     private final File projectDirectory;
@@ -98,15 +101,15 @@ public class WorkspaceImpl implements Workspace {
     }
 
     public Project createProject(File directory, ProjectInfoEntity infoEntity) {
-        return createProject(infoEntity.name, directory, infoEntity.created);
+        return createProject(infoEntity.name, directory, infoEntity.created, infoEntity.lastOpen);
     }
 
     private Project createProject(String name, File directory) {
-        return createProject(name, directory, new Date().getTime());
+        return createProject(name, directory, new Date().getTime(), new Date().getTime());
     }
 
-    private Project createProject(String name, File directory, long createdDate) {
-        return new ProjectImpl(name, directory, createdDate) {
+    private Project createProject(String name, File directory, long createdDate, long lastOpen) {
+        return new ProjectImpl(name, directory, createdDate, lastOpen) {
 
             @Override
             protected void onBlueprintSave(Collection<BPNode> nodes) {
@@ -145,7 +148,7 @@ public class WorkspaceImpl implements Workspace {
         var jmcc = CodeCompiler.getCompilerFile(programDirectory);
 
         if(!jmcc.exists()) {
-            log.severe("Code was generated, but jmcc not found. Please install it to "
+            log.error("Code was generated, but jmcc not found. Please install it to "
                     + jmcc.getAbsolutePath());
             return;
         }
@@ -162,7 +165,7 @@ public class WorkspaceImpl implements Workspace {
         var output = compiler.getOutput();
 
         if(compiler.getExitCode() != 0) {
-            log.warning("Compilation finished unsuccessfully. Error message: \n" + output);
+            log.warn("Compilation finished unsuccessfully. Error message: \n" + output);
             return;
         }
 
@@ -203,7 +206,7 @@ public class WorkspaceImpl implements Workspace {
             Action action = DataAccess.getInstance().actionRegistry.get(actionId);
 
             if(action == null) {
-                log.warning("Action with outputPin " + actionId + " not found during blueprint load. (Outdated blueprint?)");
+                log.warn("Action by id " + actionId + " not found during blueprint load. (Outdated blueprint?)");
                 continue;
             }
 
@@ -225,7 +228,7 @@ public class WorkspaceImpl implements Workspace {
             var outputPinId = connection.outputPin();
             var outputPin = outputPins.get(outputPinId);
 
-            graphController.connect(connection.inputPin(), outputPin);
+            connection.inputPin().connect(outputPin);
         }
     }
 

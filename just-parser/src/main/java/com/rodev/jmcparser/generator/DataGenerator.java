@@ -1,5 +1,6 @@
 package com.rodev.jmcparser.generator;
 
+import com.rodev.jbpcore.blueprint.data.ObjectType;
 import com.rodev.jbpcore.blueprint.data.json.ActionEntity;
 import com.rodev.jmcgenerator.entity.GeneratorEntity;
 import com.rodev.jmcparser.data.action.custom.CustomActionEntity;
@@ -9,6 +10,7 @@ import com.rodev.jmcparser.json.Event;
 import com.rodev.jmcparser.json.GameValue;
 import lombok.RequiredArgsConstructor;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.*;
 
@@ -29,6 +31,10 @@ public class DataGenerator {
 
         StringBuilder builder = new StringBuilder();
 
+        var ignoreArguments = new HashSet<String>();
+
+        ignoreArguments.add("exec");
+
         // TODO REWORK
         if(action.id.startsWith("set_variable_get")) {
             var output = action.output.get(0);
@@ -43,13 +49,16 @@ public class DataGenerator {
         builder.append(data.object);
         builder.append("::");
         builder.append(data.name);
-        if(isContainingSelector(data)) {
-            var selectorId = action.input.get(0).id;
+
+        var selector = findSelector(action);
+
+        if(selector != null) {
             builder.append("<$");
-            builder.append(selectorId);
+            builder.append(selector.id);
             builder.append(">");
-            generatorEntity.ignoreArguments = Set.of(selectorId);
+            ignoreArguments.add(selector.id);
         }
+
         builder.append("($args)");
         if(data.containing != null && data.containing.equals("predicate")) {
             generatorEntity.codeNeedsToBePlaced = false;
@@ -58,15 +67,28 @@ public class DataGenerator {
         }
 
         generatorEntity.schema = builder.toString();
+        generatorEntity.ignoreArguments = ignoreArguments;
 
         generatorEntities.add(generatorEntity);
     }
 
-    private boolean isContainingSelector(ActionData actionData) {
-        return switch (actionData.object) {
+    private boolean isSelector(ActionEntity.PinTypeEntity pin) {
+        return isSelector(pin.type);
+    }
+
+    private boolean isSelector(String object) {
+        return switch (object) {
             case "entity", "player" -> true;
             default -> false;
         };
+    }
+
+    @Nullable
+    private ActionEntity.PinTypeEntity findSelector(ActionEntity action) {
+        return action.input.stream()
+                .filter(this::isSelector)
+                .findFirst()
+                .orElse(null);
     }
 
     public void onCustomActionInterpreted(CustomActionEntity action) {
@@ -76,6 +98,19 @@ public class DataGenerator {
         var generator = action.generator;
 
         generator.id = action.id;
+
+        var ignoreArguments = generator.ignoreArguments;
+
+        if(ignoreArguments == null || ignoreArguments.isEmpty() || !ignoreArguments.contains("exec")) {
+            if(ignoreArguments == null) {
+                ignoreArguments = new HashSet<>();
+            } else {
+                ignoreArguments = new HashSet<>(ignoreArguments);
+            }
+            ignoreArguments.add("exec");
+        }
+
+        generator.ignoreArguments = ignoreArguments;
 
         generatorEntities.add(generator);
     }
@@ -124,6 +159,24 @@ public class DataGenerator {
         }
 
         generatorEntity.schema = builder.toString();
+
+        generatorEntities.add(generatorEntity);
+    }
+
+    public void onCastActionInterpreted(ActionEntity action, ObjectType objectType) {
+        var generatorEntity = new GeneratorEntity();
+        generatorEntity.id = action.id;
+
+        generatorEntity.schema = List.of(
+                "if (variable::is_type($args, \"" + objectType.name() + "\")) {",
+                "$cast_success",
+                "} else {",
+                "$cast_failed",
+                "}"
+        );
+        generatorEntity.output = new HashMap<>(){{
+            put("casted_var", "$var_to_cast");
+        }};
 
         generatorEntities.add(generatorEntity);
     }

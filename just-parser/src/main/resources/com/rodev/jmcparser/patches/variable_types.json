@@ -8,9 +8,6 @@
   "id" : "potion",
   "color" : "255, 55, 95"
 }, {
-  "id" : "select",
-  "color" : "99, 230, 226"
-}, {
   "id" : "sound",
   "color" : "94, 92, 230"
 }, {
@@ -30,7 +27,7 @@
   "color" : "255, 59, 48"
 }, {
   "id" : "variable",
-  "color" : "99, 230, 226"
+  "color" : "48, 209, 88"
 }, {
   "id" : "location",
   "color" : "172, 142, 104"
@@ -53,9 +50,12 @@
   "id": "structure",
   "color" : "255, 159, 10"
 }, {
+  "id": "map",
+  "color" : "255, 159, 10"
+}, {
   "id": "dictionary",
   "color" : "255, 159, 10"
 }, {
   "id": "list",
-  "color" : "255, 159, 10"
+  "color" : "255, 214, 10"
 } ]

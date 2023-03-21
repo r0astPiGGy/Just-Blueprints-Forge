@@ -1,6 +1,7 @@
 package com.rodev.jmcparser;
 
 import com.rodev.jbpcore.blueprint.data.json.ActionEntity;
+import com.rodev.jbpcore.blueprint.data.json.ActionTypeEntity;
 import com.rodev.jbpcore.blueprint.data.json.VariableTypeEntity;
 import com.rodev.jmcgenerator.entity.GeneratorEntity;
 import com.rodev.jmcparser.data.*;
@@ -10,6 +11,7 @@ import com.rodev.jmcparser.patcher.AbstractPatcher;
 import com.rodev.jmcparser.patcher.Patcher;
 import com.rodev.jmcparser.patcher.action.ActionEntityPatch;
 import com.rodev.jmcparser.patcher.action.ActionPatcher;
+import com.rodev.jmcparser.patcher.action.ActionTypeEntityPatch;
 import com.rodev.jmcparser.patcher.category.CategoryPatch;
 import com.rodev.jmcparser.patcher.generator.GeneratorEntityPatch;
 import com.rodev.jmcparser.patcher.variable.VariableTypePatch;
@@ -42,6 +44,7 @@ public class Parser implements Runnable {
 
         var actions = interpreter.interpret();
 
+
         DataWriter.Default<ActionEntity> actionWriter
                 = DataWriter.defaultDataWriter(parserDirectoryChild("actions.json"));
         dataProvider.loadActionPatchesAndApply(is -> {
@@ -50,6 +53,8 @@ public class Parser implements Runnable {
 
             actionWriter.setPatcher(patcher);
         });
+
+
         var categoryWriter = new CategoryWriter(parserDirectoryChild("categories.json"), localization);
         dataProvider.loadCategoryPatchesAndApply(is -> {
             var patches = parseJson(is, CategoryPatch[].class);
@@ -57,6 +62,8 @@ public class Parser implements Runnable {
 
             categoryWriter.setPatcher(patcher);
         });
+
+
         var variableTypeWriter = new VariableTypeWriter(parserDirectoryChild("variable_types.json"));
         dataProvider.loadVariableTypePatchesAndApply(is -> {
             var patches = parseJson(is, VariableTypePatch[].class);
@@ -64,6 +71,8 @@ public class Parser implements Runnable {
 
             variableTypeWriter.setPatcher(patcher);
         });
+
+
         DataWriter.Default<GeneratorEntity> generatorDataWriter
                 = DataWriter.defaultDataWriter(parserDirectoryChild("generator_data.json"));
         dataProvider.loadGeneratorDataPatchesAndApply(is -> {
@@ -73,13 +82,29 @@ public class Parser implements Runnable {
             generatorDataWriter.setPatcher(patcher);
         });
 
+
+        var actionTypeWriter = new ActionTypeWriter(parserDirectoryChild("action_types.json"));
+        dataProvider.loadActionTypePatchesAndApply(is -> {
+            var patches = parseJson(is, ActionTypeEntityPatch[].class);
+            Patcher<ActionTypeEntity> patcher = AbstractPatcher.defaultPatcher(patches, t -> t.id);
+
+            actionTypeWriter.setPatcher(patcher);
+        });
+
         var generatorDataEntities = helper.getDataGenerator().getGeneratorEntities();
 
-        applyAdditionalDirectories(actionWriter, categoryWriter, variableTypeWriter, generatorDataWriter);
+        applyAdditionalDirectories(
+                actionWriter,
+                categoryWriter,
+                variableTypeWriter,
+                generatorDataWriter,
+                actionTypeWriter
+        );
 
         actionWriter.write(actions);
         categoryWriter.write(actions);
         variableTypeWriter.write(actions);
+        actionTypeWriter.write(actions);
         generatorDataWriter.write(generatorDataEntities);
 
         helper.onAllDataInterpreted();

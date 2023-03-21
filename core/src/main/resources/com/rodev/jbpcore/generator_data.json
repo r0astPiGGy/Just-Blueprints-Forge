@@ -1,2856 +1,2856 @@
 [ {
   "id" : "call_function",
   "schema" : "code::call_function($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "else",
   "schema" : "code::else($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "start_process",
   "schema" : "code::start_process($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "control_call_exception",
   "schema" : "code::call_exception($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "control_end_thread",
   "schema" : "code::break($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "control_return_function",
   "schema" : "code::return_function($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "control_skip_iteration",
   "schema" : "code::skip_iteration($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "control_stop_repeat",
   "schema" : "code::stop_repeat($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "control_wait",
   "schema" : "code::wait($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "controller_async_run",
   "schema" : "code::controller_async_run($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "controller_exception",
   "schema" : "code::controller_exception($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "controller_measure_time",
   "schema" : "code::controller_measure_time($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_disguise_as_block",
-  "schema" : "entity::disguise_as_block<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::disguise_as_block<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_disguise_as_entity",
-  "schema" : "entity::disguise_as_entity<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::disguise_as_entity<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_disguise_as_item",
-  "schema" : "entity::disguise_as_item<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::disguise_as_item<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_disguise_as_player",
-  "schema" : "entity::disguise_as_player<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::disguise_as_player<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_play_damage_animation",
-  "schema" : "entity::play_damage_animation<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::play_damage_animation<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_remove_disguise",
-  "schema" : "entity::remove_disguise<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::remove_disguise<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_set_armor_stand_parts",
-  "schema" : "entity::set_armor_stand_parts<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::set_armor_stand_parts<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_set_armor_stand_pose",
-  "schema" : "entity::set_armor_stand_pose<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::set_armor_stand_pose<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_set_axolotl_type",
-  "schema" : "entity::set_axolotl_type<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::set_axolotl_type<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_set_bee_nectar",
-  "schema" : "entity::set_bee_nectar<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::set_bee_nectar<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_set_cat_lying_down",
-  "schema" : "entity::set_cat_lying_down<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::set_cat_lying_down<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_set_cat_type",
-  "schema" : "entity::set_cat_type<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::set_cat_type<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_set_dye_color",
-  "schema" : "entity::set_dye_color<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::set_dye_color<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_set_enderman_block",
-  "schema" : "entity::set_enderman_block<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::set_enderman_block<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_set_fox_leaping",
-  "schema" : "entity::set_fox_leaping<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::set_fox_leaping<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_set_fox_type",
-  "schema" : "entity::set_fox_type<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::set_fox_type<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_set_frog_type",
-  "schema" : "entity::set_frog_type<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::set_frog_type<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_set_glow_squid_dark",
-  "schema" : "entity::set_glow_squid_dark<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::set_glow_squid_dark<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_set_glowing",
-  "schema" : "entity::set_glowing<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::set_glowing<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_set_horse_pattern",
-  "schema" : "entity::set_horse_pattern<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::set_horse_pattern<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_set_item_in_frame",
-  "schema" : "entity::set_item_in_frame<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::set_item_in_frame<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_set_llama_type",
-  "schema" : "entity::set_llama_type<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::set_llama_type<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_set_minecart_block",
-  "schema" : "entity::set_minecart_block<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::set_minecart_block<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_set_mushroom_cow_type",
-  "schema" : "entity::set_mushroom_cow_type<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::set_mushroom_cow_type<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_set_parrot_type",
-  "schema" : "entity::set_parrot_type<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::set_parrot_type<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_set_pose",
-  "schema" : "entity::set_pose<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::set_pose<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_set_projectile_display_item",
-  "schema" : "entity::set_projectile_display_item<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::set_projectile_display_item<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_set_rabbit_type",
-  "schema" : "entity::set_rabbit_type<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::set_rabbit_type<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_set_snowman_pumpkin",
-  "schema" : "entity::set_snowman_pumpkin<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::set_snowman_pumpkin<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_set_tropical_fish_pattern",
-  "schema" : "entity::set_tropical_fish_pattern<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::set_tropical_fish_pattern<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_set_villager_biome",
-  "schema" : "entity::set_villager_biome<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::set_villager_biome<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_set_visual_fire",
-  "schema" : "entity::set_visual_fire<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::set_visual_fire<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_set_zombie_arms_raised",
-  "schema" : "entity::set_zombie_arms_raised<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::set_zombie_arms_raised<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_eat_grass",
-  "schema" : "entity::eat_grass<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::eat_grass<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_eat_target",
-  "schema" : "entity::eat_target<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::eat_target<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_explode",
-  "schema" : "entity::explode<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::explode<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_ignite_creeper",
-  "schema" : "entity::ignite_creeper<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::ignite_creeper<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_jump",
-  "schema" : "entity::jump<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::jump<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_move_to_location",
-  "schema" : "entity::move_to_location<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::move_to_location<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_move_to_location_stop",
-  "schema" : "entity::move_to_location_stop<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::move_to_location_stop<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_ram_target",
-  "schema" : "entity::ram_target<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::ram_target<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_set_allay_dancing",
-  "schema" : "entity::set_allay_dancing<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::set_allay_dancing<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_set_aware",
-  "schema" : "entity::set_aware<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::set_aware<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_set_celebrating",
-  "schema" : "entity::set_celebrating<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::set_celebrating<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_set_dragon_phase",
-  "schema" : "entity::set_dragon_phase<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::set_dragon_phase<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_set_shulker_bullet_target",
-  "schema" : "entity::set_shulker_bullet_target<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::set_shulker_bullet_target<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_set_target",
-  "schema" : "entity::set_target<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::set_target<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_sleep",
-  "schema" : "entity::sleep<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::sleep<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_use_item",
-  "schema" : "entity::use_item<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::use_item<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_get_custom_tag",
-  "schema" : "entity::get_custom_tag<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::get_custom_tag<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_launch_projectile",
-  "schema" : "entity::launch_projectile<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::launch_projectile<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_remove",
-  "schema" : "entity::remove<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::remove<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_remove_custom_tag",
-  "schema" : "entity::remove_custom_tag<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::remove_custom_tag<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_set_armor_items",
-  "schema" : "entity::set_armor_items<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::set_armor_items<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_set_custom_tag",
-  "schema" : "entity::set_custom_tag<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::set_custom_tag<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_set_equipment_item",
-  "schema" : "entity::set_equipment_item<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::set_equipment_item<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_set_item",
-  "schema" : "entity::set_item<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::set_item<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_set_warden_digging",
-  "schema" : "entity::set_warden_digging<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::set_warden_digging<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_shear_sheep",
-  "schema" : "entity::shear_sheep<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::shear_sheep<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_attach_lead",
-  "schema" : "entity::attach_lead<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::attach_lead<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_face_location",
-  "schema" : "entity::face_location<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::face_location<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_launch_forward",
-  "schema" : "entity::launch_forward<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::launch_forward<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_launch_to_location",
-  "schema" : "entity::launch_to_location<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::launch_to_location<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_launch_up",
-  "schema" : "entity::launch_up<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::launch_up<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_ride_entity",
-  "schema" : "entity::ride_entity<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::ride_entity<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_set_gliding",
-  "schema" : "entity::set_gliding<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::set_gliding<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_set_gravity",
-  "schema" : "entity::set_gravity<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::set_gravity<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_set_rotation",
-  "schema" : "entity::set_rotation<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::set_rotation<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_set_location",
-  "schema" : "entity::set_velocity<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::set_velocity<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_teleport",
-  "schema" : "entity::teleport<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::teleport<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_celar_potion_effects",
-  "schema" : "entity::clear_potion_effects<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::clear_potion_effects<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_damage",
-  "schema" : "entity::damage<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::damage<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_give_potion_effects",
-  "schema" : "entity::give_potion_effects<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::give_potion_effects<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_heal",
-  "schema" : "entity::heal<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::heal<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_remove_potion_effect",
-  "schema" : "entity::remove_potion_effect<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::remove_potion_effect<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_set_absorption_health",
-  "schema" : "entity::set_absorption_health<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::set_absorption_health<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_set_animal_age",
-  "schema" : "entity::set_animal_age<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::set_animal_age<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_set_attribute",
-  "schema" : "entity::set_attribute<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::set_attribute<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_set_creeper_fuse",
-  "schema" : "entity::set_creeper_fuse<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::set_creeper_fuse<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_set_current_health",
-  "schema" : "entity::set_current_health<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::set_current_health<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_set_death_time",
-  "schema" : "entity::set_death_time<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::set_death_time<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_set_explosive_power",
-  "schema" : "entity::set_explosive_power<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::set_explosive_power<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_set_fall_distance",
-  "schema" : "entity::set_fall_distance<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::set_fall_distance<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_set_fire_ticks",
-  "schema" : "entity::set_fire_ticks<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::set_fire_ticks<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_set_fishing_wait",
-  "schema" : "entity::set_fishing_wait<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::set_fishing_wait<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_set_freeze_ticks",
-  "schema" : "entity::set_freeze_ticks<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::set_freeze_ticks<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_set_horse_jump",
-  "schema" : "entity::set_horse_jump<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::set_horse_jump<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_set_invulnerability_ticks",
-  "schema" : "entity::set_invulnerability_ticks<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::set_invulnerability_ticks<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_set_max_health",
-  "schema" : "entity::set_max_health<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::set_max_health<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_set_pickup_delay",
-  "schema" : "entity::set_pickup_delay<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::set_pickup_delay<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_set_potion_cloud_radius",
-  "schema" : "entity::set_potion_cloud_radius<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::set_potion_cloud_radius<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_set_villager_experience",
-  "schema" : "entity::set_villager_experience<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::set_villager_experience<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_set_warden_anger_level",
-  "schema" : "entity::set_warden_anger_level<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::set_warden_anger_level<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_set_wither_invulnerability_ticks",
-  "schema" : "entity::set_wither_invulnerability_ticks<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::set_wither_invulnerability_ticks<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_set_ai",
-  "schema" : "entity::set_ai<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::set_ai<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_set_angry",
-  "schema" : "entity::set_angry<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::set_angry<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_set_baby",
-  "schema" : "entity::set_baby<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::set_baby<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_set_carrying_chest",
-  "schema" : "entity::set_carrying_chest<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::set_carrying_chest<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_set_collidable",
-  "schema" : "entity::set_collidable<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::set_collidable<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_set_creeper_charge",
-  "schema" : "entity::set_creeper_charge<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::set_creeper_charge<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_set_custom_name",
-  "schema" : "entity::set_custom_name<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::set_custom_name<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_set_custom_name_visibility",
-  "schema" : "entity::set_custom_name_visibility<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::set_custom_name_visibility<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_set_death_drops",
-  "schema" : "entity::set_death_drops<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::set_death_drops<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_set_despawning",
-  "schema" : "entity::set_despawning<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::set_despawning<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_set_end_crystal_beam",
-  "schema" : "entity::set_end_crystal_beam<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::set_end_crystal_beam<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_set_goat_screaming",
-  "schema" : "entity::set_goat_screaming<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::set_goat_screaming<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_set_invisible",
-  "schema" : "entity::set_invisible<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::set_invisible<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_set_invulnerable",
-  "schema" : "entity::set_invulnerable<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::set_invulnerable<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_set_marker",
-  "schema" : "entity::set_marker<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::set_marker<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_set_panda_gene",
-  "schema" : "entity::set_panda_gene<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::set_panda_gene<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_set_persistence",
-  "schema" : "entity::set_persistence<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::set_persistence<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_set_projectile_shooter",
-  "schema" : "entity::set_projectile_shooter<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::set_projectile_shooter<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_set_rearing",
-  "schema" : "entity::set_rearing<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::set_rearing<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_set_riptiding",
-  "schema" : "entity::set_riptiding<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::set_riptiding<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_set_sheep_sheared",
-  "schema" : "entity::set_sheep_sheared<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::set_sheep_sheared<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_set_silenced",
-  "schema" : "entity::set_silenced<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::set_silenced<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_set_sitting",
-  "schema" : "entity::set_sitting<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::set_sitting<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_set_size",
-  "schema" : "entity::set_size<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::set_size<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_set_tame",
-  "schema" : "entity::set_tame<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::set_tame<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_set_villager_profession",
-  "schema" : "entity::set_villager_profession<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::set_villager_profession<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_set_wearing_saddle",
-  "schema" : "entity::set_wearing_saddle<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "entity::set_wearing_saddle<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "game_block_growth",
   "schema" : "world::block_growth($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "game_bone_meal_block",
   "schema" : "world::bone_meal_block($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "game_break_block",
   "schema" : "world::break_block($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "game_clear_container",
   "schema" : "world::clear_container($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "game_clear_container_items",
   "schema" : "world::clear_container_items($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "game_clear_region",
   "schema" : "world::clear_region($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "game_clone_region",
   "schema" : "world::clone_region($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "game_fill_container",
   "schema" : "world::fill_container($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "game_generate_tree",
   "schema" : "world::generate_tree($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "game_random_tick_block",
   "schema" : "world::random_tick_block($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "game_remove_container_items",
   "schema" : "world::remove_container_items($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "game_replace_blocks_in_region",
   "schema" : "world::replace_blocks_in_region($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "game_replace_container_items",
   "schema" : "world::replace_container_items($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "game_set_age",
   "schema" : "world::set_age($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "game_set_block",
   "schema" : "world::set_block($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "game_set_block_custom_tag",
   "schema" : "world::set_block_custom_tag($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "game_set_block_data",
   "schema" : "world::set_block_data($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "game_set_campfire_item",
   "schema" : "world::set_campfire_item($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "game_set_container",
   "schema" : "world::set_container($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "game_set_container_lock",
   "schema" : "world::set_container_lock($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "game_set_container_name",
   "schema" : "world::set_container_name($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "game_set_furnace_cook_time",
   "schema" : "world::set_furnace_cook_time($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "game_set_item_in_container_slot",
   "schema" : "world::set_item_in_container_slot($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "game_set_lectern_book",
   "schema" : "world::set_lectern_book($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "game_set_player_head",
   "schema" : "world::set_player_head($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "game_set_region",
   "schema" : "world::set_region($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "game_set_sign_text",
   "schema" : "world::set_sign_text($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "game_set_sign_text_color",
   "schema" : "world::set_sign_text_color($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "game_create_explosion",
   "schema" : "world::create_explosion($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "game_launch_firework",
   "schema" : "world::launch_firework($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "game_launch_projectile",
   "schema" : "world::launch_projectile($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "game_spawn_armor_stand",
   "schema" : "world::spawn_armor_stand($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "game_spawn_effect_cloud",
   "schema" : "world::spawn_effect_cloud($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "game_spawn_end_crystal",
   "schema" : "world::spawn_end_crystal($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "game_spawn_evoker_fangs",
   "schema" : "world::spawn_evoker_fangs($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "game_spawn_experience_orb",
   "schema" : "world::spawn_experience_orb($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "game_spawn_eye_of_ender",
   "schema" : "world::spawn_eye_of_ender($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "game_spawn_falling_block",
   "schema" : "world::spawn_falling_block($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "game_spawn_item",
   "schema" : "world::spawn_item($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "game_spawn_lightning_bolt",
   "schema" : "world::spawn_lightning_bolt($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "game_spawn_mob",
   "schema" : "world::spawn_mob($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "game_spawn_primed_tnt",
   "schema" : "world::spawn_primed_tnt($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "game_spawn_shulker_bullet",
   "schema" : "world::spawn_shulker_bullet($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "game_spawn_vehicle",
   "schema" : "world::spawn_vehicle($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "game_cancel_event",
   "schema" : "world::cancel_event($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "game_clear_exploded_blocks",
   "schema" : "world::clear_exploded_blocks($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "game_hide_event_message",
   "schema" : "world::hide_event_message($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "game_set_event_damage",
   "schema" : "world::set_event_damage($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "game_set_event_experience",
   "schema" : "world::set_event_experience($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "game_set_event_heal",
   "schema" : "world::set_event_heal($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "game_set_event_projectile",
   "schema" : "world::set_event_projectile($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "game_set_event_sound",
   "schema" : "world::set_event_sound($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "game_uncancel_event",
   "schema" : "world::uncancel_event($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "game_clear_scoreboard_scores",
   "schema" : "world::clear_scoreboard_scores($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "game_create_scoreboard",
   "schema" : "world::create_scoreboard($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "game_remove_scoreboard",
   "schema" : "world::remove_scoreboard($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "game_remove_scoreboard_score_by_name",
   "schema" : "world::remove_scoreboard_score_by_name($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "game_remove_scoreboard_score_by_score",
   "schema" : "world::remove_scoreboard_score_by_score($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "game_set_scoreboard_score",
   "schema" : "world::set_scoreboard_score($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "game_set_scoreboard_title",
   "schema" : "world::set_scoreboard_title($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "game_set_block_drops_enabled",
   "schema" : "world::set_block_drops_enabled($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "game_set_world_difficulty",
   "schema" : "world::set_world_difficulty($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "game_set_world_time",
   "schema" : "world::set_world_time($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "game_set_world_weather",
   "schema" : "world::set_world_weather($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "game_send_web_request",
   "schema" : "world::send_web_request($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "if_entity_exists",
   "schema" : "entity::exists<$entity>($args)",
-  "ignoreArguments" : [ "entity" ],
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : false,
   "type" : null,
   "output" : null
 }, {
   "id" : "if_entity_has_custom_tag",
   "schema" : "entity::has_custom_tag<$entity>($args)",
-  "ignoreArguments" : [ "entity" ],
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : false,
   "type" : null,
   "output" : null
 }, {
   "id" : "if_entity_has_potion_effect",
   "schema" : "entity::has_potion_effect<$entity>($args)",
-  "ignoreArguments" : [ "entity" ],
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : false,
   "type" : null,
   "output" : null
 }, {
   "id" : "if_entity_is_disguised",
   "schema" : "entity::is_disguised<$entity>($args)",
-  "ignoreArguments" : [ "entity" ],
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : false,
   "type" : null,
   "output" : null
 }, {
   "id" : "if_entity_is_grounded",
   "schema" : "entity::is_grounded<$entity>($args)",
-  "ignoreArguments" : [ "entity" ],
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : false,
   "type" : null,
   "output" : null
 }, {
   "id" : "if_entity_is_item",
   "schema" : "entity::is_item<$entity>($args)",
-  "ignoreArguments" : [ "entity" ],
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : false,
   "type" : null,
   "output" : null
 }, {
   "id" : "if_entity_is_mob",
   "schema" : "entity::is_mob<$entity>($args)",
-  "ignoreArguments" : [ "entity" ],
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : false,
   "type" : null,
   "output" : null
 }, {
   "id" : "if_entity_is_near_location",
   "schema" : "entity::is_near_location<$entity>($args)",
-  "ignoreArguments" : [ "entity" ],
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : false,
   "type" : null,
   "output" : null
 }, {
   "id" : "if_entity_is_projectile",
   "schema" : "entity::is_projectile<$entity>($args)",
-  "ignoreArguments" : [ "entity" ],
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : false,
   "type" : null,
   "output" : null
 }, {
   "id" : "if_entity_is_riding_entity",
   "schema" : "entity::is_riding_entity<$entity>($args)",
-  "ignoreArguments" : [ "entity" ],
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : false,
   "type" : null,
   "output" : null
 }, {
   "id" : "if_entity_is_standing_on_block",
   "schema" : "entity::is_standing_on_block<$entity>($args)",
-  "ignoreArguments" : [ "entity" ],
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : false,
   "type" : null,
   "output" : null
 }, {
   "id" : "if_entity_is_type",
   "schema" : "entity::is_type<$entity>($args)",
-  "ignoreArguments" : [ "entity" ],
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : false,
   "type" : null,
   "output" : null
 }, {
   "id" : "if_entity_is_vehicle",
   "schema" : "entity::is_vehicle<$entity>($args)",
-  "ignoreArguments" : [ "entity" ],
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : false,
   "type" : null,
   "output" : null
 }, {
   "id" : "if_entity_name_equals",
   "schema" : "entity::name_equals<$entity>($args)",
-  "ignoreArguments" : [ "entity" ],
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : false,
   "type" : null,
   "output" : null
 }, {
   "id" : "if_entity_spawn_reason_equals",
   "schema" : "entity::spawn_reason_equals<$entity>($args)",
-  "ignoreArguments" : [ "entity" ],
+  "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : false,
   "type" : null,
   "output" : null
 }, {
   "id" : "if_game_block_equals",
   "schema" : "world::block_equals($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : false,
   "type" : null,
   "output" : null
 }, {
   "id" : "if_game_block_powered",
   "schema" : "world::block_powered($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : false,
   "type" : null,
   "output" : null
 }, {
   "id" : "if_game_container_has",
   "schema" : "world::container_has($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : false,
   "type" : null,
   "output" : null
 }, {
   "id" : "if_game_container_has_room_for_item",
   "schema" : "world::container_has_room_for_item($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : false,
   "type" : null,
   "output" : null
 }, {
   "id" : "if_game_damage_cause_equals",
   "schema" : "world::damage_cause_equals($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : false,
   "type" : null,
   "output" : null
 }, {
   "id" : "if_game_event_attack_is_critical",
   "schema" : "world::event_attack_is_critical($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : false,
   "type" : null,
   "output" : null
 }, {
   "id" : "if_game_event_block_equals",
   "schema" : "world::event_block_equals($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : false,
   "type" : null,
   "output" : null
 }, {
   "id" : "if_game_event_is_canceled",
   "schema" : "world::event_is_canceled($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : false,
   "type" : null,
   "output" : null
 }, {
   "id" : "if_game_event_item_equals",
   "schema" : "world::event_item_equals($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : false,
   "type" : null,
   "output" : null
 }, {
   "id" : "if_game_has_player",
   "schema" : "world::has_player($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : false,
   "type" : null,
   "output" : null
 }, {
   "id" : "if_game_heal_cause_equals",
   "schema" : "world::heal_cause_equals($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : false,
   "type" : null,
   "output" : null
 }, {
   "id" : "if_game_ignite_cause_equals",
   "schema" : "world::ignite_cause_equals($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : false,
   "type" : null,
   "output" : null
 }, {
   "id" : "if_game_instrument_equals",
   "schema" : "world::instrument_equals($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : false,
   "type" : null,
   "output" : null
 }, {
   "id" : "if_game_sign_contains",
   "schema" : "world::sign_contains($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : false,
   "type" : null,
   "output" : null
 }, {
   "id" : "if_player_cursor_item_equals",
   "schema" : "player::cursor_item_equals<$player>($args)",
-  "ignoreArguments" : [ "player" ],
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : false,
   "type" : null,
   "output" : null
 }, {
   "id" : "if_player_has_item",
   "schema" : "player::has_item<$player>($args)",
-  "ignoreArguments" : [ "player" ],
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : false,
   "type" : null,
   "output" : null
 }, {
   "id" : "if_player_has_item_at_least",
   "schema" : "player::has_item_at_least<$player>($args)",
-  "ignoreArguments" : [ "player" ],
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : false,
   "type" : null,
   "output" : null
 }, {
   "id" : "if_player_has_item_in_slot",
   "schema" : "player::has_item_in_slot<$player>($args)",
-  "ignoreArguments" : [ "player" ],
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : false,
   "type" : null,
   "output" : null
 }, {
   "id" : "if_player_has_room_for_item",
   "schema" : "player::has_room_for_item<$player>($args)",
-  "ignoreArguments" : [ "player" ],
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : false,
   "type" : null,
   "output" : null
 }, {
   "id" : "if_player_inventory_menu_slot_equals",
   "schema" : "player::inventory_menu_slot_equals<$player>($args)",
-  "ignoreArguments" : [ "player" ],
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : false,
   "type" : null,
   "output" : null
 }, {
   "id" : "if_player_is_holding",
   "schema" : "player::is_holding<$player>($args)",
-  "ignoreArguments" : [ "player" ],
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : false,
   "type" : null,
   "output" : null
 }, {
   "id" : "if_player_item_is_not_on_cooldown",
   "schema" : "player::item_is_not_on_cooldown<$player>($args)",
-  "ignoreArguments" : [ "player" ],
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : false,
   "type" : null,
   "output" : null
 }, {
   "id" : "if_player_is_using_item",
   "schema" : "player::is_using_item<$player>($args)",
-  "ignoreArguments" : [ "player" ],
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : false,
   "type" : null,
   "output" : null
 }, {
   "id" : "if_player_is_wearing_item",
   "schema" : "player::is_wearing_item<$player>($args)",
-  "ignoreArguments" : [ "player" ],
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : false,
   "type" : null,
   "output" : null
 }, {
   "id" : "if_player_in_area",
   "schema" : "player::in_area<$player>($args)",
-  "ignoreArguments" : [ "player" ],
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : false,
   "type" : null,
   "output" : null
 }, {
   "id" : "if_player_is_looking_at_block",
   "schema" : "player::is_looking_at_block<$player>($args)",
-  "ignoreArguments" : [ "player" ],
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : false,
   "type" : null,
   "output" : null
 }, {
   "id" : "if_player_is_near",
   "schema" : "player::is_near<$player>($args)",
-  "ignoreArguments" : [ "player" ],
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : false,
   "type" : null,
   "output" : null
 }, {
   "id" : "if_player_is_standing_on_block",
   "schema" : "player::is_standing_on_block<$player>($args)",
-  "ignoreArguments" : [ "player" ],
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : false,
   "type" : null,
   "output" : null
 }, {
   "id" : "if_player_chat_message_equals",
   "schema" : "player::chat_message_equals<$player>($args)",
-  "ignoreArguments" : [ "player" ],
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : false,
   "type" : null,
   "output" : null
 }, {
   "id" : "if_player_gamemode_equals",
   "schema" : "player::gamemode_equals<$player>($args)",
-  "ignoreArguments" : [ "player" ],
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : false,
   "type" : null,
   "output" : null
 }, {
   "id" : "if_player_has_potion_effect",
   "schema" : "player::has_potion_effect<$player>($args)",
-  "ignoreArguments" : [ "player" ],
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : false,
   "type" : null,
   "output" : null
 }, {
   "id" : "if_player_has_privilege",
   "schema" : "player::has_privilege<$player>($args)",
-  "ignoreArguments" : [ "player" ],
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : false,
   "type" : null,
   "output" : null
 }, {
   "id" : "if_player_hotbar_slot_equals",
   "schema" : "player::hotbar_slot_equals<$player>($args)",
-  "ignoreArguments" : [ "player" ],
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : false,
   "type" : null,
   "output" : null
 }, {
   "id" : "if_player_inventory_type_open",
   "schema" : "player::inventory_type_open<$player>($args)",
-  "ignoreArguments" : [ "player" ],
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : false,
   "type" : null,
   "output" : null
 }, {
   "id" : "if_player_is_riding_entity",
   "schema" : "player::is_riding_entity<$player>($args)",
-  "ignoreArguments" : [ "player" ],
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : false,
   "type" : null,
   "output" : null
 }, {
   "id" : "if_player_name_equals",
   "schema" : "player::name_equals<$player>($args)",
-  "ignoreArguments" : [ "player" ],
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : false,
   "type" : null,
   "output" : null
 }, {
   "id" : "if_player_is_blocking",
   "schema" : "player::is_blocking<$player>($args)",
-  "ignoreArguments" : [ "player" ],
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : false,
   "type" : null,
   "output" : null
 }, {
   "id" : "if_player_is_disguised",
   "schema" : "player::is_disguised<$player>($args)",
-  "ignoreArguments" : [ "player" ],
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : false,
   "type" : null,
   "output" : null
 }, {
   "id" : "if_player_is_flying",
   "schema" : "player::is_flying<$player>($args)",
-  "ignoreArguments" : [ "player" ],
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : false,
   "type" : null,
   "output" : null
 }, {
   "id" : "if_player_is_gliding",
   "schema" : "player::is_gliding<$player>($args)",
-  "ignoreArguments" : [ "player" ],
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : false,
   "type" : null,
   "output" : null
 }, {
   "id" : "if_player_is_on_ground",
   "schema" : "player::is_on_ground<$player>($args)",
-  "ignoreArguments" : [ "player" ],
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : false,
   "type" : null,
   "output" : null
 }, {
   "id" : "if_player_is_online_mode",
   "schema" : "player::is_online_mode<$player>($args)",
-  "ignoreArguments" : [ "player" ],
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : false,
   "type" : null,
   "output" : null
 }, {
   "id" : "if_player_is_self_disguised",
   "schema" : "player::is_self_disguised<$player>($args)",
-  "ignoreArguments" : [ "player" ],
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : false,
   "type" : null,
   "output" : null
 }, {
   "id" : "if_player_is_sleeping",
   "schema" : "player::is_sleeping<$player>($args)",
-  "ignoreArguments" : [ "player" ],
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : false,
   "type" : null,
   "output" : null
 }, {
   "id" : "if_player_is_sneaking",
   "schema" : "player::is_sneaking<$player>($args)",
-  "ignoreArguments" : [ "player" ],
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : false,
   "type" : null,
   "output" : null
 }, {
   "id" : "if_player_is_sprinting",
   "schema" : "player::is_sprinting<$player>($args)",
-  "ignoreArguments" : [ "player" ],
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : false,
   "type" : null,
   "output" : null
 }, {
   "id" : "if_player_is_swimming",
   "schema" : "player::is_swimming<$player>($args)",
-  "ignoreArguments" : [ "player" ],
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : false,
   "type" : null,
   "output" : null
 }, {
   "id" : "if_variable_equals",
   "schema" : "variable::equals($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : false,
   "type" : null,
   "output" : null
 }, {
   "id" : "if_variable_exists",
   "schema" : "variable::exists($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : false,
   "type" : null,
   "output" : null
 }, {
   "id" : "if_variable_greater",
   "schema" : "variable::greater($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : false,
   "type" : null,
   "output" : null
 }, {
   "id" : "if_variable_greater_or_equals",
   "schema" : "variable::greater_or_equals($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : false,
   "type" : null,
   "output" : null
 }, {
   "id" : "if_variable_in_range",
   "schema" : "variable::in_range($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : false,
   "type" : null,
   "output" : null
 }, {
   "id" : "if_variable_is_type",
   "schema" : "variable::is_type($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : false,
   "type" : null,
   "output" : null
 }, {
   "id" : "if_variable_item_equals",
   "schema" : "variable::item_equals($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : false,
   "type" : null,
   "output" : null
 }, {
   "id" : "if_variable_item_has_tag",
   "schema" : "variable::item_has_tag($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : false,
   "type" : null,
   "output" : null
 }, {
   "id" : "if_variable_less",
   "schema" : "variable::less($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : false,
   "type" : null,
   "output" : null
 }, {
   "id" : "if_variable_less_or_equals",
   "schema" : "variable::less_or_equals($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : false,
   "type" : null,
   "output" : null
 }, {
   "id" : "if_variable_list_contains_value",
   "schema" : "variable::list_contains_value($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : false,
   "type" : null,
   "output" : null
 }, {
   "id" : "if_variable_list_value_equals",
   "schema" : "variable::list_value_equals($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : false,
   "type" : null,
   "output" : null
 }, {
   "id" : "if_variable_location_is_near",
   "schema" : "variable::location_is_near($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : false,
   "type" : null,
   "output" : null
 }, {
   "id" : "if_variable_map_has_key",
   "schema" : "variable::map_has_key($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : false,
   "type" : null,
   "output" : null
 }, {
   "id" : "if_variable_map_value_equals",
   "schema" : "variable::map_value_equals($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : false,
   "type" : null,
   "output" : null
 }, {
   "id" : "if_variable_not_equals",
   "schema" : "variable::not_equals($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : false,
   "type" : null,
   "output" : null
 }, {
   "id" : "if_variable_text_contains",
   "schema" : "variable::text_contains($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : false,
   "type" : null,
   "output" : null
 }, {
   "id" : "if_variable_text_ends_with",
   "schema" : "variable::text_ends_with($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : false,
   "type" : null,
   "output" : null
 }, {
   "id" : "if_variable_text_matches",
   "schema" : "variable::text_matches($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : false,
   "type" : null,
   "output" : null
 }, {
   "id" : "if_variable_text_starts_with",
   "schema" : "variable::text_starts_with($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : false,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_disguise_as_block",
-  "schema" : "player::disguise_as_block<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::disguise_as_block<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_disguise_as_entity",
-  "schema" : "player::disguise_as_entity<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::disguise_as_entity<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_disguise_as_item",
-  "schema" : "player::disguise_as_item<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::disguise_as_item<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_play_animation_action",
-  "schema" : "player::play_animation<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::play_animation<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_remove_disguise",
-  "schema" : "player::remove_disguise<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::remove_disguise<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_remove_pose",
-  "schema" : "player::remove_pose<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::remove_pose<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_remove_self_disguise",
-  "schema" : "player::remove_self_disguise<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::remove_self_disguise<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_remove_skin",
-  "schema" : "player::remove_skin<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::remove_skin<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_self_disguise_as_block",
-  "schema" : "player::self_disguise_as_block<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::self_disguise_as_block<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_self_disguise_as_entity",
-  "schema" : "player::self_disguise_as_entity<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::self_disguise_as_entity<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_self_disguise_as_item",
-  "schema" : "player::self_disguise_as_item<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::self_disguise_as_item<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_set_arrows_in_body",
-  "schema" : "player::set_arrows_in_body<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::set_arrows_in_body<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_set_bee_stingers_in_body",
-  "schema" : "player::set_bee_stingers_in_body<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::set_bee_stingers_in_body<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_set_pose",
-  "schema" : "player::set_pose<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::set_pose<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_set_skin",
-  "schema" : "player::set_skin<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::set_skin<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_set_visual_fire",
-  "schema" : "player::set_visual_fire<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::set_visual_fire<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_swing_hand",
-  "schema" : "player::swing_hand<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::swing_hand<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_clear_chat",
-  "schema" : "player::clear_chat<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::clear_chat<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_open_book",
-  "schema" : "player::open_book<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::open_book<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_play_sound",
-  "schema" : "player::play_sound<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::play_sound<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_play_sound_sequence",
-  "schema" : "player::play_sound_sequence<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::play_sound_sequence<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_remove_boss_bar",
-  "schema" : "player::remove_boss_bar<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::remove_boss_bar<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_send_action_bar",
-  "schema" : "player::action_bar<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::action_bar<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_send_advancement",
-  "schema" : "player::send_advancement<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::send_advancement<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_send_dialogue",
-  "schema" : "player::dialogue<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::dialogue<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_send_hover",
-  "schema" : "player::send_hover<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::send_hover<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_send_message",
-  "schema" : "player::message<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::message<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_send_minimessage",
-  "schema" : "player::send_minimessage<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::send_minimessage<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_send_title",
-  "schema" : "player::title<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::title<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_set_boss_bar",
-  "schema" : "player::set_boss_bar<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::set_boss_bar<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_set_player_list_info",
-  "schema" : "player::set_player_list_info<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::set_player_list_info<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_show_demo_screen",
-  "schema" : "player::show_demo_screen<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::show_demo_screen<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_stop_sound",
-  "schema" : "player::stop_sound<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::stop_sound<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_add_inventory_menu_row",
-  "schema" : "player::add_menu_row<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::add_menu_row<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_close_inventory",
-  "schema" : "player::close_menu<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::close_menu<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_expand_inventory_menu",
-  "schema" : "player::expand_menu<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::expand_menu<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_open_container_inventory",
-  "schema" : "player::open_container_inventory<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::open_container_inventory<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_remove_inventory_menu_row",
-  "schema" : "player::remove_menu_row<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::remove_menu_row<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_set_inventory_menu_item",
-  "schema" : "player::set_menu_item<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::set_menu_item<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_set_inventory_menu_name",
-  "schema" : "player::set_menu_name<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::set_menu_name<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_show_inventory_menu",
-  "schema" : "player::show_menu<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::show_menu<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_clear_ender_chest_contents",
-  "schema" : "player::clear_ender_chest_contents<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::clear_ender_chest_contents<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_clear_inventory",
-  "schema" : "player::clear_inventory<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::clear_inventory<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_clear_items",
-  "schema" : "player::clear_items<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::clear_items<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_give_items",
-  "schema" : "player::give_items<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::give_items<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_give_random_item",
-  "schema" : "player::give_random_item<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::give_random_item<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_load_inventory",
-  "schema" : "player::load_inventory<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::load_inventory<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_remove_items",
-  "schema" : "player::remove_items<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::remove_items<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_replace_items",
-  "schema" : "player::replace_items<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::replace_items<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_save_inventory",
-  "schema" : "player::save_inventory<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::save_inventory<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_set_armor",
-  "schema" : "player::set_armor<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::set_armor<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_set_cursor_item",
-  "schema" : "player::set_cursor_item<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::set_cursor_item<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_set_ender_chest_contents",
-  "schema" : "player::set_ender_chest_contents<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::set_ender_chest_contents<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_set_equipment",
-  "schema" : "player::set_equipment<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::set_equipment<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_set_item_cooldown",
-  "schema" : "player::set_item_cooldown<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::set_item_cooldown<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_set_items",
-  "schema" : "player::set_items<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::set_items<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_set_slot_item",
-  "schema" : "player::set_slot_item<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::set_slot_item<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_hide_scoreboard",
-  "schema" : "player::hide_scoreboard<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::hide_scoreboard<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_kick",
-  "schema" : "player::kick<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::kick<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_redirect_world",
-  "schema" : "player::redirect_world<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::redirect_world<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_show_scoreboard",
-  "schema" : "player::show_scoreboard<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::show_scoreboard<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_boost_elytra",
-  "schema" : "player::boost_elytra<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::boost_elytra<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_face_location",
-  "schema" : "player::face_location<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::face_location<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_force_flight_mode",
-  "schema" : "player::force_flight_mode<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::force_flight_mode<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_launch_forward",
-  "schema" : "player::launch_forward<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::launch_forward<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_launch_to_location",
-  "schema" : "player::launch_to_location<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::launch_to_location<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_launch_up",
-  "schema" : "player::launch_up<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::launch_up<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_randomized_teleport",
-  "schema" : "player::randomized_teleport<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::randomized_teleport<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_ride_entity",
-  "schema" : "player::ride_entity<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::ride_entity<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_set_flying",
-  "schema" : "player::set_flying<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::set_flying<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_set_gliding",
-  "schema" : "player::set_gliding<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::set_gliding<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_set_rotation",
-  "schema" : "player::set_rotation<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::set_rotation<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_set_velocity",
-  "schema" : "player::set_velocity<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::set_velocity<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_spectate_target",
-  "schema" : "player::spectate_target<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::spectate_target<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_teleport",
-  "schema" : "player::teleport<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::teleport<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_teleport_sequence",
-  "schema" : "player::teleport_sequence<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::teleport_sequence<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_clear_potion_effects",
-  "schema" : "player::clear_potion_effects<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::clear_potion_effects<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_damage",
-  "schema" : "player::damage<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::damage<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_give_experience",
-  "schema" : "player::give_experience<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::give_experience<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_give_potion_effect",
-  "schema" : "player::give_potion_effect<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::give_potion_effect<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_heal",
-  "schema" : "player::heal<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::heal<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_remove_potion_effect",
-  "schema" : "player::remove_potion_effect<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::remove_potion_effect<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_set_absorption_health",
-  "schema" : "player::set_absorption_health<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::set_absorption_health<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_set_air_ticks",
-  "schema" : "player::set_air_ticks<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::set_air_ticks<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_set_attack_speed",
-  "schema" : "player::set_attack_speed<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::set_attack_speed<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_set_experience",
-  "schema" : "player::set_experience<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::set_experience<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_set_fall_distance",
-  "schema" : "player::set_fall_distance<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::set_fall_distance<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_set_fire_ticks",
-  "schema" : "player::set_fire_ticks<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::set_fire_ticks<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_set_food",
-  "schema" : "player::set_food<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::set_food<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_set_freeze_ticks",
-  "schema" : "player::set_freeze_ticks<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::set_freeze_ticks<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_set_health",
-  "schema" : "player::set_health<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::set_health<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_set_hotbar_slot",
-  "schema" : "player::set_hotbar_slot<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::set_hotbar_slot<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_set_invulnerability_ticks",
-  "schema" : "player::set_invulnerability_ticks<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::set_invulnerability_ticks<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_set_max_health",
-  "schema" : "player::set_max_health<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::set_max_health<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_set_movement_speed",
-  "schema" : "player::set_movement_speed<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::set_movement_speed<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_set_saturation",
-  "schema" : "player::set_saturation<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::set_saturation<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_display_lightning",
-  "schema" : "player::display_lightning<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::display_lightning<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_display_particle",
-  "schema" : "player::display_particle<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::display_particle<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_display_particle_line",
-  "schema" : "player::display_particle_line<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::display_particle_line<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_display_particle_ray",
-  "schema" : "player::display_particle_ray<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::display_particle_ray<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_display_vibration",
-  "schema" : "player::display_vibration<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::display_vibration<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_allow_placing_breaking_blocks",
-  "schema" : "player::allow_placing_breaking_blocks<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::allow_placing_breaking_blocks<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_set_allow_flying",
-  "schema" : "player::set_allow_flying<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::set_allow_flying<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_set_collidable",
-  "schema" : "player::set_collidable<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::set_collidable<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_set_death_drops",
-  "schema" : "player::set_death_drops<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::set_death_drops<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_set_gamemode",
-  "schema" : "player::set_gamemode<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::set_gamemode<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_set_instant_respawn",
-  "schema" : "player::set_instant_respawn<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::set_instant_respawn<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_set_inventory_kept",
-  "schema" : "player::set_inventory_kept<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::set_inventory_kept<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_set_nametag_visible",
-  "schema" : "player::set_nametag_visible<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::set_nametag_visible<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_set_pvp",
-  "schema" : "player::set_pvp<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::set_pvp<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_set_spawn_point",
-  "schema" : "player::set_spawn_point<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::set_spawn_point<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_display_block",
-  "schema" : "player::display_block<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::display_block<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_set_block_opened_state",
-  "schema" : "player::set_block_opened_state<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::set_block_opened_state<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_display_end_gateway_beam",
-  "schema" : "player::display_end_gateway_beam<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::display_end_gateway_beam<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_display_hologram",
-  "schema" : "player::display_hologram<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::display_hologram<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_display_pick_up_animation",
-  "schema" : "player::display_pick_up_animation<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::display_pick_up_animation<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_display_sign_text",
-  "schema" : "player::display_sign_text<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::display_sign_text<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_hide_entity",
-  "schema" : "player::hide_entity<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::hide_entity<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_launch_projectile",
-  "schema" : "player::launch_projectile<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::launch_projectile<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_remove_world_border",
-  "schema" : "player::remove_world_border<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::remove_world_border<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_send_break_animation",
-  "schema" : "player::send_break_animation<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::send_break_animation<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_set_compass_target",
-  "schema" : "player::set_compass_target<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::set_compass_target<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_set_fog_distance",
-  "schema" : "player::set_fog_distance<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::set_fog_distance<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_set_time",
-  "schema" : "player::set_time<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::set_time<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_set_weather",
-  "schema" : "player::set_weather<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::set_weather<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_set_world_border",
-  "schema" : "player::set_world_border<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::set_world_border<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_shift_world_border",
-  "schema" : "player::shift_world_border<$exec>($args)",
-  "ignoreArguments" : [ "exec" ],
+  "schema" : "player::shift_world_border<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "repeat_adjacently",
   "schema" : [ "repeat::adjacently($args) { $iterator ->", "$loop_body", "}" ],
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : {
@@ -2859,7 +2859,7 @@
 }, {
   "id" : "repeat_for_each_in_list",
   "schema" : [ "repeat::for_each_in_list($args) { $index_variable, $value_variable ->", "$loop_body", "}" ],
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : {
@@ -2869,7 +2869,7 @@
 }, {
   "id" : "repeat_for_each_map_entry",
   "schema" : [ "repeat::for_each_map_entry($args) { $key_variable, $value_variable ->", "$loop_body", "}" ],
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : {
@@ -2879,14 +2879,14 @@
 }, {
   "id" : "repeat_forever",
   "schema" : [ "repeat::forever($args) { ", "$loop_body", "}" ],
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "repeat_multi_times",
   "schema" : [ "repeat::multi_times($args) { $iterator ->", "$loop_body", "}" ],
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : {
@@ -2895,7 +2895,7 @@
 }, {
   "id" : "repeat_on_circle",
   "schema" : [ "repeat::on_circle($args) { $iterator ->", "$loop_body", "}" ],
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : {
@@ -2904,7 +2904,7 @@
 }, {
   "id" : "repeat_on_grid",
   "schema" : [ "repeat::on_grid($args) { $iterator ->", "$loop_body", "}" ],
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : {
@@ -2913,7 +2913,7 @@
 }, {
   "id" : "repeat_on_path",
   "schema" : [ "repeat::on_path($args) { $iterator ->", "$loop_body", "}" ],
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : {
@@ -2922,7 +2922,7 @@
 }, {
   "id" : "repeat_on_range",
   "schema" : [ "repeat::on_range($args) { $iterator ->", "$loop_body", "}" ],
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : {
@@ -2931,175 +2931,175 @@
 }, {
   "id" : "repeat_while",
   "schema" : [ "repeat::while($args) { ", "$loop_body", "}" ],
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "select_all_entities",
   "schema" : "select::all_entities($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "select_all_mobs",
   "schema" : "select::all_mobs($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "select_all_players",
   "schema" : "select::all_players($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "select_entity_by_conditional",
   "schema" : "select::entity_by_conditional($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "select_entity_by_name",
   "schema" : "select::entity_by_name($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "select_event_target",
   "schema" : "select::event_target($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "select_invert",
   "schema" : "select::invert($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "select_last_entity",
   "schema" : "select::last_entity($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "select_last_mob",
   "schema" : "select::last_mob($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "select_mob_by_name",
   "schema" : "select::mob_by_name($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "select_player_by_conditional",
   "schema" : "select::player_by_conditional($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "select_player_by_name",
   "schema" : "select::player_by_name($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "select_random_entity",
   "schema" : "select::random_entity($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "select_random_mob",
   "schema" : "select::random_mob($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "select_random_player",
   "schema" : "select::random_player($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "select_reset",
   "schema" : "select::reset($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "select_filter_by_conditional",
   "schema" : "select::filter_by_conditional($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "select_filter_by_distance",
   "schema" : "select::filter_by_distance($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "select_filter_by_raycast",
   "schema" : "select::filter_by_raycast($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "select_filter_randomly",
   "schema" : "select::filter_randomly($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_append_list",
   "schema" : "variable::list_append_list($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_append_value",
   "schema" : "variable::list_append_value($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_create_list",
   "schema" : "variable::create_list($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_get_list_index_of_value",
   "schema" : "var $- = variable::get_list_index_of_value($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : {
@@ -3108,7 +3108,7 @@
 }, {
   "id" : "set_variable_get_list_length",
   "schema" : "var $- = variable::get_list_length($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : {
@@ -3117,7 +3117,7 @@
 }, {
   "id" : "set_variable_get_list_value",
   "schema" : "var $- = variable::get_list_value($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : {
@@ -3126,77 +3126,77 @@
 }, {
   "id" : "set_variable_insert_list_value",
   "schema" : "variable::insert_list_value($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_randomize_list_order",
   "schema" : "variable::randomize_list_order($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_remove_list_value",
   "schema" : "variable::remove_list_value($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_remove_list_value_at_index",
   "schema" : "variable::remove_list_value_at_index($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_reverse_list",
   "schema" : "variable::reverse_list($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_set_list_value",
   "schema" : "variable::set_list_value($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_sort_any_list",
   "schema" : "variable::sort_any_list($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_trim_list",
   "schema" : "variable::trim_list($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_add_item_enchantment",
   "schema" : "variable::add_item_enchantment($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_add_item_potion_effects",
   "schema" : "variable::add_item_potion_effects($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_get_book_text",
   "schema" : "var $- = variable::get_book_text($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : {
@@ -3205,7 +3205,7 @@
 }, {
   "id" : "set_variable_get_compass_lodestone",
   "schema" : "var $- = variable::get_compass_lodestone($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : {
@@ -3214,7 +3214,7 @@
 }, {
   "id" : "set_variable_get_item_amount",
   "schema" : "var $- = variable::get_item_amount($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : {
@@ -3223,7 +3223,7 @@
 }, {
   "id" : "set_variable_get_item_attribute",
   "schema" : "var $- = variable::get_item_attribute($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : {
@@ -3232,7 +3232,7 @@
 }, {
   "id" : "set_variable_get_item_color",
   "schema" : "var $- = variable::get_item_color($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : {
@@ -3241,7 +3241,7 @@
 }, {
   "id" : "set_variable_get_item_custom_model_data",
   "schema" : "var $- = variable::get_item_custom_model_data($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : {
@@ -3250,7 +3250,7 @@
 }, {
   "id" : "set_variable_get_item_custom_tag",
   "schema" : "var $- = variable::get_item_custom_tag($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : {
@@ -3259,7 +3259,7 @@
 }, {
   "id" : "set_variable_get_item_custom_tags",
   "schema" : "var $- = variable::get_item_custom_tags($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : {
@@ -3268,7 +3268,7 @@
 }, {
   "id" : "set_variable_get_item_durability",
   "schema" : "var $- = variable::get_item_durability($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : {
@@ -3277,7 +3277,7 @@
 }, {
   "id" : "set_variable_get_item_enchantments",
   "schema" : "var $- = variable::get_item_enchantments($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : {
@@ -3286,7 +3286,7 @@
 }, {
   "id" : "set_variable_get_item_lore",
   "schema" : "var $- = variable::get_item_lore($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : {
@@ -3295,7 +3295,7 @@
 }, {
   "id" : "set_variable_get_item_lore_line",
   "schema" : "var $- = variable::get_item_lore_line($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : {
@@ -3304,7 +3304,7 @@
 }, {
   "id" : "set_variable_get_item_type",
   "schema" : "var $- = variable::get_item_type($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : {
@@ -3313,7 +3313,7 @@
 }, {
   "id" : "set_variable_get_item_max_stack_size",
   "schema" : "var $- = variable::get_item_max_stack_size($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : {
@@ -3322,7 +3322,7 @@
 }, {
   "id" : "set_variable_get_item_name",
   "schema" : "var $- = variable::get_item_name($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : {
@@ -3331,7 +3331,7 @@
 }, {
   "id" : "set_variable_get_item_nbt_tags",
   "schema" : "var $- = variable::get_item_nbt_tags($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : {
@@ -3340,7 +3340,7 @@
 }, {
   "id" : "set_variable_get_item_potion_effects",
   "schema" : "var $- = variable::get_item_potion_effects($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : {
@@ -3349,7 +3349,7 @@
 }, {
   "id" : "set_variable_get_item_rarity",
   "schema" : "var $- = variable::get_item_rarity($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : {
@@ -3358,7 +3358,7 @@
 }, {
   "id" : "set_variable_get_player_head",
   "schema" : "var $- = variable::get_player_head($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : {
@@ -3367,7 +3367,7 @@
 }, {
   "id" : "set_variable_get_player_head_owner",
   "schema" : "var $- = variable::get_player_head_owner($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : {
@@ -3376,203 +3376,203 @@
 }, {
   "id" : "set_variable_remove_compass_lodestone",
   "schema" : "variable::remove_compass_lodestone($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_remove_item_custom_model_data",
   "schema" : "variable::remove_item_custom_model_data($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_remove_item_custom_tag",
   "schema" : "variable::remove_item_custom_tag($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_remove_enchantment",
   "schema" : "variable::remove_item_enchantment($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_remove_item_lore_line",
   "schema" : "variable::remove_item_lore_line($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_remove_item_potion_effects",
   "schema" : "variable::remove_item_potion_effects($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_set_book_page",
   "schema" : "variable::set_book_page($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_set_book_pages",
   "schema" : "variable::set_book_pages($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_set_compass_lodestone",
   "schema" : "variable::set_compass_lodestone($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_set_item_amount",
   "schema" : "variable::set_item_amount($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_set_item_attribute",
   "schema" : "variable::set_item_attribute($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_set_item_color",
   "schema" : "variable::set_item_color($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_set_item_custom_model_data",
   "schema" : "variable::set_item_custom_model_data($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_set_item_custom_tag",
   "schema" : "variable::set_item_custom_tag($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_set_item_destroyable_blocks",
   "schema" : "variable::set_item_destroyable_blocks($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_set_item_durability",
   "schema" : "variable::set_item_durability($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_set_item_enchantments",
   "schema" : "variable::set_item_enchantments($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_set_item_lore",
   "schema" : "variable::set_item_lore($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_set_item_lore_line",
   "schema" : "variable::set_item_lore_line($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_set_item_type",
   "schema" : "variable::set_item_type($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_set_item_name",
   "schema" : "variable::set_item_name($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_set_item_placeable_blocks",
   "schema" : "variable::set_item_placeable_blocks($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_set_item_unbreakable",
   "schema" : "variable::set_item_unbreakable($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_set_item_visibility_flags",
   "schema" : "variable::set_item_visibility_flags($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_set_texture_to_map",
   "schema" : "variable::set_texture_to_map($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_align_location",
   "schema" : "variable::align_location($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_center_location",
   "schema" : "variable::center_location($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_face_location",
   "schema" : "variable::face_location($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_get_all_coordinates",
   "schema" : "var $- = variable::get_all_coordinates($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : {
@@ -3581,7 +3581,7 @@
 }, {
   "id" : "set_variable_get_coordinate",
   "schema" : "var $- = variable::get_coordinate($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : {
@@ -3590,7 +3590,7 @@
 }, {
   "id" : "set_variable_get_location_direction",
   "schema" : "var $- = variable::get_location_direction($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : {
@@ -3599,105 +3599,105 @@
 }, {
   "id" : "set_variable_location_relative",
   "schema" : "variable::location_relative($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_locations_distance",
   "schema" : "variable::locations_distance($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_random_location",
   "schema" : "variable::random_location($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_set_all_coordinates",
   "schema" : "variable::set_all_coordinates($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_set_coordinate",
   "schema" : "variable::set_coordinate($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_set_location_direction",
   "schema" : "variable::set_location_direction($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_shift_all_coordinates",
   "schema" : "variable::shift_all_coordinates($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_shift_coordinate",
   "schema" : "variable::shift_coordinate($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_shift_location_in_direction",
   "schema" : "variable::shift_location_in_direction($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_shift_location_on_vector",
   "schema" : "variable::shift_location_on_vector($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_shift_location_towards_location",
   "schema" : "variable::shift_location_towards_location($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_append_map",
   "schema" : "variable::append_map($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_clear_map",
   "schema" : "variable::clear_map($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_create_map",
   "schema" : "variable::create_map($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_get_map_keys",
   "schema" : "var $- = variable::get_map_keys($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : {
@@ -3706,7 +3706,7 @@
 }, {
   "id" : "set_variable_get_map_size",
   "schema" : "var $- = variable::get_map_size($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : {
@@ -3715,7 +3715,7 @@
 }, {
   "id" : "set_variable_get_map_value",
   "schema" : "var $- = variable::get_map_value($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : {
@@ -3724,7 +3724,7 @@
 }, {
   "id" : "set_variable_get_map_values",
   "schema" : "var $- = variable::get_map_values($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : {
@@ -3733,28 +3733,28 @@
 }, {
   "id" : "set_variable_remove_map_entry",
   "schema" : "variable::remove_map_entry($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_set_map_value",
   "schema" : "variable::set_map_value($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_sort_any_map",
   "schema" : "variable::sort_any_map($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_get_color_channels",
   "schema" : "var $- = variable::get_color_channels($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : {
@@ -3763,7 +3763,7 @@
 }, {
   "id" : "set_variable_get_potion_effect_amplifier",
   "schema" : "var $- = variable::get_potion_effect_amplifier($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : {
@@ -3772,7 +3772,7 @@
 }, {
   "id" : "set_variable_get_potion_effect_duration",
   "schema" : "var $- = variable::get_potion_effect_duration($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : {
@@ -3781,7 +3781,7 @@
 }, {
   "id" : "set_variable_get_potion_effect_type",
   "schema" : "var $- = variable::get_potion_effect_type($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : {
@@ -3790,7 +3790,7 @@
 }, {
   "id" : "set_variable_get_sound_pitch",
   "schema" : "var $- = variable::get_sound_pitch($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : {
@@ -3799,7 +3799,7 @@
 }, {
   "id" : "set_variable_get_sound_type",
   "schema" : "var $- = variable::get_sound_type($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : {
@@ -3808,7 +3808,7 @@
 }, {
   "id" : "set_variable_get_sound_volume_action",
   "schema" : "var $- = variable::get_sound_volume($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : {
@@ -3817,7 +3817,7 @@
 }, {
   "id" : "set_variable_get_template_code",
   "schema" : "var $- = variable::get_template_code($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : {
@@ -3826,273 +3826,273 @@
 }, {
   "id" : "set_variable_set_potion_effect_amplifier",
   "schema" : "variable::set_potion_effect_amplifier($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_set_potion_effect_duration",
   "schema" : "variable::set_potion_effect_duration($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_set_potion_effect_type",
   "schema" : "variable::set_potion_effect_type($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_set_sound_pitch",
   "schema" : "variable::set_sound_pitch($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_set_sound_type",
   "schema" : "variable::set_sound_type($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_set_sound_volume_action",
   "schema" : "variable::set_sound_volume($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_set_template_code",
   "schema" : "variable::set_template_code($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_to_hsb",
   "schema" : "variable::to_hsb($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_to_hsl",
   "schema" : "variable::to_hsl($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_to_rgb",
   "schema" : "variable::to_rgb($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_absolute",
   "schema" : "variable::absolute($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_add",
   "schema" : "variable::add($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_average",
   "schema" : "variable::average($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_bitwise_operation",
   "schema" : "variable::bitwise_operation($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_clamp",
   "schema" : "variable::clamp($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_convert_text_to_number",
   "schema" : "variable::convert_text_to_number($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_cosine",
   "schema" : "variable::cosine($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_cotangent",
   "schema" : "variable::cotangent($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_decrement",
   "schema" : "variable::decrement($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_divide",
   "schema" : "variable::divide($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_gaussian_distribution",
   "schema" : "variable::gaussian_distribution($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_increment",
   "schema" : "variable::increment($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_log",
   "schema" : "variable::log($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_max",
   "schema" : "variable::max($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_min",
   "schema" : "variable::min($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_multiply",
   "schema" : "variable::multiply($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_perlin_noise_3d",
   "schema" : "variable::perlin_noise_3d($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_pow",
   "schema" : "variable::pow($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_random_number",
   "schema" : "variable::random_in_range($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_remainder",
   "schema" : "variable::remainder($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_root",
   "schema" : "variable::root($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_round",
   "schema" : "variable::round($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_simplex_noise_3d",
   "schema" : "variable::simplex_noise_3d($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_sine",
   "schema" : "variable::sine($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_subtract",
   "schema" : "variable::subtract($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_tangent",
   "schema" : "variable::tangent($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_voronoi_noise_3d",
   "schema" : "variable::voronoi_noise_3d($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_warp",
   "schema" : "variable::warp($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_get_particle_amount",
   "schema" : "var $- = variable::get_particle_amount($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : {
@@ -4101,7 +4101,7 @@
 }, {
   "id" : "set_variable_get_particle_color",
   "schema" : "var $- = variable::get_particle_color($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : {
@@ -4110,7 +4110,7 @@
 }, {
   "id" : "set_variable_get_particle_material",
   "schema" : "var $- = variable::get_particle_material($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : {
@@ -4119,7 +4119,7 @@
 }, {
   "id" : "set_variable_get_particle_offset",
   "schema" : "var $- = variable::get_particle_offset($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : {
@@ -4128,7 +4128,7 @@
 }, {
   "id" : "set_variable_get_particle_size",
   "schema" : "var $- = variable::get_particle_size($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : {
@@ -4137,7 +4137,7 @@
 }, {
   "id" : "set_variable_get_particle_spread",
   "schema" : "var $- = variable::get_particle_spread($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : {
@@ -4146,7 +4146,7 @@
 }, {
   "id" : "set_variable_get_particle_type",
   "schema" : "var $- = variable::get_particle_type($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : {
@@ -4155,56 +4155,56 @@
 }, {
   "id" : "set_variable_set_particle_amount",
   "schema" : "variable::set_particle_amount($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_set_particle_color",
   "schema" : "variable::set_particle_color($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_set_particle_material",
   "schema" : "variable::set_particle_material($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_set_particle_offset",
   "schema" : "variable::set_particle_offset($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_set_particle_size",
   "schema" : "variable::set_particle_size($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_set_particle_spread",
   "schema" : "variable::set_particle_spread($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_set_particle_type",
   "schema" : "variable::set_particle_type($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_get_list_variables",
   "schema" : "var $- = variable::get_list_variables($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : {
@@ -4213,56 +4213,56 @@
 }, {
   "id" : "set_variable_purge",
   "schema" : "variable::purge($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_random",
   "schema" : "variable::set_random($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_value",
   "schema" : "variable::set_value($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_char_to_number",
   "schema" : "variable::char_to_number($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_clear_color_codes",
   "schema" : "variable::clear_color_codes($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_convert_number_to_text",
   "schema" : "variable::convert_number_to_text($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_format_timestamp",
   "schema" : "variable::format_timestamp($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_get_char_at",
   "schema" : "var $- = variable::get_char_at($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : {
@@ -4271,7 +4271,7 @@
 }, {
   "id" : "set_variable_get_index_of_subtext",
   "schema" : "var $- = variable::get_index_of_subtext($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : {
@@ -4280,14 +4280,14 @@
 }, {
   "id" : "set_variable_text_length",
   "schema" : "variable::get_text_length($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_get_text_width",
   "schema" : "var $- = variable::get_text_width($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : {
@@ -4296,133 +4296,133 @@
 }, {
   "id" : "set_variable_hash",
   "schema" : "variable::get_text_hash($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_join_text",
   "schema" : "variable::join_text($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_parse_json",
   "schema" : "variable::parse_json($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_regex_replace_text",
   "schema" : "variable::regex_replace_text($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_remove_text",
   "schema" : "variable::remove_text($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_repeat_text",
   "schema" : "variable::repeat_text($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_replace_text",
   "schema" : "variable::replace_text($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_split_text",
   "schema" : "variable::split_text($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_strip_text",
   "schema" : "variable::strip_text($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_text",
   "schema" : "variable::set_text($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_text_case",
   "schema" : "variable::set_text_case($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_to_char",
   "schema" : "variable::to_char($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_to_json",
   "schema" : "variable::to_json($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_trim_text",
   "schema" : "variable::trim_text($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_add_vectors",
   "schema" : "variable::add_vectors($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_align_to_axis_vector",
   "schema" : "variable::align_to_axis_vector($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_vector_cross_product",
   "schema" : "variable::vector_cross_product($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_vector_dot_product",
   "schema" : "variable::vector_dot_product($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_get_angle_between_vectors",
   "schema" : "var $- = variable::get_angle_between_vectors($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : {
@@ -4431,7 +4431,7 @@
 }, {
   "id" : "set_variable_get_midpoint_between_vectors",
   "schema" : "var $- = variable::get_midpoint_between_vectors($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : {
@@ -4440,7 +4440,7 @@
 }, {
   "id" : "set_variable_get_vector_between_locations",
   "schema" : "var $- = variable::get_vector_between_locations($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : {
@@ -4449,7 +4449,7 @@
 }, {
   "id" : "set_variable_get_vector_component",
   "schema" : "var $- = variable::get_vector_component($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : {
@@ -4458,7 +4458,7 @@
 }, {
   "id" : "set_variable_get_vector_from_block_face",
   "schema" : "var $- = variable::get_vector_from_block_face($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : {
@@ -4467,7 +4467,7 @@
 }, {
   "id" : "set_variable_get_vector_length",
   "schema" : "var $- = variable::get_vector_length($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : {
@@ -4476,70 +4476,70 @@
 }, {
   "id" : "set_variable_multiply_vector",
   "schema" : "variable::multiply_vector($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_reflect_vector_product",
   "schema" : "variable::reflect_vector_product($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_rotate_vector_around_axis",
   "schema" : "variable::rotate_vector_around_axis($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_rotate_vector_around_vector",
   "schema" : "variable::rotate_vector_around_vector($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_set_vector_component",
   "schema" : "variable::set_vector_component($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_set_vector_length",
   "schema" : "variable::set_vector_length($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_subtract_vectors",
   "schema" : "variable::subtract_vectors($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_vector",
   "schema" : "variable::set_vector($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_vector_to_direction_name",
   "schema" : "variable::vector_to_direction_name($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "set_variable_get_all_block_data",
   "schema" : "var $- = variable::get_all_block_data($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : {
@@ -4548,7 +4548,7 @@
 }, {
   "id" : "set_variable_get_block_custom_tag",
   "schema" : "var $- = variable::get_block_custom_tag($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : {
@@ -4557,7 +4557,7 @@
 }, {
   "id" : "set_variable_get_block_data",
   "schema" : "var $- = variable::get_block_data($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : {
@@ -4566,7 +4566,7 @@
 }, {
   "id" : "set_variable_get_block_growth",
   "schema" : "var $- = variable::get_block_growth($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : {
@@ -4575,7 +4575,7 @@
 }, {
   "id" : "set_variable_get_block_material",
   "schema" : "var $- = variable::get_block_material($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : {
@@ -4584,7 +4584,7 @@
 }, {
   "id" : "set_variable_get_block_power",
   "schema" : "var $- = variable::get_block_power($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : {
@@ -4593,7 +4593,7 @@
 }, {
   "id" : "set_variable_get_container_contents",
   "schema" : "var $- = variable::get_container_contents($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : {
@@ -4602,7 +4602,7 @@
 }, {
   "id" : "set_variable_get_container_lock",
   "schema" : "var $- = variable::get_container_lock($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : {
@@ -4611,7 +4611,7 @@
 }, {
   "id" : "set_variable_get_container_name",
   "schema" : "var $- = variable::get_container_name($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : {
@@ -4620,7 +4620,7 @@
 }, {
   "id" : "set_variable_get_lectern_book",
   "schema" : "var $- = variable::get_lectern_book($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : {
@@ -4629,7 +4629,7 @@
 }, {
   "id" : "set_variable_get_lectern_page",
   "schema" : "var $- = variable::get_lectern_page($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : {
@@ -4638,7 +4638,7 @@
 }, {
   "id" : "set_variable_get_light_level",
   "schema" : "var $- = variable::get_light_level($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : {
@@ -4647,7 +4647,7 @@
 }, {
   "id" : "set_variable_get_sign_text",
   "schema" : "var $- = variable::get_sign_text($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : {
@@ -4656,28 +4656,28 @@
 }, {
   "id" : "set_variable_ray_trace_result",
   "schema" : "variable::ray_trace_result($args)",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "native_branch",
   "schema" : [ "if ($branch_condition) {", "$branch_true", "} else {", "$branch_false", "}" ],
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
 }, {
   "id" : "player_getter",
   "schema" : "$player",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : false,
   "type" : null,
   "output" : null
 }, {
   "id" : "entity_getter",
   "schema" : "$entity",
-  "ignoreArguments" : null,
+  "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : false,
   "type" : null,
   "output" : null
@@ -6440,4 +6440,94 @@
   "codeNeedsToBePlaced" : false,
   "type" : null,
   "output" : null
+}, {
+  "id" : "native_cast_to_number",
+  "schema" : [ "if (variable::is_type($args, \"NUMBER\")) {", "$cast_success", "} else {", "$cast_failed", "}" ],
+  "ignoreArguments" : null,
+  "codeNeedsToBePlaced" : true,
+  "type" : null,
+  "output" : {
+    "casted_var" : "$var_to_cast"
+  }
+}, {
+  "id" : "native_cast_to_text",
+  "schema" : [ "if (variable::is_type($args, \"TEXT\")) {", "$cast_success", "} else {", "$cast_failed", "}" ],
+  "ignoreArguments" : null,
+  "codeNeedsToBePlaced" : true,
+  "type" : null,
+  "output" : {
+    "casted_var" : "$var_to_cast"
+  }
+}, {
+  "id" : "native_cast_to_location",
+  "schema" : [ "if (variable::is_type($args, \"LOCATION\")) {", "$cast_success", "} else {", "$cast_failed", "}" ],
+  "ignoreArguments" : null,
+  "codeNeedsToBePlaced" : true,
+  "type" : null,
+  "output" : {
+    "casted_var" : "$var_to_cast"
+  }
+}, {
+  "id" : "native_cast_to_item",
+  "schema" : [ "if (variable::is_type($args, \"ITEM\")) {", "$cast_success", "} else {", "$cast_failed", "}" ],
+  "ignoreArguments" : null,
+  "codeNeedsToBePlaced" : true,
+  "type" : null,
+  "output" : {
+    "casted_var" : "$var_to_cast"
+  }
+}, {
+  "id" : "native_cast_to_potion",
+  "schema" : [ "if (variable::is_type($args, \"POTION\")) {", "$cast_success", "} else {", "$cast_failed", "}" ],
+  "ignoreArguments" : null,
+  "codeNeedsToBePlaced" : true,
+  "type" : null,
+  "output" : {
+    "casted_var" : "$var_to_cast"
+  }
+}, {
+  "id" : "native_cast_to_sound",
+  "schema" : [ "if (variable::is_type($args, \"SOUND\")) {", "$cast_success", "} else {", "$cast_failed", "}" ],
+  "ignoreArguments" : null,
+  "codeNeedsToBePlaced" : true,
+  "type" : null,
+  "output" : {
+    "casted_var" : "$var_to_cast"
+  }
+}, {
+  "id" : "native_cast_to_particle",
+  "schema" : [ "if (variable::is_type($args, \"PARTICLE\")) {", "$cast_success", "} else {", "$cast_failed", "}" ],
+  "ignoreArguments" : null,
+  "codeNeedsToBePlaced" : true,
+  "type" : null,
+  "output" : {
+    "casted_var" : "$var_to_cast"
+  }
+}, {
+  "id" : "native_cast_to_vector",
+  "schema" : [ "if (variable::is_type($args, \"VECTOR\")) {", "$cast_success", "} else {", "$cast_failed", "}" ],
+  "ignoreArguments" : null,
+  "codeNeedsToBePlaced" : true,
+  "type" : null,
+  "output" : {
+    "casted_var" : "$var_to_cast"
+  }
+}, {
+  "id" : "native_cast_to_list",
+  "schema" : [ "if (variable::is_type($args, \"ARRAY\")) {", "$cast_success", "} else {", "$cast_failed", "}" ],
+  "ignoreArguments" : null,
+  "codeNeedsToBePlaced" : true,
+  "type" : null,
+  "output" : {
+    "casted_var" : "$var_to_cast"
+  }
+}, {
+  "id" : "native_cast_to_map",
+  "schema" : [ "if (variable::is_type($args, \"MAP\")) {", "$cast_success", "} else {", "$cast_failed", "}" ],
+  "ignoreArguments" : null,
+  "codeNeedsToBePlaced" : true,
+  "type" : null,
+  "output" : {
+    "casted_var" : "$var_to_cast"
+  }
 } ]

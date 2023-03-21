@@ -1,42 +1,28 @@
-[
-  {
-    "id": "event",
-    "header_color": "255, 69, 58"
-  },
-  {
-    "id": "function",
-    "header_color": "100, 210, 255"
-  },
-  {
-    "id": "pure_function",
-    "header_color": "4, 222, 113"
-  },
-  {
-    "id": "util",
-    "header_color": "142, 142, 147"
-  },
-  {
-    "id": "variable_property",
-    "header_color": "94, 92, 230"
-  },
-  {
-    "id": "game_value_getter",
-    "header_color": "191, 90, 242"
-  },
-  {
-    "id": "player_getter",
-    "header_color": "100, 210, 255"
-  },
-  {
-    "id": "entity_getter",
-    "header_color": "100, 210, 255"
-  },
-  {
-    "id": "native_branch",
-    "header_color": "142, 142, 147"
-  },
-  {
-    "id": "custom_with_input_exec",
-    "header_color": "142, 142, 147"
-  }
-]
+[ {
+  "id" : "game_value_getter",
+  "header_color" : "191, 90, 242"
+}, {
+  "id" : "variable_property",
+  "header_color" : "94, 92, 230"
+}, {
+  "id" : "pure_function",
+  "header_color" : "4, 222, 113"
+}, {
+  "id" : "function",
+  "header_color" : "100, 210, 255"
+}, {
+  "id" : "entity_getter",
+  "header_color" : "100, 210, 255"
+}, {
+  "id" : "player_getter",
+  "header_color" : "100, 210, 255"
+}, {
+  "id" : "custom_with_input_exec",
+  "header_color" : "142, 142, 147"
+}, {
+  "id" : "event",
+  "header_color" : "255, 69, 58"
+}, {
+  "id" : "native_cast",
+  "header_color" : "48, 213, 200"
+} ]

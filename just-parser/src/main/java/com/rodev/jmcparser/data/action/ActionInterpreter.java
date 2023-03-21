@@ -85,13 +85,13 @@ public class ActionInterpreter extends Interpreter<ActionData> implements Action
     private List<ActionEntity.PinTypeEntity> createInput(ActionEntity action, ActionData actionData) {
         var input = new LinkedList<ActionEntity.PinTypeEntity>();
 
-        if(action.type.equalsIgnoreCase("function")) {
+        if (action.type.equalsIgnoreCase("function")) {
             input.add(createExec());
         }
 
         var id = actionData.id;
         var isVariableSetter = id.startsWith("set_variable");
-        if(!isVariableSetter) {
+        if (!isVariableSetter) {
             var inputPin = createObjectInputPin(actionData);
 
             if (inputPin != null) {
@@ -102,27 +102,18 @@ public class ActionInterpreter extends Interpreter<ActionData> implements Action
         int i = 0;
 
         var isVariableGetter = id.startsWith("set_variable_get") && actionData.assigning != null;
-        if(isVariableGetter)
+        if (isVariableGetter)
             i = 1; // Skip first arg
 
-        for(; i < actionData.args.length; i++) {
+        for (; i < actionData.args.length; i++) {
             var arg = actionData.args[i];
 
-            if(arg == null) continue;
+            if (arg == null) continue;
 
             input.add(createInputPin(actionData, arg));
         }
 
         return input;
-    }
-
-    public ActionEntity.PinTypeEntity createExec() {
-        var exec = new ActionEntity.PinTypeEntity();
-        exec.id = "exec";
-        exec.type = "exec";
-        exec.label = "";
-
-        return exec;
     }
 
     private List<ActionEntity.PinTypeEntity> createOutput(ActionEntity action, ActionData actionData) {
