@@ -64,7 +64,10 @@ public class Main extends ModernUI implements DataProvider {
         return getResourceAsStream("generator_data.json");
     }
 
-
+    @Override
+    public InputStream getPinIconsInputStream() {
+        return getResourceAsStream("pin_icons.json");
+    }
     private InputStream getResourceAsStream(String name) {
         return Main.class.getResourceAsStream(name);
     }

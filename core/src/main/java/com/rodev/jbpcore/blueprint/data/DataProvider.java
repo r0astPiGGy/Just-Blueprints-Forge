@@ -16,4 +16,6 @@ public interface DataProvider {
 
     InputStream getDataGeneratorInputStream();
 
+    InputStream getPinIconsInputStream();
+
 }

@@ -4,23 +4,19 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.rodev.jbpcore.blueprint.data.action.ActionRegistry;
 import com.rodev.jbpcore.blueprint.data.action.type.ActionTypeRegistry;
 import com.rodev.jbpcore.blueprint.data.category.ContextCategoryRegistry;
-import com.rodev.jbpcore.blueprint.data.json.ActionEntity;
-import com.rodev.jbpcore.blueprint.data.json.ActionTypeEntity;
-import com.rodev.jbpcore.blueprint.data.json.SelectorGroupEntity;
-import com.rodev.jbpcore.blueprint.data.json.VariableTypeEntity;
+import com.rodev.jbpcore.blueprint.data.icon.PinIconRegistry;
+import com.rodev.jbpcore.blueprint.data.json.*;
 import com.rodev.jbpcore.blueprint.data.selectors.SelectorGroupRegistry;
 import com.rodev.jbpcore.blueprint.data.variable.VariableTypeRegistry;
 import com.rodev.jmcgenerator.data.GeneratorData;
 import com.rodev.jmcgenerator.entity.GeneratorEntity;
+import icyllis.modernui.graphics.Image;
 import icyllis.modernui.graphics.drawable.ImageDrawable;
 import lombok.RequiredArgsConstructor;
 import org.jetbrains.annotations.Nullable;
 
-import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.*;
-import java.util.function.Supplier;
 
 @RequiredArgsConstructor
 public class DataAccess {
@@ -33,6 +29,7 @@ public class DataAccess {
     public final ActionRegistry actionRegistry;
     public final SelectorGroupRegistry selectorGroupRegistry;
     public final GeneratorData generatorData;
+    public final PinIconRegistry iconRegistry;
 
     private static DataAccess instance;
 
@@ -53,7 +50,11 @@ public class DataAccess {
         return String.format("%s/%s.png", namespace, name);
     }
 
-    public static ImageDrawable createImage(String namespace, String name) {
+    public static Image createImage(String namespace, String name) {
+        return Image.create(TEXTURE_NAMESPACE, getPath(namespace, name));
+    }
+
+    public static ImageDrawable createImageDrawable(String namespace, String name) {
         return new ImageDrawable(TEXTURE_NAMESPACE, getPath(namespace, name));
     }
 
@@ -68,10 +69,13 @@ public class DataAccess {
         var action_types = objectMapper.readValue(dataProvider.getActionTypesInputStream(), ActionTypeEntity[].class);
         var selectorGroups = objectMapper.readValue(dataProvider.getSelectorGroupsInputStream(), SelectorGroupEntity[].class);
         var generatorInputData = objectMapper.readValue(dataProvider.getDataGeneratorInputStream(), GeneratorEntity[].class);
+        var iconData = objectMapper.readValue(dataProvider.getPinIconsInputStream(), PinIconEntity[].class);
 
         var generatorData = new GeneratorData();
 
         generatorData.load(generatorInputData);
+
+        var iconRegistry = new PinIconRegistry();
 
         var actionTypeRegistry = new ActionTypeRegistry();
         DataInitEventHandler.onActionTypeRegistryPreLoad(actionTypeRegistry);
@@ -85,6 +89,7 @@ public class DataAccess {
         var selectorGroupRegistry = new SelectorGroupRegistry();
         DataInitEventHandler.onSelectorGroupRegistryPreLoad(selectorGroupRegistry);
 
+        iconRegistry.load(iconData);
         actionTypeRegistry.load(action_types);
         variableTypeRegistry.load(variable_types);
         selectorGroupRegistry.load(selectorGroups);
@@ -103,7 +108,8 @@ public class DataAccess {
                 categoryRegistry,
                 actionRegistry,
                 selectorGroupRegistry,
-                generatorData
+                generatorData,
+                iconRegistry
         );
 
         instance = dao;

@@ -8,4 +8,5 @@ import lombok.NoArgsConstructor;
 public class VariableTypeEntity {
     public String id;
     public String color;
+    public String icon;
 }

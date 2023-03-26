@@ -26,7 +26,7 @@ public class VariableTypeWriter extends DataWriter<ActionEntity, VariableTypeEnt
 
         var list = types.stream()
                 .filter(Objects::nonNull)
-                .map(t -> new VariableTypeEntity(t, ""))
+                .map(t -> new VariableTypeEntity(t, "0, 0, 0", "default"))
                 .map(this::patch)
                 .filter(Objects::nonNull)
                 .toList();

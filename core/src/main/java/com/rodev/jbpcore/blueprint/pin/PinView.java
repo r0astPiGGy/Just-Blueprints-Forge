@@ -1,5 +1,6 @@
 package com.rodev.jbpcore.blueprint.pin;
 
+import com.rodev.jbpcore.utils.ParamsBuilder;
 import com.rodev.jbpcore.utils.ViewUtils;
 import icyllis.modernui.R;
 import icyllis.modernui.util.ColorStateList;
@@ -7,6 +8,7 @@ import icyllis.modernui.util.StateSet;
 import icyllis.modernui.view.MotionEvent;
 import icyllis.modernui.view.View;
 import icyllis.modernui.widget.CompoundButton;
+import icyllis.modernui.widget.LinearLayout;
 import org.jetbrains.annotations.NotNull;
 
 public class PinView extends CompoundButton implements PinToggleListener, PinPositionSupplier {
@@ -28,6 +30,14 @@ public class PinView extends CompoundButton implements PinToggleListener, PinPos
 
         pin.setPinToggleListener(this);
         pin.setPositionSupplier(this);
+
+//        ParamsBuilder.using(LinearLayout.LayoutParams::new)
+//                .width(dp(24))
+//                .height(dp(24))
+//                .applyTo(this);
+//
+//        setMaxHeight(dp(24));
+//        setMaxWidth(dp(24));
 
         setButtonDrawable(pin.createDrawable());
         setButtonTintList(new ColorStateList(ENABLED_CHECKED_STATES, new int[] {pin.getColor(), pin.getColor(), pin.getColor()}));

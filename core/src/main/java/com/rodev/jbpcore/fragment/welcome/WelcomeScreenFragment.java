@@ -6,7 +6,6 @@ import com.rodev.jbpcore.blueprint.data.DataAccess;
 import com.rodev.jbpcore.fragment.LifecycleFragment;
 import com.rodev.jbpcore.utils.ColoredBackground;
 import com.rodev.jbpcore.utils.ParamsBuilder;
-import icyllis.modernui.fragment.Fragment;
 import icyllis.modernui.graphics.drawable.ImageDrawable;
 import icyllis.modernui.util.DataSet;
 import icyllis.modernui.view.*;
@@ -140,24 +139,6 @@ public class WelcomeScreenFragment extends LifecycleFragment {
         return welcomeCard;
     }
 
-    private TextView version() {
-        var text = new TextView();
-
-        text.setText("Version " + JustBlueprints.VERSION);
-        text.setTextSize(sp(24));
-        text.setTypeface(MINECRAFT_FONT);
-        text.setTextColor(Colors.NODE_BACKGROUND_SECONDARY);
-
-        var params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        params.rightMargin = dp(5);
-        params.bottomMargin = dp(5);
-        params.addRule(RelativeLayout.ALIGN_PARENT_END);
-        params.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
-        text.setLayoutParams(params);
-
-        return text;
-    }
-
     private LinearLayout welcomeCardContents() {
         var content = new LinearLayout();
         content.setOrientation(LinearLayout.VERTICAL);
@@ -181,7 +162,7 @@ public class WelcomeScreenFragment extends LifecycleFragment {
         params.bottomMargin = dp(30);
         image.setLayoutParams(params);
 
-        var imageDrawable = DataAccess.createImage("ui", "logo");
+        var imageDrawable = DataAccess.createImageDrawable("ui", "logo");
         image.setBackground(imageDrawable);
 
         return image;

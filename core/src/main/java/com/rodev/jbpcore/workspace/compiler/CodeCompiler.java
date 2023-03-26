@@ -2,6 +2,7 @@ package com.rodev.jbpcore.workspace.compiler;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 
 import java.io.File;
 import java.util.function.Consumer;
@@ -11,6 +12,10 @@ public abstract class CodeCompiler {
     private static final OperatingSystem os = OperatingSystem.getOperatingSystem();
 
     protected final File compilerPath;
+
+    @Setter
+    @Getter
+    protected CompileMode compileMode = CompileMode.COMPILE_TO_FILE;
 
     @Getter
     private String output;
@@ -34,6 +39,20 @@ public abstract class CodeCompiler {
 
     public static File getCompilerFile(File directory) {
         return new File(directory, os.compilerFileName);
+    }
+
+    @RequiredArgsConstructor
+    public enum CompileMode {
+        COMPILE_TO_FILE("%s compile %s"),
+        COMPILE_AND_UPLOAD("%s compile -u %s")
+
+        ;
+
+        private final String command;
+
+        public String getCommand(String compilerPath, String filePath) {
+            return String.format(command, compilerPath, filePath);
+        }
     }
 
     @RequiredArgsConstructor

@@ -5,10 +5,15 @@ import com.rodev.jbpcore.blueprint.BPViewPort;
 import com.rodev.jbpcore.blueprint.graph.GraphControllerImpl;
 import com.rodev.jbpcore.blueprint.graph.GraphLayout;
 import com.rodev.jbpcore.fragment.LifecycleFragment;
+import com.rodev.jbpcore.utils.ColoredBackground;
+import com.rodev.jbpcore.utils.ParamsBuilder;
+import com.rodev.jbpcore.utils.SquarePadding;
+import com.rodev.jbpcore.view.Divider;
 import com.rodev.jbpcore.view.MaterialButton;
 import com.rodev.jbpcore.workspace.Project;
 import com.rodev.jbpcore.workspace.WindowManager;
 import icyllis.modernui.graphics.Canvas;
+import icyllis.modernui.graphics.Color;
 import icyllis.modernui.graphics.Paint;
 import icyllis.modernui.graphics.drawable.Drawable;
 import icyllis.modernui.math.Rect;
@@ -23,6 +28,7 @@ import org.jetbrains.annotations.Nullable;
 
 import javax.annotation.Nonnull;
 
+import static icyllis.modernui.view.View.dp;
 import static icyllis.modernui.view.View.sp;
 
 public class EditorFragment extends LifecycleFragment {
@@ -57,15 +63,7 @@ public class EditorFragment extends LifecycleFragment {
         params.gravity = Gravity.CENTER;
         root.setLayoutParams(params);
 
-        root.setBackground(new Drawable() {
-            @Override
-            public void draw(@Nonnull Canvas canvas) {
-                Paint paint = Paint.get();
-                Rect b = getBounds();
-                paint.setRGBA(8, 8, 8, 80);
-                canvas.drawRoundRect(b.left, b.top, b.right, b.bottom, 8, paint);
-            }
-        });
+        ColoredBackground.of(Colors.NODE_BACKGROUND_PRIMARY).applyTo(root);
 
         var content = createContent();
 
@@ -99,38 +97,36 @@ public class EditorFragment extends LifecycleFragment {
 
         toolsPanel.setOrientation(LinearLayout.HORIZONTAL);
 
-        var params = new RelativeLayout.LayoutParams(
-                RelativeLayout.LayoutParams.MATCH_PARENT,
-                RelativeLayout.LayoutParams.WRAP_CONTENT
-        );
-        params.addRule(RelativeLayout.CENTER_HORIZONTAL);
+        ParamsBuilder.using(RelativeLayout.LayoutParams::new)
+                .widthMatchParent()
+                .heightWrapContent()
+                .setup(p -> p.addRule(RelativeLayout.CENTER_HORIZONTAL))
+                .applyTo(toolsPanel);
 
-        toolsPanel.setLayoutParams(params);
+        SquarePadding.of(dp(5))
+                .applyTo(toolsPanel);
 
-        toolsPanel.setBackground(new Drawable() {
-            @Override
-            public void draw(@Nonnull Canvas canvas) {
-                Paint paint = Paint.get();
-                Rect b = getBounds();
-                paint.setRGBA(150, 0, 150, 80);
-                canvas.drawRect(b.left, b.top, b.right, b.bottom, paint);
-            }
-        });
+        ColoredBackground.of(Colors.NODE_BACKGROUND_SECONDARY).applyTo(toolsPanel);
 
         toolsPanel.setId(toolsViewId);
 
-        var button = createButton("Tools");
         var saveButton = createButton("Save");
         saveButton.setOnClickListener(v -> {
             controller.onSaveButtonClicked(project, graphLayout);
         });
+
+        ParamsBuilder.using(LinearLayout.LayoutParams::new)
+                .wrapContent()
+                .setup(p -> p.rightMargin = dp(10))
+                .applyTo(saveButton);
+
         var compileButton = createButton("Compile");
         compileButton.setOnClickListener(v -> {
             controller.onCompileButtonClicked(project, graphLayout);
         });
 
-        toolsPanel.addView(button);
         toolsPanel.addView(saveButton);
+//        toolsPanel.addView(Divider.builder().vertical().padding(dp(10)).color(Colors.NODE_BACKGROUND_PRIMARY).build());
         toolsPanel.addView(compileButton);
 
         return toolsPanel;
@@ -147,16 +143,7 @@ public class EditorFragment extends LifecycleFragment {
         params.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
 
         body.setLayoutParams(params);
-
-        body.setBackground(new Drawable() {
-            @Override
-            public void draw(@Nonnull Canvas canvas) {
-                Paint paint = Paint.get();
-                Rect b = getBounds();
-                paint.setRGB(58, 58, 60);
-                canvas.drawRect(b.left, b.top, b.right, b.bottom, paint);
-            }
-        });
+        ColoredBackground.of(Colors.NODE_BACKGROUND_SECONDARY).applyTo(body);
 
         var detailsPanel = createDetailsPanel();
         var viewPort = createViewPort();
@@ -182,18 +169,10 @@ public class EditorFragment extends LifecycleFragment {
 
         detailsPanel.setLayoutParams(params);
 
-        detailsPanel.setBackground(new Drawable() {
-            @Override
-            public void draw(@Nonnull Canvas canvas) {
-                Paint paint = Paint.get();
-                Rect b = getBounds();
-                paint.setRGBA(8, 8, 255, 80);
-                canvas.drawRect(b.left, b.top, b.right, b.bottom, paint);
-            }
-        });
+        ColoredBackground.of(Colors.NODE_BACKGROUND_SECONDARY_1).applyTo(detailsPanel);
 
         var detailsHeader = createTextView("Details");
-        detailsHeader.setTextSize(sp(8));
+        detailsHeader.setTextSize(sp(13));
 
         detailsPanel.addView(detailsHeader);
 
@@ -282,7 +261,7 @@ public class EditorFragment extends LifecycleFragment {
     private Button createButton(String text) {
         var button = new MaterialButton();
         button.setText(text);
-        button.setBackgroundColor(Colors.SELECTED_COLOR);
+//        button.setBackgroundColor(Colors.SELECTED_COLOR);
 
         return button;
     }

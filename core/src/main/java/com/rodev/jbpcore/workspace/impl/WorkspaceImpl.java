@@ -3,6 +3,7 @@ package com.rodev.jbpcore.workspace.impl;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import com.rodev.jbpcore.JustBlueprints;
 import com.rodev.jbpcore.blueprint.data.DataAccess;
 import com.rodev.jbpcore.blueprint.data.action.Action;
 import com.rodev.jbpcore.blueprint.graph.GraphController;
@@ -15,18 +16,9 @@ import com.rodev.jbpcore.workspace.Project;
 import com.rodev.jbpcore.workspace.Workspace;
 import com.rodev.jbpcore.workspace.compiler.CodeCompiler;
 import com.rodev.jmcgenerator.CodeGenerator;
-import com.rodev.jmcgenerator.data.GeneratorData;
-import com.rodev.jmcgenerator.entity.GeneratorEntity;
-import icyllis.modernui.ModernUI;
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import lombok.extern.slf4j.Slf4j;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.Marker;
-import org.apache.logging.log4j.MarkerManager;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
@@ -123,7 +115,7 @@ public class WorkspaceImpl implements Workspace {
 
             @Override
             protected void onBlueprintCompile() {
-                compileBlueprint(getDirectory());
+                compileBlueprint(this);
             }
 
             @Override
@@ -137,7 +129,8 @@ public class WorkspaceImpl implements Workspace {
         };
     }
 
-    public void compileBlueprint(File projectDirectory) {
+    public void compileBlueprint(Project project) {
+        var projectDirectory = project.getDirectory();
         var savedBlueprint = new File(projectDirectory, blueprintDataFileName);
         var generatedCode = new File(projectDirectory, compileDataFileName);
 
@@ -148,12 +141,15 @@ public class WorkspaceImpl implements Workspace {
         var jmcc = CodeCompiler.getCompilerFile(programDirectory);
 
         if(!jmcc.exists()) {
-            log.error("Code was generated, but jmcc not found. Please install it to "
-                    + jmcc.getAbsolutePath());
+            var msg = "Code was generated, but jmcc not found. Please install it to "
+                    + jmcc.getAbsolutePath();
+            log.error(msg);
+            JustBlueprints.getEditorEventListener().onProjectCompileError(project, msg);
             return;
         }
 
         var compiler = CodeCompiler.getCompiler(jmcc);
+        compiler.setCompileMode(CodeCompiler.CompileMode.COMPILE_AND_UPLOAD);
         File compiled;
 
         try {
@@ -166,10 +162,12 @@ public class WorkspaceImpl implements Workspace {
 
         if(compiler.getExitCode() != 0) {
             log.warn("Compilation finished unsuccessfully. Error message: \n" + output);
+            JustBlueprints.getEditorEventListener().onProjectCompileError(project, output);
             return;
         }
 
         log.info(output);
+        JustBlueprints.getEditorEventListener().onProjectCompiled(project, output);
     }
 
     public void saveBlueprint(File projectDirectory, Collection<BPNode> nodes) {

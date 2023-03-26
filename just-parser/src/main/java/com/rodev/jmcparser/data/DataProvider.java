@@ -26,6 +26,7 @@ public class DataProvider {
     private static final String ACTION_TYPE_PATCHES_PATH = "patches/action_types.json";
     private static final String VARIABLE_TYPE_PATCHES_PATH = "patches/variable_types.json";
     private static final String GENERATOR_DATA_PATCHES_PATH = "patches/generator_data.json";
+    private static final String PIN_ICONS_PATH = "pin_icons.json";
 
     public void loadActionsAndApply(Consumer<InputStream> inputStreamConsumer) {
         getInputStream(RAW_ACTIONS_URL, inputStreamConsumer);
@@ -77,6 +78,10 @@ public class DataProvider {
 
     public <T> T loadCustomActionsAndReturn(Function<InputStream, T> function) {
         return getLocalInputStream(CUSTOM_ACTIONS_PATH, function);
+    }
+
+    public <T> T loadPinIconsAndReturn(Function<InputStream, T> function) {
+        return getLocalInputStream(PIN_ICONS_PATH, function);
     }
 
     private <T> T getLocalInputStream(String resId, Function<InputStream, T> function) {

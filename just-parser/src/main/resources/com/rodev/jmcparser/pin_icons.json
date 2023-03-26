@@ -1,0 +1,12 @@
+[
+  {
+    "id": "default",
+    "icon": "default-pin",
+    "connected-icon": "default-pin-connected"
+  },
+  {
+    "id": "array",
+    "icon": "array-pin",
+    "connected-icon": "array-pin-connected"
+  }
+]

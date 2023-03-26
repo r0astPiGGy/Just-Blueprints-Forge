@@ -11,6 +11,9 @@ public class VariableTypePatch extends Patch {
     @Patchable
     public String color;
 
+    @Patchable
+    public String icon;
+
     @Override
     @JsonIgnore
     public String getPatchedId() {

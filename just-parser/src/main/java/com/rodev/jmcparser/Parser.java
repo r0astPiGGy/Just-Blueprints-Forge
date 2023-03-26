@@ -2,6 +2,7 @@ package com.rodev.jmcparser;
 
 import com.rodev.jbpcore.blueprint.data.json.ActionEntity;
 import com.rodev.jbpcore.blueprint.data.json.ActionTypeEntity;
+import com.rodev.jbpcore.blueprint.data.json.PinIconEntity;
 import com.rodev.jbpcore.blueprint.data.json.VariableTypeEntity;
 import com.rodev.jmcgenerator.entity.GeneratorEntity;
 import com.rodev.jmcparser.data.*;
@@ -17,6 +18,9 @@ import com.rodev.jmcparser.patcher.generator.GeneratorEntityPatch;
 import com.rodev.jmcparser.patcher.variable.VariableTypePatch;
 
 import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
+
 import static com.rodev.jmcparser.data.Parser.parseJson;
 
 public class Parser implements Runnable {
@@ -91,6 +95,9 @@ public class Parser implements Runnable {
             actionTypeWriter.setPatcher(patcher);
         });
 
+        var pinIconWriter = DataWriter.defaultDataWriter(parserDirectoryChild("pin_icons.json"));
+        var icons = dataProvider.loadPinIconsAndReturn(is -> parseJson(is, PinIconEntity[].class));
+
         var generatorDataEntities = helper.getDataGenerator().getGeneratorEntities();
 
         applyAdditionalDirectories(
@@ -98,13 +105,15 @@ public class Parser implements Runnable {
                 categoryWriter,
                 variableTypeWriter,
                 generatorDataWriter,
-                actionTypeWriter
+                actionTypeWriter,
+                pinIconWriter
         );
 
         actionWriter.write(actions);
         categoryWriter.write(actions);
         variableTypeWriter.write(actions);
         actionTypeWriter.write(actions);
+        pinIconWriter.write(icons);
         generatorDataWriter.write(generatorDataEntities);
 
         helper.onAllDataInterpreted();
@@ -113,7 +122,7 @@ public class Parser implements Runnable {
     private void applyAdditionalDirectories(DataWriter<?, ?>... writers) {
         for (DataWriter<?, ?> writer : writers) {
             writer.setAdditionalDestinationDirectories(
-                    new File("core/src/main/resources/com/rodev/jbpcore/"),
+                    new File("ui_testing/src/main/resources/com/rodev/jbpcore/"),
                     new File("src/main/resources/com/rodev/jbp/")
             );
         }

@@ -44,7 +44,7 @@ public class VariableTypeRegistry extends Registry<String, VariableType> {
 
         var color = Color.rgb(rgb[0], rgb[1], rgb[2]);
 
-        return new VariableType(entity.id, color);
+        return new VariableType(entity.id, color, entity.icon);
     }
 
     private void add(VariableType variableType) {

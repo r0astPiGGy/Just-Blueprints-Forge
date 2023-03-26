@@ -7,7 +7,7 @@ plugins {
 }
 
 
-version = '1.0'
+version = "${mod_version}"
 group = 'com.rodev.justblueprints' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'justblueprints'
 
@@ -128,7 +128,7 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             // Specify the modid for data generation, where to output the resulting resource, and where to look for existing resources.
-            args '--mod', 'examplemod', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
+            args '--mod', 'justblueprints', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
 
             mods {
                 justblueprints {
@@ -143,10 +143,6 @@ minecraft {
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
-    // Put repositories for dependencies here
-    // ForgeGradle automatically adds the Forge maven and Maven Central for you
-
-    // If you have mod jar dependencies in ./libs, you can declare them as a repository like so:
     // flatDir {
     //     dir 'libs'
     // }
@@ -156,56 +152,56 @@ repositories {
     }
 }
 
+List<Project> dependencyProjects = Arrays.asList(
+        project(":core"),
+        project(":just-generator")
+)
+
+dependencyProjects.forEach {
+    project.evaluationDependsOn(it.path)
+}
+
 dependencies {
-    // Specify the version of Minecraft to use. If this is any group other than 'net.minecraft', it is assumed
-    // that the dep is a ForgeGradle 'patcher' dependency, and its patches will be applied.
-    // The userdev artifact is a special name and will get all sorts of transformations applied to it.
     minecraft "net.minecraftforge:forge:${forge_version}"
 
-    //library "icyllis.modernui:ModernUI-Core:${modernui_version}"
     library files('./libs/ModernUI-Core-3.6.3.117.jar')
-    //library 'org.apache.logging.log4j:log4j-api:2.17.1'
-    //library 'com.ibm.icu:icu4j:70.1'
-//    compileOnly 'com.google.code.findbugs:jsr305:3.0.2'
-//    compileOnly 'org.jetbrains:annotations:23.0.0'
 
     implementation fg.deobf("icyllis.modernui:ModernUI-Forge:${minecraft_version}-${modernui_version}")
+    dependencyProjects.forEach {
+        library(it)
+    }
 
-    library project(":core")
-
-    // Real mod deobf dependency examples - these get remapped to your current mappings
-    // compileOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}:api") // Adds JEI API as a compile dependency
-    // runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}") // Adds the full JEI mod as a runtime dependency
-    // implementation fg.deobf("com.tterrag.registrate:Registrate:MC${mc_version}-${registrate_version}") // Adds registrate as a dependency
-
-    // Examples using mod jars from ./libs
-    // implementation fg.deobf("blank:coolmod-${mc_version}:${coolmod_version}")
-
-    // For more info...
-    // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
-    // http://www.gradle.org/docs/current/userguide/dependency_management.html
+    shadow 'com.fasterxml.jackson.core:jackson-databind:2.13.3'
 }
 
 // Example for how to get properties into the manifest for reading at runtime.
 jar {
+    from(sourceSets.main.output)
+
+    for (final def p in dependencyProjects) {
+        from(p.sourceSets.main.output)
+    }
+
+    from {
+        configurations.shadow.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+
     manifest {
         attributes([
                 "Specification-Title"     : "justblueprints",
                 "Specification-Vendor"    : "r0astPiGGy",
                 "Specification-Version"   : "1", // We are version 1 of ourselves
                 "Implementation-Title"    : project.name,
-                "Implementation-Version"  : project.jar.archiveVersion,
+                "Implementation-Version"  : "${mod_version}",
                 "Implementation-Vendor"   : "r0astPiGGy",
                 "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
         ])
     }
-}
 
-// Example configuration to allow publishing using the maven-publish plugin
-// This is the preferred method to reobfuscate your jar file
-jar.finalizedBy('reobfJar')
-// However if you are in a multi-project build, dev time needs unobfed jar files, so you can delay the obfuscation until publishing by doing
-// publish.dependsOn('reobfJar')
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+
+    finalizedBy('reobfJar')
+}
 
 publishing {
     publications {

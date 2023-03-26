@@ -1,0 +1,9 @@
+[ {
+  "id" : "default",
+  "icon" : "default-pin",
+  "connectedIcon" : "default-pin-connected"
+}, {
+  "id" : "array",
+  "icon" : "array-pin",
+  "connectedIcon" : "array-pin-connected"
+} ]

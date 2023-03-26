@@ -1,5 +1,6 @@
 package com.rodev.jbpcore.fragment.editor;
 
+import com.rodev.jbpcore.JustBlueprints;
 import com.rodev.jbpcore.blueprint.graph.GraphLayout;
 import com.rodev.jbpcore.blueprint.node.BPNode;
 import com.rodev.jbpcore.workspace.Project;
@@ -9,6 +10,7 @@ import java.util.LinkedList;
 public class EditorController {
 
     public void onSaveButtonClicked(Project project, GraphLayout graphLayout) {
+        JustBlueprints.getEditorEventListener().onProjectSaveButtonClicked(project);
         saveProject(project, graphLayout);
     }
 
@@ -27,9 +29,11 @@ public class EditorController {
         project.getBlueprint().save(nodes);
 
         System.out.println("Took " + (System.currentTimeMillis() - millis) + "ms. to save blueprint");
+        JustBlueprints.getEditorEventListener().onProjectSaved(project);
     }
 
     public void onCompileButtonClicked(Project project, GraphLayout graphLayout) {
+        JustBlueprints.getEditorEventListener().onProjectCompileButtonClicked(project);
         saveProject(project, graphLayout);
 
         long millis = System.currentTimeMillis();

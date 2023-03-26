@@ -15,11 +15,8 @@ public class UnixCompiler extends CodeCompiler {
         ProcessBuilder processBuilder = new ProcessBuilder();
         processBuilder.directory(compilerPath.getParentFile());
 
-        var cmd = String.format(
-                "./%s compile %s",
-                compilerPath.getName(),
-                fileToCompile.getAbsolutePath()
-        );
+        var cmd = getCompileMode()
+                .getCommand("./" + compilerPath.getName(), fileToCompile.getAbsolutePath());
 
         processBuilder.command("bash", "-c", cmd);
 

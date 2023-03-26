@@ -1,6 +1,7 @@
 package com.rodev.jbpcore.blueprint.pin;
 
 import com.rodev.jbpcore.blueprint.data.variable.DefaultInputValue;
+import com.rodev.jbpcore.utils.ParamsBuilder;
 import com.rodev.jbpcore.utils.TextViewCreationListener;
 import icyllis.modernui.view.Gravity;
 import icyllis.modernui.view.ViewGroup;
@@ -24,9 +25,15 @@ public class PinRowView extends LinearLayout implements PinToggleListener {
 
         var textView = new TextView();
         textView.setText(text);
-        textView.setPadding(dp(3), 0, dp(3), 0);
 
         setPadding(0, dp(1.5f), 0, dp(1.5f));
+        ParamsBuilder.using(LinearLayout.LayoutParams::new)
+                .wrapContent()
+                .setup(p -> {
+                    p.rightMargin = dp(3);
+                    p.leftMargin = dp(3);
+                })
+                .applyTo(pin);
 
         TextViewCreationListener.onPinTextCreated(textView);
 

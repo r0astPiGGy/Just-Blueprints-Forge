@@ -1,15 +1,16 @@
 package com.rodev.jbpcore;
 
+import com.rodev.jbpcore.fragment.editor.EditorEventListener;
 import com.rodev.jbpcore.workspace.WindowManager;
 import com.rodev.jbpcore.workspace.Workspace;
+import org.jetbrains.annotations.NotNull;
 
 public class JustBlueprints {
 
     private static Workspace workspace;
 
     private static WindowManager windowManager;
-
-    public static final String VERSION = "0.1-indev";
+    private static EditorEventListener editorEventListener = new EditorEventListener() {};
 
     public static void setWorkspace(Workspace workspace) {
         if(JustBlueprints.workspace != null) {
@@ -26,6 +27,14 @@ public class JustBlueprints {
         }
 
         JustBlueprints.windowManager = windowManager;
+    }
+
+    public static void setEditorEventListener(@NotNull EditorEventListener editorEventListener) {
+        JustBlueprints.editorEventListener = editorEventListener;
+    }
+
+    public static EditorEventListener getEditorEventListener() {
+        return editorEventListener;
     }
 
     public static WindowManager getWindowManager() {

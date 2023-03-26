@@ -1,5 +1,6 @@
 package com.rodev.jbp;
 
+import com.rodev.jbp.client.ForgeEditorEventListener;
 import com.rodev.jbpcore.Fonts;
 import com.rodev.jbpcore.JustBlueprints;
 import com.rodev.jbpcore.blueprint.data.DataAccess;
@@ -36,6 +37,7 @@ public class JustBlueprintsMod implements DataProvider
         try {
             Fonts.loadFonts();
             JustBlueprints.setWorkspace(new WorkspaceImpl());
+            JustBlueprints.setEditorEventListener(new ForgeEditorEventListener());
             JustBlueprints.setWindowManager(new WindowManager() {
                 @Override
                 protected void openFragment(Fragment fragment) {
@@ -106,6 +108,11 @@ public class JustBlueprintsMod implements DataProvider
     @Override
     public InputStream getDataGeneratorInputStream() {
         return getResourceAsStream("generator_data.json");
+    }
+
+    @Override
+    public InputStream getPinIconsInputStream() {
+        return getResourceAsStream("pin_icons.json");
     }
 
     private InputStream getResourceAsStream(String name) {

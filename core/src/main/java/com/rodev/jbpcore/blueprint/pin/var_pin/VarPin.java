@@ -1,17 +1,13 @@
 package com.rodev.jbpcore.blueprint.pin.var_pin;
 
-import com.rodev.jbpcore.Colors;
+import com.rodev.jbpcore.blueprint.data.DataAccess;
 import com.rodev.jbpcore.blueprint.data.action.PinType;
 import com.rodev.jbpcore.blueprint.pin.*;
-import icyllis.modernui.graphics.Canvas;
-import icyllis.modernui.graphics.Paint;
+import icyllis.modernui.graphics.Image;
 import icyllis.modernui.graphics.drawable.Drawable;
+import icyllis.modernui.graphics.drawable.ImageDrawable;
 import icyllis.modernui.graphics.drawable.StateListDrawable;
-import icyllis.modernui.material.MaterialDrawable;
-import icyllis.modernui.math.Rect;
 import icyllis.modernui.util.StateSet;
-
-import javax.annotation.Nonnull;
 
 import static icyllis.modernui.view.View.dp;
 import static icyllis.modernui.widget.CompoundButton.CHECKED_STATE_SET;
@@ -20,9 +16,22 @@ public interface VarPin extends Pin {
 
     @Override
     default Drawable createDrawable() {
-        StateListDrawable drawable = new StateListDrawable();
-        drawable.addState(CHECKED_STATE_SET, new CheckedDrawable());
-        drawable.addState(StateSet.WILD_CARD, new UncheckedDrawable());
+
+        var icon = getType().getVariableType().getIcon();
+        StateListDrawable drawable = new StateListDrawable() {
+            @Override
+            public int getIntrinsicHeight() {
+                return dp(24);
+            }
+
+            @Override
+            public int getIntrinsicWidth() {
+                return dp(24);
+            }
+        };
+
+        drawable.addState(CHECKED_STATE_SET, new ImageDrawable(icon.connected()));
+        drawable.addState(StateSet.WILD_CARD, new ImageDrawable(icon.icon()));
 //        drawable.setEnterFadeDuration(300);
 //        drawable.setExitFadeDuration(300);
         return drawable;
@@ -34,81 +43,5 @@ public interface VarPin extends Pin {
 
     static Pin inputPin(PinType pinType) {
         return new InVarPin(pinType);
-    }
-
-    class CheckedDrawable extends MaterialDrawable {
-
-        private final float mRadius;
-
-        CheckedDrawable() {
-            mRadius = dp(4);
-        }
-
-        @Override
-        public void draw(@Nonnull Canvas canvas) {
-            final Rect r = getBounds();
-            float cx = r.exactCenterX();
-            float cy = r.exactCenterY();
-            Paint paint = Paint.get();
-            paint.setColor(mColor);
-            paint.setAlpha(modulateAlpha(paint.getAlpha(), mAlpha));
-            if (paint.getAlpha() != 0) {
-                canvas.drawCircle(cx, cy, mRadius * 1.6f, paint);
-                paint.setStyle(Paint.FILL_AND_STROKE);
-                paint.setStrokeWidth(mRadius * 0.5f);
-                canvas.drawCircle(cx, cy, mRadius * 1.6f, paint);
-            }
-        }
-
-        @Override
-        public int getIntrinsicWidth() {
-            // 24dp
-            return (int) (mRadius * 6);
-        }
-
-        @Override
-        public int getIntrinsicHeight() {
-            // 24dp
-            return (int) (mRadius * 6);
-        }
-    }
-
-    class UncheckedDrawable extends MaterialDrawable {
-
-        private final float mRadius;
-
-        UncheckedDrawable() {
-            mRadius = dp(4);
-        }
-
-        @Override
-        public void draw(@Nonnull Canvas canvas) {
-            final Rect r = getBounds();
-            float cx = r.exactCenterX();
-            float cy = r.exactCenterY();
-            Paint paint = Paint.get();
-            paint.setColor(Colors.NODE_BACKGROUND);
-            paint.setAlpha(modulateAlpha(paint.getAlpha(), mAlpha));
-            if (paint.getAlpha() != 0) {
-                canvas.drawCircle(cx, cy, mRadius * 1.6f, paint);
-                paint.setColor(mColor);
-                paint.setAlpha(modulateAlpha(paint.getAlpha(), mAlpha));
-                paint.setStyle(Paint.STROKE);
-                paint.setStrokeWidth(mRadius * 0.5f);
-                canvas.drawCircle(cx, cy, mRadius * 1.6f, paint);
-            }
-        }
-
-        @Override
-        public int getIntrinsicWidth() {
-            // 24dp
-            return (int) (mRadius * 6);
-        }
-
-        @Override
-        public int getIntrinsicHeight() {
-            // 24dp
-            return (int) (mRadius * 6);
-        }
     }
 }
