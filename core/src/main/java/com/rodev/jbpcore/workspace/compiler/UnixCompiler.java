@@ -1,8 +1,6 @@
 package com.rodev.jbpcore.workspace.compiler;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.InputStreamReader;
 
 public class UnixCompiler extends CodeCompiler {
 
@@ -10,8 +8,7 @@ public class UnixCompiler extends CodeCompiler {
         super(compilerPath);
     }
 
-    @Override
-    public File compile(File fileToCompile) throws Exception {
+    protected void compileBlueprint(File fileToCompile) throws Exception {
         ProcessBuilder processBuilder = new ProcessBuilder();
         processBuilder.directory(compilerPath.getParentFile());
 
@@ -22,19 +19,9 @@ public class UnixCompiler extends CodeCompiler {
 
         Process process = processBuilder.start();
 
-        StringBuilder output = new StringBuilder();
-
-        BufferedReader reader = new BufferedReader(
-                new InputStreamReader(process.getInputStream()));
-
-        String line;
-        while ((line = reader.readLine()) != null) {
-            output.append(line).append("\n");
-        }
+        var output = readInputStream(process.getInputStream());
 
         int exitVal = process.waitFor();
-        setOutput(output.toString(), exitVal);
-
-        return new File(fileToCompile.getParent(), fileToCompile.getName().split("\\.")[0] + ".json");
+        setOutput(output, exitVal);
     }
 }

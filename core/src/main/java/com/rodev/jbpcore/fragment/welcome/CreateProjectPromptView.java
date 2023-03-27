@@ -156,7 +156,7 @@ public class CreateProjectPromptView extends RelativeLayout {
     }
 
     private Button createDeclineButton() {
-        var button = new MaterialButton();
+        var button = new MaterialButton(Colors.BUTTON_COLOR_PRIMARY);
 
         ParamsBuilder.using(RelativeLayout.LayoutParams::new)
                 .wrapContent()
@@ -169,15 +169,13 @@ public class CreateProjectPromptView extends RelativeLayout {
         button.setOnClickListener(v -> {
             onDeclineListener.run();
         });
-
-        button.setBackgroundColor(Colors.NODE_BACKGROUND_SECONDARY);
         button.setText("Отмена");
 
         return button;
     }
 
     private Button createAcceptButton() {
-        var button = new MaterialButton();
+        var button = new MaterialButton(Colors.SELECTED_COLOR);
 
         ParamsBuilder.using(RelativeLayout.LayoutParams::new)
                 .wrapContent()
@@ -193,7 +191,6 @@ public class CreateProjectPromptView extends RelativeLayout {
             }
         });
 
-        button.setBackgroundColor(Colors.SELECTED_COLOR);
         button.setText("Создать");
 
         return button;

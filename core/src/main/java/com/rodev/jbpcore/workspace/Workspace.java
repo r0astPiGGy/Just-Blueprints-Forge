@@ -1,6 +1,7 @@
 package com.rodev.jbpcore.workspace;
 
 import com.rodev.jbpcore.fragment.welcome.ValidateResult;
+import com.rodev.jbpcore.workspace.compiler.AsyncCompiler;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
@@ -12,6 +13,8 @@ public interface Workspace {
     File getProgramDirectory();
 
     File getProjectsDirectory();
+
+    AsyncCompiler getCompiler();
 
     ProgramData getProgramData();
 

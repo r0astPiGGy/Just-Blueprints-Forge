@@ -4,7 +4,7 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
-import java.io.File;
+import java.io.*;
 import java.util.function.Consumer;
 
 public abstract class CodeCompiler {
@@ -31,7 +31,46 @@ public abstract class CodeCompiler {
         this.exitCode = exitCode;
     }
 
-    public abstract File compile(File fileToCompile) throws Exception;
+    protected String readInputStream(InputStream is) throws Exception {
+        StringBuilder output = new StringBuilder();
+
+        BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+
+        String line;
+        while ((line = reader.readLine()) != null) {
+            output.append(line).append("\n");
+        }
+
+        return output.toString();
+    }
+
+    abstract
+    protected void compileBlueprint(File file) throws Exception;
+
+    public File compile(File fileToCompile) {
+        try {
+            if(!compilerPath.exists())
+                throw new IllegalArgumentException("Provided compiler doesn't exist: " + compilerPath.getAbsolutePath());
+
+            compileBlueprint(fileToCompile);
+        } catch (Exception e) {
+            var stacktrace = new StringWriter();
+            e.printStackTrace(new PrintWriter(stacktrace));
+            setOutput(stacktrace.toString(), -1);
+        }
+
+        return getCompiledFilePath(fileToCompile);
+    }
+
+    private File getCompiledFilePath(File fileToCompile) {
+        var parent = fileToCompile.getParent();
+        var fileNameAndExtension = fileToCompile.getName().split("\\.");
+        var fileName = fileNameAndExtension[0];
+
+        var targetFileName = fileName + ".json";
+
+        return new File(parent, targetFileName);
+    }
 
     public static CodeCompiler getCompiler(File compilerPath) {
         return os.getCompiler(compilerPath);

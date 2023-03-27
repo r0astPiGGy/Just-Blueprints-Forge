@@ -8,15 +8,11 @@ import com.rodev.jbpcore.fragment.LifecycleFragment;
 import com.rodev.jbpcore.utils.ColoredBackground;
 import com.rodev.jbpcore.utils.ParamsBuilder;
 import com.rodev.jbpcore.utils.SquarePadding;
-import com.rodev.jbpcore.view.Divider;
 import com.rodev.jbpcore.view.MaterialButton;
 import com.rodev.jbpcore.workspace.Project;
 import com.rodev.jbpcore.workspace.WindowManager;
 import icyllis.modernui.graphics.Canvas;
-import icyllis.modernui.graphics.Color;
 import icyllis.modernui.graphics.Paint;
-import icyllis.modernui.graphics.drawable.Drawable;
-import icyllis.modernui.math.Rect;
 import icyllis.modernui.util.DataSet;
 import icyllis.modernui.view.Gravity;
 import icyllis.modernui.view.View;
@@ -25,8 +21,6 @@ import icyllis.modernui.view.ViewGroup;
 import icyllis.modernui.widget.*;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-
-import javax.annotation.Nonnull;
 
 import static icyllis.modernui.view.View.dp;
 import static icyllis.modernui.view.View.sp;
@@ -106,7 +100,7 @@ public class EditorFragment extends LifecycleFragment {
         SquarePadding.of(dp(5))
                 .applyTo(toolsPanel);
 
-        ColoredBackground.of(Colors.NODE_BACKGROUND_SECONDARY).applyTo(toolsPanel);
+        ColoredBackground.of(Colors.TOOL_PANEL_BACKGROUND).applyTo(toolsPanel);
 
         toolsPanel.setId(toolsViewId);
 
@@ -121,6 +115,7 @@ public class EditorFragment extends LifecycleFragment {
                 .applyTo(saveButton);
 
         var compileButton = createButton("Compile");
+        controller.onCompileButtonInit(compileButton);
         compileButton.setOnClickListener(v -> {
             controller.onCompileButtonClicked(project, graphLayout);
         });
@@ -249,6 +244,7 @@ public class EditorFragment extends LifecycleFragment {
         super.onDestroy();
 
         controller.saveProject(project, graphLayout);
+        controller.onDestroy();
     }
 
     @Override
@@ -258,7 +254,7 @@ public class EditorFragment extends LifecycleFragment {
         controller.saveProject(project, graphLayout);
     }
 
-    private Button createButton(String text) {
+    private MaterialButton createButton(String text) {
         var button = new MaterialButton();
         button.setText(text);
 //        button.setBackgroundColor(Colors.SELECTED_COLOR);

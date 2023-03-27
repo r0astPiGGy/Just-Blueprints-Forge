@@ -14,6 +14,7 @@ import com.rodev.jbpcore.fragment.welcome.ValidateResult;
 import com.rodev.jbpcore.workspace.ProgramData;
 import com.rodev.jbpcore.workspace.Project;
 import com.rodev.jbpcore.workspace.Workspace;
+import com.rodev.jbpcore.workspace.compiler.AsyncCompiler;
 import com.rodev.jbpcore.workspace.compiler.CodeCompiler;
 import com.rodev.jmcgenerator.CodeGenerator;
 import lombok.AllArgsConstructor;
@@ -36,6 +37,8 @@ public class WorkspaceImpl implements Workspace {
     private static final String blueprintDataFileName = "data.jbp";
     private static final String compileDataFileName = "generated.jc";
 
+    private final AsyncCompiler compiler;
+
     private final Map<String, Project> loadedProjects = new HashMap<>();
 
     public WorkspaceImpl() {
@@ -43,6 +46,8 @@ public class WorkspaceImpl implements Workspace {
         projectDirectory.mkdirs();
 
         programData = new ProgramDataImpl(this);
+
+        compiler = new AsyncCompiler(programDirectory);
     }
 
     @Override
@@ -53,6 +58,11 @@ public class WorkspaceImpl implements Workspace {
     @Override
     public File getProjectsDirectory() {
         return projectDirectory;
+    }
+
+    @Override
+    public AsyncCompiler getCompiler() {
+        return compiler;
     }
 
     @Override
@@ -138,7 +148,8 @@ public class WorkspaceImpl implements Workspace {
 
         codeGenerator.generate(DataAccess.getInstance().generatorData, 4);
 
-        var jmcc = CodeCompiler.getCompilerFile(programDirectory);
+        var asyncCompiler = getCompiler();
+        var jmcc = asyncCompiler.getCompilerFile();
 
         if(!jmcc.exists()) {
             var msg = "Code was generated, but jmcc not found. Please install it to "
@@ -148,16 +159,12 @@ public class WorkspaceImpl implements Workspace {
             return;
         }
 
-        var compiler = CodeCompiler.getCompiler(jmcc);
-        compiler.setCompileMode(CodeCompiler.CompileMode.COMPILE_AND_UPLOAD);
-        File compiled;
+        asyncCompiler.compile(savedBlueprint, codeCompiler -> {
+            onBlueprintCompiled(project, codeCompiler);
+        });
+    }
 
-        try {
-            compiled = compiler.compile(generatedCode);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-
+    private void onBlueprintCompiled(Project project, CodeCompiler compiler) {
         var output = compiler.getOutput();
 
         if(compiler.getExitCode() != 0) {
@@ -169,6 +176,7 @@ public class WorkspaceImpl implements Workspace {
         log.info(output);
         JustBlueprints.getEditorEventListener().onProjectCompiled(project, output);
     }
+
 
     public void saveBlueprint(File projectDirectory, Collection<BPNode> nodes) {
         var file = new File(projectDirectory, blueprintDataFileName);

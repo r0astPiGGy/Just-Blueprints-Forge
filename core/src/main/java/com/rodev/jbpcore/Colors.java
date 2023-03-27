@@ -34,4 +34,13 @@ public class Colors {
     public static final int NODE_BACKGROUND_PRIMARY = Color.rgb(142, 142, 147);
     public static final int NODE_SUBTITLE_COLOR = Color.rgb(242, 242, 247);
 
+    public static final int TOOL_PANEL_BACKGROUND = Color.rgb(68, 68, 70);
+
+    public static final int BUTTON_DISABLED = Color.rgb(100, 100, 102);
+    public static final int BUTTON_COLOR_PRIMARY = Color.rgb(56, 56, 58);
+
+    public static final int BUTTON_COLOR_SECONDARY = Color.rgb(56, 56, 58);
+
+    public static final int BUTTON_TEXT_DISABLED = Color.rgb(150, 150, 150);
+
 }

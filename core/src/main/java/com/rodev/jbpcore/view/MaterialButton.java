@@ -17,21 +17,26 @@ import static com.rodev.jbpcore.Fonts.MINECRAFT_FONT;
 
 public class MaterialButton extends Button {
 
-    private final Background background = new Background(Colors.NODE_BACKGROUND, dp(5));
+    private static final ColorStateList TINT_LIST = createColorStateList(Colors.BUTTON_COLOR_PRIMARY);
 
-    private static final ColorStateList TINT_LIST = new ColorStateList(
-            new int[][]{
-                    StateSet.get(StateSet.VIEW_STATE_SELECTED),
-                    StateSet.get(StateSet.VIEW_STATE_HOVERED),
-                    StateSet.WILD_CARD},
-            new int[]{
-                    Colors.WHITE,
-                    Colors.WHITE,
-                    Colors.NODE_BACKGROUND}
-    );
+    public static ColorStateList createColorStateList(int nodeColor) {
+        return new ColorStateList(
+                new int[][]{
+//                        StateSet.get(StateSet.VIEW_STATE_SELECTED),
+//                        StateSet.get(StateSet.VIEW_STATE_HOVERED),
+                        StateSet.get(StateSet.VIEW_STATE_ENABLED),
+                        StateSet.WILD_CARD},
+                new int[]{
+//                        Colors.WHITE,
+//                        Colors.WHITE,
+                        nodeColor,
+                        Colors.BUTTON_DISABLED}
+        );
+    }
 
-    public MaterialButton() {
-        background.setTintList(TINT_LIST);
+    private MaterialButton(ColorStateList stateList) {
+        var background = new Background(dp(5));
+        background.setTintList(stateList);
         setBackground(background);
         setTextAlignment(TEXT_ALIGNMENT_CENTER);
         setMinWidth(dp(140));
@@ -40,18 +45,31 @@ public class MaterialButton extends Button {
         setTextSize(sp(20));
     }
 
-    public void setBackgroundColor(int color) {
-        background.backgroundColor = color;
+    public MaterialButton(int color) {
+        this(createColorStateList(color));
+    }
+
+    public MaterialButton() {
+        this(TINT_LIST);
+    }
+
+    @Override
+    public void setEnabled(boolean enabled) {
+        super.setEnabled(enabled);
+
+        if(enabled) {
+            setTextColor(Colors.WHITE);
+        } else {
+            setTextColor(Colors.BUTTON_TEXT_DISABLED);
+        }
     }
 
     private static class Background extends MaterialDrawable {
 
         int padding = 0;
-        int backgroundColor = Colors.NODE_BACKGROUND;
         int radius;
 
-        public Background(int backgroundColor, int radius) {
-            this.backgroundColor = backgroundColor;
+        public Background(int radius) {
             this.radius = radius;
         }
 
@@ -60,8 +78,7 @@ public class MaterialButton extends Button {
             var b = getBounds();
             var p = Paint.get();
 
-            p.setColor(backgroundColor);
-            //p.setColor(mColor);
+            p.setColor(mColor);
             p.setAlpha(modulateAlpha(p.getAlpha(), mAlpha));
 
             if(p.getAlpha() == 0) return;
