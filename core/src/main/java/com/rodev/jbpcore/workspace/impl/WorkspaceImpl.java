@@ -124,8 +124,8 @@ public class WorkspaceImpl implements Workspace {
             }
 
             @Override
-            protected void onBlueprintCompile() {
-                compileBlueprint(this);
+            protected void onBlueprintCompile(CodeCompiler.CompileMode compileMode) {
+                compileBlueprint(this, compileMode);
             }
 
             @Override
@@ -139,7 +139,7 @@ public class WorkspaceImpl implements Workspace {
         };
     }
 
-    public void compileBlueprint(Project project) {
+    public void compileBlueprint(Project project, final CodeCompiler.CompileMode compileMode) {
         var projectDirectory = project.getDirectory();
         var savedBlueprint = new File(projectDirectory, blueprintDataFileName);
         var generatedCode = new File(projectDirectory, compileDataFileName);
@@ -149,6 +149,11 @@ public class WorkspaceImpl implements Workspace {
         codeGenerator.generate(DataAccess.getInstance().generatorData, 4);
 
         var asyncCompiler = getCompiler();
+
+        asyncCompiler.getOnPreCompileListeners().addListener(codeCompiler -> {
+            codeCompiler.setCompileMode(compileMode);
+        }).setRemoveOnNotify();
+
         var jmcc = asyncCompiler.getCompilerFile();
 
         if(!jmcc.exists()) {

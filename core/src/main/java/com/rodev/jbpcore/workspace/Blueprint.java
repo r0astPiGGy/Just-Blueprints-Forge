@@ -2,6 +2,7 @@ package com.rodev.jbpcore.workspace;
 
 import com.rodev.jbpcore.blueprint.graph.GraphController;
 import com.rodev.jbpcore.blueprint.node.BPNode;
+import com.rodev.jbpcore.workspace.compiler.CodeCompiler;
 
 import java.util.Collection;
 
@@ -11,6 +12,6 @@ public interface Blueprint {
 
     void loadTo(GraphController graphController);
 
-    void compile();
+    void compile(CodeCompiler.CompileMode compileMode);
 
 }

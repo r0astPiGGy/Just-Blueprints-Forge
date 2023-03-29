@@ -1,17 +1,14 @@
 package com.rodev.jbpcore.blueprint.pin;
 
-import com.rodev.jbpcore.utils.ParamsBuilder;
 import com.rodev.jbpcore.utils.ViewUtils;
 import icyllis.modernui.R;
 import icyllis.modernui.util.ColorStateList;
 import icyllis.modernui.util.StateSet;
 import icyllis.modernui.view.MotionEvent;
-import icyllis.modernui.view.View;
 import icyllis.modernui.widget.CompoundButton;
-import icyllis.modernui.widget.LinearLayout;
 import org.jetbrains.annotations.NotNull;
 
-public class PinView extends CompoundButton implements PinToggleListener, PinPositionSupplier {
+public class PinView extends CompoundButton implements PinToggleListener, PositionSupplier {
 
     private static final int[][] ENABLED_CHECKED_STATES = {
             new int[]{R.attr.state_enabled, R.attr.state_checked}, // [0]
@@ -126,7 +123,7 @@ public class PinView extends CompoundButton implements PinToggleListener, PinPos
     }
 
     @Override
-    public int[] getPosition(Pin pin) {
+    public int[] getPosition(Positionable object) {
         return ViewUtils.getRelativeViewPosition(this);
     }
 

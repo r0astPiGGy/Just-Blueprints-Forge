@@ -8,6 +8,7 @@ import com.rodev.jbpcore.blueprint.node.impl.NodeView;
 import com.rodev.jbpcore.blueprint.pin.Pin;
 import com.rodev.jbpcore.blueprint.pin.PinRowView;
 import com.rodev.jbpcore.blueprint.pin.default_input_value.CustomArrayAdapter;
+import com.rodev.jbpcore.blueprint.pin.default_input_value.DefaultSelectorInputView;
 import icyllis.modernui.graphics.Canvas;
 import icyllis.modernui.graphics.Paint;
 import icyllis.modernui.graphics.drawable.Drawable;
@@ -57,66 +58,16 @@ public class SelectorVariableGetterNode extends NodeView {
         }
     }
 
-    private static class SelectorValueView extends Spinner implements DefaultInputValue {
+    private static class SelectorValueView extends DefaultSelectorInputView {
 
-        private final List<Selector> values;
         public SelectorValueView(SelectorGroup selectorGroup) {
-            values = selectorGroup.selectors();
-            ArrayAdapter<Selector> arrayAdapter = new CustomArrayAdapter<>(values);
-
-            setAdapter(arrayAdapter);
-
-            setBackground(new Drawable() {
-                private final int mRadius = dp(4);
-
-                @Override
-                public void draw(@Nonnull Canvas canvas) {
-                    Paint paint = Paint.get();
-                    paint.setColor(Colors.WHITE);
-                    paint.setStyle(Paint.STROKE);
-                    paint.setStrokeWidth(1.2f);
-                    Rect b = getBounds();
-                    canvas.drawRoundRect(b.left, b.top, b.right, b.bottom, mRadius, paint);
-                }
-
-                @Override
-                public boolean getPadding(@Nonnull Rect padding) {
-                    int r = (int) Math.ceil(mRadius / 2.5f);
-                    padding.set(r, r, r, r);
-                    return true;
-                }
-            });
+            super(selectorGroup);
         }
-
-        @Override
-        public String getDefaultValue() {
-            if(getSelectedItem() instanceof Selector value) {
-                return value.id();
-            }
-
-            return null;
-        }
-
-        @Override
-        public void setDefaultValue(String value) {
-            int i = 0;
-            for(var a : values) {
-                if(a.id().equalsIgnoreCase(value)) {
-                    setSelection(i);
-                }
-                i++;
-            }
-        }
-
-        @Override
-        public View asView() {
-            return this;
-        }
-
-        @Override
-        public void hide() {}
 
         @Override
         public void show() {}
+
+        @Override
+        public void hide() {}
     }
 }

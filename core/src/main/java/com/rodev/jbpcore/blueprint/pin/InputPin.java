@@ -72,7 +72,7 @@ public abstract class InputPin extends AbstractPin {
     }
 
     @Override
-    public boolean isPinConnected(Pin pin) {
+    public boolean isConnectedTo(Pin pin) {
         return pin == connectedPin;
     }
 

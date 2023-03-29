@@ -242,7 +242,7 @@ public class GraphControllerImpl implements
 
         if(!target.isApplicable(connection)) return false;
 
-        if(target.isPinConnected(connection)) return false;
+        if(target.isConnectedTo(connection)) return false;
 
         if(target.isConnected() && !target.supportMultipleConnections()) return false;
         
@@ -275,7 +275,7 @@ public class GraphControllerImpl implements
     public boolean handleDisconnect(Pin target, Pin connection) {
         if(target == connection) return false;
         
-        if(!target.isPinConnected(connection)) return false;
+        if(!target.isConnectedTo(connection)) return false;
 
         target.setIsBeingDisconnected(true);
 

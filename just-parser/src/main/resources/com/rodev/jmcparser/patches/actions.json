@@ -43,6 +43,13 @@
       {
         "id": "value_variable",
         "remove": true
+      },
+      {
+        "id": "list",
+        "label": "Список",
+        "extra-data": {
+          "value-type": "dynamic"
+        }
       }
     ],
     "output" : [
@@ -64,8 +71,11 @@
       {
         "id" : "value_variable",
         "label" : "Элемент",
-        "type" : "variable",
-        "extra_data" : null
+        "type" : "dynamic",
+        "extra_data" : {
+          "depends-on": "list",
+          "depend-type": ["input", "value-type"]
+        }
       },
       {
         "id" : "loop_end",

@@ -155,7 +155,7 @@ public class CreateProjectPromptView extends RelativeLayout {
         return footer;
     }
 
-    private Button createDeclineButton() {
+    private MaterialButton createDeclineButton() {
         var button = new MaterialButton(Colors.BUTTON_COLOR_PRIMARY);
 
         ParamsBuilder.using(RelativeLayout.LayoutParams::new)
@@ -174,7 +174,7 @@ public class CreateProjectPromptView extends RelativeLayout {
         return button;
     }
 
-    private Button createAcceptButton() {
+    private MaterialButton createAcceptButton() {
         var button = new MaterialButton(Colors.SELECTED_COLOR);
 
         ParamsBuilder.using(RelativeLayout.LayoutParams::new)

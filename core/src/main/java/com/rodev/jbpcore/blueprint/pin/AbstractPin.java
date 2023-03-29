@@ -1,6 +1,8 @@
 package com.rodev.jbpcore.blueprint.pin;
 
 import com.rodev.jbpcore.blueprint.data.action.PinType;
+import com.rodev.jbpcore.blueprint.node.BPNode;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.UUID;
 
@@ -10,7 +12,7 @@ public abstract class AbstractPin implements Pin {
     private PinDragListener pinDragListener;
     private PinHoverListener pinHoverListener;
     private PinToggleListener pinToggleListener;
-    private PinPositionSupplier pinPositionSupplier;
+    private PositionSupplier positionSupplier;
     private PinConnectionHandler pinConnectionHandler;
     private boolean isBeingDisconnected;
     private boolean isBeingConnected;
@@ -70,8 +72,8 @@ public abstract class AbstractPin implements Pin {
     }
 
     @Override
-    public void setPositionSupplier(PinPositionSupplier positionSupplier) {
-        this.pinPositionSupplier = positionSupplier;
+    public void setPositionSupplier(PositionSupplier positionSupplier) {
+        this.positionSupplier = positionSupplier;
     }
 
     @Override
@@ -79,16 +81,17 @@ public abstract class AbstractPin implements Pin {
         this.pinConnectionHandler = pinConnectionHandler;
     }
 
-    protected boolean handleOnConnect(Pin connection) {
-//        var connecting = isBeingConnected;
-//
-//        isBeingConnected = false;
-//
-//        if(shouldConnect && connecting) {
-//            shouldConnect = false;
-//            return true;
-//        }
+    @Override
+    public @NotNull Pin findDependantInNode(BPNode node) {
+        throw new IllegalStateException();
+    }
 
+    @Override
+    public boolean isDynamic() {
+        return getType().getVariableType().isDynamic();
+    }
+
+    protected boolean handleOnConnect(Pin connection) {
         if(pinConnectionHandler == null) return true;
 
         return pinConnectionHandler.handleConnect(this, connection);
@@ -108,9 +111,9 @@ public abstract class AbstractPin implements Pin {
 
     @Override
     public void onPositionUpdate() {
-        if(pinPositionSupplier == null || position == null) return;
+        if(positionSupplier == null || position == null) return;
 
-        var newPos = pinPositionSupplier.getPosition(this);
+        var newPos = positionSupplier.getPosition(this);
 
         position.set(newPos[0], newPos[1]);
     }

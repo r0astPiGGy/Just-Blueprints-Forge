@@ -13,14 +13,9 @@ import com.rodev.jbpcore.blueprint.node.impl.NodeView;
 import com.rodev.jbpcore.blueprint.node.impl.getter.PropertyGetterNode;
 import com.rodev.jbpcore.blueprint.node.impl.getter.PureGetterNode;
 import com.rodev.jbpcore.blueprint.node.impl.getter.SelectorVariableGetterNode;
-import com.rodev.jbpcore.blueprint.pin.default_input_value.DefaultBooleanInputView;
-import com.rodev.jbpcore.blueprint.pin.default_input_value.DefaultEnumInputView;
-import com.rodev.jbpcore.blueprint.pin.default_input_value.DefaultNumberInputView;
-import com.rodev.jbpcore.blueprint.pin.default_input_value.DefaultTextInputView;
-import com.rodev.jbpcore.blueprint.pin.exec_pin.ExecPin;
+import com.rodev.jbpcore.blueprint.pin.default_input_value.*;
 import icyllis.modernui.graphics.opengl.TextureManager;
 
-import java.io.File;
 import java.util.Map;
 
 import static com.rodev.jbpcore.blueprint.data.DataAccess.TEXTURE_NAMESPACE;
@@ -127,8 +122,23 @@ public class DataInitEventHandler {
         VariableTypeRegistry.registerInputPinRowCreatedListener("enum", (inputPin, rowView) -> {
             rowView.addDefaultValueView(new DefaultEnumInputView((EnumPinType) inputPin.getType()));
         });
+        VariableTypeRegistry.registerInputPinRowCreatedListener("player", (inputPin, rowView) -> {
+            rowView.addDefaultValueView(createSelector(SelectorGroup.Type.PLAYER));
+        });
+        VariableTypeRegistry.registerInputPinRowCreatedListener("entity", (inputPin, rowView) -> {
+            rowView.addDefaultValueView(createSelector(SelectorGroup.Type.ENTITY));
+        });
 
         loadIcons(dataAccess);
+    }
+
+    private static DefaultSelectorInputView createSelector(SelectorGroup.Type type) {
+        return new DefaultSelectorInputView(
+                DataAccess
+                .getInstance()
+                .selectorGroupRegistry
+                .get(type)
+        );
     }
 
     private static void loadIcons(DataAccess dataAccess) {

@@ -17,9 +17,14 @@ public class AsyncCompiler {
     private final Object workingLock = new Object();
 
     private final ConsumerListener.Notifiable<Boolean> stateChangeListeners = ConsumerListener.create();
+    private final ConsumerListener.Notifiable<CodeCompiler> onPreCompileListeners = ConsumerListener.create();
 
     public ConsumerListener<Boolean> getStateChangeListeners() {
         return stateChangeListeners;
+    }
+
+    public ConsumerListener<CodeCompiler> getOnPreCompileListeners() {
+        return onPreCompileListeners;
     }
 
     public boolean isCompilerPresent() {
@@ -51,7 +56,7 @@ public class AsyncCompiler {
     }
 
     private void onPreCompile(CodeCompiler compiler) {
-        compiler.setCompileMode(CodeCompiler.CompileMode.COMPILE_TO_FILE);
+        onPreCompileListeners.notifyListeners(compiler);
     }
 
     private void onAsyncCompile(CodeCompiler compiler, File blueprint, CompilationCallback callback) {

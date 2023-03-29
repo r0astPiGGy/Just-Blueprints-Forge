@@ -6,7 +6,7 @@ import icyllis.modernui.graphics.drawable.Drawable;
 import java.util.Collection;
 import java.util.UUID;
 
-public interface Pin {
+public interface Pin extends Dynamic, Hoverable, Draggable, Positionable, Toggleable {
 
     UUID getId();
 
@@ -16,27 +16,17 @@ public interface Pin {
 
     Drawable createDrawable();
 
-    Position getPosition();
-
-    void onLineDraw(int xStart, int yStart, int xEnd, int yEnd);
-
-    void onLineDrawEnd(int xStart, int yStart, int xEnd, int yEnd);
-
-    void enable();
-
-    void disable();
-
     PinType getType();
 
     int getColor();
 
-    void onPinHovered();
+    boolean isApplicable(Pin another);
 
-    void onPinHoverStarted();
+    boolean isInput();
 
-    void onPinHoverEnded();
+    boolean isOutput();
 
-    void onPositionUpdate();
+    void setPinConnectionHandler(PinConnectionHandler pinConnectionHandler);
 
     Collection<Pin> getConnections();
 
@@ -50,23 +40,7 @@ public interface Pin {
 
     boolean isConnected();
 
-    boolean isApplicable(Pin another);
-
-    boolean isOutput();
-
-    void setPinDragListener(PinDragListener pinDragListener);
-
-    void setPinHoverListener(PinHoverListener pinHoverListener);
-
-    void setPinToggleListener(PinToggleListener pinToggleListener);
-
-    void setPinConnectionHandler(PinConnectionHandler pinConnectionHandler);
-
-    void setPositionSupplier(PinPositionSupplier positionSupplier);
-
-    boolean isPinConnected(Pin pin);
-
-    boolean isInput();
+    boolean isConnectedTo(Pin pin);
 
     void setIsBeingConnected(boolean value);
     

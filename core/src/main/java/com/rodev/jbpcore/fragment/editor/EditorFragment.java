@@ -110,14 +110,16 @@ public class EditorFragment extends LifecycleFragment {
         });
 
         ParamsBuilder.using(LinearLayout.LayoutParams::new)
-                .wrapContent()
+                .widthWrapContent()
+                .heightMatchParent()
                 .setup(p -> p.rightMargin = dp(10))
                 .applyTo(saveButton);
 
-        var compileButton = createButton("Compile");
+        final var compileButton = new CompileButton();
+        compileButton.getTextView().setText("Compile");
         controller.onCompileButtonInit(compileButton);
         compileButton.setOnClickListener(v -> {
-            controller.onCompileButtonClicked(project, graphLayout);
+            controller.onCompileButtonClicked(project, graphLayout, compileButton.getCompileMode());
         });
 
         toolsPanel.addView(saveButton);
@@ -256,8 +258,7 @@ public class EditorFragment extends LifecycleFragment {
 
     private MaterialButton createButton(String text) {
         var button = new MaterialButton();
-        button.setText(text);
-//        button.setBackgroundColor(Colors.SELECTED_COLOR);
+        button.getTextView().setText(text);
 
         return button;
     }

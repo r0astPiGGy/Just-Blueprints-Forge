@@ -4,6 +4,7 @@ import com.rodev.jbpcore.blueprint.graph.GraphController;
 import com.rodev.jbpcore.blueprint.node.BPNode;
 import com.rodev.jbpcore.workspace.Blueprint;
 import com.rodev.jbpcore.workspace.Project;
+import com.rodev.jbpcore.workspace.compiler.CodeCompiler;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -34,7 +35,7 @@ public abstract class ProjectImpl implements Project {
     protected void onBlueprintLoad(GraphController graphController);
 
     abstract
-    protected void onBlueprintCompile();
+    protected void onBlueprintCompile(CodeCompiler.CompileMode compileMode);
 
     private class BlueprintImpl implements Blueprint {
 
@@ -49,8 +50,8 @@ public abstract class ProjectImpl implements Project {
         }
 
         @Override
-        public void compile() {
-            onBlueprintCompile();
+        public void compile(CodeCompiler.CompileMode compileMode) {
+            onBlueprintCompile(compileMode);
         }
     }
 }

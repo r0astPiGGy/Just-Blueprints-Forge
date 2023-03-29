@@ -1,6 +1,8 @@
 package com.rodev.jbpcore.view;
 
 import com.rodev.jbpcore.Colors;
+import com.rodev.jbpcore.utils.MaterialButtonBackground;
+import com.rodev.jbpcore.utils.ParamsBuilder;
 import icyllis.modernui.graphics.Canvas;
 import icyllis.modernui.graphics.Paint;
 import icyllis.modernui.graphics.drawable.Drawable;
@@ -8,41 +10,69 @@ import icyllis.modernui.material.MaterialDrawable;
 import icyllis.modernui.math.Rect;
 import icyllis.modernui.util.ColorStateList;
 import icyllis.modernui.util.StateSet;
+import icyllis.modernui.view.Gravity;
+import icyllis.modernui.view.MotionEvent;
+import icyllis.modernui.view.PointerIcon;
+import icyllis.modernui.view.ViewGroup;
 import icyllis.modernui.widget.Button;
+import icyllis.modernui.widget.LinearLayout;
+import icyllis.modernui.widget.RelativeLayout;
+import icyllis.modernui.widget.TextView;
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nonnull;
 
 import static com.rodev.jbpcore.Fonts.MINECRAFT_FONT;
 
-public class MaterialButton extends Button {
+public class MaterialButton extends RelativeLayout {
 
     private static final ColorStateList TINT_LIST = createColorStateList(Colors.BUTTON_COLOR_PRIMARY);
 
-    public static ColorStateList createColorStateList(int nodeColor) {
+    public static ColorStateList createColorStateList(int buttonColor) {
         return new ColorStateList(
                 new int[][]{
-//                        StateSet.get(StateSet.VIEW_STATE_SELECTED),
-//                        StateSet.get(StateSet.VIEW_STATE_HOVERED),
                         StateSet.get(StateSet.VIEW_STATE_ENABLED),
                         StateSet.WILD_CARD},
                 new int[]{
-//                        Colors.WHITE,
-//                        Colors.WHITE,
-                        nodeColor,
+                        buttonColor,
                         Colors.BUTTON_DISABLED}
         );
     }
 
+    private final TextView textView = new TextView();
+
+    protected final LinearLayout container = new LinearLayout();
+
     private MaterialButton(ColorStateList stateList) {
-        var background = new Background(dp(5));
+        var background = new MaterialButtonBackground(dp(5));
         background.setTintList(stateList);
         setBackground(background);
-        setTextAlignment(TEXT_ALIGNMENT_CENTER);
-        setMinWidth(dp(140));
+        setMinimumWidth(dp(140));
 
-        setTypeface(MINECRAFT_FONT);
-        setTextSize(sp(20));
+        initTextView();
+
+        container.setOrientation(LinearLayout.HORIZONTAL);
+
+        ParamsBuilder.using(RelativeLayout.LayoutParams::new)
+                .wrapContent()
+                .setup(p -> {
+                    p.addRule(CENTER_HORIZONTAL);
+                    p.addRule(ALIGN_PARENT_TOP);
+                })
+                .applyTo(container);
+
+        container.addView(textView);
+
+        addView(container);
+    }
+
+    private void initTextView() {
+        textView.setTypeface(MINECRAFT_FONT);
+        textView.setTextSize(sp(20));
+        textView.setTextAlignment(TEXT_ALIGNMENT_CENTER);
+        ParamsBuilder.using(LinearLayout.LayoutParams::new)
+                .wrapContent()
+                .applyTo(textView);
     }
 
     public MaterialButton(int color) {
@@ -58,45 +88,25 @@ public class MaterialButton extends Button {
         super.setEnabled(enabled);
 
         if(enabled) {
-            setTextColor(Colors.WHITE);
+            textView.setTextColor(Colors.WHITE);
         } else {
-            setTextColor(Colors.BUTTON_TEXT_DISABLED);
+            textView.setTextColor(Colors.BUTTON_TEXT_DISABLED);
         }
     }
 
-    private static class Background extends MaterialDrawable {
-
-        int padding = 0;
-        int radius;
-
-        public Background(int radius) {
-            this.radius = radius;
+    @Override
+    public PointerIcon onResolvePointerIcon(@Nonnull MotionEvent event) {
+        if (isClickable() && isEnabled()) {
+            return PointerIcon.getSystemIcon(PointerIcon.TYPE_HAND);
         }
-
-        @Override
-        public void draw(@NotNull Canvas canvas) {
-            var b = getBounds();
-            var p = Paint.get();
-
-            p.setColor(mColor);
-            p.setAlpha(modulateAlpha(p.getAlpha(), mAlpha));
-
-            if(p.getAlpha() == 0) return;
-
-            canvas.drawRoundRect(b.left, b.top, b.right, b.bottom, radius, p);
-        }
-
-        @Override
-        public boolean getPadding(@Nonnull Rect padding) {
-            var r = calcPadding() + dp(5);
-            padding.set(r, r, r, r);
-
-            return true;
-        }
-
-        protected int calcPadding() {
-            return this.padding = (int) Math.ceil(radius / 2f);
-        }
+        return super.onResolvePointerIcon(event);
     }
 
+    public TextView getTextView() {
+        return textView;
+    }
+
+    public void setText(String text) {
+        getTextView().setText(text);
+    }
 }

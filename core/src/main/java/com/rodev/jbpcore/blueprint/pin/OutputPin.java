@@ -81,7 +81,7 @@ public abstract class OutputPin extends AbstractPin {
     }
 
     @Override
-    public boolean isPinConnected(Pin pin) {
+    public boolean isConnectedTo(Pin pin) {
         return connectionSet.contains(pin);
     }
 

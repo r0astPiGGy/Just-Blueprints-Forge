@@ -7,6 +7,7 @@ import com.rodev.jbpcore.utils.ConsumerListener;
 import com.rodev.jbpcore.utils.ListenerWrapper;
 import com.rodev.jbpcore.view.MaterialButton;
 import com.rodev.jbpcore.workspace.Project;
+import com.rodev.jbpcore.workspace.compiler.CodeCompiler;
 
 import java.util.LinkedList;
 import java.util.function.Consumer;
@@ -15,7 +16,7 @@ public class EditorController {
 
     private static final String LISTENER_NAMESPACE = "editor_listener";
 
-    public void onCompileButtonInit(MaterialButton compileButton) {
+    public void onCompileButtonInit(CompileButton compileButton) {
         var workspace = JustBlueprints.getWorkspace();
         var compiler = workspace.getCompiler();
 
@@ -55,10 +56,10 @@ public class EditorController {
         JustBlueprints.getEditorEventListener().onProjectSaved(project);
     }
 
-    public void onCompileButtonClicked(Project project, GraphLayout graphLayout) {
+    public void onCompileButtonClicked(Project project, GraphLayout graphLayout, CodeCompiler.CompileMode compileMode) {
         JustBlueprints.getEditorEventListener().onProjectCompileButtonClicked(project);
         saveProject(project, graphLayout);
-        project.getBlueprint().compile();
+        project.getBlueprint().compile(compileMode);
     }
 
 }
