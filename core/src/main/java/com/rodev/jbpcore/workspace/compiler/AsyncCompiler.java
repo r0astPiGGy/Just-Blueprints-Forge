@@ -63,8 +63,13 @@ public class AsyncCompiler {
         compiler.compile(blueprint);
 
         Core.getUiHandler().post(() -> {
-            callback.compiled(compiler);
-            setWorking(false);
+            try {
+                callback.compiled(compiler);
+            } catch (Throwable e) {
+                e.printStackTrace();
+            } finally {
+                setWorking(false);
+            }
         });
     }
 
