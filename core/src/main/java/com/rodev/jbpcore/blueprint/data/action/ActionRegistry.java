@@ -1,9 +1,14 @@
 package com.rodev.jbpcore.blueprint.data.action;
 
 import com.rodev.jbpcore.blueprint.data.Registry;
+import com.rodev.jbpcore.blueprint.data.action.pin_type.PinType;
+import com.rodev.jbpcore.blueprint.data.action.pin_type.PinTypeFactory;
 import com.rodev.jbpcore.blueprint.data.action.type.ActionTypeRegistry;
 import com.rodev.jbpcore.blueprint.data.json.ActionEntity;
+import com.rodev.jbpcore.blueprint.data.variable.VariableType;
 import com.rodev.jbpcore.blueprint.data.variable.VariableTypeRegistry;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.*;
 
@@ -23,6 +28,17 @@ public class ActionRegistry extends Registry<String, Action> {
 
     public void load(ActionEntity[] actions){
         Arrays.stream(actions).map(this::create).forEach(this::add);
+    }
+
+    @NotNull
+    public VariableType getVariableType(String id) {
+        var type = variableTypeRegistry.get(id);
+
+        if(type == null) {
+            throw new IllegalArgumentException("Unknown variable type: " + id);
+        }
+
+        return type;
     }
 
     public void registerPinTypeFactory(String typeId, PinTypeFactory factory) {
@@ -56,16 +72,7 @@ public class ActionRegistry extends Registry<String, Action> {
     }
 
     private PinType create(ActionEntity.PinTypeEntity entity) {
-        if(entity.type.equals("exec")) {
-            return PinType.execType(entity.id, entity.label);
-        }
-
-        var varType = variableTypeRegistry.get(entity.type);
-
-        if(varType == null) {
-            throw new IllegalArgumentException("Unknown variable type: " + entity.type);
-        }
-
+        var varType = getVariableType(entity.type);
         var factory = pinTypeFactoryMap.getOrDefault(varType.type(), defaultPinTypeFactory);
 
         return factory.create(entity, varType);

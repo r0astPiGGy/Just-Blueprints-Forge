@@ -1,12 +1,16 @@
 package com.rodev.jbpcore.blueprint.data;
 
-import com.rodev.jbpcore.blueprint.data.action.Action;
-import com.rodev.jbpcore.blueprint.data.action.ActionRegistry;
-import com.rodev.jbpcore.blueprint.data.action.EnumPinType;
+import com.rodev.jbpcore.blueprint.data.action.*;
+import com.rodev.jbpcore.blueprint.pin.dynamic.DynamicPinType;
+import com.rodev.jbpcore.blueprint.data.action.pin_type.EnumPinType;
+import com.rodev.jbpcore.blueprint.pin.exec_pin.ExecPinType;
+import com.rodev.jbpcore.blueprint.data.action.pin_type.PinType;
 import com.rodev.jbpcore.blueprint.data.action.type.ActionTypeRegistry;
 import com.rodev.jbpcore.blueprint.data.category.ContextCategoryRegistry;
+import com.rodev.jbpcore.blueprint.data.json.ActionEntity;
 import com.rodev.jbpcore.blueprint.data.selectors.SelectorGroup;
 import com.rodev.jbpcore.blueprint.data.selectors.SelectorGroupRegistry;
+import com.rodev.jbpcore.blueprint.data.variable.VariableType;
 import com.rodev.jbpcore.blueprint.data.variable.VariableTypeRegistry;
 import com.rodev.jbpcore.blueprint.node.BPNode;
 import com.rodev.jbpcore.blueprint.node.impl.NodeView;
@@ -14,6 +18,7 @@ import com.rodev.jbpcore.blueprint.node.impl.getter.PropertyGetterNode;
 import com.rodev.jbpcore.blueprint.node.impl.getter.PureGetterNode;
 import com.rodev.jbpcore.blueprint.node.impl.getter.SelectorVariableGetterNode;
 import com.rodev.jbpcore.blueprint.pin.default_input_value.*;
+import com.rodev.jbpcore.blueprint.pin.list_pin.ListPinType;
 import icyllis.modernui.graphics.opengl.TextureManager;
 
 import java.util.Map;
@@ -102,32 +107,74 @@ public class DataInitEventHandler {
     }
 
     public static void onActionRegistryPreLoad(ActionRegistry registry) {
-        registry.registerPinTypeFactory("enum", (entity, variableType) -> {
+        registry.registerPinTypeFactory("exec", DataInitEventHandler::createExecPinType);
+        registry.registerPinTypeFactory("enum", DataInitEventHandler::createEnumPinType);
+        registry.registerPinTypeFactory("dynamic", DataInitEventHandler::createDynamicPinType);
+        registry.registerPinTypeFactory("list", (entity, variableType) -> {
+            if(entity.extra_data == null) {
+                throw new IllegalStateException("Element type of this list not found (" + entity.id +")");
+            }
+
             //noinspection unchecked
-            Map<String, String> map = (Map<String, String>) entity.extra_data;
-            return new EnumPinType(entity.id, entity.label, variableType, map);
+            var map = (Map<String, String>) entity.extra_data;
+            var elementTypeId = map.getOrDefault("element-type", "variable");
+
+            var elementType = registry.getVariableType(elementTypeId);
+            // TODO: handle dynamic list type
+
+            return new ListPinType(entity.id, entity.label, variableType, elementType);
         });
     }
 
+    private static PinType createExecPinType(ActionEntity.PinTypeEntity entity, VariableType variableType) {
+        return new ExecPinType(entity.id, entity.label, variableType);
+    }
+
+    private static PinType createEnumPinType(ActionEntity.PinTypeEntity entity, VariableType variableType) {
+        //noinspection unchecked
+        var map = (Map<String, String>) entity.extra_data;
+        return new EnumPinType(entity.id, entity.label, variableType, map);
+    }
+
+    private static PinType createDynamicPinType(ActionEntity.PinTypeEntity entity, VariableType variableType) {
+        if(!variableType.isDynamic()) {
+            throw new IllegalStateException("VariableType should be dynamic!");
+        }
+
+        String dependsOn = null;
+        String dependsOnDestination = null;
+
+        if(entity.extra_data != null) {
+            //noinspection unchecked
+            var map = (Map<String, String>) entity.extra_data;
+            dependsOn = map.get("depends-on");
+            dependsOnDestination = map.get("depend-value-dest");
+        }
+
+        return new DynamicPinType(entity.id, entity.label, variableType, dependsOn, dependsOnDestination);
+    }
+
     public static void onDataAccessPostLoad(DataAccess dataAccess) {
-        VariableTypeRegistry.registerInputPinRowCreatedListener("text", (inputPin, rowView) -> {
-            rowView.addDefaultValueView(new DefaultTextInputView());
-        });
-        VariableTypeRegistry.registerInputPinRowCreatedListener("boolean", (inputPin, rowView) -> {
-            rowView.addDefaultValueView(new DefaultBooleanInputView());
-        });
-        VariableTypeRegistry.registerInputPinRowCreatedListener("number", (inputPin, rowView) -> {
-            rowView.addDefaultValueView(new DefaultNumberInputView());
-        });
-        VariableTypeRegistry.registerInputPinRowCreatedListener("enum", (inputPin, rowView) -> {
-            rowView.addDefaultValueView(new DefaultEnumInputView((EnumPinType) inputPin.getType()));
-        });
-        VariableTypeRegistry.registerInputPinRowCreatedListener("player", (inputPin, rowView) -> {
-            rowView.addDefaultValueView(createSelector(SelectorGroup.Type.PLAYER));
-        });
-        VariableTypeRegistry.registerInputPinRowCreatedListener("entity", (inputPin, rowView) -> {
-            rowView.addDefaultValueView(createSelector(SelectorGroup.Type.ENTITY));
-        });
+        VariableTypeRegistry.inputPinRowCreatedListenerBuilder()
+                .addListener("text", (inputPin, rowView) -> {
+                    rowView.addDefaultValueView(new DefaultTextInputView());
+                })
+                .addListener("boolean", (inputPin, rowView) -> {
+                    rowView.addDefaultValueView(new DefaultBooleanInputView());
+                })
+                .addListener("number", (inputPin, rowView) -> {
+                    rowView.addDefaultValueView(new DefaultNumberInputView());
+                })
+                .addListener("enum", (inputPin, rowView) -> {
+                    rowView.addDefaultValueView(new DefaultEnumInputView((EnumPinType) inputPin.getType()));
+                })
+                .addListener("player", (inputPin, rowView) -> {
+                    rowView.addDefaultValueView(createSelector(SelectorGroup.Type.PLAYER));
+                })
+                .addListener("entity", (inputPin, rowView) -> {
+                    rowView.addDefaultValueView(createSelector(SelectorGroup.Type.ENTITY));
+                })
+                .registerAll();
 
         loadIcons(dataAccess);
     }

@@ -1,6 +1,7 @@
 package com.rodev.jbpcore.blueprint.pin;
 
-import com.rodev.jbpcore.blueprint.data.action.PinType;
+import com.rodev.jbpcore.blueprint.data.action.pin_type.PinType;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Collection;
 import java.util.HashSet;
@@ -30,14 +31,23 @@ public abstract class OutputPin extends AbstractPin {
     }
 
     @Override
+    public @Nullable Pin getFirstConnectedPin() {
+        return connectionSet.stream().findFirst().orElse(null);
+    }
+
+    @Override
     public boolean connect(Pin pin) {
         if(!handleOnConnect(pin)) return false;
 
-        if (connectionSet.isEmpty()) {
-            enable();
-        }
+        boolean isEmpty = connectionSet.isEmpty();
 
         connectionSet.add(pin);
+
+        invokePinConnected(pin);
+
+        if(isEmpty) {
+            enable();
+        }
 
         return true;
     }
@@ -47,6 +57,8 @@ public abstract class OutputPin extends AbstractPin {
         if(!handleOnDisconnect(pin)) return false;
 
         connectionSet.remove(pin);
+
+        invokePinDisconnected(pin);
 
         if(connectionSet.isEmpty()) {
             disable();

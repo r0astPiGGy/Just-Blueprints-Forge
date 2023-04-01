@@ -1,4 +1,4 @@
-package com.rodev.jbpcore.blueprint.data.action;
+package com.rodev.jbpcore.blueprint.data.action.pin_type;
 
 import com.rodev.jbpcore.blueprint.data.variable.VariableType;
 import com.rodev.jbpcore.blueprint.pin.Pin;
@@ -7,33 +7,10 @@ import com.rodev.jbpcore.blueprint.pin.var_pin.VarPin;
 
 import java.util.Objects;
 
-public class PinType {
+public class PinType implements Cloneable {
     private final String id;
     private final String name;
     private final VariableType type;
-
-    public static PinType execType(String name) {
-        return execType("exec", name);
-    }
-
-    public static PinType execType(String id, String name) {
-        return new PinType(id, name, VariableType.execType()) {
-            @Override
-            public Pin createInputPin() {
-                return ExecPin.inputPin(this);
-            }
-
-            @Override
-            public Pin createOutputPin() {
-                return ExecPin.outputPin(this);
-            }
-
-            @Override
-            public String getType() {
-                return "exec";
-            }
-        };
-    }
 
     public PinType(String id, String name, VariableType type) {
         this.id = id;
@@ -65,6 +42,10 @@ public class PinType {
         return VarPin.outputPin(this);
     }
 
+    public boolean isDynamic() {
+        return false;
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (obj == this) return true;
@@ -86,5 +67,14 @@ public class PinType {
                 "outputPin=" + id + ", " +
                 "name=" + name + ", " +
                 "type=" + type + ']';
+    }
+
+    @Override
+    public PinType clone() {
+        try {
+            return (PinType) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
     }
 }

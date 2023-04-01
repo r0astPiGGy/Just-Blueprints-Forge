@@ -1,7 +1,7 @@
 package com.rodev.jbpcore.blueprint.pin.default_input_value;
 
 import com.rodev.jbpcore.Colors;
-import com.rodev.jbpcore.blueprint.data.action.EnumPinType;
+import com.rodev.jbpcore.blueprint.data.action.pin_type.EnumPinType;
 import com.rodev.jbpcore.blueprint.data.action.EnumValue;
 import com.rodev.jbpcore.blueprint.data.variable.DefaultInputValue;
 import icyllis.modernui.graphics.Canvas;

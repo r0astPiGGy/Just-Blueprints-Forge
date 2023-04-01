@@ -1,10 +1,15 @@
 package com.rodev.jbpcore.blueprint.pin;
 
-import com.rodev.jbpcore.blueprint.data.action.PinType;
-import com.rodev.jbpcore.blueprint.node.BPNode;
+import com.rodev.jbpcore.blueprint.pin.dynamic.PinVariableTypeChangeListener;
+import com.rodev.jbpcore.blueprint.pin.dynamic.DynamicPinType;
+import com.rodev.jbpcore.blueprint.data.action.pin_type.PinType;
+import com.rodev.jbpcore.blueprint.data.variable.VariableType;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.UUID;
+import java.util.function.Consumer;
+import java.util.function.Function;
 
 public abstract class AbstractPin implements Pin {
     private final PinType pinType;
@@ -14,6 +19,8 @@ public abstract class AbstractPin implements Pin {
     private PinToggleListener pinToggleListener;
     private PositionSupplier positionSupplier;
     private PinConnectionHandler pinConnectionHandler;
+    private PinConnectionListener pinConnectionListener;
+    private PinVariableTypeChangeListener pinVariableTypeChangeListener;
     private boolean isBeingDisconnected;
     private boolean isBeingConnected;
     private Position position;
@@ -82,13 +89,78 @@ public abstract class AbstractPin implements Pin {
     }
 
     @Override
-    public @NotNull Pin findDependantInNode(BPNode node) {
-        throw new IllegalStateException();
+    public void setPinConnectionListener(PinConnectionListener pinConnectionListener) {
+        this.pinConnectionListener = pinConnectionListener;
+    }
+
+    public void invokePinConnected(Pin connection) {
+        if(pinConnectionListener == null) return;
+
+        pinConnectionListener.onConnect(this, connection);
+    }
+
+    public void invokePinDisconnected(Pin connection) {
+        if(pinConnectionListener == null) return;
+
+        pinConnectionListener.onDisconnect(this, connection);
     }
 
     @Override
     public boolean isDynamic() {
-        return getType().getVariableType().isDynamic();
+        return getType().isDynamic();
+    }
+
+    @Override
+    public void setVariableType(VariableType variableType) {
+        doIfDynamic(dynamicPinType -> dynamicPinType.setVariableType(variableType));
+    }
+
+    @Override
+    public void resetVariableType() {
+        doIfDynamic(DynamicPinType::resetVariableType);
+    }
+
+    @Override
+    public boolean isDynamicVariableSet() {
+        return returnIfDynamic(DynamicPinType::isDynamicVariableTypeSet);
+    }
+
+    @Override
+    public @Nullable String getDependantId() {
+        return returnIfDynamic(DynamicPinType::getDependsOn);
+    }
+
+    @Override
+    public @NotNull VariableType getDependantType(@NotNull Pin dependantPin) {
+        return returnIfDynamic(d -> d.resolveVariableTypeInPin(dependantPin));
+    }
+
+    private void doIfDynamic(Consumer<DynamicPinType> ifDynamicAction) {
+        ifDynamicAction.accept(requireDynamicPinType());
+    }
+
+    private <T> T returnIfDynamic(Function<DynamicPinType, T> ifDynamicFunction) {
+        return ifDynamicFunction.apply(requireDynamicPinType());
+    }
+
+    private DynamicPinType requireDynamicPinType() {
+        if(pinType instanceof DynamicPinType dynamicPinType) {
+            return dynamicPinType;
+        }
+
+        throw new IllegalStateException("This pin isn't dynamic");
+    }
+
+    @Override
+    public void setVariableTypeChangedListener(PinVariableTypeChangeListener listener) {
+        pinVariableTypeChangeListener = listener;
+    }
+
+    @Override
+    public void invokeVariableTypeChanged() {
+        if(pinVariableTypeChangeListener == null) return;
+
+        pinVariableTypeChangeListener.onVariableTypeChange(this, null, null);
     }
 
     protected boolean handleOnConnect(Pin connection) {
@@ -162,12 +234,10 @@ public abstract class AbstractPin implements Pin {
     }
 
     public boolean isTheSameTypeAs(Pin anotherPin) {
-        return getType().getVariableType().equals(anotherPin.getType().getVariableType());
-    }
+        var type = getType().getVariableType();
+        var anotherType = anotherPin.getType().getVariableType();
 
-    @Override
-    public int getColor() {
-        return getType().getVariableType().color();
+        return type.equals(anotherType);
     }
 
     @Override

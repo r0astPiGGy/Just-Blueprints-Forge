@@ -51,18 +51,15 @@ public interface BPNode extends ChildRoot {
 
     void setSubtitle(String subtitle);
 
+    // TODO: rework
+    void resolveDynamicGroups();
+
     @NotNull
     String getType();
 
     int getNodeX();
 
     int getNodeY();
-
-    @Nullable
-    BPNode getPrevious();
-
-    @Nullable
-    BPNode getNext();
 
     void onDelete();
 
@@ -75,7 +72,4 @@ public interface BPNode extends ChildRoot {
     @Nullable
     Pin getFirstApplicablePinFor(Pin pin);
 
-    default String getSerializerId() {
-        return "default";
-    }
 }

@@ -4,6 +4,7 @@ import com.rodev.jmcparser.data.DataProvider;
 import com.rodev.jmcparser.data.Interpreter;
 import com.rodev.jmcparser.data.LocaleProvider;
 import com.rodev.jmcparser.data.Parser;
+import com.rodev.jmcparser.data.action.alternate.AlternateActionProvider;
 import com.rodev.jmcparser.data.category.CategoryProvider;
 import com.rodev.jmcparser.json.ActionData;
 import lombok.RequiredArgsConstructor;
@@ -16,6 +17,7 @@ public class ActionParser extends Parser<ActionData, ActionInterpreter> {
 
     private final LocaleProvider localeProvider;
     private final CategoryProvider categoryProvider;
+    private final AlternateActionProvider alternateActionProvider;
 
     @Override
     public void load(DataProvider dataProvider) {
@@ -26,6 +28,6 @@ public class ActionParser extends Parser<ActionData, ActionInterpreter> {
 
     @Override
     protected ActionInterpreter createInterpreter(ActionData[] parsedData) {
-        return new ActionInterpreter(parsedData, localeProvider, categoryProvider);
+        return new ActionInterpreter(parsedData, localeProvider, categoryProvider, alternateActionProvider);
     }
 }

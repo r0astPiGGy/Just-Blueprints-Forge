@@ -55,6 +55,10 @@
   "color" : "99, 230, 226",
   "icon" : "default"
 }, {
+  "id" : "dynamic",
+  "color" : "120, 120, 122",
+  "icon" : "default"
+}, {
   "id" : "text",
   "color" : "99, 230, 226",
   "icon" : "default"
@@ -62,6 +66,10 @@
   "id" : "map",
   "color" : "255, 159, 10",
   "icon" : "default"
+}, {
+  "id" : "exec",
+  "color" : "255, 255, 255",
+  "icon" : "exec"
 }, {
   "id" : "entity",
   "color" : "99, 230, 226",

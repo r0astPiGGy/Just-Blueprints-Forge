@@ -3,6 +3,7 @@ package com.rodev.jbpcore.blueprint.node;
 import com.rodev.jbpcore.blueprint.ChildRoot;
 import com.rodev.jbpcore.blueprint.data.variable.VariableTypeRegistry;
 import com.rodev.jbpcore.blueprint.pin.*;
+import com.rodev.jbpcore.blueprint.pin.dynamic.DynamicPinHandler;
 import icyllis.modernui.view.*;
 import icyllis.modernui.widget.LinearLayout;
 import lombok.Getter;
@@ -37,6 +38,8 @@ public abstract class BaseNode extends LinearLayout implements BPNode, PinHoverL
     private PinDragListener pinDragListener;
     @Setter
     private PinConnectionHandler pinConnectionHandler;
+
+    private final DynamicPinHandler dynamicPinHandler = new DynamicPinHandler();
 
     public BaseNode(String id) {
         this.id = id;
@@ -141,9 +144,13 @@ public abstract class BaseNode extends LinearLayout implements BPNode, PinHoverL
     }
 
     @Override
+    public void resolveDynamicGroups() {
+        dynamicPinHandler.resolveDynamicGroups();
+    }
+
+    @Override
     public void moveTo(int x, int y) {
         nodePositionChangeListener.moveTo(this, x, y);
-        //updatePinsPosition();
     }
 
     @Override
@@ -227,6 +234,8 @@ public abstract class BaseNode extends LinearLayout implements BPNode, PinHoverL
         pin.setPinConnectionHandler(this);
         inputPinsByName.put(pin.getType().getId(), rowView);
 
+        addPinIfDynamic(pin);
+
         addInput(rowView);
     }
 
@@ -240,7 +249,15 @@ public abstract class BaseNode extends LinearLayout implements BPNode, PinHoverL
         pin.setPinConnectionHandler(this);
         outputPinsByName.put(pin.getType().getId(), rowView);
 
+        addPinIfDynamic(pin);
+
         addOutput(rowView);
+    }
+
+    private void addPinIfDynamic(Pin pin) {
+        if(!pin.isDynamic()) return;
+
+        dynamicPinHandler.addDynamicPin(pin);
     }
 
     @Override
@@ -251,16 +268,6 @@ public abstract class BaseNode extends LinearLayout implements BPNode, PinHoverL
     @Override
     public void forEachOutputPin(Consumer<Pin> pinConsumer) {
         outputPins.forEach(row -> pinConsumer.accept(row.getPinView().getPin()));
-    }
-
-    @Override
-    public @Nullable BPNode getPrevious() {
-        return null;
-    }
-
-    @Override
-    public @Nullable BPNode getNext() {
-        return null;
     }
 
     @Override
@@ -293,8 +300,13 @@ public abstract class BaseNode extends LinearLayout implements BPNode, PinHoverL
         pinData.name = pin.getType().getId();
 
         if(pin.isInput() && pin.isConnected()) {
-            pinData.connectedTo = ((InputPin) pin).getConnections().get(0).getId().toString();
+            var firstConnected = pin.getFirstConnectedPin();
+
+            if(firstConnected == null) throw new IllegalStateException();
+
+            pinData.connectedTo = firstConnected.getId().toString();
         }
+
         pinData.value = row.getDefaultValue();
         pinData.type = pin.getType().getType();
 

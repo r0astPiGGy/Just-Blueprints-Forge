@@ -119,7 +119,8 @@ public class EditorFragment extends LifecycleFragment {
         compileButton.getTextView().setText("Compile");
         controller.onCompileButtonInit(compileButton);
         compileButton.setOnClickListener(v -> {
-            controller.onCompileButtonClicked(project, graphLayout, compileButton.getCompileMode());
+            controller.saveProject(project, graphLayout);
+            controller.onCompileButtonClicked(project, compileButton.getCompileMode());
         });
 
         toolsPanel.addView(saveButton);

@@ -9,6 +9,7 @@ import com.rodev.jbpcore.blueprint.pin.Pin;
 import com.rodev.jbpcore.blueprint.pin.PinConnectionHandler;
 import com.rodev.jbpcore.blueprint.pin.PinDragListener;
 import com.rodev.jbpcore.blueprint.pin.PinHoverListener;
+import com.rodev.jbpcore.blueprint.pin.list_pin.ListPin;
 import com.rodev.jbpcore.contextmenu.ContextMenuBuilder;
 import icyllis.modernui.graphics.Canvas;
 import icyllis.modernui.graphics.Paint;
@@ -193,8 +194,16 @@ public class GraphControllerImpl implements
     }
 
     private void handleOutputContextMenuOpen(ContextMenuBuilder builder, Pin pin) {
+        var header = "Actions taking a ";
+
+        if(pin instanceof ListPin list) {
+            header += "list of " + list.getElementType().type();
+        } else {
+            header += pin.getType().getVariableType().type();
+        }
+
         builder
-                .withHeader("Actions taking a " + pin.getType().getVariableType().type())
+                .withHeader(header)
                 .filtering(action -> !action.acceptsInputType(pin.getType().getVariableType()))
                 .onItemClick(action -> {
                     handleOnContextMenuItemClicked(action, builder.x, builder.y, pin);
@@ -204,8 +213,17 @@ public class GraphControllerImpl implements
     }
 
     private void handleInputContextMenuOpen(ContextMenuBuilder builder, Pin pin) {
+        var header = "Actions returning a ";
+
+        if(pin instanceof ListPin list) {
+            // TODO: add predicate
+            header += "list of " + list.getElementType().type();
+        } else {
+            header += pin.getType().getVariableType().type();
+        }
+
         builder
-                .withHeader("Actions returning a " + pin.getType().getVariableType().type())
+                .withHeader(header)
                 .filtering(action -> !action.acceptsOutputType(pin.getType().getVariableType()))
                 .onItemClick(action -> {
                     handleOnContextMenuItemClicked(action, builder.x, builder.y, pin);

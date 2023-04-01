@@ -5,6 +5,7 @@ import com.rodev.jbpcore.blueprint.data.json.EventEntity;
 import com.rodev.jmcparser.data.Interpreter;
 import com.rodev.jmcparser.data.LocaleProvider;
 import com.rodev.jmcparser.json.Event;
+import com.rodev.jmcparser.json.GameValue;
 import lombok.Setter;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -49,17 +50,21 @@ public class EventInterpreter extends Interpreter<Event> implements EventNameHan
 
         output.add(createExec());
 
-        event.rawOutput.stream().map(v -> {
-            var pin = new ActionEntity.PinTypeEntity();
-
-            pin.id = v.id;
-            pin.type = v.type;
-            pin.label = v.name;
-
-            return pin;
-        }).forEach(output::add);
+        event.rawOutput.stream().map(this::createOutput).forEach(output::add);
 
         return output;
+    }
+
+    private ActionEntity.PinTypeEntity createOutput(GameValue gameValue) {
+        var pin = new ActionEntity.PinTypeEntity();
+
+        pin.id = gameValue.id;
+        pin.type = gameValue.type;
+        pin.label = gameValue.name;
+
+        applyExtraDataToGameValue(pin, gameValue);
+
+        return pin;
     }
 
     @Override

@@ -3,6 +3,7 @@ package com.rodev.jmcparser.data.action;
 import com.rodev.jbpcore.blueprint.data.json.ActionEntity;
 import com.rodev.jmcparser.data.Interpreter;
 import com.rodev.jmcparser.data.LocaleProvider;
+import com.rodev.jmcparser.data.action.alternate.AlternateActionProvider;
 import com.rodev.jmcparser.data.category.CategoryProvider;
 import com.rodev.jmcparser.json.ActionData;
 import com.rodev.jmcparser.json.ActionDataArgument;
@@ -20,6 +21,8 @@ public class ActionInterpreter extends Interpreter<ActionData> implements Action
     private final LocaleProvider localeProvider;
     private final CategoryProvider categoryProvider;
 
+    private final AlternateActionProvider alternateActionProvider;
+
     @Setter
     private ActionTypeHandler actionTypeHandler = data -> "function";
 
@@ -29,10 +32,11 @@ public class ActionInterpreter extends Interpreter<ActionData> implements Action
     @Setter
     private PinTypeNameHandler pinTypeNameHandler = typeId -> typeId;
 
-    public ActionInterpreter(ActionData[] data, LocaleProvider localeProvider, CategoryProvider categoryProvider) {
+    public ActionInterpreter(ActionData[] data, LocaleProvider localeProvider, CategoryProvider categoryProvider, AlternateActionProvider alternateActionProvider) {
         super(data);
         this.localeProvider = localeProvider;
         this.categoryProvider = categoryProvider;
+        this.alternateActionProvider = alternateActionProvider;
     }
 
     @Override
@@ -193,11 +197,28 @@ public class ActionInterpreter extends Interpreter<ActionData> implements Action
         pin.type = arg.type;
         pin.id = arg.name;
 
-        if(pin.type != null) {
-            variableTypes.add(pin.type);
-        } else {
+        if(pin.type == null) {
+            System.out.printf("Argument type is null [%s:%s]%n", actionData.id, arg.name);
             pin.type = "variable";
         }
+
+        var alternateAction = alternateActionProvider.getById(actionData.id);
+        Objects.requireNonNull(alternateAction);
+
+        var alternateArg = alternateAction.getArgumentById(pin.id);
+        Objects.requireNonNull(alternateArg);
+
+        if(!pin.type.equals(alternateArg.type) && !pin.type.equals("boolean") && !pin.type.equals("item")) {
+            System.out.printf("Argument type not equals to alternate action argument [%s:%s]: %s != %s %n", actionData.id, arg.name, pin.type, alternateArg.type);
+            pin.type = alternateArg.type;
+        }
+
+        switch (pin.type) {
+            case "list" -> applyForList(pin, alternateArg.elementType);
+            case "dictionary" -> applyForMap(pin, alternateArg.keyType, alternateArg.valueType);
+        }
+
+        variableTypes.add(pin.type);
 
         var localeId = String.format("creative_plus.action.%s.argument.%s.name", actionData.id, arg.name);
 

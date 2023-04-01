@@ -3488,7 +3488,7 @@
   }, {
     "id" : "baby",
     "label" : "Режим ребёнка",
-    "type" : "variable",
+    "type" : "boolean",
     "extra_data" : null
   } ],
   "output" : [ {
@@ -8481,8 +8481,10 @@
   "input" : [ {
     "id" : "list",
     "label" : "Список для проверки",
-    "type" : "variable",
-    "extra_data" : null
+    "type" : "list",
+    "extra_data" : {
+      "element-type" : "dynamic"
+    }
   }, {
     "id" : "values",
     "label" : "Значения для проверки",
@@ -8505,8 +8507,10 @@
   "input" : [ {
     "id" : "list",
     "label" : "Список для проверки",
-    "type" : "variable",
-    "extra_data" : null
+    "type" : "list",
+    "extra_data" : {
+      "element-type" : "dynamic"
+    }
   }, {
     "id" : "index",
     "label" : "Индекс значения",
@@ -8573,8 +8577,11 @@
   "input" : [ {
     "id" : "map",
     "label" : "Словарь для проверки",
-    "type" : "variable",
-    "extra_data" : null
+    "type" : "dictionary",
+    "extra_data" : {
+      "key-type" : "dynamic",
+      "value-type" : "dynamic"
+    }
   }, {
     "id" : "key",
     "label" : "Ключ",
@@ -8597,8 +8604,11 @@
   "input" : [ {
     "id" : "map",
     "label" : "Словарь для проверки",
-    "type" : "variable",
-    "extra_data" : null
+    "type" : "dictionary",
+    "extra_data" : {
+      "key-type" : "dynamic",
+      "value-type" : "dynamic"
+    }
   }, {
     "id" : "key",
     "label" : "Ключ",
@@ -12881,7 +12891,7 @@
 }, {
   "id" : "player_set_fog_distance",
   "type" : "function",
-  "name" : "Установить дистанцию тумана",
+  "name" : "Установить дистанцию прорисовки",
   "category" : "player.player-world",
   "input" : [ {
     "id" : "exec",
@@ -12895,7 +12905,7 @@
     "extra_data" : null
   }, {
     "id" : "distance",
-    "label" : "Дистанция тумана в чанках (2-32)",
+    "label" : "Дистанция прорисовки в чанках (2-32)",
     "type" : "number",
     "extra_data" : null
   } ],
@@ -13112,9 +13122,11 @@
     "extra_data" : null
   }, {
     "id" : "list",
-    "label" : "Список, по которому необходимо проходиться",
-    "type" : "variable",
-    "extra_data" : null
+    "label" : "Список",
+    "type" : "list",
+    "extra_data" : {
+      "element-type" : "dynamic"
+    }
   } ],
   "output" : [ {
     "id" : "loop_body",
@@ -13129,8 +13141,11 @@
   }, {
     "id" : "value_variable",
     "label" : "Элемент",
-    "type" : "variable",
-    "extra_data" : null
+    "type" : "dynamic",
+    "extra_data" : {
+      "depends-on" : "list",
+      "depend-value-dest" : "element-type"
+    }
   }, {
     "id" : "loop_end",
     "label" : "Цикл завершён",
@@ -13152,8 +13167,11 @@
   }, {
     "id" : "map",
     "label" : "Словарь, по которому необходимо проходиться",
-    "type" : "variable",
-    "extra_data" : null
+    "type" : "dictionary",
+    "extra_data" : {
+      "key-type" : "dynamic",
+      "value-type" : "dynamic"
+    }
   } ],
   "output" : [ {
     "id" : "loop_body",
@@ -13951,13 +13969,17 @@
   }, {
     "id" : "list_1",
     "label" : "Первый список",
-    "type" : "variable",
-    "extra_data" : null
+    "type" : "list",
+    "extra_data" : {
+      "element-type" : "dynamic"
+    }
   }, {
     "id" : "list_2",
     "label" : "Второй список",
-    "type" : "variable",
-    "extra_data" : null
+    "type" : "list",
+    "extra_data" : {
+      "element-type" : "dynamic"
+    }
   } ],
   "output" : [ {
     "id" : "exec",
@@ -14033,8 +14055,10 @@
   "input" : [ {
     "id" : "list",
     "label" : "Список",
-    "type" : "variable",
-    "extra_data" : null
+    "type" : "list",
+    "extra_data" : {
+      "element-type" : "dynamic"
+    }
   }, {
     "id" : "value",
     "label" : "Значение",
@@ -14065,8 +14089,10 @@
   "input" : [ {
     "id" : "list",
     "label" : "Список",
-    "type" : "variable",
-    "extra_data" : null
+    "type" : "list",
+    "extra_data" : {
+      "element-type" : "dynamic"
+    }
   } ],
   "output" : [ {
     "id" : "-",
@@ -14084,8 +14110,10 @@
   "input" : [ {
     "id" : "list",
     "label" : "Список",
-    "type" : "variable",
-    "extra_data" : null
+    "type" : "list",
+    "extra_data" : {
+      "element-type" : "dynamic"
+    }
   }, {
     "id" : "number",
     "label" : "Индекс",
@@ -14123,8 +14151,10 @@
   }, {
     "id" : "list",
     "label" : "Список",
-    "type" : "variable",
-    "extra_data" : null
+    "type" : "list",
+    "extra_data" : {
+      "element-type" : "dynamic"
+    }
   }, {
     "id" : "number",
     "label" : "Индекс",
@@ -14162,8 +14192,10 @@
   }, {
     "id" : "list",
     "label" : "Список",
-    "type" : "variable",
-    "extra_data" : null
+    "type" : "list",
+    "extra_data" : {
+      "element-type" : "dynamic"
+    }
   } ],
   "output" : [ {
     "id" : "exec",
@@ -14191,8 +14223,10 @@
   }, {
     "id" : "list",
     "label" : "Список",
-    "type" : "variable",
-    "extra_data" : null
+    "type" : "list",
+    "extra_data" : {
+      "element-type" : "dynamic"
+    }
   }, {
     "id" : "value",
     "label" : "Значение",
@@ -14225,8 +14259,10 @@
   }, {
     "id" : "list",
     "label" : "Список",
-    "type" : "variable",
-    "extra_data" : null
+    "type" : "list",
+    "extra_data" : {
+      "element-type" : "dynamic"
+    }
   }, {
     "id" : "index",
     "label" : "Индекс",
@@ -14259,8 +14295,10 @@
   }, {
     "id" : "list",
     "label" : "Список",
-    "type" : "variable",
-    "extra_data" : null
+    "type" : "list",
+    "extra_data" : {
+      "element-type" : "dynamic"
+    }
   } ],
   "output" : [ {
     "id" : "exec",
@@ -14288,8 +14326,10 @@
   }, {
     "id" : "list",
     "label" : "Список",
-    "type" : "variable",
-    "extra_data" : null
+    "type" : "list",
+    "extra_data" : {
+      "element-type" : "dynamic"
+    }
   }, {
     "id" : "number",
     "label" : "Индекс",
@@ -14327,8 +14367,10 @@
   }, {
     "id" : "list",
     "label" : "Список",
-    "type" : "variable",
-    "extra_data" : null
+    "type" : "list",
+    "extra_data" : {
+      "element-type" : "dynamic"
+    }
   }, {
     "id" : "sort_mode",
     "label" : "Способ сортировки",
@@ -14364,8 +14406,10 @@
   }, {
     "id" : "list",
     "label" : "Список",
-    "type" : "variable",
-    "extra_data" : null
+    "type" : "list",
+    "extra_data" : {
+      "element-type" : "dynamic"
+    }
   }, {
     "id" : "start",
     "label" : "Индекс начала",
@@ -15622,8 +15666,11 @@
   }, {
     "id" : "enchantments",
     "label" : "Зачарования и их уровни",
-    "type" : "variable",
-    "extra_data" : null
+    "type" : "dictionary",
+    "extra_data" : {
+      "key-type" : "text",
+      "value-type" : "number"
+    }
   } ],
   "output" : [ {
     "id" : "exec",
@@ -16674,13 +16721,19 @@
   }, {
     "id" : "map",
     "label" : "Первый словарь",
-    "type" : "variable",
-    "extra_data" : null
+    "type" : "dictionary",
+    "extra_data" : {
+      "key-type" : "dynamic",
+      "value-type" : "dynamic"
+    }
   }, {
     "id" : "other_map",
     "label" : "Второй словарь",
-    "type" : "variable",
-    "extra_data" : null
+    "type" : "dictionary",
+    "extra_data" : {
+      "key-type" : "dynamic",
+      "value-type" : "dynamic"
+    }
   } ],
   "output" : [ {
     "id" : "exec",
@@ -16732,13 +16785,17 @@
   }, {
     "id" : "keys",
     "label" : "Список ключей",
-    "type" : "variable",
-    "extra_data" : null
+    "type" : "list",
+    "extra_data" : {
+      "element-type" : "dynamic"
+    }
   }, {
     "id" : "values",
     "label" : "Список значений",
-    "type" : "variable",
-    "extra_data" : null
+    "type" : "list",
+    "extra_data" : {
+      "element-type" : "dynamic"
+    }
   } ],
   "output" : [ {
     "id" : "exec",
@@ -16756,8 +16813,11 @@
   "input" : [ {
     "id" : "map",
     "label" : "Словарь для получения значения",
-    "type" : "variable",
-    "extra_data" : null
+    "type" : "dictionary",
+    "extra_data" : {
+      "key-type" : "dynamic",
+      "value-type" : "dynamic"
+    }
   } ],
   "output" : [ {
     "id" : "-",
@@ -16775,8 +16835,11 @@
   "input" : [ {
     "id" : "map",
     "label" : "Словарь",
-    "type" : "variable",
-    "extra_data" : null
+    "type" : "dictionary",
+    "extra_data" : {
+      "key-type" : "dynamic",
+      "value-type" : "dynamic"
+    }
   } ],
   "output" : [ {
     "id" : "-",
@@ -16794,8 +16857,11 @@
   "input" : [ {
     "id" : "map",
     "label" : "Словарь для изменения",
-    "type" : "variable",
-    "extra_data" : null
+    "type" : "dictionary",
+    "extra_data" : {
+      "key-type" : "dynamic",
+      "value-type" : "dynamic"
+    }
   }, {
     "id" : "key",
     "label" : "Ключ",
@@ -16823,8 +16889,11 @@
   "input" : [ {
     "id" : "map",
     "label" : "Словарь для получения значения",
-    "type" : "variable",
-    "extra_data" : null
+    "type" : "dictionary",
+    "extra_data" : {
+      "key-type" : "dynamic",
+      "value-type" : "dynamic"
+    }
   } ],
   "output" : [ {
     "id" : "-",
@@ -16852,8 +16921,11 @@
   }, {
     "id" : "map",
     "label" : "Словарь для изменения",
-    "type" : "variable",
-    "extra_data" : null
+    "type" : "dictionary",
+    "extra_data" : {
+      "key-type" : "dynamic",
+      "value-type" : "dynamic"
+    }
   }, {
     "id" : "key",
     "label" : "Ключ",
@@ -16891,8 +16963,11 @@
   }, {
     "id" : "map",
     "label" : "Словарь для изменения",
-    "type" : "variable",
-    "extra_data" : null
+    "type" : "dictionary",
+    "extra_data" : {
+      "key-type" : "dynamic",
+      "value-type" : "dynamic"
+    }
   }, {
     "id" : "key",
     "label" : "Ключ",
@@ -16930,8 +17005,11 @@
   }, {
     "id" : "map",
     "label" : "Словарь для сортировки",
-    "type" : "variable",
-    "extra_data" : null
+    "type" : "dictionary",
+    "extra_data" : {
+      "key-type" : "dynamic",
+      "value-type" : "dynamic"
+    }
   }, {
     "id" : "sort_order",
     "label" : "Порядок сортировки",
@@ -19351,8 +19429,10 @@
   }, {
     "id" : "list",
     "label" : "Список для объединения",
-    "type" : "variable",
-    "extra_data" : null
+    "type" : "list",
+    "extra_data" : {
+      "element-type" : "dynamic"
+    }
   }, {
     "id" : "separator",
     "label" : "Разделитель",
@@ -20937,8 +21017,10 @@
   }, {
     "id" : "entities",
     "label" : "Имена или UUID сущностей для столкновения (по умолчанию - все игроки и сущности)",
-    "type" : "variable",
-    "extra_data" : null
+    "type" : "list",
+    "extra_data" : {
+      "element-type" : "text"
+    }
   } ],
   "output" : [ {
     "id" : "exec",
@@ -21485,7 +21567,10 @@
     "id" : "event_added_items",
     "label" : "Распределённые предметы",
     "type" : "dictionary",
-    "extra_data" : null
+    "extra_data" : {
+      "key-type" : "number",
+      "value-type" : "item"
+    }
   }, {
     "id" : "event_drag_type",
     "label" : "Тип перетягивания по инвентарю",
@@ -21495,7 +21580,9 @@
     "id" : "event_slots_involved",
     "label" : "Задействованные слоты",
     "type" : "list",
-    "extra_data" : null
+    "extra_data" : {
+      "element-type" : "number"
+    }
   } ],
   "extra_data" : {
     "cancellable" : true
@@ -22505,7 +22592,7 @@
 }, {
   "id" : "projectile_hit",
   "type" : "event",
-  "name" : "Попадание снаряда",
+  "name" : "Попадание снаряда в блок",
   "category" : "events.events-entity",
   "input" : [ ],
   "output" : [ {
@@ -22864,7 +22951,9 @@
     "id" : "event_blocks_involved",
     "label" : "Задействованные блоки события",
     "type" : "list",
-    "extra_data" : null
+    "extra_data" : {
+      "element-type" : "location"
+    }
   } ],
   "extra_data" : {
     "cancellable" : true
@@ -22927,7 +23016,9 @@
     "id" : "event_blocks_involved",
     "label" : "Задействованные блоки события",
     "type" : "list",
-    "extra_data" : null
+    "extra_data" : {
+      "element-type" : "location"
+    }
   } ],
   "extra_data" : {
     "cancellable" : true
@@ -22958,7 +23049,9 @@
     "id" : "event_blocks_involved",
     "label" : "Задействованные блоки события",
     "type" : "list",
-    "extra_data" : null
+    "extra_data" : {
+      "element-type" : "location"
+    }
   } ],
   "extra_data" : {
     "cancellable" : true
@@ -23932,7 +24025,9 @@
     "id" : "armor_items",
     "label" : "",
     "type" : "list",
-    "extra_data" : null
+    "extra_data" : {
+      "element-type" : "item"
+    }
   } ],
   "extra_data" : null,
   "icon_namespace" : "game_values"
@@ -23946,7 +24041,9 @@
     "id" : "hotbar_items",
     "label" : "",
     "type" : "list",
-    "extra_data" : null
+    "extra_data" : {
+      "element-type" : "item"
+    }
   } ],
   "extra_data" : null,
   "icon_namespace" : "game_values"
@@ -23960,7 +24057,9 @@
     "id" : "inventory_items",
     "label" : "",
     "type" : "list",
-    "extra_data" : null
+    "extra_data" : {
+      "element-type" : "item"
+    }
   } ],
   "extra_data" : null,
   "icon_namespace" : "game_values"
@@ -23974,7 +24073,9 @@
     "id" : "custom_inventory_items",
     "label" : "",
     "type" : "list",
-    "extra_data" : null
+    "extra_data" : {
+      "element-type" : "item"
+    }
   } ],
   "extra_data" : null,
   "icon_namespace" : "game_values"
@@ -24156,7 +24257,9 @@
     "id" : "potion_effects",
     "label" : "",
     "type" : "list",
-    "extra_data" : null
+    "extra_data" : {
+      "element-type" : "potion"
+    }
   } ],
   "extra_data" : null,
   "icon_namespace" : "game_values"
@@ -24184,7 +24287,9 @@
     "id" : "passengers",
     "label" : "",
     "type" : "list",
-    "extra_data" : null
+    "extra_data" : {
+      "element-type" : "text"
+    }
   } ],
   "extra_data" : null,
   "icon_namespace" : "game_values"
@@ -24212,7 +24317,9 @@
     "id" : "attached_leads",
     "label" : "",
     "type" : "list",
-    "extra_data" : null
+    "extra_data" : {
+      "element-type" : "text"
+    }
   } ],
   "extra_data" : null,
   "icon_namespace" : "game_values"
@@ -24286,7 +24393,9 @@
     "id" : "event_blocks_involved",
     "label" : "",
     "type" : "list",
-    "extra_data" : null
+    "extra_data" : {
+      "element-type" : "location"
+    }
   } ],
   "extra_data" : {
     "selector_disabled" : true
@@ -24510,7 +24619,10 @@
     "id" : "event_added_items",
     "label" : "",
     "type" : "dictionary",
-    "extra_data" : null
+    "extra_data" : {
+      "key-type" : "number",
+      "value-type" : "item"
+    }
   } ],
   "extra_data" : {
     "selector_disabled" : true
@@ -24606,7 +24718,9 @@
     "id" : "event_slots_involved",
     "label" : "",
     "type" : "list",
-    "extra_data" : null
+    "extra_data" : {
+      "element-type" : "number"
+    }
   } ],
   "extra_data" : {
     "selector_disabled" : true
@@ -24844,7 +24958,9 @@
     "id" : "selection_target_names",
     "label" : "",
     "type" : "list",
-    "extra_data" : null
+    "extra_data" : {
+      "element-type" : "text"
+    }
   } ],
   "extra_data" : {
     "selector_disabled" : true
@@ -24860,7 +24976,9 @@
     "id" : "selection_target_uuids",
     "label" : "",
     "type" : "list",
-    "extra_data" : null
+    "extra_data" : {
+      "element-type" : "text"
+    }
   } ],
   "extra_data" : {
     "selector_disabled" : true
@@ -25323,7 +25441,9 @@
     "id" : "casted_var",
     "label" : "Список",
     "type" : "list",
-    "extra_data" : null
+    "extra_data" : {
+      "element-type" : "variable"
+    }
   }, {
     "id" : "cast_failed",
     "label" : "Приведение не удалось",

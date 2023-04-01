@@ -7,10 +7,10 @@ import org.jetbrains.annotations.NotNull;
 public interface ListPin extends Pin {
 
     @NotNull
-    VariableType getValueType();
+    VariableType getElementType();
 
     @Override
-    default boolean isDynamic() {
-        return getValueType().isDynamic();
+    default int getColor() {
+        return getElementType().color();
     }
 }

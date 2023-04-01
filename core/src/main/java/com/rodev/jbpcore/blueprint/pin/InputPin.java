@@ -1,9 +1,9 @@
 package com.rodev.jbpcore.blueprint.pin;
 
-import com.rodev.jbpcore.blueprint.data.action.PinType;
+import com.rodev.jbpcore.blueprint.data.action.pin_type.PinType;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
-import java.util.UUID;
 
 public abstract class InputPin extends AbstractPin {
 
@@ -11,10 +11,6 @@ public abstract class InputPin extends AbstractPin {
 
     public InputPin(PinType pinType) {
         super(pinType);
-    }
-
-    public InputPin(PinType pinType, UUID uuid) {
-        super(pinType, uuid);
     }
 
     @Override
@@ -25,10 +21,18 @@ public abstract class InputPin extends AbstractPin {
     }
 
     @Override
+    public @Nullable Pin getFirstConnectedPin() {
+        return connectedPin;
+    }
+
+    @Override
     public boolean connect(Pin pin) {
         if(!handleOnConnect(pin)) return false;
 
         connectedPin = pin;
+
+        invokePinConnected(pin);
+
         enable();
 
         return true;
@@ -45,6 +49,8 @@ public abstract class InputPin extends AbstractPin {
 
         disable();
         connectedPin = null;
+
+        invokePinDisconnected(pin);
 
         return true;
     }

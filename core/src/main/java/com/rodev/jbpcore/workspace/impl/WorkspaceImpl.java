@@ -179,7 +179,7 @@ public class WorkspaceImpl implements Workspace {
         }
 
         log.info(output);
-        JustBlueprints.getEditorEventListener().onProjectCompiled(project, output);
+        JustBlueprints.getEditorEventListener().onProjectCompiled(project, output, compiler.getCompileMode());
     }
 
 

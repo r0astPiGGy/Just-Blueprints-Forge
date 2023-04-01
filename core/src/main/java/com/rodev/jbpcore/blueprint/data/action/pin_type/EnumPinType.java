@@ -1,5 +1,6 @@
-package com.rodev.jbpcore.blueprint.data.action;
+package com.rodev.jbpcore.blueprint.data.action.pin_type;
 
+import com.rodev.jbpcore.blueprint.data.action.EnumValue;
 import com.rodev.jbpcore.blueprint.data.variable.VariableType;
 
 import java.util.List;

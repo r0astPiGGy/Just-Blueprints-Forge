@@ -4,6 +4,26 @@
     "remove" : true
   },
   {
+    "id": "entity_set_baby",
+    "input": [
+      {
+        "id": "baby",
+        "type": "boolean"
+      }
+    ]
+  },
+  {
+    "id": "native_cast_to_list",
+    "output": [
+      {
+        "id": "casted_var",
+        "extra_data": {
+          "element-type": "variable"
+        }
+      }
+    ]
+  },
+  {
     "id" : "repeat_adjacently",
     "type" : "custom_with_input_exec",
     "input" : [ {
@@ -47,8 +67,8 @@
       {
         "id": "list",
         "label": "Список",
-        "extra-data": {
-          "value-type": "dynamic"
+        "extra_data": {
+          "element-type": "dynamic"
         }
       }
     ],
@@ -74,7 +94,7 @@
         "type" : "dynamic",
         "extra_data" : {
           "depends-on": "list",
-          "depend-type": ["input", "value-type"]
+          "depend-value-dest": "element-type"
         }
       },
       {

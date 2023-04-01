@@ -6,6 +6,7 @@ import com.rodev.jbpcore.blueprint.data.json.PinIconEntity;
 import com.rodev.jbpcore.blueprint.data.json.VariableTypeEntity;
 import com.rodev.jmcgenerator.entity.GeneratorEntity;
 import com.rodev.jmcparser.data.*;
+import com.rodev.jmcparser.data.action.alternate.AlternateActionProvider;
 import com.rodev.jmcparser.data.category.Category;
 import com.rodev.jmcparser.data.category.CategoryWriter;
 import com.rodev.jmcparser.patcher.AbstractPatcher;
@@ -18,8 +19,6 @@ import com.rodev.jmcparser.patcher.generator.GeneratorEntityPatch;
 import com.rodev.jmcparser.patcher.variable.VariableTypePatch;
 
 import java.io.File;
-import java.util.HashMap;
-import java.util.Map;
 
 import static com.rodev.jmcparser.data.Parser.parseJson;
 
@@ -30,15 +29,18 @@ public class Parser implements Runnable {
 
     private final DataParser dataParser = new DataParser();
     private final ActionCategories categories = new ActionCategories();
+    private final AlternateActionProvider alternateActionProvider = new AlternateActionProvider();
 
     @Override
     public void run() {
-        var helper = new ParserRegisterHelper(localization, categories, dataParser);
+        var helper = new ParserRegisterHelper(localization, categories, dataParser, alternateActionProvider);
 
         helper.onDataProvide(dataProvider);
 
         dataProvider.loadLocaleAndApply(localization::load);
-        dataProvider.loadCategoriesAndApply(categories::load);
+        dataProvider.loadAlternateActions(alternateActionProvider::load);
+
+        categories.load(alternateActionProvider);
 
         helper.registerParsers();
 

@@ -43,17 +43,22 @@ public class GameValueInterpreter extends Interpreter<GameValue> {
         action.category = "game_values";
         action.type = "game_value_getter";
         action.input = Collections.emptyList();
-        action.icon_namespace = "game_values";
+        action.output = createOutput(gameValue);
         action.extra_data = getExtraDataFor(gameValue);
+        action.icon_namespace = "game_values";
 
+        return action;
+    }
+
+    private List<ActionEntity.PinTypeEntity> createOutput(GameValue gameValue) {
         var outputPin = new ActionEntity.PinTypeEntity();
         outputPin.type = gameValue.type;
         outputPin.id = gameValue.id;
         outputPin.label = "";
 
-        action.output = List.of(outputPin);
+        applyExtraDataToGameValue(outputPin, gameValue);
 
-        return action;
+        return List.of(outputPin);
     }
 
     @Nullable

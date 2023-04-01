@@ -1,7 +1,8 @@
 [
   {
     "id": "exec",
-    "remove": true
+    "color": "255, 255, 255",
+    "icon": "exec"
   },
   {
     "id" : "item",
@@ -19,6 +20,10 @@
     "id" : "list",
     "color" : "255, 214, 10",
     "icon": "array"
+  },
+  {
+    "id": "dynamic",
+    "color" : "120, 120, 122"
   },
   {
     "id" : "any",

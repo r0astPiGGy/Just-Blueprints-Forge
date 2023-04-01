@@ -1,6 +1,6 @@
 package com.rodev.jbpcore.blueprint.pin.exec_pin;
 
-import com.rodev.jbpcore.blueprint.data.action.PinType;
+import com.rodev.jbpcore.blueprint.data.action.pin_type.PinType;
 import com.rodev.jbpcore.blueprint.pin.Pin;
 import icyllis.modernui.graphics.Canvas;
 import icyllis.modernui.graphics.Paint;
@@ -16,34 +16,17 @@ import static icyllis.modernui.widget.CompoundButton.CHECKED_STATE_SET;
 
 public interface ExecPin extends Pin {
 
+    // TODO add icon
     @Override
     default Drawable createDrawable() {
         StateListDrawable drawable = new StateListDrawable();
         drawable.addState(CHECKED_STATE_SET, new CheckedDrawable());
         drawable.addState(StateSet.WILD_CARD, new UncheckedDrawable());
-//        drawable.setEnterFadeDuration(300);
-//        drawable.setExitFadeDuration(300);
         return drawable;
-    }
-
-    static Pin outputPin() {
-        return outputPin("");
-    }
-
-    static Pin outputPin(String name) {
-        return new OutExecPin(name);
     }
 
     static Pin outputPin(PinType pinType) {
         return new OutExecPin(pinType);
-    }
-
-    static Pin inputPin() {
-        return inputPin("");
-    }
-
-    static Pin inputPin(String name) {
-        return new InExecPin(name);
     }
 
     static Pin inputPin(PinType pinType) {

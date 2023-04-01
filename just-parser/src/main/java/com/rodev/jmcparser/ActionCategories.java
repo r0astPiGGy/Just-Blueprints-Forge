@@ -2,8 +2,10 @@ package com.rodev.jmcparser;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.rodev.jmcparser.data.action.alternate.AlternateActionProvider;
 import com.rodev.jmcparser.data.category.CategoryProvider;
 import com.rodev.jmcparser.util.TimeCounter;
+import lombok.RequiredArgsConstructor;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.IOException;
@@ -15,20 +17,10 @@ public class ActionCategories implements CategoryProvider {
 
     private final Map<String, String> categoriesById = new HashMap<>();
 
-    public void load(InputStream inputStream) {
+    public void load(AlternateActionProvider alternateActionProvider) {
         var counter = new TimeCounter();
 
-        var objMapper = new ObjectMapper();
-
-        ActionEntity[] data;
-
-        try {
-            data = objMapper.readValue(inputStream, ActionEntity[].class);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-        for (var entity : data) {
+        for (var entity : alternateActionProvider.getAll()) {
             if(entity == null) continue;
 
             var category = entity.category;
@@ -49,25 +41,4 @@ public class ActionCategories implements CategoryProvider {
         return categoriesById.get(id);
     }
 
-    private static class ActionEntity {
-        public String id;
-        public String category;
-        @Nullable
-        public String subcategory;
-
-        @JsonIgnore
-        public Object type;
-
-        @JsonIgnore
-        public Object args;
-
-        @JsonIgnore
-        public Object icon;
-
-        @JsonIgnore
-        public String additionalInfo;
-
-        @JsonIgnore
-        public String worksWith;
-    }
 }

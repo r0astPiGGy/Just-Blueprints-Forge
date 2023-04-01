@@ -2,10 +2,10 @@ package com.rodev.jbpcore.blueprint.data.action;
 
 import com.rodev.jbpcore.blueprint.data.DataAccess;
 import com.rodev.jbpcore.blueprint.data.IconPathResolver;
+import com.rodev.jbpcore.blueprint.data.action.pin_type.PinType;
 import com.rodev.jbpcore.blueprint.data.action.type.ActionType;
 import com.rodev.jbpcore.blueprint.data.variable.VariableType;
 import com.rodev.jbpcore.blueprint.node.BPNode;
-import com.rodev.jbpcore.blueprint.pin.var_pin.VarPin;
 import icyllis.modernui.graphics.drawable.ImageDrawable;
 
 import java.util.HashSet;
@@ -49,11 +49,17 @@ public final class Action {
     }
 
     public boolean acceptsOutputType(VariableType outputType) {
-        return acceptableOutputPins.contains(outputType);
+        return filter(acceptableOutputPins, outputType);
     }
 
     public boolean acceptsInputType(VariableType inputType) {
-        return acceptableInputPins.contains(inputType);
+        return filter(acceptableInputPins, inputType);
+    }
+
+    private boolean filter(Set<VariableType> variableTypes, VariableType type) {
+        return variableTypes.stream()
+                .filter(type.getAcceptsFilter())
+                .anyMatch(type.getDeclinesFilter());
     }
 
     public BPNode toNode() {
@@ -68,6 +74,8 @@ public final class Action {
             var pin = outputPinType.createOutputPin();
             node.addOutputPin(pin, outputPinType.getName());
         }
+
+        node.resolveDynamicGroups();
 
         return node;
     }

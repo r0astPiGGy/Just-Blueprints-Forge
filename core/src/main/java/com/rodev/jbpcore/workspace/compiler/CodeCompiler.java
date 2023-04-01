@@ -59,7 +59,13 @@ public abstract class CodeCompiler {
             setOutput(stacktrace.toString(), -1);
         }
 
-        return getCompiledFilePath(fileToCompile);
+        var compiledPath = getCompiledFilePath(fileToCompile);
+
+        if(exitCode == 0 && compileMode == CompileMode.COMPILE_TO_FILE) {
+            output += "\nThe code was compiled to the " + compiledPath.getAbsolutePath();
+        }
+
+        return compiledPath;
     }
 
     private File getCompiledFilePath(File fileToCompile) {
@@ -96,13 +102,13 @@ public abstract class CodeCompiler {
 
     @RequiredArgsConstructor
     private enum OperatingSystem {
-        WINDOWS("jmcc.exe") {
+        WINDOWS("jmcc-win.exe") {
             @Override
             protected CodeCompiler getCompiler(File compilerPath) {
                 return new WindowsCompiler(compilerPath);
             }
         },
-        UNIX("jmcc") {
+        UNIX("jmcc-linux") {
             @Override
             protected CodeCompiler getCompiler(File compilerPath) {
                 return new UnixCompiler(compilerPath);

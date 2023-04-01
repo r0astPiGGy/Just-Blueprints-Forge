@@ -20,6 +20,10 @@ public class VariableTypeRegistry extends Registry<String, VariableType> {
         inputPinRowCreatedListeners.put(pinType, listener);
     }
 
+    public static RegistryListenersBuilder inputPinRowCreatedListenerBuilder() {
+        return new RegistryListenersBuilder();
+    }
+
     public static void onPinRowViewCreated(Pin pin, PinRowView rowView) {
         var type = pin.getType().getVariableType();
 
@@ -49,6 +53,23 @@ public class VariableTypeRegistry extends Registry<String, VariableType> {
 
     private void add(VariableType variableType) {
         data.put(variableType.type(), variableType);
+    }
+
+    public static class RegistryListenersBuilder {
+
+        private final Map<String, OnInputPinRowCreatedListener> listenerMap = new HashMap<>();
+
+        private RegistryListenersBuilder() {}
+
+        public RegistryListenersBuilder addListener(String pinType, OnInputPinRowCreatedListener listener) {
+            listenerMap.put(pinType, listener);
+            return this;
+        }
+
+        public void registerAll() {
+            listenerMap.forEach(VariableTypeRegistry::registerInputPinRowCreatedListener);
+        }
+
     }
 
 }

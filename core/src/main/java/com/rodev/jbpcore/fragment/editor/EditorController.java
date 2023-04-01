@@ -56,9 +56,8 @@ public class EditorController {
         JustBlueprints.getEditorEventListener().onProjectSaved(project);
     }
 
-    public void onCompileButtonClicked(Project project, GraphLayout graphLayout, CodeCompiler.CompileMode compileMode) {
+    public void onCompileButtonClicked(Project project, CodeCompiler.CompileMode compileMode) {
         JustBlueprints.getEditorEventListener().onProjectCompileButtonClicked(project);
-        saveProject(project, graphLayout);
         project.getBlueprint().compile(compileMode);
     }
 
