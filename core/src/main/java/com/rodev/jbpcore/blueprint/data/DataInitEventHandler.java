@@ -19,6 +19,7 @@ import com.rodev.jbpcore.blueprint.node.impl.getter.PureGetterNode;
 import com.rodev.jbpcore.blueprint.node.impl.getter.SelectorVariableGetterNode;
 import com.rodev.jbpcore.blueprint.pin.default_input_value.*;
 import com.rodev.jbpcore.blueprint.pin.list_pin.ListPinType;
+import com.rodev.jbpcore.blueprint.pin.map_pin.MapPinType;
 import icyllis.modernui.graphics.opengl.TextureManager;
 
 import java.util.Map;
@@ -107,51 +108,7 @@ public class DataInitEventHandler {
     }
 
     public static void onActionRegistryPreLoad(ActionRegistry registry) {
-        registry.registerPinTypeFactory("exec", DataInitEventHandler::createExecPinType);
-        registry.registerPinTypeFactory("enum", DataInitEventHandler::createEnumPinType);
-        registry.registerPinTypeFactory("dynamic", DataInitEventHandler::createDynamicPinType);
-        registry.registerPinTypeFactory("list", (entity, variableType) -> {
-            if(entity.extra_data == null) {
-                throw new IllegalStateException("Element type of this list not found (" + entity.id +")");
-            }
-
-            //noinspection unchecked
-            var map = (Map<String, String>) entity.extra_data;
-            var elementTypeId = map.getOrDefault("element-type", "variable");
-
-            var elementType = registry.getVariableType(elementTypeId);
-            // TODO: handle dynamic list type
-
-            return new ListPinType(entity.id, entity.label, variableType, elementType);
-        });
-    }
-
-    private static PinType createExecPinType(ActionEntity.PinTypeEntity entity, VariableType variableType) {
-        return new ExecPinType(entity.id, entity.label, variableType);
-    }
-
-    private static PinType createEnumPinType(ActionEntity.PinTypeEntity entity, VariableType variableType) {
-        //noinspection unchecked
-        var map = (Map<String, String>) entity.extra_data;
-        return new EnumPinType(entity.id, entity.label, variableType, map);
-    }
-
-    private static PinType createDynamicPinType(ActionEntity.PinTypeEntity entity, VariableType variableType) {
-        if(!variableType.isDynamic()) {
-            throw new IllegalStateException("VariableType should be dynamic!");
-        }
-
-        String dependsOn = null;
-        String dependsOnDestination = null;
-
-        if(entity.extra_data != null) {
-            //noinspection unchecked
-            var map = (Map<String, String>) entity.extra_data;
-            dependsOn = map.get("depends-on");
-            dependsOnDestination = map.get("depend-value-dest");
-        }
-
-        return new DynamicPinType(entity.id, entity.label, variableType, dependsOn, dependsOnDestination);
+        PinTypeFactoryHandler.of(registry).register();
     }
 
     public static void onDataAccessPostLoad(DataAccess dataAccess) {

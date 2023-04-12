@@ -8,5 +8,15 @@
     "id": "array",
     "icon": "array-pin",
     "connected-icon": "array-pin-connected"
+  },
+  {
+    "id": "exec",
+    "icon": "exec-pin",
+    "connected-icon": "exec-pin-connected"
+  },
+  {
+    "id": "dictionary",
+    "icon": "map-pin",
+    "connected-icon": "map-pin"
   }
 ]

@@ -199,12 +199,12 @@ public class GraphControllerImpl implements
         if(pin instanceof ListPin list) {
             header += "list of " + list.getElementType().type();
         } else {
-            header += pin.getType().getVariableType().type();
+            header += pin.getVariableType().type();
         }
 
         builder
                 .withHeader(header)
-                .filtering(action -> !action.acceptsInputType(pin.getType().getVariableType()))
+                .filtering(action -> !action.acceptsInputType(pin.getVariableType()))
                 .onItemClick(action -> {
                     handleOnContextMenuItemClicked(action, builder.x, builder.y, pin);
                 })
@@ -219,12 +219,12 @@ public class GraphControllerImpl implements
             // TODO: add predicate
             header += "list of " + list.getElementType().type();
         } else {
-            header += pin.getType().getVariableType().type();
+            header += pin.getVariableType().type();
         }
 
         builder
                 .withHeader(header)
-                .filtering(action -> !action.acceptsOutputType(pin.getType().getVariableType()))
+                .filtering(action -> !action.acceptsOutputType(pin.getVariableType()))
                 .onItemClick(action -> {
                     handleOnContextMenuItemClicked(action, builder.x, builder.y, pin);
                 })

@@ -37,7 +37,7 @@
 }, {
   "id" : "dictionary",
   "color" : "255, 159, 10",
-  "icon" : "default"
+  "icon" : "dictionary"
 }, {
   "id" : "variable",
   "color" : "48, 209, 88",

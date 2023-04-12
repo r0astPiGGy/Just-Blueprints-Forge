@@ -5,8 +5,10 @@ import com.rodev.jbpcore.blueprint.pin.Pin;
 import com.rodev.jbpcore.blueprint.pin.exec_pin.ExecPin;
 import com.rodev.jbpcore.blueprint.pin.var_pin.VarPin;
 
+import javax.annotation.concurrent.Immutable;
 import java.util.Objects;
 
+@Immutable // TODO
 public class PinType implements Cloneable {
     private final String id;
     private final String name;
@@ -30,7 +32,7 @@ public class PinType implements Cloneable {
         return "default";
     }
 
-    public VariableType getVariableType() {
+    public final VariableType getVariableType() {
         return type;
     }
 
@@ -40,10 +42,6 @@ public class PinType implements Cloneable {
 
     public Pin createOutputPin() {
         return VarPin.outputPin(this);
-    }
-
-    public boolean isDynamic() {
-        return false;
     }
 
     @Override

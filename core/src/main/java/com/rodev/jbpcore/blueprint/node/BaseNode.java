@@ -3,6 +3,7 @@ package com.rodev.jbpcore.blueprint.node;
 import com.rodev.jbpcore.blueprint.ChildRoot;
 import com.rodev.jbpcore.blueprint.data.variable.VariableTypeRegistry;
 import com.rodev.jbpcore.blueprint.pin.*;
+import com.rodev.jbpcore.blueprint.pin.dynamic.Dynamic;
 import com.rodev.jbpcore.blueprint.pin.dynamic.DynamicPinHandler;
 import icyllis.modernui.view.*;
 import icyllis.modernui.widget.LinearLayout;
@@ -145,7 +146,7 @@ public abstract class BaseNode extends LinearLayout implements BPNode, PinHoverL
 
     @Override
     public void resolveDynamicGroups() {
-        dynamicPinHandler.resolveDynamicGroups();
+        dynamicPinHandler.resolveDynamicDependencies();
     }
 
     @Override
@@ -232,7 +233,7 @@ public abstract class BaseNode extends LinearLayout implements BPNode, PinHoverL
         pin.setPinHoverListener(this);
         pin.setPinDragListener(this);
         pin.setPinConnectionHandler(this);
-        inputPinsByName.put(pin.getType().getId(), rowView);
+        inputPinsByName.put(pin.getLocalId(), rowView);
 
         addPinIfDynamic(pin);
 
@@ -247,7 +248,7 @@ public abstract class BaseNode extends LinearLayout implements BPNode, PinHoverL
         pin.setPinHoverListener(this);
         pin.setPinDragListener(this);
         pin.setPinConnectionHandler(this);
-        outputPinsByName.put(pin.getType().getId(), rowView);
+        outputPinsByName.put(pin.getLocalId(), rowView);
 
         addPinIfDynamic(pin);
 
@@ -255,9 +256,9 @@ public abstract class BaseNode extends LinearLayout implements BPNode, PinHoverL
     }
 
     private void addPinIfDynamic(Pin pin) {
-        if(!pin.isDynamic()) return;
-
-        dynamicPinHandler.addDynamicPin(pin);
+        if(pin instanceof Dynamic dynamic) {
+            dynamicPinHandler.addDynamicPin(dynamic);
+        }
     }
 
     @Override
@@ -297,7 +298,7 @@ public abstract class BaseNode extends LinearLayout implements BPNode, PinHoverL
 
         var pin = row.getPinView().getPin();
 
-        pinData.name = pin.getType().getId();
+        pinData.name = pin.getLocalId();
 
         if(pin.isInput() && pin.isConnected()) {
             var firstConnected = pin.getFirstConnectedPin();

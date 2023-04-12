@@ -93,8 +93,12 @@
         "label" : "Элемент",
         "type" : "dynamic",
         "extra_data" : {
-          "depends-on": "list",
-          "depend-value-dest": "element-type"
+          "dynamic-dependencies": {
+            "type": {
+              "dest-pin-id": "list",
+              "dest-type": "element-type"
+            }
+          }
         }
       },
       {
@@ -108,6 +112,10 @@
     "id" : "repeat_for_each_map_entry",
     "type" : "custom_with_input_exec",
     "input" : [
+      {
+        "id": "map",
+        "label": "Словарь"
+      },
       {
         "id" : "key_variable",
         "remove": true
@@ -129,14 +137,28 @@
       {
         "id" : "key_variable",
         "label" : "Ключ элемента",
-        "type" : "variable",
-        "extra_data" : null
+        "type" : "dynamic",
+        "extra_data" : {
+          "dynamic-dependencies": {
+            "type": {
+              "dest-pin-id": "map",
+              "dest-type": "key-type"
+            }
+          }
+        }
       },
       {
         "id" : "value_variable",
         "label" : "Значение элемента",
-        "type" : "variable",
-        "extra_data" : null
+        "type" : "dynamic",
+        "extra_data" : {
+          "dynamic-dependencies": {
+            "type": {
+              "dest-pin-id": "map",
+              "dest-type": "value-type"
+            }
+          }
+        }
       },
       {
         "id" : "loop_end",

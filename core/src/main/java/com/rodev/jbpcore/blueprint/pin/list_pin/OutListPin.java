@@ -5,6 +5,7 @@ import com.rodev.jbpcore.blueprint.data.variable.VariableType;
 import com.rodev.jbpcore.blueprint.pin.InputPin;
 import com.rodev.jbpcore.blueprint.pin.OutputPin;
 import com.rodev.jbpcore.blueprint.pin.Pin;
+import com.rodev.jbpcore.blueprint.pin.list_pin.dynamic.DynamicListPin;
 import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
 
@@ -20,16 +21,13 @@ public class OutListPin extends OutputPin implements ListPin {
     }
 
     @Override
-    public @NotNull VariableType getDependantType(@NotNull Pin dependantPin) {
-        return ((ListPin) dependantPin).getElementType();
-    }
-
-    @Override
     public boolean isApplicable(Pin another) {
         if(!(another instanceof ListPin listPin)) return false;
 
-        if(listPin.isDynamic() && !listPin.isDynamicVariableSet()) {
-            return listPin.isInput();
+        if(listPin instanceof DynamicListPin dynamicListPin) {
+            if(!dynamicListPin.isDynamicVariableSet()) {
+                return listPin.isInput();
+            }
         }
 
         if(listPin instanceof OutListPin) return false;

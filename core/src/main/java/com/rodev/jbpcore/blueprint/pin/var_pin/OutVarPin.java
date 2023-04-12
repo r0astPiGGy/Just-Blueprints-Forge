@@ -3,6 +3,7 @@ package com.rodev.jbpcore.blueprint.pin.var_pin;
 import com.rodev.jbpcore.blueprint.data.action.pin_type.PinType;
 import com.rodev.jbpcore.blueprint.pin.OutputPin;
 import com.rodev.jbpcore.blueprint.pin.Pin;
+import com.rodev.jbpcore.blueprint.pin.dynamic.Dynamic;
 
 import java.util.UUID;
 
@@ -18,8 +19,10 @@ public class OutVarPin extends OutputPin implements VarPin {
 
     @Override
     public boolean isApplicable(Pin another) {
-        if(another.isDynamic() && !another.isDynamicVariableSet()) {
-            return another.isInput();
+        if(another instanceof Dynamic dynamic) {
+            if(!dynamic.isDynamicVariableSet()) {
+                return another.isInput();
+            }
         }
 
         if(!(another instanceof VarPin)) return false;

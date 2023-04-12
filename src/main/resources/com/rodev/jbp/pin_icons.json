@@ -6,4 +6,12 @@
   "id" : "array",
   "icon" : "array-pin",
   "connectedIcon" : "array-pin-connected"
+}, {
+  "id" : "exec",
+  "icon" : "exec-pin",
+  "connectedIcon" : "exec-pin-connected"
+}, {
+  "id" : "dictionary",
+  "icon" : "map-pin",
+  "connectedIcon" : "map-pin"
 } ]

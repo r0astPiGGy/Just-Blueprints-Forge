@@ -13143,8 +13143,12 @@
     "label" : "Элемент",
     "type" : "dynamic",
     "extra_data" : {
-      "depends-on" : "list",
-      "depend-value-dest" : "element-type"
+      "dynamic-dependencies" : {
+        "type" : {
+          "dest-pin-id" : "list",
+          "dest-type" : "element-type"
+        }
+      }
     }
   }, {
     "id" : "loop_end",
@@ -13166,7 +13170,7 @@
     "extra_data" : null
   }, {
     "id" : "map",
-    "label" : "Словарь, по которому необходимо проходиться",
+    "label" : "Словарь",
     "type" : "dictionary",
     "extra_data" : {
       "key-type" : "dynamic",
@@ -13181,13 +13185,27 @@
   }, {
     "id" : "key_variable",
     "label" : "Ключ элемента",
-    "type" : "variable",
-    "extra_data" : null
+    "type" : "dynamic",
+    "extra_data" : {
+      "dynamic-dependencies" : {
+        "type" : {
+          "dest-pin-id" : "map",
+          "dest-type" : "key-type"
+        }
+      }
+    }
   }, {
     "id" : "value_variable",
     "label" : "Значение элемента",
-    "type" : "variable",
-    "extra_data" : null
+    "type" : "dynamic",
+    "extra_data" : {
+      "dynamic-dependencies" : {
+        "type" : {
+          "dest-pin-id" : "map",
+          "dest-type" : "value-type"
+        }
+      }
+    }
   }, {
     "id" : "loop_end",
     "label" : "Цикл завершён",

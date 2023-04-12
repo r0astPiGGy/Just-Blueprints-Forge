@@ -1,9 +1,9 @@
 package com.rodev.jbpcore.blueprint.pin;
 
-import com.rodev.jbpcore.blueprint.pin.dynamic.PinVariableTypeChangeListener;
-import com.rodev.jbpcore.blueprint.pin.dynamic.DynamicPinType;
+import com.rodev.jbpcore.blueprint.pin.dynamic.*;
 import com.rodev.jbpcore.blueprint.data.action.pin_type.PinType;
 import com.rodev.jbpcore.blueprint.data.variable.VariableType;
+import com.rodev.jbpcore.blueprint.pin.dynamic.impl.DynamicGroupImpl;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -106,52 +106,6 @@ public abstract class AbstractPin implements Pin {
     }
 
     @Override
-    public boolean isDynamic() {
-        return getType().isDynamic();
-    }
-
-    @Override
-    public void setVariableType(VariableType variableType) {
-        doIfDynamic(dynamicPinType -> dynamicPinType.setVariableType(variableType));
-    }
-
-    @Override
-    public void resetVariableType() {
-        doIfDynamic(DynamicPinType::resetVariableType);
-    }
-
-    @Override
-    public boolean isDynamicVariableSet() {
-        return returnIfDynamic(DynamicPinType::isDynamicVariableTypeSet);
-    }
-
-    @Override
-    public @Nullable String getDependantId() {
-        return returnIfDynamic(DynamicPinType::getDependsOn);
-    }
-
-    @Override
-    public @NotNull VariableType getDependantType(@NotNull Pin dependantPin) {
-        return returnIfDynamic(d -> d.resolveVariableTypeInPin(dependantPin));
-    }
-
-    private void doIfDynamic(Consumer<DynamicPinType> ifDynamicAction) {
-        ifDynamicAction.accept(requireDynamicPinType());
-    }
-
-    private <T> T returnIfDynamic(Function<DynamicPinType, T> ifDynamicFunction) {
-        return ifDynamicFunction.apply(requireDynamicPinType());
-    }
-
-    private DynamicPinType requireDynamicPinType() {
-        if(pinType instanceof DynamicPinType dynamicPinType) {
-            return dynamicPinType;
-        }
-
-        throw new IllegalStateException("This pin isn't dynamic");
-    }
-
-    @Override
     public void setVariableTypeChangedListener(PinVariableTypeChangeListener listener) {
         pinVariableTypeChangeListener = listener;
     }
@@ -234,8 +188,8 @@ public abstract class AbstractPin implements Pin {
     }
 
     public boolean isTheSameTypeAs(Pin anotherPin) {
-        var type = getType().getVariableType();
-        var anotherType = anotherPin.getType().getVariableType();
+        var type = getVariableType();
+        var anotherType = anotherPin.getVariableType();
 
         return type.equals(anotherType);
     }
