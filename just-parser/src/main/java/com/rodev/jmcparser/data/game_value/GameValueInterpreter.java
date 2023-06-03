@@ -1,6 +1,6 @@
 package com.rodev.jmcparser.data.game_value;
 
-import com.rodev.jbpcore.blueprint.data.json.ActionEntity;
+import com.rodev.jbpcore.data.json.ActionEntity;
 import com.rodev.jmcparser.data.Interpreter;
 import com.rodev.jmcparser.json.GameValue;
 import org.jetbrains.annotations.NotNull;

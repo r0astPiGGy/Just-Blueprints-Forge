@@ -314,6 +314,13 @@
   "type" : null,
   "output" : null
 }, {
+  "id" : "entity_swing_hand",
+  "schema" : "entity::swing_hand<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
+  "codeNeedsToBePlaced" : true,
+  "type" : null,
+  "output" : null
+}, {
   "id" : "entity_eat_grass",
   "schema" : "entity::eat_grass<$entity>($args)",
   "ignoreArguments" : [ "exec", "entity" ],
@@ -554,6 +561,13 @@
 }, {
   "id" : "entity_set_rotation",
   "schema" : "entity::set_rotation<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
+  "codeNeedsToBePlaced" : true,
+  "type" : null,
+  "output" : null
+}, {
+  "id" : "entity_set_rotation_by_vector",
+  "schema" : "entity::set_rotation_by_vector<$entity>($args)",
   "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
@@ -1028,6 +1042,13 @@
   "type" : null,
   "output" : null
 }, {
+  "id" : "game_set_block_analogue_power",
+  "schema" : "world::set_block_analogue_power($args)",
+  "ignoreArguments" : [ "exec" ],
+  "codeNeedsToBePlaced" : true,
+  "type" : null,
+  "output" : null
+}, {
   "id" : "game_set_block",
   "schema" : "world::set_block($args)",
   "ignoreArguments" : [ "exec" ],
@@ -1105,6 +1126,13 @@
   "type" : null,
   "output" : null
 }, {
+  "id" : "game_set_block_powered",
+  "schema" : "world::set_block_powered($args)",
+  "ignoreArguments" : [ "exec" ],
+  "codeNeedsToBePlaced" : true,
+  "type" : null,
+  "output" : null
+}, {
   "id" : "game_set_region",
   "schema" : "world::set_region($args)",
   "ignoreArguments" : [ "exec" ],
@@ -1121,6 +1149,13 @@
 }, {
   "id" : "game_set_sign_text_color",
   "schema" : "world::set_sign_text_color($args)",
+  "ignoreArguments" : [ "exec" ],
+  "codeNeedsToBePlaced" : true,
+  "type" : null,
+  "output" : null
+}, {
+  "id" : "game_update_block",
+  "schema" : "world::update_block($args)",
   "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
@@ -1415,6 +1450,13 @@
 }, {
   "id" : "if_entity_is_grounded",
   "schema" : "entity::is_grounded<$entity>($args)",
+  "ignoreArguments" : [ "exec", "entity" ],
+  "codeNeedsToBePlaced" : false,
+  "type" : null,
+  "output" : null
+}, {
+  "id" : "if_entity_in_area",
+  "schema" : "entity::in_area<$entity>($args)",
   "ignoreArguments" : [ "exec", "entity" ],
   "codeNeedsToBePlaced" : false,
   "type" : null,
@@ -2183,6 +2225,13 @@
   "type" : null,
   "output" : null
 }, {
+  "id" : "player_show_win_screen",
+  "schema" : "player::show_win_screen<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
+  "codeNeedsToBePlaced" : true,
+  "type" : null,
+  "output" : null
+}, {
   "id" : "player_stop_sound",
   "schema" : "player::stop_sound<$player>($args)",
   "ignoreArguments" : [ "exec", "player" ],
@@ -2463,6 +2512,13 @@
   "type" : null,
   "output" : null
 }, {
+  "id" : "player_set_rotation_by_vector",
+  "schema" : "player::set_rotation_by_vector<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
+  "codeNeedsToBePlaced" : true,
+  "type" : null,
+  "output" : null
+}, {
   "id" : "player_set_velocity",
   "schema" : "player::set_velocity<$player>($args)",
   "ignoreArguments" : [ "exec", "player" ],
@@ -2736,6 +2792,13 @@
   "type" : null,
   "output" : null
 }, {
+  "id" : "player_clear_debug_markers",
+  "schema" : "player::clear_debug_markers<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
+  "codeNeedsToBePlaced" : true,
+  "type" : null,
+  "output" : null
+}, {
   "id" : "player_display_block",
   "schema" : "player::display_block<$player>($args)",
   "ignoreArguments" : [ "exec", "player" ],
@@ -2820,6 +2883,13 @@
   "type" : null,
   "output" : null
 }, {
+  "id" : "player_set_simulation_distance",
+  "schema" : "player::set_simulation_distance<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
+  "codeNeedsToBePlaced" : true,
+  "type" : null,
+  "output" : null
+}, {
   "id" : "player_set_time",
   "schema" : "player::set_time<$player>($args)",
   "ignoreArguments" : [ "exec", "player" ],
@@ -2843,6 +2913,13 @@
 }, {
   "id" : "player_shift_world_border",
   "schema" : "player::shift_world_border<$player>($args)",
+  "ignoreArguments" : [ "exec", "player" ],
+  "codeNeedsToBePlaced" : true,
+  "type" : null,
+  "output" : null
+}, {
+  "id" : "player_show_debug_marker",
+  "schema" : "player::show_debug_marker<$player>($args)",
   "ignoreArguments" : [ "exec", "player" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,
@@ -3115,6 +3192,15 @@
     "-" : "$random_var_name"
   }
 }, {
+  "id" : "set_variable_get_list_random_value",
+  "schema" : "var $- = variable::get_list_random_value($args)",
+  "ignoreArguments" : [ "exec" ],
+  "codeNeedsToBePlaced" : true,
+  "type" : null,
+  "output" : {
+    "-" : "$random_var_name"
+  }
+}, {
   "id" : "set_variable_get_list_value",
   "schema" : "var $- = variable::get_list_value($args)",
   "ignoreArguments" : [ "exec" ],
@@ -3193,6 +3279,15 @@
   "codeNeedsToBePlaced" : true,
   "type" : null,
   "output" : null
+}, {
+  "id" : "set_variable_get_block_material_property",
+  "schema" : "var $- = variable::get_block_material_property($args)",
+  "ignoreArguments" : [ "exec" ],
+  "codeNeedsToBePlaced" : true,
+  "type" : null,
+  "output" : {
+    "-" : "$random_var_name"
+  }
 }, {
   "id" : "set_variable_get_book_text",
   "schema" : "var $- = variable::get_book_text($args)",
@@ -3704,6 +3799,15 @@
     "-" : "$random_var_name"
   }
 }, {
+  "id" : "set_variable_get_map_keys_by_value",
+  "schema" : "var $- = variable::get_map_keys_by_value($args)",
+  "ignoreArguments" : [ "exec" ],
+  "codeNeedsToBePlaced" : true,
+  "type" : null,
+  "output" : {
+    "-" : "$random_var_name"
+  }
+}, {
   "id" : "set_variable_get_map_size",
   "schema" : "var $- = variable::get_map_size($args)",
   "ignoreArguments" : [ "exec" ],
@@ -4202,6 +4306,13 @@
   "type" : null,
   "output" : null
 }, {
+  "id" : "set_variable_value",
+  "schema" : "variable::set_value($args)",
+  "ignoreArguments" : [ "exec" ],
+  "codeNeedsToBePlaced" : true,
+  "type" : null,
+  "output" : null
+}, {
   "id" : "set_variable_get_list_variables",
   "schema" : "var $- = variable::get_list_variables($args)",
   "ignoreArguments" : [ "exec" ],
@@ -4220,13 +4331,6 @@
 }, {
   "id" : "set_variable_random",
   "schema" : "variable::set_random($args)",
-  "ignoreArguments" : [ "exec" ],
-  "codeNeedsToBePlaced" : true,
-  "type" : null,
-  "output" : null
-}, {
-  "id" : "set_variable_value",
-  "schema" : "variable::set_value($args)",
   "ignoreArguments" : [ "exec" ],
   "codeNeedsToBePlaced" : true,
   "type" : null,

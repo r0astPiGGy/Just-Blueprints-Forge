@@ -1,8 +1,8 @@
 package com.rodev.jbpcore.blueprint.graph;
 
 import com.rodev.jbpcore.blueprint.Navigable;
-import com.rodev.jbpcore.contextmenu.ContextMenuBuilder;
-import com.rodev.jbpcore.workspace.Blueprint;
+import com.rodev.jbpcore.ui.contextmenu.ContextMenuBuilder;
+import com.rodev.jbpcore.blueprint.Blueprint;
 import icyllis.modernui.graphics.Canvas;
 import icyllis.modernui.graphics.Paint;
 import icyllis.modernui.view.*;

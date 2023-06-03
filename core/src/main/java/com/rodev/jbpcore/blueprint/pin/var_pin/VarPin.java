@@ -1,15 +1,20 @@
 package com.rodev.jbpcore.blueprint.pin.var_pin;
 
-import com.rodev.jbpcore.blueprint.data.action.pin_type.PinType;
+import com.rodev.jbpcore.blueprint.pin.behaviour.ConnectionBehaviour;
+import com.rodev.jbpcore.data.action.pin_type.PinType;
 import com.rodev.jbpcore.blueprint.pin.*;
 
-public interface VarPin extends Pin {
+public class VarPin extends PinImpl {
 
-    static Pin outputPin(PinType pinType) {
-        return new OutVarPin(pinType);
+    protected VarPin(PinType pinType, ConnectionBehaviour connectionBehaviour) {
+        super(pinType, connectionBehaviour);
     }
 
-    static Pin inputPin(PinType pinType) {
-        return new InVarPin(pinType);
+    public static VarPin outputPin(PinType pinType) {
+        return new VarPin(pinType, new OutputVarBehaviour());
+    }
+
+    public static VarPin inputPin(PinType pinType) {
+        return new VarPin(pinType, new InputVarBehaviour());
     }
 }

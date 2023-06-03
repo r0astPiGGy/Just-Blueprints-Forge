@@ -3,7 +3,7 @@ package com.rodev.jbpcore.blueprint.node;
 import icyllis.modernui.view.MotionEvent;
 import icyllis.modernui.view.View;
 
-public class NodeTouchHandler<T extends View & BPNode> {
+public class NodeTouchHandler<T extends View & GraphNode> {
 
     private NodeMoveListener nodeMoveListener;
     private NodeTouchListener nodeTouchListener;

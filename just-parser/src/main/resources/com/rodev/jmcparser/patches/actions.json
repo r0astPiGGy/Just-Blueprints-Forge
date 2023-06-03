@@ -13,6 +13,33 @@
     ]
   },
   {
+    "id": "set_variable_sort_any_list",
+    "type": "simple_function",
+    "name": "SORT",
+    "input": [
+      {
+        "id": "variable",
+        "remove": true
+      }
+    ],
+    "output": [
+      {
+        "id": "return_value",
+        "label": "Bruh",
+        "type": "list",
+        "extra_data" : {
+          "element-type": "dynamic",
+          "dynamic-dependencies": {
+            "element-type": {
+              "dest-pin-id": "list",
+              "dest-type": "element-type"
+            }
+          }
+        }
+      }
+    ]
+  },
+  {
     "id": "native_cast_to_list",
     "output": [
       {

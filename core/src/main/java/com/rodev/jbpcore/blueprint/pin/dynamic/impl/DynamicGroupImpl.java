@@ -1,6 +1,6 @@
 package com.rodev.jbpcore.blueprint.pin.dynamic.impl;
 
-import com.rodev.jbpcore.blueprint.data.variable.VariableType;
+import com.rodev.jbpcore.data.variable.VariableType;
 import com.rodev.jbpcore.blueprint.pin.Pin;
 import com.rodev.jbpcore.blueprint.pin.dynamic.*;
 import org.jetbrains.annotations.NotNull;

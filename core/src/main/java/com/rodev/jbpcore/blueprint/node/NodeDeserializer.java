@@ -7,7 +7,7 @@ import java.util.Map;
 
 public interface NodeDeserializer {
 
-    BPNode getNode();
+    GraphNode getNode();
 
     void deserialize();
 

@@ -1,12 +1,9 @@
 package com.rodev.jbpcore.blueprint.pin;
 
-import icyllis.modernui.graphics.Canvas;
 import icyllis.modernui.graphics.Image;
-import icyllis.modernui.graphics.drawable.Drawable;
 import icyllis.modernui.graphics.drawable.ImageDrawable;
 import icyllis.modernui.graphics.drawable.StateListDrawable;
 import icyllis.modernui.util.StateSet;
-import org.jetbrains.annotations.NotNull;
 
 import static icyllis.modernui.view.View.dp;
 import static icyllis.modernui.widget.CompoundButton.CHECKED_STATE_SET;

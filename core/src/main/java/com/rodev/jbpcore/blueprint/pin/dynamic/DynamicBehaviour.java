@@ -1,6 +1,6 @@
 package com.rodev.jbpcore.blueprint.pin.dynamic;
 
-import com.rodev.jbpcore.blueprint.data.variable.VariableType;
+import com.rodev.jbpcore.data.variable.VariableType;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.jetbrains.annotations.NotNull;

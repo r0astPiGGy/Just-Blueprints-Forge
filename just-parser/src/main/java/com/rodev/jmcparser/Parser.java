@@ -1,9 +1,9 @@
 package com.rodev.jmcparser;
 
-import com.rodev.jbpcore.blueprint.data.json.ActionEntity;
-import com.rodev.jbpcore.blueprint.data.json.ActionTypeEntity;
-import com.rodev.jbpcore.blueprint.data.json.PinIconEntity;
-import com.rodev.jbpcore.blueprint.data.json.VariableTypeEntity;
+import com.rodev.jbpcore.data.json.ActionEntity;
+import com.rodev.jbpcore.data.json.ActionTypeEntity;
+import com.rodev.jbpcore.data.json.PinIconEntity;
+import com.rodev.jbpcore.data.json.VariableTypeEntity;
 import com.rodev.jmcgenerator.entity.GeneratorEntity;
 import com.rodev.jmcparser.data.*;
 import com.rodev.jmcparser.data.action.alternate.AlternateActionProvider;

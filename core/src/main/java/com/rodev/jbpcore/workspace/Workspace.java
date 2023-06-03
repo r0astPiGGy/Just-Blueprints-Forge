@@ -1,6 +1,6 @@
 package com.rodev.jbpcore.workspace;
 
-import com.rodev.jbpcore.fragment.welcome.ValidateResult;
+import com.rodev.jbpcore.ui.fragment.welcome.ValidateResult;
 import com.rodev.jbpcore.workspace.compiler.AsyncCompiler;
 import org.jetbrains.annotations.Nullable;
 

@@ -1,17 +1,48 @@
 package com.rodev.jbpcore.blueprint.pin.map_pin;
 
-import com.rodev.jbpcore.blueprint.data.variable.VariableType;
+import com.rodev.jbpcore.blueprint.pin.PinImpl;
+import com.rodev.jbpcore.blueprint.pin.behaviour.ConnectionBehaviour;
+import com.rodev.jbpcore.data.action.pin_type.PinType;
+import com.rodev.jbpcore.data.variable.VariableType;
 import com.rodev.jbpcore.blueprint.pin.Pin;
-import com.rodev.jbpcore.view.CompoundImageDrawable;
-import com.rodev.jbpcore.view.TintedImage;
+import com.rodev.jbpcore.ui.drawable.CompoundImageDrawable;
+import com.rodev.jbpcore.ui.view.TintedImage;
 import icyllis.modernui.graphics.drawable.Drawable;
 
 import static icyllis.modernui.view.View.dp;
 
-public interface MapPin extends Pin {
+public class MapPin extends PinImpl {
+
+    private final VariableType keyType;
+    private final VariableType valueType;
+
+    protected ColorChangeListener keyColorChangeListener;
+    protected ColorChangeListener valueColorChangeListener;
+
+    protected MapPin(MapPinType pinType, ConnectionBehaviour connectionBehaviour) {
+        super(pinType, connectionBehaviour);
+
+        this.valueType = pinType.getValueType();
+        this.keyType = pinType.getKeyType();
+    }
+
+    public static MapPin inputPin(MapPinType pinType) {
+        return new MapPin(pinType, new InputMapBehaviour());
+    }
+
+    public static MapPin outputPin(MapPinType pinType) {
+        return new MapPin(pinType, new OutputMapBehaviour());
+    }
+
+    public static MapPin castToMapOrNull(Pin pin) {
+        if (pin instanceof MapPin mapPin)
+            return mapPin;
+
+        return null;
+    }
 
     @Override
-    default Drawable createDrawable() {
+    public Drawable createDrawable() {
         var icon = getVariableType().getIcon();
 
         var img = icon.connected();
@@ -46,16 +77,34 @@ public interface MapPin extends Pin {
         return compoundDrawable;
     }
 
-    default void onKeyTypeColorChangeListenerSet(ColorChangeListener listener) {}
+    private void onKeyTypeColorChangeListenerSet(ColorChangeListener listener) {
+        keyColorChangeListener = listener;
+        updateKeyColor();
+    }
 
-    default void onValueTypeColorChangeListenerSet(ColorChangeListener listener) {}
+    private void onValueTypeColorChangeListenerSet(ColorChangeListener listener) {
+        valueColorChangeListener = listener;
+        updateValueColor();
+    }
 
-    VariableType getKeyType();
+    protected void updateKeyColor() {
+        keyColorChangeListener.setColor(getKeyType().color());
+    }
 
-    VariableType getValueType();
+    protected void updateValueColor() {
+        valueColorChangeListener.setColor(getValueType().color());
+    }
+
+    public VariableType getKeyType() {
+        return keyType;
+    }
+
+    public VariableType getValueType() {
+        return valueType;
+    }
 
     @Override
-    default int getColor() {
+    public int getColor() {
         return getKeyType().color();
     }
 

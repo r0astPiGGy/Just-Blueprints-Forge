@@ -1,8 +1,7 @@
 package com.rodev.jmcparser.data;
 
-import com.rodev.jbpcore.blueprint.data.json.ActionEntity;
-import com.rodev.jbpcore.blueprint.data.json.ActionTypeEntity;
-import com.rodev.jbpcore.blueprint.data.json.VariableTypeEntity;
+import com.rodev.jbpcore.data.json.ActionEntity;
+import com.rodev.jbpcore.data.json.ActionTypeEntity;
 
 import java.io.File;
 import java.util.HashSet;

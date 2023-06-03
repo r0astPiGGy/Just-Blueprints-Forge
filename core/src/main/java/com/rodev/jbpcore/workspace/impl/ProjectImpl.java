@@ -1,13 +1,12 @@
 package com.rodev.jbpcore.workspace.impl;
 
 import com.rodev.jbpcore.blueprint.graph.GraphController;
-import com.rodev.jbpcore.blueprint.node.BPNode;
-import com.rodev.jbpcore.workspace.Blueprint;
+import com.rodev.jbpcore.blueprint.node.GraphNode;
+import com.rodev.jbpcore.blueprint.Blueprint;
 import com.rodev.jbpcore.workspace.Project;
 import com.rodev.jbpcore.workspace.compiler.CodeCompiler;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 import java.io.File;
@@ -29,7 +28,7 @@ public abstract class ProjectImpl implements Project {
     }
 
     abstract
-    protected void onBlueprintSave(Collection<BPNode> nodes);
+    protected void onBlueprintSave(Collection<GraphNode> nodes);
 
     abstract
     protected void onBlueprintLoad(GraphController graphController);
@@ -40,7 +39,7 @@ public abstract class ProjectImpl implements Project {
     private class BlueprintImpl implements Blueprint {
 
         @Override
-        public void save(Collection<BPNode> nodes) {
+        public void save(Collection<GraphNode> nodes) {
             onBlueprintSave(nodes);
         }
 

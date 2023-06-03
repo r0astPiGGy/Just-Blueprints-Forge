@@ -1,6 +1,6 @@
 package com.rodev.jbpcore.blueprint.graph;
 
-import com.rodev.jbpcore.contextmenu.ContextMenuBuilder;
+import com.rodev.jbpcore.ui.contextmenu.ContextMenuBuilder;
 
 public interface ContextMenuBuilderProvider {
 

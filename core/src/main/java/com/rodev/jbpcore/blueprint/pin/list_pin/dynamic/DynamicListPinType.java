@@ -1,6 +1,6 @@
 package com.rodev.jbpcore.blueprint.pin.list_pin.dynamic;
 
-import com.rodev.jbpcore.blueprint.data.variable.VariableType;
+import com.rodev.jbpcore.data.variable.VariableType;
 import com.rodev.jbpcore.blueprint.pin.Pin;
 import com.rodev.jbpcore.blueprint.pin.dynamic.DynamicDependency;
 import com.rodev.jbpcore.blueprint.pin.dynamic.DynamicPinDestination;
@@ -40,11 +40,11 @@ public class DynamicListPinType extends ListPinType {
 
     @Override
     public Pin createInputPin() {
-        return new DynamicInListPin(this);
+        return DynamicListPin.inputPin(this);
     }
 
     @Override
     public Pin createOutputPin() {
-        return new DynamicOutListPin(this);
+        return DynamicListPin.outputPin(this);
     }
 }

@@ -1,12 +1,7 @@
 package com.rodev.jbp.client;
 
 import com.rodev.jbp.JustBlueprintsMod;
-//import com.rodev.test.fragment.editor.BlueprintFragment;
-//import icyllis.modernui.forge.MuiForgeApi;
 import com.rodev.jbpcore.JustBlueprints;
-import icyllis.modernui.ModernUI;
-import icyllis.modernui.core.Core;
-import icyllis.modernui.forge.ModernUIForge;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.client.event.RegisterKeyMappingsEvent;

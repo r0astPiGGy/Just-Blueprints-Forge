@@ -14,6 +14,7 @@ repositories {
 }
 
 dependencies {
+    implementation project(":api")
     implementation project(":just-generator")
     implementation 'org.projectlombok:lombok:1.18.22'
     annotationProcessor 'org.projectlombok:lombok:1.18.22'

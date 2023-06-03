@@ -1,7 +1,7 @@
 package com.rodev.jmcparser.generator;
 
-import com.rodev.jbpcore.blueprint.data.ObjectType;
-import com.rodev.jbpcore.blueprint.data.json.ActionEntity;
+import com.rodev.jbpcore.data.ObjectType;
+import com.rodev.jbpcore.data.json.ActionEntity;
 import com.rodev.jmcgenerator.entity.GeneratorEntity;
 import com.rodev.jmcparser.data.action.custom.CustomActionEntity;
 import com.rodev.jmcparser.data.game_value.GameValueMappings;

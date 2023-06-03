@@ -1,7 +1,7 @@
 package com.rodev.jbpcore;
 
-import com.rodev.jbpcore.fragment.editor.EditorEventListener;
-import com.rodev.jbpcore.workspace.WindowManager;
+import com.rodev.jbpcore.ui.fragment.editor.EditorEventListener;
+import com.rodev.jbpcore.workspace.ModernUIWindowManager;
 import com.rodev.jbpcore.workspace.Workspace;
 import org.jetbrains.annotations.NotNull;
 
@@ -9,7 +9,7 @@ public class JustBlueprints {
 
     private static Workspace workspace;
 
-    private static WindowManager windowManager;
+    private static ModernUIWindowManager windowManager;
     private static EditorEventListener editorEventListener = new EditorEventListener() {};
 
     public static void setWorkspace(Workspace workspace) {
@@ -21,7 +21,7 @@ public class JustBlueprints {
         workspace.reloadProjects();
     }
 
-    public static void setWindowManager(WindowManager windowManager) {
+    public static void setWindowManager(ModernUIWindowManager windowManager) {
         if(JustBlueprints.windowManager != null) {
             throw new IllegalStateException("Window manager is already initialized.");
         }
@@ -37,7 +37,7 @@ public class JustBlueprints {
         return editorEventListener;
     }
 
-    public static WindowManager getWindowManager() {
+    public static ModernUIWindowManager getWindowManager() {
         return windowManager;
     }
 

@@ -1,6 +1,6 @@
 package com.rodev.jmcparser.data.action;
 
-import com.rodev.jbpcore.blueprint.data.json.ActionEntity;
+import com.rodev.jbpcore.data.json.ActionEntity;
 import com.rodev.jmcparser.data.Interpreter;
 import com.rodev.jmcparser.data.LocaleProvider;
 import com.rodev.jmcparser.data.action.alternate.AlternateActionProvider;
@@ -202,11 +202,31 @@ public class ActionInterpreter extends Interpreter<ActionData> implements Action
             pin.type = "variable";
         }
 
+        findAlternateTypeFor(actionData, pin, arg);
+
+        variableTypes.add(pin.type);
+
+        var localeId = String.format("creative_plus.action.%s.argument.%s.name", actionData.id, arg.name);
+
+        pin.label = localeProvider.translateKeyOrDefault(localeId);
+
+        return pin;
+    }
+
+    private void findAlternateTypeFor(ActionData actionData, ActionEntity.PinTypeEntity pin, ActionDataArgument arg) {
         var alternateAction = alternateActionProvider.getById(actionData.id);
-        Objects.requireNonNull(alternateAction);
+
+        if (alternateAction == null) {
+            System.out.printf("Alternate action %s not found: %n", actionData.id);
+            return;
+        }
 
         var alternateArg = alternateAction.getArgumentById(pin.id);
-        Objects.requireNonNull(alternateArg);
+        if (alternateArg == null) {
+            System.out.printf("Arg %s for alternate action %s not found: %n", pin.id, alternateAction.id);
+            return;
+        }
+
 
         if(!pin.type.equals(alternateArg.type) && !pin.type.equals("boolean") && !pin.type.equals("item")) {
             System.out.printf("Argument type not equals to alternate action argument [%s:%s]: %s != %s %n", actionData.id, arg.name, pin.type, alternateArg.type);
@@ -217,14 +237,6 @@ public class ActionInterpreter extends Interpreter<ActionData> implements Action
             case "list" -> applyForList(pin, alternateArg.elementType);
             case "dictionary" -> applyForMap(pin, alternateArg.keyType, alternateArg.valueType);
         }
-
-        variableTypes.add(pin.type);
-
-        var localeId = String.format("creative_plus.action.%s.argument.%s.name", actionData.id, arg.name);
-
-        pin.label = localeProvider.translateKeyOrDefault(localeId);
-
-        return pin;
     }
 
     private Map<String, String> generateEnumValues(String[] rawValues, Function<String, String> translationSupplier) {

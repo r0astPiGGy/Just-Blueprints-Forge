@@ -1,10 +1,8 @@
 package com.rodev.jbpcore.blueprint.pin.map_pin;
 
-import com.rodev.jbpcore.blueprint.data.action.pin_type.PinType;
-import com.rodev.jbpcore.blueprint.data.variable.VariableType;
+import com.rodev.jbpcore.data.action.pin_type.PinType;
+import com.rodev.jbpcore.data.variable.VariableType;
 import com.rodev.jbpcore.blueprint.pin.Pin;
-import com.rodev.jbpcore.blueprint.pin.map_pin.dynamic.DynamicInMapPin;
-import com.rodev.jbpcore.blueprint.pin.map_pin.dynamic.DynamicOutMapPin;
 
 public class MapPinType extends PinType {
 
@@ -27,11 +25,11 @@ public class MapPinType extends PinType {
 
     @Override
     public Pin createInputPin() {
-        return new InMapPin(this, keyType, valueType);
+        return MapPin.inputPin(this);
     }
 
     @Override
     public Pin createOutputPin() {
-        return new OutMapPin(this, keyType, valueType);
+        return MapPin.outputPin(this);
     }
 }

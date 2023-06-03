@@ -1,6 +1,6 @@
 package com.rodev.jbpcore.workspace.compiler;
 
-import com.rodev.jbpcore.utils.ConsumerListener;
+import com.rodev.jbpcore.utils.listener.ConsumerListener;
 import icyllis.modernui.core.Core;
 import lombok.RequiredArgsConstructor;
 import org.jetbrains.annotations.NotNull;

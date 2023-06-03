@@ -3,16 +3,12 @@ package com.rodev.jbp;
 import com.rodev.jbp.client.ForgeEditorEventListener;
 import com.rodev.jbpcore.Fonts;
 import com.rodev.jbpcore.JustBlueprints;
-import com.rodev.jbpcore.blueprint.data.DataAccess;
-import com.rodev.jbpcore.blueprint.data.DataProvider;
-import com.rodev.jbpcore.fragment.LifecycleFragment;
-import com.rodev.jbpcore.workspace.WindowManager;
+import com.rodev.jbpcore.data.DataAccess;
+import com.rodev.jbpcore.data.DataProvider;
+import com.rodev.jbpcore.workspace.ModernUIWindowManager;
 import com.rodev.jbpcore.workspace.impl.WorkspaceImpl;
-import icyllis.modernui.ModernUI;
 import icyllis.modernui.forge.MuiForgeApi;
 import icyllis.modernui.fragment.Fragment;
-import icyllis.modernui.view.ViewConfiguration;
-import net.minecraft.client.Minecraft;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -20,7 +16,6 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.RegisterEvent;
-import org.checkerframework.checker.units.qual.C;
 
 import java.awt.*;
 import java.io.IOException;
@@ -38,7 +33,7 @@ public class JustBlueprintsMod implements DataProvider
             Fonts.loadFonts();
             JustBlueprints.setWorkspace(new WorkspaceImpl());
             JustBlueprints.setEditorEventListener(new ForgeEditorEventListener());
-            JustBlueprints.setWindowManager(new WindowManager() {
+            JustBlueprints.setWindowManager(new ModernUIWindowManager() {
                 @Override
                 protected void openFragment(Fragment fragment) {
                     MuiForgeApi.openScreen(fragment);

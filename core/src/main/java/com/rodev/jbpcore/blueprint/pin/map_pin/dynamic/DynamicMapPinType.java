@@ -1,6 +1,6 @@
 package com.rodev.jbpcore.blueprint.pin.map_pin.dynamic;
 
-import com.rodev.jbpcore.blueprint.data.variable.VariableType;
+import com.rodev.jbpcore.data.variable.VariableType;
 import com.rodev.jbpcore.blueprint.pin.Pin;
 import com.rodev.jbpcore.blueprint.pin.dynamic.DynamicDependency;
 import com.rodev.jbpcore.blueprint.pin.dynamic.DynamicPinDestination;
@@ -64,11 +64,11 @@ public class DynamicMapPinType extends MapPinType {
 
     @Override
     public Pin createInputPin() {
-        return new DynamicInMapPin(this);
+        return DynamicMapPin.inputPin(this);
     }
 
     @Override
     public Pin createOutputPin() {
-        return new DynamicOutMapPin(this);
+        return DynamicMapPin.outputPin(this);
     }
 }

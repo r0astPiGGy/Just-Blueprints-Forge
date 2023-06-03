@@ -42,5 +42,9 @@
   {
     "id": "custom_with_input_exec",
     "header_color": "142, 142, 147"
+  },
+  {
+    "id": "simple_function",
+    "header_color": "0, 0, 0"
   }
 ]

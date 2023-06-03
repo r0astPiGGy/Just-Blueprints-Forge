@@ -1,7 +1,7 @@
 package com.rodev.jmcparser.data.native_actions;
 
-import com.rodev.jbpcore.blueprint.data.ObjectType;
-import com.rodev.jbpcore.blueprint.data.json.ActionEntity;
+import com.rodev.jbpcore.data.ObjectType;
+import com.rodev.jbpcore.data.json.ActionEntity;
 import com.rodev.jmcparser.data.Interpreter;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;

@@ -1,6 +1,5 @@
 package com.rodev.jmcparser.data.action.custom;
 
-import com.rodev.jbpcore.blueprint.data.json.ActionEntity;
 import com.rodev.jmcparser.data.DataProvider;
 import com.rodev.jmcparser.data.Parser;
 

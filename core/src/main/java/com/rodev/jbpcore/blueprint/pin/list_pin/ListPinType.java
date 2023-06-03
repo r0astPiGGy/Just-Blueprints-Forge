@@ -1,7 +1,7 @@
 package com.rodev.jbpcore.blueprint.pin.list_pin;
 
-import com.rodev.jbpcore.blueprint.data.action.pin_type.PinType;
-import com.rodev.jbpcore.blueprint.data.variable.VariableType;
+import com.rodev.jbpcore.data.action.pin_type.PinType;
+import com.rodev.jbpcore.data.variable.VariableType;
 import com.rodev.jbpcore.blueprint.pin.Pin;
 
 public class ListPinType extends PinType {
@@ -19,12 +19,12 @@ public class ListPinType extends PinType {
     }
 
     @Override
-    public Pin createOutputPin() {
-        return new OutListPin(this, elementType);
+    public Pin createInputPin() {
+        return ListPin.inputPin(this);
     }
 
     @Override
-    public Pin createInputPin() {
-        return new InListPin(this, elementType);
+    public Pin createOutputPin() {
+        return ListPin.outputPin(this);
     }
 }

@@ -1,10 +1,9 @@
 package com.rodev.jmcparser.patcher.action;
 
-import com.rodev.jbpcore.blueprint.data.json.ActionEntity;
+import com.rodev.jbpcore.data.json.ActionEntity;
 import com.rodev.jmcparser.patcher.AbstractPatcher;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;

@@ -1,16 +1,14 @@
 package com.rodev.jbpcore.blueprint.graph;
 
-import com.rodev.jbpcore.blueprint.data.action.Action;
-import com.rodev.jbpcore.blueprint.node.BPNode;
+import com.rodev.jbpcore.blueprint.pin.*;
+import com.rodev.jbpcore.blueprint.pin.behaviour.ConnectionBehaviour;
+import com.rodev.jbpcore.data.action.Action;
+import com.rodev.jbpcore.blueprint.node.GraphNode;
 import com.rodev.jbpcore.blueprint.node.NodeMoveListener;
 import com.rodev.jbpcore.blueprint.node.NodePositionChangeListener;
 import com.rodev.jbpcore.blueprint.node.NodeTouchListener;
-import com.rodev.jbpcore.blueprint.pin.Pin;
-import com.rodev.jbpcore.blueprint.pin.PinConnectionHandler;
-import com.rodev.jbpcore.blueprint.pin.PinDragListener;
-import com.rodev.jbpcore.blueprint.pin.PinHoverListener;
 import com.rodev.jbpcore.blueprint.pin.list_pin.ListPin;
-import com.rodev.jbpcore.contextmenu.ContextMenuBuilder;
+import com.rodev.jbpcore.ui.contextmenu.ContextMenuBuilder;
 import icyllis.modernui.graphics.Canvas;
 import icyllis.modernui.graphics.Paint;
 import icyllis.modernui.view.KeyEvent;
@@ -21,7 +19,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class GraphControllerImpl implements
-        GraphController, PinHoverListener, PinDragListener, NodeTouchListener, NodeMoveListener, NodePositionChangeListener, PinConnectionHandler {
+        GraphController, PinHoverListener, DragListener<Pin>, NodeTouchListener, NodeMoveListener, NodePositionChangeListener, PinConnectionHandler {
 
     private final Set<Pin> outputPins = new HashSet<>();
     private ViewHolder viewHolder;
@@ -30,10 +28,10 @@ public class GraphControllerImpl implements
     private Runnable invalidationCallback = () -> {};
     private Pin currentDraggingPin;
     private Pin currentHoveringPin;
-    private BPNode currentSelectedNode;
+    private GraphNode currentSelectedNode;
     private ViewMoveListener viewMoveListener;
 
-    public BPNode createViewAt(int x, int y, Action action) {
+    public GraphNode createViewAt(int x, int y, Action action) {
         var node = action.toNode();
 
         createNodeAt(x, y, node);
@@ -42,7 +40,7 @@ public class GraphControllerImpl implements
     }
 
     @Override
-    public void createNodeAt(int x, int y, BPNode node) {
+    public void createNodeAt(int x, int y, GraphNode node) {
         node.setPinHoverListener(this);
         node.setPinDragListener(this);
         node.setNodeTouchListener(this);
@@ -67,7 +65,7 @@ public class GraphControllerImpl implements
                 .show();
     }
 
-    private boolean onSelectedNodeKeyPressed(BPNode node, int keyCode, KeyEvent keyEvent) {
+    private boolean onSelectedNodeKeyPressed(GraphNode node, int keyCode, KeyEvent keyEvent) {
         if(keyEvent.getAction() != MotionEvent.ACTION_UP) return false;
 
         if(keyCode == KeyEvent.KEY_DELETE && currentSelectedNode == node) {
@@ -79,7 +77,7 @@ public class GraphControllerImpl implements
         return false;
     }
 
-    private void handleOnNodeDelete(BPNode node) {
+    private void handleOnNodeDelete(GraphNode node) {
         var nodeView = node.asView();
 
         node.forEachPin(Pin::disconnectAll);
@@ -115,7 +113,7 @@ public class GraphControllerImpl implements
 
     private void drawAllConnections(Pin outputPin, Canvas canvas, Paint paint) {
         var outPosition = outputPin.getPosition();
-        outputPin.getConnections().forEach(inputPin -> {
+        outputPin.getConnectionBehaviour().getConnections().forEach(inputPin -> {
             var inputPosition = inputPin.getPosition();
             drawBezierLine(
                     canvas,
@@ -158,12 +156,12 @@ public class GraphControllerImpl implements
     }
 
     @Override
-    public void onLineDrag(Pin pin, int xStart, int yStart, int xEnd, int yEnd) {
+    public void onDrag(Pin pin, int xStart, int yStart, int xEnd, int yEnd) {
         if(currentDraggingPin == null || currentDraggingPin != pin) {
             currentDraggingPin = pin;
         }
 
-        if(pin.isConnected() && !pin.supportMultipleConnections()) {
+        if(pin.getConnectionBehaviour().isConnected() && !pin.getConnectionBehaviour().supportMultipleConnections()) {
             pin.disconnectAll();
         }
 
@@ -171,7 +169,7 @@ public class GraphControllerImpl implements
     }
 
     @Override
-    public void onLineDragEnded(Pin pin, int xStart, int yStart, int xEnd, int yEnd) {
+    public void onDragEnded(Pin pin, int xStart, int yStart, int xEnd, int yEnd) {
         if (currentHoveringPin == null) {
             var builder = contextMenuBuilderProvider.createBuilder(xEnd, yEnd);
             handleContextMenuOpen(builder, pin);
@@ -185,10 +183,10 @@ public class GraphControllerImpl implements
     }
 
     private void handleContextMenuOpen(ContextMenuBuilder builder, Pin pin) {
-        if(pin.isInput()) {
+        if(pin.getConnectionBehaviour().isInput()) {
             handleInputContextMenuOpen(builder, pin);
         }
-        if(pin.isOutput()) {
+        if(pin.getConnectionBehaviour().isOutput()) {
             handleOutputContextMenuOpen(builder, pin);
         }
     }
@@ -258,11 +256,13 @@ public class GraphControllerImpl implements
     public boolean handleConnect(Pin target, Pin connection) {
         if(target == connection) return false;
 
+        ConnectionBehaviour targetBehaviour = target.getConnectionBehaviour();
+
         if(!target.isApplicable(connection)) return false;
 
-        if(target.isConnectedTo(connection)) return false;
+        if(targetBehaviour.isConnectedTo(connection)) return false;
 
-        if(target.isConnected() && !target.supportMultipleConnections()) return false;
+        if(targetBehaviour.isConnected() && !targetBehaviour.supportMultipleConnections()) return false;
         
         target.setIsBeingConnected(true);
 
@@ -280,7 +280,7 @@ public class GraphControllerImpl implements
             return false;
         }
 
-        if(target.isOutput()) {
+        if(target.getConnectionBehaviour().isOutput()) {
             outputPins.add(target);
         } else {
             outputPins.add(connection);
@@ -293,7 +293,7 @@ public class GraphControllerImpl implements
     public boolean handleDisconnect(Pin target, Pin connection) {
         if(target == connection) return false;
         
-        if(!target.isConnectedTo(connection)) return false;
+        if(!target.getConnectionBehaviour().isConnectedTo(connection)) return false;
 
         target.setIsBeingDisconnected(true);
 
@@ -311,7 +311,7 @@ public class GraphControllerImpl implements
             throw new IllegalStateException("Shouldn't get here.");
         }
 
-        if(target.isOutput()) {
+        if(target.getConnectionBehaviour().isOutput()) {
             onOutputDisconnected(target);
         } else {
             onOutputDisconnected(connection);
@@ -321,14 +321,15 @@ public class GraphControllerImpl implements
     }
 
     private void onOutputDisconnected(Pin output) {
-        if(output.isConnected()) return;
+        if(output.getConnectionBehaviour().isConnected()) return;
 
         outputPins.remove(output);
     }
 
     @Override
     public boolean onDisconnectedAll(Pin target) {
-        target.getConnections()
+        target.getConnectionBehaviour()
+                .getConnections()
                 .stream() // Avoid ConcurrentModificationException
                 .toList()
                 .forEach(target::disconnect);
@@ -347,7 +348,7 @@ public class GraphControllerImpl implements
     }
 
     @Override
-    public void onNodeTouch(BPNode node, int x, int y) {
+    public void onNodeTouch(GraphNode node, int x, int y) {
         if(isNodeSelected(node)) return;
 
         deselectCurrentSelectedNode();
@@ -358,7 +359,7 @@ public class GraphControllerImpl implements
     }
 
     @Override
-    public void onMove(BPNode node, int xStart, int yStart, int xEnd, int yEnd) {
+    public void onMove(GraphNode node, int xStart, int yStart, int xEnd, int yEnd) {
         if(!isNodeSelected(node)) return;
 
         if(viewMoveListener != null) {
@@ -367,7 +368,7 @@ public class GraphControllerImpl implements
     }
 
     @Override
-    public void moveTo(BPNode node, int x, int y) {
+    public void moveTo(GraphNode node, int x, int y) {
         if(viewMoveListener != null) {
             viewMoveListener.onMove(node.asView(), x, y);
         }
@@ -378,7 +379,7 @@ public class GraphControllerImpl implements
         deselectCurrentSelectedNode();
     }
 
-    private boolean isNodeSelected(BPNode node) {
+    private boolean isNodeSelected(GraphNode node) {
         return currentSelectedNode == node;
     }
 

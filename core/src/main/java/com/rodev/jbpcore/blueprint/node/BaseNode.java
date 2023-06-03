@@ -1,10 +1,12 @@
 package com.rodev.jbpcore.blueprint.node;
 
 import com.rodev.jbpcore.blueprint.ChildRoot;
-import com.rodev.jbpcore.blueprint.data.variable.VariableTypeRegistry;
+import com.rodev.jbpcore.data.variable.VariableTypeRegistry;
 import com.rodev.jbpcore.blueprint.pin.*;
 import com.rodev.jbpcore.blueprint.pin.dynamic.Dynamic;
 import com.rodev.jbpcore.blueprint.pin.dynamic.DynamicPinHandler;
+import com.rodev.jbpcore.ui.pin.PinRowView;
+import com.rodev.jbpcore.ui.pin.PinView;
 import icyllis.modernui.view.*;
 import icyllis.modernui.widget.LinearLayout;
 import lombok.Getter;
@@ -17,7 +19,7 @@ import java.util.*;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
-public abstract class BaseNode extends LinearLayout implements BPNode, PinHoverListener, PinDragListener, PinConnectionHandler, ViewTreeObserver.OnPreDrawListener {
+public abstract class BaseNode extends LinearLayout implements GraphNode, PinHoverListener, DragListener<Pin>, PinConnectionHandler, ViewTreeObserver.OnPreDrawListener {
 
     private Boolean selected = false;
 
@@ -30,13 +32,13 @@ public abstract class BaseNode extends LinearLayout implements BPNode, PinHoverL
     private final NodeTouchHandler<BaseNode> nodeTouchHandler;
 
     @Setter
-    private Function<BPNode, Boolean> onNodePreDrawCallback = node -> true;
+    private Function<GraphNode, Boolean> onNodePreDrawCallback = node -> true;
 
     private NodePositionChangeListener nodePositionChangeListener;
     @Setter
     private PinHoverListener pinHoverListener;
     @Setter
-    private PinDragListener pinDragListener;
+    private DragListener<Pin> pinDragListener;
     @Setter
     private PinConnectionHandler pinConnectionHandler;
 
@@ -98,21 +100,17 @@ public abstract class BaseNode extends LinearLayout implements BPNode, PinHoverL
     }
 
     @Override
-    public void onLineDrag(Pin pin, int xStart, int yStart, int xEnd, int yEnd) {
-        pinDragListener.onLineDrag(pin, xStart, yStart, xEnd, yEnd);
+    public void onDrag(Pin pin, int xStart, int yStart, int xEnd, int yEnd) {
+        pinDragListener.onDrag(pin, xStart, yStart, xEnd, yEnd);
     }
 
     @Override
-    public void onLineDragEnded(Pin pin, int xStart, int yStart, int xEnd, int yEnd) {
-        pinDragListener.onLineDragEnded(pin, xStart, yStart, xEnd, yEnd);
+    public void onDragEnded(Pin pin, int xStart, int yStart, int xEnd, int yEnd) {
+        pinDragListener.onDragEnded(pin, xStart, yStart, xEnd, yEnd);
     }
 
     protected void onBackgroundInit() {
         setBackground(new SelectableDrawable());
-    }
-
-    public String getNodeId() {
-        return id;
     }
 
     @Override
@@ -158,7 +156,7 @@ public abstract class BaseNode extends LinearLayout implements BPNode, PinHoverL
     public @Nullable Pin getFirstApplicablePinFor(Pin pin) {
         var pins = outputPins;
 
-        if(pin.isOutput()) {
+        if(pin.getConnectionBehaviour().isOutput()) {
             pins = inputPins;
         }
 
@@ -225,13 +223,12 @@ public abstract class BaseNode extends LinearLayout implements BPNode, PinHoverL
 
     @Override
     public void addInputPin(Pin pin, String name) {
-        var rowView = pin.createRowView();
-        rowView.setText(name);
+        var rowView = PinRowView.leftDirectedRow(new PinView(pin), name);
 
         VariableTypeRegistry.onPinRowViewCreated(pin, rowView);
 
         pin.setPinHoverListener(this);
-        pin.setPinDragListener(this);
+        pin.setDragListener(this);
         pin.setPinConnectionHandler(this);
         inputPinsByName.put(pin.getLocalId(), rowView);
 
@@ -242,11 +239,10 @@ public abstract class BaseNode extends LinearLayout implements BPNode, PinHoverL
 
     @Override
     public void addOutputPin(Pin pin, String name) {
-        var rowView = pin.createRowView();
-        rowView.setText(name);
+        var rowView = PinRowView.rightDirectedRow(new PinView(pin), name);
 
         pin.setPinHoverListener(this);
-        pin.setPinDragListener(this);
+        pin.setDragListener(this);
         pin.setPinConnectionHandler(this);
         outputPinsByName.put(pin.getLocalId(), rowView);
 
@@ -300,8 +296,10 @@ public abstract class BaseNode extends LinearLayout implements BPNode, PinHoverL
 
         pinData.name = pin.getLocalId();
 
-        if(pin.isInput() && pin.isConnected()) {
-            var firstConnected = pin.getFirstConnectedPin();
+        var behaviour = pin.getConnectionBehaviour();
+
+        if(behaviour.isInput() && behaviour.isConnected()) {
+            var firstConnected = behaviour.getFirstConnectedPin();
 
             if(firstConnected == null) throw new IllegalStateException();
 
@@ -341,7 +339,7 @@ public abstract class BaseNode extends LinearLayout implements BPNode, PinHoverL
         public final List<PinConnection> pinConnections = new LinkedList<>();
         public final Map<String, Pin> outputPins = new HashMap<>();
         private final Object data;
-        private final BPNode node;
+        private final GraphNode node;
 
         public void deserialize() {
             //noinspection unchecked

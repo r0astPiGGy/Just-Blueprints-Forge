@@ -1475,6 +1475,38 @@
   "extra_data" : null,
   "icon_namespace" : "actions"
 }, {
+  "id" : "entity_swing_hand",
+  "type" : "function",
+  "name" : "Проиграть анимацию взмаха руки",
+  "category" : "entity.entity-appearance",
+  "input" : [ {
+    "id" : "exec",
+    "label" : "",
+    "type" : "exec",
+    "extra_data" : null
+  }, {
+    "id" : "entity",
+    "label" : "Entity",
+    "type" : "entity",
+    "extra_data" : null
+  }, {
+    "id" : "hand_type",
+    "label" : "Тип руки",
+    "type" : "enum",
+    "extra_data" : {
+      "MAIN" : "Главная",
+      "OFF" : "Второстепенная"
+    }
+  } ],
+  "output" : [ {
+    "id" : "exec",
+    "label" : "",
+    "type" : "exec",
+    "extra_data" : null
+  } ],
+  "extra_data" : null,
+  "icon_namespace" : "actions"
+}, {
   "id" : "entity_eat_grass",
   "type" : "function",
   "name" : "Есть траву",
@@ -2551,7 +2583,7 @@
 }, {
   "id" : "entity_set_rotation",
   "type" : "function",
-  "name" : "Повернуть существо",
+  "name" : "Установить поворот",
   "category" : "entity.entity-movement",
   "input" : [ {
     "id" : "exec",
@@ -2572,6 +2604,35 @@
     "id" : "pitch",
     "label" : "Вертикальный поворот (pitch)",
     "type" : "number",
+    "extra_data" : null
+  } ],
+  "output" : [ {
+    "id" : "exec",
+    "label" : "",
+    "type" : "exec",
+    "extra_data" : null
+  } ],
+  "extra_data" : null,
+  "icon_namespace" : "actions"
+}, {
+  "id" : "entity_set_rotation_by_vector",
+  "type" : "function",
+  "name" : "Установить поворот по вектору",
+  "category" : "entity.entity-movement",
+  "input" : [ {
+    "id" : "exec",
+    "label" : "",
+    "type" : "exec",
+    "extra_data" : null
+  }, {
+    "id" : "entity",
+    "label" : "Entity",
+    "type" : "entity",
+    "extra_data" : null
+  }, {
+    "id" : "vector",
+    "label" : "Вектор для поворота",
+    "type" : "vector",
     "extra_data" : null
   } ],
   "output" : [ {
@@ -4694,6 +4755,35 @@
   "extra_data" : null,
   "icon_namespace" : "actions"
 }, {
+  "id" : "game_set_block_analogue_power",
+  "type" : "function",
+  "name" : "Установить силу редстоун сигнала",
+  "category" : "game.game-block",
+  "input" : [ {
+    "id" : "exec",
+    "label" : "",
+    "type" : "exec",
+    "extra_data" : null
+  }, {
+    "id" : "location",
+    "label" : "Местоположение блока",
+    "type" : "location",
+    "extra_data" : null
+  }, {
+    "id" : "power_level",
+    "label" : "Новая сила сигнала",
+    "type" : "number",
+    "extra_data" : null
+  } ],
+  "output" : [ {
+    "id" : "exec",
+    "label" : "",
+    "type" : "exec",
+    "extra_data" : null
+  } ],
+  "extra_data" : null,
+  "icon_namespace" : "actions"
+}, {
   "id" : "game_set_block",
   "type" : "function",
   "name" : "Установить блок",
@@ -5043,6 +5133,35 @@
   "extra_data" : null,
   "icon_namespace" : "actions"
 }, {
+  "id" : "game_set_block_powered",
+  "type" : "function",
+  "name" : "Активировать блок",
+  "category" : "game.game-block",
+  "input" : [ {
+    "id" : "exec",
+    "label" : "",
+    "type" : "exec",
+    "extra_data" : null
+  }, {
+    "id" : "location",
+    "label" : "Местоположение блока",
+    "type" : "location",
+    "extra_data" : null
+  }, {
+    "id" : "powered",
+    "label" : "Активация",
+    "type" : "boolean",
+    "extra_data" : null
+  } ],
+  "output" : [ {
+    "id" : "exec",
+    "label" : "",
+    "type" : "exec",
+    "extra_data" : null
+  } ],
+  "extra_data" : null,
+  "icon_namespace" : "actions"
+}, {
   "id" : "game_set_region",
   "type" : "function",
   "name" : "Установить блоки в регионе",
@@ -5152,6 +5271,30 @@
       "BROWN" : "Коричневый",
       "ORANGE" : "Оранжевый"
     }
+  } ],
+  "output" : [ {
+    "id" : "exec",
+    "label" : "",
+    "type" : "exec",
+    "extra_data" : null
+  } ],
+  "extra_data" : null,
+  "icon_namespace" : "actions"
+}, {
+  "id" : "game_update_block",
+  "type" : "function",
+  "name" : "creative_plus.action.game_update_block.name",
+  "category" : "game",
+  "input" : [ {
+    "id" : "exec",
+    "label" : "",
+    "type" : "exec",
+    "extra_data" : null
+  }, {
+    "id" : "location",
+    "label" : "creative_plus.action.game_update_block.argument.location.name",
+    "type" : "location",
+    "extra_data" : null
   } ],
   "output" : [ {
     "id" : "exec",
@@ -6531,6 +6674,40 @@
     "id" : "entity",
     "label" : "Entity",
     "type" : "entity",
+    "extra_data" : null
+  } ],
+  "output" : [ {
+    "id" : "-",
+    "label" : "Return value",
+    "type" : "condition",
+    "extra_data" : null
+  } ],
+  "extra_data" : null,
+  "icon_namespace" : "actions"
+}, {
+  "id" : "if_entity_in_area",
+  "type" : "pure_function",
+  "name" : "Внутри региона",
+  "category" : "if_entity",
+  "input" : [ {
+    "id" : "entity",
+    "label" : "Entity",
+    "type" : "entity",
+    "extra_data" : null
+  }, {
+    "id" : "location_1",
+    "label" : "Первый угол региона",
+    "type" : "location",
+    "extra_data" : null
+  }, {
+    "id" : "location_2",
+    "label" : "Второй угол региона",
+    "type" : "location",
+    "extra_data" : null
+  }, {
+    "id" : "ignore_y_axis",
+    "label" : "Игнорировать ось Y",
+    "type" : "boolean",
     "extra_data" : null
   } ],
   "output" : [ {
@@ -9877,6 +10054,30 @@
   "extra_data" : null,
   "icon_namespace" : "actions"
 }, {
+  "id" : "player_show_win_screen",
+  "type" : "function",
+  "name" : "Показать экран титров",
+  "category" : "misc",
+  "input" : [ {
+    "id" : "exec",
+    "label" : "",
+    "type" : "exec",
+    "extra_data" : null
+  }, {
+    "id" : "player",
+    "label" : "Player",
+    "type" : "player",
+    "extra_data" : null
+  } ],
+  "output" : [ {
+    "id" : "exec",
+    "label" : "",
+    "type" : "exec",
+    "extra_data" : null
+  } ],
+  "extra_data" : null,
+  "icon_namespace" : "actions"
+}, {
   "id" : "player_stop_sound",
   "type" : "function",
   "name" : "Остановить звук",
@@ -11160,7 +11361,7 @@
 }, {
   "id" : "player_set_rotation",
   "type" : "function",
-  "name" : "Повернуть игрока",
+  "name" : "Установить поворот",
   "category" : "player.player-movement",
   "input" : [ {
     "id" : "exec",
@@ -11181,6 +11382,35 @@
     "id" : "pitch",
     "label" : "Вертикальный поворот (pitch)",
     "type" : "number",
+    "extra_data" : null
+  } ],
+  "output" : [ {
+    "id" : "exec",
+    "label" : "",
+    "type" : "exec",
+    "extra_data" : null
+  } ],
+  "extra_data" : null,
+  "icon_namespace" : "actions"
+}, {
+  "id" : "player_set_rotation_by_vector",
+  "type" : "function",
+  "name" : "Установить поворот по вектору",
+  "category" : "player.player-movement",
+  "input" : [ {
+    "id" : "exec",
+    "label" : "",
+    "type" : "exec",
+    "extra_data" : null
+  }, {
+    "id" : "player",
+    "label" : "Player",
+    "type" : "player",
+    "extra_data" : null
+  }, {
+    "id" : "vector",
+    "label" : "Вектор для поворота",
+    "type" : "vector",
     "extra_data" : null
   } ],
   "output" : [ {
@@ -12487,6 +12717,30 @@
   "extra_data" : null,
   "icon_namespace" : "actions"
 }, {
+  "id" : "player_clear_debug_markers",
+  "type" : "function",
+  "name" : "Удалить отладочные маркеры",
+  "category" : "player.player-world",
+  "input" : [ {
+    "id" : "exec",
+    "label" : "",
+    "type" : "exec",
+    "extra_data" : null
+  }, {
+    "id" : "player",
+    "label" : "Player",
+    "type" : "player",
+    "extra_data" : null
+  } ],
+  "output" : [ {
+    "id" : "exec",
+    "label" : "",
+    "type" : "exec",
+    "extra_data" : null
+  } ],
+  "extra_data" : null,
+  "icon_namespace" : "actions"
+}, {
   "id" : "player_display_block",
   "type" : "function",
   "name" : "Показать блок",
@@ -12594,7 +12848,7 @@
 }, {
   "id" : "player_display_hologram",
   "type" : "function",
-  "name" : "Отобразить голограмму",
+  "name" : "Показать голограмму",
   "category" : "player.player-world",
   "input" : [ {
     "id" : "exec",
@@ -12918,6 +13172,35 @@
   "extra_data" : null,
   "icon_namespace" : "actions"
 }, {
+  "id" : "player_set_simulation_distance",
+  "type" : "function",
+  "name" : "Установить дистанцию симуляции",
+  "category" : "misc",
+  "input" : [ {
+    "id" : "exec",
+    "label" : "",
+    "type" : "exec",
+    "extra_data" : null
+  }, {
+    "id" : "player",
+    "label" : "Player",
+    "type" : "player",
+    "extra_data" : null
+  }, {
+    "id" : "distance",
+    "label" : "Дистанция симуляции в чанках (2-32)",
+    "type" : "number",
+    "extra_data" : null
+  } ],
+  "output" : [ {
+    "id" : "exec",
+    "label" : "",
+    "type" : "exec",
+    "extra_data" : null
+  } ],
+  "extra_data" : null,
+  "icon_namespace" : "actions"
+}, {
   "id" : "player_set_time",
   "type" : "function",
   "name" : "Установить время игрока",
@@ -13045,6 +13328,55 @@
   }, {
     "id" : "time",
     "label" : "Время изменения размера",
+    "type" : "number",
+    "extra_data" : null
+  } ],
+  "output" : [ {
+    "id" : "exec",
+    "label" : "",
+    "type" : "exec",
+    "extra_data" : null
+  } ],
+  "extra_data" : null,
+  "icon_namespace" : "actions"
+}, {
+  "id" : "player_show_debug_marker",
+  "type" : "function",
+  "name" : "Показать отладочный маркер",
+  "category" : "player.player-world",
+  "input" : [ {
+    "id" : "exec",
+    "label" : "",
+    "type" : "exec",
+    "extra_data" : null
+  }, {
+    "id" : "player",
+    "label" : "Player",
+    "type" : "player",
+    "extra_data" : null
+  }, {
+    "id" : "location",
+    "label" : "Местоположение появления",
+    "type" : "location",
+    "extra_data" : null
+  }, {
+    "id" : "name",
+    "label" : "Отображаемое имя",
+    "type" : "text",
+    "extra_data" : null
+  }, {
+    "id" : "duration",
+    "label" : "Длительность в миллисекундах (не обязательно)",
+    "type" : "number",
+    "extra_data" : null
+  }, {
+    "id" : "green",
+    "label" : "Яркость (от 0 до 100)",
+    "type" : "number",
+    "extra_data" : null
+  }, {
+    "id" : "alpha",
+    "label" : "Прозрачность (от 0 до 100)",
     "type" : "number",
     "extra_data" : null
   } ],
@@ -14121,6 +14453,27 @@
   "extra_data" : null,
   "icon_namespace" : "actions"
 }, {
+  "id" : "set_variable_get_list_random_value",
+  "type" : "pure_function",
+  "name" : "Получить случайное значение списка",
+  "category" : "set_variable.set_variable-list",
+  "input" : [ {
+    "id" : "list",
+    "label" : "Список",
+    "type" : "list",
+    "extra_data" : {
+      "element-type" : "dynamic"
+    }
+  } ],
+  "output" : [ {
+    "id" : "-",
+    "label" : "Return value",
+    "type" : "variable",
+    "extra_data" : null
+  } ],
+  "extra_data" : null,
+  "icon_namespace" : "actions"
+}, {
   "id" : "set_variable_get_list_value",
   "type" : "pure_function",
   "name" : "Получить значение из списка",
@@ -14369,18 +14722,13 @@
   "icon_namespace" : "actions"
 }, {
   "id" : "set_variable_sort_any_list",
-  "type" : "function",
-  "name" : "Отсортировать список",
+  "type" : "simple_function",
+  "name" : "SORT",
   "category" : "set_variable.set_variable-list",
   "input" : [ {
     "id" : "exec",
     "label" : "",
     "type" : "exec",
-    "extra_data" : null
-  }, {
-    "id" : "variable",
-    "label" : "Переменная для присвоения",
-    "type" : "variable",
     "extra_data" : null
   }, {
     "id" : "list",
@@ -14403,6 +14751,19 @@
     "label" : "",
     "type" : "exec",
     "extra_data" : null
+  }, {
+    "id" : "return_value",
+    "label" : "Bruh",
+    "type" : "list",
+    "extra_data" : {
+      "element-type" : "dynamic",
+      "dynamic-dependencies" : {
+        "element-type" : {
+          "dest-pin-id" : "list",
+          "dest-type" : "element-type"
+        }
+      }
+    }
   } ],
   "extra_data" : null,
   "icon_namespace" : "actions"
@@ -14535,6 +14896,34 @@
     "id" : "exec",
     "label" : "",
     "type" : "exec",
+    "extra_data" : null
+  } ],
+  "extra_data" : null,
+  "icon_namespace" : "actions"
+}, {
+  "id" : "set_variable_get_block_material_property",
+  "type" : "pure_function",
+  "name" : "Получить свойство блока",
+  "category" : "misc",
+  "input" : [ {
+    "id" : "block",
+    "label" : "Блок для получения",
+    "type" : "item",
+    "extra_data" : null
+  }, {
+    "id" : "property",
+    "label" : "Свойство",
+    "type" : "enum",
+    "extra_data" : {
+      "BLAST_RESISTANCE" : "Устойчивость к взрыву",
+      "SLIPPERINESS" : "Скользкость",
+      "HARDNESS" : "Прочность"
+    }
+  } ],
+  "output" : [ {
+    "id" : "-",
+    "label" : "Return value",
+    "type" : "variable",
     "extra_data" : null
   } ],
   "extra_data" : null,
@@ -16846,6 +17235,42 @@
   "extra_data" : null,
   "icon_namespace" : "actions"
 }, {
+  "id" : "set_variable_get_map_keys_by_value",
+  "type" : "pure_function",
+  "name" : "Получить ключи словаря по значению",
+  "category" : "set_variable.set_variable-map",
+  "input" : [ {
+    "id" : "map",
+    "label" : "Словарь",
+    "type" : "dictionary",
+    "extra_data" : {
+      "key-type" : "dynamic",
+      "value-type" : "dynamic"
+    }
+  }, {
+    "id" : "value",
+    "label" : "Значение для получения",
+    "type" : "any",
+    "extra_data" : null
+  }, {
+    "id" : "find_mode",
+    "label" : "Режим поиска",
+    "type" : "enum",
+    "extra_data" : {
+      "ALL" : "Все (получает все ключи)",
+      "LAST" : "С конца (получает последний ключ)",
+      "FIRST" : "С начала (получает первый ключ)"
+    }
+  } ],
+  "output" : [ {
+    "id" : "-",
+    "label" : "Return value",
+    "type" : "variable",
+    "extra_data" : null
+  } ],
+  "extra_data" : null,
+  "icon_namespace" : "actions"
+}, {
   "id" : "set_variable_get_map_size",
   "type" : "pure_function",
   "name" : "Получить размер словаря",
@@ -18995,6 +19420,35 @@
   "extra_data" : null,
   "icon_namespace" : "actions"
 }, {
+  "id" : "set_variable_value",
+  "type" : "function",
+  "name" : "Установить значение (",
+  "category" : "set_variable.set_variable-setting",
+  "input" : [ {
+    "id" : "exec",
+    "label" : "",
+    "type" : "exec",
+    "extra_data" : null
+  }, {
+    "id" : "variable",
+    "label" : "Переменная для присвоения",
+    "type" : "variable",
+    "extra_data" : null
+  }, {
+    "id" : "value",
+    "label" : "Значение для присвоения",
+    "type" : "any",
+    "extra_data" : null
+  } ],
+  "output" : [ {
+    "id" : "exec",
+    "label" : "",
+    "type" : "exec",
+    "extra_data" : null
+  } ],
+  "extra_data" : null,
+  "icon_namespace" : "actions"
+}, {
   "id" : "set_variable_get_list_variables",
   "type" : "pure_function",
   "name" : "Получить имена переменных",
@@ -19082,35 +19536,6 @@
   }, {
     "id" : "values",
     "label" : "Значения для выбора",
-    "type" : "any",
-    "extra_data" : null
-  } ],
-  "output" : [ {
-    "id" : "exec",
-    "label" : "",
-    "type" : "exec",
-    "extra_data" : null
-  } ],
-  "extra_data" : null,
-  "icon_namespace" : "actions"
-}, {
-  "id" : "set_variable_value",
-  "type" : "function",
-  "name" : "Установить значение (",
-  "category" : "set_variable.set_variable-setting",
-  "input" : [ {
-    "id" : "exec",
-    "label" : "",
-    "type" : "exec",
-    "extra_data" : null
-  }, {
-    "id" : "variable",
-    "label" : "Переменная для присвоения",
-    "type" : "variable",
-    "extra_data" : null
-  }, {
-    "id" : "value",
-    "label" : "Значение для присвоения",
     "type" : "any",
     "extra_data" : null
   } ],

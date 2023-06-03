@@ -1,5 +1,7 @@
 package com.rodev.jbpcore.workspace;
 
+import com.rodev.jbpcore.blueprint.Blueprint;
+
 import java.io.File;
 
 public interface Project {

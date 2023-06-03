@@ -1,7 +1,7 @@
 package com.rodev.jmcparser.data.event;
 
-import com.rodev.jbpcore.blueprint.data.json.ActionEntity;
-import com.rodev.jbpcore.blueprint.data.json.EventEntity;
+import com.rodev.jbpcore.data.json.ActionEntity;
+import com.rodev.jbpcore.data.json.EventEntity;
 import com.rodev.jmcparser.data.Interpreter;
 import com.rodev.jmcparser.data.LocaleProvider;
 import com.rodev.jmcparser.json.Event;
@@ -13,7 +13,6 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class EventInterpreter extends Interpreter<Event> implements EventNameHandler {
 

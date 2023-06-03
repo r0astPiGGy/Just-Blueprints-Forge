@@ -1,11 +1,11 @@
 package com.rodev.jbpcore.blueprint.pin;
 
-public interface Draggable {
+public interface Draggable<T> {
 
-    void onLineDraw(int xStart, int yStart, int xEnd, int yEnd);
+    void onDrag(int xStart, int yStart, int xEnd, int yEnd);
 
-    void onLineDrawEnd(int xStart, int yStart, int xEnd, int yEnd);
+    void onDragEnd(int xStart, int yStart, int xEnd, int yEnd);
 
-    void setPinDragListener(PinDragListener pinDragListener);
+    void setDragListener(DragListener<T> dragListener);
 
 }

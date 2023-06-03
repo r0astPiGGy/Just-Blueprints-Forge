@@ -1,14 +1,11 @@
 package com.rodev.jbp.client;
 
-import com.rodev.jbpcore.fragment.editor.EditorEventListener;
+import com.rodev.jbpcore.ui.fragment.editor.EditorEventListener;
 import com.rodev.jbpcore.workspace.Project;
 import com.rodev.jbpcore.workspace.compiler.CodeCompiler;
-import icyllis.modernui.chatmc.ModernChatComponent;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.components.ChatComponent;
 import net.minecraft.network.chat.*;
-import net.minecraftforge.server.command.TextComponentHelper;
 
 import java.util.regex.Pattern;
 

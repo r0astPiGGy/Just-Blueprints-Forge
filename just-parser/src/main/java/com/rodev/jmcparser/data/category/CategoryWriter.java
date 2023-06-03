@@ -1,8 +1,7 @@
 package com.rodev.jmcparser.data.category;
 
-import com.rodev.jbpcore.blueprint.data.json.ActionEntity;
+import com.rodev.jbpcore.data.json.ActionEntity;
 import com.rodev.jmcparser.data.DataWriter;
-import com.rodev.jmcparser.data.JsonDataWriter;
 import com.rodev.jmcparser.data.LocaleProvider;
 import com.rodev.jmcparser.data.event.EventCategoryTranslator;
 

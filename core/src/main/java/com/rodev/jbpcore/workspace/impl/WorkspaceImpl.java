@@ -4,13 +4,13 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.rodev.jbpcore.JustBlueprints;
-import com.rodev.jbpcore.blueprint.data.DataAccess;
-import com.rodev.jbpcore.blueprint.data.action.Action;
+import com.rodev.jbpcore.data.DataAccess;
+import com.rodev.jbpcore.data.action.Action;
 import com.rodev.jbpcore.blueprint.graph.GraphController;
-import com.rodev.jbpcore.blueprint.node.BPNode;
+import com.rodev.jbpcore.blueprint.node.GraphNode;
 import com.rodev.jbpcore.blueprint.node.PinConnection;
 import com.rodev.jbpcore.blueprint.pin.Pin;
-import com.rodev.jbpcore.fragment.welcome.ValidateResult;
+import com.rodev.jbpcore.ui.fragment.welcome.ValidateResult;
 import com.rodev.jbpcore.workspace.ProgramData;
 import com.rodev.jbpcore.workspace.Project;
 import com.rodev.jbpcore.workspace.Workspace;
@@ -114,7 +114,7 @@ public class WorkspaceImpl implements Workspace {
         return new ProjectImpl(name, directory, createdDate, lastOpen) {
 
             @Override
-            protected void onBlueprintSave(Collection<BPNode> nodes) {
+            protected void onBlueprintSave(Collection<GraphNode> nodes) {
                 saveBlueprint(getDirectory(), nodes);
             }
 
@@ -183,7 +183,7 @@ public class WorkspaceImpl implements Workspace {
     }
 
 
-    public void saveBlueprint(File projectDirectory, Collection<BPNode> nodes) {
+    public void saveBlueprint(File projectDirectory, Collection<GraphNode> nodes) {
         var file = new File(projectDirectory, blueprintDataFileName);
 
         var nodeEntities = nodes.stream().map(this::serialize).toList();
@@ -221,7 +221,7 @@ public class WorkspaceImpl implements Workspace {
                 continue;
             }
 
-            BPNode node = action.toNode();
+            GraphNode node = action.toNode();
 
             var deserializer = node.getDeserializer(nodeEntity.data);
             deserializer.deserialize();
@@ -243,7 +243,7 @@ public class WorkspaceImpl implements Workspace {
         }
     }
 
-    public NodeEntity serialize(BPNode node) {
+    public NodeEntity serialize(GraphNode node) {
         var entity = new NodeEntity();
 
         entity.id = node.getType();

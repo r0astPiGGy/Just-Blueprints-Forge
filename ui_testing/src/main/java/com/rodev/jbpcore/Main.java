@@ -1,10 +1,9 @@
 package com.rodev.jbpcore;
 
-import com.rodev.jbpcore.blueprint.data.DataAccess;
-import com.rodev.jbpcore.blueprint.data.DataProvider;
+import com.rodev.jbpcore.data.DataAccess;
+import com.rodev.jbpcore.data.DataProvider;
 import com.rodev.jbpcore.workspace.impl.WorkspaceImpl;
 import icyllis.modernui.ModernUI;
-import org.apache.logging.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
@@ -12,7 +11,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 
-import static com.rodev.jbpcore.blueprint.data.DataAccess.TEXTURE_NAMESPACE;
+import static com.rodev.jbpcore.data.DataAccess.TEXTURE_NAMESPACE;
 
 public class Main extends ModernUI implements DataProvider {
 

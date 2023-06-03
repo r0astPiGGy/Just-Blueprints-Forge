@@ -44,6 +44,7 @@
   "if_player-item" : "Предметные условия",
   "repeat" : "Повторение",
   "player" : "Действие над игроком",
+  "misc" : "creative_plus.category.misc_action.name",
   "entity-goals" : "Цели",
   "controller" : "Контроллер",
   "entity-parameters" : "Параметры",

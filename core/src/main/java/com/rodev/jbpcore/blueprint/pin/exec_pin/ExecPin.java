@@ -1,27 +1,61 @@
 package com.rodev.jbpcore.blueprint.pin.exec_pin;
 
-import com.rodev.jbpcore.blueprint.data.action.pin_type.PinType;
+import com.rodev.jbpcore.blueprint.pin.PinImpl;
+import com.rodev.jbpcore.blueprint.pin.behaviour.ConnectionBehaviour;
+import com.rodev.jbpcore.blueprint.pin.behaviour.InputBehaviour;
+import com.rodev.jbpcore.blueprint.pin.behaviour.OutputBehaviour;
+import com.rodev.jbpcore.data.action.pin_type.PinType;
 import com.rodev.jbpcore.blueprint.pin.Pin;
-import icyllis.modernui.graphics.Canvas;
-import icyllis.modernui.graphics.Paint;
-import icyllis.modernui.graphics.drawable.Drawable;
-import icyllis.modernui.graphics.drawable.StateListDrawable;
-import icyllis.modernui.material.MaterialDrawable;
-import icyllis.modernui.math.Rect;
-import icyllis.modernui.util.StateSet;
-import org.jetbrains.annotations.NotNull;
 
-import static icyllis.modernui.view.View.dp;
-import static icyllis.modernui.widget.CompoundButton.CHECKED_STATE_SET;
+public class ExecPin extends PinImpl {
 
-public interface ExecPin extends Pin {
-
-    static Pin outputPin(PinType pinType) {
-        return new OutExecPin(pinType);
+    protected ExecPin(PinType pinType, ConnectionBehaviour connectionBehaviour) {
+        super(pinType, connectionBehaviour);
     }
 
-    static Pin inputPin(PinType pinType) {
-        return new InExecPin(pinType);
+    public static Pin outputPin(PinType pinType) {
+        return new ExecPin(pinType, new ExecOutputBehaviour());
+    }
+
+    public static Pin inputPin(PinType pinType) {
+        return new ExecPin(pinType, new ExecInputBehaviour());
+    }
+
+    private static boolean isNotExecPin(Pin pin) {
+        return !(pin instanceof ExecPin);
+    }
+
+    private static class ExecInputBehaviour extends InputBehaviour {
+
+        @Override
+        public boolean isApplicable(Pin target, Pin another) {
+            if(isNotExecPin(another)) return false;
+
+            var connectionBehaviour = another.getConnectionBehaviour();
+
+            if(connectionBehaviour instanceof ExecInputBehaviour) return false;
+
+            return connectionBehaviour.isOutput();
+        }
+    }
+
+    private static class ExecOutputBehaviour extends OutputBehaviour {
+
+        @Override
+        public boolean isApplicable(Pin target, Pin another) {
+            if(isNotExecPin(another)) return false;
+
+            var connectionBehaviour = another.getConnectionBehaviour();
+
+            if(connectionBehaviour instanceof ExecOutputBehaviour) return false;
+
+            return connectionBehaviour.isInput();
+        }
+
+        @Override
+        public boolean supportMultipleConnections() {
+            return false;
+        }
     }
 
 }

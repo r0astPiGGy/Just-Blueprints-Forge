@@ -1,7 +1,6 @@
 package com.rodev.jmcparser.data;
 
-import com.rodev.jbpcore.blueprint.data.action.Action;
-import com.rodev.jbpcore.blueprint.data.json.ActionEntity;
+import com.rodev.jbpcore.data.json.ActionEntity;
 import com.rodev.jmcparser.generator.OnActionInterpretedListener;
 import com.rodev.jmcparser.json.GameValue;
 import org.jetbrains.annotations.NotNull;
