@@ -3,28 +3,25 @@ package com.rodev.jbpcore.blueprint.node;
 import com.rodev.jbpcore.Colors;
 import icyllis.modernui.graphics.Canvas;
 import icyllis.modernui.graphics.Paint;
+import icyllis.modernui.graphics.Rect;
 import icyllis.modernui.graphics.drawable.Drawable;
-import icyllis.modernui.math.Rect;
 
 import javax.annotation.Nonnull;
-
-import static icyllis.modernui.view.View.dp;
 
 public class SelectableDrawable extends Drawable {
 
     protected boolean isSelected;
-    protected final int mRadius;
+    public int mRadius;
     protected final int selectionOffset;
     protected int backgroundColor = Colors.NODE_BACKGROUND;
     protected int padding = 0;
 
     public SelectableDrawable() {
-        this(3, dp(8));
+        this(3);
     }
 
-    public SelectableDrawable(int selectionOffset, int mRadius) {
+    public SelectableDrawable(int selectionOffset) {
         this.selectionOffset = selectionOffset;
-        this.mRadius = mRadius;
     }
 
     public void setSelected(boolean value) {
@@ -33,7 +30,7 @@ public class SelectableDrawable extends Drawable {
 
     @Override
     public void draw(@Nonnull Canvas canvas) {
-        Paint paint = Paint.take();
+        Paint paint = Paint.obtain();
         Rect b = getBounds();
 
         drawSelectionOutlineIfSelected(canvas, paint);
@@ -48,7 +45,7 @@ public class SelectableDrawable extends Drawable {
                 paint
         );
 
-        paint.drop();
+        paint.recycle();
     }
 
     protected void drawSelectionOutlineIfSelected(Canvas canvas, Paint paint) {

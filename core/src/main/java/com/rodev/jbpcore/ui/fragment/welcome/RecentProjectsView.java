@@ -5,11 +5,12 @@ import com.rodev.jbpcore.JustBlueprints;
 import com.rodev.jbpcore.utils.ParamsBuilder;
 import com.rodev.jbpcore.utils.ViewUtils;
 import com.rodev.jbpcore.workspace.Project;
+import icyllis.modernui.core.Context;
 import icyllis.modernui.graphics.Canvas;
 import icyllis.modernui.graphics.Paint;
+import icyllis.modernui.graphics.Rect;
 import icyllis.modernui.graphics.drawable.Drawable;
 import icyllis.modernui.graphics.drawable.ImageDrawable;
-import icyllis.modernui.math.Rect;
 import icyllis.modernui.text.TextUtils;
 import icyllis.modernui.view.MotionEvent;
 import icyllis.modernui.view.PointerIcon;
@@ -34,7 +35,8 @@ public class RecentProjectsView extends LinearLayout {
 
     private ProjectView selectedProject;
 
-    public RecentProjectsView() {
+    public RecentProjectsView(Context context) {
+        super(context);
         var params = new ViewGroup.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT
@@ -77,18 +79,20 @@ public class RecentProjectsView extends LinearLayout {
     }
 
     private View createProjectView(Project project) {
-        return new ProjectView(project);
+        return new ProjectView(getContext(), project);
     }
 
     private class ProjectView extends RelativeLayout {
 
         private boolean selected;
         private TextView pathView;
-        private final CrossView crossButton = new CrossView();
+        private final CrossView crossButton;
         public final Project project;
 
-        private ProjectView(Project project) {
+        private ProjectView(Context context, Project project) {
+            super(context);
             this.project = project;
+            crossButton = new CrossView(context);
 
             var params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
             params.setMargins(0, dp(10), 0, dp(10));
@@ -120,7 +124,7 @@ public class RecentProjectsView extends LinearLayout {
         }
 
         private LinearLayout createNameAndPath() {
-            var textContainer = new LinearLayout();
+            var textContainer = new LinearLayout(getContext());
             textContainer.setOrientation(LinearLayout.VERTICAL);
 
             ParamsBuilder.using(RelativeLayout.LayoutParams::new)
@@ -157,7 +161,7 @@ public class RecentProjectsView extends LinearLayout {
         }
 
         private TextView createText() {
-            var textView = new TextView();
+            var textView = new TextView(getContext());
             ViewUtils.matchParentWrapContent(textView);
             textView.setTextSize(sp(24));
             textView.setTypeface(MINECRAFT_FONT);
@@ -214,7 +218,7 @@ public class RecentProjectsView extends LinearLayout {
             public void draw(@NotNull Canvas canvas) {
                 if(isProjectSelected()) {
                     var b = getBounds();
-                    var p = Paint.get();
+                    var p = Paint.obtain();
                     p.setColor(SELECTED_COLOR);
                     canvas.drawRoundRect(b.left, b.top, b.right, b.bottom, mRadius, p);
                 }
@@ -233,14 +237,15 @@ public class RecentProjectsView extends LinearLayout {
 
         private boolean hovering;
 
-        public CrossView() {
+        public CrossView(Context context) {
+            super(context);
             // TODO draw two lines instead of using icon
             var crossImage = new ImageDrawable(TEXTURE_NAMESPACE, getPath("ui", "ic-cross")) {
                 @Override
                 public void draw(@NotNull Canvas canvas) {
                     if(hovering) {
                         var b = getBounds();
-                        var p = Paint.get();
+                        var p = Paint.obtain();
                         p.setColor(Colors.NODE_BACKGROUND);
                         canvas.drawRoundRect(b.left, b.top, b.right, b.bottom, b.width(), p);
                     }

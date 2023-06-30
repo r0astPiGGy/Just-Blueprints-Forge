@@ -2,8 +2,8 @@ package com.rodev.jbpcore.ui.drawable;
 
 import icyllis.modernui.graphics.Canvas;
 import icyllis.modernui.graphics.Paint;
+import icyllis.modernui.graphics.Rect;
 import icyllis.modernui.graphics.drawable.Drawable;
-import icyllis.modernui.math.Rect;
 import icyllis.modernui.view.View;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
@@ -19,7 +19,7 @@ public class ColoredBackground extends Drawable {
     @Override
     public void draw(@NotNull Canvas canvas) {
         var b = getBounds();
-        var p = Paint.get();
+        var p = Paint.obtain();
         p.setColor(color);
         drawFunction.onDraw(canvas, b, p);
     }

@@ -7,8 +7,10 @@ import com.rodev.jbpcore.data.DataAccess;
 import com.rodev.jbpcore.data.DataProvider;
 import com.rodev.jbpcore.workspace.ModernUIWindowManager;
 import com.rodev.jbpcore.workspace.impl.WorkspaceImpl;
-import icyllis.modernui.forge.MuiForgeApi;
+import icyllis.modernui.ModernUI;
+import icyllis.modernui.core.Core;
 import icyllis.modernui.fragment.Fragment;
+import icyllis.modernui.mc.forge.MuiForgeApi;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -57,11 +59,13 @@ public class JustBlueprintsMod implements DataProvider
     }
 
     private void setup(final FMLCommonSetupEvent event){
-        try {
-            DataAccess.load(this);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        Core.executeOnRenderThread(()-> {
+            try {
+                DataAccess.load(this);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call

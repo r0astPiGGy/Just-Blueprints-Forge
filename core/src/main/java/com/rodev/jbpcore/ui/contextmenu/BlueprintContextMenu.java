@@ -21,8 +21,8 @@ package com.rodev.jbpcore.ui.contextmenu;
 import com.rodev.jbpcore.Colors;
 import icyllis.modernui.graphics.Canvas;
 import icyllis.modernui.graphics.Paint;
+import icyllis.modernui.graphics.Rect;
 import icyllis.modernui.graphics.drawable.Drawable;
-import icyllis.modernui.math.Rect;
 import icyllis.modernui.view.*;
 import icyllis.modernui.widget.*;
 
@@ -180,7 +180,7 @@ public class BlueprintContextMenu {
 
         @Override
         public void draw(@Nonnull Canvas canvas) {
-            Paint paint = Paint.get();
+            Paint paint = Paint.obtain();
             paint.setColor(Colors.NODE_BACKGROUND);
             Rect b = getBounds();
             canvas.drawRect(b.left, b.top, b.right, b.bottom, paint);
@@ -188,7 +188,7 @@ public class BlueprintContextMenu {
 
         @Override
         public boolean getPadding(@Nonnull Rect padding) {
-            int r = (int) Math.ceil(8);
+            int r = (int) (double) 8;
             padding.set(r, r, r, r);
             return true;
         }

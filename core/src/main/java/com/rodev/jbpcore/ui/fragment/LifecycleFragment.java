@@ -36,13 +36,6 @@ public class LifecycleFragment extends Fragment {
     }
 
     @Override
-    public void onAttach() {
-        super.onAttach();
-
-        log("ON ATTACH");
-    }
-
-    @Override
     public void onPause() {
         super.onPause();
 

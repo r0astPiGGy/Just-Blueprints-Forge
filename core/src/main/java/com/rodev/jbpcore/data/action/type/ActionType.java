@@ -4,6 +4,7 @@ package com.rodev.jbpcore.data.action.type;
 import com.rodev.jbpcore.data.action.Action;
 import com.rodev.jbpcore.data.action.NodeSupplier;
 import com.rodev.jbpcore.blueprint.node.GraphNode;
+import icyllis.modernui.core.Context;
 
 import java.util.Objects;
 
@@ -21,8 +22,8 @@ public final class ActionType {
         return type;
     }
 
-    public GraphNode createNode(Action action) {
-        return nodeSupplier.create(headerColor, action);
+    public GraphNode createNode(Context context, Action action) {
+        return nodeSupplier.create(context, headerColor, action);
     }
 
     @Override

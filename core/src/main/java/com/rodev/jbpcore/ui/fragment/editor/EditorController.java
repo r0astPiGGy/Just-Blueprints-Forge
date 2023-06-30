@@ -48,7 +48,7 @@ public class EditorController {
             nodes.add(node);
         }
 
-        project.getBlueprint().load().save(nodes);
+        project.getBlueprint().load(graphLayout.getContext()).save(nodes);
         JustBlueprints.getEditorEventListener().onProjectSaved(project);
     }
 

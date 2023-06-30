@@ -7,6 +7,7 @@ import com.rodev.jbpcore.blueprint.pin.dynamic.Dynamic;
 import com.rodev.jbpcore.blueprint.pin.dynamic.DynamicPinHandler;
 import com.rodev.jbpcore.ui.pin.PinRowView;
 import com.rodev.jbpcore.ui.pin.PinView;
+import icyllis.modernui.core.Context;
 import icyllis.modernui.view.*;
 import icyllis.modernui.widget.LinearLayout;
 import lombok.Getter;
@@ -44,7 +45,9 @@ public abstract class BaseNode extends LinearLayout implements GraphNode, PinHov
 
     private final DynamicPinHandler dynamicPinHandler = new DynamicPinHandler();
 
-    public BaseNode(String id) {
+    public BaseNode(Context context, String id) {
+        super(context);
+
         this.id = id;
 
         nodeTouchHandler = new NodeTouchHandler<>(this);
@@ -223,7 +226,7 @@ public abstract class BaseNode extends LinearLayout implements GraphNode, PinHov
 
     @Override
     public void addInputPin(Pin pin, String name) {
-        var rowView = PinRowView.leftDirectedRow(new PinView(pin), name);
+        var rowView = PinRowView.leftDirectedRow(new PinView(getContext(), pin), name);
 
         VariableTypeRegistry.onPinRowViewCreated(pin, rowView);
 
@@ -239,7 +242,7 @@ public abstract class BaseNode extends LinearLayout implements GraphNode, PinHov
 
     @Override
     public void addOutputPin(Pin pin, String name) {
-        var rowView = PinRowView.rightDirectedRow(new PinView(pin), name);
+        var rowView = PinRowView.rightDirectedRow(new PinView(getContext(), pin), name);
 
         pin.setPinHoverListener(this);
         pin.setDragListener(this);

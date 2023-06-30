@@ -24,21 +24,23 @@ public class NodeDrawable extends SelectableDrawable {
         super.draw(canvas);
 
         var b = getBounds();
-        var paint = Paint.take();
+        var paint = Paint.obtain();
 
         int headerHeight = headerHeightSupplier.get() + padding;
 
-        paint.setColors(headerColors);
-        canvas.drawRoundRect(
+        canvas.drawRoundRectGradient(
                 b.left + selectionOffset,
                 b.top + selectionOffset,
                 b.right - selectionOffset,
                 b.top + headerHeight,
+                headerColors[0],
+                headerColors[1],
+                headerColors[2],
+                headerColors[3],
                 mRadius,
-                Gravity.TOP,
                 paint
         );
 
-        paint.drop();
+        paint.recycle();
     }
 }

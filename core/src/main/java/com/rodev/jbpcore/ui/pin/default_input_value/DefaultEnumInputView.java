@@ -4,10 +4,11 @@ import com.rodev.jbpcore.Colors;
 import com.rodev.jbpcore.data.action.pin_type.EnumPinType;
 import com.rodev.jbpcore.data.action.EnumValue;
 import com.rodev.jbpcore.data.variable.DefaultInputValue;
+import icyllis.modernui.core.Context;
 import icyllis.modernui.graphics.Canvas;
 import icyllis.modernui.graphics.Paint;
+import icyllis.modernui.graphics.Rect;
 import icyllis.modernui.graphics.drawable.Drawable;
-import icyllis.modernui.math.Rect;
 import icyllis.modernui.view.View;
 import icyllis.modernui.widget.ArrayAdapter;
 import icyllis.modernui.widget.Spinner;
@@ -19,9 +20,10 @@ public class DefaultEnumInputView extends Spinner implements DefaultInputValue {
 
     private final List<EnumValue> enumValueList;
 
-    public DefaultEnumInputView(EnumPinType pinType) {
+    public DefaultEnumInputView(Context context, EnumPinType pinType) {
+        super(context);
         enumValueList = pinType.values();
-        ArrayAdapter<EnumValue> arrayAdapter = new CustomArrayAdapter<>(enumValueList);
+        ArrayAdapter<EnumValue> arrayAdapter = new CustomArrayAdapter<>(context, enumValueList);
 
         setAdapter(arrayAdapter);
 
@@ -30,7 +32,7 @@ public class DefaultEnumInputView extends Spinner implements DefaultInputValue {
 
             @Override
             public void draw(@Nonnull Canvas canvas) {
-                Paint paint = Paint.get();
+                Paint paint = Paint.obtain();
                 paint.setColor(Colors.WHITE);
                 paint.setStyle(Paint.STROKE);
                 paint.setStrokeWidth(1.2f);

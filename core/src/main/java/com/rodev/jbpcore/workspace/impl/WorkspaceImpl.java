@@ -144,7 +144,7 @@ public class WorkspaceImpl implements Workspace {
         }
 
         asyncCompiler.compile(savedBlueprint, codeCompiler -> {
-            onBlueprintCompiled(project, codeCompiler);
+           // onBlueprintCompiled(project, codeCompiler);
         });
     }
 
@@ -169,7 +169,7 @@ public class WorkspaceImpl implements Workspace {
             var msg = "Code was generated, but jmcc not found. Please install it to "
                     + jmcc.getAbsolutePath();
             log.error(msg);
-            JustBlueprints.getEditorEventListener().onBlueprintCompileError(project, msg);
+//            JustBlueprints.getEditorEventListener().onBlueprintCompileError(project, msg);
             return;
         }
 
@@ -183,7 +183,7 @@ public class WorkspaceImpl implements Workspace {
 
         if(compiler.getExitCode() != 0) {
             log.warn("Compilation finished unsuccessfully. Error message: \n" + output);
-            JustBlueprints.getEditorEventListener().onBlueprintCompileError(project, output);
+//            JustBlueprints.getEditorEventListener().onBlueprintCompileError(project, output);
             return;
         }
 

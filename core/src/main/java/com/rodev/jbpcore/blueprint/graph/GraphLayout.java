@@ -3,6 +3,7 @@ package com.rodev.jbpcore.blueprint.graph;
 import com.rodev.jbpcore.blueprint.Navigable;
 import com.rodev.jbpcore.ui.contextmenu.ContextMenuBuilder;
 import com.rodev.jbpcore.blueprint.Blueprint;
+import icyllis.modernui.core.Context;
 import icyllis.modernui.graphics.Canvas;
 import icyllis.modernui.graphics.Paint;
 import icyllis.modernui.view.*;
@@ -15,7 +16,8 @@ public class GraphLayout extends AbsoluteLayout implements ViewMoveListener, Con
     private GraphController graphController;
     private ContextMenuOpenHandler contextMenuOpenHandler;
 
-    public GraphLayout() {
+    public GraphLayout(Context context) {
+        super(context);
         var params = new FrameLayout.LayoutParams(
                 Integer.MAX_VALUE,
                 Integer.MAX_VALUE
@@ -38,7 +40,7 @@ public class GraphLayout extends AbsoluteLayout implements ViewMoveListener, Con
     }
 
     public void loadBlueprint(Blueprint blueprint) {
-        blueprint.loadTo(graphController);
+        blueprint.loadInto(graphController);
     }
 
     private void addNodeInternal(View view, int x, int y) {
@@ -113,8 +115,13 @@ public class GraphLayout extends AbsoluteLayout implements ViewMoveListener, Con
     }
 
     @Override
+    public Context provideContext() {
+        return getContext();
+    }
+
+    @Override
     protected void onDraw(@NotNull Canvas canvas) {
-        graphController.onDraw(canvas, Paint.take());
+        graphController.onDraw(canvas, Paint.obtain());
 
         super.onDraw(canvas);
     }

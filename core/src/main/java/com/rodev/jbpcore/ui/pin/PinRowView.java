@@ -5,6 +5,7 @@ import com.rodev.jbpcore.blueprint.pin.Pin;
 import com.rodev.jbpcore.blueprint.pin.PinToggleListener;
 import com.rodev.jbpcore.utils.ParamsBuilder;
 import com.rodev.jbpcore.handlers.TextViewCreationListener;
+import icyllis.modernui.core.Context;
 import icyllis.modernui.view.Gravity;
 import icyllis.modernui.view.ViewGroup;
 import icyllis.modernui.widget.LinearLayout;
@@ -16,16 +17,19 @@ public class PinRowView extends LinearLayout implements PinToggleListener {
     private final PinView pinView;
     private final TextView textView;
     // TODO: Rename
-    private final LinearLayout pinInfo = new LinearLayout();
+    private final LinearLayout pinInfo;
 
     private DefaultInputValue defaultInputValue;
 
-    public PinRowView(PinView pin, String text, Direction direction) {
+    public PinRowView(Context context, PinView pin, String text, Direction direction) {
+        super(context);
         setOrientation(LinearLayout.HORIZONTAL);
+
+        pinInfo = new LinearLayout(context);
 
         pin.setPinConnectionListener(this);
 
-        var textView = new TextView();
+        var textView = new TextView(context);
         textView.setText(text);
 
         setPadding(0, dp(1.5f), 0, dp(1.5f));
@@ -116,11 +120,11 @@ public class PinRowView extends LinearLayout implements PinToggleListener {
     }
 
     public static PinRowView leftDirectedRow(PinView pinView, String variableName) {
-        return new PinRowView(pinView, variableName, Direction.LEFT);
+        return new PinRowView(pinView.getContext(), pinView, variableName, Direction.LEFT);
     }
 
     public static PinRowView rightDirectedRow(PinView pinView, String variableName) {
-        return new PinRowView(pinView, variableName, Direction.RIGHT);
+        return new PinRowView(pinView.getContext(), pinView, variableName, Direction.RIGHT);
     }
 
     public enum Direction {

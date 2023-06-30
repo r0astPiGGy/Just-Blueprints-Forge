@@ -3,6 +3,7 @@ package com.rodev.jbpcore.ui.node.getter;
 import com.rodev.jbpcore.blueprint.node.BaseNode;
 import com.rodev.jbpcore.ui.pin.PinRowView;
 import com.rodev.jbpcore.handlers.TextViewCreationListener;
+import icyllis.modernui.core.Context;
 import icyllis.modernui.graphics.drawable.ImageDrawable;
 import icyllis.modernui.view.Gravity;
 import icyllis.modernui.view.View;
@@ -23,8 +24,8 @@ public class PropertyGetterNode extends BaseNode {
 
     private final Runnable headerCallback;
 
-    public PropertyGetterNode(int headerColor, String id, String name, ImageDrawable icon) {
-        super(id);
+    public PropertyGetterNode(Context context, int headerColor, String id, String name, ImageDrawable icon) {
+        super(context, id);
 
         this.title = name;
 
@@ -43,7 +44,7 @@ public class PropertyGetterNode extends BaseNode {
     }
 
     private LinearLayout createNodeHeader() {
-        var nodeHeader = new LinearLayout();
+        var nodeHeader = new LinearLayout(getContext());
         nodeHeader.setOrientation(HORIZONTAL);
         var params = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         params.setMargins(0, dp(3), 0, dp(3));
@@ -61,7 +62,7 @@ public class PropertyGetterNode extends BaseNode {
     }
 
     private View createIcon() {
-        var icon = new View();
+        var icon = new View(getContext());
         icon.setBackground(this.iconDrawable);
 
         var params = new LayoutParams(dp(30), dp(30));
@@ -72,7 +73,7 @@ public class PropertyGetterNode extends BaseNode {
     }
 
     private LinearLayout createLabel() {
-        var nodeHeader = new LinearLayout();
+        var nodeHeader = new LinearLayout(getContext());
         nodeHeader.setOrientation(VERTICAL);
         var params = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         nodeHeader.setPadding(dp(6), 0, 0, 0);
@@ -89,7 +90,7 @@ public class PropertyGetterNode extends BaseNode {
     }
 
     private TextView createTitle() {
-        var title = new TextView();
+        var title = new TextView(getContext());
         title.setText(this.title);
 
         TextViewCreationListener.onNodeTitleCreated(title);
@@ -98,7 +99,7 @@ public class PropertyGetterNode extends BaseNode {
     }
 
     private TextView createSubtitle() {
-        var subtitleView = new TextView();
+        var subtitleView = new TextView(getContext());
 
         TextViewCreationListener.onNodeSubtitleCreated(subtitleView);
         subtitleView.setVisibility(GONE);

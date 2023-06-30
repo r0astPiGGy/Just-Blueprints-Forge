@@ -1,10 +1,12 @@
 package com.rodev.jbpcore.ui.view;
 
 import com.rodev.jbpcore.Colors;
+import com.rodev.jbpcore.utils.ViewUtils;
+import icyllis.modernui.core.Context;
 import icyllis.modernui.graphics.Canvas;
 import icyllis.modernui.graphics.Paint;
+import icyllis.modernui.graphics.Rect;
 import icyllis.modernui.graphics.drawable.Drawable;
-import icyllis.modernui.math.Rect;
 import icyllis.modernui.widget.EditText;
 import org.jetbrains.annotations.NotNull;
 
@@ -14,7 +16,8 @@ public class MaterialEditText extends EditText {
 
     private final Background background = new Background(Colors.WHITE, Colors.NODE_BACKGROUND, dp(2));
 
-    public MaterialEditText() {
+    public MaterialEditText(Context context) {
+        super(context);
         setBackground(background);
     }
 
@@ -28,7 +31,7 @@ public class MaterialEditText extends EditText {
         invalidateDrawable(background);
     }
 
-    private static class Background extends Drawable {
+    private class Background extends Drawable {
 
         int padding = 0;
         int outlineColor = Colors.WHITE;
@@ -44,7 +47,7 @@ public class MaterialEditText extends EditText {
         @Override
         public void draw(@NotNull Canvas canvas) {
             var b = getBounds();
-            var p = Paint.get();
+            var p = Paint.obtain();
 
             p.setColor(outlineColor);
             canvas.drawRoundRect(b.left, b.top, b.right, b.bottom, radius, p);

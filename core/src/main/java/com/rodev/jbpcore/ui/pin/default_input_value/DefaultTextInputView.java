@@ -3,10 +3,11 @@ package com.rodev.jbpcore.ui.pin.default_input_value;
 import com.rodev.jbpcore.Colors;
 import com.rodev.jbpcore.data.variable.DefaultInputValue;
 import com.rodev.jbpcore.handlers.TextViewCreationListener;
+import icyllis.modernui.core.Context;
 import icyllis.modernui.graphics.Canvas;
 import icyllis.modernui.graphics.Paint;
+import icyllis.modernui.graphics.Rect;
 import icyllis.modernui.graphics.drawable.Drawable;
-import icyllis.modernui.math.Rect;
 import icyllis.modernui.view.View;
 import icyllis.modernui.view.ViewGroup;
 import icyllis.modernui.widget.EditText;
@@ -15,7 +16,8 @@ import javax.annotation.Nonnull;
 
 public class DefaultTextInputView extends EditText implements DefaultInputValue {
 
-    public DefaultTextInputView() {
+    public DefaultTextInputView(Context context) {
+        super(context);
         setLayoutParams(new ViewGroup.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT
@@ -28,7 +30,7 @@ public class DefaultTextInputView extends EditText implements DefaultInputValue 
 
             @Override
             public void draw(@Nonnull Canvas canvas) {
-                Paint paint = Paint.get();
+                Paint paint = Paint.obtain();
                 paint.setColor(Colors.WHITE);
                 paint.setStyle(Paint.STROKE);
                 paint.setStrokeWidth(1.2f);

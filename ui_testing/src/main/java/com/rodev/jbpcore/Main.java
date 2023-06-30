@@ -4,24 +4,29 @@ import com.rodev.jbpcore.data.DataAccess;
 import com.rodev.jbpcore.data.DataProvider;
 import com.rodev.jbpcore.workspace.impl.WorkspaceImpl;
 import icyllis.modernui.ModernUI;
+import icyllis.modernui.TestFragment;
+import icyllis.modernui.core.Core;
 import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.concurrent.CompletableFuture;
 
 import static com.rodev.jbpcore.data.DataAccess.TEXTURE_NAMESPACE;
 
 public class Main extends ModernUI implements DataProvider {
 
     public static void main(String[] args) {
-        try (Main app = new Main()) {
-            app.init();
-            JustBlueprints.getWindowManager().open();
-        } catch (Throwable e) {
-            throw new RuntimeException(e);
-        }
+        TestFragment.main(args);
+
+//        try (Main app = new Main()) {
+//            app.init();
+//            JustBlueprints.getWindowManager().open();
+//        } catch (Throwable e) {
+//            throw new RuntimeException(e);
+//        }
     }
 
     private void init() throws IOException, FontFormatException {
@@ -30,7 +35,13 @@ public class Main extends ModernUI implements DataProvider {
         JustBlueprints.setWorkspace(new WorkspaceImpl());
         JustBlueprints.setWindowManager(new WindowManagerImpl(this));
 
-        DataAccess.load(this);
+        Core.postOnRenderThread(() -> {
+            try {
+                DataAccess.load(this);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
     }
 
     @Override

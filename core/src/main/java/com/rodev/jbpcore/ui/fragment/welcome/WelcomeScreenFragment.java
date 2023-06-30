@@ -7,8 +7,10 @@ import com.rodev.jbpcore.ui.drawable.ColoredBackground;
 import com.rodev.jbpcore.utils.ParamsBuilder;
 import icyllis.modernui.graphics.drawable.ImageDrawable;
 import icyllis.modernui.util.DataSet;
+import icyllis.modernui.util.DisplayMetrics;
 import icyllis.modernui.view.*;
 import icyllis.modernui.widget.*;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.annotation.Nonnull;
@@ -19,32 +21,33 @@ import static com.rodev.jbpcore.data.DataAccess.TEXTURE_NAMESPACE;
 import static com.rodev.jbpcore.utils.ViewUtils.matchParent;
 import static icyllis.modernui.view.MeasureSpec.EXACTLY;
 import static icyllis.modernui.view.MeasureSpec.makeMeasureSpec;
-import static icyllis.modernui.view.View.dp;
-import static icyllis.modernui.view.View.sp;
 
 public class WelcomeScreenFragment extends LifecycleFragment {
 
     private final int recentProjectsId = 15433;
 
-    private static final Supplier<Integer> BACKGROUND_CORNER_RADIUS = () -> dp(20);
-
     private final WelcomeScreenController welcomeScreenController = new WelcomeScreenController(this);
 
-    public static int getBackgroundCornerRadius() {
-        return BACKGROUND_CORNER_RADIUS.get();
+    public static int getBackgroundCornerRadius(View view) {
+        return view.dp(20);
     }
 
     private View root;
 
-    @Nullable
     @Override
-    public View onCreateView(@Nullable ViewGroup container, @Nullable DataSet savedInstanceState) {
-        ViewConfiguration.get().setViewScale(1);
+    public View onCreateView(@NotNull LayoutInflater inflater, ViewGroup container, DataSet savedInstanceState) {
+//        var r = getContext().getResources();
+//        var metrics = r.getDisplayMetrics();
+//
+//        metrics.density = DisplayMetrics.DENSITY_MEDIUM;
+//        metrics.scaledDensity = DisplayMetrics.DENSITY_DEFAULT_SCALE;
+//
+//        r.updateMetrics(metrics);
 
-        var rootContainer = new FrameLayout();
+        var rootContainer = new FrameLayout(getContext());
         matchParent(rootContainer);
 
-        var root = new RelativeLayout() {
+        var root = new RelativeLayout(getContext()) {
 
             @Override
             protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
@@ -75,22 +78,27 @@ public class WelcomeScreenFragment extends LifecycleFragment {
     }
 
     private LinearLayout createRecentProjectsContainer() {
-        var container = new LinearLayout();
+        var container = new LinearLayout(getContext());
         container.setOrientation(LinearLayout.VERTICAL);
         container.setId(recentProjectsId);
 
         var params = new RelativeLayout.LayoutParams(
-                dp(400), ViewGroup.LayoutParams.MATCH_PARENT
+                container.dp(400), ViewGroup.LayoutParams.MATCH_PARENT
         );
         params.addRule(RelativeLayout.ALIGN_PARENT_END);
         ColoredBackground.of(Colors.NODE_BACKGROUND_SECONDARY)
                 .setDrawFunction((canvas, b, paint) -> {
-                    canvas.drawRoundRect(b.left, b.top, b.right, b.bottom, getBackgroundCornerRadius(), Gravity.RIGHT, paint);
+                    canvas.drawRoundRect(b.left, b.top, b.right, b.bottom, getBackgroundCornerRadius(container), Gravity.RIGHT, paint);
                 })
                 .applyTo(container);
 
         container.setLayoutParams(params);
-        container.setPadding(dp(5), dp(5), dp(5), dp(5));
+        container.setPadding(
+                container.dp(5),
+                container.dp(5),
+                container.dp(5),
+                container.dp(5)
+        );
 
         container.addView(createRecentProjectsScrollView());
 
@@ -98,7 +106,7 @@ public class WelcomeScreenFragment extends LifecycleFragment {
     }
 
     private ScrollView createRecentProjectsScrollView() {
-        var recentProjectsScrollView = new ScrollView();
+        var recentProjectsScrollView = new ScrollView(getContext());
         var params = new LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT
         );
@@ -110,7 +118,7 @@ public class WelcomeScreenFragment extends LifecycleFragment {
     }
 
     private RecentProjectsView createRecentProjects() {
-        var view = new RecentProjectsView();
+        var view = new RecentProjectsView(getContext());
         view.init();
         view.setOnItemClick(welcomeScreenController::onRecentProjectClicked);
 
@@ -118,7 +126,7 @@ public class WelcomeScreenFragment extends LifecycleFragment {
     }
 
     private FrameLayout createWelcomeCard() {
-        var welcomeCard = new FrameLayout();
+        var welcomeCard = new FrameLayout(getContext());
         var params = new RelativeLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT
         );
@@ -128,7 +136,7 @@ public class WelcomeScreenFragment extends LifecycleFragment {
 
         ColoredBackground.of(Colors.NODE_BACKGROUND)
                 .setDrawFunction((canvas, b, paint) -> {
-                    canvas.drawRoundRect(b.left, b.top, b.right, b.bottom, getBackgroundCornerRadius(), Gravity.LEFT, paint);
+                    canvas.drawRoundRect(b.left, b.top, b.right, b.bottom, getBackgroundCornerRadius(welcomeCard), Gravity.LEFT, paint);
                 })
                 .applyTo(welcomeCard);
         welcomeCard.setLayoutParams(params);
@@ -139,7 +147,7 @@ public class WelcomeScreenFragment extends LifecycleFragment {
     }
 
     private LinearLayout welcomeCardContents() {
-        var content = new LinearLayout();
+        var content = new LinearLayout(getContext());
         content.setOrientation(LinearLayout.VERTICAL);
         content.setGravity(Gravity.CENTER);
 
@@ -155,10 +163,10 @@ public class WelcomeScreenFragment extends LifecycleFragment {
     }
 
     private FrameLayout iconImage() {
-        var image = new FrameLayout();
+        var image = new FrameLayout(getContext());
 
-        var params = new LinearLayout.LayoutParams(dp(175), dp(175));
-        params.bottomMargin = dp(30);
+        var params = new LinearLayout.LayoutParams(image.dp(175), image.dp(175));
+        params.bottomMargin = image.dp(30);
         image.setLayoutParams(params);
 
         var imageDrawable = DataAccess.createImageDrawable("ui", "logo");
@@ -168,12 +176,12 @@ public class WelcomeScreenFragment extends LifecycleFragment {
     }
 
     private LinearLayout headerText() {
-        var content = new LinearLayout();
+        var content = new LinearLayout(getContext());
         content.setOrientation(LinearLayout.VERTICAL);
         content.setGravity(Gravity.CENTER | Gravity.TOP);
 
         var params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        params.bottomMargin = dp(100);
+        params.bottomMargin = content.dp(100);
         content.setLayoutParams(params);
 
         content.addView(titleText());
@@ -183,23 +191,23 @@ public class WelcomeScreenFragment extends LifecycleFragment {
     }
 
     private TextView titleText() {
-        var text = new TextView();
+        var text = new TextView(getContext());
 
         text.setText("JustBlueprints");
-        text.setTextSize(sp(45));
+        text.setTextSize(text.sp(45));
         text.setTypeface(MINECRAFT_FONT);
 
         var params = wrapContent(text);
-        params.bottomMargin = dp(6);
+        params.bottomMargin = text.dp(6);
 
         return text;
     }
 
     private TextView subtitleText() {
-        var text = new TextView();
+        var text = new TextView(getContext());
 
         text.setText("made by r0astPiGGy");
-        text.setTextSize(sp(25));
+        text.setTextSize(text.sp(25));
         text.setTextColor(Colors.NODE_BACKGROUND_PRIMARY);
         text.setTypeface(MINECRAFT_FONT);
 
@@ -209,7 +217,7 @@ public class WelcomeScreenFragment extends LifecycleFragment {
     }
 
     private LinearLayout buttons() {
-        var content = new LinearLayout();
+        var content = new LinearLayout(getContext());
 
         content.setOrientation(LinearLayout.VERTICAL);
         wrapContent(content);
@@ -241,7 +249,7 @@ public class WelcomeScreenFragment extends LifecycleFragment {
     }
 
     private LinearLayout createButton(String text, String icon) {
-        var layout = new LinearLayout() {
+        var layout = new LinearLayout(getContext()) {
             @Override
             public PointerIcon onResolvePointerIcon(@Nonnull MotionEvent event) {
                 if (isClickable() && isEnabled()) {
@@ -254,25 +262,25 @@ public class WelcomeScreenFragment extends LifecycleFragment {
         layout.setOrientation(LinearLayout.HORIZONTAL);
         ParamsBuilder.using(LinearLayout.LayoutParams::new)
                 .wrapContent()
-                .setup(p -> p.bottomMargin = dp(20))
+                .setup(p -> p.bottomMargin = layout.dp(20))
                 .applyTo(layout);
 
         var iconDrawable = new ImageDrawable(TEXTURE_NAMESPACE, "ui/" + icon + ".png");
 
-        var iconView = new View();
+        var iconView = new View(getContext());
         iconView.setBackground(iconDrawable);
 
         ParamsBuilder.using(LinearLayout.LayoutParams::new)
-                .squareShape(dp(30))
-                .setup(p -> p.rightMargin = dp(15))
+                .squareShape(layout.dp(30))
+                .setup(p -> p.rightMargin = layout.dp(15))
                 .applyTo(iconView);
 
-        var textView = new TextView();
+        var textView = new TextView(getContext());
 
         textView.setText(text);
-        textView.setTextSize(sp(20));
+        textView.setTextSize(layout.sp(20));
         textView.setTypeface(MINECRAFT_FONT);
-        wrapContent(textView).bottomMargin = dp(3);
+        wrapContent(textView).bottomMargin = layout.dp(3);
 
         layout.addView(iconView);
         layout.addView(textView);

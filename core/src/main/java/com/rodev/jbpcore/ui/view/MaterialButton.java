@@ -3,6 +3,7 @@ package com.rodev.jbpcore.ui.view;
 import com.rodev.jbpcore.Colors;
 import com.rodev.jbpcore.ui.drawable.MaterialButtonBackground;
 import com.rodev.jbpcore.utils.ParamsBuilder;
+import icyllis.modernui.core.Context;
 import icyllis.modernui.util.ColorStateList;
 import icyllis.modernui.util.StateSet;
 import icyllis.modernui.view.MotionEvent;
@@ -30,12 +31,17 @@ public class MaterialButton extends RelativeLayout {
         );
     }
 
-    private final TextView textView = new TextView();
+    private final TextView textView;
 
-    protected final LinearLayout container = new LinearLayout();
+    protected final LinearLayout container;
 
-    private MaterialButton(ColorStateList stateList) {
-        var background = new MaterialButtonBackground(dp(5));
+    private MaterialButton(Context context, ColorStateList stateList) {
+        super(context);
+
+        textView = new TextView(context);
+        container = new LinearLayout(context);
+
+        var background = new MaterialButtonBackground(this::dp, dp(5));
         background.setTintList(stateList);
         setBackground(background);
         setMinimumWidth(dp(140));
@@ -66,12 +72,12 @@ public class MaterialButton extends RelativeLayout {
                 .applyTo(textView);
     }
 
-    public MaterialButton(int color) {
-        this(createColorStateList(color));
+    public MaterialButton(Context context, int color) {
+        this(context, createColorStateList(color));
     }
 
-    public MaterialButton() {
-        this(TINT_LIST);
+    public MaterialButton(Context context) {
+        this(context, TINT_LIST);
     }
 
     @Override

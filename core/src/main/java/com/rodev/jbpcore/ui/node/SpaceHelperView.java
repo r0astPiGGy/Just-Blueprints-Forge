@@ -1,11 +1,13 @@
 package com.rodev.jbpcore.ui.node;
 
+import icyllis.modernui.core.Context;
 import icyllis.modernui.view.View;
 import icyllis.modernui.view.ViewGroup;
 
 public class SpaceHelperView extends View {
 
-    public SpaceHelperView() {
+    public SpaceHelperView(Context context) {
+        super(context);
         setLayoutParams(new ViewGroup.LayoutParams(0, 0));
     }
 

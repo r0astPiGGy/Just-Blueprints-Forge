@@ -2,10 +2,11 @@ package com.rodev.jbpcore.ui.contextmenu.tree;
 
 import com.rodev.jbpcore.Colors;
 import com.rodev.jbpcore.handlers.TextViewCreationListener;
+import icyllis.modernui.core.Context;
 import icyllis.modernui.graphics.Canvas;
 import icyllis.modernui.graphics.Paint;
+import icyllis.modernui.graphics.Rect;
 import icyllis.modernui.graphics.drawable.Drawable;
-import icyllis.modernui.math.Rect;
 import icyllis.modernui.view.ViewGroup;
 import icyllis.modernui.widget.LinearLayout;
 import icyllis.modernui.widget.TextView;
@@ -15,13 +16,16 @@ import java.util.function.Consumer;
 
 public class TreeNodeHeaderLabel extends LinearLayout {
 
-    private final TextView headerLabel = new TextView();
+    private final TextView headerLabel;
     private boolean arrowEnabled = true;
 
     private final Consumer<Integer> onPaddingChangedCallback;
 
-    public TreeNodeHeaderLabel(String text, Consumer<Integer> onPaddingChangedCallback) {
+    public TreeNodeHeaderLabel(Context context, String text, Consumer<Integer> onPaddingChangedCallback) {
+        super(context);
         this.onPaddingChangedCallback = onPaddingChangedCallback;
+
+        headerLabel = new TextView(context);
 
         setOrientation(HORIZONTAL);
 
@@ -66,7 +70,7 @@ public class TreeNodeHeaderLabel extends LinearLayout {
             final int width = r.height();
 
             float cy = r.exactCenterY();
-            Paint paint = Paint.get();
+            Paint paint = Paint.obtain();
             paint.setColor(Colors.WHITE);
             paint.setStrokeWidth(1.2f);
 
@@ -79,14 +83,15 @@ public class TreeNodeHeaderLabel extends LinearLayout {
             int bottom = r.bottom - offset;
             float centerY = r.top + cy;
 
-            if(isArrowEnabled()) {
-                canvas.drawTriangle(right, top, right, bottom, left, bottom, paint);
-            } else {
-                right -= offset;
-                canvas.drawRoundLine(left, top, right, centerY, paint);
-                canvas.drawRoundLine(right, centerY, left, bottom, paint);
-                canvas.drawRoundLine(left, bottom, left, top, paint);
-            }
+            // TODO textures
+//            if(isArrowEnabled()) {
+//                canvas.drawTriangle(right, top, right, bottom, left, bottom, paint);
+//            } else {
+//                right -= offset;
+//                canvas.drawRoundLine(left, top, right, centerY, paint);
+//                canvas.drawRoundLine(right, centerY, left, bottom, paint);
+//                canvas.drawRoundLine(left, bottom, left, top, paint);
+//            }
         }
     }
 

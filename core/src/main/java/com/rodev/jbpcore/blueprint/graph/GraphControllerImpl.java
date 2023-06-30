@@ -32,7 +32,7 @@ public class GraphControllerImpl implements
     private ViewMoveListener viewMoveListener;
 
     public GraphNode createViewAt(int x, int y, Action action) {
-        var node = action.toNode();
+        var node = action.toNode(viewHolder.provideContext());
 
         createNodeAt(x, y, node);
 
@@ -130,7 +130,6 @@ public class GraphControllerImpl implements
     private void drawBezierLine(Canvas canvas, Paint paint, int xStart, int yStart, int xEnd, int yEnd, int color) {
         paint.setStrokeWidth(7);
         paint.setColor(color);
-        paint.setSmoothRadius(100);
         int xHalf = (xEnd - xStart) / 2;
         int yHalf = (yEnd - yStart) / 2;
         canvas.drawBezier(xStart, yStart, xStart + xHalf, yStart, xStart + xHalf, yStart + yHalf, paint);

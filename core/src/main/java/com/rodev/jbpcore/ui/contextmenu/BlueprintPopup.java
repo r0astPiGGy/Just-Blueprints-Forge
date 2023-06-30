@@ -4,19 +4,17 @@ import com.rodev.jbpcore.data.DataAccess;
 import com.rodev.jbpcore.data.action.Action;
 import com.rodev.jbpcore.ui.contextmenu.tree.ContextTreeNodeView;
 import com.rodev.jbpcore.ui.contextmenu.tree.ContextTreeRootView;
-import icyllis.modernui.math.Rect;
+import icyllis.modernui.graphics.Rect;
 import icyllis.modernui.view.*;
 import icyllis.modernui.widget.*;
 
 import javax.annotation.Nonnull;
 
-import static icyllis.modernui.view.View.dp;
-
 public class BlueprintPopup implements PopupWindow.OnDismissListener {
 
     private final BlueprintContextMenu mPopup;
     private Rect mEpicenterBounds;
-    private final ContextTreeRootView treeRootView = new ContextTreeRootView();
+    private final ContextTreeRootView treeRootView;
 
     private final ViewTreeObserver.OnGlobalLayoutListener mGlobalLayoutListener = new OnGlobalLayoutListener();
     private final View.OnAttachStateChangeListener mAttachStateChangeListener = new OnAttachStateChangeListener();
@@ -35,14 +33,15 @@ public class BlueprintPopup implements PopupWindow.OnDismissListener {
 
     public BlueprintPopup(ContextMenuBuilder builder, @Nonnull View anchorView) {
         this.builder = builder;
+        treeRootView = new ContextTreeRootView(anchorView.getContext());
 
         mAnchorView = anchorView;
 
-        mPopup = new BlueprintContextMenu(dp(400), dp(400), this::createPopupContent);
+        mPopup = new BlueprintContextMenu(anchorView.dp(400), anchorView.dp(400), this::createPopupContent);
     }
 
     private RelativeLayout createPopupContent() {
-        var popupRoot = new ContextMenuRootView();
+        var popupRoot = new ContextMenuRootView(mAnchorView.getContext());
 
         popupRoot.setHeader(builder.header);
 
@@ -105,7 +104,7 @@ public class BlueprintPopup implements PopupWindow.OnDismissListener {
     }
 
     public Item createItem(String displayText, Action action) {
-        return Item.of(displayText, action.createIcon(), () -> {
+        return Item.of(mAnchorView.getContext(), displayText, action.createIcon(), () -> {
             dismiss();
             builder.onClick.accept(action);
         });

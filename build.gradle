@@ -166,6 +166,7 @@ dependencies {
     minecraft "net.minecraftforge:forge:${forge_version}"
 
     library files('./libs/ModernUI-Core-3.7.0.jar')
+    library files('./libs/ModernUI-ViewPager-1.0.0.jar')
 
     implementation fg.deobf("icyllis.modernui:ModernUI-Forge:${modernui_version}")
     dependencyProjects.forEach {

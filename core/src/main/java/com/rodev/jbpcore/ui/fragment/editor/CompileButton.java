@@ -5,10 +5,11 @@ import com.rodev.jbpcore.ui.pin.default_input_value.CustomArrayAdapter;
 import com.rodev.jbpcore.utils.ParamsBuilder;
 import com.rodev.jbpcore.ui.view.MaterialButton;
 import com.rodev.jbpcore.workspace.compiler.CodeCompiler;
+import icyllis.modernui.core.Context;
 import icyllis.modernui.graphics.Canvas;
 import icyllis.modernui.graphics.Paint;
+import icyllis.modernui.graphics.Rect;
 import icyllis.modernui.graphics.drawable.Drawable;
-import icyllis.modernui.math.Rect;
 import icyllis.modernui.widget.RelativeLayout;
 import icyllis.modernui.widget.Spinner;
 import lombok.RequiredArgsConstructor;
@@ -17,13 +18,14 @@ import javax.annotation.Nonnull;
 
 public class CompileButton extends MaterialButton {
 
-    private final Spinner compileSetting = new Spinner();
+    private final Spinner compileSetting;
 
-    public CompileButton() {
-        super();
+    public CompileButton(Context context) {
+        super(context);
+
+        compileSetting = new Spinner(context);
 
         initCompileSetting();
-
         container.addView(compileSetting);
     }
 
@@ -33,7 +35,7 @@ public class CompileButton extends MaterialButton {
 
             @Override
             public void draw(@Nonnull Canvas canvas) {
-                Paint paint = Paint.get();
+                Paint paint = Paint.obtain();
                 paint.setColor(Colors.WHITE);
                 paint.setStyle(Paint.STROKE);
                 paint.setStrokeWidth(1.2f);
@@ -48,7 +50,7 @@ public class CompileButton extends MaterialButton {
                 return true;
             }
         });
-        var adapter = new CustomArrayAdapter<>(CompileModeWrapper.values());
+        var adapter = new CustomArrayAdapter<>(getContext(), CompileModeWrapper.values());
 
         compileSetting.setAdapter(adapter);
         ParamsBuilder.using(RelativeLayout.LayoutParams::new)

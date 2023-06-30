@@ -1,6 +1,6 @@
 package com.rodev.jbpcore.ui.contextmenu;
 
-import icyllis.modernui.math.Rect;
+import icyllis.modernui.graphics.Rect;
 import icyllis.modernui.view.Gravity;
 import icyllis.modernui.view.View;
 import icyllis.modernui.view.ViewConfiguration;
@@ -88,7 +88,7 @@ public class PopupHelper {
         // cursor) sized and centered around the offset position. This
         // will give the appearance that the window is emerging from
         // the touch point.
-        final int halfSize = (int) (24 * ViewConfiguration.get().getViewScale());
+        final int halfSize = 24;
         final Rect epicenter = new Rect(
                 xOffset - halfSize,
                 yOffset - halfSize,

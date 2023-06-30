@@ -7,6 +7,7 @@ import com.rodev.jbpcore.blueprint.pin.PositionSupplier;
 import com.rodev.jbpcore.blueprint.pin.Positionable;
 import com.rodev.jbpcore.blueprint.pin.dynamic.PinVariableTypeChangeListener;
 import com.rodev.jbpcore.utils.ViewUtils;
+import icyllis.modernui.core.Context;
 import icyllis.modernui.util.ColorStateList;
 import icyllis.modernui.view.MotionEvent;
 import icyllis.modernui.widget.CompoundButton;
@@ -20,7 +21,8 @@ public class PinView extends CompoundButton implements PinToggleListener, Positi
 
     private PinToggleListener pinToggleListener;
 
-    public PinView(Pin pin) {
+    public PinView(Context context, Pin pin) {
+        super(context);
         this.pin = pin;
 
         pin.setPinToggleListener(this);
@@ -37,7 +39,7 @@ public class PinView extends CompoundButton implements PinToggleListener, Positi
     }
 
     private void setDrawableFromPin(Pin pin) {
-        setButtonDrawable(pin.createDrawable());
+        setButtonDrawable(pin.createDrawable(this));
         setButtonTintList(ColorStateList.valueOf(pin.getColor()));
     }
 

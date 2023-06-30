@@ -3,10 +3,11 @@ package com.rodev.jbpcore.ui.contextmenu;
 import com.rodev.jbpcore.Colors;
 import com.rodev.jbpcore.handlers.TextViewCreationListener;
 import com.rodev.jbpcore.ui.view.DefaultTextWatcher;
+import icyllis.modernui.core.Context;
 import icyllis.modernui.graphics.Canvas;
 import icyllis.modernui.graphics.Paint;
+import icyllis.modernui.graphics.Rect;
 import icyllis.modernui.graphics.drawable.Drawable;
-import icyllis.modernui.math.Rect;
 import icyllis.modernui.text.Editable;
 import icyllis.modernui.widget.EditText;
 
@@ -16,7 +17,8 @@ import java.util.function.Consumer;
 public class PopupSearchView extends EditText {
     private Consumer<String> onTextChanged = s -> {};
 
-    public PopupSearchView() {
+    public PopupSearchView(Context context) {
+        super(context);
         addTextChangedListener(new TextChangedListener());
         setBackground(new Background());
 
@@ -36,12 +38,12 @@ public class PopupSearchView extends EditText {
         }
     }
 
-    private static class Background extends Drawable {
+    private class Background extends Drawable {
         private final int mRadius = dp(4);
 
         @Override
         public void draw(@Nonnull Canvas canvas) {
-            Paint paint = Paint.get();
+            Paint paint = Paint.obtain();
             paint.setColor(Colors.WHITE);
             Rect b = getBounds();
             canvas.drawRoundRect(b.left, b.top, b.right, b.bottom, mRadius, paint);

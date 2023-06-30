@@ -5,24 +5,26 @@ import com.rodev.jbpcore.blueprint.node.SelectableDrawable;
 import com.rodev.jbpcore.ui.pin.PinRowView;
 import com.rodev.jbpcore.utils.ParamsBuilder;
 import com.rodev.jbpcore.handlers.TextViewCreationListener;
+import icyllis.modernui.core.Context;
 import icyllis.modernui.widget.LinearLayout;
 import icyllis.modernui.widget.RelativeLayout;
 import icyllis.modernui.widget.TextView;
 
 public class SimpleNodeView extends BaseNode {
 
-    private final LinearLayout inputRowsContainer = new LinearLayout();
-    private final LinearLayout outputRowsContainer = new LinearLayout();
+    private final LinearLayout inputRowsContainer;
+    private final LinearLayout outputRowsContainer;
 
-    public SimpleNodeView(String id, String displayName) {
-        super(id);
+    public SimpleNodeView(Context context, String id, String displayName) {
+        super(context, id);
 
-        var rootLayout = new RelativeLayout();
+        inputRowsContainer = new LinearLayout(context);
+        outputRowsContainer = new LinearLayout(context);
 
-
+        var rootLayout = new RelativeLayout(context);
 
         //region textView
-        var textView = new TextView();
+        var textView = new TextView(context);
         textView.setText(displayName);
         TextViewCreationListener.setDefaultFont(textView);
 

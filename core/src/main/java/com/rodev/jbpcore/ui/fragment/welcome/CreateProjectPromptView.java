@@ -7,6 +7,7 @@ import com.rodev.jbpcore.ui.drawable.RoundedColoredBackground;
 import com.rodev.jbpcore.ui.view.DefaultTextWatcher;
 import com.rodev.jbpcore.ui.view.LabeledEditText;
 import com.rodev.jbpcore.ui.view.MaterialButton;
+import icyllis.modernui.core.Context;
 import icyllis.modernui.text.Editable;
 import icyllis.modernui.view.Gravity;
 import icyllis.modernui.view.MeasureSpec;
@@ -39,7 +40,9 @@ public class CreateProjectPromptView extends RelativeLayout {
     @Setter
     private OnCreateButtonClicked onAcceptListener = projectName -> {};
 
-    public CreateProjectPromptView() {
+    public CreateProjectPromptView(Context context) {
+        super(context);
+
         RoundedColoredBackground.builder()
                 .color(Colors.NODE_BACKGROUND)
                 .paddingOffset(dp(15))
@@ -61,11 +64,11 @@ public class CreateProjectPromptView extends RelativeLayout {
     }
 
     private TextView createHeader() {
-        var textView = new TextView();
+        var textView = new TextView(getContext());
         textView.setId(HEADER_ID);
 
         textView.setText("Создать Новый Проект");
-        textView.setTextSize(View.sp(24));
+        textView.setTextSize(textView.sp(24));
         var params = new RelativeLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT
@@ -79,7 +82,7 @@ public class CreateProjectPromptView extends RelativeLayout {
     }
     
     private RelativeLayout createBody() {
-        var body = new LabeledEditText();
+        var body = new LabeledEditText(getContext());
 
         body.setLabel("Название:");
         body.setId(BODY_ID);
@@ -136,7 +139,7 @@ public class CreateProjectPromptView extends RelativeLayout {
     }
 
     private RelativeLayout createFooter() {
-        var footer = new RelativeLayout();
+        var footer = new RelativeLayout(getContext());
         footer.setId(FOOTER_ID);
 
         var params = new RelativeLayout.LayoutParams(
@@ -155,7 +158,7 @@ public class CreateProjectPromptView extends RelativeLayout {
     }
 
     private MaterialButton createDeclineButton() {
-        var button = new MaterialButton(Colors.BUTTON_COLOR_PRIMARY);
+        var button = new MaterialButton(getContext(), Colors.BUTTON_COLOR_PRIMARY);
 
         ParamsBuilder.using(RelativeLayout.LayoutParams::new)
                 .wrapContent()
@@ -174,7 +177,7 @@ public class CreateProjectPromptView extends RelativeLayout {
     }
 
     private MaterialButton createAcceptButton() {
-        var button = new MaterialButton(Colors.SELECTED_COLOR);
+        var button = new MaterialButton(getContext(), Colors.SELECTED_COLOR);
 
         ParamsBuilder.using(RelativeLayout.LayoutParams::new)
                 .wrapContent()

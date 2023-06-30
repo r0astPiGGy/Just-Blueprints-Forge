@@ -25,7 +25,7 @@ public class CreateProjectPopup implements PopupWindow.OnDismissListener {
     private Consumer<CreateProjectPromptView> onPromptCreated = v -> {};
 
     private View createRootView() {
-        var popupRoot = new FrameLayout() {
+        var popupRoot = new FrameLayout(anchorView.getContext()) {
             @Override
             public boolean onTouchEvent(@NotNull MotionEvent event) {
                 return true;
@@ -41,7 +41,7 @@ public class CreateProjectPopup implements PopupWindow.OnDismissListener {
     }
 
     private CreateProjectPromptView createPromptView() {
-        var prompt = new CreateProjectPromptView();
+        var prompt = new CreateProjectPromptView(anchorView.getContext());
 
         prompt.setOnDeclineListener(this::dismiss);
         onPromptCreated.accept(prompt);

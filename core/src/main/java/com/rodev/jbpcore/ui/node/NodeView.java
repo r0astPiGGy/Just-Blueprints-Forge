@@ -4,6 +4,7 @@ import com.rodev.jbpcore.blueprint.node.BaseNode;
 import com.rodev.jbpcore.ui.drawable.NodeDrawable;
 import com.rodev.jbpcore.ui.pin.PinRowView;
 import com.rodev.jbpcore.handlers.TextViewCreationListener;
+import icyllis.modernui.core.Context;
 import icyllis.modernui.graphics.drawable.ImageDrawable;
 import icyllis.modernui.view.Gravity;
 import icyllis.modernui.view.View;
@@ -24,24 +25,24 @@ public class NodeView extends BaseNode {
 
     private final ImageDrawable iconDrawable;
 
-    public NodeView(int headerColor, String id, String title, ImageDrawable iconDrawable) {
-        super(id);
+    public NodeView(Context context, int headerColor, String id, String title, ImageDrawable iconDrawable) {
+        super(context, id);
         this.title = title;
         this.iconDrawable = iconDrawable;
 
         nodeHeader = createNodeHeader();
         addView(nodeHeader);
 
-        LinearLayout allRowsContainer = new LinearLayout();
+        LinearLayout allRowsContainer = new LinearLayout(getContext());
         allRowsContainer.setOrientation(HORIZONTAL);
         allRowsContainer.setLayoutParams(new LayoutParams(
                 LayoutParams.WRAP_CONTENT,
                 LayoutParams.WRAP_CONTENT
         ));
 
-        var spaceHelperView = new SpaceHelperView();
-        inputRowsContainer = createRowContainer(Gravity.START);
-        outputRowsContainer = createRowContainer(new LinearLayout() {
+        var spaceHelperView = new SpaceHelperView(context);
+        inputRowsContainer = createRowContainer(context, Gravity.START);
+        outputRowsContainer = createRowContainer(new LinearLayout(getContext()) {
             @Override
             protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
                 super.onMeasure(widthMeasureSpec, heightMeasureSpec);
@@ -78,7 +79,7 @@ public class NodeView extends BaseNode {
     protected void onBackgroundInit() {}
 
     private LinearLayout createNodeHeader() {
-        var nodeHeader = new LinearLayout();
+        var nodeHeader = new LinearLayout(getContext());
         nodeHeader.setOrientation(HORIZONTAL);
         var params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         params.setMargins(0, 0, 0, dp(10));
@@ -96,7 +97,7 @@ public class NodeView extends BaseNode {
     }
 
     private View createIcon() {
-        var icon = new View();
+        var icon = new View(getContext());
         icon.setBackground(this.iconDrawable);
 
         var params = new LayoutParams(dp(30), dp(30));
@@ -107,7 +108,7 @@ public class NodeView extends BaseNode {
     }
 
     private LinearLayout createLabel() {
-        var nodeHeader = new LinearLayout();
+        var nodeHeader = new LinearLayout(getContext());
         nodeHeader.setOrientation(VERTICAL);
         var params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         nodeHeader.setPadding(dp(6), 0, 0, 0);
@@ -124,7 +125,7 @@ public class NodeView extends BaseNode {
     }
 
     private TextView createTitle() {
-        var title = new TextView();
+        var title = new TextView(getContext());
         title.setText(this.title);
 
         TextViewCreationListener.onNodeTitleCreated(title);
@@ -133,7 +134,7 @@ public class NodeView extends BaseNode {
     }
 
     private TextView createSubtitle() {
-        var subtitleView = new TextView();
+        var subtitleView = new TextView(getContext());
 
         TextViewCreationListener.onNodeSubtitleCreated(subtitleView);
         subtitleView.setVisibility(GONE);
@@ -143,15 +144,15 @@ public class NodeView extends BaseNode {
 
     private static LinearLayout createRowContainer(LinearLayout linearLayout, int gravity) {
         linearLayout.setOrientation(VERTICAL);
-        linearLayout.setMinimumWidth(dp(20));
+        linearLayout.setMinimumWidth(linearLayout.dp(20));
         linearLayout.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
         linearLayout.setGravity(gravity);
 
         return linearLayout;
     }
 
-    private static LinearLayout createRowContainer(int gravity) {
-        return createRowContainer(new LinearLayout(), gravity);
+    private static LinearLayout createRowContainer(Context context, int gravity) {
+        return createRowContainer(new LinearLayout(context), gravity);
     }
 
     public void addOutput(PinRowView pinRowView) {

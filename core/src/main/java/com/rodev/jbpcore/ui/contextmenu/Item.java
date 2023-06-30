@@ -1,13 +1,12 @@
 package com.rodev.jbpcore.ui.contextmenu;
 
 import com.rodev.jbpcore.handlers.TextViewCreationListener;
+import icyllis.modernui.core.Context;
 import icyllis.modernui.graphics.drawable.ImageDrawable;
 import icyllis.modernui.view.View;
 import icyllis.modernui.view.ViewGroup;
 import icyllis.modernui.widget.LinearLayout;
 import icyllis.modernui.widget.TextView;
-
-import static icyllis.modernui.view.View.dp;
 
 public interface Item {
 
@@ -30,19 +29,19 @@ public interface Item {
         };
     }
 
-    static Item of(String name, ImageDrawable imageDrawable, Runnable onClick) {
-        var linearLayout = new LinearLayout();
+    static Item of(Context context, String name, ImageDrawable imageDrawable, Runnable onClick) {
+        var linearLayout = new LinearLayout(context);
         linearLayout.setOrientation(LinearLayout.HORIZONTAL);
         linearLayout.setLayoutParams(
                 new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
         );
 
-        var icon = new View();
+        var icon = new View(context);
         icon.setBackground(imageDrawable);
-        icon.setLayoutParams(new ViewGroup.LayoutParams(dp(20), dp(20)));
+        icon.setLayoutParams(new ViewGroup.LayoutParams(icon.dp(20), icon.dp(20)));
         linearLayout.addView(icon);
 
-        var view = new TextView();
+        var view = new TextView(context);
         view.setText(name);
         TextViewCreationListener.onContextMenuItemTextCreated(view);
         linearLayout.addView(view);

@@ -4,10 +4,11 @@ import com.rodev.jbpcore.Colors;
 import com.rodev.jbpcore.data.selectors.Selector;
 import com.rodev.jbpcore.data.selectors.SelectorGroup;
 import com.rodev.jbpcore.data.variable.DefaultInputValue;
+import icyllis.modernui.core.Context;
 import icyllis.modernui.graphics.Canvas;
 import icyllis.modernui.graphics.Paint;
+import icyllis.modernui.graphics.Rect;
 import icyllis.modernui.graphics.drawable.Drawable;
-import icyllis.modernui.math.Rect;
 import icyllis.modernui.view.View;
 import icyllis.modernui.widget.ArrayAdapter;
 import icyllis.modernui.widget.Spinner;
@@ -19,9 +20,10 @@ public class DefaultSelectorInputView extends Spinner implements DefaultInputVal
 
     private final List<Selector> values;
 
-    public DefaultSelectorInputView(SelectorGroup selectorGroup) {
+    public DefaultSelectorInputView(Context context, SelectorGroup selectorGroup) {
+        super(context);
         values = selectorGroup.selectors();
-        ArrayAdapter<Selector> arrayAdapter = new CustomArrayAdapter<>(values);
+        ArrayAdapter<Selector> arrayAdapter = new CustomArrayAdapter<>(context, values);
 
         setAdapter(arrayAdapter);
 
@@ -30,7 +32,7 @@ public class DefaultSelectorInputView extends Spinner implements DefaultInputVal
 
             @Override
             public void draw(@Nonnull Canvas canvas) {
-                Paint paint = Paint.get();
+                Paint paint = Paint.obtain();
                 paint.setColor(Colors.WHITE);
                 paint.setStyle(Paint.STROKE);
                 paint.setStrokeWidth(1.2f);

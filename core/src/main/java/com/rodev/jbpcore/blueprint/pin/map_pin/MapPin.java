@@ -2,14 +2,13 @@ package com.rodev.jbpcore.blueprint.pin.map_pin;
 
 import com.rodev.jbpcore.blueprint.pin.PinImpl;
 import com.rodev.jbpcore.blueprint.pin.behaviour.ConnectionBehaviour;
-import com.rodev.jbpcore.data.action.pin_type.PinType;
 import com.rodev.jbpcore.data.variable.VariableType;
 import com.rodev.jbpcore.blueprint.pin.Pin;
 import com.rodev.jbpcore.ui.drawable.CompoundImageDrawable;
 import com.rodev.jbpcore.ui.view.TintedImage;
+import icyllis.modernui.core.Context;
 import icyllis.modernui.graphics.drawable.Drawable;
-
-import static icyllis.modernui.view.View.dp;
+import icyllis.modernui.view.View;
 
 public class MapPin extends PinImpl {
 
@@ -42,7 +41,7 @@ public class MapPin extends PinImpl {
     }
 
     @Override
-    public Drawable createDrawable() {
+    public Drawable createDrawable(View contextHolder) {
         var icon = getVariableType().getIcon();
 
         var img = icon.connected();
@@ -55,12 +54,12 @@ public class MapPin extends PinImpl {
         var compoundDrawable = new CompoundImageDrawable(keyTypeImage, valueTypeImage, 0.3) {
             @Override
             public int getIntrinsicHeight() {
-                return dp(24);
+                return contextHolder.dp(24);
             }
 
             @Override
             public int getIntrinsicWidth() {
-                return dp(24);
+                return contextHolder.dp(24);
             }
         };
 

@@ -2,6 +2,7 @@ package com.rodev.jbpcore.ui.fragment;
 
 import icyllis.modernui.fragment.Fragment;
 import icyllis.modernui.util.DataSet;
+import icyllis.modernui.view.LayoutInflater;
 import icyllis.modernui.view.View;
 import icyllis.modernui.view.ViewGroup;
 import icyllis.modernui.widget.FrameLayout;
@@ -17,10 +18,9 @@ public class ContainerFragment extends Fragment {
 
     public final Fragment childFragment;
 
-    @Nullable
     @Override
-    public View onCreateView(@Nullable ViewGroup container, @Nullable DataSet savedInstanceState) {
-        var root = new FrameLayout();
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, DataSet savedInstanceState) {
+        var root = new FrameLayout(getContext());
 
         matchParent(root);
         root.setId(container_id);

@@ -7,21 +7,24 @@ import com.rodev.jbpcore.blueprint.pin.Pin;
 import com.rodev.jbpcore.data.DataAccess;
 import com.rodev.jbpcore.data.action.Action;
 import com.rodev.jbpcore.workspace.impl.WorkspaceImpl;
+import icyllis.modernui.core.Context;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Log4j2
 public record BlueprintReference(File file) {
 
-    public Blueprint load() {
+    public Blueprint load(Context context) {
+        if (!file.exists()) {
+
+            return new Blueprint(file, new BlueprintDto(Collections.emptyMap(), Collections.emptyList(), Collections.emptyList()));
+        }
+
         var objectMapper = new ObjectMapper();
 
         BlueprintEntity blueprint;
@@ -47,7 +50,7 @@ public record BlueprintReference(File file) {
                 continue;
             }
 
-            GraphNode node = action.toNode();
+            GraphNode node = action.toNode(context);
 
             var deserializer = node.getDeserializer(nodeEntity.data);
             deserializer.deserialize();

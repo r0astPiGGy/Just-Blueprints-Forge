@@ -8,7 +8,6 @@ import icyllis.modernui.widget.TextView;
 
 import static icyllis.modernui.graphics.font.FontPaint.BOLD;
 import static icyllis.modernui.graphics.font.FontPaint.ITALIC;
-import static icyllis.modernui.view.View.dp;
 
 public class TextViewCreationListener {
 
@@ -19,29 +18,29 @@ public class TextViewCreationListener {
     public static void onNodeTitleCreated(TextView textView) {
         setDefaultFont(textView);
         textView.setTextStyle(BOLD);
-        textView.setTextSize(View.sp(16));
+        textView.setTextSize(textView.sp(16));
     }
 
     public static void onNodeSubtitleCreated(TextView textView) {
         setDefaultFont(textView);
         textView.setTextStyle(ITALIC);
-        textView.setTextSize(View.sp(14));
+        textView.setTextSize(textView.sp(14));
         textView.setTextColor(Colors.NODE_SUBTITLE_COLOR);
     }
 
     public static void onPinTextCreated(TextView textView) {
         setDefaultFont(textView);
-        textView.setMaxWidth(dp(300));
+        textView.setMaxWidth(textView.dp(300));
     }
 
     public static void onContextMenuItemTextCreated(TextView textView) {
         setDefaultFont(textView);
-        textView.setTextSize(View.sp(14));
+        textView.setTextSize(textView.sp(14));
     }
 
     public static void onContextMenuHeaderTextCreated(TextView textView) {
         setDefaultFont(textView);
-        textView.setTextSize(View.sp(17));
+        textView.setTextSize(textView.sp(17));
     }
 
     public static void onArrayAdapterTextItemCreated(TextView textView) {
@@ -50,14 +49,14 @@ public class TextViewCreationListener {
 
     public static void onContextMenuSearchViewCreated(TextView textView) {
         setDefaultFont(textView);
-        textView.setTextSize(View.sp(13));
+        textView.setTextSize(textView.sp(13));
         textView.setTextColor(Colors.NODE_BACKGROUND);
     }
 
     public static void onContextMenuCategoryTextCreated(TextView textView) {
         setDefaultFont(textView);
         textView.setTextStyle(FontPaint.BOLD);
-        textView.setTextSize(View.sp(13));
+        textView.setTextSize(textView.sp(13));
     }
 
     public static void setDefaultFont(TextView textView) {

@@ -14,16 +14,10 @@ import com.rodev.jbpcore.workspace.ModernUIWindowManager;
 import icyllis.modernui.graphics.Canvas;
 import icyllis.modernui.graphics.Paint;
 import icyllis.modernui.util.DataSet;
-import icyllis.modernui.view.Gravity;
-import icyllis.modernui.view.View;
-import icyllis.modernui.view.ViewConfiguration;
-import icyllis.modernui.view.ViewGroup;
+import icyllis.modernui.view.*;
 import icyllis.modernui.widget.*;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-
-import static icyllis.modernui.view.View.dp;
-import static icyllis.modernui.view.View.sp;
 
 public class EditorFragment extends LifecycleFragment {
 
@@ -40,14 +34,12 @@ public class EditorFragment extends LifecycleFragment {
     }
 
     @Override
-    public View onCreateView(@Nullable ViewGroup container, @Nullable DataSet savedInstanceState) {
-        ViewConfiguration.get().setViewScale(1);
-
+    public View onCreateView(@NotNull LayoutInflater inflater, ViewGroup container, DataSet savedInstanceState) {
         return createRoot();
     }
 
     private FrameLayout createRoot() {
-        var root = new FrameLayout();
+        var root = new FrameLayout(getContext());
 
         var params = new FrameLayout.LayoutParams(
                 FrameLayout.LayoutParams.MATCH_PARENT,
@@ -67,7 +59,7 @@ public class EditorFragment extends LifecycleFragment {
     }
 
     private RelativeLayout createContent() {
-        var content = new RelativeLayout();
+        var content = new RelativeLayout(getContext());
         content.setGravity(Gravity.TOP | Gravity.CENTER);
 
         var params = new FrameLayout.LayoutParams(
@@ -87,7 +79,7 @@ public class EditorFragment extends LifecycleFragment {
     }
 
     private LinearLayout createToolsPanel() {
-        var toolsPanel = new LinearLayout();
+        var toolsPanel = new LinearLayout(getContext());
 
         toolsPanel.setOrientation(LinearLayout.HORIZONTAL);
 
@@ -97,7 +89,7 @@ public class EditorFragment extends LifecycleFragment {
                 .setup(p -> p.addRule(RelativeLayout.CENTER_HORIZONTAL))
                 .applyTo(toolsPanel);
 
-        SquarePadding.of(dp(5))
+        SquarePadding.of(toolsPanel.dp(5))
                 .applyTo(toolsPanel);
 
         ColoredBackground.of(Colors.TOOL_PANEL_BACKGROUND).applyTo(toolsPanel);
@@ -112,10 +104,10 @@ public class EditorFragment extends LifecycleFragment {
         ParamsBuilder.using(LinearLayout.LayoutParams::new)
                 .widthWrapContent()
                 .heightMatchParent()
-                .setup(p -> p.rightMargin = dp(10))
+                .setup(p -> p.rightMargin = toolsPanel.dp(10))
                 .applyTo(saveButton);
 
-        final var compileButton = new CompileButton();
+        final var compileButton = new CompileButton(getContext());
         compileButton.getTextView().setText("Compile");
         controller.onCompileButtonInit(compileButton);
         compileButton.setOnClickListener(v -> {
@@ -131,7 +123,7 @@ public class EditorFragment extends LifecycleFragment {
     }
 
     private RelativeLayout createBody() {
-        var body = new RelativeLayout();
+        var body = new RelativeLayout(getContext());
 
         var params = new RelativeLayout.LayoutParams(
                 RelativeLayout.LayoutParams.MATCH_PARENT,
@@ -153,7 +145,7 @@ public class EditorFragment extends LifecycleFragment {
     }
 
     private LinearLayout createDetailsPanel() {
-        var detailsPanel = new LinearLayout();
+        var detailsPanel = new LinearLayout(getContext());
 
         detailsPanel.setId(detailsPanelId);
         detailsPanel.setOrientation(LinearLayout.VERTICAL);
@@ -170,7 +162,7 @@ public class EditorFragment extends LifecycleFragment {
         ColoredBackground.of(Colors.NODE_BACKGROUND_SECONDARY_1).applyTo(detailsPanel);
 
         var detailsHeader = createTextView("Details");
-        detailsHeader.setTextSize(sp(13));
+        detailsHeader.setTextSize(detailsHeader.sp(13));
 
         detailsPanel.addView(detailsHeader);
 
@@ -179,7 +171,7 @@ public class EditorFragment extends LifecycleFragment {
 
     private FrameLayout createViewPort() {
         var postProcessView = createViewPortPostProcessView();
-        var blueprintView = new BPViewPort();
+        var blueprintView = new BPViewPort(getContext());
 
         var params = new FrameLayout.LayoutParams(
                 RelativeLayout.LayoutParams.MATCH_PARENT,
@@ -191,7 +183,7 @@ public class EditorFragment extends LifecycleFragment {
 
         graphLayout.setNavigator(blueprintView);
         graphLayout.setContextMenuOpenHandler(blueprintView);
-        graphLayout.loadBlueprint(project.getBlueprint());
+        graphLayout.loadBlueprint(project.getBlueprint().load(getContext()));
 
         blueprintView.addView(graphLayout);
         postProcessView.addView(blueprintView);
@@ -200,7 +192,7 @@ public class EditorFragment extends LifecycleFragment {
     }
 
     private GraphLayout createGraphLayout() {
-        var graphLayout = this.graphLayout = new GraphLayout();
+        var graphLayout = this.graphLayout = new GraphLayout(getContext());
         var graphController = new GraphControllerImpl();
 
         graphController.setViewMoveListener(graphLayout);
@@ -215,22 +207,21 @@ public class EditorFragment extends LifecycleFragment {
     }
 
     private FrameLayout createViewPortPostProcessView() {
-        var postProcessView = new FrameLayout(){
+        var postProcessView = new FrameLayout(getContext()){
             @Override
             public void onDrawForeground(@NotNull Canvas canvas) {
                 super.onDrawForeground(canvas);
-                var paint = Paint.take();
+                var paint = Paint.obtain();
 
                 paint.setRGBA(0, 0, 0, 80);
 
                 paint.setStyle(Paint.STROKE);
                 paint.setStrokeWidth(25);
-                paint.setSmoothRadius(15);
 
-                canvas.drawRoundLine(0, 0, getWidth(), 0, paint);
-                canvas.drawRoundLine(getWidth(), 0, getWidth(), getHeight(), paint);
-                canvas.drawRoundLine(getWidth(), getHeight(), 0, getHeight(), paint);
-                canvas.drawRoundLine(0, getHeight(), 0, 0, paint);
+                canvas.drawLine(0, 0, getWidth(), 0, paint);
+                canvas.drawLine(getWidth(), 0, getWidth(), getHeight(), paint);
+                canvas.drawLine(getWidth(), getHeight(), 0, getHeight(), paint);
+                canvas.drawLine(0, getHeight(), 0, 0, paint);
             }
         };
         var params = new RelativeLayout.LayoutParams(
@@ -258,14 +249,14 @@ public class EditorFragment extends LifecycleFragment {
     }
 
     private MaterialButton createButton(String text) {
-        var button = new MaterialButton();
+        var button = new MaterialButton(getContext());
         button.getTextView().setText(text);
 
         return button;
     }
 
     private TextView createTextView(String text) {
-        var textView = new TextView();
+        var textView = new TextView(getContext());
         textView.setText(text);
 
         return textView;

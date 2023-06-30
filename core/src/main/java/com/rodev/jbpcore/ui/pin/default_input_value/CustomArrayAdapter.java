@@ -1,6 +1,7 @@
 package com.rodev.jbpcore.ui.pin.default_input_value;
 
 import com.rodev.jbpcore.handlers.TextViewCreationListener;
+import icyllis.modernui.core.Context;
 import icyllis.modernui.view.View;
 import icyllis.modernui.view.ViewGroup;
 import icyllis.modernui.widget.ArrayAdapter;
@@ -13,12 +14,16 @@ import java.util.List;
 
 public class CustomArrayAdapter<T> extends ArrayAdapter<T> {
 
-    public CustomArrayAdapter(@NotNull T[] objects) {
-        super(objects);
+    private final Context context;
+
+    public CustomArrayAdapter(Context context, @NotNull T[] objects) {
+        super(context, objects);
+        this.context = context;
     }
 
-    public CustomArrayAdapter(@NotNull List<T> objects) {
-        super(objects);
+    public CustomArrayAdapter(Context context, @NotNull List<T> objects) {
+        super(context, objects);
+        this.context = context;
     }
 
     @Nonnull
@@ -32,7 +37,7 @@ public class CustomArrayAdapter<T> extends ArrayAdapter<T> {
         final TextView text;
 
         if (convertView == null) {
-            text = new TextView();
+            text = new TextView(context);
         } else {
             text = (TextView) convertView;
         }
@@ -48,7 +53,7 @@ public class CustomArrayAdapter<T> extends ArrayAdapter<T> {
 
         text.setTextSize(14);
         text.setTextAlignment(View.TEXT_ALIGNMENT_VIEW_START);
-        final int dp4 = View.dp(4);
+        final int dp4 = text.dp(4);
         text.setPadding(dp4, dp4, dp4, dp4);
         text.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
 

@@ -1,6 +1,7 @@
 package com.rodev.jbpcore.ui.contextmenu.tree;
 
 import com.rodev.jbpcore.ui.contextmenu.Item;
+import icyllis.modernui.core.Context;
 import icyllis.modernui.widget.LinearLayout;
 
 import java.util.*;
@@ -9,19 +10,23 @@ import java.util.function.Predicate;
 public class ContextTreeNodeView extends ContextTreeRootView {
 
     private final TreeNodeHeaderLabel header;
-    private final LinearLayout content = new LinearLayout();
+    private final LinearLayout content;
     private final Set<Item> itemList = new HashSet<>();
 
     private boolean opened = true;
 
     private String name;
 
-    public ContextTreeNodeView(String name) {
+    public ContextTreeNodeView(Context context, String name) {
+        super(context);
+
+        content = new LinearLayout(context);
+
         this.name = name;
 
         setOrientation(VERTICAL);
 
-        header = new TreeNodeHeaderLabel(name, leftPadding -> {
+        header = new TreeNodeHeaderLabel(getContext(), name, leftPadding -> {
             content.setPadding(leftPadding, 0, 0, 0);
         });
         header.setOnClickListener(view -> {

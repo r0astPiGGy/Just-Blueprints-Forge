@@ -9,11 +9,12 @@ import com.rodev.jbpcore.blueprint.pin.Pin;
 import com.rodev.jbpcore.ui.pin.PinRowView;
 import com.rodev.jbpcore.ui.pin.default_input_value.CustomArrayAdapter;
 import com.rodev.jbpcore.handlers.TextViewCreationListener;
+import icyllis.modernui.core.Context;
 import icyllis.modernui.graphics.Canvas;
 import icyllis.modernui.graphics.Paint;
+import icyllis.modernui.graphics.Rect;
 import icyllis.modernui.graphics.drawable.Drawable;
 import icyllis.modernui.graphics.drawable.ImageDrawable;
-import icyllis.modernui.math.Rect;
 import icyllis.modernui.view.Gravity;
 import icyllis.modernui.view.View;
 import icyllis.modernui.view.ViewGroup;
@@ -36,8 +37,8 @@ public class PureGetterNode extends BaseNode {
 
     private final String title;
 
-    public PureGetterNode(int headerColor, String id, String name, ImageDrawable icon, SelectorGroup group) {
-        super(id);
+    public PureGetterNode(Context context, int headerColor, String id, String name, ImageDrawable icon, SelectorGroup group) {
+        super(context, id);
 
         this.title = name;
 
@@ -56,7 +57,7 @@ public class PureGetterNode extends BaseNode {
     }
 
     private LinearLayout createNodeHeader() {
-        var nodeHeader = new LinearLayout();
+        var nodeHeader = new LinearLayout(getContext());
         nodeHeader.setOrientation(HORIZONTAL);
         var params = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         params.setMargins(0, dp(3), 0, dp(3));
@@ -74,7 +75,7 @@ public class PureGetterNode extends BaseNode {
     }
 
     private View createIcon() {
-        var icon = new View();
+        var icon = new View(getContext());
         icon.setBackground(this.iconDrawable);
 
         var params = new LayoutParams(dp(30), dp(30));
@@ -85,7 +86,7 @@ public class PureGetterNode extends BaseNode {
     }
 
     private LinearLayout createLabel() {
-        var nodeHeader = new LinearLayout();
+        var nodeHeader = new LinearLayout(getContext());
         nodeHeader.setOrientation(VERTICAL);
         var params = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         nodeHeader.setPadding(dp(6), 0, 0, 0);
@@ -102,7 +103,7 @@ public class PureGetterNode extends BaseNode {
     }
 
     private TextView createTitle() {
-        var title = new TextView();
+        var title = new TextView(getContext());
         title.setText(this.title);
 
         TextViewCreationListener.onNodeTitleCreated(title);
@@ -111,7 +112,7 @@ public class PureGetterNode extends BaseNode {
     }
 
     private TextView createSubtitle() {
-        var subtitleView = new TextView();
+        var subtitleView = new TextView(getContext());
 
         TextViewCreationListener.onNodeSubtitleCreated(subtitleView);
         subtitleView.setVisibility(GONE);
@@ -152,7 +153,7 @@ public class PureGetterNode extends BaseNode {
 
         if(selectorGroup != null) {
             pinRowView.setText("Селектор");
-            pinRowView.addDefaultValueView(new SelectorValueView(selectorGroup));
+            pinRowView.addDefaultValueView(new SelectorValueView(getContext(), selectorGroup));
         }
     }
 
@@ -160,9 +161,10 @@ public class PureGetterNode extends BaseNode {
 
         private final List<Selector> values;
 
-        public SelectorValueView(SelectorGroup selectorGroup) {
+        public SelectorValueView(Context context, SelectorGroup selectorGroup) {
+            super(context);
             values = selectorGroup.selectors();
-            ArrayAdapter<Selector> arrayAdapter = new CustomArrayAdapter<>(values);
+            ArrayAdapter<Selector> arrayAdapter = new CustomArrayAdapter<>(context, values);
 
             setAdapter(arrayAdapter);
 
@@ -171,7 +173,7 @@ public class PureGetterNode extends BaseNode {
 
                 @Override
                 public void draw(@Nonnull Canvas canvas) {
-                    Paint paint = Paint.get();
+                    Paint paint = Paint.obtain();
                     paint.setColor(Colors.WHITE);
                     paint.setStyle(Paint.STROKE);
                     paint.setStrokeWidth(1.2f);

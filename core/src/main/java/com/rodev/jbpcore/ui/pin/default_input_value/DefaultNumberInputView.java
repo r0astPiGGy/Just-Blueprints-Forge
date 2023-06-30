@@ -1,9 +1,11 @@
 package com.rodev.jbpcore.ui.pin.default_input_value;
 
+import icyllis.modernui.core.Context;
+
 public class DefaultNumberInputView extends DefaultTextInputView {
 
-    public DefaultNumberInputView() {
-        super();
+    public DefaultNumberInputView(Context context) {
+        super(context);
 
         setHint("Число");
     }

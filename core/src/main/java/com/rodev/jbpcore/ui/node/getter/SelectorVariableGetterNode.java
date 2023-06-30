@@ -5,6 +5,7 @@ import com.rodev.jbpcore.ui.node.NodeView;
 import com.rodev.jbpcore.blueprint.pin.Pin;
 import com.rodev.jbpcore.ui.pin.PinRowView;
 import com.rodev.jbpcore.ui.pin.default_input_value.DefaultSelectorInputView;
+import icyllis.modernui.core.Context;
 import icyllis.modernui.graphics.drawable.ImageDrawable;
 
 public class SelectorVariableGetterNode extends NodeView {
@@ -12,8 +13,8 @@ public class SelectorVariableGetterNode extends NodeView {
     private PinRowView output;
     private final SelectorGroup selectorGroup;
 
-    public SelectorVariableGetterNode(int headerColor, String id, String name, ImageDrawable icon, SelectorGroup selectorGroup) {
-        super(headerColor, id, name, icon);
+    public SelectorVariableGetterNode(Context context, int headerColor, String id, String name, ImageDrawable icon, SelectorGroup selectorGroup) {
+        super(context, headerColor, id, name, icon);
 
         this.selectorGroup = selectorGroup;
     }
@@ -44,10 +45,10 @@ public class SelectorVariableGetterNode extends NodeView {
         }
     }
 
-    private static class SelectorValueView extends DefaultSelectorInputView {
+    private class SelectorValueView extends DefaultSelectorInputView {
 
         public SelectorValueView(SelectorGroup selectorGroup) {
-            super(selectorGroup);
+            super(SelectorVariableGetterNode.this.getContext(), selectorGroup);
         }
 
         @Override

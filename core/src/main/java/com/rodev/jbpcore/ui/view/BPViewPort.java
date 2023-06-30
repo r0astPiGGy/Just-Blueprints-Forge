@@ -22,7 +22,8 @@ import com.rodev.jbpcore.blueprint.Navigable;
 import com.rodev.jbpcore.blueprint.graph.ContextMenuOpenHandler;
 import com.rodev.jbpcore.ui.contextmenu.PopupHelper;
 import com.rodev.jbpcore.ui.contextmenu.ContextMenuBuilder;
-import icyllis.modernui.math.Rect;
+import icyllis.modernui.core.Context;
+import icyllis.modernui.graphics.Rect;
 import icyllis.modernui.view.*;
 import icyllis.modernui.widget.*;
 
@@ -89,14 +90,16 @@ public class BPViewPort extends FrameLayout implements ContextMenuOpenHandler, N
     private int mNestedXOffset;
     private boolean notCentered = true;
 
-    public BPViewPort() {
+    public BPViewPort(Context context) {
+        super(context);
+
         mScroller = new OverScroller();
         mEdgeGlowTop = new EdgeEffect();
         mEdgeGlowBottom = new EdgeEffect();
         setFocusable(true);
         setDescendantFocusability(FOCUS_AFTER_DESCENDANTS);
         setWillNotDraw(false);
-        final ViewConfiguration configuration = ViewConfiguration.get();
+        final ViewConfiguration configuration = ViewConfiguration.get(context);
 
         mTouchSlop = configuration.getScaledTouchSlop();
 

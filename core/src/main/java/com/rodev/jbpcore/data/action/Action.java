@@ -6,6 +6,7 @@ import com.rodev.jbpcore.data.action.pin_type.PinType;
 import com.rodev.jbpcore.data.action.type.ActionType;
 import com.rodev.jbpcore.data.variable.VariableType;
 import com.rodev.jbpcore.blueprint.node.GraphNode;
+import icyllis.modernui.core.Context;
 import icyllis.modernui.graphics.drawable.ImageDrawable;
 
 import java.util.HashSet;
@@ -62,8 +63,8 @@ public final class Action {
                 .anyMatch(type.getDeclinesFilter());
     }
 
-    public GraphNode toNode() {
-        var node = actionType.createNode(this);
+    public GraphNode toNode(Context context) {
+        var node = actionType.createNode(context, this);
 
         for (var inputPinType : inputPins()) {
             var pin = inputPinType.createInputPin();

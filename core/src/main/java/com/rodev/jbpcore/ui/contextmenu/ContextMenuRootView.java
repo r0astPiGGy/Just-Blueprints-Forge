@@ -1,6 +1,7 @@
 package com.rodev.jbpcore.ui.contextmenu;
 
 import com.rodev.jbpcore.handlers.TextViewCreationListener;
+import icyllis.modernui.core.Context;
 import icyllis.modernui.view.Gravity;
 import icyllis.modernui.view.MotionEvent;
 import icyllis.modernui.view.ViewGroup;
@@ -17,7 +18,8 @@ public class ContextMenuRootView extends RelativeLayout {
     private final TextView headerTextView;
     private final PopupSearchView searchView;
 
-    public ContextMenuRootView() {
+    public ContextMenuRootView(Context context) {
+        super(context);
         setLayoutParams(new ViewGroup.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.MATCH_PARENT
@@ -34,7 +36,7 @@ public class ContextMenuRootView extends RelativeLayout {
     }
 
     private TextView createHeaderLabel() {
-        var headerLabel = new TextView();
+        var headerLabel = new TextView(getContext());
 
         headerLabel.setId(popupHeaderId);
         TextViewCreationListener.onContextMenuHeaderTextCreated(headerLabel);
@@ -52,7 +54,7 @@ public class ContextMenuRootView extends RelativeLayout {
     }
 
     private PopupSearchView createSearchView() {
-        var searchView = new PopupSearchView();
+        var searchView = new PopupSearchView(getContext());
         searchView.setId(popupSearchBarId);
 
         var params = new RelativeLayout.LayoutParams(
@@ -69,7 +71,7 @@ public class ContextMenuRootView extends RelativeLayout {
     }
 
     private ScrollView createContextMenuContent() {
-        var scrollView = new ScrollView();
+        var scrollView = new ScrollView(getContext());
         var params = new RelativeLayout.LayoutParams(
                 RelativeLayout.LayoutParams.MATCH_PARENT,
                 RelativeLayout.LayoutParams.MATCH_PARENT

@@ -1,6 +1,7 @@
 package com.rodev.jbpcore.ui.contextmenu.tree;
 
 import com.rodev.jbpcore.ui.contextmenu.Item;
+import icyllis.modernui.core.Context;
 import icyllis.modernui.widget.LinearLayout;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -13,7 +14,8 @@ public class ContextTreeRootView extends LinearLayout {
 
     private final Map<String, ContextTreeNodeView> child = new HashMap<>();
 
-    public ContextTreeRootView() {
+    public ContextTreeRootView(Context context) {
+        super(context);
         setOrientation(VERTICAL);
     }
 
@@ -46,7 +48,7 @@ public class ContextTreeRootView extends LinearLayout {
     public ContextTreeNodeView getOrCreate(String name) {
         var temp = getChild(name);
         if(temp == null) {
-            temp = new ContextTreeNodeView(name);
+            temp = new ContextTreeNodeView(getContext(), name);
             add(temp);
         }
         return temp;

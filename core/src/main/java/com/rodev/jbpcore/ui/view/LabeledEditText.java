@@ -2,6 +2,7 @@ package com.rodev.jbpcore.ui.view;
 
 import com.rodev.jbpcore.Colors;
 import com.rodev.jbpcore.utils.ParamsBuilder;
+import icyllis.modernui.core.Context;
 import icyllis.modernui.view.Gravity;
 import icyllis.modernui.view.View;
 import icyllis.modernui.widget.EditText;
@@ -29,7 +30,8 @@ public class LabeledEditText extends RelativeLayout {
     private TextView errorMessage;
     private MaterialEditText editText;
 
-    public LabeledEditText() {
+    public LabeledEditText(Context context) {
+        super(context);
         setGravity(Gravity.TOP);
     }
 
@@ -62,7 +64,7 @@ public class LabeledEditText extends RelativeLayout {
     }
 
     protected TextView createTextView() {
-        var textView = new TextView();
+        var textView = new TextView(getContext());
 
         textView.setText(label);
         onTextCreatedListener.accept(textView);
@@ -86,7 +88,7 @@ public class LabeledEditText extends RelativeLayout {
     }
 
     protected EditText createEditText() {
-        editText = new MaterialEditText();
+        editText = new MaterialEditText(getContext());
         editText.setId(EDIT_TEXT_ID);
 
         onEditTextCreatedListener.accept(editText);
@@ -105,7 +107,7 @@ public class LabeledEditText extends RelativeLayout {
     }
 
     protected TextView createErrorTextView() {
-        errorMessage = new TextView();
+        errorMessage = new TextView(getContext());
 
         onTextCreatedListener.accept(errorMessage);
         handleTextCreated(errorMessage);

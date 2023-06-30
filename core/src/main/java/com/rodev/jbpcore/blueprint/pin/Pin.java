@@ -6,7 +6,9 @@ import com.rodev.jbpcore.data.variable.VariableType;
 import com.rodev.jbpcore.blueprint.pin.dynamic.PinVariableTypeChangeListener;
 
 // TODO не должно зависеть от фреймворка
+import icyllis.modernui.core.Context;
 import icyllis.modernui.graphics.drawable.Drawable;
+import icyllis.modernui.view.View;
 
 import java.util.UUID;
 
@@ -21,9 +23,9 @@ public interface Pin extends Hoverable, Draggable<Pin>, Positionable, Toggleable
      * @deprecated метод возвращает объект класса фреймворка, что в контексте интерфейса недопустимо
      */
     @Deprecated
-    default Drawable createDrawable() {
+    default Drawable createDrawable(View contextHolder) {
         var icon = getVariableType().getIcon();
-        return PinDrawable.create(icon.icon(), icon.connected());
+        return PinDrawable.create(contextHolder, icon.icon(), icon.connected());
     }
 
     ConnectionBehaviour getConnectionBehaviour();
