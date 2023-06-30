@@ -2,14 +2,9 @@ package com.rodev.jbpcore.workspace.impl;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
 import com.rodev.jbpcore.JustBlueprints;
+import com.rodev.jbpcore.blueprint.BlueprintReference;
 import com.rodev.jbpcore.data.DataAccess;
-import com.rodev.jbpcore.data.action.Action;
-import com.rodev.jbpcore.blueprint.graph.GraphController;
-import com.rodev.jbpcore.blueprint.node.GraphNode;
-import com.rodev.jbpcore.blueprint.node.PinConnection;
-import com.rodev.jbpcore.blueprint.pin.Pin;
 import com.rodev.jbpcore.ui.fragment.welcome.ValidateResult;
 import com.rodev.jbpcore.workspace.ProgramData;
 import com.rodev.jbpcore.workspace.Project;
@@ -111,23 +106,7 @@ public class WorkspaceImpl implements Workspace {
     }
 
     private Project createProject(String name, File directory, long createdDate, long lastOpen) {
-        return new ProjectImpl(name, directory, createdDate, lastOpen) {
-
-            @Override
-            protected void onBlueprintSave(Collection<GraphNode> nodes) {
-                saveBlueprint(getDirectory(), nodes);
-            }
-
-            @Override
-            protected void onBlueprintLoad(GraphController graphController) {
-                loadBlueprint(getDirectory(), graphController);
-            }
-
-            @Override
-            protected void onBlueprintCompile(CodeCompiler.CompileMode compileMode) {
-                compileBlueprint(this, compileMode);
-            }
-
+        return new ProjectImpl(name, directory, createdDate, new BlueprintReference(new File(directory, blueprintDataFileName)), lastOpen) {
             @Override
             public void saveInfo() {
                 try {
@@ -137,6 +116,36 @@ public class WorkspaceImpl implements Workspace {
                 }
             }
         };
+    }
+
+    @Override
+    public void compileBlueprint(BlueprintReference blueprint, CodeCompiler.CompileMode compileMode) {
+        File savedBlueprint = blueprint.file();
+        File generatedCodeFile = new File(savedBlueprint.getParent(), compileDataFileName);
+
+        var codeGenerator = new CodeGenerator(savedBlueprint, generatedCodeFile);
+
+        codeGenerator.generate(DataAccess.getInstance().generatorData, 4);
+
+        var asyncCompiler = getCompiler();
+
+        asyncCompiler.getOnPreCompileListeners().addListener(codeCompiler -> {
+            codeCompiler.setCompileMode(compileMode);
+        }).setRemoveOnNotify();
+
+        var jmcc = asyncCompiler.getCompilerFile();
+
+        if (!jmcc.exists()) {
+            var msg = "Code was generated, but jmcc not found. Please install it to "
+                    + jmcc.getAbsolutePath();
+            log.error(msg);
+            JustBlueprints.getEditorEventListener().onBlueprintCompileError(blueprint, msg);
+            return;
+        }
+
+        asyncCompiler.compile(savedBlueprint, codeCompiler -> {
+            onBlueprintCompiled(project, codeCompiler);
+        });
     }
 
     public void compileBlueprint(Project project, final CodeCompiler.CompileMode compileMode) {
@@ -156,11 +165,11 @@ public class WorkspaceImpl implements Workspace {
 
         var jmcc = asyncCompiler.getCompilerFile();
 
-        if(!jmcc.exists()) {
+        if (!jmcc.exists()) {
             var msg = "Code was generated, but jmcc not found. Please install it to "
                     + jmcc.getAbsolutePath();
             log.error(msg);
-            JustBlueprints.getEditorEventListener().onProjectCompileError(project, msg);
+            JustBlueprints.getEditorEventListener().onBlueprintCompileError(project, msg);
             return;
         }
 
@@ -174,101 +183,12 @@ public class WorkspaceImpl implements Workspace {
 
         if(compiler.getExitCode() != 0) {
             log.warn("Compilation finished unsuccessfully. Error message: \n" + output);
-            JustBlueprints.getEditorEventListener().onProjectCompileError(project, output);
+            JustBlueprints.getEditorEventListener().onBlueprintCompileError(project, output);
             return;
         }
 
         log.info(output);
         JustBlueprints.getEditorEventListener().onProjectCompiled(project, output, compiler.getCompileMode());
-    }
-
-
-    public void saveBlueprint(File projectDirectory, Collection<GraphNode> nodes) {
-        var file = new File(projectDirectory, blueprintDataFileName);
-
-        var nodeEntities = nodes.stream().map(this::serialize).toList();
-        var blueprint = new BlueprintEntity(nodeEntities);
-
-        var objectMapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
-        try {
-            objectMapper.writeValue(file, blueprint);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void loadBlueprint(File projectDirectory, GraphController graphController) {
-        var file = new File(projectDirectory, blueprintDataFileName);
-
-        var objectMapper = new ObjectMapper();
-
-        BlueprintEntity blueprint;
-        try {
-            blueprint = objectMapper.readValue(file, BlueprintEntity.class);
-        } catch (IOException e) {
-            return;
-        }
-
-        Map<String, Pin> outputPins = new HashMap<>();
-        List<PinConnection> connections = new LinkedList<>();
-
-        for(var nodeEntity : blueprint.nodes) {
-            var actionId = nodeEntity.id;
-            Action action = DataAccess.getInstance().actionRegistry.get(actionId);
-
-            if(action == null) {
-                log.warn("Action by id " + actionId + " not found during blueprint load. (Outdated blueprint?)");
-                continue;
-            }
-
-            GraphNode node = action.toNode();
-
-            var deserializer = node.getDeserializer(nodeEntity.data);
-            deserializer.deserialize();
-
-            outputPins.putAll(deserializer.getOutputPins());
-            connections.addAll(deserializer.getPinConnections());
-
-            int x = nodeEntity.position.x;
-            int y = nodeEntity.position.y;
-
-            graphController.createNodeAt(x, y, node);
-        }
-
-        for(var connection : connections) {
-            var outputPinId = connection.outputPin();
-            var outputPin = outputPins.get(outputPinId);
-
-            connection.inputPin().connect(outputPin);
-        }
-    }
-
-    public NodeEntity serialize(GraphNode node) {
-        var entity = new NodeEntity();
-
-        entity.id = node.getType();
-        entity.position = new NodeLocation(node.getNodeX(), node.getNodeY());
-        entity.data = node.serialize();
-
-        return entity;
-    }
-
-    @AllArgsConstructor
-    @NoArgsConstructor
-    public static class BlueprintEntity {
-        public List<NodeEntity> nodes;
-    }
-
-    public static class NodeEntity {
-        public String id;
-        public NodeLocation position;
-        public Object data;
-    }
-
-    @AllArgsConstructor
-    @NoArgsConstructor
-    public static class NodeLocation {
-        public int x, y;
     }
 
     @Override

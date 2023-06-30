@@ -1,5 +1,6 @@
 package com.rodev.jbp.client;
 
+import com.rodev.jbpcore.blueprint.BlueprintReference;
 import com.rodev.jbpcore.ui.fragment.editor.EditorEventListener;
 import com.rodev.jbpcore.workspace.Project;
 import com.rodev.jbpcore.workspace.compiler.CodeCompiler;
@@ -56,7 +57,7 @@ public class ForgeEditorEventListener implements EditorEventListener {
     }
 
     @Override
-    public void onProjectCompileError(Project project, String message) {
+    public void onBlueprintCompileError(BlueprintReference blueprint, String message) {
         postSendMessage(ChatFormatting.RED + message);
     }
 

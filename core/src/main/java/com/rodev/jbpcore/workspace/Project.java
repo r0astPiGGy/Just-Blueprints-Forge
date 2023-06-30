@@ -1,6 +1,6 @@
 package com.rodev.jbpcore.workspace;
 
-import com.rodev.jbpcore.blueprint.Blueprint;
+import com.rodev.jbpcore.blueprint.BlueprintReference;
 
 import java.io.File;
 
@@ -10,13 +10,13 @@ public interface Project {
 
     File getDirectory();
 
-    Blueprint getBlueprint();
-
     long getCreatedDate();
 
     long getLastOpenDate();
 
     void setLastOpenDate(long date);
+
+    BlueprintReference getBlueprint();
 
     void saveInfo();
 

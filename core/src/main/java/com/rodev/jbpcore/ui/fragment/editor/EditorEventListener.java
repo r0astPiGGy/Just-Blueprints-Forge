@@ -1,5 +1,6 @@
 package com.rodev.jbpcore.ui.fragment.editor;
 
+import com.rodev.jbpcore.blueprint.BlueprintReference;
 import com.rodev.jbpcore.workspace.Project;
 import com.rodev.jbpcore.workspace.compiler.CodeCompiler;
 
@@ -13,7 +14,7 @@ public interface EditorEventListener {
 
     }
 
-    default void onProjectCompileError(Project project, String message) {
+    default void onBlueprintCompileError(BlueprintReference blueprint, String message) {
 
     }
 

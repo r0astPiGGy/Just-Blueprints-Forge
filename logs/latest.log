@@ -1,0 +1,26 @@
+[21Feb2023 18:32:41.099] [Main-Thread/INFO] [ModernUI/Core]: AWT headless: false
+[21Feb2023 18:32:41.105] [Main-Thread/INFO] [ModernUI/Core]: Backend Library: LWJGL 3.3.1 build 7
+[21Feb2023 18:32:43.913] [Main-Thread/INFO] [ModernUI/Vulkan]: Vulkan version: 1.3.204
+[21Feb2023 18:32:43.925] [Main-Thread/INFO] [ModernUI/Vulkan]: Enumerated 19 instance extensions
+[21Feb2023 18:32:45.523] [Main-Thread/INFO] [ModernUI/Vulkan]: Created Vulkan instance, Engine: Arc UI
+[21Feb2023 18:32:45.556] [Main-Thread/INFO] [ModernUI/Vulkan]: List device ID 7298, Name: NVIDIA GeForce GTX 1050 Ti, Type: Discrete GPU
+[21Feb2023 18:32:45.557] [Main-Thread/INFO] [ModernUI/Vulkan]: Choose device ID 7298, vendor ID: NVIDIA, driver version: 515.65.1.0
+[21Feb2023 18:32:45.559] [Main-Thread/INFO] [ModernUI/Vulkan]: Enumerated 136 device extensions
+[21Feb2023 18:32:45.563] [Main-Thread/INFO] [ModernUI/Vulkan]: Enabled VK_EXT_blend_operation_advanced
+[21Feb2023 18:32:45.722] [Main-Thread/INFO] [ModernUI/Vulkan]: Created Vulkan device, Queue index: 0
+[21Feb2023 18:32:45.723] [Main-Thread/INFO] [ModernUI/Core]: Initializing window system
+[21Feb2023 18:32:49.084] [Main-Thread/INFO] [ModernUI/Core]: Preparing threads
+[21Feb2023 18:32:49.086] [Render-Thread/INFO] [ModernUI/Core]: Initializing render thread
+[21Feb2023 18:32:49.087] [UI-Thread/INFO] [ModernUI/Core]: Initializing UI thread
+[21Feb2023 18:32:49.358] [Render-Thread/INFO] [ModernUI/OpenGL]: OpenGL vendor: NVIDIA Corporation
+[21Feb2023 18:32:49.358] [Render-Thread/INFO] [ModernUI/OpenGL]: OpenGL renderer: NVIDIA GeForce GTX 1050 Ti/PCIe/SSE2
+[21Feb2023 18:32:49.359] [Render-Thread/INFO] [ModernUI/OpenGL]: OpenGL version: 4.6.0 NVIDIA 515.65.01
+[21Feb2023 18:32:49.360] [Render-Thread/INFO] [ModernUI/OpenGL]: Max texture size: 32768
+[21Feb2023 18:32:49.360] [Render-Thread/INFO] [ModernUI/OpenGL]: Max renderbuffer size: 32768
+[21Feb2023 18:32:49.360] [Render-Thread/INFO] [ModernUI/OpenGL]: Max array texture layers: 2048
+[21Feb2023 18:32:49.750] [Render-Thread/INFO] [ModernUI/Canvas]: Created OpenGL surface canvas
+[21Feb2023 18:32:49.796] [UI-Thread/INFO] [ModernUI/Core]: Installing view protocol
+[21Feb2023 18:32:49.904] [UI-Thread/INFO] [ModernUI/Core]: Starting main fragment
+[21Feb2023 18:32:49.906] [UI-Thread/INFO] [ModernUI/Core]: Looping UI thread
+[21Feb2023 18:32:49.915] [Main-Thread/INFO] [ModernUI/Core]: Looping main thread
+[21Feb2023 18:32:50.029] [Render-Thread/INFO] [ModernUI/Canvas]: Loaded OpenGL canvas shaders

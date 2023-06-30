@@ -1,7 +1,9 @@
 package com.rodev.jbpcore.workspace;
 
+import com.rodev.jbpcore.blueprint.BlueprintReference;
 import com.rodev.jbpcore.ui.fragment.welcome.ValidateResult;
 import com.rodev.jbpcore.workspace.compiler.AsyncCompiler;
+import com.rodev.jbpcore.workspace.compiler.CodeCompiler;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
@@ -19,6 +21,8 @@ public interface Workspace {
     ProgramData getProgramData();
 
     void reloadProjects();
+
+    void compileBlueprint(BlueprintReference blueprint, CodeCompiler.CompileMode compileMode);
 
     Project createProject(String name);
 

@@ -48,13 +48,14 @@ public class EditorController {
             nodes.add(node);
         }
 
-        project.getBlueprint().save(nodes);
+        project.getBlueprint().load().save(nodes);
         JustBlueprints.getEditorEventListener().onProjectSaved(project);
     }
 
     public void onCompileButtonClicked(Project project, CodeCompiler.CompileMode compileMode) {
         JustBlueprints.getEditorEventListener().onProjectCompileButtonClicked(project);
-        project.getBlueprint().compile(compileMode);
+
+        JustBlueprints.getWorkspace().compileBlueprint(project.getBlueprint(), compileMode);
     }
 
 }
