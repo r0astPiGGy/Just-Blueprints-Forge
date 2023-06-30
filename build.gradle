@@ -1,8 +1,9 @@
 // Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
 plugins {
+    id 'java'
     id 'eclipse'
     id 'maven-publish'
-    id 'net.minecraftforge.gradle' version '5.1.+'
+    id 'net.minecraftforge.gradle' version '6.0.+'
     id 'com.github.johnrengelman.shadow' version '7.1.2'
 }
 
@@ -164,9 +165,9 @@ dependencyProjects.forEach {
 dependencies {
     minecraft "net.minecraftforge:forge:${forge_version}"
 
-    library files('./libs/ModernUI-Core-3.6.3.117.jar')
+    library files('./libs/ModernUI-Core-3.7.0.jar')
 
-    implementation fg.deobf("icyllis.modernui:ModernUI-Forge:${minecraft_version}-${modernui_version}")
+    implementation fg.deobf("icyllis.modernui:ModernUI-Forge:${modernui_version}")
     dependencyProjects.forEach {
         library(it)
     }
